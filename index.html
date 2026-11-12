@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Danilo Oliveira — Portfólio & Vitrine de Projetos</title>
+  <meta name="description" content="Apresentação de projetos desenvolvidos por Danilo Oliveira: Inteligência Artificial, Games WebGL, PWA, Extensões e Automações." />
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Danilo Oliveira — Portfólio & Vitrine de Projetos" />
+  <meta property="og:description" content="Observatórios de IA, Jogos WebGL, Extensões Chrome e Plataformas PWA desenvolvidos por Danilo Oliveira." />
+  <meta property="og:image" content="assets/images/radar-ia.jpg" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #030712;
+      color: #f3f4f6;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Ambient Mesh Gradient Glow */
+    .bg-mesh {
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(14, 165, 233, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 25%, rgba(168, 85, 247, 0.07) 0%, transparent 40%),
+        radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 80% 85%, rgba(14, 165, 233, 0.06) 0%, transparent 40%);
+    }
+
+    /* Subtle grid overlay */
+    .bg-grid {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #030712;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1f2937;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #374151;
+    }
+  </style>
+</head>
+<body class="bg-mesh bg-grid min-h-screen text-slate-100 antialiased selection:bg-sky-500 selection:text-slate-950">
+
+  <!-- NAVBAR -->
+  <header class="sticky top-0 z-40 w-full backdrop-blur-xl bg-slate-950/70 border-b border-slate-800/80 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <!-- Logo / Perfil -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-sky-500 via-indigo-500 to-fuchsia-500 p-0.5 shadow-md shadow-sky-500/20 group-hover:shadow-sky-500/40 transition-shadow">
+          <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center font-bold text-sm text-sky-400">
+            DO
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-bold text-white tracking-tight group-hover:text-sky-400 transition-colors">Danilo Oliveira</span>
+          <span class="text-[11px] text-slate-400 font-mono -mt-0.5">@daniloliveira89</span>
+        </div>
+      </a>
+
+      <!-- Menu Links -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+        <a href="#projetos" class="hover:text-sky-400 transition-colors">Projetos</a>
+        <a href="#categorias" class="hover:text-sky-400 transition-colors">Categorias</a>
+        <a href="#sobre" class="hover:text-sky-400 transition-colors">Sobre o Desenvolvedor</a>
+        <a href="#deploy" class="hover:text-sky-400 transition-colors">Deploy</a>
+      </nav>
+
+      <!-- Botões de Ação -->
+      <div class="flex items-center gap-2.5">
+        <button 
+          onclick="copyPortfolioLink()" 
+          class="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-800 transition-colors"
+          title="Copiar link desta página"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+          </svg>
+          <span>Compartilhar</span>
+        </button>
+
+        <a 
+          href="https://github.com/daniloliveira89" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-white text-slate-950 hover:bg-slate-200 transition-all shadow-sm"
+        >
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="relative pt-16 pb-20 sm:pt-24 sm:pb-28 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      
+      <!-- Status Badge -->
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/90 border border-slate-700/80 text-xs font-medium text-slate-300 mb-6 backdrop-blur-md shadow-lg shadow-black/20">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>Portfólio de Desenvolvimento & Arquitetura de Software</span>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-tight">
+        Engenharia de Software, <br class="hidden sm:inline" />
+        <span class="bg-gradient-to-r from-sky-400 via-indigo-300 to-fuchsia-400 bg-clip-text text-transparent">
+          I.A. Generativa & Web Apps
+        </span>
+      </h1>
+
+      <p class="mt-6 text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed font-light">
+        Bem-vindo à vitrine de projetos de <strong class="text-white font-semibold">Danilo Oliveira</strong>. De observatórios analíticos de Inteligência Artificial e jogos táticos em WebGL a utilitários de automação e extensões de alta performance para o navegador.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+        <a 
+          href="#projetos" 
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm bg-sky-500 hover:bg-sky-400 text-slate-950 transition-all shadow-lg shadow-sky-500/25 transform hover:-translate-y-0.5"
+        >
+          <span>Explorar Todos os Projetos</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+          </svg>
+        </a>
+
+        <a 
+          href="https://github.com/daniloliveira89" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm bg-slate-900/90 hover:bg-slate-800 text-white border border-slate-700/80 transition-all shadow-md transform hover:-translate-y-0.5"
+        >
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          <span>Perfil no GitHub</span>
+        </a>
+      </div>
+
+      <!-- Quick Metrics Grid -->
+      <div class="mt-14 max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-2xl bg-slate-900/60 border border-slate-800/80 backdrop-blur-md">
+        <div class="p-3 text-center">
+          <div class="text-3xl font-extrabold text-white" id="stat-total-projects">17+</div>
+          <div class="text-xs font-medium text-slate-400 mt-1 uppercase tracking-wider">Projetos Ativos</div>
+        </div>
+        <div class="p-3 text-center border-l border-slate-800/80">
+          <div class="text-3xl font-extrabold text-sky-400" id="stat-live-demos">3+</div>
+          <div class="text-xs font-medium text-slate-400 mt-1 uppercase tracking-wider">Demos Online</div>
+        </div>
+        <div class="p-3 text-center border-l border-slate-800/80">
+          <div class="text-3xl font-extrabold text-fuchsia-400">10+</div>
+          <div class="text-xs font-medium text-slate-400 mt-1 uppercase tracking-wider">Extensões Chrome</div>
+        </div>
+        <div class="p-3 text-center border-l border-slate-800/80">
+          <div class="text-3xl font-extrabold text-emerald-400" id="stat-categories">5</div>
+          <div class="text-xs font-medium text-slate-400 mt-1 uppercase tracking-wider">Especialidades</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJETOS SECTION -->
+  <section id="projetos" class="py-12 border-t border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Cabeçalho da Seção com Filtros e Busca -->
+      <div id="categorias" class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">Catálogo de Projetos</h2>
+          <p class="text-slate-400 text-sm mt-1">Explore por área de atuação ou busque por tecnologia específica</p>
+        </div>
+
+        <!-- Barra de Busca -->
+        <div class="relative w-full md:w-80">
+          <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+          </div>
+          <input 
+            type="text" 
+            id="search-input" 
+            placeholder="Buscar por nome, tag ou stack..." 
+            class="w-full pl-10 pr-10 py-2.5 rounded-xl bg-slate-900 border border-slate-800 text-white placeholder-slate-400 text-sm focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-all"
+          />
+          <button 
+            id="clear-search" 
+            class="hidden absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-white"
+            title="Limpar busca"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Filtros de Categoria em Pílulas -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none">
+        <button 
+          data-category="all"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-sky-500 text-slate-950 transition-all shadow-md whitespace-nowrap"
+        >
+          <span>Todos</span>
+          <span class="filter-count px-1.5 py-0.5 rounded-full text-[10px] bg-slate-950/20">0</span>
+        </button>
+
+        <button 
+          data-category="web-ai"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-medium bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800 transition-all whitespace-nowrap"
+        >
+          <span>Web Apps & I.A.</span>
+          <span class="filter-count px-1.5 py-0.5 rounded-full text-[10px] bg-slate-800">0</span>
+        </button>
+
+        <button 
+          data-category="games"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-medium bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800 transition-all whitespace-nowrap"
+        >
+          <span>Jogos & WebGL</span>
+          <span class="filter-count px-1.5 py-0.5 rounded-full text-[10px] bg-slate-800">0</span>
+        </button>
+
+        <button 
+          data-category="atlas"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-medium bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800 transition-all whitespace-nowrap"
+        >
+          <span>Atlas Suite (Mídia & PWA)</span>
+          <span class="filter-count px-1.5 py-0.5 rounded-full text-[10px] bg-slate-800">0</span>
+        </button>
+
+        <button 
+          data-category="extensions"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-medium bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800 transition-all whitespace-nowrap"
+        >
+          <span>Extensões Chrome</span>
+          <span class="filter-count px-1.5 py-0.5 rounded-full text-[10px] bg-slate-800">0</span>
+        </button>
+
+        <button 
+          data-category="desktop"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-medium bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800 transition-all whitespace-nowrap"
+        >
+          <span>Desktop & Automação</span>
+          <span class="filter-count px-1.5 py-0.5 rounded-full text-[10px] bg-slate-800">0</span>
+        </button>
+      </div>
+
+      <!-- Grade Dinâmica de Projetos -->
+      <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <!-- Renderizado dinamicamente via app.js -->
+      </div>
+
+      <!-- Estado Vazio (Sem resultados na busca) -->
+      <div id="empty-state" class="hidden text-center py-20 bg-slate-900/40 rounded-3xl border border-slate-800/80 my-8">
+        <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-slate-800/80 flex items-center justify-center text-slate-400">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-1">Nenhum projeto encontrado</h3>
+        <p class="text-slate-400 text-sm max-w-md mx-auto mb-6">Não encontramos nenhum projeto com os termos pesquisados. Tente buscar por outra tecnologia ou categoria.</p>
+        <button 
+          onclick="document.getElementById('clear-search').click(); document.querySelector('[data-category=all]').click();"
+          class="px-4 py-2 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs transition-colors"
+        >
+          Limpar Filtros e Busca
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SOBRE O DESENVOLVEDOR -->
+  <section id="sobre" class="py-16 sm:py-24 border-t border-slate-800/80 bg-slate-950/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-6 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 text-xs font-semibold">
+            <span>Engenharia & Soluções Completas</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            Desenvolvendo projetos de ponta a ponta com foco em usabilidade e performance.
+          </h2>
+          <p class="text-slate-300 leading-relaxed">
+            Com um ecossistema abrangente de projetos, atuo desde a concepção de arquitetura até a publicação final. Minha trajetória reúne experiência em:
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+              <div class="text-sky-400 font-bold text-sm mb-1 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-sky-400"></span>
+                Web Apps & I.A.
+              </div>
+              <p class="text-slate-400 text-xs leading-relaxed">
+                Aplicações modernas em TypeScript, Next.js, React e integração com APIs de LLMs e observatórios de benchmarks.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+              <div class="text-fuchsia-400 font-bold text-sm mb-1 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-fuchsia-400"></span>
+                Jogos WebGL & Canvas
+              </div>
+              <p class="text-slate-400 text-xs leading-relaxed">
+                Card games e motores táticos de regras com PixiJS, WebGL, árvores de decisão de IA e renderização visual rica.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+              <div class="text-emerald-400 font-bold text-sm mb-1 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                Atlas Suite & PWA
+              </div>
+              <p class="text-slate-400 text-xs leading-relaxed">
+                Streaming musical PWA com áudio contínuo em segundo plano para iPhone e catálogo de mídias integrado a Notion e Sheets.
+              </p>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
+              <div class="text-amber-400 font-bold text-sm mb-1 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                Extensões & Automações
+              </div>
+              <p class="text-slate-400 text-xs leading-relaxed">
+                Extensões Chrome em Manifest V3 para manipulação de áudio, downloads multi-thread e scripts desktop em Python e C#.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6">
+          <div class="p-8 rounded-3xl bg-slate-900/80 border border-slate-800 shadow-2xl relative overflow-hidden">
+            <div class="absolute -right-16 -top-16 w-64 h-64 bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <h3 class="text-xl font-bold text-white mb-6 flex items-center gap-3">
+              <svg class="w-5 h-5 text-sky-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+              </svg>
+              <span>Matriz Tecnológica</span>
+            </h3>
+
+            <div class="space-y-5">
+              <div>
+                <span class="text-xs font-mono text-slate-400 uppercase tracking-wider block mb-2">Linguagens Principais</span>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-sky-300 font-mono">TypeScript</span>
+                  <span class="px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-sky-300 font-mono">JavaScript (ESNext)</span>
+                  <span class="px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-amber-300 font-mono">Python 3</span>
+                  <span class="px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-purple-300 font-mono">C# / .NET</span>
+                  <span class="px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-emerald-300 font-mono">Shell Script</span>
+                </div>
+              </div>
+
+              <div>
+                <span class="text-xs font-mono text-slate-400 uppercase tracking-wider block mb-2">Frontend & Gráficos</span>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-slate-200">React</span>
+                  <span class="px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-slate-200">Next.js</span>
+                  <span class="px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-slate-200">PixiJS / WebGL</span>
+                  <span class="px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-slate-200">Tailwind CSS</span>
+                  <span class="px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-slate-200">Plotly.js</span>
+                  <span class="px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-slate-200">Web Audio API</span>
+                </div>
+              </div>
+
+              <div>
+                <span class="text-xs font-mono text-slate-400 uppercase tracking-wider block mb-2">Infra, Cloud & APIs</span>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-slate-200">Cloudflare Workers</span>
+                  <span class="px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-slate-200">GitHub Actions CI/CD</span>
+                  <span class="px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-slate-200">Vercel & Netlify</span>
+                  <span class="px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-slate-200">Notion API</span>
+                  <span class="px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-slate-200">Google Sheets API</span>
+                  <span class="px-2.5 py-1 text-xs rounded-lg bg-slate-800 text-slate-200">Chrome MV3</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Botão de Ação -->
+            <div class="mt-8 pt-6 border-t border-slate-800 flex items-center justify-between">
+              <span class="text-xs text-slate-400">Repositórios públicos & privados</span>
+              <a 
+                href="https://github.com/daniloliveira89" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="inline-flex items-center gap-2 text-xs font-bold text-sky-400 hover:text-sky-300 transition-colors"
+              >
+                <span>Conectar no GitHub</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO DE DEPLOY RÁPIDO (VERCEL, NETLIFY, GITHUB PAGES) -->
+  <section id="deploy" class="py-16 border-t border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rounded-3xl bg-gradient-to-r from-sky-950/40 via-slate-900 to-indigo-950/40 border border-slate-800 p-8 sm:p-12 relative overflow-hidden">
+        
+        <div class="max-w-3xl">
+          <span class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+            Pronto para Publicação Instantânea
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white mt-4 mb-3">
+            Hospedagem 100% Gratuita e Sem Complicação
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
+            Este site foi construído com arquitetura estática pura, leve e ultra-rápida. Já configurei todos os arquivos necessários para você colocá-lo no ar em segundos:
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <!-- Vercel -->
+            <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800">
+              <div class="flex items-center gap-2 text-white font-bold text-sm mb-2">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 22.525H0l12-21.05 12 21.05z"/></svg>
+                <span>Vercel</span>
+              </div>
+              <p class="text-slate-400 text-xs leading-relaxed">
+                Arquivo <code class="text-sky-300">vercel.json</code> pronto. Basta importar o repositório na Vercel e o deploy é imediato com HTTPS automático.
+              </p>
+            </div>
+
+            <!-- Netlify -->
+            <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800">
+              <div class="flex items-center gap-2 text-white font-bold text-sm mb-2">
+                <svg class="w-4 h-4 fill-emerald-400" viewBox="0 0 24 24"><path d="M18.8 17.2l-3.3 3.3a1.4 1.4 0 0 1-2 0l-3.3-3.3a1.4 1.4 0 0 1 0-2l3.3-3.3a1.4 1.4 0 0 1 2 0l3.3 3.3a1.4 1.4 0 0 1 0 2z"/></svg>
+                <span>Netlify</span>
+              </div>
+              <p class="text-slate-400 text-xs leading-relaxed">
+                Arquivo <code class="text-emerald-300">netlify.toml</code> configurado. Suporta drag-and-drop da pasta ou conexão direta com o Git.
+              </p>
+            </div>
+
+            <!-- GitHub Pages -->
+            <div class="p-4 rounded-xl bg-slate-900/90 border border-slate-800">
+              <div class="flex items-center gap-2 text-white font-bold text-sm mb-2">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                <span>GitHub Pages</span>
+              </div>
+              <p class="text-slate-400 text-xs leading-relaxed">
+                Workflow <code class="text-purple-300">deploy.yml</code> pronto. Basta subir para o repositório que o site publica automaticamente.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-12 border-t border-slate-800 bg-slate-950 text-slate-400 text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <span class="text-white font-semibold">Danilo Oliveira</span> — Portfólio de Projetos
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="https://github.com/daniloliveira89" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
+          GitHub (@daniloliveira89)
+        </a>
+        <a href="#top" class="hover:text-white transition-colors">
+          Voltar ao topo ↑
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL DE DETALHES DO PROJETO -->
+  <div id="project-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+    <div class="relative w-full max-w-3xl bg-slate-900 border border-slate-700/80 rounded-3xl overflow-hidden shadow-2xl my-8 transform transition-all" id="modal-content">
+      <!-- Injetado dinamicamente via app.js -->
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-slate-900 border border-slate-700 shadow-xl text-white text-sm">
+      <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+      </svg>
+      <span>Link copiado para a área de transferência!</span>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/projects-data.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
