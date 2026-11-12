@@ -49,7 +49,7 @@ Basta dar **duplo clique** no arquivo `index.html`!
 ### Opção 2: Servidor local rápido (Python)
 Se preferir rodar com um servidor local:
 ```bash
-cd "C:\Users\Zombie PC\.gemini\antigravity\scratch\danilo-portfolio"
+cd "D:\INSTALADOS\CODEX\Portfolio"
 python -m http.server 3000
 ```
 E abra `http://localhost:3000` no seu navegador.
