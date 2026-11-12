@@ -8,7 +8,7 @@ const PROJECTS_DATA = [
     featured: true,
     shortDescription: "Plataforma para monitoramento de novos modelos de IA, rankings agregados (Artificial Analysis, Arena Elo, DesignArena, EQ-Bench), comparativo de custo por desempenho e catálogo com +180 ferramentas.",
     fullDescription: "O Radar IA é um observatório inteligente de Inteligência Artificial voltado para desenvolvedores e pesquisadores. A plataforma analisa lançamentos de modelos, métricas de benchmark, custos de inferência de API por milhão de tokens e catálogo editorial de ferramentas. Possui atualização automatizada 4 vezes ao dia via GitHub Actions sem necessidade de servidor centralizado ou custos de infraestrutura.",
-    image: "assets/images/radar-ia.jpg",
+    image: "assets/images/radar-ia.png",
     tags: ["TypeScript", "Next.js", "Tailwind CSS", "GitHub Actions", "GitHub Pages"],
     links: {
       github: "https://github.com/daniloliveira89/site---Radar-IA",
@@ -31,7 +31,7 @@ const PROJECTS_DATA = [
     featured: true,
     shortDescription: "Card game tático futurista inspirado nas mecânicas de três fileiras do Gwent. IA adversária desafiadora, mecânica de implantes neurais, cyberpsicose e efeitos visuais imersivos de chuva e néon.",
     fullDescription: "Neon Synapse transporta a clássica profundidade tática do Gwent para uma distopia cyberpunk implacável. Desenvolvido em TypeScript com PixiJS para aceleração WebGL no navegador, o jogo introduz mecânicas arrojadas: cartas de implantes que concedem poderes imediatos mas acumulam risco de cyberpsicose, estimulantes químicos com penalidades futuras e um sistema de previsão de combate de alta fidelidade.",
-    image: "assets/images/neon-synapse.jpg",
+    image: "assets/images/neon-synapse-tela-inicial.png",
     tags: ["TypeScript", "PixiJS", "Vite", "WebGL", "Canvas API"],
     links: {
       github: "https://github.com/daniloliveira89/GAME---Gwent-Cyberpunk",
@@ -54,7 +54,7 @@ const PROJECTS_DATA = [
     featured: true,
     shortDescription: "Plataforma para engenharia e calibração visual de prompts para modelos de imagem e vídeo (Midjourney, Veo, Flux, Imagen). Inclui biblioteca com 22 estilos visuais e 30 paletas com hex.",
     fullDescription: "App Studio AI é uma solução desenvolvida para profissionais que trabalham com criação visual assistida por IA. O estúdio estrutura prompts complexos em camadas semânticas — enquadramento de câmera, iluminação cinematográfica, diretores de cinema, paletas de cores cromáticas e regras para geração de vídeo com Veo (incluindo áudio e proporções nativas).",
-    image: "assets/images/studio-ai.jpg",
+    image: "assets/images/studio-ai.png",
     tags: ["TypeScript", "React", "Tailwind CSS", "Vercel", "Generative AI"],
     links: {
       github: "https://github.com/daniloliveira89/app-StudioAI",
@@ -77,7 +77,7 @@ const PROJECTS_DATA = [
     featured: true,
     shortDescription: "Player e sistema de streaming musical pessoal PWA com reprodução contínua em segundo plano no iPhone/iOS, fila dinâmica de faixas, sincronização de capas e backend em Cloudflare Workers.",
     fullDescription: "O Music Atlas foi criado para resolver a necessidade de uma biblioteca musical privativa, rápida e independente de assinaturas caras. Executado como um Progressive Web App (PWA) de alto desempenho, conta com backend serverless em Cloudflare Workers, processamento inteligente de metadados de áudio e suporte integral à reprodução em background no Safari iOS.",
-    image: "assets/images/music-atlas.jpg",
+    image: "assets/images/music-atlas-tela-inicial.png",
     tags: ["JavaScript", "Cloudflare Workers", "PWA", "Web Audio API", "iOS Background"],
     links: {
       github: "https://github.com/daniloliveira89/Music-Atlas",
@@ -100,7 +100,7 @@ const PROJECTS_DATA = [
     featured: false,
     shortDescription: "Simulador interativo de investimentos em longo prazo. Compara CDI, Tesouro Direto, Ouro e Bitcoin com conversão em tempo real de moedas (BRL, USD, EUR) e gráficos interativos Plotly.",
     fullDescription: "Ferramenta essencial para planejamento de independência financeira e alocação de ativos. Permite simulações personalizadas com aportes mensais, horizonte de tempo e taxa de juros ajustável. Um dos grandes diferenciais é a projeção comparativa em linha de tempo contra o desempenho histórico e estocástico do Ouro e do Bitcoin.",
-    image: "assets/images/juros-compostos.jpg",
+    image: "assets/images/juros-compostos.png",
     tags: ["JavaScript", "Plotly.js", "CSS Grid", "HTML5"],
     links: {
       github: "https://github.com/daniloliveira89/Juros-Compostos",
@@ -145,7 +145,7 @@ const PROJECTS_DATA = [
     featured: false,
     shortDescription: "Sistema inteligente de catalogação de livros e leituras, com pipeline automático de sincronização entre Notion, Google Sheets e catálogo visual web com capas em alta definição.",
     fullDescription: "Parte da família Atlas, o Bookshelf Atlas integra bancos de dados relacionais do Notion a planilhas analíticas do Google Sheets e gera uma galeria visual com as capas dos livros lidos, metas do ano, páginas lidas por dia e avaliações pessoais.",
-    image: "assets/images/bookshelf-atlas.jpg",
+    image: "assets/images/bookshelf-atlas.png",
     tags: ["Python", "Notion API", "Google Sheets API", "ETL Pipeline"],
     links: {
       github: "https://github.com/daniloliveira89/bookshelf-atlas",
@@ -167,7 +167,7 @@ const PROJECTS_DATA = [
     featured: false,
     shortDescription: "Plataforma de gerenciamento e curadoria de filmes, diretores e séries. Interface visual para cinéfilos com coleções temáticas e integração com bases de dados.",
     fullDescription: "O Cinematheque Atlas permite organizar e catalogar filmes por diretores, movimentos artísticos, décadas e edições especiais de colecionador. Apresenta interface escura e refinada com foco em posters e metadados de diretores e direções de fotografia.",
-    image: "assets/images/cinematheque-atlas.jpg",
+    image: "assets/images/cinematheque-atlas-tela-inicial.png",
     tags: ["TypeScript", "Notion API", "HTML5", "CSS3"],
     links: {
       github: "https://github.com/daniloliveira89/Cinematheque-Atlas",
@@ -189,7 +189,7 @@ const PROJECTS_DATA = [
     featured: false,
     shortDescription: "Hub central para acompanhamento de jogos finalizados, backlog de lançamentos, plataformas, horas dedicadas e conquistas.",
     fullDescription: "Projetado para manter a ordem nas jogatinas, o Game Atlas é um rastreador de progresso em jogos em múltiplas plataformas (PC, consoles). Inclui estatísticas de tempo investido, estimativa de conclusão e galeria de capturas.",
-    image: "assets/images/game-atlas.jpg",
+    image: "assets/images/game-atlas.png",
     tags: ["JavaScript", "CSS3", "Notion API", "LocalStorage"],
     links: {
       github: "https://github.com/daniloliveira89/Game-Atlas",
@@ -211,7 +211,7 @@ const PROJECTS_DATA = [
     featured: true,
     shortDescription: "Extensão para download em lote de trilhas sonoras de jogos e álbuns (KHInsider e fontes genéricas). Organização automática em pastas no disco e suporte a FLAC lossless.",
     fullDescription: "O Universal Music Downloader soluciona a lentidão de baixar álbuns de músicas faixa por faixa. A extensão injeta controles na página permitindo seleção múltipla (Shift, Ctrl, Inverter), downloads simultâneos em até 4 threads, preferência automática por formatos sem perdas (FLAC) e organização estruturada no padrão 'Ano - Nome do Álbum' diretamente na pasta de Downloads.",
-    image: "assets/images/universal-downloader.jpg",
+    image: "assets/images/universal-downloader.png",
     tags: ["JavaScript", "Chrome Extensions API", "MV3", "Downloads API", "Audio"],
     links: {
       github: "https://github.com/daniloliveira89/extension---Universal-Downloader",
@@ -234,7 +234,7 @@ const PROJECTS_DATA = [
     featured: true,
     shortDescription: "Coleção de 6 extensões para transformar a navegação no YouTube: Transcrição Instantânea, Return Dislike, Volume Booster 600%, Speed Video granular, Watch Time e Auto-Like.",
     fullDescription: "Um ecossistema completo de extensões focadas em produtividade e controle no YouTube:\n1. Copy Transcription: Copia transcrições completas eliminando marcas de tempo para uso rápido com IA.\n2. Return Dislike: Traz de volta o contador de dislikes oficial via API comunitária.\n3. Volume Booster: Amplifica o volume além de 100% em vídeos baixos com Web Audio API.\n4. Speed Video: Slider de velocidade precisa de 0.1x até 16x com atalhos de teclado.\n5. Watch Time & Dashboard: Contabiliza o tempo assistido e métricas.\n6. Auto-Like: Curte automaticamente canais favoritos configurados.",
-    image: "assets/images/youtube-suite.jpg",
+    image: "assets/images/youtube-suite.png",
     tags: ["JavaScript", "Web Audio API", "MutationObserver", "Chrome Extensions MV3"],
     links: {
       github: "https://github.com/daniloliveira89/extension---Copy-Transcription",
@@ -257,7 +257,7 @@ const PROJECTS_DATA = [
     featured: false,
     shortDescription: "Versão extensão do Prompt Studio com popup direto nas páginas de IA generativa (Gemini, ChatGPT, Midjourney, Claude). Seletor visual de paletas e iluminação.",
     fullDescription: "A extensão oficial do Prompt Studio IA permite abrir em uma janela lateral ou popup as 30 paletas de cores, 22 estilos visuais e controles de câmera enquanto você digita no Gemini, ChatGPT ou Midjourney. Conta também com modo de edição determinística de imagens por código (Python/OpenCV/Pillow).",
-    image: "assets/images/extension-studio-ai.jpg",
+    image: "assets/images/extension-studio-ai.png",
     tags: ["JavaScript", "Chrome Extension MV3", "Tailwind CSS"],
     links: {
       github: "https://github.com/daniloliveira89/extension---Studio-AI",
@@ -279,7 +279,7 @@ const PROJECTS_DATA = [
     featured: false,
     shortDescription: "Extensões para envio instantâneo de links, álbuns musicais, mídias e conteúdos da web diretamente para tabelas personalizadas do Notion.",
     fullDescription: "Agiliza o arquivamento de referências e mídias. Com um clique no ícone da extensão, os metadados da página atual (título, autor, capa, data e tags) são formatados e injetados diretamente na base de dados Notion configurada.",
-    image: "assets/images/cinematheque-atlas.jpg",
+    image: "assets/images/sync-to-notion.png",
     tags: ["JavaScript", "Notion API", "Chrome Extensions MV3", "REST API"],
     links: {
       github: "https://github.com/daniloliveira89/extension---Sync-to-Notion",
@@ -345,7 +345,7 @@ const PROJECTS_DATA = [
     featured: false,
     shortDescription: "Pipeline em Python que extrai o histórico e base de filmes do Notion, processa os campos tabulares e atualiza planilhas no Google Drive.",
     fullDescription: "Pipeline automatizado de dados (ETL). Conecta-se à API do Notion, recupera o banco de dados de cinema pessoal, normaliza listas de gêneros, diretores e notas, e insere os registros tratados em uma planilha do Google Sheets com formatação condicional.",
-    image: "assets/images/bookshelf-atlas.jpg",
+    image: "assets/images/artists-1.3.29.jpg",
     tags: ["Python", "Notion API", "Google Sheets API", "OAuth2", "Data Pipeline"],
     links: {
       github: "https://github.com/daniloliveira89/Cinema---Notion-to-Google-Sheets",
@@ -367,7 +367,7 @@ const PROJECTS_DATA = [
     featured: false,
     shortDescription: "Scripts de automação em Shell para backup contínuo, espelhamento incremental e rotinas de integridade em servidores e nuvem.",
     fullDescription: "Conjunto de rotinas utilitárias em Shell Scripting para backup seguro e idempotente de dados essenciais, gerenciando retenção de cópias, snapshots e compressão eficiente de diretórios.",
-    image: "assets/images/radar-ia.jpg",
+    image: "assets/images/radar-ia.png",
     tags: ["Shell", "Bash", "Rsync", "Linux / Unix", "DevOps"],
     links: {
       github: "https://github.com/daniloliveira89/app---Nuvem",
