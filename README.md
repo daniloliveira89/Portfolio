@@ -41,7 +41,7 @@ Portfolio/
 ```
 
 > [!NOTE]
-> Este diretório está sincronizado e acessível tanto por `D:\INSTALADOS\CODEX\Portfolio` quanto por `D:\INSTALADOS\CODEX\Business\Portfolio` via Directory Junction do Windows.
+> Este diretório é a pasta física principal e unificada de portfólios em `D:\INSTALADOS\CODEX\Portfolio`.
 
 ---
 
