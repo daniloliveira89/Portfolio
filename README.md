@@ -1,118 +1,79 @@
-# 🚀 Portfólio & Vitrine de Projetos — Danilo Oliveira
+# 🚀 Hub de Portfólios — Danilo Oliveira (`@daniloliveira89`)
 
-Site de apresentação moderno, veloz e responsivo desenvolvido para exibir todo o ecossistema de projetos de **Danilo Oliveira** (`@daniloliveira89`).
-
-A interface foi projetada com estética dark moderna (estilo obsidian com tons de azul e roxo néon), cards visuais de alta definição para cada projeto, filtros interativos por categoria, busca em tempo real e modal de detalhes.
+Este repositório centraliza as duas versões conceituais do portfólio e vitrine de projetos de **Danilo Oliveira**, organizadas em subpastas independentes para diferentes objetivos estratégicos (prospecção B2B de clientes, candidaturas internacionais e catálogo técnico completo).
 
 ---
 
-## 📸 Recursos Visuais & Categorias Incluídas
+## ⚖️ Comparativo Conceitual & Técnico
 
-O portfólio já vem catalogado com todos os projetos do seu GitHub e ambiente local:
-
-1. **Web Apps & Inteligência Artificial:**
-   - **Radar IA:** Observatório global de modelos e benchmarks de IA (*com link de Demo Online*).
-   - **Prompt Studio AI:** Estúdio visual para engenharia de prompts e estilos de IA generativa (*com link de Demo Online*).
-   - **Calculadora de Juros Compostos Global:** Simulador financeiro com curvas interativas (CDI, Tesouro, Ouro, Bitcoin) em Plotly.js.
-   - **IVFR (Índice de Custo de Vida):** Calculador econômico de viabilidade e poder de compra real.
-
-2. **Jogos & WebGL:**
-   - **Neon Synapse (Chrome & Neon):** Card game tático cyberpunk com mecânicas de 3 fileiras (estilo Gwent), implantes, cyberpsicose e renderização acelerada por WebGL via PixiJS.
-
-3. **Atlas Suite (Ecossistema de Mídia PWA):**
-   - **Music Atlas:** Streaming musical PWA com backend serverless em Cloudflare Workers e reprodução contínua em segundo plano no iPhone.
-   - **Bookshelf Atlas:** Gestão de biblioteca pessoal integrando Notion e Google Sheets.
-   - **Cinematheque Atlas:** Acervo de cinema, coleções e diretores.
-   - **Game Atlas:** Hub de backlog e tempo de jogo.
-
-4. **Extensões de Navegador (Chrome MV3):**
-   - **Universal Music & OST Downloader:** Download inteligente em lote (KHInsider e fontes genéricas) com organização automática de pastas e suporte a FLAC.
-   - **YouTube Power Tools Suite:** Conjunto de 6 extensões (Transcrição limpa, Return Dislike, Volume Booster 600%, Speed Video granular, Watch Time e Auto-Like).
-   - **Prompt Studio AI Extension:** Extensão para criação ágil de prompts direto nas abas de IA.
-   - **Sync to Notion / Music to Notion:** Envio de mídias para bases de dados no Notion.
-
-5. **Desktop & Automações:**
-   - **Torrent Rename & Media Normalizer:** Utilitário Python com regex para renomeação em massa de séries e filmes.
-   - **RClone Manager Desktop:** Interface gráfica em C#/.NET para gerenciamento de múltiplos remotes em nuvem.
-   - **Cinema Sync:** Pipeline ETL Python entre Notion e Google Sheets.
-   - **Nuvem Sync CLI:** Scripts de backup e espelhamento em nuvem.
+| Característica | ⚡ **Versão 1 — Vitrine & Catálogo Direto** (`v1-vitrine-dark-neon`) | 🏛️ **Versão 2 — Editorial & Dark Blue** (`v2-editorial-dark-blue`) |
+| :--- | :--- | :--- |
+| **Conceito / Proposta** | **Vitrine de Projetos Direta** (Foco exclusivo em exibir os 17 projetos, extensões e demos). | **Site Pessoal Editorial Completo** (Estilo agência / estúdio internacional de engenharia). |
+| **Referência Visual** | Estética Obsidian Dark com tons de azul e roxo néon. | Inspirado no design system da referência [`mahmudpial/my-protfolio-app`](https://github.com/mahmudpial/my-protfolio-app). |
+| **Tipografia** | `Inter` + `JetBrains Mono`. | `Playfair Display` (serifa editorial refinada) + `DM Sans` + `JetBrains Mono`. |
+| **Paleta de Cores** | Preto `#0B0F19`, Roxo Néon `#8B5CF6`, Azul `#3B82F6`. | Dark Blue profundo (`#05080F`, `#0D1220`, `#141B2D`) com acentos elétricos (`#3B82F6` / `#60A5FA`). |
+| **Estrutura / Seções** | **2 seções** (487 linhas de código):<br>• Hero com Status ("Disponível para Projetos")<br>• Catálogo de Projetos (`#projetos`) com filtros e busca<br>• Sobre o Autor simples (`#sobre`) | **5 seções completas** (1.043 linhas de código):<br>1. **Hero com Typewriter** dinâmico e Profile Card flutuante<br>2. **Serviços** (`#services`) com 6 especialidades B2B<br>3. **Skills & Tecnologias** (`#skills`) com barras luminosas interativas<br>4. **Portfolio** (`#portfolio`) com contadores, busca e modal<br>5. **Sobre Mim** (`#about`) com pilares de engenharia<br>6. **Contato** (`#contact`) com formulário e Toast notification |
+| **Efeitos Visuais** | Cards dark com hover, badges de status e tags. | Malha Blueprint (48px), orbes atmosféricos pulsantes, barra Nav-Glass com monograma `DO` animado. |
+| **Base de Dados** | 17 projetos catalogados (`projects-data.js`). | Mesmos 17 projetos catalogados (`projects-data.js`). |
+| **Melhor Uso** | Propostas rápidas onde o contratante quer apenas ver links de código e demos funcionais. | **Prospecção de alto ticket e plataformas freelance (Upwork / Contra / Malt)** onde autoridade, apresentação e escopo de serviços contam muito. |
 
 ---
 
-## 💻 Como Visualizar Localmente no Computador
+## 📁 Estrutura do Diretório
 
-Você não precisa instalar dependências pesadas nem compilar nada. O site foi projetado em HTML5, JavaScript moderno e Tailwind CSS.
+```
+Portfolio/
+├── v1-vitrine-dark-neon/           # Versão 1: Catálogo objetivo de projetos e extensões
+│   ├── index.html                  # Interface principal
+│   ├── netlify.toml                # Configurações Netlify
+│   ├── vercel.json                 # Configurações Vercel
+│   ├── README.md                   # Documentação detalhada da v1
+│   └── assets/                     # Imagens dos 17 projetos e scripts
+│
+├── v2-editorial-dark-blue/         # Versão 2: Site editorial completo com serviços e skills
+│   ├── index.html                  # Interface editorial com Typewriter, Serviços, Skills e Contato
+│   ├── netlify.toml                # Configurações Netlify
+│   ├── vercel.json                 # Configurações Vercel
+│   ├── README.md                   # Documentação detalhada da v2
+│   └── assets/                     # Mockups, ícones, app.js com typewriter e projects-data.js
+│
+└── README.md                       # Este arquivo (guia central comparativo)
+```
 
-### Opção 1: Direto no navegador
-Basta dar **duplo clique** no arquivo `index.html`!
+> [!NOTE]
+> Este diretório está sincronizado e acessível tanto por `D:\INSTALADOS\CODEX\Portfolio` quanto por `D:\INSTALADOS\CODEX\Business\Portfolio` via Directory Junction do Windows.
 
-### Opção 2: Servidor local rápido (Python)
-Se preferir rodar com um servidor local:
+---
+
+## 🚀 Como Visualizar Localmente
+
+Ambas as versões são 100% estáticas (HTML5 + CSS + JavaScript puro), sem necessidade de `npm install`, Node.js ou bancos de dados backend.
+
+### Opção 1: Direto no Navegador (Mais Rápido)
+* Para abrir a **Versão 1**: Duplo clique em `v1-vitrine-dark-neon/index.html`.
+* Para abrir a **Versão 2**: Duplo clique em `v2-editorial-dark-blue/index.html`.
+
+### Opção 2: Servidor Local via Terminal (Python)
+Para rodar qualquer uma das versões com servidor HTTP local:
+
 ```bash
-cd "D:\INSTALADOS\CODEX\Portfolio"
+# Para a Versão 2 (Editorial & Dark Blue):
+cd "D:\INSTALADOS\CODEX\Portfolio\v2-editorial-dark-blue"
+python -m http.server 8080
+# Acesse no navegador: http://localhost:8080
+
+# Para a Versão 1 (Vitrine & Catálogo):
+cd "D:\INSTALADOS\CODEX\Portfolio\v1-vitrine-dark-neon"
 python -m http.server 3000
+# Acesse no navegador: http://localhost:3000
 ```
-E abra `http://localhost:3000` no seu navegador.
 
 ---
 
-## 🌐 Como Publicar (Deploy)
+## 🌐 Publicação Online (Deploy Gratuito)
 
-O projeto já inclui todos os arquivos de configuração para as 3 principais plataformas gratuitas:
+Ambas as pastas já contêm os arquivos de configuração `vercel.json` e `netlify.toml` pré-configurados:
 
-### 1. Vercel (Recomendado)
-- **Método 1 (Via GitHub):** Crie um repositório no seu GitHub com estes arquivos. Acesse [vercel.com](https://vercel.com), clique em **Add New Project**, selecione o repositório e clique em **Deploy**.
-- **Método 2 (Via CLI):**
-  ```bash
-  npm i -g vercel
-  vercel
-  ```
-*(O arquivo `vercel.json` incluso já cuida dos headers de cache e roteamento).*
-
-### 2. Netlify
-- **Método Drag-and-Drop:** Acesse [app.netlify.com/drop](https://app.netlify.com/drop) e simplesmente arraste a pasta `danilo-portfolio` para a janela do navegador. Em 5 segundos seu site estará no ar!
-- *(O arquivo `netlify.toml` incluso já está configurado).*
-
-### 3. GitHub Pages
-1. Crie um repositório no GitHub (por exemplo: `danilo-portfolio` ou `daniloliveira89.github.io`).
-2. Suba os arquivos para a branch `main`:
-   ```bash
-   git init
-   git add .
-   git commit -m "feat: site de apresentação de projetos"
-   git branch -M main
-   git remote add origin https://github.com/daniloliveira89/SEU-REPOSITORIO.git
-   git push -u origin main
-   ```
-3. No GitHub, vá em **Settings → Pages → Build and deployment → Source** e selecione **GitHub Actions**. O workflow `.github/workflows/deploy.yml` incluso fará a publicação automática!
-
----
-
-## ✏️ Como Adicionar Novos Projetos
-
-Para incluir ou alterar projetos, basta abrir o arquivo [`assets/js/projects-data.js`](assets/js/projects-data.js). Cada projeto é um objeto simples:
-
-```javascript
-{
-  id: "meu-novo-projeto",
-  title: "Nome do Projeto",
-  category: "web-ai", // ou 'games', 'atlas', 'extensions', 'desktop'
-  categoryLabel: "Web Apps & I.A.",
-  badge: "Destaque • Live",
-  shortDescription: "Descrição curta para o card...",
-  fullDescription: "Descrição completa exibida ao abrir o modal...",
-  image: "assets/images/minha-imagem.jpg",
-  tags: ["TypeScript", "Next.js"],
-  links: {
-    github: "https://github.com/daniloliveira89/...",
-    demo: "https://..." // ou null se não houver
-  },
-  features: [
-    "Recurso 1...",
-    "Recurso 2...",
-    "Recurso 3..."
-  ]
-}
-```
-
-As estatísticas, contadores de filtros e filtros de busca se atualizam **automaticamente**!
+1. **Vercel:** Conecte o repositório GitHub e selecione `v1-vitrine-dark-neon` ou `v2-editorial-dark-blue` como Root Directory.
+2. **Netlify:** Arraste qualquer uma das duas pastas para [app.netlify.com/drop](https://app.netlify.com/drop).
+3. **GitHub Pages:** Crie uma branch ou aponte a pasta desejada no painel de configurações do repositório.
