@@ -258,7 +258,7 @@ const PROJECTS_DATA = [
   // ==========================================
   {
     id: "layout-ecommerce",
-    title: "KINETIX // STUDIO — Luxury Techwear & Audio Store",
+    title: "Luxury Techwear & Audio Store",
     category: "layouts",
     categoryLabel: "Loja Virtual (E-commerce)",
     badge: "Carrinho Real • Store",
@@ -281,7 +281,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-omakase",
-    title: "KURO 黒 — Omakase & Alta Gastronomia",
+    title: "Omakase & Alta Gastronomia",
     category: "layouts",
     categoryLabel: "Restaurante",
     badge: "Gastronomia • Drawer Interativo",
@@ -304,7 +304,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-odontologia",
-    title: "Lumina Dental Studio — Odontologia Digital & Facetas",
+    title: "Odontologia Digital & Facetas",
     category: "layouts",
     categoryLabel: "Clínica Odontológica",
     badge: "Slider Antes / Depois",
@@ -327,7 +327,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-clinica-medica",
-    title: "VitaePrime — Centro Médico & Check-up Executivo",
+    title: "Centro Médico & Check-up Executivo",
     category: "layouts",
     categoryLabel: "Clínica Médica",
     badge: "Filtro Especialidades",
@@ -350,7 +350,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-real-estate",
-    title: "VERIDIAN ESTATES — Luxury Real Estate & Villas",
+    title: "Luxury Real Estate & Villas",
     category: "layouts",
     categoryLabel: "Imobiliária",
     badge: "Multi-Moeda • Imobiliária",
@@ -373,7 +373,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-corporate",
-    title: "Vanguard & Sterling — Escritório de Advocacia & Corporate Law",
+    title: "Escritório de Advocacia & Corporate Law",
     category: "layouts",
     categoryLabel: "Escritório de Advocacia",
     badge: "Direito Societário • M&A",
@@ -396,7 +396,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-barbearia",
-    title: "THE GENTLEMAN'S ATELIER — Barbearia & Visagismo",
+    title: "Barbearia & Visagismo",
     category: "layouts",
     categoryLabel: "Salão de Beleza / Barbearia",
     badge: "Ritual & Agendamento",
@@ -419,7 +419,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-academia",
-    title: "IRON PULSE — High-Performance Gym & Studio",
+    title: "High-Performance Gym & Studio",
     category: "layouts",
     categoryLabel: "Academia",
     badge: "Calculadora IMC • Studio",
@@ -442,7 +442,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-concessionaria",
-    title: "APEX MOTORS — Superesportivos & Blindados",
+    title: "Superesportivos & Blindados",
     category: "layouts",
     categoryLabel: "Concessionária / Carros",
     badge: "Simulador Financiamento",
@@ -465,7 +465,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-estetica",
-    title: "AURA DERMA — Estética Avançada & Laser",
+    title: "Estética Avançada & Laser",
     category: "layouts",
     categoryLabel: "Clínica de Estética",
     badge: "Protocolos Clínicos",
@@ -488,7 +488,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-hotel-resort",
-    title: "AMARA Sanctuary — Luxury Eco-Resort & Villas",
+    title: "Luxury Eco-Resort & Villas",
     category: "layouts",
     categoryLabel: "Hotel / Resort",
     badge: "Reserva de Suítes • Eco",
@@ -511,7 +511,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-agencia-viagens",
-    title: "NOMAD LUXE — Expedições & Roteiros Sob Medida",
+    title: "Expedições & Roteiros Sob Medida",
     category: "layouts",
     categoryLabel: "Agência de Viagens",
     badge: "Roteiros VIP • Luxury",
@@ -534,7 +534,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-arquitetura",
-    title: "Kengo Studio — Arquitetura & Design Editorial",
+    title: "Arquitetura & Design Editorial",
     category: "layouts",
     categoryLabel: "Escritório de Arquitetura",
     badge: "Minimalista • Luxury UI",
@@ -557,7 +557,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-construtora",
-    title: "MONOLITH Engenharia & Incorporação",
+    title: "Construtora & Incorporação Imobiliária",
     category: "layouts",
     categoryLabel: "Construtora",
     badge: "Incorporação • Obras",
@@ -580,7 +580,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-petshop",
-    title: "PAWS & CO. — Pet Boutique, Spa & Banho e Tosa",
+    title: "Pet Boutique, Spa & Banho e Tosa",
     category: "layouts",
     categoryLabel: "Pet Shop",
     badge: "Agendamento Pet • Spa",
@@ -603,7 +603,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-cafeteria",
-    title: "TORRA 04 — Microtorrefação & Cafés Especiais",
+    title: "Microtorrefação & Cafés Especiais",
     category: "layouts",
     categoryLabel: "Cafeteria",
     badge: "Specialty Coffee • Torra",
@@ -626,7 +626,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-escola-cursos",
-    title: "HYPERION ACADEMY — Cursos Tech & Inteligência Artificial",
+    title: "Cursos Tech & Inteligência Artificial",
     category: "layouts",
     categoryLabel: "Escola / Cursos Online",
     badge: "Formação Tech • EAD",
@@ -649,7 +649,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-saas-ai",
-    title: "NexusAI — SaaS & AI Gateway Landing Page",
+    title: "SaaS & AI Gateway Landing Page",
     category: "layouts",
     categoryLabel: "Empresa de Software / Startup",
     badge: "Template B2B • Bento Grid",
@@ -672,7 +672,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-agencia-publicidade",
-    title: "KROMA* — Creative Growth & Branding Agency",
+    title: "Creative Growth & Branding Agency",
     category: "layouts",
     categoryLabel: "Agência de Publicidade",
     badge: "Creative Growth • B2B",
@@ -695,7 +695,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-contabilidade",
-    title: "LEDGER PRIME — Contabilidade Consultiva & Tributário",
+    title: "Contabilidade Consultiva & Tributário",
     category: "layouts",
     categoryLabel: "Escritório de Contabilidade",
     badge: "Planejamento Tributário",
@@ -718,7 +718,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-logistica",
-    title: "VELOX LOGISTICS — Supply Chain & Frete Expresso",
+    title: "Supply Chain & Frete Expresso",
     category: "layouts",
     categoryLabel: "Transportadora / Logística",
     badge: "Rastreamento • Cargas",
@@ -741,7 +741,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-energia-solar",
-    title: "HELIOS SOLAR — Engenharia Fotovoltaica & Usinas",
+    title: "Engenharia Fotovoltaica & Usinas",
     category: "layouts",
     categoryLabel: "Empresa de Energia Solar",
     badge: "Calculadora Solar • Payback",
@@ -764,7 +764,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-fotografo",
-    title: "LUCAS VIANNA — Fine Art & Editorial Photography",
+    title: "Fine Art & Editorial Photography",
     category: "layouts",
     categoryLabel: "Fotógrafo Profissional",
     badge: "Dark Masonry • Ensaios",
@@ -787,7 +787,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-consultoria",
-    title: "APEX STRATEGY — Consultoria de Gestão & EBITDA",
+    title: "Consultoria de Gestão & EBITDA",
     category: "layouts",
     categoryLabel: "Consultoria Empresarial",
     badge: "Eficiência EBITDA • M&A",
@@ -810,7 +810,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-marca-roupas",
-    title: "NOCTURNE ATELIER — Heavyweight Streetwear",
+    title: "Heavyweight Streetwear & Moda",
     category: "layouts",
     categoryLabel: "Marca de Roupas",
     badge: "Drops Limitados • Fashion",
@@ -833,7 +833,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-clinica-veterinaria",
-    title: "VETCARE HOSPITAL 24H — UTI Veterinária & Planos Pet",
+    title: "UTI Veterinária & Planos Pet",
     category: "layouts",
     categoryLabel: "Clínica Veterinária",
     badge: "Hospital 24h • UTI Pet",
@@ -856,7 +856,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-spa-massagem",
-    title: "SAMSARA URBAN SPA — Massagens Terapêuticas & Ofurô",
+    title: "Massagens Terapêuticas & Ofurô",
     category: "layouts",
     categoryLabel: "Spa / Casa de Massagem",
     badge: "Day Spa • Rituais",
@@ -879,7 +879,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-motel",
-    title: "ECLIPSE SUITES — Motel Boutique 5 Estrelas",
+    title: "Motel Boutique 5 Estrelas",
     category: "layouts",
     categoryLabel: "Motel",
     badge: "Reserva Privativa • 24h",
@@ -902,7 +902,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-produtora-eventos",
-    title: "PULSE LIVE — Produtora de Eventos, Shows & AV",
+    title: "Produtora de Eventos, Shows & AV",
     category: "layouts",
     categoryLabel: "Produtora de Eventos",
     badge: "Cenografia & Palco • Live",
@@ -925,7 +925,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-engenharia",
-    title: "VORTEX ENGENHARIA — Projetos Estruturais BIM",
+    title: "Projetos Estruturais BIM",
     category: "layouts",
     categoryLabel: "Empresa de Engenharia",
     badge: "Projetos BIM • Galpões",
@@ -948,7 +948,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-moveis-decoracao",
-    title: "ATELIER NORD — Mobiliário Autoral & Design Escandinavo",
+    title: "Mobiliário Autoral & Design Escandinavo",
     category: "layouts",
     categoryLabel: "Loja de Móveis e Decoração",
     badge: "Marcenaria Fina • Madeira Maciça",
@@ -971,7 +971,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-produtora-audiovisual",
-    title: "KINO*85 FILMS — Produtora Cinematográfica & Pós-Produção",
+    title: "Produtora Cinematográfica & Pós-Produção",
     category: "layouts",
     categoryLabel: "Produtora Audiovisual",
     badge: "Cinema • Commercial & Reels",
@@ -994,7 +994,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-limpeza-manutencao",
-    title: "PURECARE FACILITIES — Limpeza Pós-Obra & Manutenção",
+    title: "Limpeza Pós-Obra & Manutenção",
     category: "layouts",
     categoryLabel: "Serviços de Limpeza e Manutenção",
     badge: "Pós-Obra • Corporativo",
@@ -1017,7 +1017,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-psicologia",
-    title: "DRA. CLARICE MENDES — Psicologia Clínica & TCC",
+    title: "Psicologia Clínica & TCC",
     category: "layouts",
     categoryLabel: "Consultório Psicológico",
     badge: "Terapia Cognitiva • Presencial & Online",
@@ -1040,7 +1040,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-banda-gravadora",
-    title: "SUBSONIC COLLECTIVE — Banda & Gravadora Musical",
+    title: "Banda & Gravadora Musical",
     category: "layouts",
     categoryLabel: "Banda / Gravadora",
     badge: "Synthwave • Music Player",
@@ -1063,7 +1063,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-ferramentaria-caldeiraria",
-    title: "TITAN USINAGEM CNC & Caldeiraria Industrial",
+    title: "Usinagem CNC & Caldeiraria Industrial",
     category: "layouts",
     categoryLabel: "Ferramentaria & Caldeiraria",
     badge: "CNC 5 Eixos • Caldeiraria",
@@ -1086,7 +1086,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-meridian-wave",
-    title: "Meridian™ — Fintech & Liquid Wave Canvas",
+    title: "Fintech & Liquid Wave Canvas",
     category: "layouts",
     categoryLabel: "Fintech & WebGL",
     badge: "Simplex 3D • Fintech",
@@ -1109,7 +1109,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-site-face",
-    title: "Faruq Visual Archive — Gold Mask Reveal",
+    title: "Gold Mask Reveal — Portfolio Editorial",
     category: "layouts",
     categoryLabel: "Creative Mask Reveal",
     badge: "Awwwards Style • CSS Mask",
@@ -1133,7 +1133,7 @@ const PROJECTS_DATA = [
   },
   {
     id: "layout-site-tattoo",
-    title: "Ink Archive — Full Body X-Ray Reveal",
+    title: "Full Body X-Ray Reveal — Tattoo Studio",
     category: "layouts",
     categoryLabel: "Creative X-Ray Reveal",
     badge: "Interactive • Dual Layer",
