@@ -123,6 +123,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  function getDemoUrl(url) {
+    if (!url) return '#';
+    if (url.startsWith('http://') || url.startsWith('https://')) return url;
+    var path = window.location.pathname;
+    var isRoot = path === '/' || (path.endsWith('/index.html') && !path.includes('/v1') && !path.includes('/v2'));
+    if (isRoot && url.startsWith('../')) {
+      return url.substring(3);
+    }
+    return url;
+  }
+
   function renderProjects() {
     if (!grid) return;
     const filtered = PROJECTS_DATA.filter(project => {
@@ -310,7 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (ghLink) ghLink.href = project.links.github || 'https://github.com/daniloliveira89';
     if (demoLink) {
       if (project.links.demo) {
-        demoLink.href = project.links.demo;
+        demoLink.href = getDemoUrl(project.links.demo);
         demoLink.classList.remove('hidden');
       } else {
         demoLink.classList.add('hidden');

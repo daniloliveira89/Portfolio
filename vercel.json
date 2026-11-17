@@ -1,11 +1,23 @@
 {
   "version": 2,
-  "cleanUrls": true,
+  "cleanUrls": false,
+  "trailingSlash": true,
   "redirects": [
     {
-      "source": "/",
-      "destination": "/v2-editorial-dark-blue",
+      "source": "/v2-editorial-dark-blue",
+      "destination": "/v2-editorial-dark-blue/",
       "permanent": false
+    },
+    {
+      "source": "/v1-vitrine-dark-neon",
+      "destination": "/v1-vitrine-dark-neon/",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/assets/(.*)",
+      "destination": "/assets/$1"
     }
   ]
 }

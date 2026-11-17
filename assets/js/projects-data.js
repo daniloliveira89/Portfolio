@@ -1,0 +1,538 @@
+const PROJECTS_DATA = [
+  // ==========================================
+  // 1. WEB APPS & INTELIGÊNCIA ARTIFICIAL
+  // ==========================================
+  {
+    id: "radar-ia",
+    title: "Radar IA — Observatório Global de Modelos",
+    category: "web-ai",
+    categoryLabel: "Web Apps & I.A.",
+    badge: "Destaque • Live",
+    shortDescription: "Observatório em tempo real de lançamentos, benchmarks, preços de tokens e ecossistemas das principais empresas de I.A. (OpenAI, Google, Anthropic, DeepSeek).",
+    fullDescription: "Plataforma analítica completa para acompanhamento diário da evolução de modelos de Inteligência Artificial. Conta com feed automatizado de anúncios oficiais, comparador técnico lado a lado, calculadora de custos de APIs e ranking personalizado.",
+    image: "assets/images/radar-ia-real.png",
+    gallery: [
+      "assets/images/radar-ia-real.png",
+      "assets/images/radar-ia.jpg"
+    ],
+    tags: ["TypeScript", "Next.js", "Tailwind CSS", "GitHub Actions", "LLMs"],
+    links: {
+      github: "https://github.com/daniloliveira89/site---Radar-IA",
+      demo: "https://daniloliveira89.github.io/site---Radar-IA/"
+    },
+    features: [
+      "Monitoramento automatizado de lançamentos (Modelos, Imagem, Vídeo, Áudio e Agentes)",
+      "Comparativo de preços por milhão de tokens e janela de contexto",
+      "Suporte bilíngue (PT/EN) e persistência de artigos salvos e lidos"
+    ]
+  },
+  {
+    id: "prompt-studio-ai",
+    title: "Prompt Studio AI — Engenharia Visual de Prompts",
+    category: "web-ai",
+    categoryLabel: "Web Apps & I.A.",
+    badge: "Bilíngue • Live",
+    shortDescription: "Estúdio interativo para construção de comandos otimizados para geradores modernos de imagem (Flux, SDXL, Midjourney v6 e ChatGPT).",
+    fullDescription: "Ferramenta projetada para artistas digitais e engenheiros de prompt. Permite combinar estilos fotográficos, iluminação cinematográfica, lentes, figurinos (Techwear/Cyberpunk) e filtros negativos automáticos com sorteio inteligente (Randomize).",
+    image: "assets/images/prompt-studio-real.png",
+    gallery: [
+      "assets/images/prompt-studio-real.png",
+      "assets/images/prompt-studio-pt.png",
+      "assets/images/prompt-studio-sample-1.jpg",
+      "assets/images/prompt-studio-sample-2.jpg"
+    ],
+    tags: ["JavaScript", "GenAI", "Flux / Midjourney", "UI/UX", "i18n"],
+    links: {
+      github: "https://github.com/daniloliveira89/app-StudioAI",
+      demo: "https://app-studio-ai.vercel.app"
+    },
+    features: [
+      "Catálogo modular de estilos (Fotografia, Pintura, 3D, Anime e Ilustração)",
+      "Gerador aleatório de figurinos, paletas de cores e iluminação de estúdio",
+      "Injeção automática de parâmetros de qualidade e negative prompts"
+    ]
+  },
+  {
+    id: "ivfr-economia",
+    title: "IVFR — Índice de Viabilidade Econômica Global",
+    category: "web-ai",
+    categoryLabel: "Web Apps & I.A.",
+    badge: "103 Cidades • Analytics",
+    shortDescription: "Comparador global de poder de compra real, margem líquida mensal e tempo necessário para aquisição de bens (iPhone, automóvel e imóvel) em 103 cidades.",
+    fullDescription: "Aplicação analítica financeira que cruza salários líquidos médios e custo de vida fixo em mais de 100 cidades do mundo para calcular o Fator IVFR — revelando onde o trabalho gera maior acumulação real de patrimônio.",
+    image: "assets/images/ivfr-real.png",
+    gallery: [
+      "assets/images/ivfr-real.png"
+    ],
+    tags: ["React", "TypeScript", "Data Visualization", "Economia", "Multi-Moeda"],
+    links: {
+      github: "https://github.com/daniloliveira89/indice-custo-vida",
+      demo: null
+    },
+    features: [
+      "Base com 103 cidades globais (EUA, Suíça, Luxemburgo, Brasil e mais)",
+      "Cálculo automático de meses de sobra líquida para compra de carro e entrada de imóvel",
+      "Adição e edição customizada de cidades com conversão cambial dinâmica"
+    ]
+  },
+  {
+    id: "calculadora-juros-compostos",
+    title: "Simulador Patrimonial & Juros Compostos",
+    category: "web-ai",
+    categoryLabel: "Web Apps & I.A.",
+    badge: "Finanças • Plotly.js",
+    shortDescription: "Simulador financeiro multi-moeda (BRL, USD, EUR) com dedução de IR, inflação real e comparativo de curvas patrimoniais (Tesouro, CDI e Bitcoin).",
+    fullDescription: "Calculadora financeira avançada que demonstra passo a passo a fórmula matemática de capitalização mensal com aportes (PMT), descontando alíquotas de Imposto de Renda e projetando o poder de compra real ajustado pela inflação.",
+    image: "assets/images/juros-compostos-real.png",
+    gallery: [
+      "assets/images/juros-compostos-real.png",
+      "assets/images/juros-compostos.jpg"
+    ],
+    tags: ["JavaScript", "Plotly.js", "Matemática Financeira", "Tailwind CSS"],
+    links: {
+      github: "https://github.com/daniloliveira89/Juros-Compostos",
+      demo: null
+    },
+    features: [
+      "Exibição transparente da equação de Valor Futuro (FV) em tempo real",
+      "Gráficos interativos comparando Renda Fixa vs. Ativos de Risco",
+      "Cálculo automático de Imposto de Renda retido e patrimônio líquido"
+    ]
+  },
+
+  // ==========================================
+  // 2. JOGOS & INTERATIVIDADE (WEBGL / CANVAS)
+  // ==========================================
+  {
+    id: "neon-synapse",
+    title: "Neon Synapse (Chrome & Neon) — Card Game",
+    category: "games",
+    categoryLabel: "Jogos & WebGL",
+    badge: "WebGL • PixiJS",
+    shortDescription: "Card game tático cyberpunk com campo de batalha em 3 fileiras, protocolo Overclock (risco vs. energia) e IA corporativa local.",
+    fullDescription: "Jogo de cartas colecionáveis e estratégia tática ambientado no Distrito 07. O jogador enfrenta a IA Corporativa (Nexus-07) gerenciando energia neural, posicionamento em 3 setores e o nível de sobrecarga cibernética (Overclock) para não sofrer dano de integridade.",
+    image: "assets/images/neon-synapse-real-2.png",
+    gallery: [
+      "assets/images/neon-synapse-real-2.png",
+      "assets/images/chrome-and-neon-board.png",
+      "assets/images/neon-synapse-hero.jpg",
+      "assets/images/neon-synapse-card.png",
+      "assets/images/neon-synapse-bg.png"
+    ],
+    tags: ["TypeScript", "PixiJS", "WebGL", "Game AI", "Cyberpunk UI"],
+    links: {
+      github: "https://github.com/daniloliveira89/GAME---Gwent-Cyberpunk",
+      demo: null
+    },
+    features: [
+      "Duas interfaces táticas: Modo Tabuleiro Clássico (Chrome & Neon) e Terminal Neural v0.3 HD",
+      "Mecânica exclusiva de Overclock (+1 Energia em troca de +2 Sobrecarga Neural)",
+      "Artes autorais em Pixel Art Cyberpunk de alta definição e log de combate detalhado"
+    ]
+  },
+  {
+    id: "prancheta-tatica",
+    title: "Prancheta Tática — Simulador de Futebol",
+    category: "games",
+    categoryLabel: "Jogos & WebGL",
+    badge: "Esportes • Canvas Interativo",
+    shortDescription: "Quadro tático interativo para análise de futebol com transições entre fases do jogo (Defesa, Neutra e Ataque) e gravação de jogadas.",
+    fullDescription: "Aplicação web interativa para treinadores, analistas de desempenho e entusiastas de tática esportiva. Permite configurar esquemas táticos (4-4-2, 4-3-3, 3-5-2) para dois times simultaneamente e gravar a movimentação de cada fase da partida.",
+    image: "assets/images/prancheta-tatica-real.png",
+    gallery: [
+      "assets/images/prancheta-tatica-real.png"
+    ],
+    tags: ["JavaScript", "HTML5 Drag & Drop", "Análise Tática", "UI Responsiva"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: null
+    },
+    features: [
+      "Alternância rápida de posicionamento entre Fase Defensiva, Neutra e Ofensiva",
+      "Seletor dinâmico de formações para Time A e Time B",
+      "Gravação de fases para reprodução de movimentações ensaiadas"
+    ]
+  },
+
+  // ==========================================
+  // 3. ATLAS SUITE (MÍDIA, NOTION & PWA)
+  // ==========================================
+  {
+    id: "music-atlas",
+    title: "Music Atlas — Streaming PWA & Listening Room",
+    category: "atlas",
+    categoryLabel: "Atlas Suite (PWA)",
+    badge: "PWA • iOS Background Audio",
+    shortDescription: "Plataforma pessoal de streaming musical integrada ao Google Drive e Notion, com reprodução contínua em tela bloqueada no iPhone.",
+    fullDescription: "Parte central da suíte Atlas. Conecta sua biblioteca de áudio no Google Drive a um diário de audição sincronizado com o Notion (mais de 2.170 álbuns catalogados), oferecendo experiência de aplicativo nativo no celular e desktop.",
+    image: "assets/images/music-atlas-real.png",
+    gallery: [
+      "assets/images/music-atlas-real.png",
+      "assets/images/music-atlas-mobile-1.jpg",
+      "assets/images/music-atlas-mobile-2.jpg"
+    ],
+    tags: ["PWA", "Cloudflare Workers", "Web Audio API", "Notion API", "Google Drive"],
+    links: {
+      github: "https://github.com/daniloliveira89/Music-Atlas",
+      demo: null
+    },
+    features: [
+      "Streaming direto da nuvem pessoal com suporte a MediaSession API no iOS/Android",
+      "Visualização mobile dedicada por Artistas, Discografias e Favoritos",
+      "Sincronização automática de status (Ouvido / Para Ouvir) com o Notion"
+    ]
+  },
+  {
+    id: "bookshelf-atlas",
+    title: "Bookshelf Atlas — Diário Literário & Biblioteca",
+    category: "atlas",
+    categoryLabel: "Atlas Suite (PWA)",
+    badge: "768 Obras • Notion Sync",
+    shortDescription: "Painel editorial para gestão de biblioteca pessoal, metas anuais de leitura, contagem de páginas lidas e comparativo com o Goodreads.",
+    fullDescription: "Interface refinada em tons sépia/dark para leitores ávidos. Consolida livros, contos, HQs/Mangás e poesia em estatísticas visuais de progresso ('Onde você está na leitura') e sorteador inteligente da próxima leitura ('Pick a Book').",
+    image: "assets/images/bookshelf-atlas-real.png",
+    gallery: [
+      "assets/images/bookshelf-atlas-real.png",
+      "assets/images/bookshelf-atlas.jpg"
+    ],
+    tags: ["JavaScript", "Notion API", "Google Sheets", "Editorial UI"],
+    links: {
+      github: "https://github.com/daniloliveira89/bookshelf-atlas",
+      demo: null
+    },
+    features: [
+      "Métricas em tempo real: 768 obras no acervo, 220 concluídas e 55.900 páginas lidas",
+      "Barra de distribuição visual (Para ler, Próximos, Lendo, Lidos e Abandonados)",
+      "Módulo comparativo de notas pessoais vs. média da comunidade Goodreads"
+    ]
+  },
+  {
+    id: "cinematheque-atlas",
+    title: "Cinematheque Atlas — Acervo & Diário de Cinema",
+    category: "atlas",
+    categoryLabel: "Atlas Suite (PWA)",
+    badge: "1.894 Filmes • IMDb Top 250",
+    shortDescription: "Catálogo cinematográfico pessoal com estatísticas por país de origem, diretores favoritos, gêneros e progresso no IMDb Top 250.",
+    fullDescription: "Transforma sua base de filmes assistidos em uma cinemateca interativa. Analisa quase 1.900 filmes avaliados por nacionalidade (48 países catalogados), diretores mais assistidos e cumprimento da meta anual de cinema.",
+    image: "assets/images/cinematheque-real-2.png",
+    gallery: [
+      "assets/images/cinematheque-real-2.png",
+      "assets/images/cinematheque-atlas.jpg"
+    ],
+    tags: ["TypeScript", "Notion Sync", "Data Analytics", "Cinema UI"],
+    links: {
+      github: "https://github.com/daniloliveira89/Cinematheque-Atlas",
+      demo: null
+    },
+    features: [
+      "Painel de métricas: 1.894 filmes assistidos em 48 cinematografias mundiais",
+      "Abas dedicadas para Panorama, Gêneros & Gosto, Diretores e checklist IMDb Top 250",
+      "Pipeline de sincronização rápida com planilhas e Notion"
+    ]
+  },
+  {
+    id: "game-atlas",
+    title: "Game Atlas — Player Journal & Backlog",
+    category: "atlas",
+    categoryLabel: "Atlas Suite (PWA)",
+    badge: "511 Jogos • You × IGN",
+    shortDescription: "Hub central de jornada gamer: controle de backlog, jogos zerados, linha do tempo anual e comparativo de notas com a IGN.",
+    fullDescription: "Diário definitivo do jogador integrado ao Notion e Google Sheets. Organiza mais de 500 jogos entre Jogados, Jogando, Watchlist e Abandonados, com gráficos de distribuição por ano de lançamento e sorteador de backlog.",
+    image: "assets/images/game-atlas-real.png",
+    gallery: [
+      "assets/images/game-atlas-real.png",
+      "assets/images/game-atlas.jpg"
+    ],
+    tags: ["JavaScript", "Notion API", "Gaming UI", "Dashboard"],
+    links: {
+      github: "https://github.com/daniloliveira89/Game-Atlas",
+      demo: null
+    },
+    features: [
+      "Acompanhamento de metas mensais e anuais de jogos finalizados",
+      "Aba exclusiva 'You × IGN' comparando suas avaliações com a crítica especializada",
+      "Filtros avançados por plataforma, gênero e status na coleção"
+    ]
+  },
+
+  // ==========================================
+  // 4. LAYOUTS & CONCEPT SITES (UI/UX LAB)
+  // ==========================================
+  {
+    id: "layout-site-face",
+    title: "Faruq Visual Archive — Gold Mask Reveal",
+    category: "layouts",
+    categoryLabel: "Layouts & UI Lab",
+    badge: "Awwwards Style • CSS Mask",
+    shortDescription: "Hero section experimental para portfólios de fotografia e direção de arte com revelação de escultura dourada guiada pelo cursor.",
+    fullDescription: "Estudo de interface editorial inspirado em estúdios de fotografia europeus. Utiliza uma pilha de 4 camadas com CSS radial-gradient mask-image e interpolação física (Lerp) para revelar uma textura de estátua barroca dourada sob a pele humana.",
+    image: "../layouts para sites/site face/image.png",
+    gallery: [
+      "../layouts para sites/site face/image.png"
+    ],
+    tags: ["CSS Mask-Image", "Lerp Physics", "Editorial Typography", "Interactive Hero"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site face/index.html"
+    },
+    features: [
+      "Efeito de lupa orgânica em 60fps com suavização matemática (requestAnimationFrame)",
+      "Tipografia brutalista refinada com a família Archivo",
+      "Suporte híbrido para cursor desktop e toque mobile"
+    ]
+  },
+  {
+    id: "layout-site-tattoo",
+    title: "Ink Archive — Full Body X-Ray Reveal",
+    category: "layouts",
+    categoryLabel: "Layouts & UI Lab",
+    badge: "Interactive • Dual Layer",
+    shortDescription: "Conceito interativo para estúdios de tatuagem e moda que revela a arte corporal oculta sob a roupa ao passar o cursor.",
+    fullDescription: "Layout interativo de alto impacto visual pensado para artistas de tatuagem e campanhas de moda. O visitante vê o retrato formal com roupa e, ao explorar a imagem com o mouse, revela a camada subjacente com o fechamento completo de tatuagens.",
+    image: "../layouts para sites/site tattoo/tatuado.jpg",
+    gallery: [
+      "../layouts para sites/site tattoo/tatuado.jpg",
+      "../layouts para sites/site tattoo/com-roupa.jpg"
+    ],
+    tags: ["UI/UX Concept", "FileReader API", "CSS Masking", "Creative Coding"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site tattoo/index.html"
+    },
+    features: [
+      "Alinhamento milimétrico de corpo inteiro com object-fit contain",
+      "Barra de teste em tempo real para o cliente carregar suas próprias fotos Antes/Depois",
+      "Transição suave de opacidade e borda difusa"
+    ]
+  },
+  {
+    id: "layout-saas-ai",
+    title: "NexusAI — SaaS & AI Gateway Landing Page",
+    category: "layouts",
+    categoryLabel: "Layouts & UI Lab",
+    badge: "Template B2B • Bento Grid",
+    shortDescription: "Landing page de alta conversão estilo Linear/Vercel para startups de IA, com Bento Grid iluminado por spotlight e tabela de preços dinâmica.",
+    fullDescription: "Modelo de página comercial para produtos SaaS e ferramentas de desenvolvedor. Conta com preview de código em sintaxe colorida, cards com iluminação radial que reage à posição do mouse e alternador de planos Mensal/Anual.",
+    image: "assets/images/radar-ia-real.png",
+    gallery: [
+      "assets/images/radar-ia-real.png"
+    ],
+    tags: ["Tailwind CSS", "Bento Grid", "Mouse Spotlight", "SaaS Conversion"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-saas-ai/index.html"
+    },
+    features: [
+      "Efeito Spotlight dinâmico via variáveis CSS (--mouse-x, --mouse-y)",
+      "Bloco de código interativo com botão de cópia rápida",
+      "Calculadora de preços Mensal vs. Anual com desconto automático"
+    ]
+  },
+  {
+    id: "layout-arquitetura",
+    title: "Kengo Studio — Arquitetura & Design Editorial",
+    category: "layouts",
+    categoryLabel: "Layouts & UI Lab",
+    badge: "Minimalista • Luxury UI",
+    shortDescription: "Layout editorial em tons de pedra e tipografia serifada Cormorant Garamond, com galeria em acordeão horizontal expansível.",
+    fullDescription: "Template voltado para escritórios de arquitetura, design de interiores e marcas de luxo. Substitui carrosséis tradicionais por um acordeão fluido em CSS cubic-bezier que expande as obras arquitetônicas ao toque do cursor.",
+    image: "assets/images/bookshelf-atlas-real.png",
+    gallery: [
+      "assets/images/bookshelf-atlas-real.png"
+    ],
+    tags: ["Editorial Design", "Cormorant Garamond", "CSS Flex Accordion", "Luxury"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-arquitetura-editorial/index.html"
+    },
+    features: [
+      "Galeria de 4 painéis com expansão suave e transição de filtro P&B para colorido",
+      "Grid tipográfico inspirado em monografias impressas de arquitetura",
+      "100% responsivo para telas ultrawide e smartphones"
+    ]
+  },
+  {
+    id: "layout-omakase",
+    title: "KURO 黒 — Omakase & Alta Gastronomia",
+    category: "layouts",
+    categoryLabel: "Layouts & UI Lab",
+    badge: "Gastronomia • Drawer Interativo",
+    shortDescription: "Site de alta gastronomia japonesa com menu degustação em 16 tempos, estética minimalista escura e drawer lateral de reservas.",
+    fullDescription: "Experiência digital premium para restaurantes conceituais e hospitalidade. Apresenta tipografia Cinzel e Noto Serif JP, detalhamento poético dos pratos sazonais e sistema interativo de reserva com seleção de turnos.",
+    image: "assets/images/radar-ia-real.png",
+    gallery: [
+      "assets/images/radar-ia-real.png"
+    ],
+    tags: ["Luxury Hospitality", "Interactive Drawer", "Minimalism", "Tailwind CSS"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-gastronomia-reserva/index.html"
+    },
+    features: [
+      "Menu degustação dividido por tempos culinários tradicionais (Sakizuke a Mizumono)",
+      "Drawer lateral de agendamento com validação instantânea",
+      "Direção de arte contemplativa com paleta preta, carvão e dourado imperial"
+    ]
+  },
+  {
+    id: "layout-meridian-wave",
+    title: "Meridian™ — Fintech & Liquid Wave Canvas",
+    category: "layouts",
+    categoryLabel: "Layouts & UI Lab",
+    badge: "Simplex 3D • Fintech",
+    shortDescription: "Landing page em tema obsidian com simulação física de onda líquida em Canvas 2D (Simplex 3D + Gerstner) e simulador cambial interativo.",
+    fullDescription: "Layout de alta performance desenvolvido para fintechs e infraestruturas de pagamentos globais. Combina um fundo de partículas reativas ao cursor em 60fps com um simulador cambial glassmorphic funcional.",
+    image: "assets/images/juros-compostos-real.png",
+    gallery: [
+      "assets/images/juros-compostos-real.png"
+    ],
+    tags: ["HTML5 Canvas", "Simplex 3D Noise", "Glassmorphism", "Fintech UI"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-meridian-wave/index.html"
+    },
+    features: [
+      "Motor matemático de ondas orgânicas em 60fps com controle em tempo real",
+      "Simulador funcional de conversão USD → BRL / EUR / GBP com cálculo de taxa",
+      "Design responsivo com suporte a toque (touchmove) no celular"
+    ]
+  },
+
+  // ==========================================
+  // 5. EXTENSÕES CHROME (MANIFEST V3)
+  // ==========================================
+  {
+    id: "universal-music-downloader",
+    title: "Universal Music & Soundtrack Downloader v3.3",
+    category: "extensions",
+    categoryLabel: "Extensões Chrome",
+    badge: "Manifest V3 • FLAC & MP3",
+    shortDescription: "Extensão Chrome para captura e download automatizado em lote de álbuns e trilhas sonoras em formato FLAC ou MP3 com organização de pastas.",
+    fullDescription: "Ferramenta avançada para arquivamento de áudio e soundtracks. Analisa links de álbuns, identifica todos os arquivos de áudio disponíveis, permite escolher entre FLAC lossless ou MP3 e gerencia filas de downloads simultâneos.",
+    image: "assets/images/universal-music-downloader-real.png",
+    gallery: [
+      "assets/images/universal-music-downloader-real.png",
+      "assets/images/universal-music-downloader.jpg"
+    ],
+    tags: ["Chrome MV3", "Downloads API", "JavaScript", "Audio FLAC/MP3"],
+    links: {
+      github: "https://github.com/daniloliveira89/extension---Universal-Downloader",
+      demo: null
+    },
+    features: [
+      "Painel completo de preparação de lote com criação automática de subpastas ('Ano - Álbum')",
+      "Controle de concorrência (Download Sequencial ou Multi-thread)",
+      "Seleção granular de faixas com barra de progresso em tempo real"
+    ]
+  },
+  {
+    id: "youtube-power-tools",
+    title: "YouTube Power Tools Suite (6 Extensões MV3)",
+    category: "extensions",
+    categoryLabel: "Extensões Chrome",
+    badge: "Suíte 6-em-1 • Produtividade",
+    shortDescription: "Ecossistema com 6 extensões dedicadas para o YouTube: Watch Time Analytics, Speed Controller, Volume Booster 500%, Return Dislike e Copy Transcript.",
+    fullDescription: "Conjunto modular de extensões leves em Manifest V3 criadas para aprimorar a experiência de estudo e entretenimento no YouTube sem rastreadores ou peso no navegador.",
+    image: "assets/images/youtube-power-tools-combo.png",
+    gallery: [
+      "assets/images/youtube-power-tools-combo.png",
+      "assets/images/watch-time-real.png",
+      "assets/images/volume-booster-real.png",
+      "assets/images/speed-video-real.png",
+      "assets/images/return-dislike-real.png"
+    ],
+    tags: ["Chrome MV3", "Web Audio API", "YouTube DOM", "Produtividade"],
+    links: {
+      github: "https://github.com/daniloliveira89/extension---Copy-Transcription",
+      demo: null
+    },
+    features: [
+      "Watch Time: Dashboard de tempo assistido por dia, semana, mês, Shorts vs. Lives e canais",
+      "Speed Video: Controle de velocidade com Shift+Scroll e cálculo de 'Total Time Saved'",
+      "Volume Booster: Amplificação sonora de até 5x (500%) via GainNode da Web Audio API"
+    ]
+  },
+  {
+    id: "sync-to-notion-suite",
+    title: "Sync to Notion & Music to Notion Extensions",
+    category: "extensions",
+    categoryLabel: "Extensões Chrome",
+    badge: "Notion API • 1-Click Save",
+    shortDescription: "Dupla de extensões para conectar e catalogar mídias, álbuns e páginas da web diretamente em databases do Notion em menos de 2 minutos.",
+    fullDescription: "Extensões com assistente passo a passo (onboarding guiado) para validação de tokens `ntn_` / `secret_` do Notion e envio instantâneo de metadados de filmes, séries, jogos e músicas direto do navegador.",
+    image: "assets/images/sync-to-notion-combo.png",
+    gallery: [
+      "assets/images/sync-to-notion-combo.png",
+      "assets/images/sync-to-notion-real.png",
+      "assets/images/music-to-notion-real.png"
+    ],
+    tags: ["Chrome MV3", "Notion API", "OAuth / Token", "Automação"],
+    links: {
+      github: "https://github.com/daniloliveira89/extension---Sync-to-Notion",
+      demo: null
+    },
+    features: [
+      "Onboarding simplificado em 1 clique para criação e validação de integração Notion",
+      "Suporte a múltiplos idiomas (Português / Inglês) e modo claro/escuro",
+      "Preenchimento automático de capas, anos de lançamento e links"
+    ]
+  },
+
+  // ==========================================
+  // 6. DESKTOP & AUTOMAÇÃO
+  // ==========================================
+  {
+    id: "rclone-manager-desktop",
+    title: "RClone Manager Desktop — Multi-Cloud GUI",
+    category: "desktop",
+    categoryLabel: "Desktop & Automação",
+    badge: "C# / .NET • Cloud Backup",
+    shortDescription: "Interface gráfica desktop para orquestração de backups criptografados e sincronização entre Google Drive, OneDrive, AWS S3 e Mega.",
+    fullDescription: "Aplicação nativa para Windows que encapsula o poder do Rclone CLI em um painel visual intuitivo, monitorando cotas de armazenamento, filas de transferência e agendamentos diários.",
+    image: "assets/images/rclone-manager.jpg",
+    gallery: [
+      "assets/images/rclone-manager.jpg"
+    ],
+    tags: ["C#", ".NET", "Rclone", "Cloud Storage", "Windows Desktop"],
+    links: {
+      github: "https://github.com/daniloliveira89/app---RClone-manager",
+      demo: null
+    },
+    features: [
+      "Monitoramento simultâneo de múltiplos remotes (Google Drive, OneDrive, S3)",
+      "Execução silenciosa em bandeja do sistema (System Tray) com logs de integridade",
+      "Prevenção de duplicidade e verificação de checksum"
+    ]
+  },
+  {
+    id: "torrent-rename-normalizer",
+    title: "Media Rename & Series Normalizer",
+    category: "desktop",
+    categoryLabel: "Desktop & Automação",
+    badge: "Python • Regex Engine",
+    shortDescription: "Utilitário em Python para higienização em lote de nomes de arquivos de vídeo, removendo tags poluídas de release e padronizando episódios (S01E01).",
+    fullDescription: "Automação essencial para servidores de mídia (Plex, Jellyfin, Emby). Analisa pastas inteiras via expressões regulares, remove códigos de codecs/grupos e renomeia séries e legendas no padrão limpo.",
+    image: "assets/images/torrent-rename.jpg",
+    gallery: [
+      "assets/images/torrent-rename.jpg"
+    ],
+    tags: ["Python 3", "Regex", "Automação de Arquivos", "Plex / Jellyfin"],
+    links: {
+      github: "https://github.com/daniloliveira89/app---Torrrent-Rename",
+      demo: null
+    },
+    features: [
+      "Detecção automática de temporada e episódio (SxxExx) com preservação de extensão",
+      "Modo Dry-Run (pré-visualização segura antes de aplicar a renomeação no disco)",
+      "Sincronização automática de arquivos de legenda (.srt) correspondentes"
+    ]
+  }
+];
+
+// Estatísticas globais
+const PORTFOLIO_STATS = {
+  totalProjects: PROJECTS_DATA.length,
+  totalCategories: 6,
+  liveDemos: PROJECTS_DATA.filter(p => p.links && p.links.demo).length,
+  openSource: PROJECTS_DATA.filter(p => p.links && p.links.github).length
+};
