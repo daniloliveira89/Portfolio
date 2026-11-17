@@ -23,19 +23,26 @@ Este repositório centraliza as duas versões conceituais do portfólio e vitrin
 
 ```
 Portfolio/
+├── layouts para sites/             # UI/UX Lab: Experimentos & templates para sites comerciais
+│   ├── site face/                  # Faruq Visual Archive (Gold mask reveal com física Lerp)
+│   ├── site tattoo/                # Ink Archive (X-Ray tattoo reveal Antes/Depois)
+│   ├── site-saas-ai/               # NexusAI (Landing Page SaaS com Bento Grid & Mouse Spotlight)
+│   ├── site-arquitetura-editorial/ # Kengo Studio (Design brutalista & galeria em acordeão fluido)
+│   └── site-gastronomia-reserva/   # KURO Omakase (Alta gastronomia com drawer de reservas)
+│
 ├── v1-vitrine-dark-neon/           # Versão 1: Catálogo objetivo de projetos e extensões
-│   ├── index.html                  # Interface principal
+│   ├── index.html                  # Interface principal com filtro Layouts & Sites
 │   ├── netlify.toml                # Configurações Netlify
 │   ├── vercel.json                 # Configurações Vercel
 │   ├── README.md                   # Documentação detalhada da v1
-│   └── assets/                     # Imagens dos 17 projetos e scripts
+│   └── assets/                     # Imagens HD reais dos projetos, extensões e scripts
 │
 ├── v2-editorial-dark-blue/         # Versão 2: Site editorial completo com serviços e skills
-│   ├── index.html                  # Interface editorial com Typewriter, Serviços, Skills e Contato
+│   ├── index.html                  # Interface editorial com Typewriter, Serviços, Skills, Modal e Contato
 │   ├── netlify.toml                # Configurações Netlify
 │   ├── vercel.json                 # Configurações Vercel
 │   ├── README.md                   # Documentação detalhada da v2
-│   └── assets/                     # Mockups, ícones, app.js com typewriter e projects-data.js
+│   └── assets/                     # Galeria multi-foto, app.js e projects-data.js
 │
 └── README.md                       # Este arquivo (guia central comparativo)
 ```

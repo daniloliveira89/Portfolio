@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kengo & Associados — Arquitetura Minimalista</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    body { background-color: #F4F1EA; color: #181715; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .font-serif-editorial { font-family: 'Cormorant Garamond', serif; }
+    .gallery-panel {
+      flex: 1;
+      transition: flex 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .gallery-panel:hover { flex: 3.2; }
+    .gallery-panel img {
+      transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), filter 0.5s ease;
+      filter: grayscale(35%) contrast(1.05);
+    }
+    .gallery-panel:hover img {
+      transform: scale(1.04);
+      filter: grayscale(0%) contrast(1);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between p-6 sm:p-10 selection:bg-stone-900 selection:text-stone-100">
+
+  <!-- Top Editorial Header -->
+  <header class="flex flex-wrap items-center justify-between border-b border-stone-900/15 pb-5 text-xs uppercase tracking-[0.2em]">
+    <div class="font-medium">Kengo — Estúdio®</div>
+    <div class="hidden sm:block text-stone-500">São Paulo • Tóquio • Zurique</div>
+    <nav class="flex gap-6">
+      <a href="#obras" class="hover:underline">Obras (04)</a>
+      <a href="#manifesto" class="hover:underline">Filosofia</a>
+    </nav>
+  </header>
+
+  <!-- Main Headline & Accordion Gallery -->
+  <main class="my-10 max-w-7xl mx-auto w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-10">
+      <div class="lg:col-span-8">
+        <p class="text-xs uppercase tracking-[0.25em] text-stone-500 mb-3">Monografia Arquitetônica — 2026</p>
+        <h1 class="font-serif-editorial text-5xl sm:text-7xl lg:text-8xl leading-[0.94] font-normal">
+          O silêncio esculpido em <em class="italic">concreto e luz natural.</em>
+        </h1>
+      </div>
+      <div class="lg:col-span-4 text-sm text-stone-600 leading-relaxed">
+        Projetamos residências brutas e pavilhões culturais que dissolvem a fronteira entre a topografia orgânica e a precisão estrutural. Passe o cursor sobre as obras abaixo.
+      </div>
+    </div>
+
+    <!-- Interactive Accordion Gallery -->
+    <div id="obras" class="flex flex-col sm:flex-row gap-3 h-[460px] w-full">
+      <div class="gallery-panel rounded-sm">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="Casa Kyoto" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex flex-col justify-end p-6 text-white">
+          <span class="text-[10px] tracking-[0.25em] uppercase opacity-75">01 / Residencial</span>
+          <h2 class="font-serif-editorial text-3xl mt-1">Pavilhão Kyoto</h2>
+        </div>
+      </div>
+
+      <div class="gallery-panel rounded-sm">
+        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80" alt="Casa Brutalista" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex flex-col justify-end p-6 text-white">
+          <span class="text-[10px] tracking-[0.25em] uppercase opacity-75">02 / Concreto Aparente</span>
+          <h2 class="font-serif-editorial text-3xl mt-1">Casa Monólito</h2>
+        </div>
+      </div>
+
+      <div class="gallery-panel rounded-sm">
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80" alt="Villa Horizonte" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex flex-col justify-end p-6 text-white">
+          <span class="text-[10px] tracking-[0.25em] uppercase opacity-75">03 / Litoral</span>
+          <h2 class="font-serif-editorial text-3xl mt-1">Villa Horizonte</h2>
+        </div>
+      </div>
+
+      <div class="gallery-panel rounded-sm">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80" alt="Galeria Luz" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex flex-col justify-end p-6 text-white">
+          <span class="text-[10px] tracking-[0.25em] uppercase opacity-75">04 / Cultural</span>
+          <h2 class="font-serif-editorial text-3xl mt-1">Fundação Zurique</h2>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer id="manifesto" class="flex flex-wrap items-center justify-between border-t border-stone-900/15 pt-5 text-xs text-stone-500">
+    <span>Prêmio Pritzker Shortlist • Arquivo Editorial</span>
+    <span>Agendar Consulta Privada →</span>
+  </footer>
+
+</body>
+</html>

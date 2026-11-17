@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KURO 黒 — Omakase & Alta Gastronomia</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { background-color: #08080A; color: #E5E5E7; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+    .font-cinzel { font-family: 'Cinzel', serif; }
+    .font-jp { font-family: 'Noto Serif JP', serif; }
+    .gold-accent { color: #D4AF37; }
+    .border-gold { border-color: rgba(212, 175, 55, 0.25); }
+    .menu-card {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .menu-card:hover {
+      border-color: rgba(212, 175, 55, 0.5);
+      background: rgba(20, 20, 24, 0.85);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="min-h-screen selection:bg-amber-700 selection:text-white">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-[#08080A]/90 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="font-jp text-2xl gold-accent">黒</span>
+        <div>
+          <span class="font-cinzel tracking-[0.25em] text-lg font-bold text-white">KURO</span>
+          <span class="block text-[9px] uppercase tracking-[0.3em] text-zinc-500">Omakase Experience</span>
+        </div>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-8 text-xs uppercase tracking-[0.2em] text-zinc-400">
+        <a href="#experiencia" class="hover:text-amber-300 transition">Experiência</a>
+        <a href="#menu" class="hover:text-amber-300 transition">Menu Degustação</a>
+        <a href="#sake" class="hover:text-amber-300 transition">Harmonização</a>
+      </nav>
+
+      <button id="btn-open-reserva" class="px-5 py-2.5 rounded-sm border border-[#D4AF37]/60 text-xs uppercase tracking-[0.2em] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black font-semibold transition-all duration-300">
+        Reservar Mesa
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="experiencia" class="relative max-w-6xl mx-auto px-6 pt-20 pb-24 text-center">
+    <div class="inline-flex items-center gap-2 px-3 py-1 border border-white/10 rounded-full text-[11px] font-mono uppercase tracking-widest text-zinc-400 mb-6">
+      <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+      12 Lugares Exclusivos • Balcão Hinoki
+    </div>
+    
+    <h1 class="font-cinzel text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight max-w-4xl mx-auto">
+      A Dança Sazonal do <span class="gold-accent italic">Mar Japonês.</span>
+    </h1>
+    
+    <p class="mt-6 text-zinc-400 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+      Uma jornada de 16 etapas liderada pelo Chef Kenzo Takahashi. Ingredientes selvagens trazidos semanalmente do Mercado de Toyosu em Tóquio.
+    </p>
+
+    <div class="mt-12 relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl h-80 sm:h-[480px]">
+      <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=1600&q=80" 
+           alt="Kuro Omakase Nigiri" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-gradient-to-t from-[#08080A] via-transparent to-black/30"></div>
+      <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between">
+        <div class="text-left">
+          <span class="text-[10px] uppercase font-mono tracking-widest gold-accent">Etapa 09 / Otsukuri</span>
+          <h3 class="font-cinzel text-xl sm:text-2xl text-white">Otoro Curado em Shoyu Imperial & Trufa Negra</h3>
+        </div>
+        <span class="hidden sm:inline-block px-3 py-1 text-xs font-mono border border-white/20 bg-black/60 rounded">Edição Outono / Inverno</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu Degustação Interativo -->
+  <section id="menu" class="max-w-6xl mx-auto px-6 py-16 border-t border-white/10">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12">
+      <div>
+        <span class="text-xs uppercase tracking-[0.25em] gold-accent">Menu Sazonal</span>
+        <h2 class="font-cinzel text-3xl sm:text-4xl text-white mt-1">Obras em 16 Tempos</h2>
+      </div>
+      <p class="text-xs text-zinc-400 font-mono mt-3 sm:mt-0">Duração média: 2h30 • R$ 680 por convidado</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Item 1 -->
+      <div class="menu-card rounded-xl p-6 border border-white/10 bg-white/[0.02]">
+        <span class="text-[10px] font-mono tracking-widest text-zinc-500 uppercase">Tempo 01 • Sakizuke</span>
+        <h3 class="font-cinzel text-lg text-white mt-2">Dashi de Algas Sagradas</h3>
+        <p class="text-xs text-zinc-400 mt-2 leading-relaxed">Infusão límpida de Kombu de Hokkaido envelhecido por 3 anos com flocos artesanais de Bonito Katsuobushi.</p>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="menu-card rounded-xl p-6 border border-white/10 bg-white/[0.02]">
+        <span class="text-[10px] font-mono tracking-widest text-zinc-500 uppercase">Tempo 04 • Nigiri</span>
+        <h3 class="font-cinzel text-lg text-white mt-2">Shima Aji com Yuzu Kosho</h3>
+        <p class="text-xs text-zinc-400 mt-2 leading-relaxed">Carapau listrado marinado com raspas de cítrico japonês fermentado e arroz temperado com vinagre Akazu.</p>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="menu-card rounded-xl p-6 border border-white/10 bg-white/[0.02]">
+        <span class="text-[10px] font-mono tracking-widest text-zinc-500 uppercase">Tempo 07 • Yakimono</span>
+        <h3 class="font-cinzel text-lg text-white mt-2">Wagyu A5 no Carvão Binchotan</h3>
+        <p class="text-xs text-zinc-400 mt-2 leading-relaxed">Corte de Kagoshima marmorizado selado em alta brasa pura, servido com sal fóssil marinho e mostarda japonesa.</p>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="menu-card rounded-xl p-6 border border-white/10 bg-white/[0.02]">
+        <span class="text-[10px] font-mono tracking-widest text-zinc-500 uppercase">Tempo 11 • Nigiri Especial</span>
+        <h3 class="font-cinzel text-lg text-white mt-2">Uni Bafun de Nemuro</h3>
+        <p class="text-xs text-zinc-400 mt-2 leading-relaxed">Ouriço-do-mar selvagem de água fria com cremosidade mineral, repousado sobre alga Nori tostada na hora.</p>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="menu-card rounded-xl p-6 border border-white/10 bg-white/[0.02]">
+        <span class="text-[10px] font-mono tracking-widest text-zinc-500 uppercase">Tempo 14 • Shirumono</span>
+        <h3 class="font-cinzel text-lg text-white mt-2">Miso de Caranguejo Real</h3>
+        <p class="text-xs text-zinc-400 mt-2 leading-relaxed">Consommé aveludado de caranguejo Tarabagani com pasta de soja branca orgânica de Nagano.</p>
+      </div>
+
+      <!-- Item 6 -->
+      <div class="menu-card rounded-xl p-6 border border-white/10 bg-white/[0.02]">
+        <span class="text-[10px] font-mono tracking-widest text-zinc-500 uppercase">Tempo 16 • Mizumono</span>
+        <h3 class="font-cinzel text-lg text-white mt-2">Matcha Cerimonial & Gelato</h3>
+        <p class="text-xs text-zinc-400 mt-2 leading-relaxed">Sorvete de gergelim preto torrado com redução de açúcar mascavo Kokuto e chá verde batedor tradicional.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reservation Drawer (Slide-over Modal) -->
+  <div id="drawer-overlay" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <aside id="reserva-drawer" class="fixed top-0 right-0 z-50 h-full w-full sm:w-[440px] bg-[#0E0E12] border-l border-white/10 p-8 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between overflow-y-auto">
+    <div>
+      <div class="flex items-center justify-between pb-6 border-b border-white/10">
+        <div>
+          <span class="text-[10px] uppercase tracking-[0.25em] gold-accent">Agendamento</span>
+          <h3 class="font-cinzel text-2xl text-white">Solicitar Reserva</h3>
+        </div>
+        <button id="btn-close-reserva" class="text-zinc-400 hover:text-white p-2">✕</button>
+      </div>
+
+      <form id="form-reserva" class="mt-6 space-y-4">
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-zinc-400 mb-1">Nome Completo</label>
+          <input type="text" required placeholder="Ex: Roberto Mendes" class="w-full px-4 py-3 rounded bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-[#D4AF37]">
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-zinc-400 mb-1">E-mail</label>
+          <input type="email" required placeholder="Ex: roberto@email.com" class="w-full px-4 py-3 rounded bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-[#D4AF37]">
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-zinc-400 mb-1">WhatsApp / Telefone</label>
+          <input type="tel" required placeholder="(11) 98765-4321" class="w-full px-4 py-3 rounded bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-[#D4AF37]">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-zinc-400 mb-1">Data</label>
+            <input type="date" required class="w-full px-4 py-3 rounded bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-[#D4AF37]">
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-zinc-400 mb-1">Horário (Turno)</label>
+            <select class="w-full px-4 py-3 rounded bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-[#D4AF37]">
+              <option value="19h">19:00 (1º Turno)</option>
+              <option value="21h30">21:30 (2º Turno)</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-zinc-400 mb-1">Restrições Alimentares</label>
+          <textarea rows="2" placeholder="Alergia a frutos do mar, intolerância a glúten, etc." class="w-full px-4 py-3 rounded bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-[#D4AF37] resize-none"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 rounded bg-[#D4AF37] hover:bg-amber-400 text-black font-semibold uppercase tracking-[0.2em] text-xs transition duration-200 mt-2">
+          Confirmar Solicitação
+        </button>
+      </form>
+
+      <div id="reserva-success" class="hidden mt-6 p-4 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs">
+        ✓ Solicitação registrada! Nossa concierge entrará em contato via WhatsApp para confirmação do assento.
+      </div>
+    </div>
+
+    <div class="pt-6 border-t border-white/10 text-[11px] text-zinc-500">
+      Jardins, São Paulo • Terça a Sábado das 19h às 23h30
+    </div>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 py-10 text-center text-xs text-zinc-500 font-mono">
+    KURO Omakase © 2026 • Michelin Guide Recommendation • Reservas Exclusivas
+  </footer>
+
+  <script>
+    const drawer = document.getElementById('reserva-drawer');
+    const overlay = document.getElementById('drawer-overlay');
+    const btnOpen = document.getElementById('btn-open-reserva');
+    const btnClose = document.getElementById('btn-close-reserva');
+    const form = document.getElementById('form-reserva');
+    const success = document.getElementById('reserva-success');
+
+    function openDrawer() {
+      overlay.classList.remove('opacity-0', 'pointer-events-none');
+      drawer.classList.remove('translate-x-full');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDrawer() {
+      overlay.classList.add('opacity-0', 'pointer-events-none');
+      drawer.classList.add('translate-x-full');
+      document.body.style.overflow = '';
+    }
+
+    btnOpen.addEventListener('click', openDrawer);
+    btnClose.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      success.classList.remove('hidden');
+      setTimeout(() => {
+        form.reset();
+        closeDrawer();
+        success.classList.add('hidden');
+      }, 3000);
+    });
+  </script>
+</body>
+</html>

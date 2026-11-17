@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faruq — Ink Archive ©2026</title>
+  <!-- Fonte Archivo (400 e 500) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Seletor rápido caso os arquivos não estejam com o nome com-roupa.jpg / tatuado.jpg -->
+  <div class="image-picker-bar" id="picker-bar">
+    <span>Carregar suas 2 fotos:</span>
+    <label class="picker-btn">
+      1. Foto com Roupa
+      <input type="file" id="input-clean" accept="image/*" hidden>
+    </label>
+    <label class="picker-btn">
+      2. Foto Tatuado
+      <input type="file" id="input-tattoo" accept="image/*" hidden>
+    </label>
+    <button type="button" class="picker-close" id="picker-close" title="Ocultar barra">✕</button>
+  </div>
+
+  <main class="hero" id="hero">
+    <!-- PILHA DE FUNDO EM 4 CAMADAS -->
+    <div class="bg-stack">
+      <!-- 1. Foto Base (Por cima): Homem COM roupa -->
+      <img 
+        id="img-clean"
+        src="com-roupa.jpg" 
+        alt="Homem com roupa" 
+        class="bg-layer layer-clean" 
+        draggable="false"
+      >
+      
+      <!-- 2. Camada estática (invisível com opacity: 0) -->
+      <img 
+        id="img-gold-static"
+        src="tatuado.jpg" 
+        alt="" 
+        class="bg-layer layer-gold-static" 
+        draggable="false"
+        aria-hidden="true"
+      >
+
+      <!-- 3. Foto de Revelação (Revelada ao passar o mouse): Homem TATUADO -->
+      <img 
+        id="reveal-layer"
+        src="tatuado.jpg" 
+        alt="Homem tatuado" 
+        class="bg-layer layer-gold-reveal" 
+        draggable="false"
+        aria-hidden="true"
+      >
+
+      <!-- 4. Scrim vertical -->
+      <div class="bg-layer layer-scrim"></div>
+    </div>
+
+    <!-- OVERLAY TIPOGRÁFICO -->
+    <div class="hero-content">
+      <!-- Barra Superior -->
+      <header class="top-bar">
+        <div class="top-bar-left">
+          <a href="#" class="brand">faruq®</a>
+          <span class="archive-label">visual archive</span>
+          <span class="pill-year">©2026</span>
+        </div>
+        <div class="top-bar-right">
+          <span>( full body / ink reveal )</span>
+        </div>
+      </header>
+
+      <!-- Centro + Rodapé -->
+      <div class="bottom-section">
+        <h1 class="headline">
+          <span class="headline-line">stories in ink /</span>
+          <span class="headline-line">
+            <span class="plus-circle">+</span> skin
+          </span>
+        </h1>
+
+        <footer class="bottom-bar">
+          <span class="meta-label">hidden work — vol. 04</span>
+          <nav class="footer-links">
+            <a href="#index">index</a>
+            <a href="#commission">commission</a>
+            <a href="#info">info</a>
+          </nav>
+        </footer>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

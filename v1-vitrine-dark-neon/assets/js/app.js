@@ -95,6 +95,12 @@ function renderProjects() {
             ${project.categoryLabel}
           </span>
         </div>
+
+        ${project.gallery && project.gallery.length > 1 ? `
+          <span class="absolute bottom-2.5 right-3 px-2 py-0.5 rounded-md text-[10px] font-mono bg-black/70 text-slate-200 border border-white/10">
+            📷 ${project.gallery.length} telas
+          </span>
+        ` : ''}
       </div>
 
       <!-- Conteúdo do Card -->
@@ -237,9 +243,11 @@ function openProjectModal(projectId) {
     <!-- Header com Banner -->
     <div class="relative h-64 sm:h-80 w-full overflow-hidden bg-slate-950">
       <img 
+        id="modal-main-img"
         src="${project.image}" 
         alt="${project.title}" 
         class="w-full h-full object-cover object-center"
+        onerror="this.src='assets/images/radar-ia-real.png'"
       />
       <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
       
@@ -265,6 +273,19 @@ function openProjectModal(projectId) {
         </div>
       </div>
     </div>
+
+    <!-- Miniaturas da Galeria -->
+    ${project.gallery && project.gallery.length > 1 ? `
+      <div class="flex gap-2 px-6 pt-3 pb-2 overflow-x-auto bg-slate-950/90 border-b border-slate-800/80">
+        ${project.gallery.map((imgSrc, idx) => `
+          <button type="button" onclick="document.getElementById('modal-main-img').src='${imgSrc}'"
+                  class="w-20 h-12 rounded-lg overflow-hidden border-2 border-slate-700 hover:border-sky-400 flex-shrink-0 transition">
+            <img src="${imgSrc}" alt="Screenshot ${idx + 1}" class="w-full h-full object-cover"
+                 onerror="this.src='assets/images/radar-ia-real.png'">
+          </button>
+        `).join('')}
+      </div>
+    ` : ''}
 
     <!-- Corpo do Modal -->
     <div class="p-6 sm:p-8 space-y-6">

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faruq — Visual Archive ©2026</title>
+  <!-- Fonte Archivo (400 e 500) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <main class="hero" id="hero">
+    <!-- PILHA DE FUNDO EM 4 CAMADAS -->
+    <div class="bg-stack">
+      <!-- 1. Retrato limpo (Pele humana normal) -->
+      <!-- Se tiver a imagem original da pele, troque o src abaixo por ex: "portrait-clean.jpg" -->
+      <img 
+        id="img-clean"
+        src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=2000&q=85" 
+        alt="Clean Portrait" 
+        class="bg-layer layer-clean" 
+        crossorigin="anonymous"
+        draggable="false"
+      >
+      
+      <!-- 2. Camada dourada estática (Estátua dourada com opacity: 0.1) -->
+      <!-- Se tiver a imagem original da estátua dourada, troque o src abaixo por ex: "portrait-gold.jpg" -->
+      <img 
+        id="img-gold-static"
+        src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=2000&q=85" 
+        alt="" 
+        class="bg-layer layer-gold-static" 
+        crossorigin="anonymous"
+        draggable="false"
+        aria-hidden="true"
+      >
+
+      <!-- 3. Camada de revelação dourada (Estátua dourada revelada pela máscara oval no cursor) -->
+      <!-- Se tiver a imagem original da estátua dourada, troque o src abaixo por ex: "portrait-gold.jpg" -->
+      <img 
+        id="reveal-layer"
+        src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=2000&q=85" 
+        alt="" 
+        class="bg-layer layer-gold-reveal" 
+        crossorigin="anonymous"
+        draggable="false"
+        aria-hidden="true"
+      >
+
+      <!-- 4. Scrim vertical -->
+      <div class="bg-layer layer-scrim"></div>
+    </div>
+
+    <!-- OVERLAY TIPOGRÁFICO -->
+    <div class="hero-content">
+      <!-- Barra Superior -->
+      <header class="top-bar">
+        <div class="top-bar-left">
+          <a href="#" class="brand">faruq®</a>
+          <span class="archive-label">visual archive</span>
+          <span class="pill-year">©2026</span>
+        </div>
+        <div class="top-bar-right">
+          <span>( long exposure / low light )</span>
+        </div>
+      </header>
+
+      <!-- Centro + Rodapé -->
+      <div class="bottom-section">
+        <h1 class="headline">
+          <span class="headline-line">stories in light /</span>
+          <span class="headline-line">
+            <span class="plus-circle">+</span> motion
+          </span>
+        </h1>
+
+        <footer class="bottom-bar">
+          <span class="meta-label">night work — vol. 04</span>
+          <nav class="footer-links">
+            <a href="#index">index</a>
+            <a href="#commission">commission</a>
+            <a href="#info">info</a>
+          </nav>
+        </footer>
+      </div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
