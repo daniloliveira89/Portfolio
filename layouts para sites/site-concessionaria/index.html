@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>APEX MOTORS — Superesportivos & Blindados</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <style>body { background-color: #0B0C10; color: #F8FAFC; font-family: 'Inter', sans-serif; }</style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+</head>
+<body class="min-h-screen antialiased">
+  <header class="border-b border-white/10 bg-[#0B0C10]/90 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <span class="font-extrabold tracking-tighter text-2xl">APEX <span class="text-red-500">MOTORS</span></span>
+      <span class="text-xs uppercase tracking-widest text-zinc-400">Showroom Jardins • Blindagem Nível III-A</span>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-10">
+    <div class="lg:col-span-8">
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-6">Acervo Pronta-Entrega</h1>
+      <div id="cars-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-6"></div>
+    </div>
+
+    <!-- Simulador de Financiamento -->
+    <div class="lg:col-span-4">
+      <div class="bg-[#13151C] border border-red-500/30 rounded-2xl p-6 sticky top-28">
+        <span class="text-[11px] uppercase tracking-widest text-red-400 font-bold">Apex Financial Services</span>
+        <h2 id="sim-car-name" class="text-xl font-bold mt-1">Porsche 911 Carrera S</h2>
+        <div id="sim-car-price" class="text-2xl font-extrabold text-white mt-1">R$ 1.150.000</div>
+
+        <div class="mt-6 space-y-4">
+          <div>
+            <div class="flex justify-between text-xs mb-1"><span>Entrada (<span id="down-pct">40</span>%)</span><strong id="down-val">R$ 460.000</strong></div>
+            <input id="down-slider" type="range" min="20" max="80" step="10" value="40" class="w-full accent-red-500">
+          </div>
+          <div>
+            <label class="text-xs text-zinc-400 block mb-1">Prazo (Meses)</label>
+            <select id="months-select" class="w-full px-3 py-2 bg-black border border-white/15 rounded-lg text-sm">
+              <option value="24">24x Meses</option>
+              <option value="36" selected>36x Meses</option>
+              <option value="48">48x Meses</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mt-6 p-4 rounded-xl bg-black border border-white/10">
+          <span class="text-xs text-zinc-400 block">Parcela Mensal Estimada</span>
+          <strong id="monthly-installment" class="text-2xl text-red-400">R$ 23.890 /mês</strong>
+        </div>
+
+        <button onclick="alert('Proposta enviada para a mesa de crédito APEX Motors!')" class="mt-5 w-full py-3.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs uppercase tracking-widest transition">
+          Solicitar Reserva / Test-Drive
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const CARS = [
+      { id: 1, name: "Porsche 911 Carrera S (992)", year: "2025 • 1.800 km", hp: "450 cv", price: 1150000, img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" },
+      { id: 2, name: "Range Rover Autobiography Blindada", year: "2025 • 0 km", hp: "Blindagem Carbon", price: 1490000, img: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80" },
+      { id: 3, name: "Audi RS6 Avant Performance", year: "2025 • 3.200 km", hp: "630 cv V8", price: 1280000, img: "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=800&q=80" },
+      { id: 4, name: "Mercedes-AMG G63 Blindado III-A", year: "2024 • 5.000 km", hp: "585 cv V8", price: 1950000, img: "https://images.unsplash.com/photo-1520031441872-265e4ff70366?auto=format&fit=crop&w=800&q=80" }
+    ];
+    let selectedCar = CARS[0];
+
+    function renderCars() {
+      document.getElementById("cars-grid").innerHTML = CARS.map(c => `
+        <div onclick="selectCar(${c.id})" class="cursor-pointer rounded-2xl overflow-hidden bg-[#13151C] border ${selectedCar.id === c.id ? 'border-red-500' : 'border-white/10'} transition">
+          <img src="${c.img}" class="w-full h-48 object-cover">
+          <div class="p-5">
+            <span class="text-xs text-zinc-400">${c.year} • ${c.hp}</span>
+            <h3 class="font-bold text-base mt-1">${c.name}</h3>
+            <div class="text-lg font-extrabold text-red-400 mt-2">R$ ${c.price.toLocaleString('pt-BR')}</div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function updateSim() {
+      const pct = Number(document.getElementById("down-slider").value);
+      const months = Number(document.getElementById("months-select").value);
+      const down = selectedCar.price * (pct / 100);
+      const financed = selectedCar.price - down;
+      const monthly = (financed * 1.18) / months;
+
+      document.getElementById("sim-car-name").textContent = selectedCar.name;
+      document.getElementById("sim-car-price").textContent = "R$ " + selectedCar.price.toLocaleString("pt-BR");
+      document.getElementById("down-pct").textContent = pct;
+      document.getElementById("down-val").textContent = "R$ " + down.toLocaleString("pt-BR");
+      document.getElementById("monthly-installment").textContent = "R$ " + Math.round(monthly).toLocaleString("pt-BR") + " /mês";
+    }
+
+    window.selectCar = function(id) { selectedCar = CARS.find(c => c.id === id); renderCars(); updateSim(); };
+    document.getElementById("down-slider").addEventListener("input", updateSim);
+    document.getElementById("months-select").addEventListener("change", updateSim);
+    renderCars(); updateSim();
+  </script>
+  <!-- Vercel Web Analytics & Speed Insights -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

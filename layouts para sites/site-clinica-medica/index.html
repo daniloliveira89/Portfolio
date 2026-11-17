@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VitaePrime — Centro Médico & Check-up Executivo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>body { background-color: #F4F7F6; color: #0F2922; font-family: 'DM Sans', sans-serif; }</style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+</head>
+<body class="min-h-screen antialiased">
+  <header class="bg-white border-b border-teal-900/10 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-teal-700 text-white flex items-center justify-center font-bold">+</div>
+        <span class="font-bold text-xl tracking-tight text-teal-950">VitaePrime <span class="text-xs font-normal text-teal-600">Medicina Diagnóstica</span></span>
+      </div>
+      <div class="text-xs font-semibold text-teal-800 bg-teal-50 px-3.5 py-1.5 rounded-full border border-teal-200">
+        ● Pronto Atendimento & Check-up: (11) 3090-4000
+      </div>
+    </div>
+  </header>
+
+  <section class="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+    <div class="lg:col-span-7">
+      <span class="text-xs uppercase tracking-widest text-teal-700 font-bold">Hospital-Dia & Longevidade</span>
+      <h1 class="text-4xl sm:text-6xl font-bold mt-3 leading-tight text-teal-950">Medicina de precisão centrada na sua vida.</h1>
+      <p class="mt-4 text-slate-600 text-base max-w-xl">Corpo clínico formado pelos principais hospitais do país, exames laboratoriais integrados no mesmo andar e telemedicina 24h.</p>
+      <div class="mt-6 flex flex-wrap gap-2" id="spec-filters">
+        <button data-spec="all" class="spec-btn px-4 py-2 rounded-full text-xs font-bold bg-teal-700 text-white">Todas Especialidades</button>
+        <button data-spec="cardio" class="spec-btn px-4 py-2 rounded-full text-xs font-bold bg-white text-teal-900 border border-teal-200">Cardiologia</button>
+        <button data-spec="neuro" class="spec-btn px-4 py-2 rounded-full text-xs font-bold bg-white text-teal-900 border border-teal-200">Neurologia</button>
+        <button data-spec="orto" class="spec-btn px-4 py-2 rounded-full text-xs font-bold bg-white text-teal-900 border border-teal-200">Ortopedia</button>
+      </div>
+    </div>
+    <div class="lg:col-span-5">
+      <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=900&q=80" class="w-full h-72 object-cover rounded-2xl shadow-lg" alt="Clínica Médica">
+    </div>
+  </section>
+
+  <main class="max-w-7xl mx-auto px-6 pb-20">
+    <div id="doctors-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+  </main>
+
+  <script>
+    const DOCTORS = [
+      { name: "Dr. Henrique Vasconcelos", crm: "CRM-SP 142.890", spec: "cardio", label: "Cardiologia Intervencionista", slots: ["Hoje 14:30", "Hoje 16:00", "Amanhã 09:30"], img: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&q=80" },
+      { name: "Dra. Helena Albuquerque", crm: "CRM-SP 168.410", spec: "neuro", label: "Neurologia & Sono", slots: ["Hoje 15:15", "Amanhã 10:00", "Amanhã 14:00"], img: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=600&q=80" },
+      { name: "Dr. Marcelo K. Tanaka", crm: "CRM-SP 155.201", spec: "orto", label: "Ortopedia & Medicina Esportiva", slots: ["Hoje 17:00", "Amanhã 08:30", "Amanhã 11:00"], img: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=600&q=80" }
+    ];
+    let curSpec = "all";
+    function renderDocs() {
+      const list = curSpec === "all" ? DOCTORS : DOCTORS.filter(d => d.spec === curSpec);
+      document.getElementById("doctors-grid").innerHTML = list.map(d => `
+        <div class="bg-white rounded-2xl p-6 border border-teal-900/10 shadow-xs">
+          <div class="flex items-center gap-4">
+            <img src="${d.img}" class="w-16 h-16 rounded-full object-cover">
+            <div>
+              <span class="text-[11px] font-bold uppercase text-teal-600">${d.label}</span>
+              <h3 class="font-bold text-lg text-teal-950">${d.name}</h3>
+              <p class="text-xs text-slate-400">${d.crm}</p>
+            </div>
+          </div>
+          <p class="text-xs font-semibold text-slate-500 mt-5 mb-2">Clique em um horário para agendar:</p>
+          <div class="flex flex-wrap gap-2">
+            ${d.slots.map(s => `<button onclick="alert('Consulta pré-agendada com ${d.name} para ${s}!')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-teal-50 text-teal-800 hover:bg-teal-700 hover:text-white transition">${s}</button>`).join("")}
+          </div>
+        </div>
+      `).join("");
+    }
+    document.querySelectorAll(".spec-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        curSpec = btn.dataset.spec;
+        document.querySelectorAll(".spec-btn").forEach(b => b.className = "spec-btn px-4 py-2 rounded-full text-xs font-bold bg-white text-teal-900 border border-teal-200");
+        btn.className = "spec-btn px-4 py-2 rounded-full text-xs font-bold bg-teal-700 text-white";
+        renderDocs();
+      });
+    });
+    renderDocs();
+  </script>
+  <!-- Vercel Web Analytics & Speed Insights -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

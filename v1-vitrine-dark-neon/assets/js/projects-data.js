@@ -460,6 +460,144 @@ const PROJECTS_DATA = [
       github: "https://github.com/daniloliveira89",
       demo: "../layouts para sites/site-meridian-wave/index.html"
     },
+  {
+    id: "layout-academia",
+    title: "IRON PULSE — High-Performance Gym & Studio",
+    category: "layouts",
+    categoryLabel: "Fitness & Gym",
+    badge: "Calculadora IMC • Studio",
+    shortDescription: "Plataforma de alta performance para academias e centros de treinamento funcional com diagnóstico físico e calculadora de IMC integrada.",
+    fullDescription: "Website dinâmico em estética dark/neon lime voltado para academias e estúdios de Crossfit/HIIT. Inclui calculadora interativa de índice de massa corporal (IMC) com diagnóstico em tempo real e formulário de passe livre.",
+    image: "assets/images/layout-academia.png",
+    gallery: [
+      "assets/images/layout-academia.png"
+    ],
+    tags: ["Fitness UI", "IMC Calculator", "Tailwind CSS", "High Performance"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-academia/index.html"
+    },
+    features: [
+      "Calculadora de IMC e diagnóstico físico instantâneo",
+      "Design de alto impacto com tipografia Anton e paleta neon lime",
+      "Seção de modalidades integradas: Hyrox, HIIT, Boxe e Criogenia"
+    ]
+  },
+  {
+    id: "layout-barbearia",
+    title: "THE GENTLEMAN'S ATELIER — Barbearia & Visagismo",
+    category: "layouts",
+    categoryLabel: "Barbearia",
+    badge: "Ritual & Agendamento",
+    shortDescription: "Experiência digital premium para barbearias tradicionais e visagismo masculino com seletor de serviços e cálculo dinâmico de tempo e valor.",
+    fullDescription: "Layout vintage e sofisticado com tipografia Cinzel e paleta âmbar/whisky. Permite ao cliente montar seu ritual de atendimento escolhendo corte, barba e visagismo, calculando o tempo de cadeira e gerando agendamento direto.",
+    image: "assets/images/layout-barbearia.png",
+    gallery: [
+      "assets/images/layout-barbearia.png"
+    ],
+    tags: ["Barbershop UI", "Interactive Booking", "Price Calculator", "Luxury Design"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-barbearia/index.html"
+    },
+    features: [
+      "Seletor interativo de serviços combinados (Corte, Barba na Toalha Quente, Visagismo)",
+      "Cálculo instantâneo de duração e valor total da sessão",
+      "Integração de agendamento rápido via WhatsApp com resumo pré-formatado"
+    ]
+  },
+  {
+    id: "layout-clinica-medica",
+    title: "VitaePrime — Centro Médico & Check-up Executivo",
+    category: "layouts",
+    categoryLabel: "Clínica Médica",
+    badge: "Filtro Especialidades",
+    shortDescription: "Portal para centros médicos, hospital-dia e clínicas com filtro por especialidades clínicas e agendamento de consultas.",
+    fullDescription: "Interface limpa e confiável em tons verde-petróleo e branco hospitalar. Possui catálogo de especialistas médicos (Cardiologia, Neurologia, Ortopedia) e agendamento instantâneo com canais de pronto atendimento.",
+    image: "assets/images/layout-clinica-medica.png",
+    gallery: [
+      "assets/images/layout-clinica-medica.png"
+    ],
+    tags: ["Healthcare UI", "Medical Portal", "Doctor Filter", "Clean Design"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-clinica-medica/index.html"
+    },
+    features: [
+      "Filtro instantâneo por especialidades médicas sem recarregamento",
+      "Cards de profissionais com titulações e CRM auditado",
+      "Acesso direto para telemedicina 24h e check-up executivo"
+    ]
+  },
+  {
+    id: "layout-concessionaria",
+    title: "APEX MOTORS — Superesportivos & Blindados",
+    category: "layouts",
+    categoryLabel: "Concessionária",
+    badge: "Simulador Financiamento",
+    shortDescription: "Showroom automotivo para superesportivos e blindados com catálogo de pronta-entrega e simulador financeiro de parcelas com slider.",
+    fullDescription: "Conceito de alta voltagem para lojas de veículos premium. Inclui acervo com ficha técnica de 0-100 km/h e potência, além de um simulador de financiamento interativo com ajuste de percentual de entrada e prazos.",
+    image: "assets/images/layout-concessionaria.png",
+    gallery: [
+      "assets/images/layout-concessionaria.png"
+    ],
+    tags: ["Automotive UI", "Loan Calculator", "Luxury Showroom", "Supercars"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-concessionaria/index.html"
+    },
+    features: [
+      "Simulador financeiro em tempo real com slider de entrada (20% a 80%)",
+      "Cálculo de parcelas mensais e valor financiado instantâneo",
+      "Cards com especificações técnicas (0-100 km/h, Potência e Blindagem Nível III-A)"
+    ]
+  },
+  {
+    id: "layout-estetica",
+    title: "AURA DERMA — Estética Avançada & Laser",
+    category: "layouts",
+    categoryLabel: "Estética",
+    badge: "Protocolos Clínicos",
+    shortDescription: "Website sofisticado em estética 'Quiet Beauty' com alternador interativo de protocolos a laser, indicação clínica e durabilidade.",
+    fullDescription: "Projetado para clínicas de dermatologia e estética regenerativa. Permite ao paciente explorar protocolos avançados (Ultraformer MPT, Laser Lavieen, Sculptra) conhecendo o tempo de recuperação (downtime), duração e investimento.",
+    image: "assets/images/layout-estetica.png",
+    gallery: [
+      "assets/images/layout-estetica.png"
+    ],
+    tags: ["Aesthetics UI", "Quiet Beauty", "Laser Protocols", "Interactive Treatments"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-estetica/index.html"
+    },
+    features: [
+      "Seletor dinâmico de tecnologias estéticas (Ultraformer MPT®, Lavieen® e Sculptra®)",
+      "Quadro explicativo com tempo de recuperação (*downtime*) e durabilidade média",
+      "Tipografia editorial elegante Cormorant Garamond em paleta nude/rosewood"
+    ]
+  },
+  {
+    id: "layout-odontologia",
+    title: "Lumina Dental Studio — Odontologia Digital & Facetas",
+    category: "layouts",
+    categoryLabel: "Odontologia",
+    badge: "Slider Antes / Depois",
+    shortDescription: "Clínica odontológica de alta tecnologia com simulador visual interativo de Antes e Depois (slider split-screen) e avaliação 3D.",
+    fullDescription: "Plataforma digital para clínicas de odontologia estética e reabilitação oral. Destaque para o componente interativo de arrasto (Before/After) que demonstra a transformação de sorriso com facetas cerâmicas e lentes de contato.",
+    image: "assets/images/layout-odontologia.png",
+    gallery: [
+      "assets/images/layout-odontologia.png"
+    ],
+    tags: ["Dental UI", "Before-After Slider", "Split-Screen", "Interactive Healthcare"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-odontologia/index.html"
+    },
+    features: [
+      "Simulador interativo Antes/Depois com puxador de arrasto responsivo",
+      "Detalhamento de tecnologias de ponta (Scanner Intraoral iTero® 5D e Implantes Suíços)",
+      "Agendamento direto para avaliação digital e escaneamento 3D"
+    ]
+  },
     features: [
       "Motor matemático de ondas orgânicas em 60fps com controle em tempo real",
       "Simulador funcional de conversão USD → BRL / EUR / GBP com cálculo de taxa",

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AURA DERMA — Estética Avançada & Tecnologias Laser</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body { background-color: #FAF6F3; color: #2B211E; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .font-serif-aura { font-family: 'Cormorant Garamond', serif; }
+  </style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+</head>
+<body class="min-h-screen antialiased">
+  <header class="border-b border-rose-900/10 bg-[#FAF6F3]/90 sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      <span class="font-serif-aura text-3xl tracking-wide text-rose-950">AURA DERMA</span>
+      <span class="text-xs uppercase tracking-widest text-rose-800 font-semibold">Harmonização Natural • Tecnologias Coreanas</span>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-6">
+      <span class="text-xs uppercase tracking-[0.25em] text-rose-700 font-semibold">Quiet Beauty & Rejuvenescimento</span>
+      <h1 class="font-serif-aura text-5xl sm:text-6xl mt-3 leading-[1.02]">Realce sua beleza com <em class="italic text-rose-700">naturalidade absoluta.</em></h1>
+      <p class="text-stone-600 text-sm sm:text-base mt-4">Selecione a tecnologia desejada abaixo para inspecionar indicação clínica, durabilidade e tempo de recuperação:</p>
+
+      <div class="flex flex-wrap gap-2 mt-6">
+        <button onclick="showProtocol('ultraformer')" class="px-4 py-2 rounded-full text-xs font-semibold bg-rose-900 text-white">Ultraformer MPT®</button>
+        <button onclick="showProtocol('lavieen')" class="px-4 py-2 rounded-full text-xs font-semibold bg-white border border-rose-200 text-rose-900">Laser Lavieen® BB</button>
+        <button onclick="showProtocol('sculptra')" class="px-4 py-2 rounded-full text-xs font-semibold bg-white border border-rose-200 text-rose-900">Bioestimulador Sculptra®</button>
+      </div>
+
+      <div id="protocol-card" class="mt-6 bg-white p-7 rounded-2xl border border-rose-900/10 shadow-sm"></div>
+    </div>
+
+    <div class="lg:col-span-6">
+      <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=80" class="w-full h-[440px] object-cover rounded-2xl shadow-lg" alt="Estética">
+    </div>
+  </main>
+
+  <script>
+    const PROTOCOLS = {
+      ultraformer: { title: "Ultraformer MPT® — Lifting sem Cortes", desc: "Ultrassom micro e macrofocado de última geração para contorno mandibular, estímulo de colágeno e redução de papada sem agulhas.", downtime: "Zero (Retorno imediato)", dur: "12 meses", price: "A partir de R$ 2.400" },
+      lavieen: { title: "Laser Thulium Lavieen® (Efeito BB Cream)", desc: "Fecha poros dilatados, uniformiza manchas de melasma e devolve o viço de pele de porcelana em uma única sessão.", downtime: "24h a 48h de leve vermelhidão", dur: "6 a 8 meses", price: "R$ 1.190 / sessão" },
+      sculptra: { title: "Bioestimulador de Colágeno (Ácido Poli-L-Láctico)", desc: "Recupera a firmeza dérmica facial e corporal aumentando em até 66% a produção natural de colágeno tipo I.", downtime: "Zero", dur: "Até 24 meses", price: "R$ 2.890 / ampola" }
+    };
+    window.showProtocol = function(key) {
+      const p = PROTOCOLS[key];
+      document.getElementById("protocol-card").innerHTML = `
+        <h3 class="font-serif-aura text-2xl font-bold text-rose-950">${p.title}</h3>
+        <p class="text-sm text-stone-600 mt-2 leading-relaxed">${p.desc}</p>
+        <div class="grid grid-cols-3 gap-3 mt-5 pt-4 border-t border-rose-100 text-xs">
+          <div><span class="text-stone-400 block">Recuperação</span><strong class="text-rose-900">${p.downtime}</strong></div>
+          <div><span class="text-stone-400 block">Durabilidade</span><strong class="text-rose-900">${p.dur}</strong></div>
+          <div><span class="text-stone-400 block">Investimento</span><strong class="text-rose-900">${p.price}</strong></div>
+        </div>
+      `;
+    };
+    showProtocol('ultraformer');
+  </script>
+  <!-- Vercel Web Analytics & Speed Insights -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>
