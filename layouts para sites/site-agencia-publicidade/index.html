@@ -1,52 +1,236 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KROMA* — Creative Growth & Branding Agency</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    body { background-color: #080808; color: #FFFFFF; font-family: 'Inter', sans-serif; }
+    body {
+      background-color: #07070A;
+      color: #FFFFFF;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
     .font-agency { font-family: 'Syne', sans-serif; }
+    .font-mono-tech { font-family: 'JetBrains Mono', monospace; }
+    
+    .bg-grid {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .glow-fuchsia {
+      background: radial-gradient(circle 600px at 50% 10%, rgba(217, 70, 239, 0.22), rgba(147, 51, 234, 0.12), transparent 70%);
+    }
+    .glow-cyan {
+      background: radial-gradient(circle 500px at 80% 25%, rgba(56, 189, 248, 0.15), transparent 60%);
+    }
+    .glass-card {
+      background: rgba(18, 18, 24, 0.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .glass-card:hover {
+      border-color: rgba(217, 70, 239, 0.45);
+      transform: translateY(-2px);
+    }
   </style>
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
 </head>
-<body class="min-h-screen antialiased">
-  <header class="border-b border-white/10 px-6 h-20 flex items-center justify-between max-w-7xl mx-auto">
-    <span class="font-agency text-2xl tracking-tight text-fuchsia-400">KROMA* STUDIO</span>
-    <span class="text-xs uppercase tracking-widest text-zinc-400">Cannes Lions Shortlist • Branding & Paid Media</span>
+<body class="min-h-screen antialiased relative selection:bg-fuchsia-500 selection:text-white">
+
+  <!-- Ambient Lighting Glows & Background Grid Pattern -->
+  <div class="fixed inset-0 bg-grid pointer-events-none opacity-40 z-0"></div>
+  <div class="fixed top-0 left-0 right-0 h-[650px] glow-fuchsia pointer-events-none z-0"></div>
+  <div class="fixed top-20 right-0 w-[550px] h-[550px] glow-cyan pointer-events-none z-0"></div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 backdrop-blur-xl bg-[#07070A]/80 border-b border-white/10 px-6 sm:px-10 h-20 flex items-center justify-between max-w-7xl mx-auto">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-fuchsia-600 via-purple-600 to-cyan-400 flex items-center justify-center font-agency font-extrabold text-white text-lg shadow-lg shadow-fuchsia-500/20">
+        K
+      </div>
+      <span class="font-agency text-2xl tracking-tight font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-200 to-fuchsia-400">
+        KROMA<span class="text-fuchsia-400">*</span>
+      </span>
+    </div>
+    
+    <div class="hidden md:flex items-center gap-8 text-xs font-medium tracking-wide uppercase text-zinc-400">
+      <a href="#cases" class="hover:text-white transition-colors">Cases & Resultados</a>
+      <a href="#servicos" class="hover:text-white transition-colors">Especialidades</a>
+      <a href="#simulador" class="hover:text-white transition-colors">Simulador</a>
+      <a href="#contato" class="hover:text-white transition-colors">Contato</a>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <span class="hidden sm:inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-mono-tech border border-emerald-500/30 bg-emerald-500/10 text-emerald-400">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        Agenda Q1/Q2 Aberta
+      </span>
+      <a href="#simulador" class="px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-500 hover:to-purple-500 text-white shadow-lg shadow-fuchsia-600/30 transition-all hover:scale-105 active:scale-95">
+        Solicitar Pitch
+      </a>
+    </div>
   </header>
 
-  <main class="max-w-7xl mx-auto px-6 py-16">
-    <h1 class="font-agency text-5xl sm:text-7xl leading-[0.95] max-w-4xl">Criatividade que constrói marcas <span class="text-fuchsia-400">e multiplica receita.</span></h1>
+  <!-- Hero Section -->
+  <main class="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 pt-12 pb-24">
+    
+    <!-- Top Pill -->
+    <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-fuchsia-500/30 bg-fuchsia-500/10 text-fuchsia-300 text-xs font-semibold uppercase tracking-wider mb-8 backdrop-blur-md">
+      <span class="w-2 h-2 rounded-full bg-fuchsia-400 animate-ping"></span>
+      Cannes Lions & D&AD Shortlist • Growth & Brand Equity
+    </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14">
-      <div class="p-7 rounded-2xl bg-zinc-900 border border-white/10">
-        <span class="text-xs font-bold uppercase text-fuchsia-400">Case 01 / Fintech</span>
-        <h3 class="font-agency text-2xl mt-2">Rebranding & Lançamento Nacional</h3>
-        <div class="text-4xl font-extrabold text-emerald-400 mt-6">+340%</div>
-        <p class="text-xs text-zinc-400 mt-1">Crescimento em abertura de contas em 90 dias.</p>
-      </div>
-      <div class="p-7 rounded-2xl bg-zinc-900 border border-white/10">
-        <span class="text-xs font-bold uppercase text-fuchsia-400">Case 02 / E-commerce Moda</span>
-        <h3 class="font-agency text-2xl mt-2">Direção Criativa TikTok & Meta Ads</h3>
-        <div class="text-4xl font-extrabold text-emerald-400 mt-6">8.4x ROAS</div>
-        <p class="text-xs text-zinc-400 mt-1">Retorno direto sobre investimento publicitário auditado.</p>
-      </div>
-      <div class="p-7 rounded-2xl bg-zinc-900 border border-fuchsia-500/40">
-        <span class="text-xs font-bold uppercase text-fuchsia-400">Simulador de Escopo</span>
-        <h3 class="font-agency text-xl mt-2">Qual seu objetivo principal?</h3>
-        <select onchange="document.getElementById('ag-res').textContent = this.value" class="w-full mt-4 px-3 py-2.5 bg-black border border-white/15 rounded-xl text-xs">
-          <option value="Squad Dedicado (Tráfego + Criativos): R$ 8.500/mês">Escalar Vendas & Performance (ROAS)</option>
-          <option value="Projeto Completo Identidade + Brandbook: R$ 14.000">Rebranding Completo & Identidade Visual</option>
-          <option value="Produção 3D + Campanha Lançamento: R$ 19.000">Campanha de Lançamento 360°</option>
-        </select>
-        <p id="ag-res" class="mt-4 text-xs font-bold text-fuchsia-300">Squad Dedicado (Tráfego + Criativos): R$ 8.500/mês</p>
+    <!-- Main Title -->
+    <h1 class="font-agency text-5xl sm:text-7xl lg:text-8xl font-extrabold leading-[0.92] tracking-tight max-w-5xl">
+      Criatividade radical que <span class="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 via-purple-300 to-cyan-400">multiplica marcas e receita.</span>
+    </h1>
+
+    <p class="mt-6 text-base sm:text-lg text-zinc-300 max-w-2xl leading-relaxed font-normal">
+      Convergência entre design proprietário, engenharia de growth e mídia de alta performance para liderar categorias de mercado.
+    </p>
+
+    <!-- Visual Hero Banner (Showcase de Campanha) -->
+    <div class="relative rounded-3xl overflow-hidden border border-white/15 h-80 sm:h-[420px] my-12 shadow-2xl group">
+      <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1600&auto=format&fit=crop"
+           alt="Kroma Studio Showcase"
+           class="w-full h-full object-cover object-center filter brightness-[0.82] contrast-[1.08] transition-transform duration-700 group-hover:scale-105">
+      <div class="absolute inset-0 bg-gradient-to-t from-[#07070A] via-black/40 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-purple-900/40 via-transparent to-cyan-900/30"></div>
+
+      <!-- Floating Badge on Banner -->
+      <div class="absolute bottom-6 left-6 sm:left-10 right-6 flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <span class="px-3 py-1 rounded-full text-[10px] font-mono-tech uppercase font-bold tracking-widest bg-fuchsia-600 text-white shadow-lg">
+            Campanha Global 2026
+          </span>
+          <h2 class="font-agency text-2xl sm:text-4xl font-extrabold text-white mt-2 drop-shadow-lg">
+            Aura Nova — Rebranding & Experience Design
+          </h2>
+          <p class="text-xs sm:text-sm text-zinc-300 mt-1 drop-shadow">Direção criativa, filme manifesto 3D e expansão omnichannel.</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="px-4 py-2 rounded-2xl glass-card text-right">
+            <div class="text-xl sm:text-2xl font-agency font-bold text-emerald-400">+480%</div>
+            <div class="text-[10px] uppercase font-mono-tech text-zinc-400">Brand Lift Auditado</div>
+          </div>
+          <div class="px-4 py-2 rounded-2xl glass-card text-right">
+            <div class="text-xl sm:text-2xl font-agency font-bold text-cyan-400">12.8M</div>
+            <div class="text-[10px] uppercase font-mono-tech text-zinc-400">Alcance Orgânico</div>
+          </div>
+        </div>
       </div>
     </div>
+
+    <!-- Cases & Metrics Grid -->
+    <div id="cases" class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14">
+      
+      <!-- Case 01 -->
+      <div class="glass-card p-8 rounded-3xl transition-all duration-300 relative overflow-hidden group">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-fuchsia-500/10 rounded-full blur-2xl group-hover:bg-fuchsia-500/25 transition-all"></div>
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs font-mono-tech font-bold uppercase tracking-wider text-fuchsia-400">Case 01 • Fintech</span>
+          <span class="text-[11px] font-mono-tech text-zinc-500">2026</span>
+        </div>
+        <h3 class="font-agency text-2xl font-bold leading-snug">Rebranding Global & Aquisição Institucional</h3>
+        <p class="text-xs text-zinc-400 mt-3 leading-relaxed">Redesenho completo de ecossistema visual, pitch decks de captação e mídia de performance B2B.</p>
+        <div class="mt-8 pt-6 border-t border-white/10 flex items-baseline justify-between">
+          <div>
+            <div class="text-4xl font-agency font-extrabold text-emerald-400">+340%</div>
+            <div class="text-[11px] text-zinc-400 mt-1">Crescimento de contas em 90 dias</div>
+          </div>
+          <span class="text-xs font-bold text-fuchsia-400 group-hover:translate-x-1 transition-transform">Ver Case →</span>
+        </div>
+      </div>
+
+      <!-- Case 02 -->
+      <div class="glass-card p-8 rounded-3xl transition-all duration-300 relative overflow-hidden group">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/25 transition-all"></div>
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs font-mono-tech font-bold uppercase tracking-wider text-cyan-400">Case 02 • E-commerce Moda</span>
+          <span class="text-[11px] font-mono-tech text-zinc-500">2026</span>
+        </div>
+        <h3 class="font-agency text-2xl font-bold leading-snug">Direção Criativa TikTok & Meta Ads</h3>
+        <p class="text-xs text-zinc-400 mt-3 leading-relaxed">Produção de mais de 120 criativos modulares de alta retenção com otimização algorítmica diária.</p>
+        <div class="mt-8 pt-6 border-t border-white/10 flex items-baseline justify-between">
+          <div>
+            <div class="text-4xl font-agency font-extrabold text-cyan-400">8.4x ROAS</div>
+            <div class="text-[11px] text-zinc-400 mt-1">Retorno auditado em campanhas pagas</div>
+          </div>
+          <span class="text-xs font-bold text-cyan-400 group-hover:translate-x-1 transition-transform">Ver Case →</span>
+        </div>
+      </div>
+
+      <!-- Case 03 / Simulator -->
+      <div id="simulador" class="glass-card p-8 rounded-3xl border-fuchsia-500/40 relative overflow-hidden">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs font-mono-tech font-bold uppercase tracking-wider text-fuchsia-400">Simulador de Escopo</span>
+          <span class="px-2 py-0.5 rounded text-[10px] font-mono-tech bg-fuchsia-500/20 text-fuchsia-300">Estimativa</span>
+        </div>
+        <h3 class="font-agency text-xl font-bold">Qual o desafio principal da sua marca?</h3>
+        
+        <div class="mt-5 space-y-3">
+          <label class="block text-xs text-zinc-400">Selecione o objetivo:</label>
+          <select id="ag-select" onchange="updateSim()" class="w-full px-3.5 py-3 bg-black/80 border border-white/20 rounded-xl text-xs text-white focus:outline-none focus:border-fuchsia-500">
+            <option value="growth">Escalar Vendas & Paid Growth (ROAS)</option>
+            <option value="rebranding">Rebranding Completo & Identidade Visual</option>
+            <option value="launch">Campanha de Lançamento 360° (Filme + 3D)</option>
+          </select>
+        </div>
+
+        <div class="mt-6 p-4 rounded-2xl bg-black/60 border border-white/10">
+          <div class="text-[10px] uppercase font-mono-tech text-zinc-400">Investimento Recomendado:</div>
+          <div id="ag-res" class="text-lg font-agency font-extrabold text-fuchsia-400 mt-1">Squad Dedicado: R$ 8.500 /mês</div>
+          <div id="ag-detail" class="text-[11px] text-zinc-400 mt-1">Gestão de tráfego, 24 criativos/mês e CRO.</div>
+        </div>
+
+        <button onclick="alert('Solicitação recebida! Nossa diretoria de contas entrará em contato em até 2 horas úteis.')"
+                class="w-full mt-5 py-3 rounded-xl bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-500 hover:to-purple-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg transition-all">
+          Reservar Proposta Executiva
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Client Trust Marquee / Recognition -->
+    <div class="mt-20 pt-10 border-t border-white/10 text-center">
+      <p class="text-xs uppercase font-mono-tech tracking-widest text-zinc-500 mb-6">
+        Marcas impactadas por nossa metodologia de crescimento
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-8 sm:gap-14 opacity-60 grayscale hover:grayscale-0 transition-all font-agency text-xl font-bold tracking-wider text-zinc-400">
+        <span>VOLT™ ENERGY</span>
+        <span>AURA CAPITAL</span>
+        <span>LUMEN HEALTH</span>
+        <span>NEXUS LOGISTICS</span>
+        <span>KINETIX APPAREL</span>
+      </div>
+    </div>
+
   </main>
+
+  <script>
+    function updateSim() {
+      const val = document.getElementById('ag-select').value;
+      const res = document.getElementById('ag-res');
+      const det = document.getElementById('ag-detail');
+      if (val === 'growth') {
+        res.textContent = 'Squad Dedicado: R$ 8.500 /mês';
+        det.textContent = 'Gestão de tráfego, 24 criativos modulares/mês e CRO.';
+      } else if (val === 'rebranding') {
+        res.textContent = 'Brandbook + Identidade: R$ 14.500';
+        det.textContent = 'Tipografia proprietária, tom de voz, design system e papelaria.';
+      } else if (val === 'launch') {
+        res.textContent = 'Campanha 360°: R$ 22.000';
+        det.textContent = 'Filme manifesto 4K, assets 3D, press kit e ativação com creators.';
+      }
+    }
+  </script>
+
   <!-- Vercel Web Analytics & Speed Insights -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
