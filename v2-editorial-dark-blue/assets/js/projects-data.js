@@ -266,8 +266,9 @@ const PROJECTS_DATA = [
     badge: "Awwwards Style • CSS Mask",
     shortDescription: "Hero section experimental para portfólios de fotografia e direção de arte com revelação de escultura dourada guiada pelo cursor.",
     fullDescription: "Estudo de interface editorial inspirado em estúdios de fotografia europeus. Utiliza uma pilha de 4 camadas com CSS radial-gradient mask-image e interpolação física (Lerp) para revelar uma textura de estátua barroca dourada sob a pele humana.",
-    image: "../layouts para sites/site face/image.png",
+    image: "assets/images/layout-site-face.png",
     gallery: [
+      "assets/images/layout-site-face.png",
       "../layouts para sites/site face/image.png"
     ],
     tags: ["CSS Mask-Image", "Lerp Physics", "Editorial Typography", "Interactive Hero"],
@@ -289,8 +290,9 @@ const PROJECTS_DATA = [
     badge: "Interactive • Dual Layer",
     shortDescription: "Conceito interativo para estúdios de tatuagem e moda que revela a arte corporal oculta sob a roupa ao passar o cursor.",
     fullDescription: "Layout interativo de alto impacto visual pensado para artistas de tatuagem e campanhas de moda. O visitante vê o retrato formal com roupa e, ao explorar a imagem com o mouse, revela a camada subjacente com o fechamento completo de tatuagens.",
-    image: "../layouts para sites/site tattoo/tatuado.jpg",
+    image: "assets/images/layout-site-tattoo.png",
     gallery: [
+      "assets/images/layout-site-tattoo.png",
       "../layouts para sites/site tattoo/tatuado.jpg",
       "../layouts para sites/site tattoo/com-roupa.jpg"
     ],
@@ -313,9 +315,9 @@ const PROJECTS_DATA = [
     badge: "Template B2B • Bento Grid",
     shortDescription: "Landing page de alta conversão estilo Linear/Vercel para startups de IA, com Bento Grid iluminado por spotlight e tabela de preços dinâmica.",
     fullDescription: "Modelo de página comercial para produtos SaaS e ferramentas de desenvolvedor. Conta com preview de código em sintaxe colorida, cards com iluminação radial que reage à posição do mouse e alternador de planos Mensal/Anual.",
-    image: "assets/images/radar-ia-real.png",
+    image: "assets/images/layout-saas-ai.png",
     gallery: [
-      "assets/images/radar-ia-real.png"
+      "assets/images/layout-saas-ai.png"
     ],
     tags: ["Tailwind CSS", "Bento Grid", "Mouse Spotlight", "SaaS Conversion"],
     links: {
@@ -336,9 +338,9 @@ const PROJECTS_DATA = [
     badge: "Minimalista • Luxury UI",
     shortDescription: "Layout editorial em tons de pedra e tipografia serifada Cormorant Garamond, com galeria em acordeão horizontal expansível.",
     fullDescription: "Template voltado para escritórios de arquitetura, design de interiores e marcas de luxo. Substitui carrosséis tradicionais por um acordeão fluido em CSS cubic-bezier que expande as obras arquitetônicas ao toque do cursor.",
-    image: "assets/images/bookshelf-atlas-real.png",
+    image: "assets/images/layout-arquitetura.png",
     gallery: [
-      "assets/images/bookshelf-atlas-real.png"
+      "assets/images/layout-arquitetura.png"
     ],
     tags: ["Editorial Design", "Cormorant Garamond", "CSS Flex Accordion", "Luxury"],
     links: {
@@ -359,9 +361,9 @@ const PROJECTS_DATA = [
     badge: "Gastronomia • Drawer Interativo",
     shortDescription: "Site de alta gastronomia japonesa com menu degustação em 16 tempos, estética minimalista escura e drawer lateral de reservas.",
     fullDescription: "Experiência digital premium para restaurantes conceituais e hospitalidade. Apresenta tipografia Cinzel e Noto Serif JP, detalhamento poético dos pratos sazonais e sistema interativo de reserva com seleção de turnos.",
-    image: "assets/images/radar-ia-real.png",
+    image: "assets/images/layout-omakase.png",
     gallery: [
-      "assets/images/radar-ia-real.png"
+      "assets/images/layout-omakase.png"
     ],
     tags: ["Luxury Hospitality", "Interactive Drawer", "Minimalism", "Tailwind CSS"],
     links: {
@@ -382,9 +384,9 @@ const PROJECTS_DATA = [
     badge: "Simplex 3D • Fintech",
     shortDescription: "Landing page em tema obsidian com simulação física de onda líquida em Canvas 2D (Simplex 3D + Gerstner) e simulador cambial interativo.",
     fullDescription: "Layout de alta performance desenvolvido para fintechs e infraestruturas de pagamentos globais. Combina um fundo de partículas reativas ao cursor em 60fps com um simulador cambial glassmorphic funcional.",
-    image: "assets/images/juros-compostos-real.png",
+    image: "assets/images/layout-meridian-wave.png",
     gallery: [
-      "assets/images/juros-compostos-real.png"
+      "assets/images/layout-meridian-wave.png"
     ],
     tags: ["HTML5 Canvas", "Simplex 3D Noise", "Glassmorphism", "Fintech UI"],
     links: {
