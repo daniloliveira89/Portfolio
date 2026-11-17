@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TITAN USINAGEM CNC & CALDEIRARIA INDUSTRIAL</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body { background-color: #0D1117; color: #F1F5F9; font-family: 'Inter', sans-serif; }
+    .font-tech { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="min-h-screen antialiased">
+  <header class="border-b border-amber-500/20 bg-[#0D1117] sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 bg-amber-500 text-black font-black flex items-center justify-center rounded-md">T</div>
+        <div>
+          <span class="font-extrabold tracking-tight text-lg block leading-none">TITAN <span class="text-amber-500">INDÚSTRIA METALÚRGICA</span></span>
+          <span class="font-tech text-[10px] text-slate-400">FERRAMENTARIA DE PRECISÃO • USINAGEM CNC 5 EIXOS • CALDEIRARIA ASME</span>
+        </div>
+      </div>
+      <span class="hidden md:inline-block font-tech text-xs px-3 py-1 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/30">ISO 9001:2015 • Metrologia Tridimensional CMM</span>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-6">
+      <span class="font-tech text-xs uppercase text-amber-400">Tolerância Centesimal (±0.005mm) & Solda Qualificada AWS</span>
+      <h1 class="text-4xl sm:text-6xl font-extrabold mt-3 leading-tight">Moldes de injeção, usinagem CNC e caldeiraria pesada.</h1>
+      <p class="text-slate-400 mt-4 leading-relaxed">Fabricamos matrizes de estampo, dispositivos de controle, tanques de pressão em aço inox, estruturas metálicas industriais e lotes seriados sob desenho técnico (STEP / IGES / SolidWorks).</p>
+
+      <div class="grid grid-cols-3 gap-3 mt-8 pt-6 border-t border-white/10 font-tech">
+        <div><div class="text-2xl font-bold text-amber-400">5 Eixos</div><div class="text-[11px] text-slate-400">Centros Romi / Mazak</div></div>
+        <div><div class="text-2xl font-bold text-white">25 Ton</div><div class="text-[11px] text-slate-400">Ponte Rolante Interna</div></div>
+        <div><div class="text-2xl font-bold text-white">100%</div><div class="text-[11px] text-slate-400">Laudo Dimensional</div></div>
+      </div>
+    </div>
+
+    <!-- Configurador de Cotação Técnica B2B -->
+    <div class="lg:col-span-6 bg-[#161C24] border border-amber-500/35 rounded-3xl p-8 shadow-2xl">
+      <h2 class="text-xl font-extrabold mb-1">Simulador de Engenharia & Cotação Técnica</h2>
+      <p class="text-xs text-slate-400 mb-6">Selecione o processo fabril e a matéria-prima do seu projeto:</p>
+
+      <div class="space-y-4">
+        <div>
+          <label class="text-xs font-bold uppercase text-slate-400 block mb-1">1. Setor / Processo Industrial</label>
+          <select id="ind-proc" class="w-full px-4 py-3 bg-black border border-white/15 rounded-xl text-sm font-semibold text-white">
+            <option value="Ferramentaria: Construção/Manutenção de Molde de Injeção ou Estampo">Ferramentaria — Moldes de Injeção / Estampos / Dispositivos</option>
+            <option value="Usinagem CNC: Centro 5 Eixos, Torno CNC e Eletroerosão a Fio" selected>Usinagem de Precisão — CNC 5 Eixos / Eletroerosão a Fio</option>
+            <option value="Caldeiraria Pesada: Corte Laser, Dobra CNC, Solda MIG/TIG e Vasos de Pressão">Caldeiraria & Corte/Dobra — Tanques Inox, Skids e Estruturas</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="text-xs font-bold uppercase text-slate-400 block mb-1">2. Liga Metálica / Especificação</label>
+          <select id="ind-mat" class="w-full px-4 py-3 bg-black border border-white/15 rounded-xl text-sm font-semibold text-white">
+            <option value="Aço Ferramenta Temperado (P20 / H13 / D2)">Aço Ferramenta Temperado (P20 / H13 / VND / D2)</option>
+            <option value="Aço Inoxidável Sanitário (AISI 304 / 316L)">Aço Inoxidável Certificado (AISI 304 / 316L)</option>
+            <option value="Aço Carbono Estrutural (ASTM A36 / SAE 1045)">Aço Carbono Estrutural (ASTM A36 / SAE 1045)</option>
+            <option value="Alumínio Aeronáutico/Naval (7075-T6 / 6061)">Alumínio de Alta Resistência (7075-T6 / 6061)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mt-6 p-4 rounded-xl bg-black/60 border border-white/10 font-tech text-xs">
+        <span class="text-amber-400 block mb-1">● ESPECIFICAÇÃO TÉCNICA SELECIONADA:</span>
+        <p id="ind-summary" class="text-slate-300 leading-relaxed"></p>
+      </div>
+
+      <button onclick="alert('Solicitação enviada à Engenharia de Orçamentos! Aceitamos arquivos .STEP, .DWG e .PDF.')" class="mt-6 w-full py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-extrabold text-xs uppercase tracking-widest transition">
+        Enviar Desenho Técnico p/ Cotação →
+      </button>
+    </div>
+  </main>
+
+  <script>
+    const pSel = document.getElementById('ind-proc'), mSel = document.getElementById('ind-mat');
+    function updateInd() {
+      document.getElementById('ind-summary').textContent = `${pSel.value} | Matéria-prima: ${mSel.value} com certificado de usina e relatório tridimensional.`;
+    }
+    pSel.addEventListener('change', updateInd); mSel.addEventListener('change', updateInd);
+    updateInd();
+  </script>
+  <!-- Vercel Web Analytics & Speed Insights -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

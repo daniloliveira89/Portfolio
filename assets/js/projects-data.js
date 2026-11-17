@@ -1019,6 +1019,144 @@ const PROJECTS_DATA = [
     ]
   },
 
+  {
+    id: "layout-banda-gravadora",
+    title: "SUBSONIC COLLECTIVE — Banda & Gravadora Musical",
+    category: "layouts",
+    categoryLabel: "Música & Entretenimento",
+    badge: "Synthwave • Music Player",
+    shortDescription: "Landing page e hub digital para banda independente de synthwave e selo musical com player de faixas integrado, discografia e datas de turnê.",
+    fullDescription: "Estética retrofuturista neon com visualizador de faixas, loja de vinis exclusivos, agenda mundial de shows com compra de ingressos e formulário para imprensa e bookings.",
+    image: "assets/images/layout-banda-gravadora.png",
+    gallery: [
+      "assets/images/layout-banda-gravadora.png"
+    ],
+    tags: ["Music Streaming", "Synthwave UI", "Tour Dates", "Record Label", "Dark Neon"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-banda-gravadora/index.html"
+    },
+    features: [
+      "Player de streaming imersivo com controle de reprodução e faixas em destaque",
+      "Agenda de turnê internacional com integração para reserva de ingressos",
+      "Catálogo de discografia com merchandising oficial e venda de vinis limitados"
+    ]
+  },
+  {
+    id: "layout-ferramentaria-caldeiraria",
+    title: "TITAN USINAGEM CNC & Caldeiraria Industrial",
+    category: "layouts",
+    categoryLabel: "Indústria & Caldeiraria",
+    badge: "CNC 5 Eixos • Caldeiraria",
+    shortDescription: "Portal técnico para indústria de ferramentaria pesada, fabricação de moldes plásticos, usinagem CNC de precisão e estruturas metálicas.",
+    fullDescription: "Layout corporativo robusto com detalhamento de parque de máquinas de 5 eixos, certificações ISO 9001, galeria de peças com tolerância micrométrica e formulário de cotação com upload de projetos em CAD/STEP.",
+    image: "assets/images/layout-ferramentaria-caldeiraria.png",
+    gallery: [
+      "assets/images/layout-ferramentaria-caldeiraria.png"
+    ],
+    tags: ["Indústria Pesada", "Usinagem CNC", "Caldeiraria", "B2B Industrial", "Engenharia Mecânica"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-ferramentaria-caldeiraria/index.html"
+    },
+    features: [
+      "Apresentação do parque industrial com centros de usinagem e tornos verticais CNC",
+      "Solicitação expressa de cotação técnica B2B com suporte a especificações técnicas",
+      "Seção de garantia de qualidade metrológica com rastreabilidade dimensional"
+    ]
+  },
+  {
+    id: "layout-limpeza-manutencao",
+    title: "PURECARE FACILITIES — Limpeza Pós-Obra & Manutenção",
+    category: "layouts",
+    categoryLabel: "Facilities & Serviços",
+    badge: "Pós-Obra • Corporativo",
+    shortDescription: "Soluções completas de facilities para empresas e condomínios, incluindo limpeza técnica pós-obra, sanitização hospitalar e zeladoria predial.",
+    fullDescription: "Design claro, profissional e confiável com calculador interativo de metragem quadrada, equipe treinada NR-35/NR-10, produtos ecológicos com laudo ANVISA e contratação recorrente.",
+    image: "assets/images/layout-limpeza-manutencao.png",
+    gallery: [
+      "assets/images/layout-limpeza-manutencao.png"
+    ],
+    tags: ["Facilities", "Limpeza Corporativa", "Pós-Obra", "Manutenção Predial", "Orçamento Online"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-limpeza-manutencao/index.html"
+    },
+    features: [
+      "Calculadora de escopo por m² para limpeza residencial, empresarial ou industrial",
+      "Apresentação de protocolos de segurança e certificações de conformidade técnica",
+      "Canal direto para atendimento emergencial e escala de terceirização contínua"
+    ]
+  },
+  {
+    id: "layout-moveis-decoracao",
+    title: "ATELIER NORD — Mobiliário Autoral & Design Escandinavo",
+    category: "layouts",
+    categoryLabel: "Móveis & Design Autoral",
+    badge: "Marcenaria Fina • Madeira Maciça",
+    shortDescription: "Showroom digital de móveis autorais e peças de design em madeira nobre certificada, unindo estética nórdica minimalista e marcenaria artesanal.",
+    fullDescription: "Experiência de alta classe com tipografia editorial, fotografia de catálogo em alta definição, especificações de madeira de reflorestamento e consultoria personalizada para projetos de interiores.",
+    image: "assets/images/layout-moveis-decoracao.png",
+    gallery: [
+      "assets/images/layout-moveis-decoracao.png"
+    ],
+    tags: ["Design Autoral", "Mobiliário Nórdico", "Madeira Maciça", "Minimalismo", "Interiores"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-moveis-decoracao/index.html"
+    },
+    features: [
+      "Vitrine minimalista de peças autorais com visualização 360 e acabamentos",
+      "Contador de tiragem limitada e numeração de série para colecionadores",
+      "Agendamento de visita privativa ao showroom físico ou atendimento com arquiteto"
+    ]
+  },
+  {
+    id: "layout-produtora-audiovisual",
+    title: "KINO*85 FILMS — Produtora Cinematográfica & Pós-Produção",
+    category: "layouts",
+    categoryLabel: "Audiovisual & Cinema",
+    badge: "Cinema • Commercial & Reels",
+    shortDescription: "Portfólio cinematográfico para produtora de filmes publicitários, clipes musicais, séries documentais e pós-produção em escala de cinema.",
+    fullDescription: "Visual widescreen impactante em tons pretos e acentos escarlate, com showreel dinâmico em tela cheia, ficha técnica por projeto (direção, fotografia, montagem) e premiações em festivais internacionais.",
+    image: "assets/images/layout-produtora-audiovisual.png",
+    gallery: [
+      "assets/images/layout-produtora-audiovisual.png"
+    ],
+    tags: ["Cinema", "Audiovisual", "Showreel", "Publicidade", "Direção de Arte", "Pós-Produção"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-produtora-audiovisual/index.html"
+    },
+    features: [
+      "Showreel dinâmico em destaque com controle de volume e imersão fullscreen",
+      "Filtro de obras por gênero: Publicidade, Documentário, Moda e Videoclipes",
+      "Workflow detalhado da pré-produção ao color grading e entrega master"
+    ]
+  },
+  {
+    id: "layout-psicologia",
+    title: "DRA. CLARICE MENDES — Psicologia Clínica & TCC",
+    category: "layouts",
+    categoryLabel: "Saúde Mental & Psicologia",
+    badge: "Terapia Cognitiva • Presencial & Online",
+    shortDescription: "Consultório de psicoterapia humanizada baseada em evidências, com foco em Terapia Cognitivo-Comportamental (TCC) para ansiedade, estresse e desenvolvimento pessoal.",
+    fullDescription: "Ambiente digital acolhedor e seguro com tons naturais e tipografia serena. Apresenta abordagens terapêuticas, funcionamento de sessões online com criptografia ponta a ponta e agendamento via WhatsApp.",
+    image: "assets/images/layout-psicologia.png",
+    gallery: [
+      "assets/images/layout-psicologia.png"
+    ],
+    tags: ["Psicologia Clínica", "Saúde Mental", "Terapia TCC", "Atendimento Online", "Bem-Estar"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-psicologia/index.html"
+    },
+    features: [
+      "Exposição clara das linhas de tratamento (Ansiedade, Burnout, Transição de Carreira)",
+      "Guia informativo de como funciona a consulta online para novos pacientes",
+      "Agendamento simplificado e humanizado com integração direta ao WhatsApp da clínica"
+    ]
+  },
   // ==========================================
   // 5. EXTENSÕES CHROME (MANIFEST V3)
   // ==========================================

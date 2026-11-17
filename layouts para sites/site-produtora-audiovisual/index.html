@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KINO*85 FILMS — Produtora Cinematográfica & Pós-Produção</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { background-color: #070708; color: #F5F5F7; font-family: 'Inter', sans-serif; }
+    .font-kino { font-family: 'Syne', sans-serif; }
+    .font-tc { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="min-h-screen antialiased">
+  <header class="border-b border-white/10 px-6 h-20 flex items-center justify-between max-w-7xl mx-auto">
+    <span class="font-kino text-2xl tracking-tight text-red-500">● REC // KINO*85</span>
+    <span class="font-tc text-xs text-zinc-400">TC 01:14:22:09 • ARRI ALEXA MINI LF • ANAMORPHIC</span>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-7">
+      <span class="font-tc text-xs uppercase text-red-500">Cinema Publicitário, Documentários & Fashion Films</span>
+      <h1 class="font-kino text-5xl sm:text-7xl mt-3 leading-[0.95]">Narrativas visuais em <span class="text-red-500">escala de cinema.</span></h1>
+      <div class="relative mt-8 rounded-2xl overflow-hidden border border-white/15">
+        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1000&q=80" class="w-full h-72 object-cover" alt="Cinema Set">
+        <div class="absolute inset-0 bg-black/50 flex items-center justify-center">
+          <button onclick="alert('Reproduzindo Showreel 4K HDR (2026)...')" class="px-6 py-3 rounded-full bg-red-600 hover:bg-red-500 text-white font-bold text-xs uppercase tracking-widest shadow-2xl">▶ Assistir Showreel 4K</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Orçamentador de Diária de Filmagem -->
+    <div class="lg:col-span-5 bg-[#121215] border border-white/15 rounded-3xl p-8">
+      <h2 class="font-kino text-2xl mb-1">Estimador de Diária de Set</h2>
+      <p class="text-xs text-zinc-400 mb-6">Configure a estrutura técnica para a sua produção:</p>
+
+      <div class="space-y-4">
+        <div>
+          <label class="text-xs text-zinc-400 block mb-1">Câmera & Óptica Principal</label>
+          <select id="cam-sel" class="w-full px-4 py-3 bg-black border border-white/15 rounded-xl text-xs font-semibold">
+            <option value="6500">Sony FX9 6K Full-Frame + Lentes G-Master (R$ 6.500)</option>
+            <option value="12800" selected>RED V-Raptor 8K VV + Lentes Cooke Anamórficas (R$ 12.800)</option>
+            <option value="18500">ARRI Alexa Mini LF + Master Primes + Steadicam (R$ 18.500)</option>
+          </select>
+        </div>
+        <div>
+          <div class="flex justify-between text-xs mb-1"><span>Diárias de Gravação</span><strong id="days-film">2 Diárias</strong></div>
+          <input id="days-slider" type="range" min="1" max="10" value="2" class="w-full accent-red-500">
+        </div>
+        <label class="flex items-center justify-between p-3.5 rounded-xl bg-black border border-white/10 text-xs cursor-pointer">
+          <span><input type="checkbox" id="post-chk" checked class="accent-red-500 mr-2"> Incluir Edição, Color Grading DaVinci & Sound Design</span>
+          <strong class="text-red-400">+ R$ 4.500</strong>
+        </label>
+      </div>
+
+      <div class="mt-6 p-4 rounded-xl bg-black border border-white/10 flex justify-between items-center">
+        <span class="text-xs text-zinc-400">Orçamento Estimado:</span>
+        <strong id="film-total" class="font-tc text-2xl font-bold text-red-500">R$ 30.100</strong>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const cSel = document.getElementById('cam-sel'), dSli = document.getElementById('days-slider'), pChk = document.getElementById('post-chk');
+    function calcFilm() {
+      const rate = Number(cSel.value), days = Number(dSli.value), post = pChk.checked ? 4500 : 0;
+      document.getElementById('days-film').textContent = days + (days === 1 ? ' Diária' : ' Diárias');
+      document.getElementById('film-total').textContent = 'R$ ' + (rate * days + post).toLocaleString('pt-BR');
+    }
+    cSel.addEventListener('change', calcFilm); dSli.addEventListener('input', calcFilm); pChk.addEventListener('change', calcFilm);
+    calcFilm();
+  </script>
+  <!-- Vercel Web Analytics & Speed Insights -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

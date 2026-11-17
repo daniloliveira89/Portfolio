@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PURECARE FACILITIES — Limpeza Pós-Obra, Corporativa & Manutenção</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>body { background-color: #F0F9FF; color: #0C4A6E; font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+</head>
+<body class="min-h-screen antialiased">
+  <header class="bg-white border-b border-sky-900/10 sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      <span class="font-extrabold text-2xl text-sky-600">✨ PURECARE <span class="text-xs uppercase tracking-widest text-slate-400">Facilities</span></span>
+      <span class="px-3.5 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-bold">Equipe Uniformizada & Segurada • Produtos Biodegradáveis</span>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-6">
+      <span class="text-xs font-extrabold uppercase tracking-wider text-sky-600">Atendimento Residencial & Corporativo</span>
+      <h1 class="text-4xl sm:text-6xl font-extrabold mt-2 leading-tight text-slate-900">Ambientes impecáveis sem dor de cabeça.</h1>
+      <p class="text-slate-600 mt-4">Especialistas em limpeza técnica pós-obra fina, higienização de vidros em altura, impermeabilização de estofados e manutenção predial.</p>
+    </div>
+
+    <!-- Calculadora de Limpeza por m² -->
+    <div class="lg:col-span-6 bg-white p-8 rounded-3xl border border-sky-200 shadow-xl">
+      <h2 class="text-2xl font-extrabold text-slate-900 mb-1">Orçamento Instantâneo por m²</h2>
+      <p class="text-xs text-slate-500 mb-6">Veja o dimensionamento de equipe e produtos já inclusos:</p>
+
+      <div class="space-y-4">
+        <div>
+          <label class="text-xs font-bold uppercase text-slate-500 block mb-1">Modalidade de Serviço</label>
+          <select id="clean-type" class="w-full px-4 py-3 rounded-xl bg-sky-50 border border-sky-200 text-sm font-bold text-slate-800">
+            <option value="4.5">Limpeza Express Residencial / Escritório (R$ 4,50/m²)</option>
+            <option value="12.0" selected>Limpeza Técnica Pós-Obra Pesada c/ Maquinário (R$ 12,00/m²)</option>
+            <option value="8.0">Tratamento de Piso & Higienização Profunda (R$ 8,00/m²)</option>
+          </select>
+        </div>
+
+        <div>
+          <div class="flex justify-between text-xs font-bold mb-1"><span>Metragem do Imóvel</span><strong id="m2-clean" class="text-sky-600 text-base">140 m²</strong></div>
+          <input id="clean-slider" type="range" min="40" max="600" step="10" value="140" class="w-full accent-sky-600">
+        </div>
+      </div>
+
+      <div class="mt-6 p-4 rounded-2xl bg-sky-50 border border-sky-200 flex justify-between items-center">
+        <div>
+          <span class="text-xs text-slate-500 block">Equipe Designada</span>
+          <strong id="clean-staff" class="text-sm text-slate-900">3 Profissionais + Encarregado</strong>
+        </div>
+        <div class="text-right">
+          <span class="text-xs text-slate-500 block">Valor Tudo Incluso</span>
+          <strong id="clean-total" class="text-2xl font-extrabold text-sky-600">R$ 1.680</strong>
+        </div>
+      </div>
+
+      <button onclick="alert('Agendamento pré-confirmado! Levamos todos os equipamentos e produtos.')" class="mt-6 w-full py-3.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs uppercase tracking-widest transition">
+        Agendar Equipe Técnica →
+      </button>
+    </div>
+  </main>
+
+  <script>
+    const cType = document.getElementById('clean-type'), cSlider = document.getElementById('clean-slider');
+    function calcClean() {
+      const rate = Number(cType.value), m2 = Number(cSlider.value);
+      const staff = Math.max(2, Math.ceil(m2 / 60));
+      document.getElementById('m2-clean').textContent = m2 + ' m²';
+      document.getElementById('clean-staff').textContent = `${staff} Profissionais + Maquinário`;
+      document.getElementById('clean-total').textContent = 'R$ ' + Math.round(m2 * rate).toLocaleString('pt-BR');
+    }
+    cType.addEventListener('change', calcClean); cSlider.addEventListener('input', calcClean);
+    calcClean();
+  </script>
+  <!-- Vercel Web Analytics & Speed Insights -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>
