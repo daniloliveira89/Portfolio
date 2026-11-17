@@ -374,6 +374,29 @@ const PROJECTS_DATA = [
       "Direção de arte contemplativa com paleta preta, carvão e dourado imperial"
     ]
   },
+  {
+    id: "layout-meridian-wave",
+    title: "Meridian™ — Fintech & Liquid Wave Canvas",
+    category: "layouts",
+    categoryLabel: "Layouts & UI Lab",
+    badge: "Simplex 3D • Fintech",
+    shortDescription: "Landing page em tema obsidian com simulação física de onda líquida em Canvas 2D (Simplex 3D + Gerstner) e simulador cambial interativo.",
+    fullDescription: "Layout de alta performance desenvolvido para fintechs e infraestruturas de pagamentos globais. Combina um fundo de partículas reativas ao cursor em 60fps com um simulador cambial glassmorphic funcional.",
+    image: "assets/images/juros-compostos-real.png",
+    gallery: [
+      "assets/images/juros-compostos-real.png"
+    ],
+    tags: ["HTML5 Canvas", "Simplex 3D Noise", "Glassmorphism", "Fintech UI"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-meridian-wave/index.html"
+    },
+    features: [
+      "Motor matemático de ondas orgânicas em 60fps com controle em tempo real",
+      "Simulador funcional de conversão USD → BRL / EUR / GBP com cálculo de taxa",
+      "Design responsivo com suporte a toque (touchmove) no celular"
+    ]
+  },
 
   // ==========================================
   // 5. EXTENSÕES CHROME (MANIFEST V3)

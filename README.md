@@ -28,7 +28,8 @@ Portfolio/
 │   ├── site tattoo/                # Ink Archive (X-Ray tattoo reveal Antes/Depois)
 │   ├── site-saas-ai/               # NexusAI (Landing Page SaaS com Bento Grid & Mouse Spotlight)
 │   ├── site-arquitetura-editorial/ # Kengo Studio (Design brutalista & galeria em acordeão fluido)
-│   └── site-gastronomia-reserva/   # KURO Omakase (Alta gastronomia com drawer de reservas)
+│   ├── site-gastronomia-reserva/   # KURO Omakase (Alta gastronomia com drawer de reservas)
+│   └── site-meridian-wave/         # Meridian™ (Fintech com simulação física de onda líquida Simplex 3D)
 │
 ├── v1-vitrine-dark-neon/           # Versão 1: Catálogo objetivo de projetos e extensões
 │   ├── index.html                  # Interface principal com filtro Layouts & Sites
