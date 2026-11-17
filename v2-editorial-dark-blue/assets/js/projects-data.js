@@ -678,9 +678,9 @@ const PROJECTS_DATA = [
     badge: "Creative Growth • B2B",
     shortDescription: "Agência de branding e growth com estética editorial suíça, portfólio de campanhas e simulador de ROI de marketing.",
     fullDescription: "Conceito de presença digital para agências de publicidade e estúdios de design estratégico. Apresenta cases com métricas de crescimento, grid de projetos autorais e cálculo de retorno de investimento.",
-    image: "assets/images/layout-agencia-publicidade.png",
+    image: "assets/images/layout-agencia-publicidade.png?v=3",
     gallery: [
-      "assets/images/layout-agencia-publicidade.png"
+      "assets/images/layout-agencia-publicidade.png?v=3"
     ],
     tags: ["Advertising UI", "Creative Agency", "Branding B2B", "ROI Simulator"],
     links: {
