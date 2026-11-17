@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KURO — Omakase & Brasa Japonesa</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body { background-color: #0B0908; color: #F5EFE6; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .font-serif-menu { font-family: 'Cormorant Garamond', serif; }
+  </style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+</head>
+<body class="min-h-screen antialiased">
+  <header class="border-b border-amber-500/15 bg-[#0B0908]/90 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="font-serif-menu text-3xl tracking-widest text-amber-400">KURO 黒</a>
+      <nav class="hidden md:flex gap-8 text-xs uppercase tracking-[0.2em] text-stone-400">
+        <a href="#menu" class="hover:text-amber-400 transition">Menu Degustação</a>
+        <a href="#reserva" class="hover:text-amber-400 transition">Balcão do Chef</a>
+      </nav>
+      <a href="#reserva" class="px-5 py-2 border border-amber-400/50 text-amber-300 text-xs uppercase tracking-widest hover:bg-amber-400 hover:text-black transition">Reservar Mesa</a>
+    </div>
+  </header>
+
+  <section class="relative max-w-6xl mx-auto px-6 py-20 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-7">
+      <span class="text-xs uppercase tracking-[0.3em] text-amber-400">Guia Michelin • 14 Lugares no Balcão</span>
+      <h1 class="font-serif-menu text-5xl sm:text-7xl leading-[0.98] mt-4">A precisão do corte. <em class="italic text-amber-300">O calor do carvão Binchotan.</em></h1>
+      <p class="mt-6 text-stone-400 text-base leading-relaxed max-w-xl">Uma experiência Omakase de 14 tempos conduzida pelo Chef Kenji Sato. Peixes maturados a seco e wagyu A5 importado de Miyazaki.</p>
+    </div>
+    <div class="lg:col-span-5">
+      <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=900&q=80" alt="Omakase" class="w-full h-96 object-cover rounded-sm border border-amber-500/20">
+    </div>
+  </section>
+
+  <section id="menu" class="max-w-5xl mx-auto px-6 py-16 border-t border-white/10">
+    <div class="text-center mb-10">
+      <span class="text-xs uppercase tracking-[0.25em] text-amber-400">Sazonalidade de Outono</span>
+      <h2 class="font-serif-menu text-4xl sm:text-5xl mt-2">Menu Degustação</h2>
+      <div class="flex justify-center gap-3 mt-6">
+        <button data-course="omakase" class="course-btn px-5 py-2 text-xs uppercase tracking-widest bg-amber-400 text-black font-semibold">Omakase 14 Passos</button>
+        <button data-course="robata" class="course-btn px-5 py-2 text-xs uppercase tracking-widest border border-white/15 text-stone-300">Brasa Robata</button>
+        <button data-course="sake" class="course-btn px-5 py-2 text-xs uppercase tracking-widest border border-white/15 text-stone-300">Harmonização Sake</button>
+      </div>
+    </div>
+    <div id="menu-list" class="space-y-6 bg-[#120F0D] p-8 sm:p-10 border border-amber-500/15"></div>
+  </section>
+
+  <section id="reserva" class="max-w-4xl mx-auto px-6 py-20">
+    <div class="bg-[#14110F] border border-amber-500/30 p-8 sm:p-12">
+      <h3 class="font-serif-menu text-3xl sm:text-4xl text-center mb-2">Reserva de Experiência</h3>
+      <p class="text-center text-xs text-stone-400 mb-8 uppercase tracking-widest">Selecione a quantidade de convidados e o turno desejado</p>
+      <form id="booking-form" class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div>
+          <label class="text-[11px] uppercase tracking-wider text-stone-400 block mb-1.5">Convidados</label>
+          <select id="res-guests" class="w-full px-4 py-3 bg-[#0B0908] border border-white/15 text-sm text-white">
+            <option value="2 Pessoas (Balcão Omakase)">2 Pessoas (Balcão)</option>
+            <option value="4 Pessoas (Sala Tatami)">4 Pessoas (Sala Tatami)</option>
+            <option value="6 Pessoas (Chef's Table)">6 Pessoas (Chef's Table)</option>
+          </select>
+        </div>
+        <div>
+          <label class="text-[11px] uppercase tracking-wider text-stone-400 block mb-1.5">Turno da Noite</label>
+          <select id="res-time" class="w-full px-4 py-3 bg-[#0B0908] border border-white/15 text-sm text-white">
+            <option value="19:30 (1º Turno)">19:30 (1º Turno)</option>
+            <option value="21:45 (2º Turno)">21:45 (2º Turno)</option>
+          </select>
+        </div>
+        <div class="flex items-end">
+          <button type="submit" class="w-full py-3 bg-amber-400 text-black font-semibold text-xs uppercase tracking-widest hover:bg-amber-300 transition">Confirmar Lugar</button>
+        </div>
+      </form>
+      <div id="booking-result" class="hidden mt-6 p-4 border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-xs text-center"></div>
+    </div>
+  </section>
+
+  <script>
+    const MENUS = {
+      omakase: [
+        { name: "01. Otoro Maturado 14 Dias & Caviar Oscietra", desc: "Barriga de atum azul sobre arroz Akazu morno e flor de sal.", price: "Incluso (R$ 780)" },
+        { name: "02. Vieira de Hokkaido & Trufa Negra", desc: "Selada no carvão branco com dashi reduzido de cogumelos.", price: "Incluso" },
+        { name: "03. Uni (Ouriço-do-mar) & Nori Tostado", desc: "Servido diretamente na mão com wasabi fresco ralado.", price: "Incluso" }
+      ],
+      robata: [
+        { name: "Wagyu Miyazaki A5 na Brasa Binchotan", desc: "80g de lombo marmorizado com gema curada em shoyu artesanal.", price: "R$ 420" },
+        { name: "Black Cod do Alasca em Missô de 3 Anos", desc: "Caramelizado lentamente na grelha japonesa.", price: "R$ 260" }
+      ],
+      sake: [
+        { name: "Dassai Beyond Junmai Daiginjo", desc: "Polimento ultra-refinado, notas florais de pêssego branco.", price: "R$ 540 / taça" },
+        { name: "Flight Harmonizado do Sommelier (5 Taças)", desc: "Seleção de sakes artesanais não-pasteurizados.", price: "R$ 490" }
+      ]
+    };
+    function renderMenu(type) {
+      document.getElementById("menu-list").innerHTML = MENUS[type].map(item => `
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-white/10 pb-5 gap-2">
+          <div><h4 class="font-serif-menu text-2xl text-amber-200">${item.name}</h4><p class="text-xs text-stone-400 mt-1">${item.desc}</p></div>
+          <span class="text-xs uppercase tracking-widest text-amber-400 font-semibold">${item.price}</span>
+        </div>
+      `).join("");
+    }
+    document.querySelectorAll(".course-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".course-btn").forEach(b => b.className = "course-btn px-5 py-2 text-xs uppercase tracking-widest border border-white/15 text-stone-300");
+        btn.className = "course-btn px-5 py-2 text-xs uppercase tracking-widest bg-amber-400 text-black font-semibold";
+        renderMenu(btn.dataset.course);
+      });
+    });
+    document.getElementById("booking-form").addEventListener("submit", e => {
+      e.preventDefault();
+      const g = document.getElementById("res-guests").value, t = document.getElementById("res-time").value;
+      const res = document.getElementById("booking-result");
+      res.textContent = `✓ Pré-reserva confirmada: ${g} às ${t}.`;
+      res.classList.remove("hidden");
+    });
+    renderMenu("omakase");
+  </script>
+  <!-- Vercel Web Analytics & Speed Insights -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

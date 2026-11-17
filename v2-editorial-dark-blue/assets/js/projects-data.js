@@ -253,10 +253,8 @@ const PROJECTS_DATA = [
       "Aba exclusiva 'You × IGN' comparando suas avaliações com a crítica especializada",
       "Filtros avançados por plataforma, gênero e status na coleção"
     ]
-  },
-
-  // ==========================================
-  // 4. LAYOUTS & CONCEPT SITES (UI/UX LAB)
+  },  // ==========================================
+  // 4. LAYOUTS & SITES COMERCIAIS (UI/UX LAB)
   // ==========================================
   {
     id: "layout-site-face",
@@ -305,6 +303,75 @@ const PROJECTS_DATA = [
       "Alinhamento milimétrico de corpo inteiro com object-fit contain",
       "Barra de teste em tempo real para o cliente carregar suas próprias fotos Antes/Depois",
       "Transição suave de opacidade e borda difusa"
+    ]
+  },
+  {
+    id: "layout-corporate",
+    title: "Vanguard & Sterling — Corporate & M&A Advisory",
+    category: "layouts",
+    categoryLabel: "Layouts & UI Lab",
+    badge: "Executive UI • M&A",
+    shortDescription: "Website institucional para escritórios de advocacia societária, Private Equity e consultoria executiva com abas de prática e agendamento sob NDA.",
+    fullDescription: "Layout corporativo de alto padrão com estética suíça/editorial em tons marinho profundo e ouro fosco. Inclui painel de indicadores auditados, alternador interativo de áreas de atuação e modal de reunião confidencial.",
+    image: "assets/images/layout-corporate.png",
+    gallery: [
+      "assets/images/layout-corporate.png"
+    ],
+    tags: ["Corporate UI", "Tailwind CSS", "Executive Design", "Interactive Tabs"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-corporate/index.html"
+    },
+    features: [
+      "Abas dinâmicas para Fusões & Aquisições, Blindagem Patrimonial e Arbitragem",
+      "Seção de indicadores institucionais (US$ 18.4 Bi transacionados)",
+      "Modal de solicitação de reunião executiva sob protocolo de sigilo"
+    ]
+  },
+  {
+    id: "layout-ecommerce",
+    title: "KINETIX // STUDIO — Luxury Techwear & Audio Store",
+    category: "layouts",
+    categoryLabel: "Layouts & UI Lab",
+    badge: "Carrinho Real • Store",
+    shortDescription: "Loja virtual minimalista inspirada em SSENSE e Rimowa, com filtro instantâneo por categoria e sacola de compras lateral (slide-over) funcional.",
+    fullDescription: "Experiência completa de e-commerce front-end. Permite filtrar produtos entre Áudio, Techwear e Hardware, adicionar itens à sacola, remover produtos e calcular automaticamente o subtotal do pedido.",
+    image: "assets/images/layout-ecommerce.png",
+    gallery: [
+      "assets/images/layout-ecommerce.png"
+    ],
+    tags: ["E-commerce", "Shopping Cart JS", "Minimalist UI", "Tailwind CSS"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-ecommerce/index.html"
+    },
+    features: [
+      "Drawer lateral de sacola de compras com cálculo de quantidade e valor total",
+      "Filtro instantâneo de catálogo sem recarregar a página",
+      "Cards de produto com zoom suave e badges de série limitada"
+    ]
+  },
+  {
+    id: "layout-real-estate",
+    title: "VERIDIAN ESTATES — Luxury Real Estate & Villas",
+    category: "layouts",
+    categoryLabel: "Layouts & UI Lab",
+    badge: "Multi-Moeda • Imobiliária",
+    shortDescription: "Portal de imóveis de altíssimo padrão (Coberturas e Villas) com conversão instantânea de preços entre R$ BRL e US$ USD e filtro por tipologia.",
+    fullDescription: "Plataforma elegante para imobiliárias boutique e private brokers. Exibe metragem, suítes, heliponto/vagas e permite ao comprador internacional alternar todos os valores para dólar americano com 1 clique.",
+    image: "assets/images/layout-real-estate.png",
+    gallery: [
+      "assets/images/layout-real-estate.png"
+    ],
+    tags: ["Real Estate UI", "Multi-Currency JS", "Property Filter", "Luxury Portal"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-real-estate/index.html"
+    },
+    features: [
+      "Conversor cambial global (BRL ⇄ USD) atualizando todo o catálogo em tempo real",
+      "Filtro instantâneo entre Coberturas Triplex e Villas de Litoral/Campo",
+      "Agendamento direto de visita privada com Private Broker"
     ]
   },
   {

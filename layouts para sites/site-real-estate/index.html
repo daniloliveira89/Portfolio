@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VERIDIAN ESTATES — Private Penthouses & Villas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body { background-color: #111315; color: #F3F4F6; font-family: 'DM Sans', sans-serif; }
+    .font-serif-estate { font-family: 'Playfair Display', serif; }
+  </style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+</head>
+<body class="min-h-screen antialiased">
+  <header class="border-b border-white/10 bg-[#111315]/90 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="font-serif-estate text-2xl tracking-tight text-white">VERIDIAN <span class="text-xs font-sans uppercase tracking-[0.25em] text-emerald-400 ml-1">Estates</span></a>
+      <div class="flex items-center gap-3">
+        <span class="text-xs text-neutral-400">Moeda:</span>
+        <button id="curr-brl" class="px-3 py-1 rounded-md text-xs font-semibold bg-emerald-500 text-black">R$ BRL</button>
+        <button id="curr-usd" class="px-3 py-1 rounded-md text-xs font-semibold bg-white/10 text-white">US$ USD</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="max-w-7xl mx-auto px-6 pt-14 pb-10">
+    <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 mb-10">
+      <div>
+        <span class="text-xs uppercase tracking-[0.25em] text-emerald-400">Curadoria Arquitetônica Privada</span>
+        <h1 class="font-serif-estate text-4xl sm:text-6xl mt-2 leading-tight">Propriedades raras nos endereços mais desejados.</h1>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <button data-type="all" class="est-btn px-4 py-2 rounded-full text-xs font-semibold bg-white text-black">Todos (4)</button>
+        <button data-type="penthouse" class="est-btn px-4 py-2 rounded-full text-xs font-semibold bg-white/10 text-white">Coberturas</button>
+        <button data-type="villa" class="est-btn px-4 py-2 rounded-full text-xs font-semibold bg-white/10 text-white">Villas & Litoral</button>
+      </div>
+    </div>
+    <div id="properties-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
+  </section>
+
+  <script>
+    const PROPERTIES = [
+      { id: 1, title: "Cobertura Triplex Parque Ibirapuera", location: "Jardim Luzitânia, São Paulo", type: "penthouse", area: "840 m²", suites: "5 Suítes", vagas: "8 Vagas", priceBRL: 38500000, img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80" },
+      { id: 2, title: "Villa Península com Píer Privativo", location: "Angra dos Reis, RJ", type: "villa", area: "1.450 m²", suites: "7 Suítes", vagas: "Heliponto + Píer", priceBRL: 54000000, img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1000&q=80" },
+      { id: 3, title: "Residência Suspensa Concreto & Vidro", location: "Fazenda Boa Vista, SP", type: "villa", area: "1.120 m²", suites: "6 Suítes", vagas: "6 Vagas", priceBRL: 29800000, img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80" },
+      { id: 4, title: "Penthouse Atlântica Vista Panorâmica", location: "Leblon, Rio de Janeiro", type: "penthouse", area: "620 m²", suites: "4 Suítes", vagas: "5 Vagas", priceBRL: 42000000, img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1000&q=80" }
+    ];
+    let currency = "BRL", filterType = "all";
+    function formatPrice(brl) {
+      if (currency === "BRL") return "R$ " + (brl / 1000000).toFixed(1).replace(".", ",") + " Milhões";
+      return "US$ " + (brl / 5.15 / 1000000).toFixed(2) + "M";
+    }
+    function renderEstates() {
+      const list = filterType === "all" ? PROPERTIES : PROPERTIES.filter(p => p.type === filterType);
+      document.getElementById("properties-grid").innerHTML = list.map(p => `
+        <div class="group rounded-2xl overflow-hidden bg-[#181B1F] border border-white/10 hover:border-emerald-500/40 transition">
+          <div class="relative h-72 overflow-hidden">
+            <img src="${p.img}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+            <span class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-black/75 text-emerald-400">${p.location}</span>
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-start gap-4">
+              <h2 class="font-serif-estate text-2xl text-white">${p.title}</h2>
+              <span class="text-lg font-bold text-emerald-400 whitespace-nowrap">${formatPrice(p.priceBRL)}</span>
+            </div>
+            <div class="flex gap-6 mt-4 pt-4 border-t border-white/10 text-xs text-neutral-400">
+              <span>📐 ${p.area}</span><span>🛏️ ${p.suites}</span><span>🚗 ${p.vagas}</span>
+            </div>
+          </div>
+        </div>
+      `).join("");
+    }
+    document.getElementById("curr-brl").addEventListener("click", function() { currency = "BRL"; this.className = "px-3 py-1 rounded-md text-xs font-semibold bg-emerald-500 text-black"; document.getElementById("curr-usd").className = "px-3 py-1 rounded-md text-xs font-semibold bg-white/10 text-white"; renderEstates(); });
+    document.getElementById("curr-usd").addEventListener("click", function() { currency = "USD"; this.className = "px-3 py-1 rounded-md text-xs font-semibold bg-emerald-500 text-black"; document.getElementById("curr-brl").className = "px-3 py-1 rounded-md text-xs font-semibold bg-white/10 text-white"; renderEstates(); });
+    document.querySelectorAll(".est-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        filterType = btn.dataset.type;
+        document.querySelectorAll(".est-btn").forEach(b => b.className = "est-btn px-4 py-2 rounded-full text-xs font-semibold bg-white/10 text-white");
+        btn.className = "est-btn px-4 py-2 rounded-full text-xs font-semibold bg-white text-black";
+        renderEstates();
+      });
+    });
+    renderEstates();
+  </script>
+  <!-- Vercel Web Analytics & Speed Insights -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

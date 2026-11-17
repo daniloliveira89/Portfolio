@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KINETIX // STUDIO — Luxury Objects & Techwear</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body { background-color: #F6F5F2; color: #111111; font-family: 'Inter', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+  </style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased">
+  <header class="sticky top-0 z-40 bg-[#F6F5F2]/90 backdrop-blur-md border-b border-black/10">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="#" class="font-bold tracking-tighter text-lg">KINETIX <span class="font-mono text-xs font-normal text-neutral-500">// 026</span></a>
+      <div class="flex items-center gap-2">
+        <button data-cat="all" class="cat-btn px-3 py-1 rounded-full text-xs font-medium bg-black text-white">Todos</button>
+        <button data-cat="audio" class="cat-btn px-3 py-1 rounded-full text-xs font-medium text-neutral-600 hover:bg-black/5">Áudio</button>
+        <button data-cat="wear" class="cat-btn px-3 py-1 rounded-full text-xs font-medium text-neutral-600 hover:bg-black/5">Techwear</button>
+        <button data-cat="hardware" class="cat-btn px-3 py-1 rounded-full text-xs font-medium text-neutral-600 hover:bg-black/5">Hardware</button>
+      </div>
+      <button id="open-cart" class="flex items-center gap-2 px-4 py-1.5 rounded-full bg-black text-white text-xs font-medium">
+        <span>Sacola</span>
+        <span id="cart-count" class="px-1.5 rounded-full bg-white text-black font-mono text-[11px]">0</span>
+      </button>
+    </div>
+  </header>
+
+  <section class="max-w-7xl mx-auto px-6 pt-10 pb-8 w-full">
+    <div class="rounded-2xl overflow-hidden bg-neutral-900 text-white grid grid-cols-1 lg:grid-cols-12 items-center">
+      <div class="p-8 sm:p-12 lg:col-span-7">
+        <span class="font-mono text-xs uppercase tracking-widest text-emerald-400">Drop Limitado • Série Titânio</span>
+        <h1 class="text-3xl sm:text-5xl font-bold tracking-tight mt-3 leading-tight">Engenharia acústica e vestuário técnico.</h1>
+        <p class="text-neutral-400 text-sm sm:text-base mt-3 max-w-lg">Peças numeradas produzidas em alumínio anodizado, fibra de carbono e membrana Gore-Tex® Pro.</p>
+      </div>
+      <div class="lg:col-span-5 h-64 lg:h-80">
+        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1000&q=80" alt="Headphone" class="w-full h-full object-cover">
+      </div>
+    </div>
+  </section>
+
+  <main class="max-w-7xl mx-auto px-6 py-8 w-full flex-1">
+    <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+  </main>
+
+  <div id="cart-drawer" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex justify-end">
+    <div class="w-full max-w-md bg-white h-full p-6 flex flex-col justify-between shadow-2xl">
+      <div>
+        <div class="flex items-center justify-between border-b border-black/10 pb-4">
+          <h2 class="font-bold text-lg">Sua Sacola</h2>
+          <button id="close-cart" class="text-sm text-neutral-500 hover:text-black">Fechar ✕</button>
+        </div>
+        <div id="cart-items" class="mt-6 space-y-4 max-h-[60vh] overflow-y-auto"></div>
+      </div>
+      <div class="border-t border-black/10 pt-4">
+        <div class="flex justify-between items-center mb-4">
+          <span class="text-sm text-neutral-500">Total Estimado</span>
+          <span id="cart-total" class="font-mono font-bold text-lg">R$ 0,00</span>
+        </div>
+        <button onclick="alert('Pedido enviado para processamento!');" class="w-full py-3.5 rounded-xl bg-black text-white text-xs font-semibold uppercase tracking-widest">Finalizar Compra →</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="border-t border-black/10 py-8 px-6 text-xs text-neutral-500 mt-12">
+    <div class="max-w-7xl mx-auto flex justify-between">
+      <span>KINETIX STUDIO® — Todos os direitos reservados.</span>
+      <span class="font-mono">Envio Expresso DHL Mundial</span>
+    </div>
+  </footer>
+
+  <script>
+    const PRODUCTS = [
+      { id: 1, name: "Auscultadores KX-01 Planar", cat: "audio", price: 3490, badge: "Best Seller", img: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?auto=format&fit=crop&w=800&q=80" },
+      { id: 2, name: "Jaqueta Tática Shell Gore-Tex", cat: "wear", price: 2890, badge: "Impermeável", img: "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=80" },
+      { id: 3, name: "Sintetizador Portátil Field-8", cat: "hardware", price: 5200, badge: "Série Limitada", img: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80" },
+      { id: 4, name: "Mochila Modular Carbon 24L", cat: "wear", price: 1650, badge: "Fidlock®", img: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=80" },
+      { id: 5, name: "Monitor Acústico Studio Monolith", cat: "audio", price: 4100, badge: "Hi-Res Audio", img: "https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=800&q=80" },
+      { id: 6, name: "Teclado Mecânico CNC Alumínio", cat: "hardware", price: 1980, badge: "Hot-Swap", img: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=800&q=80" }
+    ];
+    let cart = [], currentCat = "all";
+    function renderProducts() {
+      const list = currentCat === "all" ? PRODUCTS : PRODUCTS.filter(p => p.cat === currentCat);
+      document.getElementById("products-grid").innerHTML = list.map(p => `
+        <div class="group bg-white rounded-2xl overflow-hidden border border-black/10 flex flex-col justify-between">
+          <div class="relative h-64 overflow-hidden bg-neutral-100">
+            <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-mono uppercase bg-white/90">${p.badge}</span>
+          </div>
+          <div class="p-5">
+            <div class="flex justify-between items-start gap-2">
+              <h3 class="font-semibold text-sm">${p.name}</h3>
+              <span class="font-mono text-sm font-semibold">R$ ${p.price.toLocaleString('pt-BR')}</span>
+            </div>
+            <button onclick="addToCart(${p.id})" class="mt-4 w-full py-2.5 rounded-xl bg-neutral-900 text-white text-xs font-medium hover:bg-black transition">+ Adicionar à Sacola</button>
+          </div>
+        </div>
+      `).join("");
+    }
+    window.addToCart = function(id) {
+      const prod = PRODUCTS.find(p => p.id === id);
+      const existing = cart.find(i => i.id === id);
+      if (existing) existing.qty++; else cart.push({ ...prod, qty: 1 });
+      updateCartUI();
+      document.getElementById("cart-drawer").classList.remove("hidden");
+    };
+    window.removeFromCart = function(id) { cart = cart.filter(i => i.id !== id); updateCartUI(); };
+    function updateCartUI() {
+      const count = cart.reduce((sum, i) => sum + i.qty, 0);
+      const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+      document.getElementById("cart-count").textContent = count;
+      document.getElementById("cart-total").textContent = `R$ ${total.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+      const container = document.getElementById("cart-items");
+      if (cart.length === 0) { container.innerHTML = `<p class="text-sm text-neutral-400 py-8 text-center">Sua sacola está vazia.</p>`; return; }
+      container.innerHTML = cart.map(item => `
+        <div class="flex items-center justify-between gap-3 border-b border-black/10 pb-3">
+          <img src="${item.img}" class="w-14 h-14 rounded-lg object-cover">
+          <div class="flex-1"><h4 class="text-xs font-semibold">${item.name}</h4><p class="font-mono text-xs text-neutral-500">Qtd: ${item.qty} × R$ ${item.price.toLocaleString('pt-BR')}</p></div>
+          <button onclick="removeFromCart(${item.id})" class="text-xs text-red-500">Remover</button>
+        </div>
+      `).join("");
+    }
+    document.querySelectorAll(".cat-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        currentCat = btn.dataset.cat;
+        document.querySelectorAll(".cat-btn").forEach(b => b.className = "cat-btn px-3 py-1 rounded-full text-xs font-medium text-neutral-600 hover:bg-black/5");
+        btn.className = "cat-btn px-3 py-1 rounded-full text-xs font-medium bg-black text-white";
+        renderProducts();
+      });
+    });
+    document.getElementById("open-cart").addEventListener("click", () => document.getElementById("cart-drawer").classList.remove("hidden"));
+    document.getElementById("close-cart").addEventListener("click", () => document.getElementById("cart-drawer").classList.add("hidden"));
+    renderProducts(); updateCartUI();
+  </script>
+  <!-- Vercel Web Analytics & Speed Insights -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>
