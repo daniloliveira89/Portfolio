@@ -460,6 +460,12 @@ const PROJECTS_DATA = [
       github: "https://github.com/daniloliveira89",
       demo: "../layouts para sites/site-meridian-wave/index.html"
     },
+    features: [
+      "Motor matemático de ondas orgânicas em 60fps com controle em tempo real",
+      "Simulador funcional de conversão USD → BRL / EUR / GBP com cálculo de taxa",
+      "Design responsivo com suporte a toque (touchmove) no celular"
+    ]
+  },
   {
     id: "layout-academia",
     title: "IRON PULSE — High-Performance Gym & Studio",
@@ -596,12 +602,6 @@ const PROJECTS_DATA = [
       "Simulador interativo Antes/Depois com puxador de arrasto responsivo",
       "Detalhamento de tecnologias de ponta (Scanner Intraoral iTero® 5D e Implantes Suíços)",
       "Agendamento direto para avaliação digital e escaneamento 3D"
-    ]
-  },
-    features: [
-      "Motor matemático de ondas orgânicas em 60fps com controle em tempo real",
-      "Simulador funcional de conversão USD → BRL / EUR / GBP com cálculo de taxa",
-      "Design responsivo com suporte a toque (touchmove) no celular"
     ]
   },
 
