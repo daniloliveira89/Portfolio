@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HYPERION ACADEMY — Formações em IA & Engenharia de Software</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>body { background-color: #070913; color: #F8FAFC; font-family: 'Inter', sans-serif; }</style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+</head>
+<body class="min-h-screen antialiased">
+  <header class="border-b border-white/10 bg-[#070913]/90 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <span class="font-extrabold text-xl tracking-tight">🎓 HYPERION <span class="text-violet-400">ACADEMY</span></span>
+      <span class="text-xs bg-violet-500/15 text-violet-300 border border-violet-500/30 px-3 py-1 rounded-full">94% de Empregabilidade em 6 Meses</span>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-14">
+    <div class="max-w-3xl mb-10">
+      <span class="text-xs uppercase tracking-widest text-violet-400 font-bold">Aprenda com Engenheiros do Vale do Silício</span>
+      <h1 class="text-4xl sm:text-6xl font-extrabold mt-2 leading-tight">Domine as tecnologias que lideram o mercado.</h1>
+    </div>
+
+    <div class="flex flex-wrap gap-2 mb-8">
+      <button onclick="filterCourses('all')" class="px-4 py-2 rounded-xl text-xs font-bold bg-violet-600 text-white">Todas as Trilhas (3)</button>
+      <button onclick="filterCourses('ia')" class="px-4 py-2 rounded-xl text-xs font-bold bg-white/10 text-white">Engenharia de IA & LLMs</button>
+      <button onclick="filterCourses('fullstack')" class="px-4 py-2 rounded-xl text-xs font-bold bg-white/10 text-white">Full-Stack & Cloud</button>
+    </div>
+
+    <div id="courses-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+  </main>
+
+  <script>
+    const COURSES = [
+      { title: "Engenharia de Agentes de IA, RAG & LangChain", cat: "ia", hours: "120 Horas • 14 Projetos Reais", level: "Avançado", salary: "Média Salarial: R$ 18.500" },
+      { title: "Arquitetura Full-Stack Next.js, Node & Edge", cat: "fullstack", hours: "160 Horas • Deploy Global", level: "Do Zero ao Sênior", salary: "Média Salarial: R$ 14.200" },
+      { title: "Fine-Tuning de Modelos Visuais & Prompt Ops", cat: "ia", hours: "85 Horas • Certificação Internacional", level: "Intermediário", salary: "Média Salarial: R$ 15.000" }
+    ];
+    window.filterCourses = function(c) {
+      const list = c === 'all' ? COURSES : COURSES.filter(x => x.cat === c);
+      document.getElementById('courses-grid').innerHTML = list.map(item => `
+        <div class="p-7 rounded-2xl bg-[#101426] border border-violet-500/25 flex flex-col justify-between">
+          <div>
+            <span class="text-xs font-bold text-violet-400">${item.level} • ${item.hours}</span>
+            <h3 class="text-xl font-bold mt-2">${item.title}</h3>
+            <p class="text-xs text-emerald-400 font-semibold mt-4">📈 ${item.salary}</p>
+          </div>
+          <button onclick="alert('Matrícula iniciada com 1º módulo liberado gratuitamente!')" class="mt-6 w-full py-3 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-bold text-xs uppercase tracking-wider">Assistir 1ª Aula Grátis →</button>
+        </div>
+      `).join('');
+    };
+    filterCourses('all');
+  </script>
+  <!-- Vercel Web Analytics & Speed Insights -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

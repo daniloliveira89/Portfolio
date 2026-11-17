@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AMARA Sanctuary — Luxury Eco-Resort & Villas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body { background-color: #F7F4EE; color: #1C2521; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .font-serif-resort { font-family: 'Cormorant Garamond', serif; }
+  </style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+</head>
+<body class="min-h-screen antialiased">
+  <header class="border-b border-emerald-950/10 bg-[#F7F4EE]/90 backdrop-blur-md sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <span class="font-serif-resort text-3xl tracking-widest text-emerald-950">AMARA <span class="text-xs font-sans uppercase tracking-[0.25em] text-emerald-700">Sanctuary</span></span>
+      <span class="text-xs uppercase tracking-widest text-emerald-800 font-semibold">Península de Maraú • Relais & Châteaux</span>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-7">
+      <span class="text-xs uppercase tracking-[0.25em] text-emerald-700 font-semibold">Villas Privativas & Gastronomia Orgânica</span>
+      <h1 class="font-serif-resort text-5xl sm:text-7xl mt-3 leading-[0.98]">Onde a floresta Atlântica <em class="italic text-emerald-800">encontra o oceano.</em></h1>
+      <p class="mt-5 text-stone-600 text-base leading-relaxed max-w-xl">22 bangalôs suspensos com piscina de borda infinita aquecida, mordomo 24h e praia exclusiva.</p>
+      <div class="grid grid-cols-2 gap-4 mt-8">
+        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80" class="w-full h-52 object-cover rounded-2xl" alt="Resort">
+        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" class="w-full h-52 object-cover rounded-2xl" alt="Spa">
+      </div>
+    </div>
+
+    <!-- Simulador de Reserva de Bangalô -->
+    <div class="lg:col-span-5 bg-white p-8 rounded-3xl border border-emerald-950/10 shadow-xl">
+      <span class="text-xs uppercase tracking-widest text-emerald-700 font-bold">Concierge de Reservas</span>
+      <h2 class="font-serif-resort text-3xl mt-1 mb-6">Configure sua Estadia</h2>
+
+      <div class="space-y-4">
+        <div>
+          <label class="text-xs font-semibold uppercase tracking-wider text-stone-500 block mb-1.5">Suíte / Villa</label>
+          <select id="villa-select" class="w-full px-4 py-3 rounded-xl border border-stone-200 bg-[#F7F4EE] text-sm font-semibold">
+            <option value="3200">Bangalô Mata Atlântica (R$ 3.200/noite)</option>
+            <option value="4900" selected>Villa Oceano c/ Piscina Infinita (R$ 4.900/noite)</option>
+            <option value="8500">Reserva Master Falésia 400m² (R$ 8.500/noite)</option>
+          </select>
+        </div>
+
+        <div>
+          <div class="flex justify-between text-xs font-semibold mb-1"><span>Duração da Estadia</span><strong id="nights-label">4 Noites</strong></div>
+          <input id="nights-slider" type="range" min="2" max="14" value="4" class="w-full accent-emerald-800">
+        </div>
+
+        <label class="flex items-center justify-between p-3.5 rounded-xl border border-stone-200 cursor-pointer">
+          <div class="flex items-center gap-2.5">
+            <input type="checkbox" id="extra-yacht" class="accent-emerald-800 w-4 h-4">
+            <span class="text-xs font-semibold">Incluir Expedição de Lancha Privativa</span>
+          </div>
+          <span class="text-xs font-bold text-emerald-800">+ R$ 2.800</span>
+        </label>
+      </div>
+
+      <div class="mt-6 pt-5 border-t border-stone-200 flex justify-between items-baseline">
+        <span class="text-xs uppercase tracking-wider text-stone-500">Total c/ Café & Transfer</span>
+        <strong id="resort-total" class="font-serif-resort text-4xl text-emerald-900">R$ 19.600</strong>
+      </div>
+
+      <button onclick="alert('Solicitação de reserva enviada ao Concierge Amara Sanctuary!')" class="mt-6 w-full py-4 rounded-xl bg-emerald-900 hover:bg-emerald-800 text-white text-xs font-bold uppercase tracking-widest transition">
+        Solicitar Disponibilidade →
+      </button>
+    </div>
+  </main>
+
+  <script>
+    const vSel = document.getElementById('villa-select');
+    const nSli = document.getElementById('nights-slider');
+    const eYacht = document.getElementById('extra-yacht');
+
+    function calcResort() {
+      const rate = Number(vSel.value);
+      const nights = Number(nSli.value);
+      const extra = eYacht.checked ? 2800 : 0;
+      document.getElementById('nights-label').textContent = `${nights} Noites`;
+      document.getElementById('resort-total').textContent = 'R$ ' + (rate * nights + extra).toLocaleString('pt-BR');
+    }
+    vSel.addEventListener('change', calcResort);
+    nSli.addEventListener('input', calcResort);
+    eYacht.addEventListener('change', calcResort);
+    calcResort();
+  </script>
+  <!-- Vercel Web Analytics & Speed Insights -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

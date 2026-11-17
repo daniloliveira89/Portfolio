@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOMAD LUXE — Expedições & Roteiros Sob Medida</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { background-color: #0B131E; color: #F8FAFC; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .font-serif-travel { font-family: 'Playfair Display', serif; }
+  </style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+</head>
+<body class="min-h-screen antialiased">
+  <header class="border-b border-white/10 bg-[#0B131E]/90 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <span class="font-serif-travel text-2xl tracking-wider text-sky-300">NOMAD LUXE ✈️</span>
+      <div class="flex items-center gap-3">
+        <span class="text-xs text-slate-400">Viajantes:</span>
+        <select id="pax-count" class="bg-slate-800 border border-white/15 rounded-lg px-3 py-1.5 text-xs font-bold">
+          <option value="1">1 Passageiro</option>
+          <option value="2" selected>2 Passageiros (Casal)</option>
+          <option value="4">4 Passageiros (Família)</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-12">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-4">
+      <div>
+        <span class="text-xs uppercase tracking-[0.25em] text-sky-400 font-bold">Curadoria Virtuoso® 2026</span>
+        <h1 class="font-serif-travel text-4xl sm:text-6xl mt-2">Expedições inesquecíveis.</h1>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <button onclick="filterTrips('all')" class="px-4 py-2 rounded-full text-xs font-bold bg-sky-400 text-slate-950">Todos Roteiros</button>
+        <button onclick="filterTrips('asia')" class="px-4 py-2 rounded-full text-xs font-bold bg-white/10 text-white">Ásia & Japão</button>
+        <button onclick="filterTrips('artico')" class="px-4 py-2 rounded-full text-xs font-bold bg-white/10 text-white">Aurora Boreal</button>
+      </div>
+    </div>
+
+    <div id="trips-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+  </main>
+
+  <script>
+    const TRIPS = [
+      { id: 1, title: "Japão Imperial & Ryokans Secretos", reg: "asia", days: "12 Dias • Tóquio, Kyoto & Hakone", baseUSD: 8400, img: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=800&q=80" },
+      { id: 2, title: "Islândia & Domos de Vidro Aurora", reg: "artico", days: "8 Dias • Reykjavik & Glaciares", baseUSD: 6900, img: "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=800&q=80" },
+      { id: 3, title: "Butão & Himalaia de Helicóptero", reg: "asia", days: "10 Dias • Paro, Thimphu & Punakha", baseUSD: 11200, img: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80" }
+    ];
+    let curReg = 'all';
+    const paxSel = document.getElementById('pax-count');
+
+    function renderTrips() {
+      const pax = Number(paxSel.value);
+      const list = curReg === 'all' ? TRIPS : TRIPS.filter(t => t.reg === curReg);
+      document.getElementById('trips-grid').innerHTML = list.map(t => `
+        <div class="rounded-2xl overflow-hidden bg-[#131F30] border border-white/10 flex flex-col justify-between">
+          <img src="${t.img}" class="w-full h-56 object-cover">
+          <div class="p-6">
+            <span class="text-xs text-sky-400 font-semibold">${t.days}</span>
+            <h3 class="font-serif-travel text-2xl mt-1">${t.title}</h3>
+            <div class="mt-4 pt-4 border-t border-white/10 flex justify-between items-baseline">
+              <span class="text-xs text-slate-400">Total (${pax} pax c/ voos)</span>
+              <strong class="text-xl text-sky-300">US$ ${(t.baseUSD * pax).toLocaleString('pt-BR')}</strong>
+            </div>
+            <button onclick="alert('Roteiro personalizado solicitado para ${t.title}!')" class="mt-4 w-full py-2.5 rounded-xl bg-sky-400 text-slate-950 font-bold text-xs uppercase tracking-wider">Solicitar Roteiro Detalhado</button>
+          </div>
+        </div>
+      `).join('');
+    }
+    window.filterTrips = function(r) { curReg = r; renderTrips(); };
+    paxSel.addEventListener('change', renderTrips);
+    renderTrips();
+  </script>
+  <!-- Vercel Web Analytics & Speed Insights -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

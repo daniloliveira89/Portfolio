@@ -604,6 +604,420 @@ const PROJECTS_DATA = [
       "Agendamento direto para avaliação digital e escaneamento 3D"
     ]
   },
+  {
+    id: "layout-agencia-publicidade",
+    title: "KROMA* — Creative Growth & Branding Agency",
+    category: "layouts",
+    categoryLabel: "Agência & Branding",
+    badge: "Creative Growth • B2B",
+    shortDescription: "Agência de branding e growth com estética editorial suíça, portfólio de campanhas e simulador de ROI de marketing.",
+    fullDescription: "Conceito de presença digital para agências de publicidade e estúdios de design estratégico. Apresenta cases com métricas de crescimento, grid de projetos autorais e cálculo de retorno de investimento.",
+    image: "assets/images/layout-agencia-publicidade.png",
+    gallery: [
+      "assets/images/layout-agencia-publicidade.png"
+    ],
+    tags: ["Advertising UI", "Creative Agency", "Branding B2B", "ROI Simulator"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-agencia-publicidade/index.html"
+    },
+    features: [
+      "Showcase de campanhas em grid visual dinâmico com métricas de impacto",
+      "Calculadora de retorno sobre investimento publicitário (ROAS)",
+      "Formulário direto para concorrência de contas e projetos estratégicos"
+    ]
+  },
+  {
+    id: "layout-agencia-viagens",
+    title: "NOMAD LUXE — Expedições & Roteiros Sob Medida",
+    category: "layouts",
+    categoryLabel: "Turismo & Viagens",
+    badge: "Roteiros VIP • Luxury",
+    shortDescription: "Agência de turismo boutique especializada em viagens de luxo e expedições remotas com construtor interativo de itinerários.",
+    fullDescription: "Plataforma imersiva para viajantes exigentes. Conta com galeria de destinos exóticos (Islândia, Patagônia, Safari Serengeti) e planejador de roteiros personalizados com concierge privativo.",
+    image: "assets/images/layout-agencia-viagens.png",
+    gallery: [
+      "assets/images/layout-agencia-viagens.png"
+    ],
+    tags: ["Luxury Travel", "Tour Planner", "Editorial Destinations", "Concierge"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-agencia-viagens/index.html"
+    },
+    features: [
+      "Construtor de expedições sob medida com cálculo estimado de dias",
+      "Galeria imersiva com mapas interativos e guias de temporadas",
+      "Botão de solicitação de consultor privativo 24h"
+    ]
+  },
+  {
+    id: "layout-cafeteria",
+    title: "TORRA 04 — Microtorrefação & Cafés Especiais",
+    category: "layouts",
+    categoryLabel: "Cafeteria",
+    badge: "Specialty Coffee • Torra",
+    shortDescription: "Cafeteria e torrefação artesanal com perfil sensorial de grãos especiais (85+ pontos SCA) e guia de métodos de extração.",
+    fullDescription: "Experiência sensorial completa para apreciadores de café. Detalha notas sensoriais, altitude e origem dos microlotes da Serra da Mantiqueira, além de clube de assinatura mensal de grãos.",
+    image: "assets/images/layout-cafeteria.png",
+    gallery: [
+      "assets/images/layout-cafeteria.png"
+    ],
+    tags: ["Specialty Coffee", "Sensory Profile", "Artisanal Food", "Subscription"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-cafeteria/index.html"
+    },
+    features: [
+      "Guia interativo de métodos de extração (V60, Aeropress, Prensa Francesa e Espresso)",
+      "Roda de sabores e notas sensoriais para cada lote de café",
+      "Clube de assinatura com entrega de grãos recém-torrados"
+    ]
+  },
+  {
+    id: "layout-clinica-veterinaria",
+    title: "VETCARE HOSPITAL 24H — UTI Veterinária & Planos Pet",
+    category: "layouts",
+    categoryLabel: "Veterinária & UTI",
+    badge: "Hospital 24h • UTI Pet",
+    shortDescription: "Centro hospitalar veterinário com emergência 24h, diagnóstico por imagem avançado e planos de saúde preventivos para pets.",
+    fullDescription: "Layout humanizado para hospitais veterinários. Exibe estrutura de internação, corpo cirúrgico e simulador de planos de cobertura médica com botão de emergência rápida.",
+    image: "assets/images/layout-clinica-veterinaria.png",
+    gallery: [
+      "assets/images/layout-clinica-veterinaria.png"
+    ],
+    tags: ["Veterinary UI", "Emergency 24h", "Pet Healthcare", "Interactive Hospital"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-clinica-veterinaria/index.html"
+    },
+    features: [
+      "Linha direta com botão de plantão e triagem de emergência 24h",
+      "Apresentação da UTI com monitorização contínua e oxigenoterapia",
+      "Comparador de planos de saúde preventivos para cães e gatos"
+    ]
+  },
+  {
+    id: "layout-construtora",
+    title: "MONOLITH Engenharia & Incorporação",
+    category: "layouts",
+    categoryLabel: "Construtora",
+    badge: "Incorporação • Obras",
+    shortDescription: "Construtora e incorporadora de empreendimentos verticais de alto padrão com acompanhamento de obras e tour virtual.",
+    fullDescription: "Portal institucional para grandes incorporadoras. Apresenta estágio percentual de obras em tempo real, memorial descritivo dos edifícios e plantas baixas interativas.",
+    image: "assets/images/layout-construtora.png",
+    gallery: [
+      "assets/images/layout-construtora.png"
+    ],
+    tags: ["Construction UI", "Real Estate Dev", "Project Status", "Architecture"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-construtora/index.html"
+    },
+    features: [
+      "Status dinâmico do avanço físico das obras (Fundação a Acabamento)",
+      "Galeria de plantas inteligentes e perspectivas 3D",
+      "Agendamento de visita ao decorado com corretor credenciado"
+    ]
+  },
+  {
+    id: "layout-consultoria",
+    title: "APEX STRATEGY — Consultoria de Gestão & EBITDA",
+    category: "layouts",
+    categoryLabel: "Consultoria",
+    badge: "Eficiência EBITDA • M&A",
+    shortDescription: "Consultoria executiva focada em reestruturação operacional, expansão de margem EBITDA e governança para médias e grandes empresas.",
+    fullDescription: "Design corporativo austero para firmas de consultoria e turnaround. Inclui matriz de alavancas de valor, cases com retorno auditado e solicitação de diagnóstico confidencial.",
+    image: "assets/images/layout-consultoria.png",
+    gallery: [
+      "assets/images/layout-consultoria.png"
+    ],
+    tags: ["Management Consulting", "EBITDA Growth", "Turnaround", "Corporate Advisory"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-consultoria/index.html"
+    },
+    features: [
+      "Matriz de áreas de atuação: Otimização de Custos, M&A e Governança",
+      "Painel de métricas e ROI gerado para conselhos administrativos",
+      "Formulário confidencial de diagnóstico de prontidão estratégica"
+    ]
+  },
+  {
+    id: "layout-contabilidade",
+    title: "LEDGER PRIME — Contabilidade Consultiva & Tributário",
+    category: "layouts",
+    categoryLabel: "Contabilidade",
+    badge: "Planejamento Tributário",
+    shortDescription: "Escritório contábil moderno e BPO financeiro especializado em redução legal de carga tributária e migração de regime fiscal.",
+    fullDescription: "Interface clean e transparente voltada para serviços de contabilidade consultiva. Possui simulador de economia fiscal (Simples x Lucro Presumido x Lucro Real) e onboarding digital.",
+    image: "assets/images/layout-contabilidade.png",
+    gallery: [
+      "assets/images/layout-contabilidade.png"
+    ],
+    tags: ["Accounting UI", "Tax Advisory", "BPO Finance", "Corporate Taxes"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-contabilidade/index.html"
+    },
+    features: [
+      "Simulador de regime fiscal mais vantajoso por faixa de faturamento",
+      "Apresentação de serviços de BPO Financeiro e Folha de Pagamento",
+      "Portal integrado para migração de contabilidade sem burocracia"
+    ]
+  },
+  {
+    id: "layout-energia-solar",
+    title: "HELIOS SOLAR — Engenharia Fotovoltaica & Usinas",
+    category: "layouts",
+    categoryLabel: "Energia Solar",
+    badge: "Calculadora Solar • Payback",
+    shortDescription: "Instalação de painéis solares para residências, indústrias e agronegócio com calculadora instantânea de economia e payback.",
+    fullDescription: "Landing page comercial para integradores e usinas solares. O visitante informa o valor da conta de luz e o simulador calcula a potência dos painéis, economia anual e tempo de amortização.",
+    image: "assets/images/layout-energia-solar.png",
+    gallery: [
+      "assets/images/layout-energia-solar.png"
+    ],
+    tags: ["Solar Energy", "Solar Calculator", "Sustainability", "Engineering"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-energia-solar/index.html"
+    },
+    features: [
+      "Calculadora solar que projeta economia mensal e redução de até 95%",
+      "Estimativa de amortização do investimento (tempo de payback)",
+      "Projetos turn-key para residências, condomínios e usinas rurais"
+    ]
+  },
+  {
+    id: "layout-engenharia",
+    title: "VORTEX ENGENHARIA — Projetos Estruturais BIM",
+    category: "layouts",
+    categoryLabel: "Engenharia Civil",
+    badge: "Projetos BIM • Galpões",
+    shortDescription: "Escritório de cálculo estrutural e engenharia civil com modelagem BIM compatibilizada para galpões logísticos e estruturas industriais.",
+    fullDescription: "Plataforma técnica para engenharia civil. Apresenta projetos em concreto armado, estruturas metálicas e fundações com controle de qualidade e redução de perdas na obra.",
+    image: "assets/images/layout-engenharia.png",
+    gallery: [
+      "assets/images/layout-engenharia.png"
+    ],
+    tags: ["Civil Engineering", "BIM Modeling", "Structural Analysis", "Industrial Buildings"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-engenharia/index.html"
+    },
+    features: [
+      "Apresentação de projetos modelados em metodologia BIM 5D",
+      "Detalhamento de especialidades: Estruturas Metálicas e Pré-Moldados",
+      "Solicitação de compatibilização e cálculo estrutural para construtoras"
+    ]
+  },
+  {
+    id: "layout-escola-cursos",
+    title: "HYPERION ACADEMY — Cursos Tech & Inteligência Artificial",
+    category: "layouts",
+    categoryLabel: "Educação & Cursos",
+    badge: "Formação Tech • EAD",
+    shortDescription: "Escola de tecnologia com trilhas práticas em IA, Engenharia de Software e Cloud com mentoria ao vivo e grade curricular dinâmica.",
+    fullDescription: "Template de educação imersiva estilo bootcamps internacionais. Apresenta grade horária, projetos de portfólio práticos, depoimentos de ex-alunos e seletor de bolsas.",
+    image: "assets/images/layout-escola-cursos.png",
+    gallery: [
+      "assets/images/layout-escola-cursos.png"
+    ],
+    tags: ["EdTech UI", "Online Courses", "Software Bootcamp", "Curriculum Grid"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-escola-cursos/index.html"
+    },
+    features: [
+      "Trilhas de formação profissional com ementa detalhada por módulos",
+      "Seção de mentores com experiência em Big Techs globais",
+      "Inscrição com teste de nivelamento técnico em tempo real"
+    ]
+  },
+  {
+    id: "layout-fotografo",
+    title: "LUCAS VIANNA — Fine Art & Editorial Photography",
+    category: "layouts",
+    categoryLabel: "Fotografia Fine Art",
+    badge: "Dark Masonry • Ensaios",
+    shortDescription: "Portfólio fotográfico minimalista em tema dark com galeria de alta resolução para moda, arquitetura e fine art.",
+    fullDescription: "Experiência contemplativa para fotógrafos autorais. Grid de fotos em masonry fluido com lightbox em tela cheia e agendamento de ensaios sob direção artística.",
+    image: "assets/images/layout-fotografo.png",
+    gallery: [
+      "assets/images/layout-fotografo.png"
+    ],
+    tags: ["Photography Portfolio", "Fine Art", "Dark Gallery", "Visual Artist"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-fotografo/index.html"
+    },
+    features: [
+      "Galeria fotográfica de alta fidelidade visual com carregamento progressivo",
+      "Séries autorais organizadas por ensaios conceituais e editoriais",
+      "Orçamento online para campanhas de moda e publicações impressas"
+    ]
+  },
+  {
+    id: "layout-hotel-resort",
+    title: "AMARA Sanctuary — Luxury Eco-Resort & Villas",
+    category: "layouts",
+    categoryLabel: "Hotelaria & Resort",
+    badge: "Reserva de Suítes • Eco",
+    shortDescription: "Eco-resort de luxo integrado à natureza com motor de reservas de chalés, passeios ecológicos e gastronomia farm-to-table.",
+    fullDescription: "Site institucional de hotelaria de alto luxo. Permite selecionar datas, escolher categorias de bangalôs privativos com piscina infinita e reservar experiências exclusivas.",
+    image: "assets/images/layout-hotel-resort.png",
+    gallery: [
+      "assets/images/layout-hotel-resort.png"
+    ],
+    tags: ["Hospitality UI", "Eco Resort", "Suite Booking", "Luxury Experience"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-hotel-resort/index.html"
+    },
+    features: [
+      "Motor visual de seleção de acomodações com fotos panorâmicas",
+      "Detalhamento de experiências: Spa natural, trilhas e mergulho",
+      "Reserva direta com confirmação imediata e serviços de transfer"
+    ]
+  },
+  {
+    id: "layout-logistica",
+    title: "VELOX LOGISTICS — Supply Chain & Frete Expresso",
+    category: "layouts",
+    categoryLabel: "Logística & Frete",
+    badge: "Rastreamento • Cargas",
+    shortDescription: "Operador logístico e transporte rodoviário expresso com rastreador de encomendas e cotação de frete fracionado ou lotação.",
+    fullDescription: "Portal dinâmico para transportadoras e supply chain. Inclui rastreamento de cargas por código em tempo real, malha de centros de distribuição e solicitação de cotação corporativa.",
+    image: "assets/images/layout-logistica.png",
+    gallery: [
+      "assets/images/layout-logistica.png"
+    ],
+    tags: ["Logistics UI", "Package Tracking", "Freight Quote", "Supply Chain"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-logistica/index.html"
+    },
+    features: [
+      "Campo de busca de rastreamento com atualização de status de entrega",
+      "Simulador rápido de frete por cubagem e CEP de destino",
+      "Mapa da rede nacional de centros logísticos e frota rastreada"
+    ]
+  },
+  {
+    id: "layout-marca-roupas",
+    title: "NOCTURNE ATELIER — Heavyweight Streetwear",
+    category: "layouts",
+    categoryLabel: "Moda & Streetwear",
+    badge: "Drops Limitados • Fashion",
+    shortDescription: "Marca de vestuário independente inspirada na alfaiataria militar e techwear com catálogo de drops numerados.",
+    fullDescription: "Conceito de e-commerce e lookbook para marcas de moda autoral. Focado em fotografia editorial, tabela de medidas interativa e contagem regressiva para lançamentos.",
+    image: "assets/images/layout-marca-roupas.png",
+    gallery: [
+      "assets/images/layout-marca-roupas.png"
+    ],
+    tags: ["Streetwear Store", "Lookbook UI", "Limited Drops", "Fashion Editorial"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-marca-roupas/index.html"
+    },
+    features: [
+      "Lookbook imersivo com fotos conceituais de peças e costuras",
+      "Contagem regressiva dinâmica para o próximo drop exclusivo",
+      "Tabela inteligente de medidas e ajuste de modelagem"
+    ]
+  },
+  {
+    id: "layout-motel",
+    title: "ECLIPSE SUITES — Motel Boutique 5 Estrelas",
+    category: "layouts",
+    categoryLabel: "Motel Boutique",
+    badge: "Reserva Privativa • 24h",
+    shortDescription: "Motel boutique premium com suítes temáticas, piscina aquecida, teto solar retrátil e reserva com check-in anônimo.",
+    fullDescription: "Experiência digital discreta e elegante para hotelaria erótica e casais. Mostra fotos em alta definição de cada suíte, tabela de períodos e reserva antecipada com total sigilo.",
+    image: "assets/images/layout-motel.png",
+    gallery: [
+      "assets/images/layout-motel.png"
+    ],
+    tags: ["Motel Boutique", "Private Suites", "Anonymous Booking", "Luxury Hospitality"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-motel/index.html"
+    },
+    features: [
+      "Galeria privativa de suítes com piscina privativa, sauna e hidro",
+      "Calculadora de períodos (2h, 4h, 12h ou Pernoite com café)",
+      "Sistema de reserva discreta com garantia de privacidade absoluta"
+    ]
+  },
+  {
+    id: "layout-petshop",
+    title: "PAWS & CO. — Pet Boutique, Spa & Banho e Tosa",
+    category: "layouts",
+    categoryLabel: "Pet Shop & Spa",
+    badge: "Agendamento Pet • Spa",
+    shortDescription: "Centro de estética pet e boutique de rações super premium com agendamento online de banho, tosa na tesoura e táxi dog.",
+    fullDescription: "Ambiente acolhedor e dinâmico para pet shops modernos. Permite ao tutor escolher o porte do pet, selecionar tratamentos de hidratação e agendar data e horário.",
+    image: "assets/images/layout-petshop.png",
+    gallery: [
+      "assets/images/layout-petshop.png"
+    ],
+    tags: ["Pet Shop UI", "Grooming Booking", "Pet Care", "Friendly Design"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-petshop/index.html"
+    },
+    features: [
+      "Seletor de porte do pet (Pequeno, Médio, Grande) para cálculo de serviços",
+      "Agendamento de tosa higiênica, hidratação de ozônio e banho relaxante",
+      "Opção de Táxi Dog com busca e entrega domiciliar"
+    ]
+  },
+  {
+    id: "layout-produtora-eventos",
+    title: "PULSE LIVE — Produtora de Eventos, Shows & AV",
+    category: "layouts",
+    categoryLabel: "Eventos & Shows",
+    badge: "Cenografia & Palco • Live",
+    shortDescription: "Produtora executiva de festivais, convenções corporativas e shows com portfólio de palcos, iluminação e riders técnicos.",
+    fullDescription: "Interface vibrante e enérgica para produtoras de eventos e audiovisual. Apresenta vídeos de cases, dimensões de palcos e formulário de orçamento técnico para megaeventos.",
+    image: "assets/images/layout-produtora-eventos.png",
+    gallery: [
+      "assets/images/layout-produtora-eventos.png"
+    ],
+    tags: ["Live Events UI", "Stage Design", "Audiovisual", "Festival Production"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-produtora-eventos/index.html"
+    },
+    features: [
+      "Showcase de palcos monumentais e estrutura de iluminação cênica",
+      "Detalhamento de riders técnicos para festivais e convenções",
+      "Formulário direto para contratação de produção executiva"
+    ]
+  },
+  {
+    id: "layout-spa-massagem",
+    title: "SAMSARA URBAN SPA — Massagens Terapêuticas & Ofurô",
+    category: "layouts",
+    categoryLabel: "Spa & Massoterapia",
+    badge: "Day Spa • Rituais",
+    shortDescription: "Oásis de bem-estar e relaxamento com rituais de massoterapia ayurvédica, drenagem linfática, ofurô e aromaterapia.",
+    fullDescription: "Design orgânico e sereno em tons terra e texturas naturais. Permite montar pacotes de Day Spa para casais ou individuais, detalhando benefícios e óleos essenciais utilizados.",
+    image: "assets/images/layout-spa-massagem.png",
+    gallery: [
+      "assets/images/layout-spa-massagem.png"
+    ],
+    tags: ["Spa & Wellness", "Massage Therapy", "Relaxation UI", "Aromatherapy"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "../layouts para sites/site-spa-massagem/index.html"
+    },
+    features: [
+      "Catálogo interativo de rituais de massagem com duração e óleos essenciais",
+      "Combos personalizados de Day Spa com banho de imersão em ofurô",
+      "Agendamento com opção de Vale-Presente digital imediato"
+    ]
+  },
 
   // ==========================================
   // 5. EXTENSÕES CHROME (MANIFEST V3)

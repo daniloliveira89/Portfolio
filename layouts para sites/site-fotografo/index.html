@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LUCAS VIANNA — Fine Art & Editorial Photography</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,400&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    body { background-color: #0D0D0D; color: #F5F5F4; font-family: 'Inter', sans-serif; }
+    .font-serif-photo { font-family: 'Cormorant Garamond', serif; }
+    .font-exif { font-family: 'JetBrains Mono', monospace; }
+  </style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+</head>
+<body class="min-h-screen antialiased">
+  <header class="border-b border-white/10 px-6 h-20 flex items-center justify-between max-w-7xl mx-auto">
+    <span class="font-serif-photo text-3xl tracking-widest">LUCAS VIANNA</span>
+    <span class="font-exif text-xs text-neutral-400">LEICA M11 • EDITORIAL • PORTRAIT • WEDDING</span>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-12">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 gap-4">
+      <h1 class="font-serif-photo text-5xl sm:text-7xl leading-none">A luz como <em class="italic text-amber-200">memória tangível.</em></h1>
+      <div class="flex gap-2">
+        <button onclick="filterPhotos('all')" class="px-4 py-1.5 rounded-full text-xs bg-white text-black font-medium">Todas</button>
+        <button onclick="filterPhotos('editorial')" class="px-4 py-1.5 rounded-full text-xs border border-white/20">Editorial Moda</button>
+        <button onclick="filterPhotos('casamento')" class="px-4 py-1.5 rounded-full text-xs border border-white/20">Destination Wedding</button>
+      </div>
+    </div>
+
+    <div id="photo-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+  </main>
+
+  <script>
+    const PHOTOS = [
+      { title: "Vogue Italia — Outono em Milão", cat: "editorial", exif: "50mm Summilux • f/1.4 • 1/1000s • ISO 160", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" },
+      { title: "Villa d'Este — Lago di Como", cat: "casamento", exif: "35mm Summicron • f/2.0 • 1/500s • ISO 400", img: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" },
+      { title: "Retrato Monocromático — Estúdio SP", cat: "editorial", exif: "85mm Noctilux • f/1.2 • 1/250s • ISO 100", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" }
+    ];
+    window.filterPhotos = function(c) {
+      const list = c === 'all' ? PHOTOS : PHOTOS.filter(p => p.cat === c);
+      document.getElementById('photo-grid').innerHTML = list.map(p => `
+        <div class="group relative overflow-hidden rounded-xl border border-white/10 bg-neutral-900">
+          <img src="${p.img}" class="w-full h-96 object-cover group-hover:scale-105 transition duration-700">
+          <div class="p-4 bg-black/85 border-t border-white/10">
+            <h3 class="font-serif-photo text-2xl">${p.title}</h3>
+            <p class="font-exif text-[11px] text-amber-200/80 mt-1">📷 ${p.exif}</p>
+          </div>
+        </div>
+      `).join('');
+    };
+    filterPhotos('all');
+  </script>
+  <!-- Vercel Web Analytics & Speed Insights -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

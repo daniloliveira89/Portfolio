@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VELOX LOGISTICS — Supply Chain & Frete Expresso</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <style>body { background-color: #090D16; color: #F8FAFC; font-family: 'Inter', sans-serif; }</style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+</head>
+<body class="min-h-screen antialiased">
+  <header class="border-b border-white/10 bg-[#090D16]/90 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <span class="font-extrabold text-xl tracking-tight">🚚 VELOX <span class="text-orange-500">LOGISTICS</span></span>
+      <span class="text-xs font-mono text-slate-400">Frota Rastreada via Satélite • 99.4% On-Time Delivery</span>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-6">
+      <span class="px-3 py-1 rounded-full bg-orange-500/15 text-orange-400 text-xs font-bold uppercase">Malha Rodoviária & Aérea Nacional</span>
+      <h1 class="text-4xl sm:text-6xl font-extrabold mt-4 leading-tight">Sua carga entregue no prazo. Sem desculpas.</h1>
+      <p class="text-slate-400 mt-4">Centros de distribuição climatizados em SP, MG, SC e PE, com seguro de carga RCTR-C automático e telemetria em tempo real.</p>
+
+      <!-- Rastreador Rápido -->
+      <div class="mt-8 p-5 rounded-2xl bg-[#111827] border border-white/10">
+        <label class="text-xs font-bold uppercase text-orange-400 block mb-2">Rastreamento de Conhecimento (CT-e)</label>
+        <div class="flex gap-2">
+          <input id="track-code" type="text" value="VLX-89402-BR" class="flex-1 px-4 py-2.5 rounded-xl bg-black border border-white/15 font-mono text-sm text-white">
+          <button onclick="rastrear()" class="px-5 py-2.5 rounded-xl bg-orange-500 text-black font-bold text-xs uppercase">Rastrear</button>
+        </div>
+        <p id="track-status" class="mt-3 text-xs font-mono text-emerald-400">● Em trânsito: Rod. Presidente Dutra (KM 142) → Previsão: Hoje às 16:40</p>
+      </div>
+    </div>
+
+    <!-- Calculadora de Cotação de Frete -->
+    <div class="lg:col-span-6 bg-[#111827] border border-orange-500/30 rounded-3xl p-8">
+      <h2 class="text-xl font-bold mb-1">Simulador de Frete Corporativo</h2>
+      <p class="text-xs text-slate-400 mb-6">Calcule o custo estimado por peso cubado e modal de transporte:</p>
+
+      <div class="space-y-4">
+        <div>
+          <div class="flex justify-between text-xs mb-1"><span>Peso da Carga</span><strong id="peso-lbl">150 kg</strong></div>
+          <input id="peso-slider" type="range" min="10" max="2000" step="10" value="150" class="w-full accent-orange-500">
+        </div>
+        <div>
+          <label class="text-xs text-slate-400 block mb-1">Modalidade de Envio</label>
+          <select id="modal-frete" class="w-full px-4 py-3 rounded-xl bg-black border border-white/15 text-sm">
+            <option value="2.4">Rodoviário Standard (3 a 5 dias úteis)</option>
+            <option value="3.8" selected>Rodoviário Expresso Dedicado (24h a 48h)</option>
+            <option value="6.5">Aéreo Cargo Próximo Voo (Mesmo Dia)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="mt-6 p-4 rounded-xl bg-black border border-white/10 flex justify-between items-center">
+        <span class="text-xs text-slate-400">Frete Estimado (c/ Seguro Grátis)</span>
+        <strong id="frete-total" class="text-2xl font-extrabold text-orange-400">R$ 690,00</strong>
+      </div>
+
+      <button onclick="alert('Coleta agendada! Nossa equipe enviará o manifesto de carga.')" class="mt-5 w-full py-3.5 rounded-xl bg-orange-500 hover:bg-orange-400 text-black font-bold text-xs uppercase tracking-widest transition">
+        Solicitar Coleta Agora →
+      </button>
+    </div>
+  </main>
+
+  <script>
+    function rastrear() {
+      const code = document.getElementById('track-code').value || 'VLX-001';
+      document.getElementById('track-status').textContent = `● Carga [${code}] localizada no Hub Guarulhos/SP • Status: Saiu para entrega ao destinatário.`;
+    }
+    const pSlider = document.getElementById('peso-slider');
+    const mSelect = document.getElementById('modal-frete');
+    function calcFrete() {
+      const kg = Number(pSlider.value);
+      const factor = Number(mSelect.value);
+      const total = 120 + kg * factor;
+      document.getElementById('peso-lbl').textContent = kg + ' kg';
+      document.getElementById('frete-total').textContent = 'R$ ' + total.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+    }
+    pSlider.addEventListener('input', calcFrete);
+    mSelect.addEventListener('change', calcFrete);
+    calcFrete();
+  </script>
+  <!-- Vercel Web Analytics & Speed Insights -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAMSARA URBAN SPA — Massagens Terapêuticas & Ofurô</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body { background-color: #EFECE6; color: #2C2A25; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .font-spa { font-family: 'Cormorant Garamond', serif; }
+  </style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+</head>
+<body class="min-h-screen antialiased">
+  <header class="border-b border-stone-900/10 px-6 h-20 flex items-center justify-between max-w-6xl mx-auto">
+    <span class="font-spa text-3xl tracking-widest">SAMSARA SPA 🌿</span>
+    <span class="text-xs uppercase tracking-widest text-stone-600">Aromaterapia Orgânica • Banhos de Imersão • Day Spa</span>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-7">
+      <h1 class="font-spa text-5xl sm:text-7xl leading-none">Desacelere o corpo. <em class="italic text-stone-600">Silencie a mente.</em></h1>
+      <div class="flex gap-2 mt-8 mb-6">
+        <button onclick="setDur(60, 1)" class="px-4 py-2 rounded-full text-xs font-bold bg-[#2C2A25] text-white">Sessão 60 min</button>
+        <button onclick="setDur(90, 1.35)" class="px-4 py-2 rounded-full text-xs font-bold bg-white text-[#2C2A25]">Sessão 90 min (+Ofurô)</button>
+      </div>
+      <div id="spa-list" class="space-y-4"></div>
+    </div>
+    <div class="lg:col-span-5">
+      <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80" class="w-full h-96 object-cover rounded-3xl shadow-lg" alt="Massagem Spa">
+    </div>
+  </main>
+
+  <script>
+    const RITUALS = [
+      { name: "Massagem Balinesa c/ Pedras Vulcânicas Quentes", base: 240, desc: "Óleos essenciais de lavanda francesa e pressão profunda nos pontos de tensão." },
+      { name: "Ritual Samsara Casal (Massagem + Banho de Ofurô)", base: 520, desc: "Suíte privativa a luz de velas com sais do Himalaia e chá de hibisco." }
+    ];
+    let durMin = 60, factor = 1;
+    window.setDur = function(d, f) { durMin = d; factor = f; renderSpa(); };
+    function renderSpa() {
+      document.getElementById('spa-list').innerHTML = RITUALS.map(r => `
+        <div class="bg-white p-6 rounded-2xl border border-stone-300 flex justify-between items-center gap-4">
+          <div>
+            <span class="text-xs font-bold uppercase text-stone-500">⏱️ ${durMin} Minutos</span>
+            <h3 class="font-spa text-2xl font-bold">${r.name}</h3>
+            <p class="text-xs text-stone-500 mt-1">${r.desc}</p>
+          </div>
+          <strong class="text-lg font-bold whitespace-nowrap">R$ ${Math.round(r.base * factor)}</strong>
+        </div>
+      `).join('');
+    }
+    renderSpa();
+  </script>
+  <!-- Vercel Web Analytics & Speed Insights -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

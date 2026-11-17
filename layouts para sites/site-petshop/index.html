@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PAWS & CO. — Pet Boutique, Spa & Hospital 24h</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>body { background-color: #FFFDF9; color: #1E1B18; font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+</head>
+<body class="min-h-screen antialiased">
+  <header class="border-b border-orange-950/10 bg-white sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      <span class="font-extrabold text-2xl text-orange-600">🐾 PAWS & CO.</span>
+      <span class="px-3.5 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">Hospital Veterinário 24h • Banho c/ Câmeras Ao Vivo</span>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-6">
+      <span class="text-xs font-extrabold uppercase tracking-wider text-orange-600">Estética Pet & Bem-Estar</span>
+      <h1 class="text-4xl sm:text-6xl font-extrabold mt-2 leading-tight">Carinho de família, estrutura de hospital.</h1>
+      <p class="text-stone-600 mt-4">Toalhas esterilizadas individualmente, shampoos veganos hipoalergênicos, secagem silenciosa sem gaiolas e creche gramada.</p>
+      <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=900&q=80" class="w-full h-64 object-cover rounded-3xl mt-6 shadow-md" alt="Golden Retriever">
+    </div>
+
+    <!-- Configurador de Spa por Porte do Pet -->
+    <div class="lg:col-span-6 bg-white p-8 rounded-3xl border border-orange-200 shadow-xl">
+      <h2 class="text-2xl font-extrabold mb-2">Simulador de Spa & Daycare</h2>
+      <p class="text-xs text-stone-500 mb-5">1. Escolha o porte do seu pet:</p>
+
+      <div class="grid grid-cols-3 gap-2 mb-6">
+        <button onclick="setPorte(1, this)" class="porte-btn py-2.5 rounded-xl text-xs font-bold bg-orange-500 text-white">Pequeno (até 8kg)</button>
+        <button onclick="setPorte(1.35, this)" class="porte-btn py-2.5 rounded-xl text-xs font-bold bg-orange-50 text-orange-900">Médio (9-20kg)</button>
+        <button onclick="setPorte(1.75, this)" class="porte-btn py-2.5 rounded-xl text-xs font-bold bg-orange-50 text-orange-900">Grande (+20kg)</button>
+      </div>
+
+      <div class="space-y-3 text-sm">
+        <label class="flex justify-between items-center p-3.5 rounded-xl border border-stone-200 cursor-pointer">
+          <span><input type="checkbox" checked class="pet-chk accent-orange-500 mr-2" value="75"> Banho Ozônio + Escovação Dental</span>
+          <strong class="text-orange-600">Base R$ 75</strong>
+        </label>
+        <label class="flex justify-between items-center p-3.5 rounded-xl border border-stone-200 cursor-pointer">
+          <span><input type="checkbox" class="pet-chk accent-orange-500 mr-2" value="65"> Tosa na Tesoura / Higiênica</span>
+          <strong class="text-orange-600">Base R$ 65</strong>
+        </label>
+        <label class="flex justify-between items-center p-3.5 rounded-xl border border-stone-200 cursor-pointer">
+          <span><input type="checkbox" class="pet-chk accent-orange-500 mr-2" value="90"> Diária Daycare (Creche c/ Monitor)</span>
+          <strong class="text-orange-600">Base R$ 90</strong>
+        </label>
+      </div>
+
+      <div class="mt-6 pt-5 border-t border-stone-200 flex justify-between items-center">
+        <span class="text-xs font-bold uppercase text-stone-500">Valor para o Porte Selecionado</span>
+        <strong id="pet-total" class="text-3xl font-extrabold text-orange-600">R$ 75</strong>
+      </div>
+
+      <button onclick="alert('Horário de Spa agendado! Buscamos seu pet em casa com o Táxi Dog.')" class="mt-5 w-full py-3.5 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs uppercase tracking-widest transition">
+        Agendar Horário (Leva & Traz) →
+      </button>
+    </div>
+  </main>
+
+  <script>
+    let mult = 1;
+    function calcPet() {
+      let sum = 0;
+      document.querySelectorAll('.pet-chk:checked').forEach(c => sum += Number(c.value));
+      document.getElementById('pet-total').textContent = 'R$ ' + Math.round(sum * mult);
+    }
+    window.setPorte = function(m, btn) {
+      mult = m;
+      document.querySelectorAll('.porte-btn').forEach(b => b.className = 'porte-btn py-2.5 rounded-xl text-xs font-bold bg-orange-50 text-orange-900');
+      btn.className = 'porte-btn py-2.5 rounded-xl text-xs font-bold bg-orange-500 text-white';
+      calcPet();
+    };
+    document.querySelectorAll('.pet-chk').forEach(c => c.addEventListener('change', calcPet));
+    calcPet();
+  </script>
+  <!-- Vercel Web Analytics & Speed Insights -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

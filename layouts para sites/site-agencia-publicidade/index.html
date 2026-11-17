@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KROMA* — Creative Growth & Branding Agency</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body { background-color: #080808; color: #FFFFFF; font-family: 'Inter', sans-serif; }
+    .font-agency { font-family: 'Syne', sans-serif; }
+  </style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+</head>
+<body class="min-h-screen antialiased">
+  <header class="border-b border-white/10 px-6 h-20 flex items-center justify-between max-w-7xl mx-auto">
+    <span class="font-agency text-2xl tracking-tight text-fuchsia-400">KROMA* STUDIO</span>
+    <span class="text-xs uppercase tracking-widest text-zinc-400">Cannes Lions Shortlist • Branding & Paid Media</span>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-16">
+    <h1 class="font-agency text-5xl sm:text-7xl leading-[0.95] max-w-4xl">Criatividade que constrói marcas <span class="text-fuchsia-400">e multiplica receita.</span></h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14">
+      <div class="p-7 rounded-2xl bg-zinc-900 border border-white/10">
+        <span class="text-xs font-bold uppercase text-fuchsia-400">Case 01 / Fintech</span>
+        <h3 class="font-agency text-2xl mt-2">Rebranding & Lançamento Nacional</h3>
+        <div class="text-4xl font-extrabold text-emerald-400 mt-6">+340%</div>
+        <p class="text-xs text-zinc-400 mt-1">Crescimento em abertura de contas em 90 dias.</p>
+      </div>
+      <div class="p-7 rounded-2xl bg-zinc-900 border border-white/10">
+        <span class="text-xs font-bold uppercase text-fuchsia-400">Case 02 / E-commerce Moda</span>
+        <h3 class="font-agency text-2xl mt-2">Direção Criativa TikTok & Meta Ads</h3>
+        <div class="text-4xl font-extrabold text-emerald-400 mt-6">8.4x ROAS</div>
+        <p class="text-xs text-zinc-400 mt-1">Retorno direto sobre investimento publicitário auditado.</p>
+      </div>
+      <div class="p-7 rounded-2xl bg-zinc-900 border border-fuchsia-500/40">
+        <span class="text-xs font-bold uppercase text-fuchsia-400">Simulador de Escopo</span>
+        <h3 class="font-agency text-xl mt-2">Qual seu objetivo principal?</h3>
+        <select onchange="document.getElementById('ag-res').textContent = this.value" class="w-full mt-4 px-3 py-2.5 bg-black border border-white/15 rounded-xl text-xs">
+          <option value="Squad Dedicado (Tráfego + Criativos): R$ 8.500/mês">Escalar Vendas & Performance (ROAS)</option>
+          <option value="Projeto Completo Identidade + Brandbook: R$ 14.000">Rebranding Completo & Identidade Visual</option>
+          <option value="Produção 3D + Campanha Lançamento: R$ 19.000">Campanha de Lançamento 360°</option>
+        </select>
+        <p id="ag-res" class="mt-4 text-xs font-bold text-fuchsia-300">Squad Dedicado (Tráfego + Criativos): R$ 8.500/mês</p>
+      </div>
+    </div>
+  </main>
+  <!-- Vercel Web Analytics & Speed Insights -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

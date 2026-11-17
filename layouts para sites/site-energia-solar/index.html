@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HELIOS SOLAR — Engenharia Fotovoltaica & Usinas Solares</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>body { background-color: #06141F; color: #F8FAFC; font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+</head>
+<body class="min-h-screen antialiased">
+  <header class="border-b border-white/10 bg-[#06141F]/90 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <span class="font-extrabold text-xl tracking-tight">☀️ HELIOS <span class="text-amber-400">SOLAR</span></span>
+      <span class="text-xs bg-amber-400/15 text-amber-300 px-3.5 py-1 rounded-full font-semibold">Painéis Tier-1 Bloomberg • Garantia de 25 Anos</span>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-6">
+      <span class="text-xs uppercase tracking-widest text-amber-400 font-bold">Homologação Completa na Concessionária</span>
+      <h1 class="text-4xl sm:text-6xl font-extrabold mt-3 leading-tight">Reduza sua conta de energia em até <span class="text-amber-400">95%.</span></h1>
+      <p class="text-slate-300 mt-4 leading-relaxed">Projetamos e instalamos sistemas fotovoltaicos residenciais, comerciais e usinas de investimento com monitoramento pelo celular.</p>
+      <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=900&q=80" class="w-full h-60 object-cover rounded-2xl mt-6 border border-white/10" alt="Painéis Solares">
+    </div>
+
+    <!-- Calculadora Solar -->
+    <div class="lg:col-span-6 bg-[#0C2133] border border-amber-400/30 rounded-3xl p-8 shadow-2xl">
+      <h2 class="text-2xl font-extrabold text-white mb-1">Calculadora de Dimensionamento Solar</h2>
+      <p class="text-xs text-slate-300 mb-6">Informe o valor médio mensal da sua conta de luz:</p>
+
+      <div>
+        <div class="flex justify-between items-baseline mb-2">
+          <span class="text-xs text-slate-300">Conta de Luz Atual</span>
+          <strong id="luz-val" class="text-3xl font-extrabold text-amber-400">R$ 800 /mês</strong>
+        </div>
+        <input id="luz-slider" type="range" min="300" max="6000" step="100" value="800" class="w-full accent-amber-400">
+      </div>
+
+      <div class="grid grid-cols-2 gap-4 mt-6">
+        <div class="p-4 rounded-xl bg-black/30 border border-white/10">
+          <span class="text-xs text-slate-400 block">Módulos Solares (585W)</span>
+          <strong id="placas-qtd" class="text-lg font-extrabold text-white">10 Placas</strong>
+        </div>
+        <div class="p-4 rounded-xl bg-black/30 border border-white/10">
+          <span class="text-xs text-slate-400 block">Potência do Sistema</span>
+          <strong id="potencia-kwp" class="text-lg font-extrabold text-amber-300">5.85 kWp</strong>
+        </div>
+      </div>
+
+      <div class="mt-4 p-4 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex justify-between items-center">
+        <span class="text-xs text-emerald-200">Economia Acumulada Anual:</span>
+        <strong id="solar-save" class="text-2xl font-extrabold text-emerald-400">R$ 9.120 /ano</strong>
+      </div>
+
+      <button onclick="alert('Estudo fotovoltaico gratuito gerado! Enviaremos a proposta técnica por WhatsApp.')" class="mt-6 w-full py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs uppercase tracking-widest transition">
+        Receber Orçamento do Kit Solar →
+      </button>
+    </div>
+  </main>
+
+  <script>
+    const lSlider = document.getElementById('luz-slider');
+    function calcSolar() {
+      const bill = Number(lSlider.value);
+      const placas = Math.max(4, Math.round(bill / 80));
+      const kwp = (placas * 0.585).toFixed(2);
+      const saveYear = Math.round(bill * 0.95 * 12);
+      document.getElementById('luz-val').textContent = 'R$ ' + bill.toLocaleString('pt-BR') + ' /mês';
+      document.getElementById('placas-qtd').textContent = placas + ' Placas';
+      document.getElementById('potencia-kwp').textContent = kwp + ' kWp';
+      document.getElementById('solar-save').textContent = 'R$ ' + saveYear.toLocaleString('pt-BR') + ' /ano';
+    }
+    lSlider.addEventListener('input', calcSolar);
+    calcSolar();
+  </script>
+  <!-- Vercel Web Analytics & Speed Insights -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>

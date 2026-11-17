@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VORTEX ENGENHARIA — Projetos Estruturais BIM & Galpões</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <style>body { background-color: #0B1017; color: #F8FAFC; font-family: 'Inter', sans-serif; }</style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+</head>
+<body class="min-h-screen antialiased">
+  <header class="border-b border-white/10 px-6 h-20 flex items-center justify-between max-w-7xl mx-auto">
+    <span class="font-extrabold text-xl">⚙️ VORTEX <span class="text-blue-400">ENGENHARIA BIM</span></span>
+    <span class="text-xs font-mono text-slate-400">CREA-SP • Cálculo Estrutural • Compatibilização BIM 5D</span>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-6">
+      <span class="px-3 py-1 rounded-md bg-blue-500/15 text-blue-400 text-xs font-bold uppercase">Engenharia Civil, Elétrica e Hidrossanitária</span>
+      <h1 class="text-4xl sm:text-6xl font-extrabold mt-4 leading-tight">Projetos em BIM que eliminam desperdícios na obra.</h1>
+      <p class="text-slate-400 mt-4">Detectamos interferências (Clash Detection) antes do início da fundação, economizando até 22% em aço, concreto e retrabalho.</p>
+    </div>
+
+    <!-- Calculadora de Projeto de Engenharia por m² -->
+    <div class="lg:col-span-6 bg-[#121A26] border border-blue-500/30 rounded-3xl p-8">
+      <h2 class="text-xl font-bold mb-4">Simulador de Projetos Complementares & BIM</h2>
+      <div class="space-y-4">
+        <div>
+          <div class="flex justify-between text-xs mb-1"><span>Área Construída do Projeto</span><strong id="area-lbl">1.200 m²</strong></div>
+          <input id="area-slider" type="range" min="200" max="10000" step="100" value="1200" class="w-full accent-blue-500">
+        </div>
+        <div>
+          <label class="text-xs text-slate-400 block mb-1">Escopo Técnico</label>
+          <select id="eng-scope" class="w-full px-4 py-3 bg-black border border-white/15 rounded-xl text-sm">
+            <option value="45">Projeto Estrutural + Fundações (R$ 45/m²)</option>
+            <option value="85" selected>Pacote Completo BIM (Estrutural + Elétrico + Hidro — R$ 85/m²)</option>
+            <option value="60">Galpão Metálico Industrial (R$ 60/m²)</option>
+          </select>
+        </div>
+      </div>
+      <div class="mt-6 p-4 rounded-xl bg-black border border-white/10 flex justify-between items-center">
+        <span class="text-xs text-slate-400">Estimativa de Projeto (c/ ART):</span>
+        <strong id="eng-total" class="text-2xl font-extrabold text-blue-400">R$ 102.000</strong>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const aSli = document.getElementById('area-slider'), eScp = document.getElementById('eng-scope');
+    function calcEng() {
+      const m2 = Number(aSli.value), rate = Number(eScp.value);
+      document.getElementById('area-lbl').textContent = m2.toLocaleString('pt-BR') + ' m²';
+      document.getElementById('eng-total').textContent = 'R$ ' + (m2 * rate).toLocaleString('pt-BR');
+    }
+    aSli.addEventListener('input', calcEng); eScp.addEventListener('change', calcEng);
+    calcEng();
+  </script>
+  <!-- Vercel Web Analytics & Speed Insights -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>
