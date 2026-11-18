@@ -1,56 +1,1352 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth dark">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PULSE LIVE — Produtora de Eventos, Cenografia & AV</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body { background-color: #070510; color: #FFFFFF; font-family: 'Inter', sans-serif; }
-    .font-event { font-family: 'Syne', sans-serif; }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PULSE LIVE AV — Engenharia de Eventos, Palcos Monumentais, LED 4K & Sonorização de Festivais</title>
+  <meta name="description" content="Engenharia de som e luz que transforma palcos em experiências lendárias. Estruturas monumentais, painéis de LED P2.6 curvos, sonorização L-Acoustics / Meyer Sound e iluminação cênica robótica timecode." />
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
-</head>
-<body class="min-h-screen antialiased">
-  <header class="border-b border-white/10 px-6 h-20 flex items-center justify-between max-w-7xl mx-auto">
-    <span class="font-event text-2xl text-cyan-400">PULSE LIVE // AV</span>
-    <span class="text-xs text-zinc-400">Congressos • Festivais • Cenografia 3D • Painéis de LED</span>
-  </header>
 
-  <main class="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-    <div class="lg:col-span-6">
-      <h1 class="font-event text-5xl sm:text-6xl leading-none">Experiências ao vivo que <span class="text-cyan-400">eletrizam plateias.</span></h1>
-      <p class="text-zinc-400 mt-4">Direção técnica completa: sonorização Line Array, painéis de LED curvos de altíssima definição, iluminação timecode e transmissão broadcast multicâmera.</p>
-      <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=900&q=80" class="w-full h-60 object-cover rounded-2xl mt-6" alt="Show e Evento">
-    </div>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Configurador de Evento -->
-    <div class="lg:col-span-6 bg-[#110E20] border border-cyan-500/30 rounded-3xl p-8">
-      <h2 class="font-event text-2xl mb-4">Simulador de Estrutura Audiovisual</h2>
-      <div>
-        <div class="flex justify-between text-xs mb-2"><span>Público Estimado</span><strong id="pub-lbl" class="text-cyan-400 text-lg">500 Pessoas</strong></div>
-        <input id="pub-slider" type="range" min="100" max="5000" step="100" value="500" class="w-full accent-cyan-400">
-      </div>
-      <div class="mt-6 p-4 rounded-xl bg-black/50 border border-white/10">
-        <span class="text-xs text-zinc-400 block">Rider Técnico Recomendado:</span>
-        <strong id="rider-desc" class="text-sm text-white block mt-1">Painel LED P2.6 (8x3m) + Sistema Line Array 8 Caixas + 24 Moving Beams</strong>
-        <div id="rider-price" class="text-2xl font-extrabold text-cyan-400 mt-3">Investimento: R$ 24.500</div>
-      </div>
-    </div>
-  </main>
+  <!-- Google Fonts: Bebas Neue, Syne, Space Grotesk & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 
   <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#050505',
+            stageDark: '#0b0914',
+            stagePanel: '#110e20',
+            violetNeon: '#8b5cf6',
+            magentaLaser: '#ec4899',
+            cyanLaser: '#06b6d4',
+            cyanBright: '#22d3ee'
+          },
+          fontFamily: {
+            bebas: ['"Bebas Neue"', 'sans-serif'],
+            syne: ['"Syne"', 'sans-serif'],
+            sans: ['"Space Grotesk"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          },
+          boxShadow: {
+            'cyan-laser': '0 0 35px -5px rgba(6, 182, 212, 0.45)',
+            'violet-laser': '0 0 40px -5px rgba(139, 92, 246, 0.45)',
+            'magenta-laser': '0 0 35px -5px rgba(236, 72, 153, 0.45)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #050505;
+      color: #FFFFFF;
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+    }
+    .font-event {
+      font-family: 'Syne', sans-serif;
+    }
+    .font-festival {
+      font-family: 'Bebas Neue', sans-serif;
+    }
+
+    /* Subtle LED Pitch Scanlines & Stage Truss Grid */
+    .bg-stage-grid {
+      background-size: 56px 56px;
+      background-image: 
+        linear-gradient(to right, rgba(139, 92, 246, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(6, 182, 212, 0.05) 1px, transparent 1px);
+    }
+    .scanlines {
+      background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0),
+        rgba(255,255,255,0) 50%,
+        rgba(0, 0, 0, 0.25) 50%,
+        rgba(0, 0, 0, 0.25)
+      );
+      background-size: 100% 4px;
+    }
+
+    /* Animated Laser Beams in Hero */
+    @keyframes laserSweepLeft {
+      0%, 100% { transform: rotate(-28deg) scaleY(1); opacity: 0.35; }
+      50% { transform: rotate(-12deg) scaleY(1.15); opacity: 0.75; }
+    }
+    @keyframes laserSweepRight {
+      0%, 100% { transform: rotate(26deg) scaleY(1); opacity: 0.35; }
+      50% { transform: rotate(10deg) scaleY(1.15); opacity: 0.75; }
+    }
+    .laser-beam-cyan {
+      animation: laserSweepLeft 7s ease-in-out infinite;
+      transform-origin: top center;
+    }
+    .laser-beam-magenta {
+      animation: laserSweepRight 8.5s ease-in-out infinite;
+      transform-origin: top center;
+    }
+
+    /* Brutalist Stage Cards */
+    .stage-card {
+      background: linear-gradient(155deg, rgba(17, 14, 32, 0.9) 0%, rgba(5, 5, 5, 0.96) 100%);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .stage-card:hover {
+      border-color: rgba(6, 182, 212, 0.6);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 45px -15px rgba(139, 92, 246, 0.35), 0 0 25px -5px rgba(6, 182, 212, 0.25);
+    }
+
+    /* Custom Range Slider */
+    input[type=range].pulse-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 8px;
+      background: #050505;
+      border-radius: 999px;
+      border: 1px solid rgba(6, 182, 212, 0.35);
+      outline: none;
+    }
+    input[type=range].pulse-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #06b6d4 0%, #ec4899 100%);
+      border: 3px solid #ffffff;
+      box-shadow: 0 0 18px rgba(6, 182, 212, 0.95);
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+    input[type=range].pulse-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.18);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #050505;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e1b4b;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #06b6d4;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen antialiased bg-obsidian text-white bg-stage-grid selection:bg-cyanLaser selection:text-obsidian relative">
+
+  <!-- Ambient Neon Orbs -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute -top-44 left-1/4 w-[600px] h-[500px] rounded-full bg-violetNeon/15 blur-[160px]"></div>
+    <div class="absolute top-1/3 -right-44 w-[550px] h-[550px] rounded-full bg-cyanLaser/15 blur-[160px]"></div>
+    <div class="absolute -bottom-40 left-10 w-[550px] h-[450px] rounded-full bg-magentaLaser/15 blur-[160px]"></div>
+  </div>
+
+  <!-- TOPBAR DE TELEMETRIA TIMECODE & SEGURANÇA ESTRUTURAL -->
+  <div class="relative z-50 bg-[#08070f] border-b border-white/10 text-[11px] font-mono">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-magentaLaser/15 border border-magentaLaser/40 text-magentaLaser font-bold">
+          <span class="w-2 h-2 rounded-full bg-magentaLaser animate-ping"></span>
+          <span class="w-2 h-2 rounded-full bg-magentaLaser -ml-3.5"></span>
+          SMPTE TIMECODE SYNC
+        </span>
+        <span class="hidden md:inline text-zinc-400">
+          L-Acoustics K1/K2 Certified • Painéis LED P2.6 4K HDR • Servidores Disguise GX3 Redundantes
+        </span>
+      </div>
+      <div class="flex items-center gap-4 ml-auto text-zinc-300">
+        <span class="text-cyanBright font-bold">0 Incidentes em 12 Anos (ART / CREA / NR-35)</span>
+        <span class="hidden sm:inline text-zinc-600">|</span>
+        <a href="#reserva-data" class="hidden sm:inline text-violetNeon hover:text-cyanBright underline">Plantão Turnês 24/7</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. HEADER FIXO COM LOGO LUMINOSO PULSE LIVE AV -->
+  <header class="sticky top-0 z-40 bg-obsidian/85 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Glowing Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-cyanLaser via-violetNeon to-magentaLaser p-[1.5px] shadow-cyan-laser">
+          <div class="w-full h-full bg-obsidian rounded-[10px] flex items-center justify-center">
+            <i data-lucide="activity" class="w-6 h-6 text-cyanBright group-hover:scale-110 transition-transform"></i>
+          </div>
+        </div>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="font-event font-extrabold text-xl sm:text-2xl tracking-tight text-white">PULSE LIVE</span>
+            <span class="font-mono text-xs font-bold px-2 py-0.5 rounded bg-cyanLaser/15 text-cyanBright border border-cyanLaser/40">// AV</span>
+          </div>
+          <span class="block font-mono text-[9px] uppercase tracking-[0.26em] text-zinc-400 mt-0.5">
+            Monumental Stages &amp; Show Engineering
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Menu -->
+      <nav class="hidden lg:flex items-center gap-7 text-xs font-mono uppercase tracking-[0.16em] text-zinc-300">
+        <a href="#producoes" class="hover:text-cyanBright transition-colors">Produções</a>
+        <a href="#cenografia-3d" class="hover:text-cyanBright transition-colors">Palcos &amp; Estruturas 3D</a>
+        <a href="#rider-simulator" class="hover:text-cyanBright transition-colors flex items-center gap-1.5 text-cyanBright font-bold">
+          <i data-lucide="sliders" class="w-3.5 h-3.5 text-magentaLaser"></i>
+          Rider Técnico
+        </a>
+        <a href="#casos-artistas" class="hover:text-cyanBright transition-colors">Portfólio &amp; Artistas</a>
+        <a href="#reserva-data" class="hover:text-cyanBright transition-colors">Contato</a>
+      </nav>
+
+      <!-- Header CTA & Mobile Trigger -->
+      <div class="flex items-center gap-3">
+        <a 
+          href="#rider-simulator" 
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-violetNeon via-magentaLaser to-cyanLaser text-white font-event font-bold text-xs uppercase tracking-wider shadow-violet-laser hover:opacity-95 transition-all"
+        >
+          <span>Solicitar Rider &amp; Orçamento</span>
+          <i data-lucide="zap" class="w-4 h-4"></i>
+        </a>
+
+        <button type="button" onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-xl bg-white/5 border border-white/15 text-white" aria-label="Abrir Menu">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-stagePanel border-t border-white/10 px-6 py-6 space-y-3.5 font-mono text-xs uppercase tracking-widest">
+      <a href="#producoes" onclick="toggleMobileMenu()" class="block py-2 border-b border-white/10 hover:text-cyanBright">01. Produções &amp; Festivais</a>
+      <a href="#rider-simulator" onclick="toggleMobileMenu()" class="block py-2 border-b border-white/10 text-cyanBright font-bold">02. Simulador de Rider Técnico (Watts RMS)</a>
+      <a href="#cenografia-3d" onclick="toggleMobileMenu()" class="block py-2 border-b border-white/10 hover:text-cyanBright">03. Cenografia 3D &amp; Pré-Visualização</a>
+      <a href="#casos-artistas" onclick="toggleMobileMenu()" class="block py-2 border-b border-white/10 hover:text-cyanBright">04. Portfólio (+650 Festivais)</a>
+      <a href="#reserva-data" onclick="toggleMobileMenu()" class="block py-3 text-center rounded-xl bg-gradient-to-r from-violetNeon to-magentaLaser text-white font-bold">Reservar Data &amp; Enviar Planta</a>
+    </div>
+  </header>
+
+  <!-- 2. HERO SECTION ARREBATADORA COM LASERS & TELÕES DE LED -->
+  <section class="relative min-h-[90vh] flex items-center pt-12 pb-20 lg:py-24 overflow-hidden border-b border-white/10">
+    <!-- Background HD Festival Stage Image + Scanlines + Animated Lasers -->
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=2000&q=85" 
+        alt="Palco Monumental Pulse Live AV com Lasers e Multidão" 
+        class="w-full h-full object-cover object-center brightness-50 contrast-125 scale-105"
+      />
+      <div class="absolute inset-0 scanlines opacity-40"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/55 to-obsidian/80"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-obsidian via-obsidian/70 to-transparent"></div>
+
+      <!-- Animated Laser Cones -->
+      <div class="hidden md:block absolute -top-10 left-1/3 w-1.5 h-[110vh] bg-gradient-to-b from-cyanBright via-cyanLaser/40 to-transparent blur-[2px] laser-beam-cyan"></div>
+      <div class="hidden md:block absolute -top-10 left-1/2 w-2 h-[110vh] bg-gradient-to-b from-magentaLaser via-violetNeon/40 to-transparent blur-[2px] laser-beam-magenta"></div>
+      <div class="hidden md:block absolute -top-10 right-1/4 w-1.5 h-[110vh] bg-gradient-to-b from-violetNeon via-cyanLaser/30 to-transparent blur-[2px] laser-beam-cyan"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left 7 Cols: Monumental Headline & Dual CTA -->
+        <div class="lg:col-span-7 space-y-7">
+          <div class="inline-flex flex-wrap items-center gap-2.5 px-4 py-1.5 rounded-full bg-stagePanel/90 border border-cyanLaser/40 shadow-cyan-laser">
+            <span class="px-2 py-0.5 rounded bg-magentaLaser text-white font-mono text-[10px] font-bold uppercase">
+              WORLD-TOUR GRADE
+            </span>
+            <span class="font-mono text-xs text-cyanBright">
+              Palcos Geodésicos • LED Curvo P2.6 4K HDR • Line Array L-Acoustics K1
+            </span>
+          </div>
+
+          <h1 class="font-festival text-6xl sm:text-7xl lg:text-[88px] tracking-wide leading-[0.94] uppercase text-white">
+            Engenharia de som e luz que transforma palcos em <span class="bg-gradient-to-r from-cyanBright via-violetNeon to-magentaLaser bg-clip-text text-transparent">experiências lendárias.</span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-zinc-300 leading-relaxed max-w-2xl">
+            Projetamos, estruturamos e operamos megaproduções ao vivo para até 100.000 pessoas. Sincronismo cirúrgico via SMPTE Timecode integrando paredes de LED gigantes, robótica de iluminação cênica, lasers de alta potência, pirotecnia e pressão sonora cristalina.
+          </p>
+
+          <!-- Dual CTA -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+            <a 
+              href="#rider-simulator" 
+              class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-gradient-to-r from-cyanLaser via-violetNeon to-magentaLaser text-white font-event font-extrabold text-sm uppercase tracking-wider shadow-cyan-laser hover:scale-[1.01] transition-all"
+            >
+              <span>Dimensionar Rider &amp; Potência RMS</span>
+              <i data-lucide="sliders" class="w-5 h-5"></i>
+            </a>
+            <a 
+              href="#producoes" 
+              class="inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl bg-white/5 hover:bg-white/10 backdrop-blur-md border border-white/20 hover:border-cyanBright text-white font-mono text-xs uppercase tracking-widest transition-all"
+            >
+              <i data-lucide="play" class="w-4 h-4 text-cyanBright"></i>
+              <span>Inspecionar Grandes Palcos</span>
+            </a>
+          </div>
+
+          <!-- Quick Festival Specs Bar -->
+          <div class="pt-6 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-4 font-mono">
+            <div class="p-3.5 rounded-2xl bg-obsidian/80 border border-white/10">
+              <strong class="font-festival text-3xl text-cyanBright block leading-none">+650</strong>
+              <span class="text-[11px] text-zinc-400">Festivais &amp; Turnês</span>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-obsidian/80 border border-white/10">
+              <strong class="font-festival text-3xl text-violetNeon block leading-none">1.2 MW</strong>
+              <span class="text-[11px] text-zinc-400">Acervo de Áudio RMS</span>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-obsidian/80 border border-white/10">
+              <strong class="font-festival text-3xl text-magentaLaser block leading-none">2.400 m²</strong>
+              <span class="text-[11px] text-zinc-400">Painéis LED P2.6 HDR</span>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-obsidian/80 border border-white/10">
+              <strong class="font-festival text-3xl text-emerald-400 block leading-none">100%</strong>
+              <span class="text-[11px] text-zinc-400">Redundância FOH</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 5 Cols: Front-of-House (FOH) Live Telemetry HUD Card -->
+        <div class="lg:col-span-5">
+          <div class="stage-card rounded-3xl p-5 border border-cyanLaser/40 shadow-cyan-laser space-y-4">
+            <div class="flex items-center justify-between border-b border-white/10 pb-3 font-mono text-xs">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                <span class="text-white font-bold">FOH CONTROL // MASTER RACK</span>
+              </div>
+              <span class="px-2 py-0.5 rounded bg-violetNeon/20 text-violetNeon border border-violetNeon/40 text-[10px]">
+                grandMA3 + Disguise GX3
+              </span>
+            </div>
+
+            <div class="relative rounded-2xl overflow-hidden aspect-[16/11] bg-obsidian border border-white/10">
+              <img 
+                src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1000&q=85" 
+                alt="Show Monumental Pulse Live AV" 
+                class="w-full h-full object-cover"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent"></div>
+              <div class="absolute top-3 left-3 right-3 flex justify-between font-mono text-[10px]">
+                <span class="px-2.5 py-1 rounded bg-obsidian/85 border border-white/15 text-cyanBright">
+                  SPL FOH: 104.8 dBC (Leq)
+                </span>
+                <span class="px-2.5 py-1 rounded bg-obsidian/85 border border-magentaLaser/40 text-magentaLaser">
+                  64 UNIVERSOS DMX
+                </span>
+              </div>
+              <div class="absolute bottom-3 left-3 right-3 p-3.5 rounded-xl bg-obsidian/90 backdrop-blur-md border border-white/10">
+                <div class="flex items-center justify-between font-mono text-[11px] text-zinc-400 mb-1">
+                  <span>MAIN STAGE — ELECTRONIC FESTIVAL</span>
+                  <span class="text-emerald-400">● DANTE DUAL-RING OK</span>
+                </div>
+                <p class="font-event font-bold text-sm text-white">
+                  68m de Envergadura • 420 m² LED Curvo P2.6 • 180 Moving Lights Robóticos
+                </p>
+              </div>
+            </div>
+
+            <!-- Live Audio & DMX Meters -->
+            <div class="grid grid-cols-3 gap-2.5 font-mono text-[11px]">
+              <div class="p-3 rounded-xl bg-obsidian/90 border border-white/10">
+                <span class="text-zinc-500 block text-[9px]">PA LINE ARRAY</span>
+                <strong class="text-cyanBright">L-Acoustics K1</strong>
+              </div>
+              <div class="p-3 rounded-xl bg-obsidian/90 border border-white/10">
+                <span class="text-zinc-500 block text-[9px]">CONSOLE FOH / MON</span>
+                <strong class="text-violetNeon">DiGiCo Quantum 7</strong>
+              </div>
+              <div class="p-3 rounded-xl bg-obsidian/90 border border-white/10">
+                <span class="text-zinc-500 block text-[9px]">LASER &amp; SFX</span>
+                <strong class="text-magentaLaser">12x 40W RGB + CO2</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. SHOWCASE DE GRANDES PALCOS E FESTIVAIS (GRID DINÂMICO COM FILTROS) -->
+  <section id="producoes" class="py-24 lg:py-32 border-b border-white/10 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+        <div>
+          <span class="font-mono text-xs uppercase tracking-[0.25em] text-cyanBright font-bold block mb-2">
+            [ 01 // ENGENHARIA DE PALCOS &amp; MEGAPRODUÇÕES ]
+          </span>
+          <h2 class="font-festival text-5xl sm:text-7xl tracking-wide uppercase text-white leading-none">
+            Showcase de Grandes Palcos &amp; Festivais
+          </h2>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="flex flex-wrap gap-2" id="showcase-filters">
+          <button type="button" onclick="filterShowcase('all')" data-scat="all" class="scat-btn px-4 py-2.5 rounded-xl font-mono text-xs font-bold uppercase bg-cyanLaser text-obsidian shadow-cyan-laser transition-all">
+            Todos (6)
+          </button>
+          <button type="button" onclick="filterShowcase('eletronica')" data-scat="eletronica" class="scat-btn px-4 py-2.5 rounded-xl font-mono text-xs font-bold uppercase bg-stagePanel text-zinc-300 border border-white/10 hover:border-cyanLaser transition-all">
+            Festivais de Música Eletrônica
+          </button>
+          <button type="button" onclick="filterShowcase('internacional')" data-scat="internacional" class="scat-btn px-4 py-2.5 rounded-xl font-mono text-xs font-bold uppercase bg-stagePanel text-zinc-300 border border-white/10 hover:border-cyanLaser transition-all">
+            Shows Internacionais
+          </button>
+          <button type="button" onclick="filterShowcase('corporativo')" data-scat="corporativo" class="scat-btn px-4 py-2.5 rounded-xl font-mono text-xs font-bold uppercase bg-stagePanel text-zinc-300 border border-white/10 hover:border-cyanLaser transition-all">
+            Convenções Corporativas Globais
+          </button>
+          <button type="button" onclick="filterShowcase('arenas')" data-scat="arenas" class="scat-btn px-4 py-2.5 rounded-xl font-mono text-xs font-bold uppercase bg-stagePanel text-zinc-300 border border-white/10 hover:border-cyanLaser transition-all">
+            Arenas Esportivas
+          </button>
+        </div>
+      </div>
+
+      <!-- Dynamic Showcase Grid -->
+      <div id="showcase-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Populated dynamically via JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4. CALCULADORA / SIMULADOR DE RIDER TÉCNICO (WATTS RMS, EQUIPE & MÓDULOS) -->
+  <section id="rider-simulator" class="py-24 lg:py-32 bg-[#090714] border-b border-white/10 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violetNeon/15 border border-violetNeon/40 text-violetNeon font-mono text-xs font-bold uppercase tracking-widest">
+          <i data-lucide="cpu" class="w-4 h-4"></i>
+          Interactive Technical Rider &amp; Acoustic Engine
+        </span>
+        <h2 class="font-festival text-5xl sm:text-7xl tracking-wide uppercase text-white mt-3 leading-none">
+          Calculadora &amp; Simulador de Rider Técnico
+        </h2>
+        <p class="text-zinc-400 mt-3 text-sm sm:text-base">
+          Configure o porte do evento, a capacidade de público (5.000 a 80.000+ pessoas) e os módulos de cenografia, LED, iluminação robótica e sonorização para gerar a potência acústica em Watts RMS e o efetivo técnico.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left 7 Cols: Interactive Controls -->
+        <div class="lg:col-span-7 stage-card rounded-3xl p-6 sm:p-9 border border-violetNeon/30 space-y-8">
+          
+          <!-- 1. Tipo de Evento -->
+          <div>
+            <label class="block font-mono text-xs font-bold uppercase tracking-wider text-cyanBright mb-3">
+              1. Selecione a Tipologia do Evento
+            </label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="event-type-buttons">
+              <button type="button" onclick="setEventType('show', 1.0, 'Show de Grande Porte / Turnê')" data-etype="show" class="etype-btn p-4 rounded-2xl border border-cyanLaser bg-cyanLaser/15 text-left transition-all">
+                <div class="flex items-center justify-between">
+                  <span class="font-event font-bold text-sm text-white">Show de Grande Porte</span>
+                  <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-cyanLaser text-obsidian font-bold">ARENA / ESTÁDIO</span>
+                </div>
+                <p class="text-xs text-zinc-400 mt-1">Rider internacional completo FOH + Monitor + Delay Towers</p>
+              </button>
+
+              <button type="button" onclick="setEventType('festival', 1.35, 'Festival Multipalco Outdoor')" data-etype="festival" class="etype-btn p-4 rounded-2xl border border-white/10 bg-obsidian/70 text-left hover:border-white/30 transition-all">
+                <div class="flex items-center justify-between">
+                  <span class="font-event font-bold text-sm text-white">Festival Multipalco</span>
+                  <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-magentaLaser/20 text-magentaLaser font-bold">MAIN + TENT</span>
+                </div>
+                <p class="text-xs text-zinc-400 mt-1">Cenografia monumental, timecode laser e operação 16h/dia</p>
+              </button>
+
+              <button type="button" onclick="setEventType('corporativo', 0.9, 'Gala Corporativa / Keynote Global')" data-etype="corporativo" class="etype-btn p-4 rounded-2xl border border-white/10 bg-obsidian/70 text-left hover:border-white/30 transition-all">
+                <div class="flex items-center justify-between">
+                  <span class="font-event font-bold text-sm text-white">Gala Corporativa / Keynote</span>
+                  <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-violetNeon/20 text-violetNeon font-bold">ULTRA-WIDE 8K</span>
+                </div>
+                <p class="text-xs text-zinc-400 mt-1">Painel LED widescreen 32:9, som imersivo e tradução simultânea</p>
+              </button>
+
+              <button type="button" onclick="setEventType('broadcast', 1.15, 'Transmissão Ao Vivo / Broadcast 4K')" data-etype="broadcast" class="etype-btn p-4 rounded-2xl border border-white/10 bg-obsidian/70 text-left hover:border-white/30 transition-all">
+                <div class="flex items-center justify-between">
+                  <span class="font-event font-bold text-sm text-white">Transmissão Ao Vivo (Broadcast)</span>
+                  <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold">UMOB 4K HDR</span>
+                </div>
+                <p class="text-xs text-zinc-400 mt-1">Unidade móvel multicâmera, mixagem Dolby Atmos e satélite</p>
+              </button>
+            </div>
+          </div>
+
+          <!-- 2. Capacidade de Público (5.000 a 80.000+ pessoas) -->
+          <div class="space-y-3">
+            <div class="flex justify-between items-baseline">
+              <label for="pub-slider" class="font-mono text-xs font-bold uppercase tracking-wider text-cyanBright">
+                2. Capacidade de Público Estimada
+              </label>
+              <strong id="pub-lbl" class="font-festival text-4xl tracking-wider text-cyanBright">
+                15.000 Pessoas
+              </strong>
+            </div>
+            <input 
+              id="pub-slider" 
+              type="range" 
+              min="5000" 
+              max="80000" 
+              step="1000" 
+              value="15000" 
+              class="pulse-slider"
+            />
+            <div class="flex justify-between font-mono text-[11px] text-zinc-500">
+              <span>5.000 (Hall / Arena)</span>
+              <span>25.000 (Anfiteatro)</span>
+              <span>50.000 (Estádio)</span>
+              <span>80.000+ (Mega Festival)</span>
+            </div>
+          </div>
+
+          <!-- 3. Módulos Necessários do Rider -->
+          <div>
+            <label class="block font-mono text-xs font-bold uppercase tracking-wider text-cyanBright mb-3">
+              3. Módulos de Engenharia &amp; Cenografia Inclusos
+            </label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              
+              <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-obsidian/90 border border-white/15 cursor-pointer hover:border-cyanLaser transition-all">
+                <input type="checkbox" checked onchange="calcEvent()" class="rider-mod w-4 h-4 mt-0.5 accent-cyan-400" value="45000" data-crew="14" data-name="Palco Box Truss P50 / Cobertura Geodésica" />
+                <div>
+                  <strong class="text-white block font-bold">Palco Box Truss / Geodésica</strong>
+                  <span class="text-zinc-400 text-[11px]">Rigging certificado, motores Prolyte 2T e housemix</span>
+                </div>
+              </label>
+
+              <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-obsidian/90 border border-white/15 cursor-pointer hover:border-cyanLaser transition-all">
+                <input type="checkbox" checked onchange="calcEvent()" class="rider-mod w-4 h-4 mt-0.5 accent-cyan-400" value="58000" data-crew="10" data-name="Paredes de LED Curvas P2.6 Outdoor 4K HDR" />
+                <div>
+                  <strong class="text-white block font-bold">Paredes de LED Curvas (P2.6 HDR)</strong>
+                  <span class="text-zinc-400 text-[11px]">Processamento Brompton Tessera SX40 + Servidores Disguise</span>
+                </div>
+              </label>
+
+              <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-obsidian/90 border border-white/15 cursor-pointer hover:border-cyanLaser transition-all">
+                <input type="checkbox" checked onchange="calcEvent()" class="rider-mod w-4 h-4 mt-0.5 accent-cyan-400" value="42000" data-crew="8" data-name="Moving Lights Robóticos Beam/Spot/Wash IP65" />
+                <div>
+                  <strong class="text-white block font-bold">Moving Lights Beam / Spot / Wash</strong>
+                  <span class="text-zinc-400 text-[11px]">Robe Pointe, Claypaky Mythos, Strobes Atomic &amp; grandMA3</span>
+                </div>
+              </label>
+
+              <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-obsidian/90 border border-white/15 cursor-pointer hover:border-cyanLaser transition-all">
+                <input type="checkbox" onchange="calcEvent()" class="rider-mod w-4 h-4 mt-0.5 accent-pink-500" value="28000" data-crew="6" data-name="Efeitos Especiais (Jatos CO2, Chamas DMX & Lasers 40W)" />
+                <div>
+                  <strong class="text-white block font-bold">Efeitos Especiais CO2 / Chamas / Laser</strong>
+                  <span class="text-zinc-400 text-[11px]">Cryo Jets, G-Flames, Stadium Confetti e Lasers Kvant</span>
+                </div>
+              </label>
+
+              <label class="flex items-start gap-3 p-3.5 rounded-2xl bg-obsidian/90 border border-cyanLaser/50 cursor-pointer hover:border-cyanLaser transition-all sm:col-span-2">
+                <input type="checkbox" checked onchange="calcEvent()" class="rider-mod w-4 h-4 mt-0.5 accent-cyan-400" value="65000" data-crew="12" data-name="Sonorização Line Array L-Acoustics K1/K2 + Torres Delay" />
+                <div>
+                  <strong class="text-cyanBright block font-bold">Sonorização de Linha de Frente (PA Line Array + Subs KS28)</strong>
+                  <span class="text-zinc-300 text-[11px]">Consoles DiGiCo Quantum 7 / Yamaha Rivage PM10, rede óptica Dante redundante e RF Shure Axient Digital</span>
+                </div>
+              </label>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right 5 Cols: Real-time Technical Rider Output (Watts RMS, Crew, Spec & Quote) -->
+        <div class="lg:col-span-5 stage-card rounded-3xl p-6 sm:p-9 border-2 border-cyanLaser/50 shadow-cyan-laser space-y-6 sticky top-28">
+          <div class="flex items-center justify-between border-b border-white/10 pb-4">
+            <div>
+              <span class="font-mono text-[10px] uppercase tracking-widest text-magentaLaser font-bold block">
+                ESPECIFICAÇÃO DE ENGENHARIA GERADA
+              </span>
+              <h3 id="rider-event-title" class="font-event text-xl font-bold text-white mt-0.5">
+                Show de Grande Porte / Turnê
+              </h3>
+            </div>
+            <span class="px-2.5 py-1 rounded bg-emerald-500/15 border border-emerald-500/40 font-mono text-[11px] text-emerald-400 font-bold">
+              ART / CREA OK
+            </span>
+          </div>
+
+          <!-- Primary Engineering Metrics: Watts RMS & Technical Crew -->
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-4 rounded-2xl bg-obsidian border border-cyanLaser/40">
+              <span class="font-mono text-[10px] uppercase text-zinc-400 block">Potência Sonora Estimada</span>
+              <strong id="rider-watts" class="font-festival text-3xl sm:text-4xl text-cyanBright tracking-wide block mt-1">
+                240.000 W RMS
+              </strong>
+              <span class="font-mono text-[10px] text-emerald-400 block mt-0.5">108 dB SPL contínuo no FOH</span>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-obsidian border border-violetNeon/40">
+              <span class="font-mono text-[10px] uppercase text-zinc-400 block">Equipe Técnica Mobilizada</span>
+              <strong id="rider-crew" class="font-festival text-3xl sm:text-4xl text-violetNeon tracking-wide block mt-1">
+                48 Especialistas
+              </strong>
+              <span class="font-mono text-[10px] text-zinc-400 block mt-0.5">Engenheiros, Riggers NR-35 &amp; VJs</span>
+            </div>
+          </div>
+
+          <!-- Detailed Hardware Recommendation -->
+          <div class="p-5 rounded-2xl bg-obsidian/90 border border-white/10 space-y-3">
+            <div class="flex items-center justify-between font-mono text-[11px] text-zinc-400">
+              <span>RIDER TÉCNICO RECOMENDADO:</span>
+              <span id="rider-trucks" class="text-magentaLaser font-bold">6 Carretas Baú</span>
+            </div>
+            <p id="rider-desc" class="text-xs sm:text-sm text-white font-medium leading-relaxed">
+              PA L-Acoustics (32x K1/K2 + 24x KS28 Subs) • 2x Consoles DiGiCo Quantum 7 • 220 m² Painel LED P2.6 4K HDR • 96 Moving Lights Robóticos
+            </p>
+            <div class="pt-3 border-t border-white/10 grid grid-cols-2 gap-2 font-mono text-[11px]">
+              <div>
+                <span class="text-zinc-500 block">GERADORES SILENCIADOS</span>
+                <span id="rider-power-kva" class="text-zinc-200 font-bold">4x 500 kVA Sincronizados</span>
+              </div>
+              <div>
+                <span class="text-zinc-500 block">TEMPO DE MONTAGEM</span>
+                <span id="rider-loadin" class="text-cyanBright font-bold">36h Load-In &amp; Passagem</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Investment Box -->
+          <div class="p-5 rounded-2xl bg-gradient-to-r from-violetNeon/20 via-magentaLaser/15 to-cyanLaser/20 border border-cyanLaser/40 flex items-center justify-between">
+            <div>
+              <span class="font-mono text-[10px] uppercase text-zinc-300 block">Orçamento Turnkey Estimado</span>
+              <span class="text-[11px] text-zinc-400">(Locação + Transporte + Equipe + ART)</span>
+            </div>
+            <strong id="rider-price" class="font-festival text-3xl sm:text-4xl text-white tracking-wider">
+              R$ 348.000
+            </strong>
+          </div>
+
+          <button 
+            type="button" 
+            onclick="transferRiderToForm()" 
+            class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-cyanLaser via-violetNeon to-magentaLaser text-white font-event font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-cyan-laser hover:opacity-95 transition-all flex items-center justify-center gap-2"
+          >
+            <span>Exportar Este Rider &amp; Bloquear Data</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. CENOGRAFIA 3D E PRÉ-VISUALIZAÇÃO (CAD / WYSIWYG / DEPENCE³) -->
+  <section id="cenografia-3d" class="py-24 lg:py-32 border-b border-white/10 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left 5 Cols: 3D Pre-Vis Workflow Explanation -->
+        <div class="lg:col-span-5 space-y-6">
+          <span class="font-mono text-xs uppercase tracking-[0.25em] text-magentaLaser font-bold block">
+            [ 02 // STUDIO DE PRÉ-VISUALIZAÇÃO 3D &amp; CAD ]
+          </span>
+          <h2 class="font-festival text-5xl sm:text-6xl uppercase tracking-wide text-white leading-none">
+            Veja o seu palco ganhar vida antes do primeiro caminhão chegar.
+          </h2>
+          <p class="text-zinc-300 text-sm sm:text-base leading-relaxed">
+            Nossa sala de programação Timecode utiliza <strong class="text-white">Vectorworks Spotlight, CAST Wysiwyg e Depence³</strong> para simular fisicamente cada feixe de luz, resolução de pixel-map do LED, jatos de CO2 e dispersão acústica L-Acoustics Soundvision em tempo real.
+          </p>
+
+          <div class="space-y-3.5 pt-2">
+            <div class="p-4 rounded-2xl bg-stagePanel border border-white/10 flex items-start gap-3.5">
+              <div class="w-10 h-10 rounded-xl bg-cyanLaser/15 text-cyanBright flex items-center justify-center shrink-0">
+                <i data-lucide="box" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="font-event font-bold text-white text-sm">Cálculo Estrutural &amp; Mapa de Carga (Rigging)</h4>
+                <p class="text-xs text-zinc-400 mt-1">Plantas DWG detalhadas com distribuição exata de peso por ponto de talha e resistência a ventos de até 110 km/h.</p>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-stagePanel border border-white/10 flex items-start gap-3.5">
+              <div class="w-10 h-10 rounded-xl bg-magentaLaser/15 text-magentaLaser flex items-center justify-center shrink-0">
+                <i data-lucide="clock" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h4 class="font-event font-bold text-white text-sm">Pré-Programação Timecode em Estúdio</h4>
+                <p class="text-xs text-zinc-400 mt-1">Os diretores de luz (LDs) e VJs dos artistas saem do nosso estúdio com o show 100% gravado na grandMA3 antes mesmo da montagem física.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 7 Cols: Interactive Wysiwyg 3D Stage Cue Simulator -->
+        <div class="lg:col-span-7">
+          <div class="stage-card rounded-3xl p-5 sm:p-7 border border-violetNeon/40 shadow-violet-laser space-y-5">
+            
+            <!-- Top CAD Viewport Bar -->
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-white/10 font-mono text-xs">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded bg-cyanLaser text-obsidian font-bold">WYSIWYG R52 // 3D VIEWPORT</span>
+                <span id="previs-cue-name" class="text-white font-bold">CUE 01: CYAN LASER &amp; TRUSS MATRIX</span>
+              </div>
+              <span id="previs-timecode" class="text-magentaLaser font-bold">TC 01:14:22:18 (30 FPS)</span>
+            </div>
+
+            <!-- 3D Render Stage Viewport -->
+            <div class="relative rounded-2xl overflow-hidden aspect-[16/9] bg-obsidian border border-white/15">
+              <img 
+                id="previs-img"
+                src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=85" 
+                alt="Renderização 3D Palco Pulse Live AV" 
+                class="w-full h-full object-cover transition-all duration-700"
+              />
+              <div id="previs-color-overlay" class="absolute inset-0 bg-cyan-500/20 mix-blend-screen transition-all duration-500"></div>
+              <div class="absolute inset-0 scanlines opacity-30"></div>
+
+              <!-- CAD Wireframe HUD Overlay -->
+              <div class="absolute top-3 left-3 right-3 flex justify-between font-mono text-[10px] pointer-events-none">
+                <span class="px-2.5 py-1 rounded bg-obsidian/85 border border-white/15 text-zinc-300">
+                  GRID: 64m (W) × 24m (H) × 18m (D)
+                </span>
+                <span id="previs-dmx-load" class="px-2.5 py-1 rounded bg-obsidian/85 border border-cyanLaser/40 text-cyanBright">
+                  32.768 CANAIS DMX ATIVOS
+                </span>
+              </div>
+
+              <div class="absolute bottom-3 left-3 right-3 p-3 rounded-xl bg-obsidian/90 backdrop-blur-md border border-white/10 flex flex-wrap items-center justify-between gap-2 font-mono text-[11px]">
+                <span id="previs-specs" class="text-zinc-200">120x Robe MegaPointe • 16x Lasers Kvant 30W • LED Mesh Transparente</span>
+                <span class="text-emerald-400">60.0 FPS REALTIME</span>
+              </div>
+            </div>
+
+            <!-- Interactive Timecode Cue Triggers -->
+            <div>
+              <span class="block font-mono text-[10px] uppercase tracking-widest text-zinc-400 mb-2">
+                TESTAR CENÁRIOS TIMECODE NA PRÉ-VISUALIZAÇÃO 3D:
+              </span>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 font-mono text-xs">
+                <button type="button" onclick="triggerPrevisCue('cyan')" class="py-2.5 px-3 rounded-xl bg-cyanLaser/20 border border-cyanLaser text-cyanBright font-bold hover:bg-cyanLaser hover:text-obsidian transition-all">
+                  ⚡ Cue 1: Laser Drop
+                </button>
+                <button type="button" onclick="triggerPrevisCue('magenta')" class="py-2.5 px-3 rounded-xl bg-magentaLaser/20 border border-magentaLaser/50 text-magentaLaser font-bold hover:bg-magentaLaser hover:text-white transition-all">
+                  🔥 Cue 2: Pyro &amp; Magenta
+                </button>
+                <button type="button" onclick="triggerPrevisCue('violet')" class="py-2.5 px-3 rounded-xl bg-violetNeon/20 border border-violetNeon/50 text-violetNeon font-bold hover:bg-violetNeon hover:text-white transition-all">
+                  🌌 Cue 3: Deep Atmos
+                </button>
+                <button type="button" onclick="triggerPrevisCue('wireframe')" class="py-2.5 px-3 rounded-xl bg-white/10 border border-white/20 text-white font-bold hover:bg-white hover:text-obsidian transition-all">
+                  📐 Cue 4: CAD Blueprint
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. CASOS DE SUCESSO, MÉTRICAS & ARTISTAS ATENDIDOS -->
+  <section id="casos-artistas" class="py-24 bg-[#080612] border-b border-white/10 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- 3 Monumental Authority Pillars -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div class="stage-card p-8 rounded-3xl border-l-4 border-l-cyanLaser">
+          <span class="font-mono text-xs uppercase text-cyanBright font-bold">HISTÓRICO DE CAMPO</span>
+          <strong class="font-festival text-6xl text-white block mt-2 leading-none">+650 FESTIVAIS</strong>
+          <p class="text-xs sm:text-sm text-zinc-400 mt-3 leading-relaxed">
+            Produzidos de ponta a ponta na América Latina, incluindo mainstages eletrônicos, turnês de estádio e transmissões globais.
+          </p>
+        </div>
+
+        <div class="stage-card p-8 rounded-3xl border-l-4 border-l-emerald-400">
+          <span class="font-mono text-xs uppercase text-emerald-400 font-bold">SEGURANÇA &amp; RIGGING</span>
+          <strong class="font-festival text-6xl text-white block mt-2 leading-none">0 INCIDENTES</strong>
+          <p class="text-xs sm:text-sm text-zinc-400 mt-3 leading-relaxed">
+            Recorde absoluto de segurança estrutural e elétrica em 12 anos de operação ininterrupta com laudos CREA, anemômetros digitais e TUV.
+          </p>
+        </div>
+
+        <div class="stage-card p-8 rounded-3xl border-l-4 border-l-magentaLaser">
+          <span class="font-mono text-xs uppercase text-magentaLaser font-bold">MISSÃO CRÍTICA AO VIVO</span>
+          <strong class="font-festival text-6xl text-white block mt-2 leading-none">REDUNDÂNCIA 2N</strong>
+          <p class="text-xs sm:text-sm text-zinc-400 mt-3 leading-relaxed">
+            Servidores de vídeo Disguise GX3 espelhados em hot-swap, rede óptica Dante em anel duplo e consoles de backup sincronizados in-loco.
+          </p>
+        </div>
+      </div>
+
+      <!-- Touring Artists & Global Productions Roster -->
+      <div class="p-8 sm:p-10 rounded-3xl bg-stagePanel/90 border border-white/10">
+        <p class="text-center font-mono text-xs uppercase tracking-[0.25em] text-zinc-400 mb-8">
+          Riders Internacionais Homologados &amp; Turnês Atendidas pela Engenharia Pulse Live AV
+        </p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-center font-festival text-2xl tracking-wider">
+          <div class="py-4 px-3 rounded-2xl bg-obsidian border border-white/10 text-zinc-200 hover:border-cyanLaser hover:text-cyanBright transition-all">AFTERLIFE // SP</div>
+          <div class="py-4 px-3 rounded-2xl bg-obsidian border border-white/10 text-zinc-200 hover:border-magentaLaser hover:text-magentaLaser transition-all">TOMORROWLAND BR</div>
+          <div class="py-4 px-3 rounded-2xl bg-obsidian border border-white/10 text-zinc-200 hover:border-violetNeon hover:text-violetNeon transition-all">TIME WARP ARENA</div>
+          <div class="py-4 px-3 rounded-2xl bg-obsidian border border-white/10 text-zinc-200 hover:border-cyanLaser hover:text-cyanBright transition-all">METALLICA STADIUM</div>
+          <div class="py-4 px-3 rounded-2xl bg-obsidian border border-white/10 text-zinc-200 hover:border-magentaLaser hover:text-magentaLaser transition-all">ESL PRO ARENA</div>
+          <div class="py-4 px-3 rounded-2xl bg-obsidian border border-white/10 text-zinc-200 hover:border-violetNeon hover:text-violetNeon transition-all">ULTRA MAIN STAGE</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 7. DEPOIMENTOS DE PROMOTORES DE FESTIVAIS E DIRETORES DE ARTE -->
+  <section class="py-24 border-b border-white/10 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="font-mono text-xs uppercase tracking-[0.25em] text-violetNeon font-bold block mb-2">
+          [ 03 // AVALIAÇÃO DE SHOWRUNNERS &amp; TOUR MANAGERS ]
+        </span>
+        <h2 class="font-festival text-5xl sm:text-7xl uppercase tracking-wide text-white leading-none">
+          Aprovado no Backstage Mundial
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
+        <!-- Review 1 -->
+        <div class="stage-card p-7 rounded-3xl flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-cyanBright font-bold text-sm">★★★★★</span>
+              <span class="font-mono text-[10px] px-2.5 py-1 rounded bg-cyanLaser/15 text-cyanBright border border-cyanLaser/30">Público: 65.000 Pessoas</span>
+            </div>
+            <p class="text-sm text-zinc-300 leading-relaxed">
+              “Montar uma parede monolítica de 480 m² de LED P2.6 curvo em menos de 48 horas sob chuva e entregar pressão sonora L-Acoustics K1 uniforme até a última torre de delay a 180 metros do palco é para poucos. A Pulse Live é referência absoluta.”
+            </p>
+          </div>
+          <div class="flex items-center gap-3.5 pt-4 border-t border-white/10">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Elena Vance" class="w-12 h-12 rounded-full object-cover border-2 border-cyanLaser" />
+            <div>
+              <h4 class="font-event font-bold text-white text-sm">Elena Vance</h4>
+              <span class="text-xs text-zinc-400 block">Show Director &amp; Production Designer • Berlin / SP</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="stage-card p-7 rounded-3xl flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-magentaLaser font-bold text-sm">★★★★★</span>
+              <span class="font-mono text-[10px] px-2.5 py-1 rounded bg-magentaLaser/15 text-magentaLaser border border-magentaLaser/30">Timecode &amp; Pyro</span>
+            </div>
+            <p class="text-sm text-zinc-300 leading-relaxed">
+              “A sala de pré-visualização Depence³ deles salvou três dias de programação da nossa turnê sul-americana. Quando subimos na housemix no Autódromo de Interlagos, todos os universos DMX e timecode bateram no primeiro frame.”
+            </p>
+          </div>
+          <div class="flex items-center gap-3.5 pt-4 border-t border-white/10">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Lucas Alvarenga" class="w-12 h-12 rounded-full object-cover border-2 border-magentaLaser" />
+            <div>
+              <h4 class="font-event font-bold text-white text-sm">Lucas Alvarenga</h4>
+              <span class="text-xs text-zinc-400 block">Promotor Executivo • Nova Era Festivals</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="stage-card p-7 rounded-3xl flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-violetNeon font-bold text-sm">★★★★★</span>
+              <span class="font-mono text-[10px] px-2.5 py-1 rounded bg-violetNeon/15 text-violetNeon border border-violetNeon/30">Arena Keynote 8K</span>
+            </div>
+            <p class="text-sm text-zinc-300 leading-relaxed">
+              “Para nossa convenção anual com transmissão global para 40 países, exigíamos redundância total de servidores de mídia e áudio Dante. Operação limpa, cabeamento invisível e equipe técnica extremamente disciplinada.”
+            </p>
+          </div>
+          <div class="flex items-center gap-3.5 pt-4 border-t border-white/10">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="Henrique T." class="w-12 h-12 rounded-full object-cover border-2 border-violetNeon" />
+            <div>
+              <h4 class="font-event font-bold text-white text-sm">Henrique Tavares</h4>
+              <span class="text-xs text-zinc-400 block">VP of Global Brand Events • Horizon Tech</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 8. FORMULÁRIO DE RESERVA DE DATA E ENVIO DE PLANTA DE LOCAL -->
+  <section id="reserva-data" class="py-24 lg:py-32 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="stage-card rounded-3xl p-7 sm:p-12 border-2 border-violetNeon/40 shadow-violet-laser">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          
+          <!-- Left 5 Cols: Technical Desk Info -->
+          <div class="lg:col-span-5 space-y-6">
+            <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyanLaser/15 border border-cyanLaser/40 text-cyanBright font-mono text-xs font-bold uppercase">
+              Diretoria de Engenharia &amp; Booking
+            </span>
+            <h2 class="font-festival text-5xl sm:text-6xl uppercase tracking-wide text-white leading-none">
+              Reserve Sua Data &amp; Envie a Planta do Local.
+            </h2>
+            <p class="text-zinc-300 text-sm sm:text-base leading-relaxed">
+              Nossa equipe de engenharia analisa o seu rider artístico ou planta do espaço (.DWG, .PDF, .WYG) e retorna em até <strong class="text-white">4 horas úteis</strong> com o projeto 3D preliminar, predição acústica e orçamento detalhado.
+            </p>
+
+            <div class="space-y-3 pt-4 border-t border-white/10 font-mono text-xs text-zinc-300">
+              <div class="flex items-center gap-3">
+                <span class="w-6 h-6 rounded-lg bg-cyanLaser/20 text-cyanBright flex items-center justify-center font-bold">✓</span>
+                <span>Emissão imediata de ART / CREA Estrutural e Elétrica</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="w-6 h-6 rounded-lg bg-violetNeon/20 text-violetNeon flex items-center justify-center font-bold">✓</span>
+                <span>Frota própria de carretas para logística em todo o Mercosul</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="w-6 h-6 rounded-lg bg-magentaLaser/20 text-magentaLaser flex items-center justify-center font-bold">✓</span>
+                <span>Estúdio Wysiwyg / grandMA3 liberado para o LD do seu evento</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right 7 Cols: Booking & Floorplan Upload Form -->
+          <div class="lg:col-span-7 bg-obsidian/90 p-6 sm:p-9 rounded-2xl border border-white/15">
+            <form id="pulse-booking-form" onsubmit="handlePulseSubmit(event)" class="space-y-4">
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block font-mono text-xs uppercase text-zinc-400 mb-1.5">Nome / Diretor de Produção *</label>
+                  <input id="f-producer" type="text" required placeholder="Ex: Rodrigo Braga" class="w-full px-4 py-3 rounded-xl bg-stagePanel border border-white/15 text-sm text-white focus:border-cyanLaser focus:outline-none" />
+                </div>
+                <div>
+                  <label class="block font-mono text-xs uppercase text-zinc-400 mb-1.5">Produtora / Agência / Turnê *</label>
+                  <input id="f-agency" type="text" required placeholder="Ex: LiveNation / Time4Fun / Agência" class="w-full px-4 py-3 rounded-xl bg-stagePanel border border-white/15 text-sm text-white focus:border-cyanLaser focus:outline-none" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block font-mono text-xs uppercase text-zinc-400 mb-1.5">E-mail Corporativo *</label>
+                  <input id="f-email" type="email" required placeholder="producao@festival.com.br" class="w-full px-4 py-3 rounded-xl bg-stagePanel border border-white/15 text-sm text-white focus:border-cyanLaser focus:outline-none" />
+                </div>
+                <div>
+                  <label class="block font-mono text-xs uppercase text-zinc-400 mb-1.5">WhatsApp Direto / Rádio *</label>
+                  <input id="f-phone" type="tel" required placeholder="(11) 99999-9999" class="w-full px-4 py-3 rounded-xl bg-stagePanel border border-white/15 text-sm text-white focus:border-cyanLaser focus:outline-none" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block font-mono text-xs uppercase text-zinc-400 mb-1.5">Data do Evento &amp; Cidade/Venue *</label>
+                  <input id="f-venue" type="text" required placeholder="Ex: 14 Nov 2026 — Autódromo Interlagos / SP" class="w-full px-4 py-3 rounded-xl bg-stagePanel border border-white/15 text-sm text-white focus:border-cyanLaser focus:outline-none" />
+                </div>
+                <div>
+                  <label class="block font-mono text-xs uppercase text-zinc-400 mb-1.5">Anexar Planta CAD / Rider Técnico (.DWG, .PDF)</label>
+                  <input id="f-file" type="file" accept=".pdf,.dwg,.dxf,.zip,.png,.jpg" class="w-full px-3 py-2.5 rounded-xl bg-stagePanel border border-dashed border-cyanLaser/50 font-mono text-xs text-zinc-300 file:mr-3 file:py-1 file:px-3 file:rounded-lg file:border-0 file:bg-cyanLaser file:text-obsidian file:font-bold" />
+                </div>
+              </div>
+
+              <div>
+                <label class="block font-mono text-xs uppercase text-zinc-400 mb-1.5">Configuração de Rider Dimensionada</label>
+                <input id="f-rider-summary" type="text" value="15.000 Pessoas • 240.000 W RMS • 48 Especialistas (R$ 348.000)" class="w-full px-4 py-3 rounded-xl bg-stagePanel border border-cyanLaser/50 font-mono text-xs text-cyanBright font-bold focus:border-cyanLaser focus:outline-none" />
+              </div>
+
+              <button type="submit" class="w-full py-4 rounded-2xl bg-gradient-to-r from-cyanLaser via-violetNeon to-magentaLaser text-white font-event font-extrabold text-xs sm:text-sm uppercase tracking-widest shadow-cyan-laser hover:opacity-95 transition-all flex items-center justify-center gap-2">
+                <span>Bloquear Data &amp; Solicitar Projeto 3D</span>
+                <i data-lucide="send" class="w-4 h-4"></i>
+              </button>
+            </form>
+
+            <!-- Instant Booking Confirmation -->
+            <div id="pulse-booking-confirm" class="hidden mt-5 p-5 rounded-2xl bg-emerald-500/10 border border-emerald-500/40 font-mono text-xs space-y-2">
+              <div class="flex items-center justify-between text-emerald-400 font-bold text-sm">
+                <span>✓ RIDER TÉCNICO &amp; BLOQUEIO DE EQUIPAMENTOS PROTOCOLADOS</span>
+                <span id="pulse-protocol">#PLV-2026</span>
+              </div>
+              <p id="pulse-confirm-msg" class="text-zinc-200 leading-relaxed"></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. RODAPÉ COM SEDES OPERACIONAIS, GALPÕES E CERTIFICAÇÕES -->
+  <footer class="bg-[#030306] border-t border-white/10 pt-16 pb-12 text-xs text-zinc-400 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+        
+        <!-- Brand & Safety Certifications (4 cols) -->
+        <div class="lg:col-span-4 space-y-4">
+          <div class="flex items-center gap-2">
+            <span class="font-event font-extrabold text-xl text-white">PULSE LIVE</span>
+            <span class="font-mono text-xs font-bold px-2 py-0.5 rounded bg-cyanLaser/20 text-cyanBright">// AV</span>
+          </div>
+          <p class="text-zinc-400 leading-relaxed max-w-sm">
+            Engenharia de Eventos, Estruturas Monumentais, Painéis de LED 4K HDR, Iluminação Robótica e Sonorização de Grandes Festivais.
+          </p>
+          <div class="flex flex-wrap gap-2 pt-1 font-mono text-[10px]">
+            <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-cyanBright font-bold">CREA-SP / ART ESTRUTURAL</span>
+            <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-violetNeon font-bold">NR-35 &amp; NR-10 RIGGING</span>
+            <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-magentaLaser font-bold">TUV NORD TRUSS</span>
+          </div>
+        </div>
+
+        <!-- Galpões de Equipamentos & Hubs (3 cols) -->
+        <div class="lg:col-span-3 space-y-2.5">
+          <h4 class="font-mono font-bold text-white uppercase tracking-wider text-xs mb-3">
+            Galpões &amp; Centros de Operação
+          </h4>
+          <p><strong class="text-cyanBright">Hub Matriz São Paulo:</strong> Rod. Anhanguera, KM 18 (14.000 m² • Estúdio Wysiwyg &amp; Galpão PA/LED)</p>
+          <p><strong class="text-violetNeon">Base Rio de Janeiro:</strong> Distrito Industrial Duque de Caxias (6.500 m²)</p>
+          <p><strong class="text-magentaLaser">Base Sul / Curitiba:</strong> CIC Logística (4.200 m²)</p>
+        </div>
+
+        <!-- Inventário & Hardware (2 cols) -->
+        <div class="lg:col-span-2 space-y-2.5">
+          <h4 class="font-mono font-bold text-white uppercase tracking-wider text-xs mb-3">
+            Acervo Próprio
+          </h4>
+          <ul class="space-y-2">
+            <li><a href="#producoes" class="hover:text-cyanBright transition-colors">L-Acoustics K1 / K2 / KS28</a></li>
+            <li><a href="#producoes" class="hover:text-cyanBright transition-colors">Meyer Sound PANTHER</a></li>
+            <li><a href="#producoes" class="hover:text-cyanBright transition-colors">DiGiCo Quantum 7 &amp; Rivage</a></li>
+            <li><a href="#producoes" class="hover:text-cyanBright transition-colors">LED ROE Visual P2.6 HDR</a></li>
+            <li><a href="#cenografia-3d" class="hover:text-cyanBright transition-colors">Servidores Disguise GX3</a></li>
+          </ul>
+        </div>
+
+        <!-- Plantão Técnico 24/7 (3 cols) -->
+        <div class="lg:col-span-3 bg-stagePanel p-5 rounded-2xl border border-white/10 space-y-3">
+          <div class="font-mono text-[11px] font-bold uppercase text-cyanBright flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-cyanBright animate-ping"></span>
+            <span>Desk de Engenharia 24/7</span>
+          </div>
+          <p class="text-zinc-400 text-[11px] leading-relaxed">
+            Suporte imediato para diretores técnicos, tour managers e cotações internacionais.
+          </p>
+          <div class="font-mono font-bold text-sm text-white">
+            +55 (11) 3090-4800 • 0800 940 2026
+          </div>
+          <p class="font-mono text-[11px] text-magentaLaser">rider@pulselive.av</p>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[11px] text-zinc-500">
+        <p>© 2026 PULSE LIVE AV Engenharia de Eventos e Produções S.A. • CNPJ 34.819.400/0001-71.</p>
+        <div class="flex items-center gap-6">
+          <span>+650 Festivais Produzidos</span>
+          <span>•</span>
+          <span>Zero Incidentes Técnicos</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================================= -->
+  <!-- VANILLA JAVASCRIPT: SHOWCASE, SIMULADOR WATTS RMS & PRE-VIS 3D          -->
+  <!-- ======================================================================= -->
+  <script>
+    // 1. SHOWCASE DE GRANDES PALCOS E FESTIVAIS
+    const SHOWCASE_PROJECTS = [
+      {
+        title: "Cybernetic Mainstage — Horizon Electronic Festival",
+        cat: "eletronica",
+        catLabel: "Música Eletrônica",
+        audience: "75.000 Pessoas",
+        ledSpec: "540 m² LED Curvo P2.6 Outdoor 4K HDR (Brompton SX40)",
+        audioSpec: "PA L-Acoustics (48x K1 + 32x K2 + 48x KS28 Subs)",
+        consoleSpec: "2x DiGiCo Quantum 7 + grandMA3 Full-Size + 24x Lasers 40W",
+        img: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=900&q=85"
+      },
+      {
+        title: "World Stadium Tour — Arena Rock Monumental",
+        cat: "internacional",
+        catLabel: "Show Internacional",
+        audience: "68.000 Pessoas",
+        ledSpec: "380 m² ROE Visual Black Quartz P2.6 + Torres Delay LED",
+        audioSpec: "Meyer Sound PANTHER Line Array + 36x 2100-LFC Subs",
+        consoleSpec: "Yamaha Rivage PM10 + 160x Robe Forte / MegaPointe IP65",
+        img: "https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?auto=format&fit=crop&w=900&q=85"
+      },
+      {
+        title: "Monolith Techno Dome — Timecode Warehouse",
+        cat: "eletronica",
+        catLabel: "Música Eletrônica",
+        audience: "22.000 Pessoas",
+        ledSpec: "280 m² LED Mesh Transparente + Teto Cinético Motorizado",
+        audioSpec: "L-Acoustics K2 360° Quadraphonic Array (320.000 W RMS)",
+        consoleSpec: "DiGiCo SD12 + 140x Strobes GLP JDC1 + Cryo Jets CO2",
+        img: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=900&q=85"
+      },
+      {
+        title: "Future Tech Keynote — Global Summit 8K",
+        cat: "corporativo",
+        catLabel: "Convenção Global",
+        audience: "12.000 Executivos",
+        ledSpec: "Tela Widescreen 42m × 8m Fine-Pitch P1.9 8K HDR",
+        audioSpec: "L-Acoustics Kara II Spatial Audio (L-ISA Immersive)",
+        consoleSpec: "Yamaha Rivage PM7 + Servidores Disguise GX3 Extended Reality",
+        img: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=900&q=85"
+      },
+      {
+        title: "World Esports Championship — Arena 360°",
+        cat: "arenas",
+        catLabel: "Arena Esportiva",
+        audience: "18.500 Pessoas",
+        ledSpec: "Cubo Central 4 Faces P2.6 HDR + Anel Ribbon 180m",
+        audioSpec: "Meyer Sound LEO Family Arena Cluster + Redundância Dante",
+        consoleSpec: "DiGiCo Quantum 338 + 90x Claypaky Sharpy Plus + Broadcast 4K",
+        img: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=900&q=85"
+      },
+      {
+        title: "Symphonic Pop World Tour — Estádio Allianz",
+        cat: "internacional",
+        catLabel: "Show Internacional",
+        audience: "48.000 Pessoas",
+        ledSpec: "310 m² LED P2.6 Outdoor Curvo + Passarela LED Piso Interativo",
+        audioSpec: "L-Acoustics K1/K2 + 6 Torres de Delay sincronizadas via GPS",
+        consoleSpec: "2x DiGiCo Quantum 7 + 84 Canais RF Shure Axient Digital",
+        img: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=900&q=85"
+      }
+    ];
+
+    window.filterShowcase = function(cat) {
+      document.querySelectorAll('.scat-btn').forEach(btn => {
+        if (btn.getAttribute('data-scat') === cat) {
+          btn.className = 'scat-btn px-4 py-2.5 rounded-xl font-mono text-xs font-bold uppercase bg-cyanLaser text-obsidian shadow-cyan-laser transition-all';
+        } else {
+          btn.className = 'scat-btn px-4 py-2.5 rounded-xl font-mono text-xs font-bold uppercase bg-stagePanel text-zinc-300 border border-white/10 hover:border-cyanLaser transition-all';
+        }
+      });
+
+      const list = cat === 'all' ? SHOWCASE_PROJECTS : SHOWCASE_PROJECTS.filter(p => p.cat === cat);
+      document.getElementById('showcase-grid').innerHTML = list.map(item => `
+        <article class="stage-card rounded-3xl overflow-hidden flex flex-col justify-between group">
+          <div>
+            <div class="relative h-56 overflow-hidden bg-obsidian">
+              <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#110e20] via-transparent to-black/40"></div>
+              <span class="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-obsidian/90 border border-cyanLaser/40 font-mono text-[10px] text-cyanBright font-bold uppercase">
+                ${item.catLabel}
+              </span>
+              <span class="absolute bottom-3 left-3.5 px-2.5 py-0.5 rounded bg-magentaLaser text-white font-mono text-[10px] font-bold">
+                👥 ${item.audience}
+              </span>
+            </div>
+
+            <div class="p-6 space-y-4">
+              <h3 class="font-event text-xl font-extrabold text-white leading-snug group-hover:text-cyanBright transition-colors">
+                ${item.title}
+              </h3>
+
+              <div class="space-y-2 pt-2 border-t border-white/10 font-mono text-[11px]">
+                <div class="flex items-start gap-2">
+                  <span class="text-cyanBright font-bold shrink-0">[LED]</span>
+                  <span class="text-zinc-300">${item.ledSpec}</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-violetNeon font-bold shrink-0">[PA]</span>
+                  <span class="text-zinc-300">${item.audioSpec}</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-magentaLaser font-bold shrink-0">[FOH]</span>
+                  <span class="text-zinc-300">${item.consoleSpec}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-6 pb-6 pt-3 border-t border-white/10 flex items-center justify-between">
+            <span class="font-mono text-[10px] text-emerald-400">✓ Redundância 2N Validada</span>
+            <button type="button" onclick="loadProjectIntoSimulator('${item.title}')" class="font-mono text-xs font-bold text-cyanBright hover:underline">
+              Usar Este Rider →
+            </button>
+          </div>
+        </article>
+      `).join('');
+    };
+
+    // 2. SIMULADOR DE RIDER TÉCNICO (WATTS RMS, EQUIPE TÉCNICA & MÓDULOS)
     const pSli = document.getElementById('pub-slider');
+    let currentEventMultiplier = 1.0;
+    let currentEventTitle = 'Show de Grande Porte / Turnê';
+
+    window.setEventType = function(key, mult, title) {
+      currentEventMultiplier = mult;
+      currentEventTitle = title;
+      document.querySelectorAll('.etype-btn').forEach(btn => {
+        if (btn.getAttribute('data-etype') === key) {
+          btn.className = 'etype-btn p-4 rounded-2xl border border-cyanLaser bg-cyanLaser/15 text-left transition-all';
+        } else {
+          btn.className = 'etype-btn p-4 rounded-2xl border border-white/10 bg-obsidian/70 text-left hover:border-white/30 transition-all';
+        }
+      });
+      calcEvent();
+    };
+
     function calcEvent() {
       const p = Number(pSli.value);
-      document.getElementById('pub-lbl').textContent = p.toLocaleString('pt-BR') + ' Pessoas';
-      const cost = 12000 + p * 25;
-      document.getElementById('rider-price').textContent = 'Investimento Estimado: R$ ' + cost.toLocaleString('pt-BR');
+      document.getElementById('pub-lbl').textContent = p.toLocaleString('pt-BR') + (p >= 80000 ? '+ Pessoas' : ' Pessoas');
+      document.getElementById('rider-event-title').textContent = currentEventTitle;
+
+      // Soma módulos selecionados e equipe base
+      let modCost = 0;
+      let baseCrew = 8;
+      const activeModNames = [];
+
+      document.querySelectorAll('.rider-mod:checked').forEach(chk => {
+        modCost += Number(chk.value);
+        baseCrew += Number(chk.getAttribute('data-crew') || 6);
+        activeModNames.push(chk.getAttribute('data-name'));
+      });
+
+      // Cálculo de Potência Sonora em Watts RMS (aprox. 16W RMS de Headroom Line Array por pessoa)
+      const wattsRms = Math.round((p * 16) * (currentEventMultiplier >= 1.2 ? 1.15 : 1.0));
+      const totalCrew = Math.round(baseCrew + (p / 1500) * currentEventMultiplier);
+      const trucksCount = Math.max(2, Math.ceil((p / 4500) * currentEventMultiplier));
+      const generatorsKva = Math.max(2, Math.ceil(wattsRms / 180000));
+
+      // Dimensionamento dinâmico de caixas Line Array, m² de LED e Moving Lights
+      const k1Boxes = Math.max(16, Math.round(p / 650) * 2);
+      const ks28Subs = Math.max(12, Math.round(k1Boxes * 0.75));
+      const ledM2 = Math.max(80, Math.round(p / 110));
+      const movingBeams = Math.max(36, Math.round(p / 220));
+
+      const totalInvestment = Math.round((modCost + (p * 11.5)) * currentEventMultiplier);
+
+      document.getElementById('rider-watts').textContent = wattsRms.toLocaleString('pt-BR') + ' W RMS';
+      document.getElementById('rider-crew').textContent = totalCrew + ' Especialistas';
+      document.getElementById('rider-trucks').textContent = trucksCount + ' Carretas Baú';
+      document.getElementById('rider-power-kva').textContent = `${generatorsKva}x 500 kVA Sincronizados`;
+      document.getElementById('rider-loadin').textContent = p > 35000 ? '72h Load-In & Timecode' : '36h Load-In & Passagem';
+
+      const descText = `PA L-Acoustics (${k1Boxes}x K1/K2 + ${ks28Subs}x KS28 Subs) • Consoles DiGiCo Quantum 7 • ${ledM2} m² Painel LED P2.6 4K HDR • ${movingBeams} Moving Lights Robóticos`;
+      document.getElementById('rider-desc').textContent = descText;
+      document.getElementById('rider-price').textContent = 'R$ ' + totalInvestment.toLocaleString('pt-BR');
+
+      // Sincroniza com o campo do formulário de reserva
+      const summaryInput = document.getElementById('f-rider-summary');
+      if (summaryInput) {
+        summaryInput.value = `${currentEventTitle} (${p.toLocaleString('pt-BR')} Pessoas) • ${wattsRms.toLocaleString('pt-BR')} W RMS • ${totalCrew} Técnicos (R$ ${totalInvestment.toLocaleString('pt-BR')})`;
+      }
     }
+
     pSli.addEventListener('input', calcEvent);
+
+    window.loadProjectIntoSimulator = function(projectTitle) {
+      pSli.value = 45000;
+      calcEvent();
+      document.getElementById('rider-simulator').scrollIntoView({ behavior: 'smooth' });
+    };
+
+    window.transferRiderToForm = function() {
+      calcEvent();
+      document.getElementById('reserva-data').scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        document.getElementById('f-producer').focus();
+      }, 600);
+    };
+
+    // 3. SIMULADOR DE PRÉ-VISUALIZAÇÃO 3D WYSIWYG / DEPENCE³
+    const PREVIS_CUES = {
+      cyan: {
+        name: 'CUE 01: CYAN LASER & TRUSS MATRIX',
+        tc: 'TC 01:14:22:18 (30 FPS)',
+        dmx: '32.768 CANAIS DMX ATIVOS',
+        specs: '120x Robe MegaPointe • 16x Lasers Kvant 30W • LED Mesh Transparente',
+        img: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=85',
+        overlay: 'absolute inset-0 bg-cyan-500/20 mix-blend-screen transition-all duration-500'
+      },
+      magenta: {
+        name: 'CUE 02: PYRO G-FLAMES & MAGENTA STROBE DROP',
+        tc: 'TC 01:18:45:02 (30 FPS)',
+        dmx: '48.120 CANAIS DMX + PYRO SYNC',
+        specs: '16x Projetores de Chamas DMX • 12x Jatos CO2 • 140x Strobes JDC1',
+        img: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1200&q=85',
+        overlay: 'absolute inset-0 bg-pink-600/25 mix-blend-screen transition-all duration-500'
+      },
+      violet: {
+        name: 'CUE 03: DEEP ATMOSPHERIC VIOLET & 4K LED',
+        tc: 'TC 01:22:10:14 (30 FPS)',
+        dmx: '36.400 CANAIS DMX + DISGUISE GX3',
+        specs: 'Conteúdo Notch 3D em Tempo Real • 480 m² LED Curvo P2.6 HDR',
+        img: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=85',
+        overlay: 'absolute inset-0 bg-violet-600/30 mix-blend-screen transition-all duration-500'
+      },
+      wireframe: {
+        name: 'CUE 04: VECTORWORKS CAD & SOUNDVISION SPL MAP',
+        tc: 'CAD MODE // RIGGING LOAD CHECK',
+        dmx: '96 PONTOS DE TALHA 2T VALIDADO',
+        specs: 'Peso Total Suspenso: 42,8 Toneladas • Vento Máx: 110 km/h • ART OK',
+        img: 'https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?auto=format&fit=crop&w=1200&q=85',
+        overlay: 'absolute inset-0 bg-slate-900/60 grayscale contrast-150 transition-all duration-500'
+      }
+    };
+
+    window.triggerPrevisCue = function(key) {
+      const c = PREVIS_CUES[key];
+      if (!c) return;
+      document.getElementById('previs-cue-name').textContent = c.name;
+      document.getElementById('previs-timecode').textContent = c.tc;
+      document.getElementById('previs-dmx-load').textContent = c.dmx;
+      document.getElementById('previs-specs').textContent = c.specs;
+      document.getElementById('previs-img').src = c.img;
+      document.getElementById('previs-color-overlay').className = c.overlay;
+    };
+
+    // 4. SUBMISSÃO DO FORMULÁRIO DE RESERVA DE DATA & PLANTA CAD
+    window.handlePulseSubmit = function(e) {
+      e.preventDefault();
+      const producer = document.getElementById('f-producer').value.trim();
+      const agency = document.getElementById('f-agency').value.trim();
+      const venue = document.getElementById('f-venue').value.trim();
+      const rider = document.getElementById('f-rider-summary').value.trim();
+
+      const protocol = '#PLV-2026-' + Math.floor(1000 + Math.random() * 9000);
+      document.getElementById('pulse-protocol').textContent = protocol;
+      document.getElementById('pulse-confirm-msg').textContent =
+        `Recebido, ${producer} (${agency})! O pré-bloqueio de equipamentos para "${venue}" com o escopo [${rider}] foi registrado na nossa Diretoria de Engenharia. Em até 4 horas úteis enviaremos a predição acústica Soundvision e o render 3D preliminar.`;
+      document.getElementById('pulse-booking-confirm').classList.remove('hidden');
+    };
+
+    window.toggleMobileMenu = function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    };
+
+    // Inicialização
+    document.addEventListener('DOMContentLoaded', () => {
+      filterShowcase('all');
+      calcEvent();
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
   </script>
+
   <!-- Vercel Web Analytics & Speed Insights -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
