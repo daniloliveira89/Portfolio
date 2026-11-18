@@ -159,70 +159,55 @@ document.addEventListener('DOMContentLoaded', () => {
     if (emptyState) emptyState.classList.add('hidden');
 
     grid.innerHTML = filtered.map(project => `
-      <article class="group rounded-2xl overflow-hidden border border-electric/15 hover:border-electric/45 transition-all duration-300 flex flex-col justify-between transform hover:-translate-y-1.5 cursor-pointer"
-               style="background: rgba(13,18,32,0.88); backdrop-filter: blur(10px);"
+      <article class="group rounded-2xl overflow-hidden border border-electric/15 hover:border-electric/50 transition-all duration-300 flex flex-col justify-between transform hover:-translate-y-1.5 cursor-pointer shadow-lg hover:shadow-electric/10"
+               style="background: rgba(13,18,32,0.92); backdrop-filter: blur(10px);"
                onclick="openProjectModal('${project.id}')">
         <div>
-          <!-- Imagem de Capa Real -->
-          <div class="relative h-48 overflow-hidden bg-void">
+          <!-- Imagem de Capa 100% Limpa e em Destaque -->
+          <div class="relative h-52 overflow-hidden bg-void">
             <img src="${project.image}" alt="${project.title}" loading="lazy"
                  class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                  onerror="this.src='assets/images/radar-ia-real.png'">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#0D1220] via-transparent to-transparent opacity-85"></div>
-            
-            <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
-              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-electric text-white shadow">
-                ${project.categoryLabel}
-              </span>
-              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-semibold text-glow border border-electric/30 bg-void/85 backdrop-blur-md">
-                ${project.badge}
-              </span>
-            </div>
-
-            ${project.gallery && project.gallery.length > 1 ? `
-              <span class="absolute bottom-2.5 right-3 px-2 py-0.5 rounded-md text-[10px] font-mono bg-black/70 text-frost border border-white/10">
-                📷 ${project.gallery.length} telas
-              </span>
-            ` : ''}
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0D1220] via-transparent to-transparent opacity-60"></div>
           </div>
 
           <!-- Corpo do Card -->
-          <div class="p-6">
-            <h3 class="font-display text-lg font-bold text-white group-hover:text-glow transition-colors line-clamp-1">
+          <div class="p-5">
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <span class="text-[11px] font-semibold text-electric uppercase tracking-wider">
+                ${project.categoryLabel}
+              </span>
+              ${project.badge ? `
+                <span class="text-[10px] font-medium text-frost/60">
+                  ${project.badge}
+                </span>
+              ` : ''}
+            </div>
+            <h3 class="font-display text-base font-bold text-white group-hover:text-glow transition-colors line-clamp-1">
               ${project.title}
             </h3>
-            <p class="mt-2 text-xs text-frost leading-relaxed line-clamp-3">
-              ${project.shortDescription}
-            </p>
           </div>
         </div>
 
-        <!-- Rodapé do Card -->
-        <div class="px-6 pb-6 pt-2">
-          <div class="flex flex-wrap gap-1.5 mb-4">
-            ${project.tags.slice(0, 4).map(tag => `
-              <span class="px-2 py-0.5 rounded-md text-[10px] font-mono text-frost/90 bg-panel border border-electric/15">
-                ${tag}
-              </span>
-            `).join('')}
+        <!-- Rodapé Minimalista -->
+        <div class="px-5 pb-5 pt-0 flex items-center justify-between">
+          <div class="flex items-center gap-1.5 text-xs text-frost/60">
+            ${project.tags.slice(0, 2).map(tag => `
+              <span class="text-[11px] text-frost/60">#${tag}</span>
+            `).join(' · ')}
           </div>
 
-          <div class="pt-3 border-t border-electric/15 flex items-center justify-between text-xs">
-            <span class="text-electric font-semibold group-hover:text-glow flex items-center gap-1">
-              <span>Inspecionar Projeto</span>
-              <svg class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-              </svg>
+          ${project.links && project.links.demo ? `
+            <a href="${getDemoUrl(project.links.demo)}" target="_blank" rel="noopener noreferrer"
+               onclick="event.stopPropagation()"
+               class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500 hover:text-slate-950 transition flex items-center gap-1">
+              Demo ↗
+            </a>
+          ` : `
+            <span class="text-xs text-electric/80 group-hover:text-glow flex items-center gap-1 font-medium">
+              Ver mais →
             </span>
-
-            ${project.links && project.links.demo ? `
-              <a href="${getDemoUrl(project.links.demo)}" target="_blank" rel="noopener noreferrer"
-                 onclick="event.stopPropagation()"
-                 class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500 hover:text-slate-950 transition">
-                Abrir Demo ↗
-              </a>
-            ` : ''}
-          </div>
+          `}
         </div>
       </article>
     `).join('');
