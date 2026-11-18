@@ -1,81 +1,1442 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
 
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ATELIER NORD — Design Autoral em Madeira Maciça</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ATELIER NORD — Marcenaria de Alto Padrão & Mobiliário Autoral (Nórdico & Japandi)</title>
+  <meta name="description" content="O encontro entre o design escandinavo e a alma artesanal brasileira. Mobiliário autoral em madeira maciça certificada FSC, encaixes japoneses sem pregos aparentes e marcenaria arquitetônica sob medida." />
+
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Google Fonts: Cormorant Garamond, Syne & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            linen: '#f7f6f2',
+            linenWarm: '#F6F3EC',
+            sandstone: '#eae5db',
+            charcoal: '#1c1b1a',
+            espresso: '#231F1C',
+            oliveSubtle: '#5c6453',
+            oliveDeep: '#434a3c',
+            oliveTint: '#eff1ec',
+            oakLight: '#c8a986',
+            oakWarm: '#a47549',
+            walnutDeep: '#4a3525',
+            cumaruGold: '#8c5327'
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            syne: ['"Syne"', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
   <style>
-    body { background-color: #F6F3EC; color: #231F1C; font-family: 'Plus Jakarta Sans', sans-serif; }
-    .font-serif-furniture { font-family: 'Cormorant Garamond', serif; }
+    body {
+      background-color: #f7f6f2;
+      color: #1c1b1a;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    .font-serif-furniture {
+      font-family: 'Cormorant Garamond', serif;
+    }
+    .font-architect {
+      font-family: 'Syne', sans-serif;
+    }
+
+    /* Wood Swatch Textures via CSS Gradients & Micro-Patterns */
+    .swatch-carvalho {
+      background: linear-gradient(135deg, #d7be9e 0%, #c19f77 50%, #b08b60 100%);
+    }
+    .swatch-nogueira {
+      background: linear-gradient(135deg, #593e2b 0%, #422c1d 55%, #2f1f14 100%);
+    }
+    .swatch-freijo {
+      background: linear-gradient(135deg, #b98552 0%, #9c6a38 50%, #825428 100%);
+    }
+    .swatch-cumaru {
+      background: linear-gradient(135deg, #985629 0%, #7d4119 50%, #633110 100%);
+    }
+    .swatch-ebonizado {
+      background: linear-gradient(135deg, #2d2926 0%, #1c1a18 60%, #121110 100%);
+    }
+
+    /* Architectural Image Hover & Tone Filter */
+    .arch-img-wrap {
+      overflow: hidden;
+    }
+    .arch-img-wrap img {
+      transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+    }
+    .arch-img-wrap:hover img {
+      transform: scale(1.04);
+    }
+
+    /* Custom Subtle Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f7f6f2;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #c8c2b6;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #5c6453;
+    }
   </style>
 </head>
-<body class="min-h-screen antialiased">
-  <header class="border-b border-stone-900/10 bg-[#F6F3EC]/90 sticky top-0 z-40">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <span class="font-serif-furniture text-3xl tracking-widest">ATELIER NORD</span>
-      <span class="text-xs uppercase tracking-widest text-amber-900 font-semibold">Marcenaria Artesanal Certificada FSC® • Desenho Brasileiro</span>
+
+<body class="min-h-screen antialiased selection:bg-oliveSubtle selection:text-white">
+
+  <!-- TOPBAR EDITORIAL -->
+  <div class="bg-charcoal text-linen/85 text-[11px] border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-9 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <span class="inline-block w-1.5 h-1.5 rounded-full bg-oakLight"></span>
+        <span class="uppercase tracking-[0.2em] font-medium">
+          Marcenaria Artesanal Certificada FSC® • Desenho Brasileiro
+        </span>
+      </div>
+      <div class="hidden md:flex items-center gap-6 text-linen/70 tracking-wider uppercase text-[10px]">
+        <span>Ateliê São Paulo • Vila Madalena</span>
+        <span>•</span>
+        <button onclick="openCatalogModal()" class="text-oakLight hover:text-white underline underline-offset-4 transition-colors">
+          Baixar Caderno Técnico & Blocos BIM 2026
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. HEADER FIXO MINIMALISTA -->
+  <header class="sticky top-0 z-40 bg-[#f7f6f2]/90 backdrop-blur-md border-b border-stone-900/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="group flex flex-col">
+        <span class="font-serif-furniture text-2xl sm:text-3xl tracking-[0.22em] text-charcoal font-medium leading-none">
+          ATELIER NORD
+        </span>
+        <span class="text-[9px] uppercase tracking-[0.3em] text-oliveSubtle mt-1 font-semibold">
+          Nordic & Japandi Woodwork
+        </span>
+      </a>
+
+      <!-- Desktop Menu -->
+      <nav class="hidden lg:flex items-center gap-8 text-xs uppercase tracking-[0.16em] text-stone-700 font-medium">
+        <a href="#colecoes" class="hover:text-charcoal hover:underline underline-offset-8 transition-all">Coleções</a>
+        <a href="#filosofia" class="hover:text-charcoal hover:underline underline-offset-8 transition-all">Filosofia</a>
+        <a href="#sob-medida" class="hover:text-charcoal hover:underline underline-offset-8 transition-all">Sob Medida</a>
+        <a href="#mostruario" class="hover:text-charcoal hover:underline underline-offset-8 transition-all">Mostruário</a>
+        <a href="#projetos" class="hover:text-charcoal hover:underline underline-offset-8 transition-all">Projetos</a>
+        <a href="#contato" class="hover:text-charcoal hover:underline underline-offset-8 transition-all">Contato</a>
+      </nav>
+
+      <!-- Discreet CTA & Mobile Trigger -->
+      <div class="flex items-center gap-3">
+        <a href="#contato" class="hidden sm:inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full border border-charcoal/25 hover:border-charcoal hover:bg-charcoal hover:text-linen text-charcoal text-xs uppercase tracking-[0.14em] font-medium transition-all duration-300">
+          <span>Agendar Visita ao Ateliê</span>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+        </a>
+
+        <button onclick="toggleMobileNav()" class="lg:hidden p-2.5 rounded-full border border-stone-300 text-charcoal hover:bg-stone-200/60" aria-label="Abrir Menu">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-nav" class="hidden lg:hidden bg-[#f7f6f2] border-t border-stone-900/10 px-6 py-6 space-y-4 text-xs uppercase tracking-[0.18em] text-stone-800">
+      <a href="#colecoes" onclick="toggleMobileNav()" class="block py-2 border-b border-stone-200">01. Coleções Autorais</a>
+      <a href="#filosofia" onclick="toggleMobileNav()" class="block py-2 border-b border-stone-200">02. Filosofia & Processo Artesanal</a>
+      <a href="#sob-medida" onclick="toggleMobileNav()" class="block py-2 border-b border-stone-200">03. Sob Medida & Arquitetura</a>
+      <a href="#mostruario" onclick="toggleMobileNav()" class="block py-2 border-b border-stone-200">04. Mostruário de Madeiras</a>
+      <a href="#projetos" onclick="toggleMobileNav()" class="block py-2 border-b border-stone-200">05. Residências Executadas</a>
+      <a href="#contato" onclick="toggleMobileNav()" class="block py-3 text-center rounded-full bg-charcoal text-linen font-semibold">Agendar Visita ao Ateliê</a>
     </div>
   </header>
 
-  <main class="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-    <div class="lg:col-span-7">
-      <img id="chair-img" src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1000&q=80" class="w-full h-[460px] object-cover rounded-3xl shadow-lg transition duration-500" alt="Poltrona Design">
-    </div>
-
-    <!-- Personalizador de Acabamento -->
-    <div class="lg:col-span-5 bg-white p-8 rounded-3xl border border-stone-200 shadow-xl">
-      <span class="text-xs uppercase tracking-widest text-amber-800 font-bold">Série Assinada 2026</span>
-      <h1 class="font-serif-furniture text-4xl mt-1">Poltrona Esfera Orgânica</h1>
-      <p class="text-xs text-stone-500 mt-2">Encaixes japoneses sem parafusos aparentes e acabamento em cera de carnaúba.</p>
-
-      <div class="mt-6 space-y-5">
-        <div>
-          <label class="text-xs font-bold uppercase text-stone-500 block mb-2">1. Madeira Maciça:</label>
-          <div class="grid grid-cols-3 gap-2">
-            <button onclick="setWood('Freijó Natural', 0)" class="py-2 px-3 rounded-xl border border-amber-800 bg-amber-50 text-xs font-semibold">Freijó</button>
-            <button onclick="setWood('Nogueira Americana', 850)" class="py-2 px-3 rounded-xl border border-stone-200 text-xs font-semibold">Nogueira (+R$850)</button>
-            <button onclick="setWood('Carvalho Ebonizado', 600)" class="py-2 px-3 rounded-xl border border-stone-200 text-xs font-semibold">Ebonizado (+R$600)</button>
+  <!-- 2. HERO SECTION ARQUITETÔNICO & MANIFESTO AUTORAL -->
+  <section class="relative pt-10 pb-20 lg:pt-16 lg:pb-28 border-b border-stone-900/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Editorial Header & Manifesto -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-12 lg:mb-16">
+        <div class="lg:col-span-8 space-y-4">
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1 rounded-full bg-oliveTint border border-oliveSubtle/25 text-oliveDeep text-[11px] uppercase tracking-[0.2em] font-semibold">
+            <span>Estética Nórdica & Japandi • Série 2026</span>
           </div>
+          <h1 class="font-serif-furniture text-4xl sm:text-6xl lg:text-7xl font-normal tracking-tight leading-[1.06] text-charcoal">
+            O encontro entre o design escandinavo e a <span class="italic font-normal text-amber-900">alma artesanal brasileira.</span>
+          </h1>
         </div>
 
-        <div>
-          <label class="text-xs font-bold uppercase text-stone-500 block mb-2">2. Revestimento:</label>
-          <div class="grid grid-cols-2 gap-2">
-            <button onclick="setFabric('Linho Belga Cru', 0)" class="py-2.5 px-3 rounded-xl border border-amber-800 bg-amber-50 text-xs font-semibold">Linho Belga Cru</button>
-            <button onclick="setFabric('Couro Natural Sela', 1200)" class="py-2.5 px-3 rounded-xl border border-stone-200 text-xs font-semibold">Couro Sela (+R$1.200)</button>
+        <div class="lg:col-span-4 space-y-5 lg:border-l lg:border-stone-300 lg:pl-8">
+          <p class="text-sm sm:text-base text-stone-600 leading-relaxed font-normal">
+            Esculpimos madeiras nobres maciças de manejo sustentável com encaixes tradicionais japoneses (<em class="font-serif-furniture text-lg">Sashimono</em>), sem pregos ou parafusos aparentes, finalizadas à mão com óleo de tungue e cera pura de carnaúba.
+          </p>
+          <div class="flex flex-wrap items-center gap-4 pt-1">
+            <a href="#colecoes" class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-semibold text-charcoal border-b border-charcoal pb-1 hover:text-amber-900 hover:border-amber-900 transition-colors">
+              <span>Explorar Peças Autorais</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+            <a href="#mostruario" class="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] font-medium text-oliveSubtle hover:text-charcoal transition-colors">
+              <span>Inspecionar Madeiras</span>
+            </a>
           </div>
         </div>
       </div>
 
-      <div class="mt-6 pt-5 border-t border-stone-200">
-        <p id="config-summary" class="text-xs text-stone-500 mb-2">Configuração: Freijó Natural + Linho Belga Cru</p>
-        <div class="flex justify-between items-baseline">
-          <span class="text-xs uppercase text-stone-400">Valor sob encomenda</span>
-          <strong id="furniture-price" class="font-serif-furniture text-4xl text-stone-900">R$ 6.490</strong>
+      <!-- Hero Architectural Showcase + Interactive Bespoke Spotlight (Poltrona Esfera Orgânica) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+        
+        <!-- Left 7 Cols: Cinematic Architectural Photo -->
+        <div class="lg:col-span-7 relative group rounded-3xl overflow-hidden bg-sandstone border border-stone-200 shadow-sm flex flex-col justify-between min-h-[460px] sm:min-h-[560px]">
+          <img 
+            id="chair-img" 
+            src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1400&q=85" 
+            class="absolute inset-0 w-full h-full object-cover transition-all duration-700" 
+            alt="Poltrona Esfera Orgânica Atelier Nord"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/15 to-transparent"></div>
+
+          <!-- Top Architectural Tag -->
+          <div class="relative z-10 p-6 flex items-center justify-between">
+            <span class="px-3.5 py-1.5 rounded-full bg-[#f7f6f2]/90 backdrop-blur-md text-charcoal text-[11px] uppercase tracking-[0.18em] font-semibold">
+              Peça Manifesto • Desenho Assinado
+            </span>
+            <span id="hero-wood-pill" class="px-3.5 py-1.5 rounded-full bg-charcoal/85 backdrop-blur-md text-linen text-[11px] uppercase tracking-[0.15em]">
+              Acabamento: Freijó Natural
+            </span>
+          </div>
+
+          <!-- Bottom Caption inside Photo -->
+          <div class="relative z-10 p-6 sm:p-8 text-linen">
+            <div class="grid grid-cols-3 gap-4 pt-4 border-t border-white/20 text-xs">
+              <div>
+                <span class="text-linen/60 block uppercase tracking-wider text-[10px]">Encaixe Estrutural</span>
+                <span class="font-serif-furniture text-lg italic">Espiga Cega & Cunha</span>
+              </div>
+              <div>
+                <span class="text-linen/60 block uppercase tracking-wider text-[10px]">Tempo de Bancada</span>
+                <span class="font-serif-furniture text-lg italic">64 Horas Artesanais</span>
+              </div>
+              <div>
+                <span class="text-linen/60 block uppercase tracking-wider text-[10px]">Rastreabilidade</span>
+                <span class="font-serif-furniture text-lg italic">Selo FSC® 100%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 5 Cols: Interactive Customizer (Preserved & Enhanced from index_4.html) -->
+        <div class="lg:col-span-5 bg-white p-7 sm:p-9 rounded-3xl border border-stone-200/90 shadow-xl flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-[11px] uppercase tracking-[0.2em] text-amber-800 font-bold">Série Assinada 2026</span>
+              <span class="text-[11px] font-mono text-stone-400">REF. AN-014</span>
+            </div>
+            <h2 class="font-serif-furniture text-3xl sm:text-4xl text-charcoal mt-1">Poltrona Esfera Orgânica</h2>
+            <p class="text-xs sm:text-sm text-stone-500 mt-2 leading-relaxed">
+              Encaixes japoneses sem parafusos aparentes, braços esculpidos em torno livre e acabamento acetinado em cera de carnaúba.
+            </p>
+
+            <div class="mt-6 space-y-5">
+              <!-- 1. Madeira Maciça -->
+              <div>
+                <label class="text-[11px] font-bold uppercase tracking-wider text-stone-500 block mb-2.5">
+                  1. Madeira Maciça Certificada:
+                </label>
+                <div class="grid grid-cols-3 gap-2" id="hero-wood-buttons">
+                  <button type="button" onclick="setWood('Freijó Natural', 0, 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1400&q=85', this)" class="hero-wood-btn py-2.5 px-3 rounded-xl border border-amber-800 bg-amber-50/70 text-charcoal text-xs font-semibold transition-all">
+                    Freijó
+                  </button>
+                  <button type="button" onclick="setWood('Nogueira Americana', 850, 'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&w=1400&q=85', this)" class="hero-wood-btn py-2.5 px-3 rounded-xl border border-stone-200 text-stone-700 hover:border-stone-400 text-xs font-semibold transition-all">
+                    Nogueira (+R$850)
+                  </button>
+                  <button type="button" onclick="setWood('Carvalho Ebonizado', 600, 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=1400&q=85', this)" class="hero-wood-btn py-2.5 px-3 rounded-xl border border-stone-200 text-stone-700 hover:border-stone-400 text-xs font-semibold transition-all">
+                    Ebonizado (+R$600)
+                  </button>
+                </div>
+              </div>
+
+              <!-- 2. Revestimento -->
+              <div>
+                <label class="text-[11px] font-bold uppercase tracking-wider text-stone-500 block mb-2.5">
+                  2. Estofaria Natural:
+                </label>
+                <div class="grid grid-cols-2 gap-2" id="hero-fabric-buttons">
+                  <button type="button" onclick="setFabric('Linho Belga Cru', 0, this)" class="hero-fab-btn py-2.5 px-3 rounded-xl border border-amber-800 bg-amber-50/70 text-charcoal text-xs font-semibold transition-all">
+                    Linho Belga Cru
+                  </button>
+                  <button type="button" onclick="setFabric('Couro Natural Sela', 1200, this)" class="hero-fab-btn py-2.5 px-3 rounded-xl border border-stone-200 text-stone-700 hover:border-stone-400 text-xs font-semibold transition-all">
+                    Couro Sela (+R$1.200)
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-7 pt-5 border-t border-stone-200">
+            <p id="config-summary" class="text-xs text-stone-500 mb-2">
+              Configuração: Freijó Natural + Linho Belga Cru
+            </p>
+            <div class="flex justify-between items-baseline">
+              <span class="text-xs uppercase tracking-wider text-stone-400">Valor sob encomenda</span>
+              <strong id="furniture-price" class="font-serif-furniture text-4xl font-semibold text-charcoal">
+                R$ 6.490
+              </strong>
+            </div>
+
+            <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <button type="button" onclick="specifyPieceInForm('Poltrona Esfera Orgânica (' + woodName + ' + ' + fabName + ')')" class="w-full py-3.5 px-4 rounded-xl bg-charcoal hover:bg-amber-950 text-linen text-xs font-semibold uppercase tracking-widest transition-all">
+                Encomendar Peça →
+              </button>
+              <button type="button" onclick="download3DBlock('Poltrona Esfera Orgânica')" class="w-full py-3.5 px-4 rounded-xl border border-stone-300 hover:border-charcoal text-charcoal text-xs font-semibold uppercase tracking-wider transition-all flex items-center justify-center gap-1.5">
+                <i data-lucide="box" class="w-3.5 h-3.5 text-oliveSubtle"></i>
+                <span>Bloco 3D / BIM</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. GALERIA / CATÁLOGO DE PEÇAS AUTORAIS COM SELETOR DE MADEIRA -->
+  <section id="colecoes" class="py-24 lg:py-32 border-b border-stone-900/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-8">
+        <div>
+          <span class="text-xs uppercase tracking-[0.24em] text-oliveSubtle font-semibold block mb-2">
+            01 // Coleção Permanente & Série Numerada
+          </span>
+          <h2 class="font-serif-furniture text-4xl sm:text-6xl text-charcoal font-normal leading-none">
+            Galeria de Peças Autorais
+          </h2>
+        </div>
+
+        <!-- Global Wood Tone Selector for the Catalog -->
+        <div class="bg-white p-4 rounded-2xl border border-stone-200 shadow-sm">
+          <span class="text-[10px] uppercase tracking-[0.18em] text-stone-500 font-semibold block mb-2.5">
+            Simular Essência de Madeira na Coleção:
+          </span>
+          <div class="flex flex-wrap items-center gap-2" id="catalog-wood-selector">
+            <button type="button" onclick="selectCatalogWood('carvalho')" data-wood="carvalho" class="cat-wood-btn flex items-center gap-2 px-3 py-1.5 rounded-full border border-charcoal bg-charcoal text-linen text-xs font-medium transition-all">
+              <span class="w-3.5 h-3.5 rounded-full swatch-carvalho border border-white/30"></span>
+              <span>Carvalho Americano</span>
+            </button>
+            <button type="button" onclick="selectCatalogWood('nogueira')" data-wood="nogueira" class="cat-wood-btn flex items-center gap-2 px-3 py-1.5 rounded-full border border-stone-200 bg-linen text-stone-700 hover:border-stone-400 text-xs font-medium transition-all">
+              <span class="w-3.5 h-3.5 rounded-full swatch-nogueira"></span>
+              <span>Nogueira</span>
+            </button>
+            <button type="button" onclick="selectCatalogWood('freijo')" data-wood="freijo" class="cat-wood-btn flex items-center gap-2 px-3 py-1.5 rounded-full border border-stone-200 bg-linen text-stone-700 hover:border-stone-400 text-xs font-medium transition-all">
+              <span class="w-3.5 h-3.5 rounded-full swatch-freijo"></span>
+              <span>Freijó</span>
+            </button>
+            <button type="button" onclick="selectCatalogWood('cumaru')" data-wood="cumaru" class="cat-wood-btn flex items-center gap-2 px-3 py-1.5 rounded-full border border-stone-200 bg-linen text-stone-700 hover:border-stone-400 text-xs font-medium transition-all">
+              <span class="w-3.5 h-3.5 rounded-full swatch-cumaru"></span>
+              <span>Cumaru</span>
+            </button>
+          </div>
         </div>
       </div>
 
-      <button onclick="alert('Peça adicionada ao pedido! Nosso arquiteto enviará o bloco 3D SketchUp/Revit.')" class="mt-6 w-full py-4 rounded-xl bg-[#231F1C] hover:bg-amber-950 text-white text-xs font-bold uppercase tracking-widest transition">
-        Encomendar Peça / Baixar Bloco 3D →
-      </button>
-    </div>
-  </main>
+      <!-- Category Filters -->
+      <div class="flex flex-wrap items-center justify-between gap-4 pb-8 mb-10 border-b border-stone-200">
+        <div class="flex flex-wrap gap-2">
+          <button type="button" onclick="filterCatalog('all')" data-cat="all" class="cat-filter-btn px-4 py-2 rounded-full text-xs uppercase tracking-widest font-semibold bg-charcoal text-linen transition-all">
+            Todas as Peças (6)
+          </button>
+          <button type="button" onclick="filterCatalog('Mesas de Jantar')" data-cat="Mesas de Jantar" class="cat-filter-btn px-4 py-2 rounded-full text-xs uppercase tracking-widest font-medium bg-white border border-stone-200 text-stone-700 hover:border-charcoal transition-all">
+            Mesas de Jantar
+          </button>
+          <button type="button" onclick="filterCatalog('Cadeiras Esculturais')" data-cat="Cadeiras Esculturais" class="cat-filter-btn px-4 py-2 rounded-full text-xs uppercase tracking-widest font-medium bg-white border border-stone-200 text-stone-700 hover:border-charcoal transition-all">
+            Cadeiras Esculturais
+          </button>
+          <button type="button" onclick="filterCatalog('Aparadores')" data-cat="Aparadores" class="cat-filter-btn px-4 py-2 rounded-full text-xs uppercase tracking-widest font-medium bg-white border border-stone-200 text-stone-700 hover:border-charcoal transition-all">
+            Aparadores
+          </button>
+          <button type="button" onclick="filterCatalog('Poltronas')" data-cat="Poltronas" class="cat-filter-btn px-4 py-2 rounded-full text-xs uppercase tracking-widest font-medium bg-white border border-stone-200 text-stone-700 hover:border-charcoal transition-all">
+            Poltronas
+          </button>
+        </div>
 
+        <span id="active-wood-indicator" class="text-xs text-oliveSubtle font-medium">
+          Madeira selecionada: <strong>Carvalho Americano (Veio Catedral Claro)</strong>
+        </span>
+      </div>
+
+      <!-- Catalog Grid (Populated via JS) -->
+      <div id="catalog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9">
+        <!-- Rendered by JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4. O PROCESSO ARTESANAL & FILOSOFIA JAPANDI -->
+  <section id="filosofia" class="py-24 lg:py-32 bg-[#efece4] border-b border-stone-900/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
+        <div class="lg:col-span-6 space-y-4">
+          <span class="text-xs uppercase tracking-[0.24em] text-oliveSubtle font-semibold block">
+            02 // Filosofia Construtiva & Alma Tátil
+          </span>
+          <h2 class="font-serif-furniture text-4xl sm:text-6xl text-charcoal leading-[1.08]">
+            Silêncio visual, precisão milimétrica e respeito ao tempo da árvore.
+          </h2>
+        </div>
+        <div class="lg:col-span-6 text-stone-600 text-sm sm:text-base leading-relaxed space-y-4">
+          <p>
+            Acreditamos que um móvel verdadeiro atravessa gerações. Na tradição <strong class="text-charcoal">Japandi</strong> — fusão entre a funcionalidade acolhedora nórdica (*Hygge*) e a estética japonesa da imperfeição natural (*Wabi-Sabi*) — cada prancha de madeira maciça é lida pelos nossos mestres marceneiros antes do primeiro corte.
+          </p>
+          <p>
+            Não utilizamos MDF, lâminas sintéticas ou vernizes poliuretânicos plastificados. A madeira respira, evolui em pátina e conserva seu aroma e textura originais.
+          </p>
+        </div>
+      </div>
+
+      <!-- 3 Pillars of Craftsmanship -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Pillar 1 -->
+        <div class="bg-[#f7f6f2] p-8 sm:p-10 rounded-3xl border border-stone-300/80 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs font-mono text-oliveSubtle mb-6">
+              <span>ETAPA 01 // MATÉRIA-PRIMA</span>
+              <span>FSC® C148291</span>
+            </div>
+            <div class="w-12 h-12 rounded-2xl bg-oliveTint border border-oliveSubtle/20 flex items-center justify-center text-oliveDeep mb-6">
+              <i data-lucide="trees" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-serif-furniture text-3xl text-charcoal">Madeira Maciça Certificada FSC®</h3>
+            <p class="text-sm text-stone-600 mt-3 leading-relaxed">
+              Toras selecionadas de manejo florestal sustentável na Amazônia Legal (Freijó e Cumaru) e florestas temperadas certificadas (Carvalho e Nogueira). Secagem lenta controlada a 9% de umidade para estabilidade dimensional absoluta.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-stone-200 text-[11px] uppercase tracking-widest text-stone-500">
+            Rastreabilidade de Origem por QR Code
+          </div>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="bg-[#f7f6f2] p-8 sm:p-10 rounded-3xl border border-stone-300/80 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs font-mono text-oliveSubtle mb-6">
+              <span>ETAPA 02 // ESTRUTURA</span>
+              <span>SASHIMONO JOINERY</span>
+            </div>
+            <div class="w-12 h-12 rounded-2xl bg-oliveTint border border-oliveSubtle/20 flex items-center justify-center text-oliveDeep mb-6">
+              <i data-lucide="compass" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-serif-furniture text-3xl text-charcoal">Encaixes Tradicionais Sem Pregos</h3>
+            <p class="text-sm text-stone-600 mt-3 leading-relaxed">
+              Utilizamos encaixes de espiga passante, rabo de andorinha (*Dovetail*), meia-madeira e cunhas de travamento em madeira contrastante. A peça trabalha mecanicamente como um organismo único sem fadiga metálica.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-stone-200 text-[11px] uppercase tracking-widest text-stone-500">
+            Garantia Estrutural Vitalícia
+          </div>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="bg-[#f7f6f2] p-8 sm:p-10 rounded-3xl border border-stone-300/80 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs font-mono text-oliveSubtle mb-6">
+              <span>ETAPA 03 // ALQUIMIA TÁTIL</span>
+              <span>ZERO VOC</span>
+            </div>
+            <div class="w-12 h-12 rounded-2xl bg-oliveTint border border-oliveSubtle/20 flex items-center justify-center text-oliveDeep mb-6">
+              <i data-lucide="droplets" class="w-6 h-6"></i>
+            </div>
+            <h3 class="font-serif-furniture text-3xl text-charcoal">Acabamento a Óleo Natural & Carnaúba</h3>
+            <p class="text-sm text-stone-600 mt-3 leading-relaxed">
+              Polimento manual até a grana 600 seguido de nutrição profunda com óleo de tungue puro prensado a frio e cera vegetal de carnaúba brasileira. Preserva o poro aberto e o toque aveludado da madeira viva.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-stone-200 text-[11px] uppercase tracking-widest text-stone-500">
+            Kit de Nutrição Anual Incluso
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5. SESSÃO SOB MEDIDA & MARCENARIA ARQUITETÔNICA -->
+  <section id="sob-medida" class="py-24 lg:py-32 border-b border-stone-900/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-14 gap-6">
+        <div>
+          <span class="text-xs uppercase tracking-[0.24em] text-oliveSubtle font-semibold block mb-2">
+            03 // Divisão de Arquitetura & Interiores de Luxo
+          </span>
+          <h2 class="font-serif-furniture text-4xl sm:text-6xl text-charcoal leading-none">
+            Marcenaria Arquitetônica Sob Medida
+          </h2>
+        </div>
+        <p class="text-sm sm:text-base text-stone-600 max-w-md">
+          Executamos projetos especiais em parceria com os principais escritórios de arquitetura do país, unindo usinagem CNC de 5 eixos à finalização de ebanisteria.
+        </p>
+      </div>
+
+      <!-- Interactive Architectural Tabs -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <!-- Left 5 Cols: Selector Cards -->
+        <div class="lg:col-span-5 space-y-4">
+          <button type="button" onclick="selectBespokeTab('cozinhas')" id="bespoke-btn-cozinhas" class="w-full text-left p-6 rounded-2xl border border-charcoal bg-charcoal text-linen transition-all">
+            <div class="flex items-center justify-between text-xs uppercase tracking-widest text-oakLight mb-1">
+              <span>01 • Gourmet & Estar</span>
+              <span>Sob Medida</span>
+            </div>
+            <h3 class="font-serif-furniture text-2xl sm:text-3xl">Cozinhas Integradas Japandi</h3>
+            <p class="text-xs text-linen/80 mt-2 leading-relaxed">
+              Frentes em madeira maciça usinada com cava oculta, ilhas monolíticas em Freijó ou Carvalho e ferragens austríacas Blum® Legrabox com amortecimento invisível.
+            </p>
+          </button>
+
+          <button type="button" onclick="selectBespokeTab('paineis')" id="bespoke-btn-paineis" class="w-full text-left p-6 rounded-2xl border border-stone-200 bg-white text-charcoal hover:border-stone-400 transition-all">
+            <div class="flex items-center justify-between text-xs uppercase tracking-widest text-oliveSubtle mb-1">
+              <span>02 • Envoltória & Acústica</span>
+              <span>Brises & Muxarabis</span>
+            </div>
+            <h3 class="font-serif-furniture text-2xl sm:text-3xl">Painéis Ripados, Forros & Portas Pivotantes</h3>
+            <p class="text-xs text-stone-600 mt-2 leading-relaxed">
+              Ripados de seção áurea com absorção acústica oculta, portas mimetizadas piso-teto até 4,20m de altura e painéis muxarabi encaixados sem cola aparente.
+            </p>
+          </button>
+
+          <button type="button" onclick="selectBespokeTab('closets')" id="bespoke-btn-closets" class="w-full text-left p-6 rounded-2xl border border-stone-200 bg-white text-charcoal hover:border-stone-400 transition-all">
+            <div class="flex items-center justify-between text-xs uppercase tracking-widest text-oliveSubtle mb-1">
+              <span>03 • Alta Alfaiataria Residencial</span>
+              <span>Suítes Master</span>
+            </div>
+            <h3 class="font-serif-furniture text-2xl sm:text-3xl">Closets Autorais & Bibliotecas Suspensas</h3>
+            <p class="text-xs text-stone-600 mt-2 leading-relaxed">
+              Estruturas esbeltas em madeira maciça e latão escovado, gaveteiros revestidos em linho belga ou couro natural sela e iluminação LED museológica 2700K integrada.
+            </p>
+          </button>
+        </div>
+
+        <!-- Right 7 Cols: Dynamic Showcase Panel -->
+        <div class="lg:col-span-7 bg-white rounded-3xl border border-stone-200 overflow-hidden shadow-lg" id="bespoke-display-panel">
+          <!-- Populated via JS -->
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. MOSTRUÁRIO INTERATIVO DE AMOSTRAS DE MADEIRA (XYLO-LIBRARY) -->
+  <section id="mostruario" class="py-24 lg:py-32 bg-charcoal text-linen border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-14 gap-6">
+        <div>
+          <span class="text-xs uppercase tracking-[0.24em] text-oakLight font-semibold block mb-2">
+            04 // Xiloteca & Curadoria de Lâminas Maciças
+          </span>
+          <h2 class="font-serif-furniture text-4xl sm:text-6xl text-linen leading-none">
+            Mostruário Tátil de Madeiras Nobres
+          </h2>
+        </div>
+        <p class="text-xs sm:text-sm text-linen/70 max-w-md leading-relaxed">
+          Clique em cada essência florestal abaixo para inspecionar sua densidade Janka, desenho dos veios, comportamento à luz natural e aplicações recomendadas.
+        </p>
+      </div>
+
+      <!-- 4 Interactive Wood Sample Cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10" id="wood-samples-grid">
+        <!-- Populated via JS -->
+      </div>
+
+      <!-- Active Wood Sample Inspector Box -->
+      <div id="wood-inspector-panel" class="p-8 sm:p-10 rounded-3xl bg-[#252321] border border-white/10">
+        <!-- Populated via JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 7. PROJETOS CONCLUÍDOS EM RESIDÊNCIAS DE ALTO PADRÃO -->
+  <section id="projetos" class="py-24 lg:py-32 border-b border-stone-900/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-14 gap-6">
+        <div>
+          <span class="text-xs uppercase tracking-[0.24em] text-oliveSubtle font-semibold block mb-2">
+            05 // Acervo de Obras Residenciais
+          </span>
+          <h2 class="font-serif-furniture text-4xl sm:text-6xl text-charcoal leading-none">
+            Residências Executadas
+          </h2>
+        </div>
+
+        <!-- Carousel Controls -->
+        <div class="flex items-center gap-3">
+          <button type="button" onclick="FilterResidences('all')" class="text-xs uppercase tracking-widest px-4 py-2 rounded-full bg-charcoal text-linen">
+            Ver Acervo Completo (4)
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10" id="residences-grid">
+        <!-- Project 01 -->
+        <article class="group bg-white rounded-3xl border border-stone-200 overflow-hidden shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="arch-img-wrap relative aspect-[16/11] bg-sandstone">
+              <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85" alt="Residência Jardim Europa" class="w-full h-full object-cover" />
+              <span class="absolute top-4 left-4 px-3.5 py-1 rounded-full bg-[#f7f6f2]/90 backdrop-blur-md text-charcoal text-[10px] uppercase tracking-widest font-semibold">
+                São Paulo, SP • 680 m²
+              </span>
+            </div>
+            <div class="p-7 sm:p-8">
+              <div class="flex items-center justify-between text-xs text-oliveSubtle font-medium mb-2">
+                <span>ARQUITETURA: STUDIO MK27 PARTNER</span>
+                <span>FREIJÓ & CARVALHO</span>
+              </div>
+              <h3 class="font-serif-furniture text-3xl text-charcoal">Casa Pátio Jardim Europa</h3>
+              <p class="text-xs sm:text-sm text-stone-600 mt-2.5 leading-relaxed">
+                Forro ripado contínuo de 140m² em Freijó Catedral, mesa de jantar monolítica Kanso de 4,20m para 14 lugares e conjunto de cadeiras esculturais Sabi.
+              </p>
+            </div>
+          </div>
+          <div class="px-7 sm:px-8 pb-7 pt-4 border-t border-stone-100 flex items-center justify-between text-xs">
+            <span class="text-stone-400">Ano de Entrega: 2026</span>
+            <button onclick="specifyPieceInForm('Estudo Similar: Casa Pátio Jardim Europa')" class="text-charcoal font-semibold uppercase tracking-wider hover:text-amber-900">
+              Solicitar Memorial Descritivo →
+            </button>
+          </div>
+        </article>
+
+        <!-- Project 02 -->
+        <article class="group bg-white rounded-3xl border border-stone-200 overflow-hidden shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="arch-img-wrap relative aspect-[16/11] bg-sandstone">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=85" alt="Refúgio Serra da Mantiqueira" class="w-full h-full object-cover" />
+              <span class="absolute top-4 left-4 px-3.5 py-1 rounded-full bg-[#f7f6f2]/90 backdrop-blur-md text-charcoal text-[10px] uppercase tracking-widest font-semibold">
+                Campos do Jordão, SP • 520 m²
+              </span>
+            </div>
+            <div class="p-7 sm:p-8">
+              <div class="flex items-center justify-between text-xs text-oliveSubtle font-medium mb-2">
+                <span>ARQUITETURA: JACOBSEN ESTÚDIO CONVIDADO</span>
+                <span>NOGUEIRA & CUMARU</span>
+              </div>
+              <h3 class="font-serif-furniture text-3xl text-charcoal">Pavilhão de Inverno Mantiqueira</h3>
+              <p class="text-xs sm:text-sm text-stone-600 mt-2.5 leading-relaxed">
+                Biblioteca suspensa com encaixes japoneses aparentes, cozinha integrada em Nogueira Americana e par de Poltronas Esfera Orgânica em couro natural sela.
+              </p>
+            </div>
+          </div>
+          <div class="px-7 sm:px-8 pb-7 pt-4 border-t border-stone-100 flex items-center justify-between text-xs">
+            <span class="text-stone-400">Ano de Entrega: 2025</span>
+            <button onclick="specifyPieceInForm('Estudo Similar: Pavilhão Mantiqueira')" class="text-charcoal font-semibold uppercase tracking-wider hover:text-amber-900">
+              Solicitar Memorial Descritivo →
+            </button>
+          </div>
+        </article>
+
+        <!-- Project 03 -->
+        <article class="group bg-white rounded-3xl border border-stone-200 overflow-hidden shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="arch-img-wrap relative aspect-[16/11] bg-sandstone">
+              <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=85" alt="Penthouse Leblon" class="w-full h-full object-cover" />
+              <span class="absolute top-4 left-4 px-3.5 py-1 rounded-full bg-[#f7f6f2]/90 backdrop-blur-md text-charcoal text-[10px] uppercase tracking-widest font-semibold">
+                Leblon, Rio de Janeiro • 410 m²
+              </span>
+            </div>
+            <div class="p-7 sm:p-8">
+              <div class="flex items-center justify-between text-xs text-oliveSubtle font-medium mb-2">
+                <span>ARQUITETURA: BERNARDES INTERIORS</span>
+                <span>CARVALHO AMERICANO</span>
+              </div>
+              <h3 class="font-serif-furniture text-3xl text-charcoal">Cobertura Linear Atlântica</h3>
+              <p class="text-xs sm:text-sm text-stone-600 mt-2.5 leading-relaxed">
+                Brises móveis em Cumaru resistente à maresia, aparador suspenso Hori de 3,10m e suíte master com closet completo em Carvalho Americano e linho belga.
+              </p>
+            </div>
+          </div>
+          <div class="px-7 sm:px-8 pb-7 pt-4 border-t border-stone-100 flex items-center justify-between text-xs">
+            <span class="text-stone-400">Ano de Entrega: 2026</span>
+            <button onclick="specifyPieceInForm('Estudo Similar: Cobertura Linear Atlântica')" class="text-charcoal font-semibold uppercase tracking-wider hover:text-amber-900">
+              Solicitar Memorial Descritivo →
+            </button>
+          </div>
+        </article>
+
+        <!-- Project 04 -->
+        <article class="group bg-white rounded-3xl border border-stone-200 overflow-hidden shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="arch-img-wrap relative aspect-[16/11] bg-sandstone">
+              <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=85" alt="Villa Quinta da Baroneza" class="w-full h-full object-cover" />
+              <span class="absolute top-4 left-4 px-3.5 py-1 rounded-full bg-[#f7f6f2]/90 backdrop-blur-md text-charcoal text-[10px] uppercase tracking-widest font-semibold">
+                Bragança Paulista, SP • 890 m²
+              </span>
+            </div>
+            <div class="p-7 sm:p-8">
+              <div class="flex items-center justify-between text-xs text-oliveSubtle font-medium mb-2">
+                <span>ARQUITETURA: ATELIER NORD BESPOKE</span>
+                <span>FREIJÓ & CARVALHO EBONIZADO</span>
+              </div>
+              <h3 class="font-serif-furniture text-3xl text-charcoal">Residência Quinta da Baroneza</h3>
+              <p class="text-xs sm:text-sm text-stone-600 mt-2.5 leading-relaxed">
+                Mobiliário solto integralmente assinado pelo Atelier Nord, adega climatizada em madeira maciça e portas pivotantes mimetizadas com puxadores esculpidos.
+              </p>
+            </div>
+          </div>
+          <div class="px-7 sm:px-8 pb-7 pt-4 border-t border-stone-100 flex items-center justify-between text-xs">
+            <span class="text-stone-400">Ano de Entrega: 2026</span>
+            <button onclick="specifyPieceInForm('Estudo Similar: Residência Quinta da Baroneza')" class="text-charcoal font-semibold uppercase tracking-wider hover:text-amber-900">
+              Solicitar Memorial Descritivo →
+            </button>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 8. FORMULÁRIO DE ATENDIMENTO PRIVADO / ORÇAMENTO PARA ARQUITETOS -->
+  <section id="contato" class="py-24 lg:py-32 bg-[#efece4]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-white rounded-3xl border border-stone-200/90 shadow-xl p-8 sm:p-14">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          <!-- Left 5 Cols: Atelier Concierge Details -->
+          <div class="lg:col-span-5 space-y-6">
+            <span class="text-xs uppercase tracking-[0.24em] text-oliveSubtle font-semibold block">
+              06 // Concierge & Especificação Técnica
+            </span>
+            <h2 class="font-serif-furniture text-4xl sm:text-5xl text-charcoal leading-tight">
+              Agende uma visita privada ao nosso Ateliê ou solicite orçamento técnico.
+            </h2>
+            <p class="text-sm text-stone-600 leading-relaxed">
+              Recebemos arquitetos, designers de interiores e clientes finais com hora marcada em nosso galpão-oficina na Vila Madalena para experiência sensorial das peças e escolha presencial das pranchas.
+            </p>
+
+            <div class="space-y-4 pt-4 border-t border-stone-200 text-xs text-stone-700">
+              <div class="flex items-start gap-3">
+                <i data-lucide="map-pin" class="w-4 h-4 text-amber-800 shrink-0 mt-0.5"></i>
+                <div>
+                  <strong class="block text-charcoal uppercase tracking-wider">Ateliê & Galeria São Paulo</strong>
+                  <span>Rua Harmonia, 840 — Vila Madalena, São Paulo - SP</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <i data-lucide="box" class="w-4 h-4 text-amber-800 shrink-0 mt-0.5"></i>
+                <div>
+                  <strong class="block text-charcoal uppercase tracking-wider">Programa para Arquitetos (Trade)</strong>
+                  <span>Envio gratuito da Caixa de Amostras Físicas (4 madeiras + linhos) e biblioteca completa BIM / SketchUp.</span>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <i data-lucide="clock" class="w-4 h-4 text-amber-800 shrink-0 mt-0.5"></i>
+                <div>
+                  <strong class="block text-charcoal uppercase tracking-wider">Horário de Visitação</strong>
+                  <span>Segunda a Sexta: 09h às 19h • Sábados: 10h às 16h (Com agendamento)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right 7 Cols: Interactive Private Consultation Form -->
+          <div class="lg:col-span-7 bg-[#f7f6f2] p-6 sm:p-9 rounded-2xl border border-stone-200">
+            <form id="atelier-contact-form" onsubmit="handleAtelierSubmit(event)" class="space-y-5">
+              
+              <!-- Profile Selector -->
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-stone-500 mb-2">
+                  Seu Perfil de Atendimento:
+                </label>
+                <div class="grid grid-cols-2 gap-3">
+                  <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white border border-stone-300 cursor-pointer text-xs font-semibold text-charcoal">
+                    <input type="radio" name="client_role" value="Arquiteto / Designer de Interiores" checked class="accent-stone-900" />
+                    <span>Sou Arquiteto(a) / Designer</span>
+                  </label>
+                  <label class="flex items-center gap-2.5 p-3 rounded-xl bg-white border border-stone-300 cursor-pointer text-xs font-semibold text-charcoal">
+                    <input type="radio" name="client_role" value="Cliente Residencial Privado" class="accent-stone-900" />
+                    <span>Sou Cliente Residencial</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-[11px] font-bold uppercase tracking-wider text-stone-500 mb-1.5">Nome Completo / Escritório *</label>
+                  <input id="f-name" type="text" required placeholder="Ex: Arq. Helena Prado" class="w-full px-4 py-3 rounded-xl bg-white border border-stone-300 text-sm text-charcoal focus:border-charcoal focus:outline-none" />
+                </div>
+                <div>
+                  <label class="block text-[11px] font-bold uppercase tracking-wider text-stone-500 mb-1.5">E-mail Profissional *</label>
+                  <input id="f-email" type="email" required placeholder="contato@escritorio.com.br" class="w-full px-4 py-3 rounded-xl bg-white border border-stone-300 text-sm text-charcoal focus:border-charcoal focus:outline-none" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-[11px] font-bold uppercase tracking-wider text-stone-500 mb-1.5">WhatsApp / Telefone *</label>
+                  <input id="f-phone" type="tel" required placeholder="(11) 99999-9999" class="w-full px-4 py-3 rounded-xl bg-white border border-stone-300 text-sm text-charcoal focus:border-charcoal focus:outline-none" />
+                </div>
+                <div>
+                  <label class="block text-[11px] font-bold uppercase tracking-wider text-stone-500 mb-1.5">Modalidade de Solicitação</label>
+                  <select id="f-modality" class="w-full px-4 py-3 rounded-xl bg-white border border-stone-300 text-sm text-charcoal focus:border-charcoal focus:outline-none">
+                    <option value="Visita Privada ao Ateliê (São Paulo)">Agendar Visita Privada ao Ateliê</option>
+                    <option value="Orçamento de Peças Autorais + Blocos 3D">Cotação de Peças Autorais + Blocos 3D</option>
+                    <option value="Projeto de Marcenaria Sob Medida (Planta)">Marcenaria Arquitetônica Sob Medida</option>
+                    <option value="Solicitar Caixa de Amostras de Madeira">Receber Caixa de Amostras de Madeira</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-stone-500 mb-1.5">Peça ou Escopo do Projeto</label>
+                <input id="f-piece" type="text" value="Poltrona Esfera Orgânica (Freijó Natural + Linho Belga Cru)" class="w-full px-4 py-3 rounded-xl bg-white border border-amber-800/40 text-sm text-amber-950 font-medium focus:border-charcoal focus:outline-none" />
+              </div>
+
+              <button type="submit" class="w-full py-4 rounded-xl bg-charcoal hover:bg-amber-950 text-linen text-xs font-bold uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-2">
+                <span>Confirmar Solicitação ao Ateliê</span>
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </button>
+            </form>
+
+            <!-- Feedback Confirmation Box -->
+            <div id="atelier-form-feedback" class="hidden mt-5 p-5 rounded-2xl bg-oliveTint border border-oliveSubtle text-xs text-oliveDeep space-y-1.5">
+              <div class="font-bold uppercase tracking-wider text-sm flex items-center justify-between">
+                <span>✓ Atendimento Privado Registrado</span>
+                <span id="atelier-protocol" class="font-mono">#NORD-2026</span>
+              </div>
+              <p id="atelier-feedback-msg" class="leading-relaxed"></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. RODAPÉ COMPLETO COM ATELIÊ FÍSICO, HORÁRIOS E CATÁLOGO PARA DOWNLOAD -->
+  <footer class="bg-charcoal text-linen/75 pt-20 pb-14 border-t border-white/10 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-14 border-b border-white/10">
+        
+        <!-- Brand Column (4 cols) -->
+        <div class="lg:col-span-4 space-y-4">
+          <span class="font-serif-furniture text-3xl tracking-[0.22em] text-linen block">
+            ATELIER NORD
+          </span>
+          <p class="text-linen/65 leading-relaxed max-w-sm">
+            Marcenaria de alto padrão e mobiliário autoral assinado. Unimos o purismo escandinavo e a precisão japonesa à riqueza das madeiras nobres brasileiras certificadas.
+          </p>
+          <div class="pt-2 flex items-center gap-3 text-[11px] text-oakLight uppercase tracking-widest">
+            <span>FSC® 100% Certified Wood</span>
+            <span>•</span>
+            <span>Feito à Mão no Brasil</span>
+          </div>
+        </div>
+
+        <!-- Atelier Fisico & Horarios (3 cols) -->
+        <div class="lg:col-span-3 space-y-2.5">
+          <h4 class="text-linen font-semibold uppercase tracking-[0.18em] text-[11px] mb-3">
+            Ateliê & Showroom Físico
+          </h4>
+          <p class="text-linen/70">Rua Harmonia, 840 — Vila Madalena</p>
+          <p class="text-linen/70">CEP 05435-000 • São Paulo, SP</p>
+          <p class="text-linen/70 pt-2">Seg a Sex: 09h00 às 19h00</p>
+          <p class="text-linen/70">Sábados: 10h00 às 16h00 (Hora marcada)</p>
+          <p class="text-oakLight pt-1">concierge@ateliernord.com.br</p>
+        </div>
+
+        <!-- Navegação & Coleções (2 cols) -->
+        <div class="lg:col-span-2 space-y-2.5">
+          <h4 class="text-linen font-semibold uppercase tracking-[0.18em] text-[11px] mb-3">
+            Navegação
+          </h4>
+          <ul class="space-y-2">
+            <li><a href="#colecoes" class="hover:text-oakLight transition-colors">Peças Autorais</a></li>
+            <li><a href="#sob-medida" class="hover:text-oakLight transition-colors">Marcenaria Sob Medida</a></li>
+            <li><a href="#filosofia" class="hover:text-oakLight transition-colors">Encaixes Japoneses</a></li>
+            <li><a href="#mostruario" class="hover:text-oakLight transition-colors">Xiloteca & Amostras</a></li>
+            <li><a href="#projetos" class="hover:text-oakLight transition-colors">Residências Executadas</a></li>
+          </ul>
+        </div>
+
+        <!-- Download Catalog Card (3 cols) -->
+        <div class="lg:col-span-3 bg-[#252321] p-6 rounded-2xl border border-white/10 space-y-3">
+          <span class="text-[10px] uppercase tracking-[0.2em] text-oakLight font-semibold block">
+            Material Técnico para Arquitetos
+          </span>
+          <h4 class="font-serif-furniture text-2xl text-linen">
+            Catálogo Geral & Biblioteca BIM 2026
+          </h4>
+          <p class="text-linen/65 text-[11px] leading-relaxed">
+            Especificações completas em PDF de alta resolução + arquivos `.skp`, `.rfa` e `.obj` com texturas PBR reais das nossas 4 madeiras.
+          </p>
+          <button type="button" onclick="openCatalogModal()" class="w-full py-3 px-4 rounded-xl bg-linen text-charcoal hover:bg-oakLight font-semibold text-[11px] uppercase tracking-widest transition-all">
+            Baixar Catálogo & Blocos →
+          </button>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-linen/50">
+        <p>© 2026 ATELIER NORD Marcenaria Autoral Ltda. Todos os direitos reservados.</p>
+        <div class="flex items-center gap-6">
+          <span>Desenho Autoral Registrado</span>
+          <span>•</span>
+          <span>Entrega Segurada em Todo o Brasil & Exterior</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL DE DOWNLOAD DE CATÁLOGO & BLOCOS 3D -->
+  <div id="catalog-modal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-[#f7f6f2] border border-stone-300 rounded-3xl max-w-lg w-full p-7 sm:p-9 shadow-2xl relative">
+      <div class="flex items-start justify-between gap-4 pb-4 border-b border-stone-200">
+        <div>
+          <span class="text-[10px] uppercase tracking-[0.2em] text-oliveSubtle font-bold block">ARQUIVOS TÉCNICOS ATELIER NORD</span>
+          <h3 id="modal-3d-title" class="font-serif-furniture text-3xl text-charcoal mt-1">
+            Catálogo 2026 & Pacote 3D BIM
+          </h3>
+        </div>
+        <button onclick="closeCatalogModal()" class="p-2 rounded-full hover:bg-stone-200 text-stone-500">✕</button>
+      </div>
+      <div class="py-5 space-y-3 text-xs sm:text-sm text-stone-600">
+        <p>O pacote inclui o Lookbook Editorial 2026 (PDF, 92 páginas) e a geometria 3D em escala 1:1 para SketchUp, Revit, ArchiCAD e 3ds Max.</p>
+        <div class="p-4 rounded-2xl bg-white border border-stone-200 space-y-1.5 text-xs">
+          <div class="font-semibold text-charcoal">✓ Texturas High-Res 4K PBR (Carvalho, Nogueira, Freijó e Cumaru)</div>
+          <div class="font-semibold text-charcoal">✓ Memorial de Encaixes e Cortes Construtivos</div>
+          <div class="font-semibold text-oliveSubtle">✓ Tabela de Preços Sugeridos e Prazos de Produção</div>
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row justify-end gap-3 pt-2">
+        <button onclick="closeCatalogModal()" class="px-5 py-3 rounded-xl border border-stone-300 text-xs font-semibold uppercase tracking-wider text-stone-600">
+          Fechar
+        </button>
+        <button onclick="triggerDirectDownload()" id="btn-download-confirm" class="px-6 py-3 rounded-xl bg-charcoal hover:bg-amber-950 text-linen text-xs font-semibold uppercase tracking-widest">
+          Iniciar Download (.ZIP / PDF)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="nord-toast" class="fixed bottom-6 right-6 z-50 px-6 py-4 rounded-2xl bg-charcoal text-linen border border-oakLight/40 shadow-2xl text-xs uppercase tracking-widest hidden items-center gap-3">
+    <span class="w-2 h-2 rounded-full bg-oakLight"></span>
+    <span id="nord-toast-text">Configuração atualizada</span>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- VANILLA JAVASCRIPT COMPLETO                                             -->
+  <!-- ======================================================================= -->
   <script>
+    // 1. PERSONALIZADOR DA POLTRONA ESFERA ORGÂNICA (Preservando variáveis e funções originais de index_4.html)
     let woodName = "Freijó Natural", woodAdd = 0, fabName = "Linho Belga Cru", fabAdd = 0;
+
     function updateChair() {
       const total = 6490 + woodAdd + fabAdd;
       document.getElementById('config-summary').textContent = `Configuração: ${woodName} + ${fabName}`;
       document.getElementById('furniture-price').textContent = 'R$ ' + total.toLocaleString('pt-BR');
+      const pill = document.getElementById('hero-wood-pill');
+      if (pill) pill.textContent = `Acabamento: ${woodName}`;
+      const formPiece = document.getElementById('f-piece');
+      if (formPiece) formPiece.value = `Poltrona Esfera Orgânica (${woodName} + ${fabName})`;
     }
-    window.setWood = function(n, a) { woodName = n; woodAdd = a; updateChair(); };
-    window.setFabric = function(n, a) { fabName = n; fabAdd = a; updateChair(); };
+
+    window.setWood = function(n, a, imgUrl, btnEl) {
+      woodName = n;
+      woodAdd = a;
+      if (imgUrl) {
+        document.getElementById('chair-img').src = imgUrl;
+      }
+      if (btnEl) {
+        document.querySelectorAll('.hero-wood-btn').forEach(b => {
+          b.className = 'hero-wood-btn py-2.5 px-3 rounded-xl border border-stone-200 text-stone-700 hover:border-stone-400 text-xs font-semibold transition-all';
+        });
+        btnEl.className = 'hero-wood-btn py-2.5 px-3 rounded-xl border border-amber-800 bg-amber-50/70 text-charcoal text-xs font-semibold transition-all';
+      }
+      updateChair();
+    };
+
+    window.setFabric = function(n, a, btnEl) {
+      fabName = n;
+      fabAdd = a;
+      if (btnEl) {
+        document.querySelectorAll('.hero-fab-btn').forEach(b => {
+          b.className = 'hero-fab-btn py-2.5 px-3 rounded-xl border border-stone-200 text-stone-700 hover:border-stone-400 text-xs font-semibold transition-all';
+        });
+        btnEl.className = 'hero-fab-btn py-2.5 px-3 rounded-xl border border-amber-800 bg-amber-50/70 text-charcoal text-xs font-semibold transition-all';
+      }
+      updateChair();
+    };
+
+    // 2. CATÁLOGO DE PEÇAS AUTORAIS COM TROCA DINÂMICA DE MADEIRAS
+    const WOOD_OPTIONS = {
+      carvalho: {
+        label: 'Carvalho Americano',
+        note: 'Carvalho Americano (Veio Catedral Claro)',
+        multiplier: 1.05,
+        swatchClass: 'swatch-carvalho',
+        imgFilter: 'sepia(8%) brightness(102%)'
+      },
+      nogueira: {
+        label: 'Nogueira Negra',
+        note: 'Nogueira Americana (Tom Chocolate Profundo)',
+        multiplier: 1.14,
+        swatchClass: 'swatch-nogueira',
+        imgFilter: 'sepia(22%) brightness(90%) contrast(108%)'
+      },
+      freijo: {
+        label: 'Freijó Catedral',
+        note: 'Freijó Brasileiro FSC® (Dourado Aveludado)',
+        multiplier: 1.00,
+        swatchClass: 'swatch-freijo',
+        imgFilter: 'none'
+      },
+      cumaru: {
+        label: 'Cumaru Ferro',
+        note: 'Cumaru Amazônico (Alta Densidade Âmbar)',
+        multiplier: 1.08,
+        swatchClass: 'swatch-cumaru',
+        imgFilter: 'sepia(18%) saturate(115%) brightness(95%)'
+      }
+    };
+
+    const CATALOG_ITEMS = [
+      {
+        id: 'an-01',
+        name: 'Mesa de Jantar Kanso',
+        category: 'Mesas de Jantar',
+        dimensions: '280 x 110 x 75 cm • Tampo 45mm Maciço',
+        joinery: 'Encaixe Borboleta (Chigiri) & Cavalete Duplo',
+        basePrice: 14800,
+        img: 'https://images.unsplash.com/photo-1615066390971-03e4e1c36ddf?auto=format&fit=crop&w=900&q=85'
+      },
+      {
+        id: 'an-02',
+        name: 'Cadeira Escultural Sabi',
+        category: 'Cadeiras Esculturais',
+        dimensions: '56 x 53 x 78 cm • Assento em Corda Náutica ou Linho',
+        joinery: 'Espiga Torneada & Encosto Curvado a Vapor',
+        basePrice: 3290,
+        img: 'https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=900&q=85'
+      },
+      {
+        id: 'an-03',
+        name: 'Aparador Ripado Hori',
+        category: 'Aparadores',
+        dimensions: '220 x 48 x 76 cm • Portas Deslizantes Muxarabi',
+        joinery: 'Meia-Esquadria Travada com Cunha aparente',
+        basePrice: 11400,
+        img: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=900&q=85'
+      },
+      {
+        id: 'an-04',
+        name: 'Poltrona Baixa Nord-Lounge',
+        category: 'Poltronas',
+        dimensions: '78 x 82 x 71 cm • Almofadas em Lã Natural Crua',
+        joinery: 'Encaixe Japonês Tsugite sem parafusos',
+        basePrice: 6890,
+        img: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=900&q=85'
+      },
+      {
+        id: 'an-05',
+        name: 'Mesa Orgânica Fjord',
+        category: 'Mesas de Jantar',
+        dimensions: '240 x 115 x 75 cm • Borda Orgânica Chanfrada',
+        joinery: 'Pés Cilíndricos Esculpidos com Travessa Cega',
+        basePrice: 13200,
+        img: 'https://images.unsplash.com/photo-1577140917170-285929fb55b7?auto=format&fit=crop&w=900&q=85'
+      },
+      {
+        id: 'an-06',
+        name: 'Cadeira de Jantar Yugen',
+        category: 'Cadeiras Esculturais',
+        dimensions: '54 x 51 x 76 cm • Estrutura Ultra-Leve 4,8 kg',
+        joinery: 'Rabo de Andorinha (Dovetail) no espaldar',
+        basePrice: 2950,
+        img: 'https://images.unsplash.com/photo-1580480055273-228ff5388ef8?auto=format&fit=crop&w=900&q=85'
+      }
+    ];
+
+    let currentCatalogWood = 'carvalho';
+    let currentCatalogCategory = 'all';
+
+    window.selectCatalogWood = function(woodKey) {
+      currentCatalogWood = woodKey;
+      document.querySelectorAll('.cat-wood-btn').forEach(btn => {
+        const w = btn.getAttribute('data-wood');
+        if (w === woodKey) {
+          btn.className = 'cat-wood-btn flex items-center gap-2 px-3 py-1.5 rounded-full border border-charcoal bg-charcoal text-linen text-xs font-medium transition-all';
+        } else {
+          btn.className = 'cat-wood-btn flex items-center gap-2 px-3 py-1.5 rounded-full border border-stone-200 bg-linen text-stone-700 hover:border-stone-400 text-xs font-medium transition-all';
+        }
+      });
+
+      const woodObj = WOOD_OPTIONS[woodKey];
+      document.getElementById('active-wood-indicator').innerHTML = `Madeira selecionada: <strong>${woodObj.note}</strong>`;
+      renderCatalog();
+    };
+
+    window.filterCatalog = function(cat) {
+      currentCatalogCategory = cat;
+      document.querySelectorAll('.cat-filter-btn').forEach(btn => {
+        if (btn.getAttribute('data-cat') === cat) {
+          btn.className = 'cat-filter-btn px-4 py-2 rounded-full text-xs uppercase tracking-widest font-semibold bg-charcoal text-linen transition-all';
+        } else {
+          btn.className = 'cat-filter-btn px-4 py-2 rounded-full text-xs uppercase tracking-widest font-medium bg-white border border-stone-200 text-stone-700 hover:border-charcoal transition-all';
+        }
+      });
+      renderCatalog();
+    };
+
+    function renderCatalog() {
+      const wood = WOOD_OPTIONS[currentCatalogWood];
+      const list = currentCatalogCategory === 'all'
+        ? CATALOG_ITEMS
+        : CATALOG_ITEMS.filter(item => item.category === currentCatalogCategory);
+
+      const grid = document.getElementById('catalog-grid');
+      grid.innerHTML = list.map(item => {
+        const calculatedPrice = Math.round((item.basePrice * wood.multiplier) / 10) * 10;
+        return `
+          <article class="bg-white rounded-3xl border border-stone-200/90 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+            <div>
+              <div class="arch-img-wrap relative aspect-[4/3.4] bg-sandstone">
+                <img 
+                  src="${item.img}" 
+                  alt="${item.name}" 
+                  style="filter: ${wood.imgFilter};"
+                  class="w-full h-full object-cover" 
+                />
+                <div class="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-[#f7f6f2]/90 backdrop-blur-md text-[10px] uppercase tracking-widest font-semibold text-charcoal">
+                  ${item.category}
+                </div>
+                <div class="absolute bottom-3.5 right-3.5 flex items-center gap-1.5 px-3 py-1 rounded-full bg-charcoal/85 backdrop-blur-md text-linen text-[10px] uppercase tracking-wider">
+                  <span class="w-2.5 h-2.5 rounded-full ${wood.swatchClass}"></span>
+                  <span>${wood.label}</span>
+                </div>
+              </div>
+
+              <div class="p-6 sm:p-7">
+                <h3 class="font-serif-furniture text-3xl text-charcoal">${item.name}</h3>
+                <p class="text-xs text-stone-500 mt-1">${item.dimensions}</p>
+                <p class="text-xs text-oliveSubtle font-medium mt-2">✦ ${item.joinery}</p>
+
+                <div class="mt-5 pt-4 border-t border-stone-100 flex items-baseline justify-between">
+                  <span class="text-[10px] uppercase tracking-widest text-stone-400">Em ${wood.label}</span>
+                  <strong class="font-serif-furniture text-3xl text-charcoal font-semibold">
+                    R$ ${calculatedPrice.toLocaleString('pt-BR')}
+                  </strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="px-6 sm:px-7 pb-6 grid grid-cols-2 gap-2">
+              <button 
+                type="button" 
+                onclick="specifyPieceInForm('${item.name} em ${wood.label}')"
+                class="py-3 px-3 rounded-xl bg-charcoal hover:bg-amber-950 text-linen text-[11px] uppercase tracking-widest font-semibold transition-all"
+              >
+                Especificar
+              </button>
+              <button 
+                type="button" 
+                onclick="download3DBlock('${item.name}')"
+                class="py-3 px-3 rounded-xl border border-stone-200 hover:border-charcoal text-charcoal text-[11px] uppercase tracking-wider font-semibold transition-all"
+              >
+                Bloco 3D / BIM
+              </button>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    // 3. SESSÃO SOB MEDIDA & MARCENARIA ARQUITETÔNICA
+    const BESPOKE_DATA = {
+      cozinhas: {
+        badge: 'MARCENARIA GOURMET INTEGRADA',
+        title: 'Cozinhas Arquitetônicas em Madeira Maciça & Pedra Bruta',
+        desc: 'Projetadas como extensão da sala de estar. Frentes ripadas ou lisas com continuidade de veios (Bookmatched Grain), puxadores usinados na própria prancha e resistência superior à umidade com tratamento em óleo hidro-repelente.',
+        specs: ['Ferragens Blum® Movento & Legrabox Áustria', 'Vãos livres e ilhas até 4,80m sem emendas aparentes', 'Integração invisível de eletrodomésticos Sub-Zero / Gorenje'],
+        img: 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1100&q=85'
+      },
+      paineis: {
+        badge: 'ENVOLTÓRIA & CONFORTO ACÚSTICO',
+        title: 'Painéis Ripados, Forros Suspensos & Portas Pivotantes',
+        desc: 'Revestimentos arquitetônicos que aquecem o concreto aparente e controlam a reverberação sonora de grandes vãos. Réguas calibradas individualmente com fixação magnética oculta para fácil inspeção técnica.',
+        specs: ['Manta acústica mineral de alta densidade oculta', 'Portas pivotantes piso-teto com pino hidráulico embutido', 'Muxarabis contemporâneos para controle de insolação'],
+        img: 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1100&q=85'
+      },
+      closets: {
+        badge: 'ALTA ALFAIATARIA EM ORGANIZAÇÃO',
+        title: 'Closets Autorais Iluminados & Bibliotecas Suspensas',
+        desc: 'Sistemas modulares esbeltos executados em Freijó, Carvalho ou Nogueira com bandejas revestidas em couro natural sela, divisores de joias em linho belga e prateleiras engastadas com iluminação quente anti-ofuscamento.',
+        specs: ['Gavetas com encaixe rabo-de-andorinha aparente', 'Cabideiros em latão maciço escovado ou madeira torneada', 'Ventilação passiva natural para conservação de tecidos'],
+        img: 'https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=crop&w=1100&q=85'
+      }
+    };
+
+    window.selectBespokeTab = function(key) {
+      ['cozinhas', 'paineis', 'closets'].forEach(k => {
+        const btn = document.getElementById(`bespoke-btn-${k}`);
+        if (k === key) {
+          btn.className = 'w-full text-left p-6 rounded-2xl border border-charcoal bg-charcoal text-linen transition-all';
+        } else {
+          btn.className = 'w-full text-left p-6 rounded-2xl border border-stone-200 bg-white text-charcoal hover:border-stone-400 transition-all';
+        }
+      });
+
+      const d = BESPOKE_DATA[key];
+      document.getElementById('bespoke-display-panel').innerHTML = `
+        <div class="aspect-[16/9] overflow-hidden bg-sandstone relative">
+          <img src="${d.img}" alt="${d.title}" class="w-full h-full object-cover" />
+          <span class="absolute top-4 left-4 px-3.5 py-1 rounded-full bg-charcoal/85 text-oakLight text-[10px] uppercase tracking-widest font-semibold">
+            ${d.badge}
+          </span>
+        </div>
+        <div class="p-7 sm:p-9 space-y-5">
+          <h3 class="font-serif-furniture text-3xl sm:text-4xl text-charcoal">${d.title}</h3>
+          <p class="text-sm text-stone-600 leading-relaxed">${d.desc}</p>
+          <ul class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+            ${d.specs.map(s => `
+              <li class="p-3.5 rounded-xl bg-[#f7f6f2] border border-stone-200 text-xs text-charcoal font-medium">
+                ✦ ${s}
+              </li>
+            `).join('')}
+          </ul>
+          <div class="pt-3 flex flex-wrap items-center justify-between gap-4 border-t border-stone-100">
+            <span class="text-xs text-stone-500">Atendimento direto a partir da planta executiva (.DWG / .RVT)</span>
+            <button type="button" onclick="specifyPieceInForm('Marcenaria Sob Medida: ${d.title}')" class="px-5 py-2.5 rounded-full bg-charcoal text-linen text-xs uppercase tracking-widest font-semibold hover:bg-amber-950 transition-all">
+              Enviar Planta para Orçamento →
+            </button>
+          </div>
+        </div>
+      `;
+    };
+
+    // 4. MOSTRUÁRIO INTERATIVO DE AMOSTRAS DE MADEIRA (XILOTECA)
+    const WOOD_SAMPLES = [
+      {
+        key: 'carvalho',
+        name: 'Carvalho Americano',
+        botanical: 'Quercus alba • Origem Certificada',
+        swatch: 'swatch-carvalho',
+        janka: '600 kgf (Média-Alta)',
+        grain: 'Veios retos com catedrais suaves e raios medulares prateados.',
+        tactile: 'Poros levemente abertos que conferem textura orgânica autêntica sob acabamento a óleo mate. Ideal para estética escandinava luminosa.',
+        application: 'Mesas de jantar esculturais, painéis ripados claros, closets e cadeiras.'
+      },
+      {
+        key: 'nogueira',
+        name: 'Nogueira Negra',
+        botanical: 'Juglans nigra • Florestas Sustentáveis',
+        swatch: 'swatch-nogueira',
+        janka: '458 kgf (Média)',
+        grain: 'Ondulado nobre com nuances entre cacau tostado, café e reflexos violáceos.',
+        tactile: 'Grã extremamente fina e sedosa ao toque. Ganha uma pátina dourada extraordinária após polimento em cera de carnaúba.',
+        application: 'Aparadores de galeria, poltronas assinadas, cabeceiras e escritórios executivos.'
+      },
+      {
+        key: 'freijo',
+        name: 'Freijó Catedral',
+        botanical: 'Cordia goeldiana • Manejo Florestal FSC® Brasil',
+        swatch: 'swatch-freijo',
+        janka: '598 kgf (Média-Alta)',
+        grain: 'Desenho catedral clássico brasileiro em tons mel-dourado e castanho médio.',
+        tactile: 'Conhecida como a "Nogueira Brasileira", possui equilíbrio perfeito entre leveza estrutural, trabalhabilidade em encaixes e calor tátil.',
+        application: 'Forros arquitetônicos, Poltrona Esfera Orgânica, portas mimetizadas e brises.'
+      },
+      {
+        key: 'cumaru',
+        name: 'Cumaru Ferro',
+        botanical: 'Dipteryx odorata • Manejo Amazônico FSC®',
+        swatch: 'swatch-cumaru',
+        janka: '1.310 kgf (Altíssima Densidade)',
+        grain: 'Entrecruzado denso em tons âmbar-avermelhado e castanho intenso.',
+        tactile: 'Superfície espelhada natural quase impenetrável à umidade e variações climáticas, com leve aroma natural amendoado.',
+        application: 'Mesas monolíticas de grande vão, áreas gourmet integradas, varandas e brises.'
+      }
+    ];
+
+    let activeWoodSampleKey = 'freijo';
+
+    function renderWoodSamples() {
+      const grid = document.getElementById('wood-samples-grid');
+      grid.innerHTML = WOOD_SAMPLES.map(w => {
+        const isActive = w.key === activeWoodSampleKey;
+        return `
+          <button 
+            type="button"
+            onclick="selectWoodSample('${w.key}')"
+            class="text-left p-5 rounded-2xl border transition-all ${
+              isActive 
+                ? 'bg-[#2b2926] border-oakLight shadow-lg scale-[1.01]' 
+                : 'bg-[#22201e] border-white/10 hover:border-white/30'
+            }"
+          >
+            <div class="w-full h-24 rounded-xl ${w.swatch} mb-4 border border-white/15 relative overflow-hidden">
+              <span class="absolute bottom-2 right-2 px-2 py-0.5 rounded bg-black/50 backdrop-blur-sm text-[10px] font-mono text-linen">
+                ${w.janka.split(' ')[0]} kgf
+              </span>
+            </div>
+            <h3 class="font-serif-furniture text-2xl text-linen">${w.name}</h3>
+            <p class="text-[11px] text-linen/60 italic mt-0.5">${w.botanical}</p>
+          </button>
+        `;
+      }).join('');
+
+      const active = WOOD_SAMPLES.find(w => w.key === activeWoodSampleKey);
+      document.getElementById('wood-inspector-panel').innerHTML = `
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-4">
+            <div class="h-48 sm:h-56 rounded-2xl ${active.swatch} border border-white/20 p-6 flex flex-col justify-between">
+              <span class="px-3 py-1 rounded-full bg-black/45 backdrop-blur-md text-[10px] uppercase tracking-widest text-oakLight w-max">
+                Amostra Calibrada • Óleo Natural
+              </span>
+              <div>
+                <div class="font-serif-furniture text-3xl text-white drop-shadow">${active.name}</div>
+                <div class="text-xs text-white/80 font-mono">Dureza Janka: ${active.janka}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-8 space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3">
+              <span class="text-xs uppercase tracking-[0.2em] text-oakLight font-semibold">${active.botanical}</span>
+              <span class="text-xs text-linen/60">Umidade estabilizada em estufa: 8%–10%</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-1">
+              <div>
+                <h4 class="text-xs uppercase tracking-widest text-linen/50 mb-1">Desenho dos Veios & Textura Tátil</h4>
+                <p class="text-sm text-linen/90 leading-relaxed">${active.grain} ${active.tactile}</p>
+              </div>
+              <div>
+                <h4 class="text-xs uppercase tracking-widest text-linen/50 mb-1">Aplicações Recomendadas</h4>
+                <p class="text-sm text-linen/90 leading-relaxed">${active.application}</p>
+                <button 
+                  type="button" 
+                  onclick="specifyPieceInForm('Caixa de Amostras Físicas (Destaque: ${active.name})')"
+                  class="mt-4 inline-flex items-center gap-2 text-xs uppercase tracking-widest text-oakLight hover:text-white font-semibold underline underline-offset-4"
+                >
+                  <span>Solicitar Amostra Física de ${active.name} →</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    window.selectWoodSample = function(key) {
+      activeWoodSampleKey = key;
+      renderWoodSamples();
+    };
+
+    // 5. FUNÇÕES DE ESPECIFICAÇÃO, DOWNLOAD DE BLOCOS 3D & FORMULÁRIO
+    window.specifyPieceInForm = function(pieceDescription) {
+      const input = document.getElementById('f-piece');
+      if (input) input.value = pieceDescription;
+      document.getElementById('contato').scrollIntoView({ behavior: 'smooth' });
+      showToast(`Peça selecionada: ${pieceDescription}`);
+    };
+
+    window.download3DBlock = function(pieceName) {
+      document.getElementById('modal-3d-title').textContent = `Bloco 3D BIM / SketchUp: ${pieceName}`;
+      openCatalogModal();
+    };
+
+    window.openCatalogModal = function() {
+      const modal = document.getElementById('catalog-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    };
+
+    window.closeCatalogModal = function() {
+      const modal = document.getElementById('catalog-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    };
+
+    window.triggerDirectDownload = function() {
+      const btn = document.getElementById('btn-download-confirm');
+      btn.textContent = '✓ Pacote Técnico Preparado e Enviado!';
+      setTimeout(() => {
+        closeCatalogModal();
+        btn.textContent = 'Iniciar Download (.ZIP / PDF)';
+        showToast('Caderno Técnico 2026 & Blocos 3D liberados');
+      }, 1100);
+    };
+
+    window.handleAtelierSubmit = function(e) {
+      e.preventDefault();
+      const name = document.getElementById('f-name').value.trim();
+      const modality = document.getElementById('f-modality').value;
+      const piece = document.getElementById('f-piece').value.trim();
+      const role = document.querySelector('input[name="client_role"]:checked').value;
+
+      const protocol = '#NORD-' + Math.floor(1000 + Math.random() * 9000);
+      document.getElementById('atelier-protocol').textContent = protocol;
+      document.getElementById('atelier-feedback-msg').textContent =
+        `Prezado(a) ${name} (${role}), recebemos sua solicitação de "${modality}" referente a "${piece}". Nosso arquiteto-curador entrará em contato em até 2 horas úteis para confirmar seu horário ou enviar os blocos 3D e memorial.`;
+      document.getElementById('atelier-form-feedback').classList.remove('hidden');
+    };
+
+    window.toggleMobileNav = function() {
+      document.getElementById('mobile-nav').classList.toggle('hidden');
+    };
+
+    function showToast(text) {
+      const t = document.getElementById('nord-toast');
+      document.getElementById('nord-toast-text').textContent = text;
+      t.classList.remove('hidden');
+      t.classList.add('flex');
+      setTimeout(() => {
+        t.classList.add('hidden');
+        t.classList.remove('flex');
+      }, 2800);
+    }
+
+    // Inicialização Completa
+    document.addEventListener('DOMContentLoaded', () => {
+      updateChair();
+      renderCatalog();
+      selectBespokeTab('cozinhas');
+      renderWoodSamples();
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
   </script>
+
   <!-- Vercel Web Analytics & Speed Insights -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
