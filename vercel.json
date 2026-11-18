@@ -18,6 +18,10 @@
     {
       "source": "/assets/(.*)",
       "destination": "/assets/$1"
+    },
+    {
+      "source": "/layouts/(.*)",
+      "destination": "/layouts para sites/$1"
     }
   ]
 }

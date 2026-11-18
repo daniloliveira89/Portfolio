@@ -3,6 +3,19 @@
 let activeCategory = 'all';
 let searchQuery = '';
 
+function getDemoUrl(url) {
+  if (!url) return '#';
+  if (url.startsWith('http://') || url.startsWith('https://')) return url;
+  var clean = url;
+  while (clean.startsWith('../')) {
+    clean = clean.substring(3);
+  }
+  if (!clean.startsWith('/')) {
+    clean = '/' + clean;
+  }
+  return clean;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   renderStats();
   renderProjects();
@@ -146,7 +159,7 @@ function renderProjects() {
           <div class="flex items-center gap-2">
             ${project.links.demo ? `
               <a 
-                href="${project.links.demo}" 
+                href="${getDemoUrl(project.links.demo)}" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold transition-colors shadow-sm shadow-sky-500/20"
@@ -334,7 +347,7 @@ function openProjectModal(projectId) {
         <div class="flex items-center gap-3">
           ${project.links.demo ? `
             <a 
-              href="${project.links.demo}" 
+              href="${getDemoUrl(project.links.demo)}" 
               target="_blank" 
               rel="noopener noreferrer" 
               class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm bg-sky-500 hover:bg-sky-400 text-slate-950 transition-all shadow-lg shadow-sky-500/25"

@@ -126,12 +126,14 @@ document.addEventListener('DOMContentLoaded', () => {
   function getDemoUrl(url) {
     if (!url) return '#';
     if (url.startsWith('http://') || url.startsWith('https://')) return url;
-    var path = window.location.pathname;
-    var isRoot = path === '/' || (path.endsWith('/index.html') && !path.includes('/v1') && !path.includes('/v2'));
-    if (isRoot && url.startsWith('../')) {
-      return url.substring(3);
+    var clean = url;
+    while (clean.startsWith('../')) {
+      clean = clean.substring(3);
     }
-    return url;
+    if (!clean.startsWith('/')) {
+      clean = '/' + clean;
+    }
+    return clean;
   }
 
   function renderProjects() {
@@ -214,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </span>
 
             ${project.links && project.links.demo ? `
-              <a href="${project.links.demo}" target="_blank" rel="noopener noreferrer"
+              <a href="${getDemoUrl(project.links.demo)}" target="_blank" rel="noopener noreferrer"
                  onclick="event.stopPropagation()"
                  class="px-2.5 py-1 rounded-full text-[11px] font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500 hover:text-slate-950 transition">
                 Abrir Demo ↗
