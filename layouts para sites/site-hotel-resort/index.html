@@ -1,94 +1,458 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AMARA Sanctuary — Luxury Eco-Resort & Villas</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AMAZÔNIA RESERVE — Luxury Eco-Lodge, Overwater Villas & Private Sanctuary</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <style>
-    body { background-color: #F7F4EE; color: #1C2521; font-family: 'Plus Jakarta Sans', sans-serif; }
-    .font-serif-resort { font-family: 'Cormorant Garamond', serif; }
+    body {
+      background-color: #0B0E0D;
+      color: #F1F5F9;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    .font-serif-resort { font-family: 'Playfair Display', serif; }
+    
+    /* Emerald Jungle Glow */
+    .glow-jungle {
+      background: radial-gradient(circle 800px at 75% 15%, rgba(16, 185, 129, 0.15), transparent 70%),
+                  radial-gradient(circle 500px at 20% 45%, rgba(5, 150, 105, 0.1), transparent 60%);
+    }
+
+    .resort-card {
+      background: linear-gradient(180deg, rgba(20, 26, 24, 0.8) 0%, rgba(11, 14, 13, 0.95) 100%);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .resort-card:hover {
+      border-color: rgba(16, 185, 129, 0.5);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(16, 185, 129, 0.15);
+    }
   </style>
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
 </head>
-<body class="min-h-screen antialiased">
-  <header class="border-b border-emerald-950/10 bg-[#F7F4EE]/90 backdrop-blur-md sticky top-0 z-40">
+<body class="min-h-screen antialiased relative selection:bg-emerald-500 selection:text-black">
+
+  <div class="fixed inset-0 glow-jungle pointer-events-none z-0"></div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-[#0B0E0D]/90 backdrop-blur-xl border-b border-white/[0.08] transition-all">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <span class="font-serif-resort text-3xl tracking-widest text-emerald-950">AMARA <span class="text-xs font-sans uppercase tracking-[0.25em] text-emerald-700">Sanctuary</span></span>
-      <span class="text-xs uppercase tracking-widest text-emerald-800 font-semibold">Península de Maraú • Relais & Châteaux</span>
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 p-[1px] shadow-lg shadow-emerald-500/20">
+          <div class="w-full h-full bg-[#0D1210] rounded-[11px] flex items-center justify-center font-serif-resort font-bold text-emerald-400 text-lg group-hover:scale-105 transition">
+            A
+          </div>
+        </div>
+        <div>
+          <span class="font-serif-resort text-xl tracking-tight text-white block leading-none">
+            AMAZÔNIA<span class="text-emerald-400">.</span>RESERVE
+          </span>
+          <span class="text-[9px] uppercase tracking-[0.25em] text-emerald-400/80 font-semibold block mt-0.5">
+            Luxury Eco-Lodge & Overwater Villas
+          </span>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8 text-xs uppercase tracking-widest font-semibold text-slate-300">
+        <a href="#villas" class="hover:text-emerald-400 transition">Bungalows & Vilas</a>
+        <a href="#experiencias" class="hover:text-emerald-400 transition">Expedições Privadas</a>
+        <a href="#simulador" class="hover:text-emerald-400 transition">Simulador de Estadia</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button onclick="openReserva('Geral')" class="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-emerald-500/25 transition hover:scale-105 active:scale-95">
+          Reservar Experiência
+        </button>
+      </div>
     </div>
   </header>
 
-  <main class="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-    <div class="lg:col-span-7">
-      <span class="text-xs uppercase tracking-[0.25em] text-emerald-700 font-semibold">Villas Privativas & Gastronomia Orgânica</span>
-      <h1 class="font-serif-resort text-5xl sm:text-7xl mt-3 leading-[0.98]">Onde a floresta Atlântica <em class="italic text-emerald-800">encontra o oceano.</em></h1>
-      <p class="mt-5 text-stone-600 text-base leading-relaxed max-w-xl">22 bangalôs suspensos com piscina de borda infinita aquecida, mordomo 24h e praia exclusiva.</p>
-      <div class="grid grid-cols-2 gap-4 mt-8">
-        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80" class="w-full h-52 object-cover rounded-2xl" alt="Resort">
-        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" class="w-full h-52 object-cover rounded-2xl" alt="Spa">
+  <!-- Hero Section -->
+  <section class="max-w-7xl mx-auto px-6 pt-12 pb-16 relative z-10" id="villas">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      
+      <div class="lg:col-span-6 flex flex-col items-start">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-mono uppercase tracking-wider mb-5">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          Reserva Particular Sustentável de 50.000 Hectares • Rio Negro
+        </div>
+
+        <h1 class="font-serif-resort text-4xl sm:text-5xl lg:text-[56px] font-bold tracking-tight text-white leading-[1.06]">
+          Silêncio primordial e o <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300 italic">ápice do conforto sustentável.</span>
+        </h1>
+
+        <p class="mt-5 text-slate-300 text-base leading-relaxed max-w-xl font-light">
+          Bangalôs sobre as águas negras espelhadas do Rio Negro, gastronomia amazônica autoral com ingredientes selvagens colhidos na floresta e voos privativos de hidroavião saindo de Manaus.
+        </p>
+
+        <!-- Stats -->
+        <div class="mt-8 grid grid-cols-3 gap-3 w-full max-w-lg pt-6 border-t border-white/10">
+          <div>
+            <div class="text-2xl font-serif-resort font-bold text-emerald-400">12 Vilas</div>
+            <div class="text-[10px] uppercase font-mono text-slate-400 mt-0.5">Exclusividade Máxima</div>
+          </div>
+          <div>
+            <div class="text-2xl font-serif-resort font-bold text-white">100%</div>
+            <div class="text-[10px] uppercase font-mono text-slate-400 mt-0.5">Energia Solar Off-Grid</div>
+          </div>
+          <div>
+            <div class="text-2xl font-serif-resort font-bold text-white">Condé Nast</div>
+            <div class="text-[10px] uppercase font-mono text-slate-400 mt-0.5">Gold List 2026</div>
+          </div>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="mt-8 flex flex-wrap items-center gap-2" id="filter-buttons">
+          <span class="text-xs uppercase font-mono text-slate-500 mr-1">Filtrar Acomodações:</span>
+          <button onclick="filterVillas('all')" data-vtype="all" class="villa-filter-btn active px-3.5 py-1.5 rounded-full text-xs font-bold bg-emerald-500 text-black shadow-sm transition">
+            Todas (04)
+          </button>
+          <button onclick="filterVillas('overwater')" data-vtype="overwater" class="villa-filter-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/5 text-slate-300 border border-white/10 hover:border-emerald-500 transition">
+            Overwater Villas
+          </button>
+          <button onclick="filterVillas('canopy')" data-vtype="canopy" class="villa-filter-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/5 text-slate-300 border border-white/10 hover:border-emerald-500 transition">
+            Treehouse Canopy
+          </button>
+        </div>
       </div>
+
+      <!-- Hero Visual Card -->
+      <div class="lg:col-span-6 w-full">
+        <div class="resort-card p-4 rounded-3xl relative overflow-hidden group">
+          <div class="relative h-80 sm:h-[420px] rounded-2xl overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80" alt="Amazônia Reserve Overwater Villa" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0B0E0D] via-[#0B0E0D]/30 to-transparent"></div>
+
+            <div class="absolute top-4 left-4 right-4 flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest bg-emerald-500 text-black font-extrabold shadow-lg">
+                Vila Assinatura
+              </span>
+              <span class="px-3 py-1 rounded-full bg-black/70 text-emerald-300 text-[11px] font-mono border border-emerald-500/30 backdrop-blur-md">
+                Deck Privativo c/ Piscina de Rio
+              </span>
+            </div>
+
+            <div class="absolute bottom-4 left-5 right-5 text-white">
+              <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest">Arquipélago de Anavilhanas • Amazonas</span>
+              <h3 class="font-serif-resort text-2xl font-bold mt-1">Royal Overwater Sanctuary (280 m²)</h3>
+              <p class="text-xs text-slate-300 mt-1">Piscina privativa suspensa sobre o Rio Negro, telescópio astronômico para observação noturna e chef dedicado.</p>
+              
+              <div class="mt-4 pt-3 border-t border-white/15 flex items-center justify-between">
+                <div class="flex items-center gap-3 text-xs font-mono text-slate-300">
+                  <span>🛥️ Acesso Hidroavião</span>
+                  <span>🍷 All-Inclusive Fine Dining</span>
+                </div>
+                <div class="text-lg font-serif-resort font-bold text-emerald-400">
+                  R$ 7.800 /noite
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Villas Grid (4 Luxury Accommodations) -->
+  <section class="max-w-7xl mx-auto px-6 py-14 border-t border-white/10">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+      <div>
+        <span class="text-xs uppercase tracking-widest font-mono text-emerald-400">Acomodações Selecionadas</span>
+        <h2 class="font-serif-resort text-3xl sm:text-4xl font-bold text-white mt-1">Vilas Isoladas na Floresta</h2>
+      </div>
+      <p class="text-xs text-slate-400 font-mono mt-2 md:mt-0">Todas as estadias incluem pensão completa e expedições com guias biólogos</p>
     </div>
 
-    <!-- Simulador de Reserva de Bangalô -->
-    <div class="lg:col-span-5 bg-white p-8 rounded-3xl border border-emerald-950/10 shadow-xl">
-      <span class="text-xs uppercase tracking-widest text-emerald-700 font-bold">Concierge de Reservas</span>
-      <h2 class="font-serif-resort text-3xl mt-1 mb-6">Configure sua Estadia</h2>
+    <div id="villas-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Rendered via JS -->
+    </div>
+  </section>
 
-      <div class="space-y-4">
+  <!-- Interactive Stay & Experience Calculator -->
+  <section class="max-w-4xl mx-auto px-6 py-14 border-t border-white/10" id="simulador">
+    <div class="resort-card p-8 sm:p-10 rounded-3xl border border-white/15 shadow-2xl">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
         <div>
-          <label class="text-xs font-semibold uppercase tracking-wider text-stone-500 block mb-1.5">Suíte / Villa</label>
-          <select id="villa-select" class="w-full px-4 py-3 rounded-xl border border-stone-200 bg-[#F7F4EE] text-sm font-semibold">
-            <option value="3200">Bangalô Mata Atlântica (R$ 3.200/noite)</option>
-            <option value="4900" selected>Villa Oceano c/ Piscina Infinita (R$ 4.900/noite)</option>
-            <option value="8500">Reserva Master Falésia 400m² (R$ 8.500/noite)</option>
+          <span class="text-xs font-mono uppercase tracking-widest text-emerald-400">Planejamento de Viagem</span>
+          <h2 class="font-serif-resort text-2xl sm:text-3xl font-bold text-white mt-1">Simulador de Expedição Amazônica</h2>
+        </div>
+        <span class="text-xs text-slate-400 font-mono">Tudo Incluso • Traslado Aéreo</span>
+      </div>
+
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="space-y-6">
+          <div>
+            <label class="block text-xs font-mono uppercase text-slate-400 mb-2">Vila Selecionada:</label>
+            <select id="sim-villa-select" onchange="calcStay()" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-xs font-mono focus:outline-none focus:border-emerald-500">
+              <option value="7800">Royal Overwater Sanctuary (R$ 7.800/noite)</option>
+              <option value="5400">Canopy Treehouse Master (R$ 5.400/noite)</option>
+              <option value="4200">Riverfront Sunset Villa (R$ 4.200/noite)</option>
+              <option value="3600">Emerald Forest Suite (R$ 3.600/noite)</option>
+            </select>
+          </div>
+
+          <div>
+            <div class="flex justify-between text-xs font-mono mb-2">
+              <span>Número de Noites:</span>
+              <span id="sim-nights-label" class="text-emerald-400 font-bold">4 Noites (Expedição Clássica)</span>
+            </div>
+            <input type="range" id="sim-nights-slider" min="3" max="10" step="1" value="4" oninput="calcStay()" class="w-full">
+            <div class="flex justify-between text-[10px] text-slate-500 font-mono mt-1">
+              <span>3 Noites (Mínimo)</span>
+              <span>4 Noites (Ideal)</span>
+              <span>10 Noites (Imersão Total)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-black/60 p-6 rounded-2xl border border-white/10 text-center flex flex-col justify-center">
+          <span class="text-xs font-mono uppercase text-slate-400 tracking-wider">Investimento Total da Expedição</span>
+          <div id="sim-total-stay" class="font-serif-resort text-3xl sm:text-4xl font-bold text-emerald-400 mt-2">
+            R$ 31.200
+          </div>
+          <div class="text-xs text-slate-400 font-mono mt-2">
+            Inclui voo hidroavião ida e volta + menu degustação 6 tempos
+          </div>
+          <button onclick="openReserva('Simulação de Estadia')" class="mt-6 w-full py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold text-xs uppercase tracking-wider transition shadow-lg shadow-emerald-500/25">
+            Solicitar Reserva de Datas VIP
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reservation Drawer -->
+  <div id="drawer-overlay" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300" onclick="closeReserva()"></div>
+  <aside id="reserva-drawer" class="fixed top-0 right-0 z-50 h-full w-full sm:w-[480px] bg-[#0E1311] border-l border-emerald-500/30 p-8 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between overflow-y-auto">
+    <div>
+      <div class="flex items-center justify-between pb-6 border-b border-white/10">
+        <div>
+          <span class="text-[10px] font-mono uppercase tracking-widest text-emerald-400">Concierge de Selva</span>
+          <h3 class="font-serif-resort text-2xl font-bold text-white">Solicitar Reserva</h3>
+        </div>
+        <button onclick="closeReserva()" class="text-slate-400 hover:text-white p-2 text-lg">✕</button>
+      </div>
+
+      <form id="form-reserva" class="mt-6 space-y-4" onsubmit="handleReserva(event)">
+        <div>
+          <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">Nome Completo</label>
+          <input type="text" required placeholder="Ex: Juliana Bittencourt" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-emerald-500">
+        </div>
+        <div>
+          <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">WhatsApp</label>
+          <input type="tel" required placeholder="(11) 98765-4321" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-emerald-500">
+        </div>
+        <div>
+          <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">Acomodação Escolhida</label>
+          <select id="select-villa" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-emerald-500">
+            <option value="Royal Overwater Sanctuary">Royal Overwater Sanctuary (280 m²)</option>
+            <option value="Canopy Treehouse Master">Canopy Treehouse Master (180 m²)</option>
+            <option value="Riverfront Sunset Villa">Riverfront Sunset Villa (140 m²)</option>
+            <option value="Emerald Forest Suite">Emerald Forest Suite (95 m²)</option>
           </select>
         </div>
-
-        <div>
-          <div class="flex justify-between text-xs font-semibold mb-1"><span>Duração da Estadia</span><strong id="nights-label">4 Noites</strong></div>
-          <input id="nights-slider" type="range" min="2" max="14" value="4" class="w-full accent-emerald-800">
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">Data Check-in</label>
+            <input type="date" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-emerald-500">
+          </div>
+          <div>
+            <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">Hóspedes</label>
+            <select class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-emerald-500">
+              <option value="2 Adultos">2 Adultos (Casal)</option>
+              <option value="Família 4 Pessoas">Família (4 Pessoas)</option>
+              <option value="Privatização Total">Privatização Total do Resort</option>
+            </select>
+          </div>
         </div>
 
-        <label class="flex items-center justify-between p-3.5 rounded-xl border border-stone-200 cursor-pointer">
-          <div class="flex items-center gap-2.5">
-            <input type="checkbox" id="extra-yacht" class="accent-emerald-800 w-4 h-4">
-            <span class="text-xs font-semibold">Incluir Expedição de Lancha Privativa</span>
-          </div>
-          <span class="text-xs font-bold text-emerald-800">+ R$ 2.800</span>
-        </label>
-      </div>
+        <button type="submit" class="w-full py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-extrabold uppercase tracking-wider text-xs transition duration-200 shadow-lg shadow-emerald-500/25 mt-3">
+          Confirmar Solicitação de Reserva
+        </button>
+      </form>
 
-      <div class="mt-6 pt-5 border-t border-stone-200 flex justify-between items-baseline">
-        <span class="text-xs uppercase tracking-wider text-stone-500">Total c/ Café & Transfer</span>
-        <strong id="resort-total" class="font-serif-resort text-4xl text-emerald-900">R$ 19.600</strong>
+      <div id="reserva-success" class="hidden mt-6 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono">
+        ✓ Solicitação recebida! Nosso concierge de selva entrará em contato via WhatsApp para alinhar horários do hidroavião e preferências gastronômicas.
       </div>
-
-      <button onclick="alert('Solicitação de reserva enviada ao Concierge Amara Sanctuary!')" class="mt-6 w-full py-4 rounded-xl bg-emerald-900 hover:bg-emerald-800 text-white text-xs font-bold uppercase tracking-widest transition">
-        Solicitar Disponibilidade →
-      </button>
     </div>
-  </main>
 
+    <div class="pt-6 border-t border-white/10 text-xs text-slate-500 font-mono">
+      Parque Nacional de Anavilhanas • Amazonas • Pouso direto de hidroavião
+    </div>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 bg-[#0B0E0D] py-12 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="font-serif-resort font-bold text-white text-base">
+        AMAZÔNIA RESERVE ECO-LODGE © 2026
+      </div>
+      <div>
+        Turismo Sustentável Certificado Rainforest Alliance & EarthCheck
+      </div>
+      <div class="font-mono text-[11px] text-slate-400">
+        Rio Negro, Amazonas • Brasil
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
   <script>
-    const vSel = document.getElementById('villa-select');
-    const nSli = document.getElementById('nights-slider');
-    const eYacht = document.getElementById('extra-yacht');
+    const VILLAS = [
+      {
+        id: 1,
+        title: "Royal Overwater Sanctuary",
+        type: "overwater",
+        area: "280 m²",
+        price: 7800,
+        img: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80",
+        desc: "Bangalô master construído sobre palafitas em madeira de manejo com piscina privativa, deck solarium e piso de vidro para contemplação dos botos cor-de-rosa."
+      },
+      {
+        id: 2,
+        title: "Canopy Treehouse Master",
+        type: "canopy",
+        area: "180 m²",
+        price: 5400,
+        img: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&w=800&q=80",
+        desc: "Suspensa a 25 metros de altura no dossel da floresta tropical com ponte pênsil privativa e vista 360° para o amanhecer sobre a copa das samaúmas."
+      },
+      {
+        id: 3,
+        title: "Riverfront Sunset Villa",
+        type: "overwater",
+        area: "140 m²",
+        price: 4200,
+        img: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80",
+        desc: "Localizada em enseada calma de águas quentes com banheira de imersão esculpida em rocha e canoas canadenses de cortesia amarradas ao deck."
+      },
+      {
+        id: 4,
+        title: "Emerald Forest Suite",
+        type: "canopy",
+        area: "95 m²",
+        price: 3600,
+        img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80",
+        desc: "Refúgio íntimo envolto pela vegetação nativa com chuveiro ao ar livre, aromas botânicos e acústica de isolamento térmico natural."
+      }
+    ];
 
-    function calcResort() {
-      const rate = Number(vSel.value);
-      const nights = Number(nSli.value);
-      const extra = eYacht.checked ? 2800 : 0;
-      document.getElementById('nights-label').textContent = `${nights} Noites`;
-      document.getElementById('resort-total').textContent = 'R$ ' + (rate * nights + extra).toLocaleString('pt-BR');
+    let currentVType = 'all';
+
+    function filterVillas(type) {
+      currentVType = type;
+      document.querySelectorAll('.villa-filter-btn').forEach(btn => {
+        if (btn.getAttribute('data-vtype') === type) {
+          btn.className = "villa-filter-btn active px-3.5 py-1.5 rounded-full text-xs font-bold bg-emerald-500 text-black shadow-sm transition";
+        } else {
+          btn.className = "villa-filter-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/5 text-slate-300 border border-white/10 hover:border-emerald-500 transition";
+        }
+      });
+      renderVillas();
     }
-    vSel.addEventListener('change', calcResort);
-    nSli.addEventListener('input', calcResort);
-    eYacht.addEventListener('change', calcResort);
-    calcResort();
+
+    function renderVillas() {
+      const list = currentVType === 'all' ? VILLAS : VILLAS.filter(v => v.type === currentVType);
+      const grid = document.getElementById('villas-grid');
+      grid.innerHTML = list.map(v => `
+        <div class="resort-card rounded-3xl overflow-hidden flex flex-col justify-between group">
+          <div>
+            <div class="relative h-60 overflow-hidden">
+              <img src="${v.img}" alt="${v.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0B0E0D] via-transparent to-transparent"></div>
+              
+              <span class="absolute top-4 left-4 px-2.5 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider bg-black/70 backdrop-blur-md text-emerald-400 border border-white/10">
+                ${v.type === 'overwater' ? 'Sobre as Águas' : 'Canopy Treehouse'}
+              </span>
+
+              <div class="absolute bottom-3 left-4 right-4 text-white">
+                <span class="text-[10px] font-mono text-emerald-400 block">${v.area}</span>
+                <h3 class="font-serif-resort font-bold text-base mt-0.5 line-clamp-1">${v.title}</h3>
+              </div>
+            </div>
+
+            <div class="p-5">
+              <p class="text-xs text-slate-300 leading-relaxed line-clamp-2">${v.desc}</p>
+            </div>
+          </div>
+
+          <div class="p-5 pt-0">
+            <div class="flex items-center justify-between pt-3 border-t border-white/10">
+              <div>
+                <span class="text-[10px] font-mono uppercase text-slate-500 block">Diária All-Inclusive</span>
+                <span class="text-base font-serif-resort font-bold text-emerald-400">R$ ${v.price.toLocaleString('pt-BR')}</span>
+              </div>
+              <button onclick="openReserva('${v.title}')" class="px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-xs uppercase font-mono transition">
+                Reservar ↗
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Stay Calculator
+    function calcStay() {
+      const dailyPrice = parseFloat(document.getElementById('sim-villa-select').value);
+      const nights = parseInt(document.getElementById('sim-nights-slider').value);
+      
+      let label = `${nights} Noites`;
+      if (nights === 4) label += " (Expedição Clássica)";
+      if (nights === 7) label += " (Semana de Imersão)";
+      document.getElementById('sim-nights-label').textContent = label;
+
+      const total = dailyPrice * nights;
+      document.getElementById('sim-total-stay').textContent = `R$ ${total.toLocaleString('pt-BR')}`;
+    }
+
+    // Drawer Reserva
+    const drawer = document.getElementById('reserva-drawer');
+    const drawerOverlay = document.getElementById('drawer-overlay');
+
+    function openReserva(villa) {
+      if (villa && document.getElementById('select-villa')) {
+        const sel = document.getElementById('select-villa');
+        for (let i = 0; i < sel.options.length; i++) {
+          if (sel.options[i].text.includes(villa) || villa.includes(sel.options[i].value)) {
+            sel.selectedIndex = i;
+            break;
+          }
+        }
+      }
+      drawerOverlay.classList.remove('opacity-0', 'pointer-events-none');
+      drawer.classList.remove('translate-x-full');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeReserva() {
+      drawerOverlay.classList.add('opacity-0', 'pointer-events-none');
+      drawer.classList.add('translate-x-full');
+      document.body.style.overflow = '';
+    }
+
+    function handleReserva(e) {
+      e.preventDefault();
+      const succ = document.getElementById('reserva-success');
+      succ.classList.remove('hidden');
+      setTimeout(() => {
+        closeReserva();
+        succ.classList.add('hidden');
+        document.getElementById('form-reserva').reset();
+      }, 3000);
+    }
+
+    renderVillas();
+    calcStay();
   </script>
+
   <!-- Vercel Web Analytics & Speed Insights -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };

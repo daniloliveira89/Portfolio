@@ -1,105 +1,374 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IRON PULSE — High-Performance Gym & Studio</title>
+  <title>APEX PERFORMANCE — High-Performance Training, Recovery & Biohacking Studio</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Cabinet+Grotesk:wght@800;900&display=swap" rel="stylesheet">
   <style>
-    body { background-color: #090A0C; color: #FFFFFF; font-family: 'Inter', sans-serif; }
-    .font-impact { font-family: 'Anton', sans-serif; letter-spacing: 0.03em; }
+    body {
+      background-color: #090A0C;
+      color: #F8FAFC;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    .font-display { font-family: 'Cabinet Grotesk', 'Plus Jakarta Sans', sans-serif; }
+    
+    /* Volt Neon Glow */
+    .glow-volt {
+      background: radial-gradient(circle 700px at 75% 20%, rgba(204, 255, 0, 0.12), transparent 70%),
+                  radial-gradient(circle 500px at 20% 50%, rgba(250, 204, 21, 0.08), transparent 60%);
+    }
+
+    .apex-card {
+      background: linear-gradient(180deg, rgba(20, 23, 28, 0.8) 0%, rgba(12, 14, 18, 0.95) 100%);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .apex-card:hover {
+      border-color: rgba(204, 255, 0, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 30px rgba(204, 255, 0, 0.12);
+    }
   </style>
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
 </head>
-<body class="min-h-screen antialiased">
-  <header class="border-b border-white/10 bg-[#090A0C]/90 sticky top-0 z-40">
+<body class="min-h-screen antialiased relative selection:bg-[#CCFF00] selection:text-black">
+
+  <div class="fixed inset-0 glow-volt pointer-events-none z-0"></div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-[#090A0C]/90 backdrop-blur-xl border-b border-white/[0.08] transition-all">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <span class="font-impact text-3xl text-lime-400">IRON PULSE //</span>
-      <a href="#calc" class="px-5 py-2 rounded-full bg-lime-400 text-black font-bold text-xs uppercase">Free Pass 3 Dias</a>
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#CCFF00] to-yellow-400 p-[1px] shadow-lg shadow-[#CCFF00]/20">
+          <div class="w-full h-full bg-[#0D0F13] rounded-[11px] flex items-center justify-center font-display font-extrabold text-[#CCFF00] text-xl group-hover:scale-105 transition">
+            ▲
+          </div>
+        </div>
+        <div>
+          <span class="font-display font-extrabold text-xl tracking-tight text-white block leading-none">
+            APEX<span class="text-[#CCFF00]">.</span>STUDIO
+          </span>
+          <span class="text-[9px] uppercase tracking-[0.25em] text-slate-400 font-semibold block mt-0.5">
+            High-Performance & Biohacking
+          </span>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8 text-xs uppercase tracking-widest font-semibold text-slate-400">
+        <a href="#modalidades" class="hover:text-[#CCFF00] transition">Modalidades</a>
+        <a href="#calculadora" class="hover:text-[#CCFF00] transition">Calcular Treino</a>
+        <a href="#biohacking" class="hover:text-[#CCFF00] transition">Recovery Lab</a>
+        <a href="#planos" class="hover:text-[#CCFF00] transition">Planos Black</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button onclick="openPasse()" class="px-5 py-2.5 rounded-xl bg-[#CCFF00] hover:bg-[#b8e600] text-black font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-[#CCFF00]/25 transition hover:scale-105 active:scale-95">
+          Agendar Day Pass VIP
+        </button>
+      </div>
     </div>
   </header>
 
-  <section class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-    <div class="lg:col-span-7">
-      <span class="px-3 py-1 bg-lime-400/15 text-lime-400 text-xs font-bold uppercase rounded-full">Equipamentos Hammer Strength® & Pista Oficial</span>
-      <h1 class="font-impact text-6xl sm:text-8xl uppercase mt-4 leading-[0.95]">Treine acima do <span class="text-lime-400">seu limite.</span></h1>
-      <p class="text-zinc-400 mt-4 max-w-xl">Musculação de alta performance, studios de HIIT, Boxe, Hyrox e recuperação criogênica em um único complexo.</p>
-    </div>
-
-    <!-- Calculadora de Meta / IMC -->
-    <div id="calc" class="lg:col-span-5 bg-zinc-900 border border-lime-400/30 rounded-2xl p-7">
-      <h2 class="font-bold text-lg text-lime-400 mb-4">⚡ Diagnóstico Rápido de Treino (IMC)</h2>
-      <div class="grid grid-cols-2 gap-4">
-        <div>
-          <label class="text-xs text-zinc-400 block mb-1">Peso (kg)</label>
-          <input id="gym-w" type="number" value="78" class="w-full px-3 py-2.5 bg-black border border-white/15 rounded-lg text-white font-bold">
+  <!-- Hero Section -->
+  <section class="max-w-7xl mx-auto px-6 pt-12 pb-16 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      
+      <div class="lg:col-span-6 flex flex-col items-start">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#CCFF00]/40 bg-[#CCFF00]/10 text-[#CCFF00] text-xs font-mono uppercase tracking-wider mb-5">
+          <span class="w-2 h-2 rounded-full bg-[#CCFF00] animate-pulse"></span>
+          Equipamentos Eleiko® & Keiser Pneumatics
         </div>
-        <div>
-          <label class="text-xs text-zinc-400 block mb-1">Altura (cm)</label>
-          <input id="gym-h" type="number" value="176" class="w-full px-3 py-2.5 bg-black border border-white/15 rounded-lg text-white font-bold">
+
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-[56px] font-black tracking-tight text-white leading-[1.04]">
+          A ciência máxima do <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#CCFF00] to-yellow-400">desempenho humano.</span>
+        </h1>
+
+        <p class="mt-5 text-slate-300 text-base leading-relaxed max-w-xl font-light">
+          Treinamento de força com biomecânica de precisão, sauna infravermelha, banheira de imersão no gelo a 3°C e análise de VO2 Max com fisiologista olímpico.
+        </p>
+
+        <!-- Stats -->
+        <div class="mt-8 grid grid-cols-3 gap-3 w-full max-w-lg pt-6 border-t border-white/10">
+          <div>
+            <div class="text-2xl font-display font-black text-[#CCFF00]">3.200 m²</div>
+            <div class="text-[10px] uppercase font-mono text-slate-400 mt-0.5">Área de Treino</div>
+          </div>
+          <div>
+            <div class="text-2xl font-display font-black text-white">4:1</div>
+            <div class="text-[10px] uppercase font-mono text-slate-400 mt-0.5">Alunos p/ Treinador</div>
+          </div>
+          <div>
+            <div class="text-2xl font-display font-black text-white">3°C</div>
+            <div class="text-[10px] uppercase font-mono text-slate-400 mt-0.5">Ice Bath Biohacking</div>
+          </div>
+        </div>
+
+        <div class="mt-8 flex items-center gap-4">
+          <button onclick="openPasse()" class="px-6 py-3.5 rounded-xl bg-[#CCFF00] hover:bg-[#b8e600] text-black font-extrabold text-xs uppercase tracking-wider transition shadow-lg shadow-[#CCFF00]/25">
+            Treinar com Day Pass Grátis
+          </button>
+          <a href="#modalidades" class="px-6 py-3.5 rounded-xl border border-white/20 hover:border-[#CCFF00] text-white font-bold text-xs uppercase tracking-wider transition">
+            Explorar Áreas
+          </a>
         </div>
       </div>
-      <div class="mt-5 p-4 rounded-xl bg-black border border-white/10 flex justify-between items-center">
-        <div>
-          <span class="text-xs text-zinc-400 block">Seu IMC Atual</span>
-          <strong id="bmi-val" class="text-2xl text-lime-400">25.2</strong>
+
+      <!-- Hero Visual Card -->
+      <div class="lg:col-span-6 w-full">
+        <div class="apex-card p-4 rounded-3xl relative overflow-hidden group">
+          <div class="relative h-80 sm:h-[420px] rounded-2xl overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80" alt="Apex Performance Studio" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#090A0C] via-[#090A0C]/40 to-transparent"></div>
+
+            <div class="absolute top-4 left-4 right-4 flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest bg-[#CCFF00] text-black font-extrabold shadow-lg">
+                Apex Faria Lima
+              </span>
+              <span class="px-3 py-1 rounded-full bg-black/70 text-[#CCFF00] text-[11px] font-mono border border-[#CCFF00]/30 backdrop-blur-md">
+                Pista de Sprint & Prowler
+              </span>
+            </div>
+
+            <div class="absolute bottom-4 left-5 right-5 text-white">
+              <span class="text-xs font-mono text-[#CCFF00] uppercase tracking-widest">Strength & Conditioning</span>
+              <h3 class="font-display text-2xl font-black mt-1">Gaiolas Eleiko® Customizadas & Cargas Livres</h3>
+              <p class="text-xs text-slate-300 mt-1">Ambiente climatizado com renovação de ar hospitalar e trilha sonora imersiva.</p>
+            </div>
+          </div>
         </div>
-        <div class="text-right">
-          <span class="text-xs text-zinc-400 block">Protocolo Recomendado</span>
-          <strong id="bmi-plan" class="text-sm text-white">Hipertrofia + HIIT Metabolic</strong>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Training & Calorie Calculator -->
+  <section class="max-w-7xl mx-auto px-6 py-14 border-t border-white/10" id="calculadora">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+      <div>
+        <span class="text-xs uppercase tracking-widest font-mono text-[#CCFF00]">Metabolismo & Periodização</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-white mt-1">Simulador de Gasto Calórico & Metas</h2>
+      </div>
+      <p class="text-xs text-slate-400 font-mono mt-2 md:mt-0">Calibrado com base em protocolos EPOC de alta intensidade</p>
+    </div>
+
+    <div class="apex-card p-8 rounded-3xl border border-white/15">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <div class="lg:col-span-7 space-y-6">
+          <div>
+            <label class="block text-xs font-mono uppercase text-slate-400 mb-2">Seu Objetivo Principal:</label>
+            <div class="grid grid-cols-3 gap-2" id="goal-selector">
+              <button onclick="setGoal('hypertrophy')" id="goal-hyp" class="p-3 rounded-xl bg-[#CCFF00] text-black font-bold text-xs font-mono transition">Hipertrofia Pura</button>
+              <button onclick="setGoal('fatloss')" id="goal-fat" class="p-3 rounded-xl bg-white/5 border border-white/15 text-white font-bold text-xs font-mono transition">Secagem & Definição</button>
+              <button onclick="setGoal('athletic')" id="goal-ath" class="p-3 rounded-xl bg-white/5 border border-white/15 text-white font-bold text-xs font-mono transition">Potência Atlética</button>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between text-xs font-mono mb-2">
+              <span>Frequência Semanal:</span>
+              <span id="freq-label" class="text-[#CCFF00] font-bold">4 Sessões / Semana</span>
+            </div>
+            <input type="range" id="freq-slider" min="2" max="6" step="1" value="4" oninput="calcFitness()" class="w-full">
+            <div class="flex justify-between text-[10px] text-slate-500 font-mono mt-1">
+              <span>2 Dias</span>
+              <span>4 Dias (Ideal)</span>
+              <span>6 Dias (Atleta)</span>
+            </div>
+          </div>
         </div>
+
+        <div class="lg:col-span-5 bg-black/60 p-6 rounded-2xl border border-white/10 text-center flex flex-col justify-center">
+          <span class="text-xs font-mono uppercase text-slate-400 tracking-wider">Gasto Médio Semanal Estimado</span>
+          <div id="burn-val" class="font-display text-4xl font-black text-[#CCFF00] mt-2">
+            3.400 kcal
+          </div>
+          <div id="prog-val" class="text-xs text-slate-300 font-mono mt-2">
+            Programa Recomendado: Apex Strength + Recovery 2x
+          </div>
+          <button onclick="openPasse()" class="mt-6 w-full py-3.5 rounded-xl bg-[#CCFF00] hover:bg-[#b8e600] text-black font-extrabold text-xs uppercase tracking-wider transition">
+            Iniciar com Este Treino
+          </button>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Grade de Aulas -->
-  <section class="max-w-7xl mx-auto px-6 py-12 border-t border-white/10">
-    <div class="flex justify-between items-center mb-6">
-      <h2 class="font-impact text-3xl uppercase">Cronograma de Studios</h2>
-      <div class="flex gap-2">
-        <button onclick="renderSchedule('seg')" class="px-4 py-1.5 rounded-lg bg-lime-400 text-black font-bold text-xs">Seg / Qua / Sex</button>
-        <button onclick="renderSchedule('ter')" class="px-4 py-1.5 rounded-lg bg-zinc-800 text-white font-bold text-xs">Ter / Qui / Sáb</button>
+  <!-- Modalities Grid (4 Cards) -->
+  <section class="max-w-7xl mx-auto px-6 py-14 border-t border-white/10" id="modalidades">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="text-xs font-mono uppercase tracking-widest text-[#CCFF00]">Pilares de Alta Performance</span>
+      <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-white mt-1">Áreas Exclusivas do Studio</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="apex-card p-6 rounded-2xl border border-white/10">
+        <span class="text-3xl">🏋️</span>
+        <h3 class="font-display text-xl font-bold text-white mt-3">Heavy Duty Strength</h3>
+        <p class="text-xs text-slate-400 mt-2">Powerlifting, levantamento olímpico e máquinas de peso convergente importadas.</p>
+      </div>
+
+      <div class="apex-card p-6 rounded-2xl border border-white/10">
+        <span class="text-3xl">⚡</span>
+        <h3 class="font-display text-xl font-bold text-white mt-3">HYROX & Conditioning</h3>
+        <p class="text-xs text-slate-400 mt-2">Ergômetros Concept2 (SkiErg, Row, BikeErg) integrados a treinos de capacidade aeróbica máxima.</p>
+      </div>
+
+      <div class="apex-card p-6 rounded-2xl border border-white/10">
+        <span class="text-3xl">🧊</span>
+        <h3 class="font-display text-xl font-bold text-white mt-3">Cold Plunge & Sauna</h3>
+        <p class="text-xs text-slate-400 mt-2">Imersão em água a 3°C para redução de inflamações e sauna seca a 90°C para detox celular.</p>
+      </div>
+
+      <div class="apex-card p-6 rounded-2xl border border-white/10">
+        <span class="text-3xl">🩺</span>
+        <h3 class="font-display text-xl font-bold text-white mt-3">Metabolic Testing</h3>
+        <p class="text-xs text-slate-400 mt-2">Bioimpedância InBody 770 de nível médico e cálculo de limiares de lactato.</p>
       </div>
     </div>
-    <div id="schedule-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
   </section>
 
+  <!-- Pass Drawer -->
+  <div id="drawer-overlay" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300" onclick="closePasse()"></div>
+  <aside id="passe-drawer" class="fixed top-0 right-0 z-50 h-full w-full sm:w-[480px] bg-[#0E1014] border-l border-[#CCFF00]/30 p-8 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between overflow-y-auto">
+    <div>
+      <div class="flex items-center justify-between pb-6 border-b border-white/10">
+        <div>
+          <span class="text-[10px] font-mono uppercase tracking-widest text-[#CCFF00]">Passe VIP Cortesia</span>
+          <h3 class="font-display text-2xl font-bold text-white">Day Pass Apex Studio</h3>
+        </div>
+        <button onclick="closePasse()" class="text-slate-400 hover:text-white p-2 text-lg">✕</button>
+      </div>
+
+      <form id="form-passe" class="mt-6 space-y-4" onsubmit="handlePasse(event)">
+        <div>
+          <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">Nome Completo</label>
+          <input type="text" required placeholder="Ex: Gabriel Albuquerque" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-[#CCFF00]">
+        </div>
+        <div>
+          <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">WhatsApp</label>
+          <input type="tel" required placeholder="(11) 98765-4321" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-[#CCFF00]">
+        </div>
+        <div>
+          <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">Unidade Preferida</label>
+          <select class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-[#CCFF00]">
+            <option value="Faria Lima">Faria Lima (Av. Brig. Faria Lima, 3477)</option>
+            <option value="Ibirapuera">Ibirapuera (Rua Manoel da Nóbrega, 1100)</option>
+          </select>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">Data</label>
+            <input type="date" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-[#CCFF00]">
+          </div>
+          <div>
+            <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">Horário</label>
+            <select class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-[#CCFF00]">
+              <option value="06:30">06:30 (Early Bird)</option>
+              <option value="08:00">08:00</option>
+              <option value="12:00">12:00 (Lunch Workout)</option>
+              <option value="18:30">18:30 (Peak)</option>
+              <option value="20:00">20:00</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full py-4 rounded-xl bg-[#CCFF00] hover:bg-[#b8e600] text-black font-extrabold uppercase tracking-wider text-xs transition duration-200 shadow-lg shadow-[#CCFF00]/25 mt-3">
+          Ativar Day Pass & Avaliação
+        </button>
+      </form>
+
+      <div id="passe-success" class="hidden mt-6 p-4 rounded-xl bg-[#CCFF00]/10 border border-[#CCFF00]/30 text-[#CCFF00] text-xs font-mono">
+        ✓ Day Pass ativado! Apresente sua confirmação na recepção e retire seu shake de proteína cortesia.
+      </div>
+    </div>
+
+    <div class="pt-6 border-t border-white/10 text-xs text-slate-500 font-mono">
+      Faria Lima & Ibirapuera • Segunda a Sábado das 05h30 às 23h
+    </div>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 bg-[#090A0C] py-12 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="font-display font-extrabold text-white text-base">
+        APEX PERFORMANCE STUDIO © 2026
+      </div>
+      <div>
+        Strength, Conditioning & Cryo Recovery
+      </div>
+      <div class="font-mono text-[11px] text-slate-400">
+        Faria Lima & Ibirapuera • São Paulo
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
   <script>
-    const wIn = document.getElementById('gym-w'), hIn = document.getElementById('gym-h');
-    function calcBMI() {
-      const w = Number(wIn.value) || 70, h = (Number(hIn.value) || 170) / 100;
-      const bmi = (w / (h * h)).toFixed(1);
-      document.getElementById('bmi-val').textContent = bmi;
-      document.getElementById('bmi-plan').textContent = bmi > 25 ? "Burn HIIT + Condicionamento" : "Strength & Hypertrophy Pro";
-    }
-    wIn.addEventListener('input', calcBMI); hIn.addEventListener('input', calcBMI);
+    let curGoal = 'hypertrophy';
 
-    const CLASSES = {
-      seg: [
-        { time: "07:00", name: "HYROX® Conditioning", coach: "Coach Rodrigo • 600 kcal" },
-        { time: "18:30", name: "Burn Boxe & Bag", coach: "Coach Letícia • 750 kcal" },
-        { time: "20:00", name: "Powerlifting Club", coach: "Coach Marcos • Força" }
-      ],
-      ter: [
-        { time: "08:00", name: "Metabolic Spin", coach: "Coach Bia • 680 kcal" },
-        { time: "19:00", name: "Cross Metcon", coach: "Coach Rafael • 800 kcal" },
-        { time: "20:30", name: "Mobility & Core Recovery", coach: "Coach Helena • Flex" }
-      ]
-    };
-    window.renderSchedule = function(day) {
-      document.getElementById('schedule-grid').innerHTML = CLASSES[day].map(c => `
-        <div class="p-5 rounded-xl bg-zinc-900 border border-white/10">
-          <span class="text-xs font-bold text-lime-400">${c.time}</span>
-          <h3 class="font-bold text-lg mt-1">${c.name}</h3>
-          <p class="text-xs text-zinc-400 mt-1">${c.coach}</p>
-        </div>
-      `).join('');
-    };
-    renderSchedule('seg'); calcBMI();
+    function setGoal(goal) {
+      curGoal = goal;
+      ['hyp', 'fat', 'ath'].forEach(g => {
+        document.getElementById('goal-' + g).className = 'p-3 rounded-xl bg-white/5 border border-white/15 text-white font-bold text-xs font-mono transition';
+      });
+      if (goal === 'hypertrophy') document.getElementById('goal-hyp').className = 'p-3 rounded-xl bg-[#CCFF00] text-black font-bold text-xs font-mono transition';
+      if (goal === 'fatloss') document.getElementById('goal-fat').className = 'p-3 rounded-xl bg-[#CCFF00] text-black font-bold text-xs font-mono transition';
+      if (goal === 'athletic') document.getElementById('goal-ath').className = 'p-3 rounded-xl bg-[#CCFF00] text-black font-bold text-xs font-mono transition';
+      calcFitness();
+    }
+
+    function calcFitness() {
+      const freq = parseInt(document.getElementById('freq-slider').value);
+      document.getElementById('freq-label').textContent = `${freq} Sessões / Semana`;
+      
+      let baseBurn = freq * 650;
+      if (curGoal === 'fatloss') baseBurn += freq * 200;
+      if (curGoal === 'athletic') baseBurn += freq * 150;
+
+      document.getElementById('burn-val').textContent = `${baseBurn.toLocaleString('pt-BR')} kcal`;
+      
+      let prog = 'Apex Strength + Recovery 2x';
+      if (curGoal === 'fatloss') prog = 'Apex MetCon + Cold Plunge 3x';
+      if (curGoal === 'athletic') prog = 'HYROX Power + VO2 Protocol';
+      document.getElementById('prog-val').textContent = `Programa Recomendado: ${prog}`;
+    }
+
+    // Drawer
+    const drawer = document.getElementById('passe-drawer');
+    const drawerOverlay = document.getElementById('drawer-overlay');
+
+    function openPasse() {
+      drawerOverlay.classList.remove('opacity-0', 'pointer-events-none');
+      drawer.classList.remove('translate-x-full');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePasse() {
+      drawerOverlay.classList.add('opacity-0', 'pointer-events-none');
+      drawer.classList.add('translate-x-full');
+      document.body.style.overflow = '';
+    }
+
+    function handlePasse(e) {
+      e.preventDefault();
+      const succ = document.getElementById('passe-success');
+      succ.classList.remove('hidden');
+      setTimeout(() => {
+        closePasse();
+        succ.classList.add('hidden');
+        document.getElementById('form-passe').reset();
+      }, 3000);
+    }
   </script>
+
   <!-- Vercel Web Analytics & Speed Insights -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };

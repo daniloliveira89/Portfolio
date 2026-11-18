@@ -1,67 +1,391 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AURA DERMA — Estética Avançada & Tecnologias Laser</title>
+  <title>AURA DERM CLINIC — Dermatologia Médica, Tecnologias Laser & Estética Facial</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <style>
-    body { background-color: #FAF6F3; color: #2B211E; font-family: 'Plus Jakarta Sans', sans-serif; }
-    .font-serif-aura { font-family: 'Cormorant Garamond', serif; }
+    body {
+      background-color: #FAF8F5;
+      color: #1F2421;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    .font-serif-luxury { font-family: 'Playfair Display', serif; }
+    
+    /* Rose / Champagne Glow */
+    .glow-rose {
+      background: radial-gradient(circle 750px at 75% 15%, rgba(244, 114, 182, 0.12), transparent 70%),
+                  radial-gradient(circle 500px at 20% 45%, rgba(251, 191, 36, 0.08), transparent 60%);
+    }
+
+    .aura-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(226, 218, 208, 0.7);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .aura-card:hover {
+      border-color: #F472B6;
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(244, 114, 182, 0.12);
+    }
   </style>
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
 </head>
-<body class="min-h-screen antialiased">
-  <header class="border-b border-rose-900/10 bg-[#FAF6F3]/90 sticky top-0 z-40">
-    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-      <span class="font-serif-aura text-3xl tracking-wide text-rose-950">AURA DERMA</span>
-      <span class="text-xs uppercase tracking-widest text-rose-800 font-semibold">Harmonização Natural • Tecnologias Coreanas</span>
+<body class="min-h-screen antialiased relative selection:bg-rose-400 selection:text-white">
+
+  <div class="fixed inset-0 glow-rose pointer-events-none z-0"></div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-[#FAF8F5]/90 backdrop-blur-xl border-b border-[#E8E2D9] transition-all">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-rose-400 via-amber-300 to-rose-300 p-[1.5px] shadow-md shadow-rose-300/30">
+          <div class="w-full h-full bg-[#FAF8F5] rounded-[10px] flex items-center justify-center font-serif-luxury font-bold text-rose-500 text-xl">
+            A
+          </div>
+        </div>
+        <div>
+          <span class="font-serif-luxury text-xl tracking-wide text-stone-900 block leading-none">
+            AURA<span class="text-rose-500">.</span>DERM
+          </span>
+          <span class="text-[9px] uppercase tracking-[0.25em] text-stone-500 font-semibold block mt-0.5">
+            Dermatologia & Bioestimulação • Jardins SP
+          </span>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8 text-xs uppercase tracking-widest font-semibold text-stone-600">
+        <a href="#procedimentos" class="hover:text-rose-500 transition">Tecnologias & Lasers</a>
+        <a href="#simulador" class="hover:text-rose-500 transition">Simulador Facial</a>
+        <a href="#dra" class="hover:text-rose-500 transition">Corpo Clínico SBD</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button onclick="openAvaliacao()" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-rose-500 to-amber-400 hover:from-rose-600 hover:to-amber-500 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-rose-500/25 transition hover:scale-105 active:scale-95">
+          Agendar Avaliação
+        </button>
+      </div>
     </div>
   </header>
 
-  <main class="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-    <div class="lg:col-span-6">
-      <span class="text-xs uppercase tracking-[0.25em] text-rose-700 font-semibold">Quiet Beauty & Rejuvenescimento</span>
-      <h1 class="font-serif-aura text-5xl sm:text-6xl mt-3 leading-[1.02]">Realce sua beleza com <em class="italic text-rose-700">naturalidade absoluta.</em></h1>
-      <p class="text-stone-600 text-sm sm:text-base mt-4">Selecione a tecnologia desejada abaixo para inspecionar indicação clínica, durabilidade e tempo de recuperação:</p>
+  <!-- Hero Section -->
+  <section class="max-w-7xl mx-auto px-6 pt-12 pb-16 relative z-10" id="procedimentos">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      
+      <div class="lg:col-span-6 flex flex-col items-start">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-rose-300 bg-rose-50 text-rose-700 text-xs font-semibold tracking-wider mb-5">
+          <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+          Ultrassom Microfocado Liftera 2® & Laser Fotona 4D®
+        </div>
 
-      <div class="flex flex-wrap gap-2 mt-6">
-        <button onclick="showProtocol('ultraformer')" class="px-4 py-2 rounded-full text-xs font-semibold bg-rose-900 text-white">Ultraformer MPT®</button>
-        <button onclick="showProtocol('lavieen')" class="px-4 py-2 rounded-full text-xs font-semibold bg-white border border-rose-200 text-rose-900">Laser Lavieen® BB</button>
-        <button onclick="showProtocol('sculptra')" class="px-4 py-2 rounded-full text-xs font-semibold bg-white border border-rose-200 text-rose-900">Bioestimulador Sculptra®</button>
+        <h1 class="font-serif-luxury text-4xl sm:text-5xl lg:text-[54px] tracking-tight text-stone-900 leading-[1.08]">
+          Rejuvenescimento natural com <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-600 via-rose-500 to-amber-500 italic">precisão médica.</span>
+        </h1>
+
+        <p class="mt-5 text-stone-600 text-base leading-relaxed max-w-xl font-light">
+          Protocolos de dermatologia estética que preservam sua identidade e expressividade facial. Bioestimuladores de colágeno, lasers não ablativos e mapeamento dermatológico 3D.
+        </p>
+
+        <!-- Stats -->
+        <div class="mt-8 grid grid-cols-3 gap-3 w-full max-w-lg pt-6 border-t border-[#E8E2D9]">
+          <div class="bg-white p-3.5 rounded-xl border border-stone-200/80 shadow-xs">
+            <div class="text-2xl font-serif-luxury font-bold text-rose-600">6.200+</div>
+            <div class="text-[10px] uppercase font-semibold text-stone-500 mt-0.5">Procedimentos</div>
+          </div>
+          <div class="bg-white p-3.5 rounded-xl border border-stone-200/80 shadow-xs">
+            <div class="text-2xl font-serif-luxury font-bold text-stone-900">Zero Down</div>
+            <div class="text-[10px] uppercase font-semibold text-stone-500 mt-0.5">Retorno Imediato</div>
+          </div>
+          <div class="bg-white p-3.5 rounded-xl border border-stone-200/80 shadow-xs">
+            <div class="text-2xl font-serif-luxury font-bold text-stone-900">SBD & AMB</div>
+            <div class="text-[10px] uppercase font-semibold text-stone-500 mt-0.5">Títulos de Especialista</div>
+          </div>
+        </div>
+
+        <div class="mt-8 flex items-center gap-4">
+          <button onclick="openAvaliacao()" class="px-6 py-3.5 rounded-full bg-rose-500 hover:bg-rose-600 text-white font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-rose-500/25">
+            Agendar Consulta Dermatológica
+          </button>
+          <a href="#simulador" class="px-6 py-3.5 rounded-full border border-stone-300 hover:border-rose-400 text-stone-700 font-bold text-xs uppercase tracking-wider transition">
+            Simulador Facial
+          </a>
+        </div>
       </div>
 
-      <div id="protocol-card" class="mt-6 bg-white p-7 rounded-2xl border border-rose-900/10 shadow-sm"></div>
-    </div>
+      <!-- Hero Visual Card -->
+      <div class="lg:col-span-6 w-full">
+        <div class="aura-card p-4 rounded-3xl relative overflow-hidden group shadow-xl">
+          <div class="relative h-80 sm:h-[420px] rounded-2xl overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=1200&q=80" alt="Clínica Dermatológica Aura" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#1F2421]/70 via-transparent to-transparent"></div>
 
-    <div class="lg:col-span-6">
-      <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=900&q=80" class="w-full h-[440px] object-cover rounded-2xl shadow-lg" alt="Estética">
-    </div>
-  </main>
+            <div class="absolute top-4 left-4 right-4 flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest bg-rose-500 text-white font-bold shadow-lg">
+                Jardins • São Paulo
+              </span>
+              <span class="px-3 py-1 rounded-full bg-white/90 text-stone-900 text-[11px] font-mono border border-stone-200 backdrop-blur-md">
+                Tecnologia Fotona StarWalker®
+              </span>
+            </div>
 
-  <script>
-    const PROTOCOLS = {
-      ultraformer: { title: "Ultraformer MPT® — Lifting sem Cortes", desc: "Ultrassom micro e macrofocado de última geração para contorno mandibular, estímulo de colágeno e redução de papada sem agulhas.", downtime: "Zero (Retorno imediato)", dur: "12 meses", price: "A partir de R$ 2.400" },
-      lavieen: { title: "Laser Thulium Lavieen® (Efeito BB Cream)", desc: "Fecha poros dilatados, uniformiza manchas de melasma e devolve o viço de pele de porcelana em uma única sessão.", downtime: "24h a 48h de leve vermelhidão", dur: "6 a 8 meses", price: "R$ 1.190 / sessão" },
-      sculptra: { title: "Bioestimulador de Colágeno (Ácido Poli-L-Láctico)", desc: "Recupera a firmeza dérmica facial e corporal aumentando em até 66% a produção natural de colágeno tipo I.", downtime: "Zero", dur: "Até 24 meses", price: "R$ 2.890 / ampola" }
-    };
-    window.showProtocol = function(key) {
-      const p = PROTOCOLS[key];
-      document.getElementById("protocol-card").innerHTML = `
-        <h3 class="font-serif-aura text-2xl font-bold text-rose-950">${p.title}</h3>
-        <p class="text-sm text-stone-600 mt-2 leading-relaxed">${p.desc}</p>
-        <div class="grid grid-cols-3 gap-3 mt-5 pt-4 border-t border-rose-100 text-xs">
-          <div><span class="text-stone-400 block">Recuperação</span><strong class="text-rose-900">${p.downtime}</strong></div>
-          <div><span class="text-stone-400 block">Durabilidade</span><strong class="text-rose-900">${p.dur}</strong></div>
-          <div><span class="text-stone-400 block">Investimento</span><strong class="text-rose-900">${p.price}</strong></div>
+            <div class="absolute bottom-4 left-5 right-5 text-white">
+              <span class="text-xs font-mono text-rose-300 uppercase tracking-widest">Protocolo Signature Glow</span>
+              <h3 class="font-serif-luxury text-2xl font-bold mt-1">Bioestimulação com Radiesse® & Sculptra®</h3>
+              <p class="text-xs text-stone-200 mt-1">Estímulo fisiológico de colágeno tipos I e III com resultados que evoluem progressivamente em até 24 meses.</p>
+            </div>
+          </div>
         </div>
-      `;
-    };
-    showProtocol('ultraformer');
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Facial Zone Selector (Simulador de Protocolo) -->
+  <section class="max-w-7xl mx-auto px-6 py-14 border-t border-[#E8E2D9]" id="simulador">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+      <div>
+        <span class="text-xs uppercase tracking-widest font-mono text-rose-600">Personalização Facial</span>
+        <h2 class="font-serif-luxury text-3xl sm:text-4xl font-bold text-stone-900 mt-1">Simulador de Áreas de Tratamento</h2>
+      </div>
+      <p class="text-xs text-stone-500 font-mono mt-2 md:mt-0">Descubra a tecnologia médica indicada para sua queixa principal</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      
+      <!-- Area Buttons -->
+      <div class="lg:col-span-6 space-y-3" id="zones-list">
+        <button onclick="selectZone(0)" id="zone-btn-0" class="zone-btn active w-full p-4 rounded-2xl aura-card text-left border-2 border-rose-500 flex justify-between items-center transition">
+          <div>
+            <div class="font-bold text-stone-900 text-sm">Terço Superior (Testa & Olhar)</div>
+            <div class="text-xs text-stone-500 mt-0.5">Toxina Botulínica Preventiva, Fox Eyes & Rugas de Expressão</div>
+          </div>
+          <span class="text-rose-500 font-bold">→</span>
+        </button>
+
+        <button onclick="selectZone(1)" id="zone-btn-1" class="zone-btn w-full p-4 rounded-2xl aura-card text-left border border-stone-200 flex justify-between items-center transition">
+          <div>
+            <div class="font-bold text-stone-900 text-sm">Terço Médio (Malar & Olheiras)</div>
+            <div class="text-xs text-stone-500 mt-0.5">Preenchimento com Ácido Hialurônico & Laser para Olheiras</div>
+          </div>
+          <span class="text-stone-400">→</span>
+        </button>
+
+        <button onclick="selectZone(2)" id="zone-btn-2" class="zone-btn w-full p-4 rounded-2xl aura-card text-left border border-stone-200 flex justify-between items-center transition">
+          <div>
+            <div class="font-bold text-stone-900 text-sm">Terço Inferior (Mandíbula & Papada)</div>
+            <div class="text-xs text-stone-500 mt-0.5">Ultrassom Microfocado Liftera 2® & Esvaziamento de Gordura</div>
+          </div>
+          <span class="text-stone-400">→</span>
+        </button>
+
+        <button onclick="selectZone(3)" id="zone-btn-3" class="zone-btn w-full p-4 rounded-2xl aura-card text-left border border-stone-200 flex justify-between items-center transition">
+          <div>
+            <div class="font-bold text-stone-900 text-sm">Qualidade Geral da Pele (Glow & Poros)</div>
+            <div class="text-xs text-stone-500 mt-0.5">Laser Fotona 4D®, Drug Delivery & Skinbooster Profundo</div>
+          </div>
+          <span class="text-stone-400">→</span>
+        </button>
+      </div>
+
+      <!-- Zone Protocol Dynamic Preview -->
+      <div class="lg:col-span-6 bg-white p-7 rounded-3xl border border-stone-200 shadow-xl">
+        <span class="text-[10px] font-mono uppercase tracking-widest text-rose-600 bg-rose-50 px-2.5 py-1 rounded-md" id="zone-tag">
+          Terço Superior • Protocolo Indicado
+        </span>
+        <h3 class="font-serif-luxury text-2xl font-bold text-stone-900 mt-3" id="zone-title">
+          Baby Botox® Preventivo + Liftera Periorbital
+        </h3>
+        <p class="text-xs text-stone-600 mt-2 leading-relaxed" id="zone-desc">
+          Aplicação refinada de microdoses de toxina que suavizam as linhas da testa e pés-de-galinha mantendo o movimento natural das sobrancelhas, combinada ao estímulo térmico para elevação do olhar.
+        </p>
+
+        <div class="mt-6 pt-4 border-t border-stone-100 grid grid-cols-3 gap-2 text-center text-xs">
+          <div>
+            <span class="text-stone-400 block text-[10px] uppercase font-bold">Duração</span>
+            <span id="zone-time" class="font-bold text-stone-900">40 minutos</span>
+          </div>
+          <div>
+            <span class="text-stone-400 block text-[10px] uppercase font-bold">Recuperação</span>
+            <span id="zone-rec" class="font-bold text-rose-600">Zero Downtime</span>
+          </div>
+          <div>
+            <span class="text-stone-400 block text-[10px] uppercase font-bold">Durabilidade</span>
+            <span id="zone-dur" class="font-bold text-stone-900">4 a 6 Meses</span>
+          </div>
+        </div>
+
+        <button onclick="openAvaliacao()" class="mt-6 w-full py-3.5 rounded-full bg-rose-500 hover:bg-rose-600 text-white font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-rose-500/20">
+          Incluir na Minha Avaliação Médica
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Appointment Drawer -->
+  <div id="drawer-overlay" class="fixed inset-0 z-50 bg-stone-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300" onclick="closeAvaliacao()"></div>
+  <aside id="aval-drawer" class="fixed top-0 right-0 z-50 h-full w-full sm:w-[480px] bg-[#FAF8F5] border-l border-stone-300 p-8 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between overflow-y-auto">
+    <div>
+      <div class="flex items-center justify-between pb-6 border-b border-stone-200">
+        <div>
+          <span class="text-[10px] font-mono uppercase tracking-widest text-rose-600">Consulta Médica</span>
+          <h3 class="font-serif-luxury text-2xl font-bold text-stone-900">Agendar Avaliação</h3>
+        </div>
+        <button onclick="closeAvaliacao()" class="text-stone-400 hover:text-stone-700 p-2 text-lg">✕</button>
+      </div>
+
+      <form id="form-aval" class="mt-6 space-y-4" onsubmit="handleAval(event)">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-stone-600 mb-1">Nome Completo</label>
+          <input type="text" required placeholder="Ex: Mariana Castro" class="w-full px-4 py-3 rounded-xl bg-white border border-stone-300 text-stone-900 text-sm focus:outline-none focus:border-rose-500">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-stone-600 mb-1">WhatsApp</label>
+          <input type="tel" required placeholder="(11) 98765-4321" class="w-full px-4 py-3 rounded-xl bg-white border border-stone-300 text-stone-900 text-sm focus:outline-none focus:border-rose-500">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-stone-600 mb-1">Procedimento de Interesse</label>
+          <select class="w-full px-4 py-3 rounded-xl bg-white border border-stone-300 text-stone-900 text-sm focus:outline-none focus:border-rose-500">
+            <option value="Bioestimuladores de Colágeno">Bioestimuladores de Colágeno (Radiesse / Sculptra)</option>
+            <option value="Ultrassom Liftera 2">Ultrassom Microfocado Liftera 2®</option>
+            <option value="Laser Fotona 4D">Laser Fotona 4D® Face & Pescoço</option>
+            <option value="Harmonização & Ácido Hialurônico">Preenchimento Facial & Labial</option>
+            <option value="Toxina Botulínica">Toxina Botulínica Facial Completa</option>
+          </select>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-stone-600 mb-1">Data</label>
+            <input type="date" required class="w-full px-4 py-3 rounded-xl bg-white border border-stone-300 text-stone-900 text-sm focus:outline-none focus:border-rose-500">
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-stone-600 mb-1">Período</label>
+            <select class="w-full px-4 py-3 rounded-xl bg-white border border-stone-300 text-stone-900 text-sm focus:outline-none focus:border-rose-500">
+              <option value="Manhã">Manhã (09h às 12h)</option>
+              <option value="Tarde">Tarde (13h às 18h)</option>
+              <option value="Sábado">Sábado Especial</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full py-4 rounded-full bg-rose-500 hover:bg-rose-600 text-white font-bold uppercase tracking-wider text-xs transition duration-200 shadow-lg shadow-rose-500/25 mt-3">
+          Confirmar Solicitação de Consulta
+        </button>
+      </form>
+
+      <div id="aval-success" class="hidden mt-6 p-4 rounded-xl bg-rose-50 border border-rose-300 text-rose-800 text-xs font-semibold">
+        ✓ Consulta solicitada! Nossa equipe de acolhimento entrará em contato via WhatsApp com os detalhes do preparo.
+      </div>
+    </div>
+
+    <div class="pt-6 border-t border-stone-200 text-xs text-stone-400 font-medium">
+      Rua Haddock Lobo, 1307 • Jardins, São Paulo • Valet cortesia
+    </div>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="border-t border-[#E8E2D9] bg-[#FAF8F5] py-12 text-center text-xs text-stone-500">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="font-serif-luxury font-bold text-stone-800 text-base">
+        AURA DERM CLINIC © 2026
+      </div>
+      <div>
+        Responsável Técnica: Dra. Vanessa Monteiro • CRM-SP 156.402 • RQE 78.910
+      </div>
+      <div class="font-mono text-[11px] text-stone-400">
+        Membro Titular da Sociedade Brasileira de Dermatologia (SBD)
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    const ZONES = [
+      {
+        tag: "Terço Superior • Protocolo Indicado",
+        title: "Baby Botox® Preventivo + Liftera Periorbital",
+        desc: "Aplicação refinada de microdoses de toxina que suavizam as linhas da testa e pés-de-galinha mantendo o movimento natural das sobrancelhas, combinada ao estímulo térmico para elevação do olhar.",
+        time: "40 minutos",
+        rec: "Zero Downtime",
+        dur: "4 a 6 Meses"
+      },
+      {
+        tag: "Terço Médio • Protocolo Indicado",
+        title: "Preenchimento Malar Bio-Integrado & Laser Olheiras",
+        desc: "Sustentação dos pontos de ancoragem facial com ácido hialurônico de alta viscosidade, devolvendo o triângulo da juventude sem efeito acolchoado ou artificial.",
+        time: "50 minutos",
+        rec: "24 Horas",
+        dur: "12 a 18 Meses"
+      },
+      {
+        tag: "Terço Inferior • Protocolo Indicado",
+        title: "Liftera 2® Full Mandíbula + Lipo Enzimática de Papada",
+        desc: "Disparos ultrassônicos concentrados na fáscia muscular SMAS provocando retração imediata e ancoragem do contorno mandibular, eliminando o efeito 'buldogue'.",
+        time: "60 minutos",
+        rec: "Imediato",
+        dur: "12 Meses"
+      },
+      {
+        tag: "Qualidade de Pele • Protocolo Indicado",
+        title: "Fotona 4D® Intraoral + Profhilo® Bioremodelador",
+        desc: "Tratamento em 4 dimensões que atua da mucosa bucal à superfície da derme, promovendo luminosidade intensa, fechamento de poros e hidratação profunda em multicamadas.",
+        time: "75 minutos",
+        rec: "Leve rubor (2h)",
+        dur: "Ciclo Anual"
+      }
+    ];
+
+    function selectZone(idx) {
+      const z = ZONES[idx];
+      document.querySelectorAll('.zone-btn').forEach((b, i) => {
+        if (i === idx) {
+          b.className = "zone-btn active w-full p-4 rounded-2xl aura-card text-left border-2 border-rose-500 flex justify-between items-center transition";
+        } else {
+          b.className = "zone-btn w-full p-4 rounded-2xl aura-card text-left border border-stone-200 flex justify-between items-center transition";
+        }
+      });
+      document.getElementById('zone-tag').textContent = z.tag;
+      document.getElementById('zone-title').textContent = z.title;
+      document.getElementById('zone-desc').textContent = z.desc;
+      document.getElementById('zone-time').textContent = z.time;
+      document.getElementById('zone-rec').textContent = z.rec;
+      document.getElementById('zone-dur').textContent = z.dur;
+    }
+
+    // Drawer
+    const drawer = document.getElementById('aval-drawer');
+    const drawerOverlay = document.getElementById('drawer-overlay');
+
+    function openAvaliacao() {
+      drawerOverlay.classList.remove('opacity-0', 'pointer-events-none');
+      drawer.classList.remove('translate-x-full');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeAvaliacao() {
+      drawerOverlay.classList.add('opacity-0', 'pointer-events-none');
+      drawer.classList.add('translate-x-full');
+      document.body.style.overflow = '';
+    }
+
+    function handleAval(e) {
+      e.preventDefault();
+      const succ = document.getElementById('aval-success');
+      succ.classList.remove('hidden');
+      setTimeout(() => {
+        closeAvaliacao();
+        succ.classList.add('hidden');
+        document.getElementById('form-aval').reset();
+      }, 3000);
+    }
   </script>
+
   <!-- Vercel Web Analytics & Speed Insights -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };

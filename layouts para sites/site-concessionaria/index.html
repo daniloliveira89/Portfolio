@@ -1,105 +1,520 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>APEX MOTORS — Superesportivos & Blindados</title>
+  <title>SCUDERIA IMPERIAL — Superesportivos, Hypercars & Blindagem Nível III-A</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-  <style>body { background-color: #0B0C10; color: #F8FAFC; font-family: 'Inter', sans-serif; }</style>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cabinet+Grotesk:wght@800;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #08090B;
+      color: #F8FAFC;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    .font-display { font-family: 'Cabinet Grotesk', 'Plus Jakarta Sans', sans-serif; }
+    
+    /* Red / Orange Hypercar Glow */
+    .glow-race {
+      background: radial-gradient(circle 750px at 75% 15%, rgba(239, 68, 68, 0.15), transparent 70%),
+                  radial-gradient(circle 500px at 20% 45%, rgba(249, 115, 22, 0.1), transparent 60%);
+    }
+
+    .car-card {
+      background: linear-gradient(180deg, rgba(20, 22, 27, 0.8) 0%, rgba(11, 13, 16, 0.95) 100%);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .car-card:hover {
+      border-color: rgba(239, 68, 68, 0.5);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(239, 68, 68, 0.15);
+    }
+
+    /* Range slider custom */
+    input[type=range] {
+      -webkit-appearance: none;
+      background: transparent;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      background: #EF4444;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(239, 68, 68, 0.6);
+      margin-top: -6px;
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 8px;
+      background: #1E232B;
+      border-radius: 4px;
+    }
+  </style>
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
 </head>
-<body class="min-h-screen antialiased">
-  <header class="border-b border-white/10 bg-[#0B0C10]/90 sticky top-0 z-40">
+<body class="min-h-screen antialiased relative selection:bg-red-600 selection:text-white">
+
+  <div class="fixed inset-0 glow-race pointer-events-none z-0"></div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-[#08090B]/90 backdrop-blur-xl border-b border-white/[0.08] transition-all">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <span class="font-extrabold tracking-tighter text-2xl">APEX <span class="text-red-500">MOTORS</span></span>
-      <span class="text-xs uppercase tracking-widest text-zinc-400">Showroom Jardins • Blindagem Nível III-A</span>
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-red-600 to-orange-500 p-[1px] shadow-lg shadow-red-500/20">
+          <div class="w-full h-full bg-[#0D0F12] rounded-[11px] flex items-center justify-center font-display font-black text-red-500 text-xl group-hover:scale-105 transition">
+            S
+          </div>
+        </div>
+        <div>
+          <span class="font-display font-black text-xl tracking-tight text-white block leading-none">
+            SCUDERIA<span class="text-red-500">.</span>IMPERIAL
+          </span>
+          <span class="text-[9px] uppercase tracking-[0.25em] text-slate-400 font-semibold block mt-0.5">
+            Supercars • Hypercars • Blindados III-A
+          </span>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8 text-xs uppercase tracking-widest font-semibold text-slate-400">
+        <a href="#showroom" class="hover:text-red-500 transition">Showroom Exclusivo</a>
+        <a href="#blindagem" class="hover:text-red-500 transition">Blindagem III-A</a>
+        <a href="#financiamento" class="hover:text-red-500 transition">Simulador Luxury</a>
+        <a href="#testdrive" class="hover:text-red-500 transition">Private Test-Drive</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button onclick="openTestDrive('Geral')" class="px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-extrabold text-xs uppercase tracking-wider shadow-lg shadow-red-600/30 transition hover:scale-105 active:scale-95">
+          Agendar Test-Drive VIP
+        </button>
+      </div>
     </div>
   </header>
 
-  <main class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-10">
-    <div class="lg:col-span-8">
-      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-6">Acervo Pronta-Entrega</h1>
-      <div id="cars-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-6"></div>
-    </div>
+  <!-- Hero Section -->
+  <section class="max-w-7xl mx-auto px-6 pt-12 pb-16 relative z-10" id="showroom">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      
+      <div class="lg:col-span-6 flex flex-col items-start">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-red-500/40 bg-red-500/10 text-red-400 text-xs font-mono uppercase tracking-wider mb-5">
+          <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+          Pronta Entrega com Certificação Internacional de Procedência
+        </div>
 
-    <!-- Simulador de Financiamento -->
-    <div class="lg:col-span-4">
-      <div class="bg-[#13151C] border border-red-500/30 rounded-2xl p-6 sticky top-28">
-        <span class="text-[11px] uppercase tracking-widest text-red-400 font-bold">Apex Financial Services</span>
-        <h2 id="sim-car-name" class="text-xl font-bold mt-1">Porsche 911 Carrera S</h2>
-        <div id="sim-car-price" class="text-2xl font-extrabold text-white mt-1">R$ 1.150.000</div>
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-[56px] font-black tracking-tight text-white leading-[1.04]">
+          Aceleração visceral. <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-orange-400 to-amber-300">Segurança balística absoluta.</span>
+        </h1>
 
-        <div class="mt-6 space-y-4">
+        <p class="mt-5 text-slate-300 text-base leading-relaxed max-w-xl font-light">
+          A mais rigorosa curadoria de supercarros Ferrari, Porsche, Lamborghini e McLaren do Brasil. Blindagem Nível III-A com vidros AGP B33 de máxima transparência ótica sem peso excessivo.
+        </p>
+
+        <!-- Stats -->
+        <div class="mt-8 grid grid-cols-3 gap-3 w-full max-w-lg pt-6 border-t border-white/10">
           <div>
-            <div class="flex justify-between text-xs mb-1"><span>Entrada (<span id="down-pct">40</span>%)</span><strong id="down-val">R$ 460.000</strong></div>
-            <input id="down-slider" type="range" min="20" max="80" step="10" value="40" class="w-full accent-red-500">
+            <div class="text-2xl font-display font-black text-red-500">38 Carros</div>
+            <div class="text-[10px] uppercase font-mono text-slate-400 mt-0.5">Estoque Showroom</div>
           </div>
           <div>
-            <label class="text-xs text-zinc-400 block mb-1">Prazo (Meses)</label>
-            <select id="months-select" class="w-full px-3 py-2 bg-black border border-white/15 rounded-lg text-sm">
-              <option value="24">24x Meses</option>
-              <option value="36" selected>36x Meses</option>
-              <option value="48">48x Meses</option>
+            <div class="text-2xl font-display font-black text-white">Nível III-A</div>
+            <div class="text-[10px] uppercase font-mono text-slate-400 mt-0.5">Norma Balística NIJ</div>
+          </div>
+          <div>
+            <div class="text-2xl font-display font-black text-white">48 Horas</div>
+            <div class="text-[10px] uppercase font-mono text-slate-400 mt-0.5">Entrega em Todo o Brasil</div>
+          </div>
+        </div>
+
+        <!-- Filter Selector -->
+        <div class="mt-8 flex flex-wrap items-center gap-2" id="filter-buttons">
+          <span class="text-xs uppercase font-mono text-slate-500 mr-1">Filtrar Categoria:</span>
+          <button onclick="filterCars('all')" data-cat="all" class="car-filter-btn active px-3.5 py-1.5 rounded-full text-xs font-bold bg-red-600 text-white shadow-sm transition">
+            Todos (06)
+          </button>
+          <button onclick="filterCars('supercar')" data-cat="supercar" class="car-filter-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/5 text-slate-300 border border-white/10 hover:border-red-500 transition">
+            Superesportivos
+          </button>
+          <button onclick="filterCars('blindado')" data-cat="blindado" class="car-filter-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/5 text-slate-300 border border-white/10 hover:border-red-500 transition">
+            SUVs Blindados III-A
+          </button>
+        </div>
+      </div>
+
+      <!-- Hero Visual Card -->
+      <div class="lg:col-span-6 w-full">
+        <div class="car-card p-4 rounded-3xl relative overflow-hidden group">
+          <div class="relative h-80 sm:h-[420px] rounded-2xl overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=1200&q=80" alt="Porsche 911 GT3 RS" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#08090B] via-[#08090B]/30 to-transparent"></div>
+
+            <div class="absolute top-4 left-4 right-4 flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest bg-red-600 text-white font-extrabold shadow-lg">
+                Destaque do Mês
+              </span>
+              <span class="px-3 py-1 rounded-full bg-black/70 text-red-300 text-[11px] font-mono border border-red-500/30 backdrop-blur-md">
+                0 km • Pacote Weissach
+              </span>
+            </div>
+
+            <div class="absolute bottom-4 left-5 right-5 text-white">
+              <span class="text-xs font-mono text-red-400 uppercase tracking-widest">Ano 2026 • Pronta Entrega SP</span>
+              <h3 class="font-display text-2xl font-black mt-1">Porsche 911 GT3 RS Weissach Package</h3>
+              <p class="text-xs text-slate-300 mt-1">525 cv de potência atmosférica, aerodinâmica ativa DRS com asa em fibra de carbono e rodas de magnésio forjado.</p>
+              
+              <div class="mt-4 pt-3 border-t border-white/15 flex items-center justify-between">
+                <div class="flex items-center gap-3 text-xs font-mono text-slate-300">
+                  <span>⏱️ 0-100: 3.2s</span>
+                  <span>🐎 525 cv</span>
+                  <span>🏁 319 km/h</span>
+                </div>
+                <div class="text-lg font-display font-black text-red-500">
+                  R$ 3.890.000
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Showroom Grid (6 Vehicles) -->
+  <section class="max-w-7xl mx-auto px-6 py-14 border-t border-white/10">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+      <div>
+        <span class="text-xs uppercase tracking-widest font-mono text-red-500">Showroom Disponível</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-black text-white mt-1">Garagem de Exceção</h2>
+      </div>
+      <p class="text-xs text-slate-400 font-mono mt-2 md:mt-0">Todos os veículos revisados na concessionária oficial com laudo cautelar Dekra 100% aprovado</p>
+    </div>
+
+    <div id="cars-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Rendered via JS -->
+    </div>
+  </section>
+
+  <!-- Interactive Luxury Financing Simulator -->
+  <section class="max-w-4xl mx-auto px-6 py-14 border-t border-white/10" id="financiamento">
+    <div class="car-card p-8 sm:p-10 rounded-3xl border border-white/15 shadow-2xl">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-widest text-red-400">Financiamento Estruturado</span>
+          <h2 class="font-display text-2xl sm:text-3xl font-black text-white mt-1">Simulador Financeiro de Supercarros</h2>
+        </div>
+        <span class="text-xs text-slate-400 font-mono">Taxas exclusivas Private Santander & Itaú Personnalité</span>
+      </div>
+
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="space-y-6">
+          <div>
+            <label class="block text-xs font-mono uppercase text-slate-400 mb-2">Selecione o Modelo:</label>
+            <select id="sim-car-select" onchange="calcCarFin()" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-xs font-mono focus:outline-none focus:border-red-500">
+              <option value="3890000">Porsche 911 GT3 RS Weissach (R$ 3.890.000)</option>
+              <option value="5400000">Ferrari 296 GTB Hybrid Assetto Fiorano (R$ 5.400.000)</option>
+              <option value="4200000">Lamborghini Huracán Tecnica V10 (R$ 4.200.000)</option>
+              <option value="1850000">Porsche Cayenne Turbo GT Blindada III-A (R$ 1.850.000)</option>
+              <option value="2600000">Mercedes-AMG G63 V8 BiTurbo Blindada (R$ 2.600.000)</option>
+              <option value="1950000">Land Rover Defender V8 Carpathian Blindado (R$ 1.950.000)</option>
+            </select>
+          </div>
+
+          <div>
+            <div class="flex justify-between text-xs font-mono mb-2">
+              <span>Entrada Estruturada:</span>
+              <span id="sim-down-car" class="text-red-400 font-bold">50% (R$ 1.945.000)</span>
+            </div>
+            <input type="range" id="sim-car-slider" min="30" max="70" step="10" value="50" oninput="calcCarFin()" class="w-full">
+            <div class="flex justify-between text-[10px] text-slate-500 font-mono mt-1">
+              <span>30% Mínimo</span>
+              <span>50% Recomendado</span>
+              <span>70% Reduzido</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-black/60 p-6 rounded-2xl border border-white/10 text-center flex flex-col justify-center">
+          <span class="text-xs font-mono uppercase text-slate-400 tracking-wider">Parcela Mensal em 36x</span>
+          <div id="sim-monthly-car" class="font-display text-3xl sm:text-4xl font-black text-red-500 mt-2">
+            36x de R$ 68.200
+          </div>
+          <div id="sim-balloon-car" class="text-xs text-slate-400 font-mono mt-2">
+            Opção com Parcela Balão Final (Plano Troca Programada)
+          </div>
+          <button onclick="openTestDrive('Financiamento Supercarro')" class="mt-6 w-full py-3.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-extrabold text-xs uppercase tracking-wider transition shadow-lg shadow-red-600/30">
+            Aprovar Ficha de Crédito VIP
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Test Drive VIP Drawer -->
+  <div id="drawer-overlay" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300" onclick="closeTestDrive()"></div>
+  <aside id="td-drawer" class="fixed top-0 right-0 z-50 h-full w-full sm:w-[480px] bg-[#0E1013] border-l border-red-500/30 p-8 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between overflow-y-auto">
+    <div>
+      <div class="flex items-center justify-between pb-6 border-b border-white/10">
+        <div>
+          <span class="text-[10px] font-mono uppercase tracking-widest text-red-500">Experiência na Pista / Showroom</span>
+          <h3 class="font-display text-2xl font-black text-white">Agendar Test-Drive VIP</h3>
+        </div>
+        <button onclick="closeTestDrive()" class="text-slate-400 hover:text-white p-2 text-lg">✕</button>
+      </div>
+
+      <form id="form-td" class="mt-6 space-y-4" onsubmit="handleTD(event)">
+        <div>
+          <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">Nome Completo</label>
+          <input type="text" required placeholder="Ex: Lucas D. Guimarães" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-red-500">
+        </div>
+        <div>
+          <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">WhatsApp Privado</label>
+          <input type="tel" required placeholder="(11) 98765-4321" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-red-500">
+        </div>
+        <div>
+          <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">Veículo Escolhido</label>
+          <select id="select-car" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-red-500">
+            <option value="Porsche 911 GT3 RS Weissach">Porsche 911 GT3 RS Weissach (525 cv)</option>
+            <option value="Ferrari 296 GTB Assetto Fiorano">Ferrari 296 GTB Hybrid (830 cv)</option>
+            <option value="Lamborghini Huracán Tecnica">Lamborghini Huracán Tecnica V10 (640 cv)</option>
+            <option value="Porsche Cayenne Turbo GT Blindada">Porsche Cayenne Turbo GT Blindada III-A (659 cv)</option>
+            <option value="Mercedes-AMG G63 V8 Blindada">Mercedes-AMG G63 V8 BiTurbo Blindada (585 cv)</option>
+            <option value="Land Rover Defender V8 Carpathian">Land Rover Defender V8 Carpathian Blindado (525 cv)</option>
+          </select>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">Data</label>
+            <input type="date" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-red-500">
+          </div>
+          <div>
+            <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">Horário</label>
+            <select class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-red-500">
+              <option value="10:00">10:00 (Manhã)</option>
+              <option value="14:00">14:00 (Tarde)</option>
+              <option value="16:30">16:30 (Circuito Fechado)</option>
             </select>
           </div>
         </div>
 
-        <div class="mt-6 p-4 rounded-xl bg-black border border-white/10">
-          <span class="text-xs text-zinc-400 block">Parcela Mensal Estimada</span>
-          <strong id="monthly-installment" class="text-2xl text-red-400">R$ 23.890 /mês</strong>
-        </div>
-
-        <button onclick="alert('Proposta enviada para a mesa de crédito APEX Motors!')" class="mt-5 w-full py-3.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs uppercase tracking-widest transition">
-          Solicitar Reserva / Test-Drive
+        <button type="submit" class="w-full py-4 rounded-xl bg-red-600 hover:bg-red-500 text-white font-black uppercase tracking-wider text-xs transition duration-200 shadow-lg shadow-red-600/30 mt-3">
+          Confirmar Solicitação de Test-Drive
         </button>
+      </form>
+
+      <div id="td-success" class="hidden mt-6 p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-mono">
+        ✓ Solicitação registrada! Nosso consultor Private entrará em contato para alinhar detalhes de CNH e preparação do carro com tanque cheio.
       </div>
     </div>
-  </main>
 
+    <div class="pt-6 border-t border-white/10 text-xs text-slate-500 font-mono">
+      Av. Europa, 780 • Jardim Europa, São Paulo • Sala VIP com Heliponto
+    </div>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 bg-[#08090B] py-12 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="font-display font-black text-white text-base">
+        SCUDERIA IMPERIAL MOTORS © 2026
+      </div>
+      <div>
+        Supercarros, Hypercars & Blindagem Certificada Exército Brasileiro
+      </div>
+      <div class="font-mono text-[11px] text-slate-400">
+        Jardim Europa • São Paulo
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
   <script>
     const CARS = [
-      { id: 1, name: "Porsche 911 Carrera S (992)", year: "2025 • 1.800 km", hp: "450 cv", price: 1150000, img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" },
-      { id: 2, name: "Range Rover Autobiography Blindada", year: "2025 • 0 km", hp: "Blindagem Carbon", price: 1490000, img: "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80" },
-      { id: 3, name: "Audi RS6 Avant Performance", year: "2025 • 3.200 km", hp: "630 cv V8", price: 1280000, img: "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&w=800&q=80" },
-      { id: 4, name: "Mercedes-AMG G63 Blindado III-A", year: "2024 • 5.000 km", hp: "585 cv V8", price: 1950000, img: "https://images.unsplash.com/photo-1520031441872-265e4ff70366?auto=format&fit=crop&w=800&q=80" }
+      {
+        id: 1,
+        title: "Porsche 911 GT3 RS Weissach",
+        cat: "supercar",
+        ano: "2026 • 0 km",
+        potencia: "525 cv",
+        accel: "0-100: 3.2s",
+        price: 3890000,
+        img: "https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=800&q=80",
+        specs: "Weissach Package completo em carbono exposto, freios PCCB em cerâmica e gaiola de proteção em titânio."
+      },
+      {
+        id: 2,
+        title: "Ferrari 296 GTB Assetto Fiorano",
+        cat: "supercar",
+        ano: "2025 • 2.100 km",
+        potencia: "830 cv V6 Hybrid",
+        accel: "0-100: 2.9s",
+        price: 5400000,
+        img: "https://images.unsplash.com/photo-1592198084033-aade902d1aae?auto=format&fit=crop&w=800&q=80",
+        specs: "Pintura Rosso Corsa com faixa Giallo Modena, suspensão Multimatic e escapamento esportivo em titânio."
+      },
+      {
+        id: 3,
+        title: "Lamborghini Huracán Tecnica V10",
+        cat: "supercar",
+        ano: "2025 • 1.400 km",
+        potencia: "640 cv V10 Puro",
+        accel: "0-100: 3.2s",
+        price: 4200000,
+        img: "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=800&q=80",
+        specs: "Tração traseira purista com esterçamento das rodas traseiras, aerodinâmica refinada e interior em Alcantara."
+      },
+      {
+        id: 4,
+        title: "Porsche Cayenne Turbo GT Blindada",
+        cat: "blindado",
+        ano: "2026 • 0 km",
+        potencia: "659 cv V8 BiTurbo",
+        accel: "0-100: 3.3s",
+        price: 1850000,
+        img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80",
+        specs: "Blindagem nível III-A Inbra com vidros AGP B33 de 17mm. Mantém a dinâmica de pista do SUV mais rápido do mundo."
+      },
+      {
+        id: 5,
+        title: "Mercedes-AMG G63 V8 Blindada III-A",
+        cat: "blindado",
+        ano: "2025 • 3.800 km",
+        potencia: "585 cv V8 BiTurbo",
+        accel: "0-100: 4.5s",
+        price: 2600000,
+        img: "https://images.unsplash.com/photo-1520050206274-a1ae44613e6d?auto=format&fit=crop&w=800&q=80",
+        specs: "Pacote Night II, interior em couro Nappa vermelho Bengal, blindagem leve com manta de aramida e sirene embutida."
+      },
+      {
+        id: 6,
+        title: "Land Rover Defender V8 Carpathian",
+        cat: "blindado",
+        ano: "2025 • 1.900 km",
+        potencia: "525 cv V8 Supercharged",
+        accel: "0-100: 5.2s",
+        price: 1950000,
+        img: "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&w=800&q=80",
+        specs: "Blindagem de alta resistência química e balística, suspensão pneumática ativa adaptativa e acabamento acetinado cinza Carpathian."
+      }
     ];
-    let selectedCar = CARS[0];
+
+    let currentCat = 'all';
+
+    function filterCars(cat) {
+      currentCat = cat;
+      document.querySelectorAll('.car-filter-btn').forEach(btn => {
+        if (btn.getAttribute('data-cat') === cat) {
+          btn.className = "car-filter-btn active px-3.5 py-1.5 rounded-full text-xs font-bold bg-red-600 text-white shadow-sm transition";
+        } else {
+          btn.className = "car-filter-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/5 text-slate-300 border border-white/10 hover:border-red-500 transition";
+        }
+      });
+      renderCars();
+    }
 
     function renderCars() {
-      document.getElementById("cars-grid").innerHTML = CARS.map(c => `
-        <div onclick="selectCar(${c.id})" class="cursor-pointer rounded-2xl overflow-hidden bg-[#13151C] border ${selectedCar.id === c.id ? 'border-red-500' : 'border-white/10'} transition">
-          <img src="${c.img}" class="w-full h-48 object-cover">
-          <div class="p-5">
-            <span class="text-xs text-zinc-400">${c.year} • ${c.hp}</span>
-            <h3 class="font-bold text-base mt-1">${c.name}</h3>
-            <div class="text-lg font-extrabold text-red-400 mt-2">R$ ${c.price.toLocaleString('pt-BR')}</div>
+      const list = currentCat === 'all' ? CARS : CARS.filter(c => c.cat === currentCat);
+      const grid = document.getElementById('cars-grid');
+      grid.innerHTML = list.map(c => `
+        <div class="car-card rounded-3xl overflow-hidden flex flex-col justify-between group">
+          <div>
+            <div class="relative h-64 overflow-hidden">
+              <img src="${c.img}" alt="${c.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0B0D10] via-transparent to-transparent"></div>
+              
+              <span class="absolute top-4 left-4 px-2.5 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider bg-black/70 backdrop-blur-md text-red-400 border border-white/10">
+                ${c.cat === 'supercar' ? 'Superesportivo' : 'Blindado III-A'}
+              </span>
+
+              <div class="absolute bottom-3 left-4 right-4 text-white">
+                <span class="text-[10px] font-mono text-red-400 block">${c.ano}</span>
+                <h3 class="font-display font-black text-lg mt-0.5 line-clamp-1">${c.title}</h3>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <p class="text-xs text-slate-300 leading-relaxed line-clamp-2">${c.specs}</p>
+              
+              <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
+                <span>🐎 ${c.potencia}</span>
+                <span>⚡ ${c.accel}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="flex items-center justify-between pt-4 border-t border-white/10">
+              <div>
+                <span class="text-[10px] font-mono uppercase text-slate-500 block">Preço à Vista</span>
+                <span class="text-lg font-display font-black text-red-500">R$ ${c.price.toLocaleString('pt-BR')}</span>
+              </div>
+              <button onclick="openTestDrive('${c.title}')" class="px-3.5 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs uppercase font-mono transition">
+                Test-Drive ↗
+              </button>
+            </div>
           </div>
         </div>
-      `).join("");
+      `).join('');
     }
 
-    function updateSim() {
-      const pct = Number(document.getElementById("down-slider").value);
-      const months = Number(document.getElementById("months-select").value);
-      const down = selectedCar.price * (pct / 100);
-      const financed = selectedCar.price - down;
-      const monthly = (financed * 1.18) / months;
+    // Financing Simulator
+    function calcCarFin() {
+      const price = parseFloat(document.getElementById('sim-car-select').value);
+      const downPct = parseInt(document.getElementById('sim-car-slider').value);
+      
+      const downVal = price * (downPct / 100);
+      document.getElementById('sim-down-car').textContent = `${downPct}% (R$ ${Math.round(downVal).toLocaleString('pt-BR')})`;
 
-      document.getElementById("sim-car-name").textContent = selectedCar.name;
-      document.getElementById("sim-car-price").textContent = "R$ " + selectedCar.price.toLocaleString("pt-BR");
-      document.getElementById("down-pct").textContent = pct;
-      document.getElementById("down-val").textContent = "R$ " + down.toLocaleString("pt-BR");
-      document.getElementById("monthly-installment").textContent = "R$ " + Math.round(monthly).toLocaleString("pt-BR") + " /mês";
+      const financed = price - downVal;
+      const monthly = (financed / 36) + (financed * 0.0085); // Approximate 0.85% monthly rate
+      document.getElementById('sim-monthly-car').textContent = `36x de R$ ${Math.round(monthly).toLocaleString('pt-BR')}`;
     }
 
-    window.selectCar = function(id) { selectedCar = CARS.find(c => c.id === id); renderCars(); updateSim(); };
-    document.getElementById("down-slider").addEventListener("input", updateSim);
-    document.getElementById("months-select").addEventListener("change", updateSim);
-    renderCars(); updateSim();
+    // Drawer Test-Drive
+    const tdDrawer = document.getElementById('td-drawer');
+    const drawerOverlay = document.getElementById('drawer-overlay');
+
+    function openTestDrive(carro) {
+      if (carro && document.getElementById('select-car')) {
+        const sel = document.getElementById('select-car');
+        for (let i = 0; i < sel.options.length; i++) {
+          if (sel.options[i].text.includes(carro) || carro.includes(sel.options[i].value)) {
+            sel.selectedIndex = i;
+            break;
+          }
+        }
+      }
+      drawerOverlay.classList.remove('opacity-0', 'pointer-events-none');
+      tdDrawer.classList.remove('translate-x-full');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeTestDrive() {
+      drawerOverlay.classList.add('opacity-0', 'pointer-events-none');
+      tdDrawer.classList.add('translate-x-full');
+      document.body.style.overflow = '';
+    }
+
+    function handleTD(e) {
+      e.preventDefault();
+      const succ = document.getElementById('td-success');
+      succ.classList.remove('hidden');
+      setTimeout(() => {
+        closeTestDrive();
+        succ.classList.add('hidden');
+        document.getElementById('form-td').reset();
+      }, 3000);
+    }
+
+    renderCars();
+    calcCarFin();
   </script>
+
   <!-- Vercel Web Analytics & Speed Insights -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
