@@ -1,92 +1,207 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
-  <!-- Favicon -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TITAN INDÚSTRIA METALÚRGICA — Usinagem CNC 5 Eixos, Ferramentaria & Caldeiraria ASME</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
-
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TITAN USINAGEM CNC & CALDEIRARIA INDUSTRIAL</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <style>
-    body { background-color: #0D1117; color: #F1F5F9; font-family: 'Inter', sans-serif; }
+    body { background-color: #0B0E13; color: #F1F5F9; font-family: 'Inter', sans-serif; overflow-x: hidden; }
     .font-tech { font-family: 'JetBrains Mono', monospace; }
   </style>
 </head>
-<body class="min-h-screen antialiased">
-  <header class="border-b border-amber-500/20 bg-[#0D1117] sticky top-0 z-40">
+<body class="min-h-screen antialiased selection:bg-amber-500 selection:text-black">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 border-b border-amber-500/20 bg-[#0B0E13]/95 backdrop-blur-xl">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="w-9 h-9 bg-amber-500 text-black font-black flex items-center justify-center rounded-md">T</div>
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-amber-500 text-black font-black flex items-center justify-center rounded-md text-lg">T</div>
         <div>
-          <span class="font-extrabold tracking-tight text-lg block leading-none">TITAN <span class="text-amber-500">INDÚSTRIA METALÚRGICA</span></span>
-          <span class="font-tech text-[10px] text-slate-400">FERRAMENTARIA DE PRECISÃO • USINAGEM CNC 5 EIXOS • CALDEIRARIA ASME</span>
+          <span class="font-extrabold tracking-tight text-lg block leading-none">TITAN <span class="text-amber-500">METALÚRGICA CNC</span></span>
+          <span class="font-tech text-[10px] text-slate-400 block mt-1">ISO 9001:2015 • IATF 16949 AUTOMOTIVA • CALDEIRARIA ASME</span>
         </div>
-      </div>
-      <span class="hidden md:inline-block font-tech text-xs px-3 py-1 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/30">ISO 9001:2015 • Metrologia Tridimensional CMM</span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8 text-xs font-tech uppercase text-slate-300">
+        <a href="#cotacao" class="hover:text-amber-400">Configurador CAD/CAM</a>
+        <a href="#maquinas" class="hover:text-amber-400">Parque de Máquinas</a>
+        <a href="#metrologia" class="hover:text-amber-400">Qualidade Zeiss CMM</a>
+      </nav>
+
+      <button onclick="openTitanDrawer('Envio de Arquivo Técnico .STEP / .DWG')" class="px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-black font-extrabold text-xs uppercase tracking-wider transition">
+        Cotar Desenho Técnico
+      </button>
     </div>
   </header>
 
-  <main class="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-    <div class="lg:col-span-6">
-      <span class="font-tech text-xs uppercase text-amber-400">Tolerância Centesimal (±0.005mm) & Solda Qualificada AWS</span>
-      <h1 class="text-4xl sm:text-6xl font-extrabold mt-3 leading-tight">Moldes de injeção, usinagem CNC e caldeiraria pesada.</h1>
-      <p class="text-slate-400 mt-4 leading-relaxed">Fabricamos matrizes de estampo, dispositivos de controle, tanques de pressão em aço inox, estruturas metálicas industriais e lotes seriados sob desenho técnico (STEP / IGES / SolidWorks).</p>
+  <main class="max-w-7xl mx-auto px-6 py-14">
+    <!-- HERO & B2B CNC QUOTATION CONFIGURATOR -->
+    <section id="cotacao" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pb-20 border-b border-white/10">
+      <div class="lg:col-span-6 space-y-6">
+        <span class="font-tech text-xs uppercase px-3 py-1 rounded bg-amber-500/15 text-amber-400 border border-amber-500/30">
+          Tolerância Centesimal (±0.004mm) & Solda Qualificada AWS / ASME IX
+        </span>
+        <h1 class="text-4xl sm:text-6xl font-extrabold leading-[1.05]">
+          Usinagem CNC 5 Eixos, Moldes e <span class="text-amber-500">Caldeiraria Pesada.</span>
+        </h1>
+        <p class="text-slate-400 text-base leading-relaxed">
+          Fornecemos peças técnicas usinadas, matrizes de injeção/estampo, vasos de pressão em inox sanitário e skids industriais com rastreabilidade de corrida siderúrgica e laudo tridimensional.
+        </p>
 
-      <div class="grid grid-cols-3 gap-3 mt-8 pt-6 border-t border-white/10 font-tech">
-        <div><div class="text-2xl font-bold text-amber-400">5 Eixos</div><div class="text-[11px] text-slate-400">Centros Romi / Mazak</div></div>
-        <div><div class="text-2xl font-bold text-white">25 Ton</div><div class="text-[11px] text-slate-400">Ponte Rolante Interna</div></div>
-        <div><div class="text-2xl font-bold text-white">100%</div><div class="text-[11px] text-slate-400">Laudo Dimensional</div></div>
-      </div>
-    </div>
-
-    <!-- Configurador de Cotação Técnica B2B -->
-    <div class="lg:col-span-6 bg-[#161C24] border border-amber-500/35 rounded-3xl p-8 shadow-2xl">
-      <h2 class="text-xl font-extrabold mb-1">Simulador de Engenharia & Cotação Técnica</h2>
-      <p class="text-xs text-slate-400 mb-6">Selecione o processo fabril e a matéria-prima do seu projeto:</p>
-
-      <div class="space-y-4">
-        <div>
-          <label class="text-xs font-bold uppercase text-slate-400 block mb-1">1. Setor / Processo Industrial</label>
-          <select id="ind-proc" class="w-full px-4 py-3 bg-black border border-white/15 rounded-xl text-sm font-semibold text-white">
-            <option value="Ferramentaria: Construção/Manutenção de Molde de Injeção ou Estampo">Ferramentaria — Moldes de Injeção / Estampos / Dispositivos</option>
-            <option value="Usinagem CNC: Centro 5 Eixos, Torno CNC e Eletroerosão a Fio" selected>Usinagem de Precisão — CNC 5 Eixos / Eletroerosão a Fio</option>
-            <option value="Caldeiraria Pesada: Corte Laser, Dobra CNC, Solda MIG/TIG e Vasos de Pressão">Caldeiraria & Corte/Dobra — Tanques Inox, Skids e Estruturas</option>
-          </select>
-        </div>
-
-        <div>
-          <label class="text-xs font-bold uppercase text-slate-400 block mb-1">2. Liga Metálica / Especificação</label>
-          <select id="ind-mat" class="w-full px-4 py-3 bg-black border border-white/15 rounded-xl text-sm font-semibold text-white">
-            <option value="Aço Ferramenta Temperado (P20 / H13 / D2)">Aço Ferramenta Temperado (P20 / H13 / VND / D2)</option>
-            <option value="Aço Inoxidável Sanitário (AISI 304 / 316L)">Aço Inoxidável Certificado (AISI 304 / 316L)</option>
-            <option value="Aço Carbono Estrutural (ASTM A36 / SAE 1045)">Aço Carbono Estrutural (ASTM A36 / SAE 1045)</option>
-            <option value="Alumínio Aeronáutico/Naval (7075-T6 / 6061)">Alumínio de Alta Resistência (7075-T6 / 6061)</option>
-          </select>
+        <div class="grid grid-cols-3 gap-3 pt-4 border-t border-white/10 font-tech">
+          <div class="p-4 rounded-xl bg-[#141A23] border border-white/10">
+            <div class="text-2xl font-bold text-amber-400">18 Centros</div>
+            <div class="text-[11px] text-slate-400">Mazak 5 Eixos & Romi</div>
+          </div>
+          <div class="p-4 rounded-xl bg-[#141A23] border border-white/10">
+            <div class="text-2xl font-bold text-white">25 Ton</div>
+            <div class="text-[11px] text-slate-400">Ponte Rolante Interna</div>
+          </div>
+          <div class="p-4 rounded-xl bg-[#141A23] border border-white/10">
+            <div class="text-2xl font-bold text-emerald-400">100%</div>
+            <div class="text-[11px] text-slate-400">Inspeção Zeiss CMM</div>
+          </div>
         </div>
       </div>
 
-      <div class="mt-6 p-4 rounded-xl bg-black/60 border border-white/10 font-tech text-xs">
-        <span class="text-amber-400 block mb-1">● ESPECIFICAÇÃO TÉCNICA SELECIONADA:</span>
-        <p id="ind-summary" class="text-slate-300 leading-relaxed"></p>
-      </div>
+      <!-- Technical Engineering Configurator -->
+      <div class="lg:col-span-6 bg-[#141A23] border border-amber-500/35 rounded-3xl p-8 shadow-2xl space-y-5">
+        <div>
+          <h2 class="text-xl font-extrabold">Configurador de Engenharia & Lead-Time</h2>
+          <p class="text-xs text-slate-400">Parametrize o processo fabril, liga metálica e tamanho do lote:</p>
+        </div>
 
-      <button onclick="alert('Solicitação enviada à Engenharia de Orçamentos! Aceitamos arquivos .STEP, .DWG e .PDF.')" class="mt-6 w-full py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-extrabold text-xs uppercase tracking-widest transition">
-        Enviar Desenho Técnico p/ Cotação →
-      </button>
-    </div>
+        <div>
+          <label class="text-xs font-bold uppercase text-slate-400 block mb-1.5">1. Processo Fabril Principal</label>
+          <select id="ind-proc" onchange="updateInd()" class="w-full px-4 py-3 bg-black border border-white/15 rounded-xl text-xs sm:text-sm font-semibold text-white">
+            <option value="Usinagem CNC 5 Eixos Simultâneos + Eletroerosão a Fio" data-lead="7 a 10 dias úteis">Usinagem de Precisão — CNC 5 Eixos / Eletroerosão a Fio</option>
+            <option value="Ferramentaria: Construção de Molde de Injeção ou Estampo Progressivo" data-lead="25 a 35 dias úteis">Ferramentaria — Moldes de Injeção / Estampos</option>
+            <option value="Caldeiraria Pesada: Corte Laser Fibra 12kW, Dobra CNC e Solda TIG/MIG" data-lead="12 a 18 dias úteis">Caldeiraria & Corte Laser — Tanques Inox, Skids e Estruturas</option>
+          </select>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="text-xs font-bold uppercase text-slate-400 block mb-1.5">2. Liga Metálica Certificada</label>
+            <select id="ind-mat" onchange="updateInd()" class="w-full px-3.5 py-3 bg-black border border-white/15 rounded-xl text-xs font-semibold text-white">
+              <option value="Aço Ferramenta Temperado (H13 / D2 / P20)">Aço Ferramenta (H13 / D2 / P20)</option>
+              <option value="Aço Inoxidável Sanitário (AISI 316L / 304)">Aço Inox (AISI 316L / 304)</option>
+              <option value="Alumínio Aeronáutico (7075-T6 / 6061)">Alumínio Naval/Aero (7075-T6)</option>
+              <option value="Aço Carbono Estrutural (SAE 4140 / 1045)">Aço Liga (SAE 4140 / 1045)</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-xs font-bold uppercase text-slate-400 block mb-1.5">3. Regime de Lote</label>
+            <select id="ind-batch" onchange="updateInd()" class="w-full px-3.5 py-3 bg-black border border-white/15 rounded-xl text-xs font-semibold text-white">
+              <option value="Protótipo / Peça Única de Manutenção">Protótipo / Peça Única</option>
+              <option value="Lote Piloto (10 a 100 peças)">Lote Piloto (10 a 100 un.)</option>
+              <option value="Produção Seriada Contínua (+500 peças/mês)">Lote Seriado (+500 un./mês)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-black/70 border border-white/10 font-tech text-xs space-y-1.5">
+          <div class="flex justify-between text-amber-400">
+            <span>● ESPECIFICAÇÃO DE ORÇAMENTO:</span>
+            <span id="ind-lead">Lead-Time: 7 a 10 dias úteis</span>
+          </div>
+          <p id="ind-summary" class="text-slate-300 leading-relaxed"></p>
+        </div>
+
+        <button onclick="openTitanDrawer(document.getElementById('ind-summary').textContent)" class="w-full py-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-extrabold text-xs uppercase tracking-widest transition">
+          Anexar Arquivo 3D (.STEP / .PDF) p/ Cotação →
+        </button>
+      </div>
+    </section>
+
+    <!-- MACHINE PARK -->
+    <section id="maquinas" class="py-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="p-7 rounded-2xl bg-[#141A23] border border-white/10">
+        <span class="font-tech text-xs text-amber-400">01 // CENTROS 5 EIXOS</span>
+        <h3 class="text-xl font-bold mt-2">Mazak Integrex & DMG Mori</h3>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Usinagem complexa de rotores, blocos hidráulicos e cavidades de moldes em uma única fixação com programação CAM HyperMill.</p>
+      </div>
+      <div class="p-7 rounded-2xl bg-[#141A23] border border-white/10">
+        <span class="font-tech text-xs text-amber-400">02 // CORTE LASER FIBRA 12KW</span>
+        <h3 class="text-xl font-bold mt-2">Bystronic Laser & Dobra CNC</h3>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Corte de chapas de aço carbono e inox de até 32mm de espessura com dobra robotizada de 320 toneladas.</p>
+      </div>
+      <div id="metrologia" class="p-7 rounded-2xl bg-[#141A23] border border-white/10">
+        <span class="font-tech text-xs text-amber-400">03 // METROLOGIA ZEISS</span>
+        <h3 class="text-xl font-bold mt-2">Tridimensional CMM & Ensaios END</h3>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Sala climatizada a 20°C com máquina de medição por coordenadas Zeiss Contura, ultrassom de solda e líquido penetrante.</p>
+      </div>
+    </section>
   </main>
 
+  <!-- CAD UPLOAD DRAWER -->
+  <div id="titan-overlay" onclick="closeTitanDrawer()" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden"></div>
+  <aside id="titan-drawer" class="fixed top-0 right-0 z-50 h-full w-full sm:w-[450px] bg-[#141A23] border-l border-amber-500/30 p-8 transform translate-x-full transition-transform duration-300 flex flex-col justify-between">
+    <div>
+      <div class="flex justify-between items-center pb-4 border-b border-white/10">
+        <h3 class="font-extrabold text-xl">Engenharia de Orçamentos</h3>
+        <button onclick="closeTitanDrawer()" class="text-slate-400 hover:text-white">✕</button>
+      </div>
+      <form onsubmit="submitTitan(event)" class="mt-6 space-y-4 text-xs font-tech">
+        <div>
+          <label class="block text-slate-400 uppercase mb-1">Parâmetros Selecionados</label>
+          <textarea id="titan-spec" rows="3" readonly class="w-full p-3 rounded-xl bg-black border border-amber-500/40 text-amber-300"></textarea>
+        </div>
+        <div>
+          <label class="block text-slate-400 uppercase mb-1">Engenheiro / Comprador *</label>
+          <input type="text" required placeholder="Nome e Empresa" class="w-full px-3.5 py-3 rounded-xl bg-black border border-white/15 text-white">
+        </div>
+        <div>
+          <label class="block text-slate-400 uppercase mb-1">E-mail Corporativo *</label>
+          <input type="email" required placeholder="compras@industria.com.br" class="w-full px-3.5 py-3 rounded-xl bg-black border border-white/15 text-white">
+        </div>
+        <button type="submit" class="w-full py-4 rounded-xl bg-amber-500 text-black font-extrabold uppercase tracking-widest">
+          Solicitar Cotação Técnica (24h) →
+        </button>
+      </form>
+      <div id="titan-msg" class="hidden mt-5 p-4 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-tech">
+        ✓ Protocolo #TITAN-849 gerado! Nosso engenheiro orçamentista responde em até 24h úteis.
+      </div>
+    </div>
+    <div class="text-[11px] font-tech text-slate-500 border-t border-white/10 pt-4">
+      TITAN METALÚRGICA LTDA • DISTRITO INDUSTRIAL SP
+    </div>
+  </aside>
+
   <script>
-    const pSel = document.getElementById('ind-proc'), mSel = document.getElementById('ind-mat');
     function updateInd() {
-      document.getElementById('ind-summary').textContent = `${pSel.value} | Matéria-prima: ${mSel.value} com certificado de usina e relatório tridimensional.`;
+      const pSel = document.getElementById('ind-proc');
+      const mSel = document.getElementById('ind-mat');
+      const bSel = document.getElementById('ind-batch');
+      const lead = pSel.options[pSel.selectedIndex].getAttribute('data-lead');
+      document.getElementById('ind-lead').textContent = 'Lead-Time: ' + lead;
+      document.getElementById('ind-summary').textContent = `${pSel.value} | Liga: ${mSel.value} | Escala: ${bSel.value} (c/ Certificado de Qualidade e Laudo CMM).`;
     }
-    pSel.addEventListener('change', updateInd); mSel.addEventListener('change', updateInd);
+
+    function openTitanDrawer(spec) {
+      document.getElementById('titan-spec').value = spec;
+      document.getElementById('titan-msg').classList.add('hidden');
+      document.getElementById('titan-overlay').classList.remove('hidden');
+      document.getElementById('titan-drawer').classList.remove('translate-x-full');
+    }
+
+    function closeTitanDrawer() {
+      document.getElementById('titan-overlay').classList.add('hidden');
+      document.getElementById('titan-drawer').classList.add('translate-x-full');
+    }
+
+    function submitTitan(e) {
+      e.preventDefault();
+      document.getElementById('titan-msg').classList.remove('hidden');
+      e.target.reset();
+    }
+
     updateInd();
   </script>
-  <!-- Vercel Web Analytics & Speed Insights -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };

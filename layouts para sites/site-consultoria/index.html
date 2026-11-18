@@ -1,67 +1,207 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>APEX STRATEGY — Consultoria de Gestão & Eficiência EBITDA</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>APEX STRATEGY — Management Consulting, EBITDA Expansion & M&A Advisory</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    body {
-      background-color: #070C18;
-      color: #F8FAFC;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-image: radial-gradient(rgba(56, 189, 248, 0.08) 1px, transparent 1px),
-                        radial-gradient(circle 700px at 50% -10%, rgba(14, 165, 233, 0.18), transparent 70%),
-                        radial-gradient(circle 500px at 85% 30%, rgba(99, 102, 241, 0.12), transparent 60%);
-      background-size: 32px 32px, 100% 100%, 100% 100%;
-      background-attachment: fixed;
-    }
-  </style>
-  <!-- Favicon -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
+  <style>
+    body {
+      background-color: #060B16;
+      color: #F8FAFC;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-image: radial-gradient(rgba(56, 189, 248, 0.07) 1px, transparent 1px),
+                        radial-gradient(circle 700px at 50% -10%, rgba(14, 165, 233, 0.16), transparent 70%);
+      background-size: 32px 32px, 100% 100%;
+      overflow-x: hidden;
+    }
+    .font-mono-fin { font-family: 'JetBrains Mono', monospace; }
+  </style>
 </head>
-<body class="min-h-screen antialiased">
-  <header class="border-b border-white/10 px-6 h-20 flex items-center justify-between max-w-7xl mx-auto">
-    <span class="font-extrabold text-xl tracking-tight">APEX <span class="text-sky-400">STRATEGY</span></span>
-    <span class="text-xs text-slate-400">Reestruturação Financeira • Eficiência Operacional • M&A</span>
+<body class="min-h-screen antialiased selection:bg-sky-400 selection:text-slate-950">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-[#060B16]/90 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-sky-500 text-slate-950 font-black flex items-center justify-center">AS</div>
+        <div>
+          <span class="font-extrabold text-xl tracking-tight block leading-none">APEX <span class="text-sky-400">STRATEGY</span></span>
+          <span class="text-[10px] font-mono-fin uppercase tracking-widest text-slate-400 block mt-0.5">Board Advisory & M&A</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-wider text-slate-300">
+        <a href="#simulador" class="hover:text-sky-400">Simulador EBITDA & Valuation</a>
+        <a href="#pilares" class="hover:text-sky-400">Práticas de Gestão</a>
+        <a href="#cases" class="hover:text-sky-400">Track Record</a>
+      </nav>
+
+      <button onclick="openApexDrawer('Reunião Confidencial com Sócio-Diretor')" class="px-5 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition">
+        Agendar Board Call
+      </button>
+    </div>
   </header>
 
-  <main class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-    <div class="lg:col-span-6">
-      <span class="text-xs uppercase tracking-widest text-sky-400 font-bold">Gestão Baseada em Dados</span>
-      <h1 class="text-4xl sm:text-6xl font-extrabold mt-3 leading-tight">Destrave caixa e expanda o EBITDA da sua operação.</h1>
-      <p class="text-slate-400 mt-4">Atuamos lado a lado com CEOs e fundadores na otimização de custos (Zero-Based Budgeting), desenho de processos e aceleração comercial B2B.</p>
-    </div>
+  <main class="max-w-7xl mx-auto px-6 py-14">
+    <!-- HERO & EBITDA / VALUATION SIMULATOR -->
+    <section id="simulador" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pb-20 border-b border-white/10">
+      <div class="lg:col-span-6 space-y-6">
+        <span class="px-3.5 py-1.5 rounded-full bg-sky-500/15 border border-sky-500/30 text-sky-400 text-xs font-mono-fin uppercase">
+          Zero-Based Budgeting • Eficiência Comercial • M&A Sell-Side
+        </span>
+        <h1 class="text-4xl sm:text-6xl font-extrabold leading-[1.05]">
+          Destrave caixa livre e multiplique o <span class="text-sky-400">Valuation da sua operação.</span>
+        </h1>
+        <p class="text-slate-400 text-base leading-relaxed">
+          Atuamos lado a lado com CEOs, Conselhos e Fundos de Private Equity na reestruturação de margens, renegociação de passivos, governança corporativa e preparação para liquidez (M&A).
+        </p>
 
-    <!-- Simulador de Ganho de Margem EBITDA -->
-    <div class="lg:col-span-6 bg-[#10192B] border border-sky-500/30 rounded-3xl p-8">
-      <h2 class="text-xl font-bold mb-1">Calculadora de Expansão de Caixa</h2>
-      <p class="text-xs text-slate-400 mb-6">Simule o impacto de uma otimização operacional de +6,5% na margem líquida:</p>
-      <div>
-        <div class="flex justify-between text-xs mb-2"><span>Faturamento Anual da Empresa</span><strong id="rev-lbl" class="text-xl text-sky-400">R$ 12 Milhões</strong></div>
-        <input id="rev-slider" type="range" min="2" max="100" step="2" value="12" class="w-full accent-sky-400">
+        <div class="grid grid-cols-3 gap-3 pt-2 font-mono-fin">
+          <div class="p-4 rounded-2xl bg-[#0D1627] border border-white/10">
+            <strong class="text-2xl text-sky-400 block">+6.8 pp</strong>
+            <span class="text-[10px] text-slate-400 uppercase">Expansão Média EBITDA</span>
+          </div>
+          <div class="p-4 rounded-2xl bg-[#0D1627] border border-white/10">
+            <strong class="text-2xl text-emerald-400 block">R$ 3.4 Bi</strong>
+            <span class="text-[10px] text-slate-400 uppercase">Em Operações Auditadas</span>
+          </div>
+          <div class="p-4 rounded-2xl bg-[#0D1627] border border-white/10">
+            <strong class="text-2xl text-white block">90 Dias</strong>
+            <span class="text-[10px] text-slate-400 uppercase">Ciclo Rápido de Caixa</span>
+          </div>
+        </div>
       </div>
-      <div class="mt-6 p-5 rounded-2xl bg-black/40 border border-white/10 flex justify-between items-center">
-        <span class="text-xs text-slate-300">Geração Adicional de Caixa / Ano:</span>
-        <strong id="ebitda-gain" class="text-2xl font-extrabold text-emerald-400">+ R$ 780.000</strong>
+
+      <!-- EBITDA & Enterprise Valuation Calculator -->
+      <div class="lg:col-span-6 bg-[#0D1627] border border-sky-500/35 rounded-3xl p-8 shadow-2xl space-y-6">
+        <div>
+          <h2 class="text-xl font-bold">Simulador de Expansão de Caixa & Valuation</h2>
+          <p class="text-xs text-slate-400 mt-1">Simule o impacto de uma reestruturação operacional na geração de caixa e no valor de venda (M&A múltiplo 7x EBITDA):</p>
+        </div>
+
+        <div>
+          <div class="flex justify-between text-xs mb-2">
+            <span class="text-slate-400">Faturamento Anual Bruto da Empresa</span>
+            <strong id="rev-lbl" class="text-xl text-sky-400 font-mono-fin">R$ 24 Milhões</strong>
+          </div>
+          <input id="rev-slider" type="range" min="4" max="200" step="4" value="24" oninput="calcEbitda()" class="w-full accent-sky-400">
+        </div>
+
+        <div>
+          <label class="text-xs text-slate-400 block mb-2">Alavanca Principal do Projeto</label>
+          <select id="lever-select" onchange="calcEbitda()" class="w-full px-4 py-3 rounded-xl bg-black border border-white/15 text-xs font-bold text-white">
+            <option value="0.065">Reestruturação de Custos & Compras Strategic Sourcing (+6,5% Margem)</option>
+            <option value="0.082">Aceleração Comercial B2B & Precificação Dinâmica (+8,2% Margem)</option>
+            <option value="0.105">Turnaround Full-Scope: Custos + Comercial + Tributário (+10,5% Margem)</option>
+          </select>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono-fin">
+          <div class="p-4 rounded-2xl bg-black/50 border border-white/10">
+            <span class="text-[10px] text-slate-400 uppercase block">Caixa Livre Adicional / Ano</span>
+            <strong id="ebitda-gain" class="text-2xl font-extrabold text-emerald-400">+ R$ 1.560.000</strong>
+          </div>
+          <div class="p-4 rounded-2xl bg-sky-500/10 border border-sky-500/30">
+            <span class="text-[10px] text-sky-300 uppercase block">Ganho no Valuation (7x EBITDA)</span>
+            <strong id="val-gain" class="text-2xl font-extrabold text-sky-400">+ R$ 10.920.000</strong>
+          </div>
+        </div>
+
+        <button onclick="openApexDrawer('Diagnóstico EBITDA — Ganho Est. ' + document.getElementById('ebitda-gain').textContent)" class="w-full py-4 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-extrabold text-xs uppercase tracking-widest transition">
+          Agendar Diagnóstico Confidencial (NDA) →
+        </button>
       </div>
-      <button onclick="alert('Diagnóstico executivo agendado com um Sócio-Diretor da Apex Strategy!')" class="mt-6 w-full py-3.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs uppercase tracking-widest">Agendar Diagnóstico Executivo →</button>
-    </div>
+    </section>
+
+    <!-- 3 PRACTICE PILLARS -->
+    <section id="pilares" class="py-16 border-b border-white/10 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="p-7 rounded-3xl bg-[#0D1627] border border-white/10">
+        <span class="text-xs font-mono-fin text-sky-400">01 // OPEX & OBZ</span>
+        <h3 class="text-xl font-bold mt-2">Orçamento Base Zero & Suprimentos</h3>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Auditoria linha a linha de contratos, logística e despesas gerais, eliminando ineficiências ocultas nos primeiros 60 dias de projeto.</p>
+      </div>
+      <div class="p-7 rounded-3xl bg-[#0D1627] border border-white/10">
+        <span class="text-xs font-mono-fin text-sky-400">02 // REVENUE GROWTH</span>
+        <h3 class="text-xl font-bold mt-2">Engenharia Comercial & Pricing</h3>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Redesenho de política de descontos, mix de produtos de maior margem de contribuição e estruturação de máquinas de vendas outbound B2B.</p>
+      </div>
+      <div class="p-7 rounded-3xl bg-[#0D1627] border border-white/10">
+        <span class="text-xs font-mono-fin text-sky-400">03 // CORPORATE FINANCE</span>
+        <h3 class="text-xl font-bold mt-2">Valuation, M&A & Captação</h3>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Modelagem financeira auditável, preparação de Data Room e condução de processos competitivos de venda parcial ou total para fundos.</p>
+      </div>
+    </section>
   </main>
 
+  <!-- EXECUTIVE DRAWER -->
+  <div id="apex-overlay" onclick="closeApexDrawer()" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden"></div>
+  <aside id="apex-drawer" class="fixed top-0 right-0 z-50 h-full w-full sm:w-[440px] bg-[#0D1627] border-l border-sky-500/30 p-8 transform translate-x-full transition-transform duration-300 flex flex-col justify-between">
+    <div>
+      <div class="flex justify-between items-center pb-4 border-b border-white/10">
+        <h3 class="font-extrabold text-2xl">Comitê de Sócios</h3>
+        <button onclick="closeApexDrawer()" class="text-slate-400 hover:text-white">✕</button>
+      </div>
+      <form onsubmit="submitApex(event)" class="mt-6 space-y-4 text-xs">
+        <div>
+          <label class="block text-slate-400 uppercase mb-1">Pauta Executiva</label>
+          <input type="text" id="apex-topic" readonly class="w-full px-3.5 py-3 rounded-xl bg-black border border-sky-500/40 text-sky-300 font-bold">
+        </div>
+        <div>
+          <label class="block text-slate-400 uppercase mb-1">Nome & Cargo (CEO / CFO / Sócio) *</label>
+          <input type="text" required placeholder="Nome e Cargo" class="w-full px-3.5 py-3 rounded-xl bg-black border border-white/15 text-white">
+        </div>
+        <div>
+          <label class="block text-slate-400 uppercase mb-1">E-mail Corporativo *</label>
+          <input type="email" required placeholder="voce@empresa.com.br" class="w-full px-3.5 py-3 rounded-xl bg-black border border-white/15 text-white">
+        </div>
+        <button type="submit" class="w-full py-4 rounded-xl bg-sky-500 text-slate-950 font-extrabold uppercase tracking-widest">
+          Confirmar Reunião Sob NDA →
+        </button>
+      </form>
+      <div id="apex-msg" class="hidden mt-5 p-4 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs">
+        ✓ Agendamento encaminhado ao Managing Partner da Apex Strategy.
+      </div>
+    </div>
+    <div class="text-[11px] font-mono-fin text-slate-500 border-t border-white/10 pt-4">
+      APEX STRATEGY ADVISORY • FARIA LIMA, SÃO PAULO
+    </div>
+  </aside>
+
   <script>
-    const rSlider = document.getElementById('rev-slider');
     function calcEbitda() {
-      const revM = Number(rSlider.value);
-      const gain = revM * 1000000 * 0.065;
+      const revM = Number(document.getElementById('rev-slider').value);
+      const factor = Number(document.getElementById('lever-select').value);
+      const gain = Math.round(revM * 1000000 * factor);
+      const valGain = gain * 7;
       document.getElementById('rev-lbl').textContent = `R$ ${revM} Milhões`;
       document.getElementById('ebitda-gain').textContent = '+ R$ ' + gain.toLocaleString('pt-BR');
+      document.getElementById('val-gain').textContent = '+ R$ ' + valGain.toLocaleString('pt-BR');
     }
-    rSlider.addEventListener('input', calcEbitda);
+
+    function openApexDrawer(topic) {
+      document.getElementById('apex-topic').value = topic;
+      document.getElementById('apex-msg').classList.add('hidden');
+      document.getElementById('apex-overlay').classList.remove('hidden');
+      document.getElementById('apex-drawer').classList.remove('translate-x-full');
+    }
+
+    function closeApexDrawer() {
+      document.getElementById('apex-overlay').classList.add('hidden');
+      document.getElementById('apex-drawer').classList.add('translate-x-full');
+    }
+
+    function submitApex(e) {
+      e.preventDefault();
+      document.getElementById('apex-msg').classList.remove('hidden');
+      e.target.reset();
+    }
+
     calcEbitda();
   </script>
-  <!-- Vercel Web Analytics & Speed Insights -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };

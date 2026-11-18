@@ -1,83 +1,242 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MONOLITH Engenharia & Incorporação</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MONOLITH ENGENHARIA & INCORPORAÇÃO — Infraestrutura Triple-A & Galpões Logísticos</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <style>body { background-color: #0E1116; color: #F8FAFC; font-family: 'Inter', sans-serif; }</style>
-  <!-- Favicon -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
+  <style>
+    body { background-color: #0B0E14; color: #F8FAFC; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+    .font-display { font-family: 'Syne', sans-serif; }
+    .font-mono-eng { font-family: 'JetBrains Mono', monospace; }
+  </style>
 </head>
-<body class="min-h-screen antialiased">
-  <header class="border-b border-white/10 bg-[#0E1116] sticky top-0 z-40">
+<body class="min-h-screen antialiased selection:bg-amber-500 selection:text-black">
+
+  <!-- TOP COMPLIANCE BAR -->
+  <div class="bg-[#07090D] border-b border-white/10 py-2 px-6 text-[11px] font-mono-eng text-slate-400">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <span>ISO 9001:2015 • PBQP-H NÍVEL A • CERTIFICAÇÃO LEED PLATINUM GREEN BUILDING</span>
+      <span class="text-amber-400">1.450.000 m² Entregues com Zero Atraso Contratual</span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-[#0B0E14]/90 backdrop-blur-xl">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <div class="flex items-center gap-2.5">
-        <div class="w-8 h-8 bg-amber-500 text-black font-black flex items-center justify-center">M</div>
-        <span class="font-extrabold tracking-tight text-lg">MONOLITH <span class="text-amber-500">ENGENHARIA</span></span>
-      </div>
-      <span class="text-xs font-semibold text-zinc-400">ISO 9001 • PBQP-H Nível A • 1,4 Milhão de m² Construídos</span>
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-amber-500 text-black font-black flex items-center justify-center rounded-sm text-lg">M</div>
+        <div>
+          <span class="font-extrabold tracking-tight text-lg block leading-none">MONOLITH <span class="text-amber-500">ENGENHARIA</span></span>
+          <span class="text-[10px] font-mono-eng uppercase tracking-widest text-slate-400 block mt-1">Incorporação & Turnkey B2B</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-xs font-mono-eng uppercase tracking-wider text-slate-300">
+        <a href="#telemetria" class="hover:text-amber-400">Telemetria de Obras</a>
+        <a href="#empreendimentos" class="hover:text-amber-400">Portfólio Ativo</a>
+        <a href="#viabilidade" class="hover:text-amber-400">Simulador Built-to-Suit</a>
+      </nav>
+
+      <button onclick="openMonoDrawer('Cotação Turnkey / Incorporação')" class="px-5 py-2.5 rounded-sm bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs uppercase tracking-widest transition">
+        Portal do Investidor
+      </button>
     </div>
   </header>
 
-  <main class="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-    <div class="lg:col-span-6">
-      <span class="px-3 py-1 rounded-md bg-amber-500/15 text-amber-400 text-xs font-bold uppercase">Engenharia de Alta Precisão</span>
-      <h1 class="text-4xl sm:text-6xl font-extrabold mt-4 leading-tight">Solidez estrutural e entrega rigorosamente no prazo.</h1>
-      <p class="text-zinc-400 mt-4">Selecione um empreendimento ao lado para inspecionar o cronograma físico de engenharia em tempo real:</p>
+  <main class="max-w-7xl mx-auto px-6 py-14">
+    <!-- HERO & LIVE CONSTRUCTION TELEMETRY -->
+    <section id="telemetria" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pb-20 border-b border-white/10">
+      <div class="lg:col-span-6 space-y-6">
+        <span class="px-3 py-1 rounded bg-amber-500/15 border border-amber-500/30 text-amber-400 text-xs font-mono-eng uppercase font-bold">
+          Engenharia Civil Pesada & Incorporação de Alto Padrão
+        </span>
+        <h1 class="font-display text-4xl sm:text-6xl font-extrabold leading-[1.03]">
+          Solidez estrutural e entrega <span class="text-amber-500">rigorosamente no prazo.</span>
+        </h1>
+        <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+          Executamos torres corporativas Triple-A, parques logísticos Cross-Docking e edifícios residenciais de assinatura com monitoramento físico-financeiro diário por drones e laser scanner BIM.
+        </p>
 
-      <div class="flex flex-wrap gap-2 mt-6">
-        <button onclick="setObra(0)" class="px-4 py-2 rounded-xl bg-amber-500 text-black font-bold text-xs">Torre Horizon (Jardins)</button>
-        <button onclick="setObra(1)" class="px-4 py-2 rounded-xl bg-white/10 text-white font-bold text-xs">Centro Logístico Anhanguera</button>
-        <button onclick="setObra(2)" class="px-4 py-2 rounded-xl bg-white/10 text-white font-bold text-xs">Residencial Reserva Parque</button>
-      </div>
-    </div>
-
-    <!-- Painel de Evolução de Obra -->
-    <div class="lg:col-span-6 bg-[#161B22] border border-white/10 rounded-2xl p-7">
-      <div class="flex justify-between items-center mb-4">
         <div>
-          <span id="obra-status" class="text-xs font-bold uppercase text-amber-400">Em Obras • Entrega Out/2026</span>
-          <h2 id="obra-nome" class="text-2xl font-extrabold mt-0.5">Torre Horizon Jardins</h2>
-        </div>
-        <span id="obra-geral" class="text-3xl font-black text-amber-400">84%</span>
-      </div>
-
-      <div class="space-y-4 mt-6">
-        <div>
-          <div class="flex justify-between text-xs mb-1"><span>1. Terraplenagem & Fundação</span><strong id="bar1-txt">100%</strong></div>
-          <div class="w-full h-2 bg-black rounded-full overflow-hidden"><div id="bar1" class="h-full bg-emerald-500 transition-all duration-500" style="width:100%"></div></div>
-        </div>
-        <div>
-          <div class="flex justify-between text-xs mb-1"><span>2. Superestrutura Concreto Armado</span><strong id="bar2-txt">95%</strong></div>
-          <div class="w-full h-2 bg-black rounded-full overflow-hidden"><div id="bar2" class="h-full bg-amber-500 transition-all duration-500" style="width:95%"></div></div>
-        </div>
-        <div>
-          <div class="flex justify-between text-xs mb-1"><span>3. Fachada & Acabamento Fino</span><strong id="bar3-txt">62%</strong></div>
-          <div class="w-full h-2 bg-black rounded-full overflow-hidden"><div id="bar3" class="h-full bg-amber-500 transition-all duration-500" style="width:62%"></div></div>
+          <span class="text-xs font-mono-eng uppercase text-slate-400 block mb-2.5">Inspecionar Cronograma Físico ao Vivo:</span>
+          <div class="flex flex-wrap gap-2">
+            <button onclick="setObra(0, this)" class="obra-btn px-4 py-2.5 rounded-lg bg-amber-500 text-black font-bold text-xs">01. Torre Horizon Jardins</button>
+            <button onclick="setObra(1, this)" class="obra-btn px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white font-bold text-xs">02. Hub Logístico Anhanguera</button>
+            <button onclick="setObra(2, this)" class="obra-btn px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white font-bold text-xs">03. Reserva Parque Ibirapuera</button>
+          </div>
         </div>
       </div>
-    </div>
+
+      <!-- Telemetry Dashboard Card -->
+      <div class="lg:col-span-6 bg-[#131822] border border-amber-500/30 rounded-2xl p-7 sm:p-9 shadow-2xl">
+        <div class="flex justify-between items-start pb-5 border-b border-white/10">
+          <div>
+            <span id="obra-status" class="text-xs font-mono-eng uppercase text-amber-400 block">EM OBRAS • ENTREGA OUT/2026</span>
+            <h2 id="obra-nome" class="text-2xl sm:text-3xl font-extrabold mt-1">Torre Horizon Jardins</h2>
+            <span id="obra-vgv" class="text-xs text-slate-400 font-mono-eng mt-0.5 block">VGV: R$ 420 Milhões • 28 Pavimentos</span>
+          </div>
+          <div class="text-right">
+            <span class="text-[10px] font-mono-eng uppercase text-slate-400 block">Avanço Global</span>
+            <span id="obra-geral" class="text-4xl font-black text-amber-400 font-mono-eng">84%</span>
+          </div>
+        </div>
+
+        <div class="space-y-4 mt-6 font-mono-eng text-xs">
+          <div>
+            <div class="flex justify-between mb-1"><span>1. Terraplenagem & Estacas Hélice Contínua</span><strong id="bar1-txt" class="text-emerald-400">100%</strong></div>
+            <div class="w-full h-2 bg-black rounded-full overflow-hidden"><div id="bar1" class="h-full bg-emerald-500 transition-all duration-500" style="width:100%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-1"><span>2. Superestrutura Concreto Protendido (45 MPa)</span><strong id="bar2-txt" class="text-amber-400">95%</strong></div>
+            <div class="w-full h-2 bg-black rounded-full overflow-hidden"><div id="bar2" class="h-full bg-amber-500 transition-all duration-500" style="width:95%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-1"><span>3. Instalações Hidráulicas, Elétricas & HVAC</span><strong id="bar3-txt" class="text-amber-400">78%</strong></div>
+            <div class="w-full h-2 bg-black rounded-full overflow-hidden"><div id="bar3" class="h-full bg-amber-500 transition-all duration-500" style="width:78%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-1"><span>4. Pele de Vidro Duplo Low-E & Fachada Ventilada</span><strong id="bar4-txt" class="text-amber-400">62%</strong></div>
+            <div class="w-full h-2 bg-black rounded-full overflow-hidden"><div id="bar4" class="h-full bg-amber-500 transition-all duration-500" style="width:62%"></div></div>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-5 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+          <span class="text-xs text-slate-400">Patrimônio de Afetação Auditado pela PwC</span>
+          <button onclick="openMonoDrawer('Relatório de Engenharia: ' + document.getElementById('obra-nome').textContent)" class="text-xs font-mono-eng uppercase text-amber-400 hover:underline font-bold">
+            Baixar Laudo Mensal PDF →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- BUILT-TO-SUIT & CAP-RATE SIMULATOR -->
+    <section id="viabilidade" class="py-20 border-b border-white/10">
+      <div class="mb-10">
+        <span class="text-xs font-mono-eng uppercase tracking-widest text-amber-400">// ENGENHARIA FINANCEIRA & TURNKEY</span>
+        <h2 class="font-display text-3xl sm:text-5xl font-extrabold mt-1">Simulador Built-to-Suit & Custo de Construção</h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-[#131822] border border-white/10 rounded-3xl p-8 sm:p-10">
+        <div class="lg:col-span-7 space-y-6">
+          <div>
+            <label class="text-xs font-mono-eng uppercase text-slate-400 block mb-2">1. Tipologia do Empreendimento</label>
+            <select id="bts-type" onchange="calcBts()" class="w-full px-4 py-3.5 rounded-xl bg-black border border-white/15 text-sm font-semibold text-white">
+              <option value="3200">Galpão Logístico Triple-A (Piso Protendido 6 Ton/m² — R$ 3.200/m²)</option>
+              <option value="6800" selected>Edifício Corporativo / Sede B2B LEED Platinum (R$ 6.800/m²)</option>
+              <option value="9500">Incorporação Residencial Alto Padrão (R$ 9.500/m²)</option>
+            </select>
+          </div>
+
+          <div>
+            <div class="flex justify-between text-xs font-mono-eng mb-2">
+              <span>2. Área Bruta Locável / Construída (m²)</span>
+              <strong id="bts-area-lbl" class="text-amber-400 text-base">5.000 m²</strong>
+            </div>
+            <input type="range" id="bts-area" min="1500" max="30000" step="500" value="5000" oninput="calcBts()" class="w-full accent-amber-500">
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 bg-black/70 p-7 rounded-2xl border border-amber-500/30 flex flex-col justify-between space-y-4">
+          <div>
+            <span class="text-[10px] font-mono-eng uppercase text-amber-400">CAPEX Estimado de Obra (Preço Fechado PMG)</span>
+            <div id="bts-capex" class="font-mono-eng text-3xl sm:text-4xl font-extrabold text-white mt-1">R$ 34.000.000</div>
+            <p id="bts-yield" class="text-xs text-emerald-400 font-mono-eng mt-2">Yield / Cap-Rate Projetado: 11.4% a.a. (Contrato 15 Anos)</p>
+          </div>
+          <button onclick="openMonoDrawer('Estudo Built-to-Suit ' + document.getElementById('bts-area-lbl').textContent)" class="w-full py-3.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-black font-extrabold text-xs uppercase tracking-widest">
+            Solicitar Estudo de Viabilidade →
+          </button>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <!-- INVESTOR DRAWER -->
+  <div id="mono-overlay" onclick="closeMonoDrawer()" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden"></div>
+  <aside id="mono-drawer" class="fixed top-0 right-0 z-50 h-full w-full sm:w-[440px] bg-[#131822] border-l border-amber-500/30 p-8 transform translate-x-full transition-transform duration-300 flex flex-col justify-between">
+    <div>
+      <div class="flex justify-between items-center pb-4 border-b border-white/10">
+        <h3 class="font-display text-2xl">Diretoria de Incorporação</h3>
+        <button onclick="closeMonoDrawer()" class="text-slate-400 hover:text-white">✕</button>
+      </div>
+      <form onsubmit="submitMono(event)" class="mt-6 space-y-4 text-xs font-mono-eng">
+        <div>
+          <label class="block text-slate-400 uppercase mb-1">Assunto</label>
+          <input type="text" id="mono-subject" readonly class="w-full px-3.5 py-3 rounded-xl bg-black border border-amber-500/40 text-amber-400">
+        </div>
+        <div>
+          <label class="block text-slate-400 uppercase mb-1">Nome / Fundo / Empresa *</label>
+          <input type="text" required placeholder="Nome Corporativo" class="w-full px-3.5 py-3 rounded-xl bg-black border border-white/15 text-white">
+        </div>
+        <div>
+          <label class="block text-slate-400 uppercase mb-1">E-mail Corporativo *</label>
+          <input type="email" required placeholder="diretoria@empresa.com.br" class="w-full px-3.5 py-3 rounded-xl bg-black border border-white/15 text-white">
+        </div>
+        <button type="submit" class="w-full py-4 rounded-xl bg-amber-500 text-black font-extrabold uppercase tracking-widest">
+          Receber Book Técnico →
+        </button>
+      </form>
+      <div id="mono-msg" class="hidden mt-5 p-4 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs">
+        ✓ Solicitação registrada! Nosso Diretor de Engenharia enviará o memorial descritivo.
+      </div>
+    </div>
+    <div class="text-[11px] font-mono-eng text-slate-500 border-t border-white/10 pt-4">
+      MONOLITH ENGENHARIA S.A. • CREA-SP 094821
+    </div>
+  </aside>
 
   <script>
     const OBRAS = [
-      { nome: "Torre Horizon Jardins", status: "Fase Final • Entrega Out/2026", geral: "84%", b1: 100, b2: 95, b3: 62 },
-      { nome: "Centro Logístico Anhanguera (Triple A)", status: "100% Concluído • Pronto", geral: "100%", b1: 100, b2: 100, b3: 100 },
-      { nome: "Residencial Reserva Parque", status: "Estrutura em Andamento", geral: "52%", b1: 100, b2: 48, b3: 12 }
+      { nome: "Torre Horizon Jardins", status: "FASE FINAL • ENTREGA OUT/2026", vgv: "VGV: R$ 420 Milhões • 28 Pavimentos", geral: "84%", b1: 100, b2: 95, b3: 78, b4: 62 },
+      { nome: "Centro Logístico Anhanguera (Triple-A)", status: "100% CONCLUÍDO • HABITE-SE EMITIDO", vgv: "ABL: 85.000 m² • Pé-direito 12m", geral: "100%", b1: 100, b2: 100, b3: 100, b4: 100 },
+      { nome: "Residencial Reserva Parque Ibirapuera", status: "SUPERESTRUTURA EM ANDAMENTO", vgv: "VGV: R$ 310 Milhões • 1 Unidade por Andar", geral: "56%", b1: 100, b2: 64, b3: 38, b4: 22 }
     ];
-    window.setObra = function(idx) {
+
+    window.setObra = function(idx, btn) {
       const o = OBRAS[idx];
+      if (btn) {
+        document.querySelectorAll('.obra-btn').forEach(b => b.className = 'obra-btn px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white font-bold text-xs');
+        btn.className = 'obra-btn px-4 py-2.5 rounded-lg bg-amber-500 text-black font-bold text-xs';
+      }
       document.getElementById('obra-nome').textContent = o.nome;
       document.getElementById('obra-status').textContent = o.status;
+      document.getElementById('obra-vgv').textContent = o.vgv;
       document.getElementById('obra-geral').textContent = o.geral;
-      document.getElementById('bar1').style.width = o.b1 + '%'; document.getElementById('bar1-txt').textContent = o.b1 + '%';
-      document.getElementById('bar2').style.width = o.b2 + '%'; document.getElementById('bar2-txt').textContent = o.b2 + '%';
-      document.getElementById('bar3').style.width = o.b3 + '%'; document.getElementById('bar3-txt').textContent = o.b3 + '%';
+      ['1','2','3','4'].forEach(n => {
+        document.getElementById('bar'+n).style.width = o['b'+n] + '%';
+        document.getElementById('bar'+n+'-txt').textContent = o['b'+n] + '%';
+      });
     };
+
+    function calcBts() {
+      const rate = Number(document.getElementById('bts-type').value);
+      const area = Number(document.getElementById('bts-area').value);
+      const total = rate * area;
+      document.getElementById('bts-area-lbl').textContent = area.toLocaleString('pt-BR') + ' m²';
+      document.getElementById('bts-capex').textContent = 'R$ ' + total.toLocaleString('pt-BR');
+    }
+
+    function openMonoDrawer(subj) {
+      document.getElementById('mono-subject').value = subj;
+      document.getElementById('mono-msg').classList.add('hidden');
+      document.getElementById('mono-overlay').classList.remove('hidden');
+      document.getElementById('mono-drawer').classList.remove('translate-x-full');
+    }
+
+    function closeMonoDrawer() {
+      document.getElementById('mono-overlay').classList.add('hidden');
+      document.getElementById('mono-drawer').classList.add('translate-x-full');
+    }
+
+    function submitMono(e) {
+      e.preventDefault();
+      document.getElementById('mono-msg').classList.remove('hidden');
+      e.target.reset();
+    }
   </script>
-  <!-- Vercel Web Analytics & Speed Insights -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };

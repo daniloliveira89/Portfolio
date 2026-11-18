@@ -1,104 +1,466 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kengo & Associados — Arquitetura Minimalista</title>
+  <title>KENGO & ASSOCIADOS — Arquitetura Brutalista, Minimalismo & Urbanismo</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
   <style>
-    body { background-color: #F4F1EA; color: #181715; font-family: 'Plus Jakarta Sans', sans-serif; }
-    .font-serif-editorial { font-family: 'Cormorant Garamond', serif; }
+    :root {
+      --stone-bg: #F4F1EA;
+      --stone-card: #EAE5DB;
+      --ink: #161513;
+      --bronze: #8C6D46;
+    }
+    body {
+      background-color: var(--stone-bg);
+      color: var(--ink);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    .font-serif-arch { font-family: 'Cormorant Garamond', serif; }
+    .font-mono-arch { font-family: 'JetBrains Mono', monospace; }
+
+    /* Interactive Accordion Gallery */
     .gallery-panel {
       flex: 1;
-      transition: flex 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: flex 0.8s cubic-bezier(0.22, 1, 0.36, 1);
       position: relative;
       overflow: hidden;
       cursor: pointer;
     }
-    .gallery-panel:hover { flex: 3.2; }
-    .gallery-panel img {
-      transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), filter 0.5s ease;
-      filter: grayscale(35%) contrast(1.05);
+    .gallery-panel:hover, .gallery-panel.active-panel {
+      flex: 3.5;
     }
-    .gallery-panel:hover img {
+    .gallery-panel img {
+      transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1), filter 0.6s ease;
+      filter: grayscale(35%) contrast(1.06);
+    }
+    .gallery-panel:hover img, .gallery-panel.active-panel img {
       transform: scale(1.04);
       filter: grayscale(0%) contrast(1);
     }
-  </style>
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="shortcut icon" href="/favicon.ico" />
-</head>
-<body class="min-h-screen flex flex-col justify-between p-6 sm:p-10 selection:bg-stone-900 selection:text-stone-100">
 
-  <!-- Top Editorial Header -->
-  <header class="flex flex-wrap items-center justify-between border-b border-stone-900/15 pb-5 text-xs uppercase tracking-[0.2em]">
-    <div class="font-medium">Kengo — Estúdio®</div>
-    <div class="hidden sm:block text-stone-500">São Paulo • Tóquio • Zurique</div>
-    <nav class="flex gap-6">
-      <a href="#obras" class="hover:underline">Obras (04)</a>
-      <a href="#manifesto" class="hover:underline">Filosofia</a>
-    </nav>
+    /* Custom Range Slider */
+    input[type="range"].arch-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 4px;
+      background: #D5CFC2;
+      outline: none;
+    }
+    input[type="range"].arch-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #161513;
+      border: 3px solid #F4F1EA;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="min-h-screen antialiased selection:bg-[#161513] selection:text-[#F4F1EA]">
+
+  <!-- TOP EDITORIAL BAR -->
+  <div class="border-b border-stone-900/10 bg-[#EAE5DB] px-6 py-2 text-[11px] font-mono-arch uppercase tracking-[0.2em] text-stone-600">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <span>Prêmio Pritzker Shortlist • Bienal de Veneza 2025/2026</span>
+      <span class="hidden sm:inline">São Paulo (Jardim Paulistano) • Tóquio (Minato-ku) • Zurique</span>
+    </div>
+  </div>
+
+  <!-- STICKY HEADER -->
+  <header class="sticky top-0 z-40 bg-[#F4F1EA]/90 backdrop-blur-md border-b border-stone-900/15">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-9 h-9 bg-[#161513] text-[#F4F1EA] flex items-center justify-center font-serif-arch text-xl font-semibold">
+          K
+        </div>
+        <div>
+          <span class="font-medium tracking-[0.2em] text-xs uppercase block leading-none">Kengo & Associados®</span>
+          <span class="text-[10px] font-mono-arch text-stone-500 uppercase tracking-widest mt-1 block">Arquitetura & Luz Natural</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-xs uppercase tracking-[0.18em] text-stone-700 font-medium">
+        <a href="#acordeao" class="hover:text-black transition">Monografia</a>
+        <a href="#acervo" class="hover:text-black transition">Obras Selecionadas</a>
+        <a href="#simulador" class="hover:text-black transition">Simulador de Estudo</a>
+        <a href="#metodo" class="hover:text-black transition">Materialidade</a>
+      </nav>
+
+      <button onclick="openArchDrawer('Estudo Preliminar de Arquitetura')" class="px-5 py-2.5 bg-[#161513] hover:bg-stone-800 text-[#F4F1EA] text-xs uppercase tracking-[0.18em] font-medium transition">
+        Agendar Reunião
+      </button>
+    </div>
   </header>
 
-  <!-- Main Headline & Accordion Gallery -->
-  <main class="my-10 max-w-7xl mx-auto w-full">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-10">
+  <!-- HERO & ACCORDION MONOGRAPH -->
+  <main class="max-w-7xl mx-auto px-6 pt-12 pb-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-12">
       <div class="lg:col-span-8">
-        <p class="text-xs uppercase tracking-[0.25em] text-stone-500 mb-3">Monografia Arquitetônica — 2026</p>
-        <h1 class="font-serif-editorial text-5xl sm:text-7xl lg:text-8xl leading-[0.94] font-normal">
-          O silêncio esculpido em <em class="italic">concreto e luz natural.</em>
+        <div class="inline-flex items-center gap-2 px-3 py-1 border border-stone-900/20 text-[10px] font-mono-arch uppercase tracking-[0.22em] text-stone-600 mb-5">
+          <span>Monografia Arquitetônica — Vol. 09 (2026)</span>
+        </div>
+        <h1 class="font-serif-arch text-5xl sm:text-7xl lg:text-[84px] leading-[0.94] font-normal tracking-tight text-stone-900">
+          O silêncio esculpido em <em class="italic text-[#8C6D46]">concreto aparente e luz.</em>
         </h1>
       </div>
-      <div class="lg:col-span-4 text-sm text-stone-600 leading-relaxed">
-        Projetamos residências brutas e pavilhões culturais que dissolvem a fronteira entre a topografia orgânica e a precisão estrutural. Passe o cursor sobre as obras abaixo.
+      <div class="lg:col-span-4 text-sm text-stone-600 leading-relaxed space-y-4">
+        <p>
+          Projetamos residências suspensas, pavilhões culturais e refúgios botânicos que dissolvem a fronteira entre a topografia orgânica e a precisão estrutural japonesa-brasileira.
+        </p>
+        <div class="pt-3 border-t border-stone-900/15 flex items-center justify-between text-xs font-mono-arch text-stone-800">
+          <span>42 Obras Construídas</span>
+          <span>•</span>
+          <span>CAU/BR A-18492</span>
+        </div>
       </div>
     </div>
 
     <!-- Interactive Accordion Gallery -->
-    <div id="obras" class="flex flex-col sm:flex-row gap-3 h-[460px] w-full">
-      <div class="gallery-panel rounded-sm">
-        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="Casa Kyoto" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex flex-col justify-end p-6 text-white">
-          <span class="text-[10px] tracking-[0.25em] uppercase opacity-75">01 / Residencial</span>
-          <h2 class="font-serif-editorial text-3xl mt-1">Pavilhão Kyoto</h2>
+    <section id="acordeao" class="mb-24">
+      <div class="flex items-center justify-between text-xs font-mono-arch uppercase tracking-widest text-stone-500 mb-3">
+        <span>01 // Passe o cursor ou clique para expandir as pranchas</span>
+        <span>Fotografia: Nelson Kon & Fernando Guerra</span>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-3 h-[520px] w-full">
+        <div class="gallery-panel rounded-sm active-panel" onclick="openProjectModal(0)">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=85" alt="Pavilhão Kyoto" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
+            <span class="text-[10px] font-mono-arch tracking-[0.25em] uppercase text-amber-300">01 / Residencial • Porto Feliz, SP</span>
+            <h2 class="font-serif-arch text-3xl sm:text-4xl mt-1">Pavilhão Kyoto-Boa Vista</h2>
+            <p class="text-xs text-stone-300 mt-1 max-w-md line-clamp-1">Vãos livres de 18 metros em concreto protendido e madeira carbonizada Shou Sugi Ban.</p>
+          </div>
+        </div>
+
+        <div class="gallery-panel rounded-sm" onclick="openProjectModal(1)">
+          <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1400&q=85" alt="Casa Monólito" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
+            <span class="text-[10px] font-mono-arch tracking-[0.25em] uppercase text-amber-300">02 / Brutalismo • Serra da Mantiqueira</span>
+            <h2 class="font-serif-arch text-3xl sm:text-4xl mt-1">Casa Monólito em Balanço</h2>
+            <p class="text-xs text-stone-300 mt-1 max-w-md line-clamp-1">Implante em encosta rochosa a 1.650m de altitude com vidro duplo termoacústico.</p>
+          </div>
+        </div>
+
+        <div class="gallery-panel rounded-sm" onclick="openProjectModal(2)">
+          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1400&q=85" alt="Villa Horizonte" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
+            <span class="text-[10px] font-mono-arch tracking-[0.25em] uppercase text-amber-300">03 / Litoral • Paraty, RJ</span>
+            <h2 class="font-serif-arch text-3xl sm:text-4xl mt-1">Villa Horizonte Atlântico</h2>
+            <p class="text-xs text-stone-300 mt-1 max-w-md line-clamp-1">Estrutura em Cumaru certificado FSC e espelhos d'água integrados à Mata Atlântica.</p>
+          </div>
+        </div>
+
+        <div class="gallery-panel rounded-sm" onclick="openProjectModal(3)">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1400&q=85" alt="Fundação Zurique" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6 sm:p-8 text-white">
+            <span class="text-[10px] font-mono-arch tracking-[0.25em] uppercase text-amber-300">04 / Cultural • Jardim Europa, SP</span>
+            <h2 class="font-serif-arch text-3xl sm:text-4xl mt-1">Galeria & Fundação Luz</h2>
+            <p class="text-xs text-stone-300 mt-1 max-w-md line-clamp-1">Sheds zenitais voltados para o sul que banham o acervo de arte contemporânea sem radiação direta.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATALOG OF WORKS WITH FILTER -->
+    <section id="acervo" class="py-16 border-t border-stone-900/15">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <span class="text-xs font-mono-arch uppercase tracking-[0.25em] text-[#8C6D46]">02 // Arquivo Técnico</span>
+          <h2 class="font-serif-arch text-4xl sm:text-5xl text-stone-900 mt-1">Obras & Estudos</h2>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <button onclick="filterArch('all', this)" class="arch-filter-btn px-4 py-2 text-xs font-mono-arch uppercase bg-[#161513] text-[#F4F1EA]">Todas (06)</button>
+          <button onclick="filterArch('residencial', this)" class="arch-filter-btn px-4 py-2 text-xs font-mono-arch uppercase border border-stone-900/20 text-stone-700 hover:border-stone-900">Residências</button>
+          <button onclick="filterArch('cultural', this)" class="arch-filter-btn px-4 py-2 text-xs font-mono-arch uppercase border border-stone-900/20 text-stone-700 hover:border-stone-900">Cultural & Pavilhões</button>
         </div>
       </div>
 
-      <div class="gallery-panel rounded-sm">
-        <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80" alt="Casa Brutalista" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex flex-col justify-end p-6 text-white">
-          <span class="text-[10px] tracking-[0.25em] uppercase opacity-75">02 / Concreto Aparente</span>
-          <h2 class="font-serif-editorial text-3xl mt-1">Casa Monólito</h2>
+      <div id="arch-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+    </section>
+
+    <!-- ARCHITECTURAL FEE & FEASIBILITY SIMULATOR -->
+    <section id="simulador" class="py-16 border-t border-stone-900/15">
+      <div class="bg-[#EAE5DB] border border-stone-900/20 p-8 sm:p-12">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-7 space-y-6">
+            <div>
+              <span class="text-xs font-mono-arch uppercase tracking-[0.25em] text-[#8C6D46]">03 // Planejamento Patrimonial</span>
+              <h2 class="font-serif-arch text-3xl sm:text-5xl text-stone-900 mt-1">Simulador de Escopo & Viabilidade</h2>
+              <p class="text-xs sm:text-sm text-stone-600 mt-2">
+                Estime o investimento de projeto arquitetônico completo (Estudo Preliminar, Anteprojeto BIM, Projeto Executivo e Detalhamento de Interiores) e o prazo de desenvolvimento.
+              </p>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-mono-arch uppercase mb-2">
+                <span>Área Construída Estimada (m²)</span>
+                <strong id="arch-area-label" class="text-base text-stone-900">650 m²</strong>
+              </div>
+              <input type="range" id="arch-area-slider" min="250" max="2500" step="50" value="650" oninput="calcArchSim()" class="arch-slider">
+              <div class="flex justify-between text-[10px] font-mono-arch text-stone-500 mt-1">
+                <span>250 m² (Refúgio)</span>
+                <span>1.000 m² (Villa)</span>
+                <span>2.500 m² (Propriedade/Sede)</span>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <button type="button" onclick="setArchType('concreto', 420, this)" class="arch-type-btn p-4 border border-stone-900 bg-[#161513] text-[#F4F1EA] text-left">
+                <span class="text-[10px] font-mono-arch uppercase block opacity-75">Sistema 01</span>
+                <span class="font-serif-arch text-xl block mt-0.5">Concreto Protendido</span>
+                <span class="text-[11px] opacity-80 block mt-1">Grandes vãos & balanços</span>
+              </button>
+              <button type="button" onclick="setArchType('madeira', 380, this)" class="arch-type-btn p-4 border border-stone-900/20 bg-[#F4F1EA] text-stone-900 text-left">
+                <span class="text-[10px] font-mono-arch uppercase block text-stone-500">Sistema 02</span>
+                <span class="font-serif-arch text-xl block mt-0.5">Madeira MLC & Aço</span>
+                <span class="text-[11px] text-stone-600 block mt-1">Construção seca rápida</span>
+              </button>
+              <button type="button" onclick="setArchType('hibrido', 460, this)" class="arch-type-btn p-4 border border-stone-900/20 bg-[#F4F1EA] text-stone-900 text-left">
+                <span class="text-[10px] font-mono-arch uppercase block text-stone-500">Sistema 03</span>
+                <span class="font-serif-arch text-xl block mt-0.5">Híbrido + Interiores</span>
+                <span class="text-[11px] text-stone-600 block mt-1">Arquitetura + Mobiliário Autor</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 bg-[#161513] text-[#F4F1EA] p-8 flex flex-col justify-between space-y-6">
+            <div>
+              <span class="text-[10px] font-mono-arch uppercase tracking-[0.25em] text-amber-300/80">Dossiê Preliminar Kengo</span>
+              <h3 class="font-serif-arch text-2xl mt-1">Estimativa de Projeto Executivo</h3>
+
+              <div class="my-6 py-5 border-y border-white/15">
+                <span class="text-xs font-mono-arch text-stone-400 block">Honorários de Arquitetura Completa</span>
+                <div id="arch-fee-total" class="font-serif-arch text-4xl sm:text-5xl text-white mt-1">R$ 273.000</div>
+                <span id="arch-timeline" class="text-[11px] font-mono-arch text-amber-300/90 mt-2 block">Prazo de Desenvolvimento: 5 a 7 meses (BIM 5D)</span>
+              </div>
+
+              <ul class="space-y-2 text-xs text-stone-300 font-light">
+                <li>✓ Levantamento topográfico com drone LiDAR & insolação</li>
+                <li>✓ Maquete física em madeira balsa na escala 1:50</li>
+                <li>✓ Compatibilização estrutural, luminotécnica e paisagismo</li>
+                <li>✓ Acompanhamento artístico presencial em obra</li>
+              </ul>
+            </div>
+
+            <button onclick="openArchDrawerFromSim()" class="w-full py-4 bg-[#F4F1EA] hover:bg-amber-200 text-[#161513] text-xs font-mono-arch uppercase tracking-[0.2em] font-semibold transition">
+              Solicitar Proposta Técnica →
+            </button>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="gallery-panel rounded-sm">
-        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80" alt="Villa Horizonte" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex flex-col justify-end p-6 text-white">
-          <span class="text-[10px] tracking-[0.25em] uppercase opacity-75">03 / Litoral</span>
-          <h2 class="font-serif-editorial text-3xl mt-1">Villa Horizonte</h2>
-        </div>
+    <!-- MATERIALITY & PHILOSOPHY -->
+    <section id="metodo" class="py-16 border-t border-stone-900/15 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="p-6 border border-stone-900/15 bg-[#EAE5DB]/50">
+        <span class="font-mono-arch text-xs text-[#8C6D46]">01 / TECTÔNICA</span>
+        <h3 class="font-serif-arch text-2xl mt-2">Verdade dos Materiais</h3>
+        <p class="text-xs text-stone-600 mt-2 leading-relaxed">Recusamos revestimentos artificiais. O concreto ripado em fôrmas de pinus, a pedra bruta e o cobre envelhecem com dignidade sob a ação do tempo.</p>
       </div>
+      <div class="p-6 border border-stone-900/15 bg-[#EAE5DB]/50">
+        <span class="font-mono-arch text-xs text-[#8C6D46]">02 / BIOCLIMATISMO</span>
+        <h3 class="font-serif-arch text-2xl mt-2">Ventilação Cruzada & Brises</h3>
+        <p class="text-xs text-stone-600 mt-2 leading-relaxed">Cada fachada é simulada termicamente por computador para garantir conforto passivo o ano inteiro sem dependência excessiva de climatização artificial.</p>
+      </div>
+      <div class="p-6 border border-stone-900/15 bg-[#EAE5DB]/50">
+        <span class="font-mono-arch text-xs text-[#8C6D46]">03 / PRECISÃO BIM</span>
+        <h3 class="font-serif-arch text-2xl mt-2">Detalhamento Milimétrico</h3>
+        <p class="text-xs text-stone-600 mt-2 leading-relaxed">Entregamos mais de 180 pranchas executivas por residência, detalhando caixilhos minimalistas embutidos no piso e marcenaria autoral.</p>
+      </div>
+    </section>
+  </main>
 
-      <div class="gallery-panel rounded-sm">
-        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80" alt="Galeria Luz" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex flex-col justify-end p-6 text-white">
-          <span class="text-[10px] tracking-[0.25em] uppercase opacity-75">04 / Cultural</span>
-          <h2 class="font-serif-editorial text-3xl mt-1">Fundação Zurique</h2>
+  <!-- PROJECT DETAIL MODAL -->
+  <div id="arch-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+    <div class="bg-[#F4F1EA] text-[#161513] max-w-2xl w-full border border-stone-900 overflow-hidden shadow-2xl">
+      <div class="relative h-72">
+        <img id="arch-modal-img" src="" class="w-full h-full object-cover" alt="">
+        <button onclick="closeProjectModal()" class="absolute top-4 right-4 w-9 h-9 bg-[#161513] text-white flex items-center justify-center text-sm">✕</button>
+      </div>
+      <div class="p-8">
+        <span id="arch-modal-meta" class="text-xs font-mono-arch uppercase tracking-widest text-[#8C6D46]"></span>
+        <h3 id="arch-modal-title" class="font-serif-arch text-3xl mt-1"></h3>
+        <p id="arch-modal-desc" class="text-sm text-stone-600 mt-3 leading-relaxed"></p>
+        <div class="mt-6 pt-4 border-t border-stone-900/15 flex justify-between items-center">
+          <span id="arch-modal-area" class="text-xs font-mono-arch text-stone-500"></span>
+          <button onclick="closeProjectModal(); openArchDrawer('Projeto Similar ao Acervo')" class="px-5 py-2.5 bg-[#161513] text-[#F4F1EA] text-xs font-mono-arch uppercase tracking-widest">
+            Conversar sobre Obra Similar
+          </button>
         </div>
       </div>
     </div>
-  </main>
+  </div>
 
-  <!-- Footer -->
-  <footer id="manifesto" class="flex flex-wrap items-center justify-between border-t border-stone-900/15 pt-5 text-xs text-stone-500">
-    <span>Prêmio Pritzker Shortlist • Arquivo Editorial</span>
-    <span>Agendar Consulta Privada →</span>
+  <!-- CONSULTATION DRAWER -->
+  <div id="arch-drawer-overlay" onclick="closeArchDrawer()" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden"></div>
+  <aside id="arch-drawer" class="fixed top-0 right-0 z-50 h-full w-full sm:w-[460px] bg-[#F4F1EA] border-l border-stone-900/20 p-8 transform translate-x-full transition-transform duration-300 flex flex-col justify-between overflow-y-auto">
+    <div>
+      <div class="flex items-center justify-between pb-5 border-b border-stone-900/15">
+        <div>
+          <span class="text-[10px] font-mono-arch uppercase tracking-widest text-[#8C6D46]">Atendimento Diretoria</span>
+          <h3 class="font-serif-arch text-3xl text-stone-900">Consulta de Projeto</h3>
+        </div>
+        <button onclick="closeArchDrawer()" class="text-stone-500 hover:text-black text-lg">✕</button>
+      </div>
+
+      <form id="arch-form" onsubmit="submitArchForm(event)" class="mt-6 space-y-4">
+        <div>
+          <label class="block text-[11px] font-mono-arch uppercase text-stone-600 mb-1">Escopo Selecionado</label>
+          <input type="text" id="arch-input-scope" readonly class="w-full px-3.5 py-2.5 bg-[#EAE5DB] border border-stone-900/20 text-xs font-mono-arch text-stone-800">
+        </div>
+        <div>
+          <label class="block text-[11px] font-mono-arch uppercase text-stone-600 mb-1">Seu Nome *</label>
+          <input type="text" required placeholder="Ex: Marcelo K. Safra" class="w-full px-3.5 py-2.5 bg-white border border-stone-900/20 text-sm">
+        </div>
+        <div>
+          <label class="block text-[11px] font-mono-arch uppercase text-stone-600 mb-1">E-mail ou WhatsApp *</label>
+          <input type="text" required placeholder="(11) 99999-9999" class="w-full px-3.5 py-2.5 bg-white border border-stone-900/20 text-sm">
+        </div>
+        <div>
+          <label class="block text-[11px] font-mono-arch uppercase text-stone-600 mb-1">Localização do Terreno / Imóvel</label>
+          <input type="text" placeholder="Ex: Quinta da Baroneza, Fazenda Boa Vista, Jardins..." class="w-full px-3.5 py-2.5 bg-white border border-stone-900/20 text-sm">
+        </div>
+        <button type="submit" class="w-full py-4 bg-[#161513] hover:bg-stone-800 text-[#F4F1EA] text-xs font-mono-arch uppercase tracking-[0.2em] transition">
+          Agendar Café com os Sócios →
+        </button>
+      </form>
+
+      <div id="arch-success" class="hidden mt-6 p-4 bg-stone-900 text-[#F4F1EA] text-xs font-mono-arch leading-relaxed">
+        ✓ Solicitação recebida pelo escritório de São Paulo. Nossa secretária executiva enviará as opções de agenda presencial ou via Zoom.
+      </div>
+    </div>
+
+    <div class="pt-6 border-t border-stone-900/15 text-[11px] font-mono-arch text-stone-500">
+      Rua Estados Unidos, 1420 — Jardim Paulistano, SP
+    </div>
+  </aside>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-stone-900/15 py-10 px-6 text-xs font-mono-arch text-stone-500">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+      <span>© 2026 KENGO & ASSOCIADOS ARQUITETURA LTDA.</span>
+      <span>SÃO PAULO • TÓQUIO • ZURIQUE</span>
+    </div>
   </footer>
 
-  <!-- Vercel Web Analytics & Speed Insights -->
+  <script>
+    const ARCH_PROJECTS = [
+      { id: 0, title: "Pavilhão Kyoto-Boa Vista", cat: "residencial", loc: "Porto Feliz, SP • 2026", area: "890 m²", desc: "Residência térrea pavilhonar que utiliza concreto protendido aparente e brises móveis de madeira carbonizada japonesa para controle solar total.", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80" },
+      { id: 1, title: "Casa Monólito em Balanço", cat: "residencial", loc: "Campos do Jordão, SP • 2025", area: "640 m²", desc: "Volume monolítico ancorado na rocha com balanço estrutural de 9 metros sobre o vale da Serra da Mantiqueira.", img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000&q=80" },
+      { id: 2, title: "Villa Horizonte Atlântico", cat: "residencial", loc: "Paraty, RJ • 2026", area: "1.120 m²", desc: "Acesso exclusivo por barco. Estrutura inteiramente pré-fabricada em madeira laminada colada (MLC) para impacto zero no bioma costeiro.", img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1000&q=80" },
+      { id: 3, title: "Galeria & Fundação Luz", cat: "cultural", loc: "Jardim Europa, SP • 2025", area: "1.850 m²", desc: "Espaço expositivo para coleção privada de escultura minimalista com iluminação natural zenital filtrada por vigas alveolares.", img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80" },
+      { id: 4, title: "Capela do Silêncio & Água", cat: "cultural", loc: "Inhotim, MG • 2024", area: "320 m²", desc: "Pavilhão ecumênico de meditação construído em taipa de pilão contemporânea sobre espelho d'água refletivo.", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1000&q=80" },
+      { id: 5, title: "Residência Pátio das Oliveiras", cat: "residencial", loc: "Quinta da Baroneza, SP • 2026", area: "960 m²", desc: "Organizada ao redor de três pátios internos que garantem privacidade absoluta e ventilação cruzada constante.", img: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1000&q=80" }
+    ];
+
+    let currentArchCat = 'all';
+    let currentRateM2 = 420;
+    let currentSystemName = 'Concreto Protendido';
+
+    function renderArchGrid() {
+      const list = currentArchCat === 'all' ? ARCH_PROJECTS : ARCH_PROJECTS.filter(p => p.cat === currentArchCat);
+      document.getElementById('arch-grid').innerHTML = list.map(p => `
+        <article onclick="openProjectModal(${p.id})" class="group cursor-pointer border border-stone-900/15 bg-[#EAE5DB]/60 hover:border-stone-900 transition flex flex-col justify-between">
+          <div class="relative h-64 overflow-hidden">
+            <img src="${p.img}" alt="${p.title}" class="w-full h-full object-cover grayscale-[25%] group-hover:grayscale-0 group-hover:scale-105 transition duration-700">
+            <span class="absolute top-3 left-3 px-2.5 py-1 bg-[#161513]/85 text-[#F4F1EA] text-[10px] font-mono-arch uppercase">${p.area}</span>
+          </div>
+          <div class="p-6">
+            <span class="text-[10px] font-mono-arch uppercase tracking-widest text-[#8C6D46]">${p.loc}</span>
+            <h3 class="font-serif-arch text-2xl text-stone-900 mt-1">${p.title}</h3>
+            <p class="text-xs text-stone-600 mt-2 leading-relaxed line-clamp-2">${p.desc}</p>
+            <div class="mt-4 pt-3 border-t border-stone-900/10 flex justify-between items-center text-[11px] font-mono-arch">
+              <span>Ver Prancha Técnica</span>
+              <span>→</span>
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function filterArch(cat, btn) {
+      currentArchCat = cat;
+      document.querySelectorAll('.arch-filter-btn').forEach(b => {
+        b.className = 'arch-filter-btn px-4 py-2 text-xs font-mono-arch uppercase border border-stone-900/20 text-stone-700 hover:border-stone-900';
+      });
+      btn.className = 'arch-filter-btn px-4 py-2 text-xs font-mono-arch uppercase bg-[#161513] text-[#F4F1EA]';
+      renderArchGrid();
+    }
+
+    function openProjectModal(id) {
+      const p = ARCH_PROJECTS.find(x => x.id === id) || ARCH_PROJECTS[0];
+      document.getElementById('arch-modal-img').src = p.img;
+      document.getElementById('arch-modal-meta').textContent = p.loc;
+      document.getElementById('arch-modal-title').textContent = p.title;
+      document.getElementById('arch-modal-desc').textContent = p.desc;
+      document.getElementById('arch-modal-area').textContent = 'Área Construída: ' + p.area;
+      const m = document.getElementById('arch-modal');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    }
+
+    function closeProjectModal() {
+      const m = document.getElementById('arch-modal');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    }
+
+    function setArchType(key, rate, btn) {
+      currentRateM2 = rate;
+      currentSystemName = btn.querySelector('.font-serif-arch').textContent;
+      document.querySelectorAll('.arch-type-btn').forEach(b => {
+        b.className = 'arch-type-btn p-4 border border-stone-900/20 bg-[#F4F1EA] text-stone-900 text-left';
+      });
+      btn.className = 'arch-type-btn p-4 border border-stone-900 bg-[#161513] text-[#F4F1EA] text-left';
+      calcArchSim();
+    }
+
+    function calcArchSim() {
+      const m2 = Number(document.getElementById('arch-area-slider').value);
+      const total = m2 * currentRateM2;
+      document.getElementById('arch-area-label').textContent = m2.toLocaleString('pt-BR') + ' m²';
+      document.getElementById('arch-fee-total').textContent = 'R$ ' + total.toLocaleString('pt-BR');
+      const months = m2 > 1200 ? '7 a 9 meses (BIM 5D)' : '5 a 7 meses (BIM 5D)';
+      document.getElementById('arch-timeline').textContent = 'Prazo de Desenvolvimento: ' + months;
+    }
+
+    function openArchDrawer(scope) {
+      document.getElementById('arch-input-scope').value = scope || 'Estudo Preliminar';
+      document.getElementById('arch-success').classList.add('hidden');
+      document.getElementById('arch-drawer-overlay').classList.remove('hidden');
+      document.getElementById('arch-drawer').classList.remove('translate-x-full');
+    }
+
+    function openArchDrawerFromSim() {
+      const m2 = document.getElementById('arch-area-label').textContent;
+      const fee = document.getElementById('arch-fee-total').textContent;
+      openArchDrawer(`${currentSystemName} (${m2}) —Est. ${fee}`);
+    }
+
+    function closeArchDrawer() {
+      document.getElementById('arch-drawer-overlay').classList.add('hidden');
+      document.getElementById('arch-drawer').classList.add('translate-x-full');
+    }
+
+    function submitArchForm(e) {
+      e.preventDefault();
+      document.getElementById('arch-success').classList.remove('hidden');
+      e.target.reset();
+    }
+
+    renderArchGrid();
+    calcArchSim();
+  </script>
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };

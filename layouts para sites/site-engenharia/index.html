@@ -1,63 +1,200 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VORTEX ENGENHARIA — Projetos Estruturais BIM & Galpões</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VORTEX ENGENHARIA BIM 5D — Cálculo Estrutural, MEP & Clash Detection</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-  <style>body { background-color: #0B1017; color: #F8FAFC; font-family: 'Inter', sans-serif; }</style>
-  <!-- Favicon -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
+  <style>
+    body { background-color: #090E17; color: #F8FAFC; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+    .font-bim { font-family: 'JetBrains Mono', monospace; }
+  </style>
 </head>
-<body class="min-h-screen antialiased">
-  <header class="border-b border-white/10 px-6 h-20 flex items-center justify-between max-w-7xl mx-auto">
-    <span class="font-extrabold text-xl">⚙️ VORTEX <span class="text-blue-400">ENGENHARIA BIM</span></span>
-    <span class="text-xs font-mono text-slate-400">CREA-SP • Cálculo Estrutural • Compatibilização BIM 5D</span>
+<body class="min-h-screen antialiased selection:bg-blue-500 selection:text-white">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-[#090E17]/90 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-blue-600 text-white font-black flex items-center justify-center font-bim">VX</div>
+        <div>
+          <span class="font-extrabold text-xl block leading-none">VORTEX <span class="text-blue-400">ENGENHARIA BIM</span></span>
+          <span class="text-[10px] font-bim text-slate-400 block mt-0.5">CREA-SP • LOD 400 • REVIT / NAVISWORKS / TQS</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-xs font-bim uppercase text-slate-300">
+        <a href="#simulador" class="hover:text-blue-400">Simulador BIM & Economia</a>
+        <a href="#disciplinas" class="hover:text-blue-400">Disciplinas Complementares</a>
+      </nav>
+
+      <button onclick="openVortexDrawer('Cotação de Projetos Complementares BIM')" class="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold uppercase tracking-wider transition">
+        Solicitar Proposta Técnica
+      </button>
+    </div>
   </header>
 
-  <main class="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-    <div class="lg:col-span-6">
-      <span class="px-3 py-1 rounded-md bg-blue-500/15 text-blue-400 text-xs font-bold uppercase">Engenharia Civil, Elétrica e Hidrossanitária</span>
-      <h1 class="text-4xl sm:text-6xl font-extrabold mt-4 leading-tight">Projetos em BIM que eliminam desperdícios na obra.</h1>
-      <p class="text-slate-400 mt-4">Detectamos interferências (Clash Detection) antes do início da fundação, economizando até 22% em aço, concreto e retrabalho.</p>
-    </div>
+  <main class="max-w-7xl mx-auto px-6 py-14">
+    <!-- HERO & BIM CLASH-DETECTION SAVINGS CALCULATOR -->
+    <section id="simulador" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pb-20 border-b border-white/10">
+      <div class="lg:col-span-6 space-y-6">
+        <span class="px-3 py-1 rounded-md bg-blue-500/15 border border-blue-500/30 text-blue-400 text-xs font-bim uppercase">
+          Cálculo Estrutural TQS • Elétrica • Hidrossanitário • HVAC • Incêndio
+        </span>
+        <h1 class="text-4xl sm:text-6xl font-extrabold leading-[1.05]">
+          Projetos em BIM 5D que eliminam <span class="text-blue-400">até 22% de desperdício na obra.</span>
+        </h1>
+        <p class="text-slate-400 text-base leading-relaxed">
+          Compatibilizamos todas as disciplinas em modelo federado 3D (LOD 400) antes da primeira estaca ser perfurada, zerando furos em vigas estruturais e aditivos imprevistos de orçamento.
+        </p>
 
-    <!-- Calculadora de Projeto de Engenharia por m² -->
-    <div class="lg:col-span-6 bg-[#121A26] border border-blue-500/30 rounded-3xl p-8">
-      <h2 class="text-xl font-bold mb-4">Simulador de Projetos Complementares & BIM</h2>
-      <div class="space-y-4">
-        <div>
-          <div class="flex justify-between text-xs mb-1"><span>Área Construída do Projeto</span><strong id="area-lbl">1.200 m²</strong></div>
-          <input id="area-slider" type="range" min="200" max="10000" step="100" value="1200" class="w-full accent-blue-500">
-        </div>
-        <div>
-          <label class="text-xs text-slate-400 block mb-1">Escopo Técnico</label>
-          <select id="eng-scope" class="w-full px-4 py-3 bg-black border border-white/15 rounded-xl text-sm">
-            <option value="45">Projeto Estrutural + Fundações (R$ 45/m²)</option>
-            <option value="85" selected>Pacote Completo BIM (Estrutural + Elétrico + Hidro — R$ 85/m²)</option>
-            <option value="60">Galpão Metálico Industrial (R$ 60/m²)</option>
-          </select>
+        <div class="grid grid-cols-3 gap-3 pt-2 font-bim">
+          <div class="p-4 rounded-xl bg-[#111927] border border-white/10">
+            <strong class="text-2xl text-blue-400 block">Zero</strong>
+            <span class="text-[10px] text-slate-400 uppercase">Colisões em Canteiro</span>
+          </div>
+          <div class="p-4 rounded-xl bg-[#111927] border border-white/10">
+            <strong class="text-2xl text-emerald-400 block">-18%</strong>
+            <span class="text-[10px] text-slate-400 uppercase">Taxa de Aço Otimizada</span>
+          </div>
+          <div class="p-4 rounded-xl bg-[#111927] border border-white/10">
+            <strong class="text-2xl text-white block">LOD 400</strong>
+            <span class="text-[10px] text-slate-400 uppercase">Lista Exata de Compras</span>
+          </div>
         </div>
       </div>
-      <div class="mt-6 p-4 rounded-xl bg-black border border-white/10 flex justify-between items-center">
-        <span class="text-xs text-slate-400">Estimativa de Projeto (c/ ART):</span>
-        <strong id="eng-total" class="text-2xl font-extrabold text-blue-400">R$ 102.000</strong>
+
+      <!-- BIM Fee & Savings Calculator -->
+      <div class="lg:col-span-6 bg-[#111927] border border-blue-500/35 rounded-3xl p-8 shadow-2xl space-y-5">
+        <h2 class="text-xl font-bold">Simulador de Projetos Complementares & Economia</h2>
+        <div class="space-y-4">
+          <div>
+            <div class="flex justify-between text-xs font-bim mb-1.5">
+              <span class="text-slate-400">Área Construída do Empreendimento</span>
+              <strong id="area-lbl" class="text-blue-400 text-lg">2.400 m²</strong>
+            </div>
+            <input id="area-slider" type="range" min="300" max="15000" step="100" value="2400" oninput="calcEng()" class="w-full accent-blue-500">
+          </div>
+
+          <div>
+            <label class="text-xs text-slate-400 block mb-1.5">Escopo Técnico de Engenharia</label>
+            <select id="eng-scope" onchange="calcEng()" class="w-full px-4 py-3 bg-black border border-white/15 rounded-xl text-xs sm:text-sm font-semibold text-white">
+              <option value="45">Projeto Estrutural Concreto/Metálica + Fundações (R$ 45/m²)</option>
+              <option value="85" selected>Pacote Full BIM 5D (Estrutural + Elétrico + Hidro + HVAC — R$ 85/m²)</option>
+              <option value="60">Galpão Industrial Metálico + Piso Protendido + AVCB (R$ 60/m²)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 font-bim">
+          <div class="p-4 rounded-xl bg-black border border-white/10">
+            <span class="text-[10px] text-slate-400 uppercase block">Honorários de Projeto (c/ ART)</span>
+            <strong id="eng-total" class="text-2xl font-extrabold text-blue-400">R$ 204.000</strong>
+          </div>
+          <div class="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30">
+            <span class="text-[10px] text-emerald-300 uppercase block">Economia Estimada na Obra</span>
+            <strong id="eng-savings" class="text-2xl font-extrabold text-emerald-400">R$ 864.000</strong>
+          </div>
+        </div>
+
+        <p class="text-[11px] text-slate-400">
+          *A economia gerada pela redução na taxa de aço (kg/m³) e eliminação de retrabalho paga o projeto executivo mais de 4 vezes.
+        </p>
+
+        <button onclick="openVortexDrawer('Pacote BIM para ' + document.getElementById('area-lbl').textContent)" class="w-full py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-xs uppercase tracking-widest transition">
+          Solicitar Memorial & Cronograma de Entrega →
+        </button>
       </div>
-    </div>
+    </section>
+
+    <!-- DISCIPLINES -->
+    <section id="disciplinas" class="py-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="p-7 rounded-2xl bg-[#111927] border border-white/10">
+        <span class="font-bim text-xs text-blue-400">01 // ESTRUTURAS & FUNDAÇÕES</span>
+        <h3 class="text-xl font-bold mt-2">Concreto Protendido & Aço</h3>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Dimensionamento sísmico e de vento em túnel numérico, lajes planas nervuradas e otimização da relação kg de aço por m³ de concreto.</p>
+      </div>
+      <div class="p-7 rounded-2xl bg-[#111927] border border-white/10">
+        <span class="font-bim text-xs text-blue-400">02 // INSTALAÇÕES MEP</span>
+        <h3 class="text-xl font-bold mt-2">Elétrica MT/BT, Hidro & HVAC</h3>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Subestações de média tensão, cabeamento estruturado, reuso de águas cinzas e climatização VRF modelados sem conflitos com vigas.</p>
+      </div>
+      <div class="p-7 rounded-2xl bg-[#111927] border border-white/10">
+        <span class="font-bim text-xs text-blue-400">03 // ORÇAMENTAÇÃO 5D</span>
+        <h3 class="text-xl font-bold mt-2">Quantitativos Extraídos do Modelo</h3>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Listas de compra extraídas diretamente do modelo Revit/Navisworks com código SINAPI, impedindo desvios de materiais no canteiro.</p>
+      </div>
+    </section>
   </main>
 
+  <!-- VORTEX DRAWER -->
+  <div id="vortex-overlay" onclick="closeVortexDrawer()" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden"></div>
+  <aside id="vortex-drawer" class="fixed top-0 right-0 z-50 h-full w-full sm:w-[440px] bg-[#111927] border-l border-blue-500/30 p-8 transform translate-x-full transition-transform duration-300 flex flex-col justify-between">
+    <div>
+      <div class="flex justify-between items-center pb-4 border-b border-white/10">
+        <h3 class="font-extrabold text-xl">Coordenação BIM Vortex</h3>
+        <button onclick="closeVortexDrawer()" class="text-slate-400 hover:text-white">✕</button>
+      </div>
+      <form onsubmit="submitVortex(event)" class="mt-6 space-y-4 text-xs font-bim">
+        <div>
+          <label class="block text-slate-400 uppercase mb-1">Escopo Simulado</label>
+          <input type="text" id="vortex-scope" readonly class="w-full px-3.5 py-3 rounded-xl bg-black border border-blue-500/40 text-blue-400">
+        </div>
+        <div>
+          <label class="block text-slate-400 uppercase mb-1">Nome / Construtora / Arquiteto *</label>
+          <input type="text" required placeholder="Nome e Empresa" class="w-full px-3.5 py-3 rounded-xl bg-black border border-white/15 text-white">
+        </div>
+        <div>
+          <label class="block text-slate-400 uppercase mb-1">E-mail ou WhatsApp *</label>
+          <input type="text" required placeholder="contato@construtora.com.br" class="w-full px-3.5 py-3 rounded-xl bg-black border border-white/15 text-white">
+        </div>
+        <button type="submit" class="w-full py-4 rounded-xl bg-blue-600 text-white font-extrabold uppercase tracking-widest">
+          Enviar p/ Coordenação de Projetos →
+        </button>
+      </form>
+      <div id="vortex-msg" class="hidden mt-5 p-4 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-bim">
+        ✓ Solicitação recebida! Enviaremos uma amostra do nosso modelo federado BIM + proposta formal.
+      </div>
+    </div>
+    <div class="text-[11px] font-bim text-slate-500 border-t border-white/10 pt-4">
+      VORTEX ENGENHARIA CONSULTIVA • CREA-SP
+    </div>
+  </aside>
+
   <script>
-    const aSli = document.getElementById('area-slider'), eScp = document.getElementById('eng-scope');
     function calcEng() {
-      const m2 = Number(aSli.value), rate = Number(eScp.value);
+      const m2 = Number(document.getElementById('area-slider').value);
+      const rate = Number(document.getElementById('eng-scope').value);
+      const fee = m2 * rate;
+      const savedInConstruction = m2 * 360; // Economia média de R$ 360/m² em aço, concreto e retrabalho
       document.getElementById('area-lbl').textContent = m2.toLocaleString('pt-BR') + ' m²';
-      document.getElementById('eng-total').textContent = 'R$ ' + (m2 * rate).toLocaleString('pt-BR');
+      document.getElementById('eng-total').textContent = 'R$ ' + fee.toLocaleString('pt-BR');
+      document.getElementById('eng-savings').textContent = 'R$ ' + savedInConstruction.toLocaleString('pt-BR');
     }
-    aSli.addEventListener('input', calcEng); eScp.addEventListener('change', calcEng);
+
+    function openVortexDrawer(scp) {
+      document.getElementById('vortex-scope').value = scp;
+      document.getElementById('vortex-msg').classList.add('hidden');
+      document.getElementById('vortex-overlay').classList.remove('hidden');
+      document.getElementById('vortex-drawer').classList.remove('translate-x-full');
+    }
+
+    function closeVortexDrawer() {
+      document.getElementById('vortex-overlay').classList.add('hidden');
+      document.getElementById('vortex-drawer').classList.add('translate-x-full');
+    }
+
+    function submitVortex(e) {
+      e.preventDefault();
+      document.getElementById('vortex-msg').classList.remove('hidden');
+      e.target.reset();
+    }
+
     calcEng();
   </script>
-  <!-- Vercel Web Analytics & Speed Insights -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };

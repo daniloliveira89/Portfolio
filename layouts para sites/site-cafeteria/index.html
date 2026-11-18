@@ -1,71 +1,368 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TORRA 04 — Microtorrefação & Cafés Especiais</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TORRA 04 — Microtorrefação Científica, Microlotes 88+ SCA & Bakery</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    body { background-color: #F3ECE2; color: #261C15; font-family: 'Plus Jakarta Sans', sans-serif; }
-    .font-coffee { font-family: 'Fraunces', serif; }
-  </style>
-  <!-- Favicon -->
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
+  <style>
+    :root {
+      --cream: #F5EFE6;
+      --espresso: #1E140F;
+      --roast: #8C4A27;
+      --terracotta: #C86D3B;
+    }
+    body {
+      background-color: var(--cream);
+      color: var(--espresso);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    .font-coffee { font-family: 'Fraunces', serif; }
+    .font-mono-lab { font-family: 'JetBrains Mono', monospace; }
+  </style>
 </head>
-<body class="min-h-screen antialiased">
-  <header class="border-b border-stone-900/10 bg-[#F3ECE2]/90 sticky top-0 z-40">
-    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-      <span class="font-coffee text-2xl">TORRA 04 ☕</span>
-      <span class="text-xs uppercase tracking-widest text-amber-900 font-semibold">Microlotes 88+ Pontos SCA • Pães de Fermentação Natural</span>
+<body class="min-h-screen antialiased selection:bg-[#8C4A27] selection:text-white">
+
+  <!-- TOP ROAST TICKER -->
+  <div class="bg-[#1E140F] text-[#F5EFE6] text-[11px] font-mono-lab py-2 px-6">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span> LOTE DA SEMANA TORRADO TERÇA-FEIRA ÀS 07H00 • PROBAT UG22</span>
+      <span class="hidden md:inline text-amber-300/90">Rastreabilidade Direta: Serra da Mantiqueira, Caparaó & Cerrado Mineiro</span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 border-b border-stone-900/10 bg-[#F5EFE6]/90 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-[#1E140F] text-[#F5EFE6] flex items-center justify-center font-coffee text-lg font-bold">
+          T4
+        </div>
+        <div>
+          <span class="font-coffee text-2xl tracking-tight block leading-none">TORRA 04</span>
+          <span class="text-[10px] font-mono-lab uppercase tracking-widest text-amber-900 block mt-0.5">Specialty Coffee Roasters</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-wider text-stone-700">
+        <a href="#cardapio" class="hover:text-[#8C4A27] transition">Brew Bar & Viennoiserie</a>
+        <a href="#microlotes" class="hover:text-[#8C4A27] transition">Grãos em Pacote</a>
+        <a href="#clube" class="hover:text-[#8C4A27] transition">Assinatura de Torra</a>
+      </nav>
+
+      <button onclick="openCoffeeDrawer()" class="px-5 py-2.5 rounded-full bg-[#1E140F] hover:bg-[#8C4A27] text-white text-xs font-bold uppercase tracking-wider transition flex items-center gap-2">
+        <span>Sacola de Torra</span>
+        <span id="coffee-cart-count" class="px-2 py-0.5 rounded-full bg-amber-400 text-black font-mono-lab text-[10px]">0</span>
+      </button>
     </div>
   </header>
 
-  <main class="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 lg:grid-cols-12 gap-12">
-    <div class="lg:col-span-7">
-      <span class="text-xs uppercase tracking-widest text-amber-800 font-bold">Torrado toda terça-feira</span>
-      <h1 class="font-coffee text-5xl sm:text-6xl mt-2 leading-none">Do produtor da Mantiqueira para a sua xícara.</h1>
-
-      <div class="flex gap-2 mt-8 mb-6">
-        <button onclick="renderCoffee('filtrados')" class="px-4 py-2 rounded-full text-xs font-bold bg-[#261C15] text-white">Filtrados (V60 / Chemex)</button>
-        <button onclick="renderCoffee('espresso')" class="px-4 py-2 rounded-full text-xs font-bold bg-white text-[#261C15]">Espresso Bar</button>
-        <button onclick="renderCoffee('brunch')" class="px-4 py-2 rounded-full text-xs font-bold bg-white text-[#261C15]">Viennoiserie & Brunch</button>
+  <!-- HERO SECTION -->
+  <section class="max-w-7xl mx-auto px-6 pt-12 pb-20 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-7 space-y-6">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-900/10 border border-amber-900/20 text-amber-900 text-xs font-mono-lab uppercase">
+        <span>Microlotes 88 a 92 Pontos SCA • Fermentação Natural</span>
       </div>
 
-      <div id="coffee-menu" class="space-y-4"></div>
+      <h1 class="font-coffee text-5xl sm:text-7xl leading-[0.96] text-[#1E140F]">
+        Do terreiro suspenso da Mantiqueira para a <em class="italic font-normal text-[#8C4A27]">sua xícara.</em>
+      </h1>
+
+      <p class="text-stone-600 text-base sm:text-lg leading-relaxed max-w-xl">
+        Torramos pequenos lotes semanalmente com curvas de calor controladas por telemetria Cropster®, exaltando a acidez cítrica, o dulçor natural e a complexidade floral de cada terroir brasileiro.
+      </p>
+
+      <div class="flex flex-wrap gap-4 pt-2">
+        <a href="#clube" class="px-7 py-4 rounded-full bg-[#8C4A27] hover:bg-[#1E140F] text-white text-xs font-bold uppercase tracking-widest transition shadow-lg">
+          Simular Clube de Grãos →
+        </a>
+        <a href="#cardapio" class="px-7 py-4 rounded-full border border-stone-900/20 hover:border-stone-900 text-xs font-bold uppercase tracking-widest transition">
+          Ver Cardápio da Loja
+        </a>
+      </div>
+
+      <div class="grid grid-cols-3 gap-4 pt-6 border-t border-stone-900/10 max-w-lg">
+        <div>
+          <span class="font-coffee text-3xl text-[#8C4A27] block">91.5 pts</span>
+          <span class="text-[11px] font-mono-lab uppercase text-stone-500">Maior Nota da Safra</span>
+        </div>
+        <div>
+          <span class="font-coffee text-3xl text-[#1E140F] block">1.350m</span>
+          <span class="text-[11px] font-mono-lab uppercase text-stone-500">Altitude Média</span>
+        </div>
+        <div>
+          <span class="font-coffee text-3xl text-[#1E140F] block">72 Horas</span>
+          <span class="text-[11px] font-mono-lab uppercase text-stone-500">Croissant Levain</span>
+        </div>
+      </div>
     </div>
 
     <div class="lg:col-span-5">
-      <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80" class="w-full h-96 object-cover rounded-3xl shadow-lg" alt="Specialty Coffee">
+      <div class="relative rounded-3xl overflow-hidden border border-stone-900/15 shadow-2xl bg-[#1E140F]">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=85" class="w-full h-[460px] object-cover opacity-90" alt="Extração V60 Torra 04">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#1E140F] via-transparent to-transparent"></div>
+        <div class="absolute bottom-6 left-6 right-6 p-5 rounded-2xl bg-[#F5EFE6]/95 backdrop-blur-md text-[#1E140F]">
+          <div class="flex items-center justify-between text-[10px] font-mono-lab uppercase text-[#8C4A27] font-bold">
+            <span>Lote Reservado #042</span>
+            <span>SCA 90.5 PTS</span>
+          </div>
+          <h3 class="font-coffee text-2xl mt-1">Geisha Lavado — Fazenda Sertão</h3>
+          <p class="text-xs text-stone-600 mt-1">Notas sensoriais: Jasmim, bergamota fresca, mel de laranjeira e final sedoso.</p>
+        </div>
+      </div>
     </div>
-  </main>
+  </section>
+
+  <!-- BREW BAR & BAKERY MENU -->
+  <section id="cardapio" class="max-w-7xl mx-auto px-6 py-16 border-t border-stone-900/10">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+      <div>
+        <span class="text-xs font-mono-lab uppercase tracking-widest text-[#8C4A27]">01 // Flagship Pinheiros & Jardins</span>
+        <h2 class="font-coffee text-4xl sm:text-5xl mt-1">Brew Bar & Viennoiserie</h2>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <button onclick="renderCoffee('filtrados', this)" class="coffee-tab px-5 py-2.5 rounded-full text-xs font-bold bg-[#1E140F] text-white">Filtrados Hario V60 / Chemex</button>
+        <button onclick="renderCoffee('espresso', this)" class="coffee-tab px-5 py-2.5 rounded-full text-xs font-bold bg-white text-[#1E140F] border border-stone-300">La Marzocco Espresso Bar</button>
+        <button onclick="renderCoffee('brunch', this)" class="coffee-tab px-5 py-2.5 rounded-full text-xs font-bold bg-white text-[#1E140F] border border-stone-300">Pães Levain & Brunch</button>
+      </div>
+    </div>
+
+    <div id="coffee-menu" class="grid grid-cols-1 md:grid-cols-2 gap-5"></div>
+  </section>
+
+  <!-- ROASTED BEANS CATALOG -->
+  <section id="microlotes" class="max-w-7xl mx-auto px-6 py-16 border-t border-stone-900/10">
+    <div class="mb-10">
+      <span class="text-xs font-mono-lab uppercase tracking-widest text-[#8C4A27]">02 // Torra Fresca Sob Demanda</span>
+      <h2 class="font-coffee text-4xl sm:text-5xl mt-1">Microlotes em Grãos ou Moídos na Hora</h2>
+    </div>
+
+    <div id="beans-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+  </section>
+
+  <!-- SUBSCRIPTION SIMULATOR -->
+  <section id="clube" class="max-w-7xl mx-auto px-6 py-16 border-t border-stone-900/10">
+    <div class="rounded-3xl bg-[#1E140F] text-[#F5EFE6] p-8 sm:p-12 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center shadow-2xl">
+      <div class="lg:col-span-7 space-y-6">
+        <span class="px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 font-mono-lab text-xs uppercase">Clube de Assinatura Torra 04</span>
+        <h2 class="font-coffee text-3xl sm:text-5xl leading-tight">Receba cafés recém-torrados em casa todo mês.</h2>
+        <p class="text-stone-300 text-sm leading-relaxed">
+          Configure o tipo de moagem para o seu método favorito e a quantidade de pacotes (250g c/ válvula desgaseificadora).
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+          <div>
+            <label class="text-xs font-mono-lab uppercase text-amber-300 block mb-2">1. Método de Preparo (Moagem)</label>
+            <select id="sub-grind" onchange="calcCoffeeSub()" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/15 text-sm text-white">
+              <option value="Em Grãos (100% Integro)">Em Grãos (Para Moer na Hora)</option>
+              <option value="Moagem Média (V60 / Melitta / Chemex)">Moagem Média (V60 / Chemex)</option>
+              <option value="Moagem Grossa (Prensa Francesa)">Moagem Grossa (Prensa Francesa)</option>
+              <option value="Moagem Fina (Espresso / Moka Italiana)">Moagem Fina (Espresso / Moka)</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-xs font-mono-lab uppercase text-amber-300 block mb-2">2. Volume Mensal de Café</label>
+            <select id="sub-bags" onchange="calcCoffeeSub()" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/15 text-sm text-white">
+              <option value="2">2 Pacotes de 250g (500g /mês)</option>
+              <option value="3" selected>3 Pacotes de 250g (750g /mês — Ideal)</option>
+              <option value="4">4 Pacotes de 250g (1kg /mês + Frete Grátis)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 bg-[#2B1D16] p-8 rounded-2xl border border-amber-400/30 space-y-5">
+        <div class="flex justify-between items-center border-b border-white/10 pb-4">
+          <span class="text-xs font-mono-lab uppercase text-amber-300">Resumo da Assinatura</span>
+          <span class="px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] font-mono-lab">15% OFF Clube</span>
+        </div>
+        <div>
+          <div id="sub-price" class="font-coffee text-4xl text-white">R$ 168 /mês</div>
+          <p id="sub-desc" class="text-xs text-stone-300 mt-1">3 microlotes inéditos (88+ pts SCA) • Em Grãos</p>
+        </div>
+        <button onclick="subscribeCoffeeClub()" class="w-full py-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#1E140F] font-bold text-xs uppercase tracking-widest transition">
+          Ativar Assinatura Mensal →
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE-OVER CART DRAWER -->
+  <div id="coffee-overlay" onclick="closeCoffeeDrawer()" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden"></div>
+  <aside id="coffee-drawer" class="fixed top-0 right-0 z-50 h-full w-full sm:w-[440px] bg-[#F5EFE6] border-l border-stone-900/15 p-7 transform translate-x-full transition-transform duration-300 flex flex-col justify-between">
+    <div>
+      <div class="flex items-center justify-between pb-4 border-b border-stone-900/15">
+        <h3 class="font-coffee text-2xl">Sua Sacola Torra 04</h3>
+        <button onclick="closeCoffeeDrawer()" class="text-stone-500 hover:text-black">✕</button>
+      </div>
+      <div id="coffee-cart-list" class="mt-4 space-y-3 max-h-[55vh] overflow-y-auto"></div>
+    </div>
+
+    <div class="pt-4 border-t border-stone-900/15 space-y-4">
+      <div class="flex justify-between items-baseline">
+        <span class="text-xs font-mono-lab uppercase text-stone-500">Total do Pedido</span>
+        <strong id="coffee-cart-total" class="font-coffee text-3xl text-[#8C4A27]">R$ 0</strong>
+      </div>
+      <button onclick="finishCoffeeOrder()" class="w-full py-4 rounded-xl bg-[#1E140F] hover:bg-[#8C4A27] text-white font-bold text-xs uppercase tracking-widest transition">
+        Finalizar Pedido (Retirada ou Delivery)
+      </button>
+      <div id="coffee-order-msg" class="hidden p-3.5 rounded-xl bg-emerald-800 text-white text-xs text-center">
+        ✓ Pedido enviado para a torrefação! Seu café está sendo preparado.
+      </div>
+    </div>
+  </aside>
+
+  <footer class="border-t border-stone-900/10 py-10 px-6 text-xs text-stone-500 mt-12">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between gap-4">
+      <span>© 2026 TORRA 04 MICROTORREFAÇÃO LTDA.</span>
+      <span>Rua dos Pinheiros, 840 — São Paulo, SP • Terça a Domingo das 08h às 19h</span>
+    </div>
+  </footer>
 
   <script>
     const COFFEE_MENU = {
       filtrados: [
-        { name: "Geisha Lavado (Serra da Mantiqueira)", notes: "Notas de jasmim, bergamota e mel • 89 pts", price: "R$ 26" },
-        { name: "Catuaí Vermelho Fermentação Anaeróbica", notes: "Frutas amarelas maduras e licor de cacau • 88 pts", price: "R$ 22" }
+        { id: 101, name: "Geisha Lavado (Serra da Mantiqueira)", notes: "Notas de jasmim, bergamota e mel • 90.5 pts SCA", price: 26 },
+        { id: 102, name: "Catuaí Vermelho Fermentação Anaeróbica 96h", notes: "Frutas amarelas maduras, manga e licor de cacau • 89 pts", price: 22 },
+        { id: 103, name: "Bourbon Amarelo Natural (Alta Mogiana)", notes: "Caramelo salgado, avelã tostada e rapadura • 88 pts", price: 19 },
+        { id: 104, name: "Cold Brew Nitro Infused (300ml)", notes: "Extraído a frio por 18 horas com textura cremosa de nitrogênio", price: 24 }
       ],
       espresso: [
-        { name: "Flat White Duplo Ristretto", notes: "Leite vaporizado a 62°C em microespuma aveludada", price: "R$ 18" },
-        { name: "Espresso Tonic Artesanal", notes: "Duplo espresso frutado, água tônica botânica e casca de laranja Bahia", price: "R$ 24" }
+        { id: 201, name: "Flat White Duplo Ristretto", notes: "Leite Fazenda Bela Vista vaporizado a 62°C em microespuma", price: 18 },
+        { id: 202, name: "Espresso Tonic Botânico", notes: "Duplo espresso frutado, água tônica artesanal e óleo de laranja Bahia", price: 24 },
+        { id: 203, name: "Cortado com Leite de Aveia Barista", notes: "Proporção 1:1 com dulçor natural da aveia cremosa", price: 21 },
+        { id: 204, name: "Voo Degustação (Espresso + Filtrado mesmo grão)", notes: "Compare o mesmo microlote em duas extrações distintas", price: 32 }
       ],
       brunch: [
-        { name: "Croissant Folhado c/ Manteiga Francesa Isigny", notes: "72 horas de fermentação lenta e crosta caramelizada", price: "R$ 21" },
-        { name: "Toast Sourdough & Ovos Caipiras Pochê", notes: "Abacate grelhado, queijo de cabra e dukkah da casa", price: "R$ 44" }
+        { id: 301, name: "Croissant Folhado Manteiga Francesa Isigny", notes: "72 horas de fermentação lenta e alvéolos abertos", price: 21 },
+        { id: 302, name: "Toast Sourdough & Ovos Caipiras Pochê", notes: "Abacate grelhado, queijo de cabra e dukkah de castanhas", price: 44 },
+        { id: 303, name: "Pain au Chocolat Belga Callebaut 70%", notes: "Massa folhada crocante com duas barras de chocolate amargo", price: 24 },
+        { id: 304, name: "Cinnamon Roll com Cardamomo Recém-Moído", notes: "Glaceado com cream cheese e baunilha em fava", price: 23 }
       ]
     };
-    window.renderCoffee = function(cat) {
+
+    const BEANS_PACKS = [
+      { id: 401, name: "Microlote #01 — Geisha Floral (250g)", region: "Carmo de Minas, MG • 1.420m", score: "90.5 SCA", roast: "Torra Clara para Filtrados", price: 78 },
+      { id: 402, name: "Microlote #02 — Bioma Caparaó (250g)", region: "Alto Caparaó, ES • 1.380m", score: "89.0 SCA", roast: "Torra Média-Clara Omni", price: 64 },
+      { id: 403, name: "Microlote #03 — Espresso Veludo (250g)", region: "Cerrado Mineiro • 1.150m", score: "88.0 SCA", roast: "Torra Média Corpo Intenso", price: 56 }
+    ];
+
+    let coffeeCart = [];
+
+    window.renderCoffee = function(cat, btnEl) {
+      if (btnEl) {
+        document.querySelectorAll('.coffee-tab').forEach(b => {
+          b.className = 'coffee-tab px-5 py-2.5 rounded-full text-xs font-bold bg-white text-[#1E140F] border border-stone-300';
+        });
+        btnEl.className = 'coffee-tab px-5 py-2.5 rounded-full text-xs font-bold bg-[#1E140F] text-white';
+      }
       document.getElementById('coffee-menu').innerHTML = COFFEE_MENU[cat].map(i => `
-        <div class="bg-white p-5 rounded-2xl border border-stone-900/10 flex justify-between items-center">
-          <div><h3 class="font-coffee text-xl">${i.name}</h3><p class="text-xs text-stone-500 mt-1">${i.notes}</p></div>
-          <strong class="text-base font-bold text-amber-900">${i.price}</strong>
+        <div class="bg-white p-6 rounded-2xl border border-stone-900/10 flex justify-between items-center gap-4 hover:border-[#8C4A27] transition">
+          <div>
+            <h3 class="font-coffee text-xl text-[#1E140F]">${i.name}</h3>
+            <p class="text-xs text-stone-500 mt-1">${i.notes}</p>
+          </div>
+          <div class="text-right shrink-0">
+            <strong class="text-base font-bold text-[#8C4A27] block">R$ ${i.price}</strong>
+            <button onclick="addCoffeeItem('${i.name}', ${i.price})" class="mt-1.5 px-3 py-1 rounded-full bg-[#F5EFE6] hover:bg-[#1E140F] hover:text-white text-[11px] font-bold transition">+ Pedir</button>
+          </div>
         </div>
       `).join('');
     };
+
+    function renderBeans() {
+      document.getElementById('beans-grid').innerHTML = BEANS_PACKS.map(b => `
+        <div class="bg-white p-7 rounded-3xl border border-stone-900/10 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center text-[11px] font-mono-lab uppercase text-[#8C4A27]">
+              <span>${b.roast}</span>
+              <span class="px-2 py-0.5 rounded bg-amber-100 font-bold">${b.score}</span>
+            </div>
+            <h3 class="font-coffee text-2xl mt-3">${b.name}</h3>
+            <p class="text-xs text-stone-500 mt-1">📍 ${b.region}</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-200 flex items-center justify-between">
+            <strong class="font-coffee text-2xl text-[#1E140F]">R$ ${b.price}</strong>
+            <button onclick="addCoffeeItem('${b.name}', ${b.price})" class="px-4 py-2 rounded-full bg-[#1E140F] hover:bg-[#8C4A27] text-white text-xs font-bold uppercase transition">
+              + Adicionar 250g
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function addCoffeeItem(name, price) {
+      coffeeCart.push({ name, price });
+      updateCoffeeCartUI();
+      openCoffeeDrawer();
+    }
+
+    function removeCoffeeItem(idx) {
+      coffeeCart.splice(idx, 1);
+      updateCoffeeCartUI();
+    }
+
+    function updateCoffeeCartUI() {
+      document.getElementById('coffee-cart-count').textContent = coffeeCart.length;
+      const total = coffeeCart.reduce((acc, item) => acc + item.price, 0);
+      document.getElementById('coffee-cart-total').textContent = 'R$ ' + total.toLocaleString('pt-BR');
+      const list = document.getElementById('coffee-cart-list');
+      if (coffeeCart.length === 0) {
+        list.innerHTML = `<p class="text-xs text-stone-500 py-8 text-center">Sua sacola está vazia. Escolha um café ou microlote.</p>`;
+        return;
+      }
+      list.innerHTML = coffeeCart.map((item, idx) => `
+        <div class="p-3.5 rounded-xl bg-white border border-stone-200 flex justify-between items-center text-xs">
+          <div>
+            <strong class="text-stone-900 block">${item.name}</strong>
+            <span class="text-[#8C4A27] font-bold">R$ ${item.price}</span>
+          </div>
+          <button onclick="removeCoffeeItem(${idx})" class="text-stone-400 hover:text-red-600">✕</button>
+        </div>
+      `).join('');
+    }
+
+    function calcCoffeeSub() {
+      const bags = Number(document.getElementById('sub-bags').value);
+      const grind = document.getElementById('sub-grind').value;
+      const price = bags * 56;
+      document.getElementById('sub-price').textContent = `R$ ${price} /mês`;
+      document.getElementById('sub-desc').textContent = `${bags} microlotes inéditos (88+ pts SCA) • ${grind}`;
+    }
+
+    function subscribeCoffeeClub() {
+      const bags = document.getElementById('sub-bags').value;
+      const price = Number(bags) * 56;
+      addCoffeeItem(`Assinatura Clube Torra 04 (${bags}x 250g)`, price);
+    }
+
+    function openCoffeeDrawer() {
+      document.getElementById('coffee-order-msg').classList.add('hidden');
+      document.getElementById('coffee-overlay').classList.remove('hidden');
+      document.getElementById('coffee-drawer').classList.remove('translate-x-full');
+    }
+
+    function closeCoffeeDrawer() {
+      document.getElementById('coffee-overlay').classList.add('hidden');
+      document.getElementById('coffee-drawer').classList.add('translate-x-full');
+    }
+
+    function finishCoffeeOrder() {
+      if (coffeeCart.length === 0) return;
+      document.getElementById('coffee-order-msg').classList.remove('hidden');
+      coffeeCart = [];
+      updateCoffeeCartUI();
+    }
+
     renderCoffee('filtrados');
+    renderBeans();
+    calcCoffeeSub();
+    updateCoffeeCartUI();
   </script>
-  <!-- Vercel Web Analytics & Speed Insights -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
