@@ -1,81 +1,1393 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
 
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PURECARE FACILITIES — Limpeza Pós-Obra, Corporativa & Manutenção</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PURECARE FACILITIES — Gestão Integrada de Facilities, Limpeza Técnica & Manutenção Predial</title>
+  <meta name="description" content="Gestão integrada de facilities, limpeza técnica corporativa e hospitalar, pós-obra pesada e manutenção predial com certificação ISO 9001 e 14001. Equipe 100% CLT, filtragem HEPA e SLA de 99,4%." />
+
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <style>body { background-color: #F0F9FF; color: #0C4A6E; font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            petroleum: '#0f172a',
+            petroleumLight: '#1e293b',
+            cyanHosp: '#06b6d4',
+            cyanDark: '#0891b2',
+            cyanTint: '#ecfeff',
+            emeraldEco: '#10b981',
+            emeraldDark: '#059669',
+            emeraldTint: '#ecfdf5',
+            surfaceIce: '#f8fafc',
+            skySoft: '#f0f9ff'
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '"Inter"', 'sans-serif'],
+            inter: ['"Inter"', 'sans-serif']
+          },
+          boxShadow: {
+            'corporate': '0 20px 45px -15px rgba(15, 23, 42, 0.08)',
+            'corporate-hover': '0 25px 50px -12px rgba(6, 182, 212, 0.16)',
+            'cyan-glow': '0 10px 30px -5px rgba(6, 182, 212, 0.35)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #f8fafc;
+      color: #0f172a;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Custom Range Slider */
+    input[type=range].purecare-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      outline: none;
+    }
+    input[type=range].purecare-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #06b6d4;
+      border: 3px solid #ffffff;
+      box-shadow: 0 2px 10px rgba(6, 182, 212, 0.55);
+      cursor: pointer;
+      transition: transform 0.15s ease, background-color 0.15s ease;
+    }
+    input[type=range].purecare-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.12);
+      background: #0891b2;
+    }
+
+    /* Card Microinteractions */
+    .service-card {
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.11);
+      border-color: rgba(6, 182, 212, 0.45);
+    }
+
+    /* Subtle Pattern Grid */
+    .bg-tech-grid {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+    }
+  </style>
 </head>
-<body class="min-h-screen antialiased">
-  <header class="bg-white border-b border-sky-900/10 sticky top-0 z-40">
-    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-      <span class="font-extrabold text-2xl text-sky-600">✨ PURECARE <span class="text-xs uppercase tracking-widest text-slate-400">Facilities</span></span>
-      <span class="px-3.5 py-1 rounded-full bg-sky-100 text-sky-800 text-xs font-bold">Equipe Uniformizada & Segurada • Produtos Biodegradáveis</span>
+
+<body class="min-h-screen antialiased selection:bg-cyanHosp selection:text-white">
+
+  <!-- TOPBAR DE COMPLIANCE E PLANTÃO 24H -->
+  <div class="bg-petroleum text-slate-200 text-xs border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emeraldEco/15 text-emerald-400 border border-emeraldEco/30 font-semibold text-[11px]">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 -ml-3"></span>
+          ISO 9001 & ISO 14001
+        </span>
+        <span class="hidden md:inline text-slate-300 font-medium">
+          Equipe Uniformizada, Segurada (100% CLT) & Produtos Biodegradáveis Homologados ANVISA
+        </span>
+      </div>
+
+      <div class="flex items-center gap-5 ml-auto">
+        <span class="hidden sm:inline-flex items-center gap-1.5 text-cyan-400 font-semibold">
+          <i data-lucide="Clock" class="w-3.5 h-3.5"></i>
+          SLA de Substituição de Efetivo: até 2h
+        </span>
+        <button onclick="openEmergencyModal()" class="inline-flex items-center gap-1.5 text-xs font-bold text-white bg-rose-600/90 hover:bg-rose-600 px-3 py-1 rounded-full transition-colors">
+          <i data-lucide="phone-call" class="w-3 h-3"></i>
+          <span>Plantão Predial 24h</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. HEADER CORPORATIVO FIXO -->
+  <header class="bg-white/95 backdrop-blur-md border-b border-slate-200/80 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-petroleum via-cyanDark to-cyanHosp flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+          <i data-lucide="shield-check" class="w-6 h-6 text-cyanTint"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="font-extrabold text-xl sm:text-2xl tracking-tight text-petroleum">PURECARE</span>
+            <span class="font-bold text-xs uppercase tracking-[0.2em] px-2 py-0.5 rounded bg-cyanTint text-cyanDark border border-cyanHosp/25">Facilities</span>
+          </div>
+          <span class="block text-[10px] uppercase tracking-[0.18em] text-slate-400 font-semibold">
+            Corporate & Hospital Grade Engineering
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-600">
+        <a href="#calculadora" class="hover:text-cyanDark transition-colors flex items-center gap-1.5 text-petroleum">
+          <i data-lucide="calculator" class="w-4 h-4 text-cyanHosp"></i>
+          Simulador de Escopo & m²
+        </a>
+        <a href="#pilares" class="hover:text-cyanDark transition-colors">Pilares de Serviços</a>
+        <a href="#protocolos-verdes" class="hover:text-cyanDark transition-colors">Protocolos & ESG</a>
+        <a href="#casos-reais" class="hover:text-cyanDark transition-colors">Operações & Clientes</a>
+        <a href="#depoimentos" class="hover:text-cyanDark transition-colors">Depoimentos</a>
+      </nav>
+
+      <!-- Header CTA & Mobile Menu Button -->
+      <div class="flex items-center gap-3">
+        <a href="#proposta-tecnica" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-petroleum hover:bg-cyanDark text-white font-bold text-xs sm:text-sm tracking-wide shadow-sm transition-all">
+          <span>Solicitar Orçamento Rápido</span>
+          <i data-lucide="arrow-right" class="w-4 h-4 text-cyanHosp"></i>
+        </a>
+
+        <button onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-xl border border-slate-200 text-slate-700 hover:bg-slate-100" aria-label="Abrir Menu">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-200 px-6 py-5 space-y-3 text-sm font-semibold text-slate-700 shadow-xl">
+      <a href="#calculadora" onclick="toggleMobileMenu()" class="block py-2 text-cyanDark font-bold">⚡ Calculadora de Escopo & Equipe (m²)</a>
+      <a href="#pilares" onclick="toggleMobileMenu()" class="block py-2 hover:text-cyanDark">Nossos Pilares de Serviços</a>
+      <a href="#protocolos-verdes" onclick="toggleMobileMenu()" class="block py-2 hover:text-cyanDark">Padrão HEPA & Protocolos Verdes</a>
+      <a href="#casos-reais" onclick="toggleMobileMenu()" class="block py-2 hover:text-cyanDark">Clientes & Centros Empresariais</a>
+      <a href="#depoimentos" onclick="toggleMobileMenu()" class="block py-2 hover:text-cyanDark">Avaliações de Gestores e Síndicos</a>
+      <a href="#proposta-tecnica" onclick="toggleMobileMenu()" class="block py-3 text-center rounded-xl bg-petroleum text-white font-bold">Solicitar Proposta Técnica</a>
     </div>
   </header>
 
-  <main class="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-    <div class="lg:col-span-6">
-      <span class="text-xs font-extrabold uppercase tracking-wider text-sky-600">Atendimento Residencial & Corporativo</span>
-      <h1 class="text-4xl sm:text-6xl font-extrabold mt-2 leading-tight text-slate-900">Ambientes impecáveis sem dor de cabeça.</h1>
-      <p class="text-slate-600 mt-4">Especialistas em limpeza técnica pós-obra fina, higienização de vidros em altura, impermeabilização de estofados e manutenção predial.</p>
-    </div>
+  <!-- 2. HERO SECTION DE ALTO IMPACTO CORPORATIVO -->
+  <section class="relative bg-gradient-to-b from-skySoft via-white to-surfaceIce pt-12 pb-20 lg:pt-16 lg:pb-28 border-b border-slate-200/80 bg-tech-grid">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Column: Headline, Authority Badges & Dual CTA -->
+        <div class="lg:col-span-7 space-y-7">
+          <div class="inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-cyanHosp/30 shadow-sm">
+            <span class="px-2.5 py-0.5 rounded-full bg-cyanHosp/15 text-cyanDark text-xs font-extrabold uppercase tracking-wider">
+              Terceirização Inteligente
+            </span>
+            <span class="text-xs text-slate-600 font-semibold">
+              Rastreabilidade por QR Code • Fiscalização Digital em Tempo Real
+            </span>
+          </div>
 
-    <!-- Calculadora de Limpeza por m² -->
-    <div class="lg:col-span-6 bg-white p-8 rounded-3xl border border-sky-200 shadow-xl">
-      <h2 class="text-2xl font-extrabold text-slate-900 mb-1">Orçamento Instantâneo por m²</h2>
-      <p class="text-xs text-slate-500 mb-6">Veja o dimensionamento de equipe e produtos já inclusos:</p>
+          <h1 class="text-4xl sm:text-5xl lg:text-[54px] font-extrabold text-petroleum tracking-tight leading-[1.1]">
+            Gestão Integrada de Facilities e <span class="bg-gradient-to-r from-cyanDark via-cyanHosp to-emeraldEco bg-clip-text text-transparent">Limpeza Técnica de Alta Performance.</span>
+          </h1>
 
-      <div class="space-y-4">
-        <div>
-          <label class="text-xs font-bold uppercase text-slate-500 block mb-1">Modalidade de Serviço</label>
-          <select id="clean-type" class="w-full px-4 py-3 rounded-xl bg-sky-50 border border-sky-200 text-sm font-bold text-slate-800">
-            <option value="4.5">Limpeza Express Residencial / Escritório (R$ 4,50/m²)</option>
-            <option value="12.0" selected>Limpeza Técnica Pós-Obra Pesada c/ Maquinário (R$ 12,00/m²)</option>
-            <option value="8.0">Tratamento de Piso & Higienização Profunda (R$ 8,00/m²)</option>
-          </select>
+          <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl">
+            Ambientes corporativos, industriais e hospitalares impecáveis sem passivos trabalhistas ou falhas operacionais. Unimos equipes próprias treinadas (NR-35, NR-10 e ANVISA), maquinário embarcado com filtragem HEPA e insumos 100% biodegradáveis.
+          </p>
+
+          <!-- Dual CTA -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-1">
+            <a href="#calculadora" class="inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl bg-cyanHosp hover:bg-cyanDark text-white font-extrabold text-sm sm:text-base shadow-cyan-glow transition-all">
+              <span>Dimensionar Equipe & Orçamento por m²</span>
+              <i data-lucide="sliders" class="w-5 h-5"></i>
+            </a>
+            <a href="#proposta-tecnica" class="inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-2xl bg-white hover:bg-slate-50 text-petroleum border border-slate-300 font-bold text-sm shadow-sm transition-all">
+              <i data-lucide="file-check-2" class="w-5 h-5 text-emeraldEco"></i>
+              <span>Agendar Visita Técnica Gratuita</span>
+            </a>
+          </div>
+
+          <!-- Authority Metrics Grid -->
+          <div class="pt-6 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="bg-white p-4 rounded-2xl border border-slate-200/90 shadow-sm flex items-start gap-3.5">
+              <div class="w-10 h-10 rounded-xl bg-cyanTint text-cyanDark flex items-center justify-center shrink-0 font-bold">
+                <i data-lucide="building-2" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <div class="text-2xl font-extrabold text-petroleum">+450</div>
+                <p class="text-xs text-slate-500 font-medium mt-0.5">Contratos corporativos e prediais ativos</p>
+              </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-2xl border border-slate-200/90 shadow-sm flex items-start gap-3.5">
+              <div class="w-10 h-10 rounded-xl bg-emeraldTint text-emeraldDark flex items-center justify-center shrink-0 font-bold">
+                <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <div class="text-2xl font-extrabold text-emeraldDark">99.4%</div>
+                <p class="text-xs text-slate-500 font-medium mt-0.5">SLA de pontualidade e cobertura de postos</p>
+              </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-2xl border border-slate-200/90 shadow-sm flex items-start gap-3.5">
+              <div class="w-10 h-10 rounded-xl bg-slate-100 text-petroleum flex items-center justify-center shrink-0 font-bold">
+                <i data-lucide="award" class="w-5 h-5 text-cyanHosp"></i>
+              </div>
+              <div>
+                <div class="text-xl font-extrabold text-petroleum">ISO 9001 / 14001</div>
+                <p class="text-xs text-slate-500 font-medium mt-0.5">Gestão de qualidade e responsabilidade ambiental</p>
+              </div>
+            </div>
+          </div>
         </div>
 
+        <!-- Right Column: HD Operational Showcase Card -->
+        <div class="lg:col-span-5">
+          <div class="bg-white p-3 rounded-3xl border border-slate-200 shadow-corporate relative">
+            <div class="relative rounded-2xl overflow-hidden aspect-[4/4.3] bg-petroleum">
+              <img 
+                src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&q=85" 
+                alt="Equipe profissional PureCare Facilities em operação corporativa" 
+                class="w-full h-full object-cover object-center"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-petroleum via-petroleum/30 to-transparent"></div>
+
+              <!-- Top Operational Telemetry Badge -->
+              <div class="absolute top-4 left-4 right-4 flex items-center justify-between gap-2">
+                <span class="px-3 py-1.5 rounded-xl bg-white/95 backdrop-blur-md text-petroleum text-xs font-bold shadow-md flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-emeraldEco animate-ping"></span>
+                  <span class="w-2 h-2 rounded-full bg-emeraldEco -ml-4"></span>
+                  Checklist Digital Auditado via App
+                </span>
+                <span class="px-3 py-1.5 rounded-xl bg-petroleum/90 backdrop-blur-md text-cyan-300 text-xs font-bold border border-white/15">
+                  NR-35 & HEPA
+                </span>
+              </div>
+
+              <!-- Bottom Overlay Info Card -->
+              <div class="absolute bottom-4 left-4 right-4 p-5 rounded-2xl bg-petroleum/95 backdrop-blur-xl border border-white/15 text-white space-y-3">
+                <div class="flex items-center justify-between text-xs">
+                  <span class="text-cyan-400 font-bold uppercase tracking-wider">PADRÃO HOSPITALAR & TRIPLE-A</span>
+                  <span class="text-emerald-400 font-semibold">✓ Seguro RC R$ 5 Milhões</span>
+                </div>
+                <p class="text-sm font-bold leading-snug">
+                  Lavadoras automáticas tripuladas, aspiradores com filtro HEPA H14 e desinfecção eletrostática sem interrupção do expediente.
+                </p>
+                <div class="grid grid-cols-3 gap-2 pt-3 border-t border-white/10 text-[11px]">
+                  <div>
+                    <span class="text-slate-400 block">Insumos</span>
+                    <span class="text-emerald-300 font-bold">100% Eco-Cert</span>
+                  </div>
+                  <div>
+                    <span class="text-slate-400 block">Vínculo</span>
+                    <span class="text-white font-bold">100% CLT / CND</span>
+                  </div>
+                  <div>
+                    <span class="text-slate-400 block">Reserva Técnica</span>
+                    <span class="text-cyan-300 font-bold">Cobertura 2h</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. CALCULADORA INTERATIVA DE ESCOPO, EQUIPE E ORÇAMENTO (M²) -->
+  <section id="calculadora" class="py-20 lg:py-28 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyanTint border border-cyanHosp/30 text-cyanDark text-xs font-extrabold uppercase tracking-widest">
+          <i data-lucide="sliders-horizontal" class="w-4 h-4"></i>
+          Dimensionamento Técnico Instantâneo
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-petroleum mt-3 tracking-tight">
+          Calculadora de Escopo, Equipe & Orçamento por m²
+        </h2>
+        <p class="text-slate-600 mt-3 text-sm sm:text-base">
+          Selecione a tipologia do seu ambiente, ajuste a área aproximada em metros quadrados e a frequência de atendimento para visualizar a equipe recomendada, maquinário incluso e estimativa financeira.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- Left 7 Cols: Interactive Parameters -->
+        <div class="lg:col-span-7 bg-surfaceIce p-6 sm:p-9 rounded-3xl border border-slate-200/90 shadow-corporate space-y-7">
+          
+          <!-- 1. Seleção Rápida de Ambiente (Pills + Select sincronizado) -->
+          <div>
+            <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-3">
+              1. Tipo de Ambiente / Operação
+            </label>
+            <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 mb-3" id="env-buttons-group">
+              <button type="button" onclick="selectEnvPreset('4.5', 450, 'diaria', this)" class="env-btn p-3 rounded-xl border border-slate-200 bg-white text-slate-700 hover:border-cyanHosp text-left transition-all">
+                <i data-lucide="briefcase" class="w-4 h-4 text-cyanDark mb-1"></i>
+                <div class="font-bold text-xs">Escritórios</div>
+                <span class="text-[10px] text-slate-400 block">Corporativo</span>
+              </button>
+
+              <button type="button" onclick="selectEnvPreset('6.2', 1200, 'diaria', this)" class="env-btn p-3 rounded-xl border border-slate-200 bg-white text-slate-700 hover:border-cyanHosp text-left transition-all">
+                <i data-lucide="factory" class="w-4 h-4 text-cyanDark mb-1"></i>
+                <div class="font-bold text-xs">Indústria</div>
+                <span class="text-[10px] text-slate-400 block">Galpão / Planta</span>
+              </button>
+
+              <button type="button" onclick="selectEnvPreset('9.5', 600, 'diaria', this)" class="env-btn p-3 rounded-xl border border-slate-200 bg-white text-slate-700 hover:border-cyanHosp text-left transition-all">
+                <i data-lucide="heart-pulse" class="w-4 h-4 text-emeraldEco mb-1"></i>
+                <div class="font-bold text-xs">Hospitalar</div>
+                <span class="text-[10px] text-slate-400 block">Clínicas & Labs</span>
+              </button>
+
+              <button type="button" onclick="selectEnvPreset('5.5', 900, 'diaria', this)" class="env-btn p-3 rounded-xl border border-slate-200 bg-white text-slate-700 hover:border-cyanHosp text-left transition-all">
+                <i data-lucide="building" class="w-4 h-4 text-cyanDark mb-1"></i>
+                <div class="font-bold text-xs">Condomínio</div>
+                <span class="text-[10px] text-slate-400 block">Prédio Comercial</span>
+              </button>
+
+              <button type="button" onclick="selectEnvPreset('12.0', 250, 'pontual', this)" class="env-btn p-3 rounded-xl border border-cyanHosp bg-cyanTint text-petroleum text-left transition-all">
+                <i data-lucide="hard-hat" class="w-4 h-4 text-cyanDark mb-1"></i>
+                <div class="font-bold text-xs">Pós-Obra</div>
+                <span class="text-[10px] text-cyanDark font-semibold block">Limpeza Pesada</span>
+              </button>
+            </div>
+
+            <!-- Select Original Preservado e Expandido -->
+            <select id="clean-type" class="w-full px-4 py-3.5 rounded-xl bg-white border border-slate-300 text-sm font-bold text-petroleum focus:border-cyanHosp focus:outline-none">
+              <option value="4.5">Escritórios & Ambientes Corporativos Triple-A (Base R$ 4,50/m²)</option>
+              <option value="6.2">Indústria, Logística & Pisos Epóxi (Base R$ 6,20/m²)</option>
+              <option value="9.5">Hospitalar, Clínicas & Laboratórios ANVISA (Base R$ 9,50/m²)</option>
+              <option value="5.5">Condomínio Comercial & Áreas Comuns (Base R$ 5,50/m²)</option>
+              <option value="12.0" selected>Limpeza Técnica Pós-Obra Pesada c/ Maquinário (Base R$ 12,00/m²)</option>
+              <option value="8.0">Tratamento de Piso & Higienização Profunda (Base R$ 8,00/m²)</option>
+            </select>
+          </div>
+
+          <!-- 2. Metragem Quadrada Slider -->
+          <div class="space-y-2.5">
+            <div class="flex justify-between items-baseline">
+              <label for="clean-slider" class="text-xs font-extrabold uppercase tracking-wider text-slate-500">
+                2. Metragem Quadrada Aproximada (m²)
+              </label>
+              <strong id="m2-clean" class="text-2xl sm:text-3xl font-extrabold text-cyanDark bg-white px-4 py-1 rounded-xl border border-cyanHosp/30">
+                250 m²
+              </strong>
+            </div>
+            <input 
+              id="clean-slider" 
+              type="range" 
+              min="50" 
+              max="5000" 
+              step="50" 
+              value="250" 
+              class="purecare-slider"
+            />
+            <div class="flex justify-between text-[11px] font-semibold text-slate-400">
+              <span>50 m² (Conjunto)</span>
+              <span>500 m² (Andar)</span>
+              <span>1.500 m² (Sede)</span>
+              <span>3.000 m²</span>
+              <span>5.000 m² (Complexo)</span>
+            </div>
+          </div>
+
+          <!-- 3. Frequência de Atendimento -->
+          <div>
+            <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-2.5">
+              3. Frequência & Regime de Atendimento
+            </label>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="freq-buttons-group">
+              <button type="button" onclick="setFrequency('diaria')" data-freq="diaria" class="freq-btn p-3.5 rounded-xl border border-slate-200 bg-white text-left transition-all">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-xs text-petroleum">Contrato Diário (Fixo)</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-emeraldTint text-emeraldDark font-bold">-15% m²</span>
+                </div>
+                <p class="text-[11px] text-slate-500 mt-1">Equipe residente Seg a Sex/Sáb + insumos contínuos</p>
+              </button>
+
+              <button type="button" onclick="setFrequency('semanal')" data-freq="semanal" class="freq-btn p-3.5 rounded-xl border border-slate-200 bg-white text-left transition-all">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-xs text-petroleum">Semanal / Programado</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-sky-100 text-sky-800 font-bold">1x a 3x/sem</span>
+                </div>
+                <p class="text-[11px] text-slate-500 mt-1">Equipe volante motorizada em dias fixos</p>
+              </button>
+
+              <button type="button" onclick="setFrequency('pontual')" data-freq="pontual" class="freq-btn p-3.5 rounded-xl border border-cyanHosp bg-cyanTint text-left transition-all">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-xs text-petroleum">Intervenção Pontual</span>
+                  <span class="text-[10px] px-2 py-0.5 rounded bg-cyanHosp text-white font-bold">Turnkey</span>
+                </div>
+                <p class="text-[11px] text-slate-600 mt-1">Força-tarefa intensiva Pós-Obra ou Tratamento</p>
+              </button>
+            </div>
+          </div>
+
+          <!-- Adicionais Técnicos -->
+          <div class="p-4 rounded-2xl bg-white border border-slate-200 flex flex-wrap items-center justify-between gap-4">
+            <label class="flex items-center gap-2.5 text-xs font-bold text-slate-700 cursor-pointer">
+              <input type="checkbox" id="addon-hepa" checked onchange="calcClean()" class="w-4 h-4 accent-cyan-600 rounded" />
+              <span>Aspiração Industrial Filtro HEPA + Químicos Verdes (Incluso)</span>
+            </label>
+            <label class="flex items-center gap-2.5 text-xs font-bold text-slate-700 cursor-pointer">
+              <input type="checkbox" id="addon-glass" onchange="calcClean()" class="w-4 h-4 accent-cyan-600 rounded" />
+              <span>Incluir Limpeza Técnica de Vidros / Fachada (+12%)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Right 5 Cols: Real-time Team, Cronograma & Investment Output -->
+        <div class="lg:col-span-5 bg-petroleum text-white p-7 sm:p-9 rounded-3xl shadow-2xl flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute -top-24 -right-24 w-56 h-56 rounded-full bg-cyanHosp/15 blur-3xl pointer-events-none"></div>
+
+          <div class="space-y-6 relative z-10">
+            <div class="flex items-center justify-between pb-4 border-b border-white/10">
+              <div>
+                <span class="text-[11px] font-bold uppercase tracking-widest text-cyan-400 block">DIMENSIONAMENTO OPERACIONAL</span>
+                <h3 class="text-xl font-extrabold text-white mt-0.5">Plano de Atendimento Sugerido</h3>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-emeraldEco/20 border border-emeraldEco/40 text-emerald-300 text-xs font-bold">
+                Tudo Incluso
+              </span>
+            </div>
+
+            <!-- Team & Schedule Cards -->
+            <div class="space-y-3">
+              <div class="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-start gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-cyanHosp/20 text-cyan-300 flex items-center justify-center shrink-0">
+                  <i data-lucide="users" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <span class="text-xs text-slate-400 block">Equipe Técnica Designada</span>
+                  <strong id="clean-staff" class="text-base font-extrabold text-white">
+                    5 Profissionais + Encarregado Técnico
+                  </strong>
+                  <span id="clean-equipment" class="block text-xs text-cyan-300 mt-0.5">
+                    Lavadora de piso compacta + Aspiradores HEPA + EPIs
+                  </span>
+                </div>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-start gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-emeraldEco/20 text-emerald-300 flex items-center justify-center shrink-0">
+                  <i data-lucide="calendar-clock" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <span class="text-xs text-slate-400 block">Cronograma Estimado de Execução</span>
+                  <strong id="clean-schedule" class="text-base font-extrabold text-white">
+                    Entrega garantida em 1 a 2 turnos (8h–16h)
+                  </strong>
+                  <span class="block text-xs text-slate-300 mt-0.5">
+                    Checklist digital por ambiente com fotos de antes/depois
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Price Box -->
+            <div class="p-5 rounded-2xl bg-gradient-to-br from-cyanHosp/20 to-emeraldEco/10 border border-cyanHosp/40">
+              <div class="flex items-center justify-between text-xs text-cyan-200 mb-1">
+                <span id="price-label-mode">INVESTIMENTO ESTIMADO (SERVIÇO + INSUMOS)</span>
+                <span class="font-bold">NF-e + CND</span>
+              </div>
+              <div class="flex items-baseline justify-between gap-2">
+                <strong id="clean-total" class="text-3xl sm:text-4xl font-extrabold text-white">
+                  R$ 3.000
+                </strong>
+                <span id="clean-unit-info" class="text-xs text-emerald-300 font-semibold">
+                  100% Material & Maquinário Inclusos
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-6 mt-6 border-t border-white/10 space-y-3 relative z-10">
+            <button type="button" onclick="transferScopeToProposal()" class="w-full py-4 px-6 rounded-2xl bg-cyanHosp hover:bg-cyan-400 text-petroleum font-extrabold text-xs sm:text-sm uppercase tracking-wider shadow-cyan-glow transition-all flex items-center justify-center gap-2">
+              <span>Travar Orçamento & Receber Proposta Formal</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+            <p class="text-[11px] text-center text-slate-400">
+              Mobilização de equipe em até 24h para São Paulo, Grande SP, Campinas e RJ.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. NOSSOS PILARES DE SERVIÇOS -->
+  <section id="pilares" class="py-24 bg-surfaceIce border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
         <div>
-          <div class="flex justify-between text-xs font-bold mb-1"><span>Metragem do Imóvel</span><strong id="m2-clean" class="text-sky-600 text-base">140 m²</strong></div>
-          <input id="clean-slider" type="range" min="40" max="600" step="10" value="140" class="w-full accent-sky-600">
+          <span class="text-xs font-extrabold uppercase tracking-widest text-cyanDark">Soluções Turnkey sob Gestão Única</span>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-petroleum mt-2 tracking-tight">
+            Nossos Pilares de Serviços Corporativos
+          </h2>
+        </div>
+        <p class="text-sm sm:text-base text-slate-600 max-w-md">
+          Centralize a gestão operacional do seu edifício ou planta industrial em um único parceiro certificado ISO, reduzindo custos administrativos em até 22%.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+        
+        <!-- Pilar 1 -->
+        <article class="service-card bg-white rounded-3xl p-7 border border-slate-200/90 shadow-corporate flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-12 h-12 rounded-2xl bg-cyanTint text-cyanDark flex items-center justify-center">
+                <i data-lucide="sparkles" class="w-6 h-6"></i>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-emeraldTint text-emeraldDark text-[11px] font-bold">
+                Padrão ANVISA & POP
+              </span>
+            </div>
+            <h3 class="text-xl font-extrabold text-petroleum">Limpeza Técnica Corporativa & Hospitalar</h3>
+            <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+              Higienização contínua de escritórios Triple-A, clínicas, laboratórios e centros médicos. Controle rigoroso de contaminação cruzada por código de cores de microfibra e desinfetantes hospitalares de 5ª geração.
+            </p>
+            <ul class="mt-4 space-y-1.5 text-xs text-slate-600 font-medium">
+              <li class="flex items-center gap-2"><span class="text-emeraldEco font-bold">✓</span> Desinfecção de áreas críticas e semicríticas</li>
+              <li class="flex items-center gap-2"><span class="text-emeraldEco font-bold">✓</span> Abastecimento e gestão inteligente de descartáveis</li>
+            </ul>
+          </div>
+          <button onclick="selectServiceInForm('Limpeza Técnica Corporativa & Hospitalar')" class="mt-6 pt-4 border-t border-slate-100 text-left text-xs font-extrabold uppercase tracking-wider text-cyanDark hover:text-petroleum flex items-center justify-between">
+            <span>Solicitar Escopo Técnico</span>
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </button>
+        </article>
+
+        <!-- Pilar 2 -->
+        <article class="service-card bg-white rounded-3xl p-7 border border-slate-200/90 shadow-corporate flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-12 h-12 rounded-2xl bg-cyanTint text-cyanDark flex items-center justify-center">
+                <i data-lucide="disc" class="w-6 h-6"></i>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-sky-100 text-sky-800 text-[11px] font-bold">
+                High-Speed Burnishing
+              </span>
+            </div>
+            <h3 class="text-xl font-extrabold text-petroleum">Tratamento e Restauração de Pisos</h3>
+            <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+              Remoção mecânica de ceras antigas, selagem acrílica de alto tráfego, vitrificação de mármores, granitos, porcelanatos técnicos, pisos vinílicos (PAVIFLEX) e limpeza industrial de epóxi e concreto polido.
+            </p>
+            <ul class="mt-4 space-y-1.5 text-xs text-slate-600 font-medium">
+              <li class="flex items-center gap-2"><span class="text-emeraldEco font-bold">✓</span> Polimento termomecânico UHS sem poeira</li>
+              <li class="flex items-center gap-2"><span class="text-emeraldEco font-bold">✓</span> Impermeabilização anti-manchas de alta durabilidade</li>
+            </ul>
+          </div>
+          <button onclick="selectServiceInForm('Tratamento e Restauração de Pisos')" class="mt-6 pt-4 border-t border-slate-100 text-left text-xs font-extrabold uppercase tracking-wider text-cyanDark hover:text-petroleum flex items-center justify-between">
+            <span>Agendar Teste de Amostra Grátis</span>
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </button>
+        </article>
+
+        <!-- Pilar 3 -->
+        <article class="service-card bg-white rounded-3xl p-7 border border-slate-200/90 shadow-corporate flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-12 h-12 rounded-2xl bg-cyanTint text-cyanDark flex items-center justify-center">
+                <i data-lucide="wrench" class="w-6 h-6"></i>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-[11px] font-bold">
+                ART / CREA & PMOC
+              </span>
+            </div>
+            <h3 class="text-xl font-extrabold text-petroleum">Manutenção Predial Preventiva & Corretiva</h3>
+            <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+              Equipes residentes ou volantes de oficiais de manutenção civil, elétrica (NR-10), hidráulica e climatização (PMOC de ar-condicionado). Gestão preventiva assistida por software CMMS para zero paradas críticas.
+            </p>
+            <ul class="mt-4 space-y-1.5 text-xs text-slate-600 font-medium">
+              <li class="flex items-center gap-2"><span class="text-emeraldEco font-bold">✓</span> Termografia de quadros elétricos e bombas</li>
+              <li class="flex items-center gap-2"><span class="text-emeraldEco font-bold">✓</span> Plantão emergencial 24/7 com SLA de 90 min</li>
+            </ul>
+          </div>
+          <button onclick="selectServiceInForm('Manutenção Predial Preventiva & PMOC')" class="mt-6 pt-4 border-t border-slate-100 text-left text-xs font-extrabold uppercase tracking-wider text-cyanDark hover:text-petroleum flex items-center justify-between">
+            <span>Solicitar Plano de Manutenção</span>
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </button>
+        </article>
+
+        <!-- Pilar 4 -->
+        <article class="service-card bg-white rounded-3xl p-7 border border-slate-200/90 shadow-corporate flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-12 h-12 rounded-2xl bg-cyanTint text-cyanDark flex items-center justify-center">
+                <i data-lucide="Layers" class="w-6 h-6"></i>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-sky-100 text-sky-800 text-[11px] font-bold">
+                Certificação NR-35 / IRATA
+              </span>
+            </div>
+            <h3 class="text-xl font-extrabold text-petroleum">Limpeza de Fachadas e Vidros em Altura</h3>
+            <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+              Hidrojateamento controlado e lavagem de pele de vidro, ACM e brises arquitetônicos por alpinismo industrial (rapel), balancim elétrico ou hastes telescópicas em fibra de carbono com água 100% desmineralizada.
+            </p>
+            <ul class="mt-4 space-y-1.5 text-xs text-slate-600 font-medium">
+              <li class="flex items-center gap-2"><span class="text-emeraldEco font-bold">✓</span> Secagem natural sem manchas de calcário</li>
+              <li class="flex items-center gap-2"><span class="text-emeraldEco font-bold">✓</span> Análise Preliminar de Risco (APR) e linha de vida</li>
+            </ul>
+          </div>
+          <button onclick="selectServiceInForm('Limpeza de Fachadas e Vidros em Altura NR-35')" class="mt-6 pt-4 border-t border-slate-100 text-left text-xs font-extrabold uppercase tracking-wider text-cyanDark hover:text-petroleum flex items-center justify-between">
+            <span>Orçar Fachada Predial</span>
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </button>
+        </article>
+
+        <!-- Pilar 5 -->
+        <article class="service-card bg-white rounded-3xl p-7 border border-slate-200/90 shadow-corporate flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-12 h-12 rounded-2xl bg-emeraldTint text-emeraldDark flex items-center justify-center">
+                <i data-lucide="trees" class="w-6 h-6"></i>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-emeraldTint text-emeraldDark text-[11px] font-bold">
+                Recepção & Paisagismo
+              </span>
+            </div>
+            <h3 class="text-xl font-extrabold text-petroleum">Jardinagem Corporativa, Portaria & Recepção</h3>
+            <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+              Conservação de áreas verdes, jardins verticais, poda técnica e controle fitossanitário ecológico, além de profissionais bilíngues de recepção executiva, controle de acesso e copa corporativa.
+            </p>
+            <ul class="mt-4 space-y-1.5 text-xs text-slate-600 font-medium">
+              <li class="flex items-center gap-2"><span class="text-emeraldEco font-bold">✓</span> Atendimento padronizado com etiqueta corporativa</li>
+              <li class="flex items-center gap-2"><span class="text-emeraldEco font-bold">✓</span> Manutenção completa de áreas externas e telhados verdes</li>
+            </ul>
+          </div>
+          <button onclick="selectServiceInForm('Jardinagem Corporativa, Portaria & Recepção')" class="mt-6 pt-4 border-t border-slate-100 text-left text-xs font-extrabold uppercase tracking-wider text-cyanDark hover:text-petroleum flex items-center justify-between">
+            <span>Consultar Postos de Serviço</span>
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </button>
+        </article>
+
+        <!-- Pilar 6 -->
+        <article class="service-card bg-white rounded-3xl p-7 border border-slate-200/90 shadow-corporate flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-12 h-12 rounded-2xl bg-cyanTint text-cyanDark flex items-center justify-center">
+                <i data-lucide="hard-hat" class="w-6 h-6"></i>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-cyanTint text-cyanDark text-[11px] font-bold">
+                Entrega Turnkey 24h–48h
+              </span>
+            </div>
+            <h3 class="text-xl font-extrabold text-petroleum">Limpeza Técnica Pós-Obra Fina & Pesada</h3>
+            <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+              Remoção técnica de respingos de tinta, argamassa, cimento, rejunte epóxi e pó de gesso micronizado sem riscar metais nobres, esquadrias anodizadas, bancadas ou revestimentos especiais.
+            </p>
+            <ul class="mt-4 space-y-1.5 text-xs text-slate-600 font-medium">
+              <li class="flex items-center gap-2"><span class="text-emeraldEco font-bold">✓</span> Desincrustantes neutros específicos por superfície</li>
+              <li class="flex items-center gap-2"><span class="text-emeraldEco font-bold">✓</span> Entrega pronta para mudança imediata (White-Glove)</li>
+            </ul>
+          </div>
+          <button onclick="selectServiceInForm('Limpeza Técnica Pós-Obra Fina & Pesada')" class="mt-6 pt-4 border-t border-slate-100 text-left text-xs font-extrabold uppercase tracking-wider text-cyanDark hover:text-petroleum flex items-center justify-between">
+            <span>Agendar Força-Tarefa Pós-Obra</span>
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </button>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. PADRÃO DE HIGIENIZAÇÃO, COMPLIANCE E PROTOCOLOS VERDES (ESG) -->
+  <section id="protocolos-verdes" class="py-24 bg-petroleum text-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-5 space-y-6">
+          <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emeraldEco/15 border border-emeraldEco/30 text-emerald-300 text-xs font-bold uppercase tracking-widest">
+            <i data-lucide="leaf" class="w-4 h-4"></i>
+            Sustentabilidade ESG & Risco Trabalhista Zero
+          </span>
+          <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+            Protocolos Verdes e Rigor Técnico Auditável.
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+            Mais do que estética, nossa operação garante qualidade biológica do ar interior (QAI), conformidade integral para edifícios com certificação <strong class="text-white">LEED® e WELL™</strong> e blindagem jurídica para o contratante.
+          </p>
+
+          <div class="p-5 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+            <div class="flex items-center justify-between text-xs font-bold text-cyan-300">
+              <span>PORTAL DE COMPLIANCE MENSAL AO CLIENTE</span>
+              <span>100% DIGITAL</span>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Toda fatura mensal é acompanhada automaticamente das guias quitadas de FGTS, INSS, eSocial, folha analítica, certidões negativas (CND) e controle biométrico de ponto.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right 7 Cols: 3 Detailed Protocol Cards -->
+        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-5">
+          <!-- Protocol 1 -->
+          <div class="p-6 rounded-3xl bg-petroleumLight/90 border border-white/10 flex flex-col justify-between space-y-6">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-emeraldEco/20 text-emerald-400 flex items-center justify-center mb-5">
+                <i data-lucide="droplet" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-400">Química Verde Certificada</span>
+              <h3 class="text-lg font-extrabold text-white mt-1">Produtos 100% Biodegradáveis</h3>
+              <p class="text-xs text-slate-300 mt-3 leading-relaxed">
+                Uso exclusivo de sistemas diluidores automáticos fechados com peróxido de hidrogênio acelerado e tensoativos vegetais registrados na ANVISA, livres de cloro livre, amônia ou compostos orgânicos voláteis (Zero VOC).
+              </p>
+            </div>
+            <span class="text-[11px] font-mono text-emerald-300 pt-3 border-t border-white/10 block">
+              ✓ Selo ABNT Qualidade Ambiental
+            </span>
+          </div>
+
+          <!-- Protocol 2 -->
+          <div class="p-6 rounded-3xl bg-petroleumLight/90 border border-white/10 flex flex-col justify-between space-y-6">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-cyanHosp/20 text-cyan-300 flex items-center justify-center mb-5">
+                <i data-lucide="wind" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[11px] font-bold uppercase tracking-wider text-cyan-300">Qualidade do Ar Interior</span>
+              <h3 class="text-lg font-extrabold text-white mt-1">Maquinário com Filtragem HEPA H14</h3>
+              <p class="text-xs text-slate-300 mt-3 leading-relaxed">
+                Aspiradores dorsais e industriais ultra-silenciosos (&lt;58 dB) equipados com filtros HEPA que retêm 99,97% de ácaros, fungos, esporos e micropartículas até 0,3 mícron, prevenindo alergias respiratórias no escritório.
+              </p>
+            </div>
+            <span class="text-[11px] font-mono text-cyan-300 pt-3 border-t border-white/10 block">
+              ✓ Lavadoras Economizadoras (-70% Água)
+            </span>
+          </div>
+
+          <!-- Protocol 3 -->
+          <div class="p-6 rounded-3xl bg-petroleumLight/90 border border-white/10 flex flex-col justify-between space-y-6">
+            <div>
+              <div class="w-12 h-12 rounded-2xl bg-amber-400/20 text-amber-300 flex items-center justify-center mb-5">
+                <i data-lucide="user-check" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[11px] font-bold uppercase tracking-wider text-amber-300">Segurança & Capacitação</span>
+              <h3 class="text-lg font-extrabold text-white mt-1">Equipe 100% CLT, NR-35 e NR-06</h3>
+              <p class="text-xs text-slate-300 mt-3 leading-relaxed">
+                Todos os colaboradores passam por verificação de antecedentes, exames ocupacionais (PCMSO/PGR), treinamento em centro técnico próprio e certificação em trabalho em altura (NR-35) e EPIs (NR-06).
+              </p>
+            </div>
+            <span class="text-[11px] font-mono text-amber-300 pt-3 border-t border-white/10 block">
+              ✓ Supervisão Presencial & Reserva Técnica
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. CLIENTES ATENDIDOS E CASOS REAIS EM CENTROS EMPRESARIAIS -->
+  <section id="casos-reais" class="py-24 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Logos de Setores e Grupos Atendidos -->
+      <div class="mb-16 pb-12 border-b border-slate-200">
+        <p class="text-center text-xs font-extrabold uppercase tracking-[0.2em] text-slate-400 mb-7">
+          Mais de 1,8 Milhão de m² gerenciados diariamente para líderes de mercado
+        </p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 text-center">
+          <div class="py-4 px-3 rounded-2xl bg-surfaceIce border border-slate-200 font-extrabold text-xs tracking-wider text-slate-600">TORRE FARIA LIMA B3</div>
+          <div class="py-4 px-3 rounded-2xl bg-surfaceIce border border-slate-200 font-extrabold text-xs tracking-wider text-slate-600">REDE MEDLAB DIAGNÓSTICOS</div>
+          <div class="py-4 px-3 rounded-2xl bg-surfaceIce border border-slate-200 font-extrabold text-xs tracking-wider text-slate-600">LOGÍSTICA BR-300 PARK</div>
+          <div class="py-4 px-3 rounded-2xl bg-surfaceIce border border-slate-200 font-extrabold text-xs tracking-wider text-slate-600">CONDOMÍNIO BERRINI ONE</div>
+          <div class="py-4 px-3 rounded-2xl bg-surfaceIce border border-slate-200 font-extrabold text-xs tracking-wider text-slate-600">GRUPO BIOFARMA S.A.</div>
+          <div class="py-4 px-3 rounded-2xl bg-surfaceIce border border-slate-200 font-extrabold text-xs tracking-wider text-slate-600">CONSTRUTORA VANGUARDA</div>
         </div>
       </div>
 
-      <div class="mt-6 p-4 rounded-2xl bg-sky-50 border border-sky-200 flex justify-between items-center">
+      <!-- Cases Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
         <div>
-          <span class="text-xs text-slate-500 block">Equipe Designada</span>
-          <strong id="clean-staff" class="text-sm text-slate-900">3 Profissionais + Encarregado</strong>
+          <span class="text-xs font-extrabold uppercase tracking-widest text-cyanDark">Estudos de Caso Auditados</span>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-petroleum mt-2 tracking-tight">
+            Operações Reais em Grandes Centros
+          </h2>
         </div>
-        <div class="text-right">
-          <span class="text-xs text-slate-500 block">Valor Tudo Incluso</span>
-          <strong id="clean-total" class="text-2xl font-extrabold text-sky-600">R$ 1.680</strong>
+        <a href="#proposta-tecnica" class="text-xs font-extrabold uppercase tracking-wider text-cyanDark hover:text-petroleum flex items-center gap-1.5">
+          <span>Solicitar Atestados de Capacidade Técnica</span>
+          <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+      <!-- 3 Real Operational Case Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Case 1 -->
+        <article class="bg-surfaceIce rounded-3xl border border-slate-200 overflow-hidden shadow-corporate flex flex-col justify-between">
+          <div>
+            <div class="relative h-56 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=85" alt="Sede Corporativa Faria Lima" class="w-full h-full object-cover" />
+              <span class="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-petroleum/90 text-white text-[11px] font-bold">
+                Corporativo Triple-A • 14.500 m²
+              </span>
+            </div>
+            <div class="p-6">
+              <span class="text-xs font-bold text-cyanDark">Itaim Bibi, São Paulo — SP</span>
+              <h3 class="text-xl font-extrabold text-petroleum mt-1">Complexo Financeiro Faria Lima Plaza</h3>
+              <p class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed">
+                Implantação de limpeza diurna silenciosa (*Daytime Cleaning*), manutenção predial residente PMOC e higienização semestral de fachada envidraçada.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-4 border-t border-slate-200 grid grid-cols-2 gap-2 text-xs">
+            <div>
+              <span class="text-slate-400 block">Efetivo Alocado</span>
+              <strong class="text-petroleum font-extrabold">32 Colaboradores CLT</strong>
+            </div>
+            <div class="text-right">
+              <span class="text-slate-400 block">Economia de Água/Insumos</span>
+              <strong class="text-emeraldDark font-extrabold">-26% no 1º Semestre</strong>
+            </div>
+          </div>
+        </article>
+
+        <!-- Case 2 -->
+        <article class="bg-surfaceIce rounded-3xl border border-slate-200 overflow-hidden shadow-corporate flex flex-col justify-between">
+          <div>
+            <div class="relative h-56 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=900&q=85" alt="Centro Médico Diagnóstico" class="w-full h-full object-cover" />
+              <span class="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-emeraldDark text-white text-[11px] font-bold">
+                Saúde & Laboratorial • 4.200 m²
+              </span>
+            </div>
+            <div class="p-6">
+              <span class="text-xs font-bold text-emeraldDark">Campinas & Ribeirão Preto — SP</span>
+              <h3 class="text-xl font-extrabold text-petroleum mt-1">Centro de Diagnósticos & Hospital Dia</h3>
+              <p class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed">
+                Higienização terminal e concorrente auditada por bioluminescência (ATP), gestão de resíduos de serviços de saúde (PGRSS) e certificação ONA Nível 3.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-4 border-t border-slate-200 grid grid-cols-2 gap-2 text-xs">
+            <div>
+              <span class="text-slate-400 block">Conformidade ANVISA</span>
+              <strong class="text-petroleum font-extrabold">100% Aprovado ONA</strong>
+            </div>
+            <div class="text-right">
+              <span class="text-slate-400 block">SLA de Higienização</span>
+              <strong class="text-emeraldDark font-extrabold">99,8% no Prazo</strong>
+            </div>
+          </div>
+        </article>
+
+        <!-- Case 3 -->
+        <article class="bg-surfaceIce rounded-3xl border border-slate-200 overflow-hidden shadow-corporate flex flex-col justify-between">
+          <div>
+            <div class="relative h-56 overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=85" alt="Entrega Pós-Obra Empreendimento" class="w-full h-full object-cover" />
+              <span class="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-cyanDark text-white text-[11px] font-bold">
+                Pós-Obra Intensivo • 8.800 m²
+              </span>
+            </div>
+            <div class="p-6">
+              <span class="text-xs font-bold text-cyanDark">Alphaville, Barueri — SP</span>
+              <h3 class="text-xl font-extrabold text-petroleum mt-1">Entrega Turnkey Sede Multinacional Tech</h3>
+              <p class="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed">
+                Força-tarefa pós-obra fina em 4 andares corporativos com piso elevado, divisórias acústicas de vidro duplo e auditório para 300 lugares em apenas 72 horas.
+              </p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-4 border-t border-slate-200 grid grid-cols-2 gap-2 text-xs">
+            <div>
+              <span class="text-slate-400 block">Prazo de Execução</span>
+              <strong class="text-petroleum font-extrabold">72 Horas Corridas</strong>
+            </div>
+            <div class="text-right">
+              <span class="text-slate-400 block">Índice de Retrabalho</span>
+              <strong class="text-emeraldDark font-extrabold">0% na Vistoria</strong>
+            </div>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 7. DEPOIMENTOS DE GERENTES DE FACILITIES E SÍNDICOS PROFISSIONAIS -->
+  <section id="depoimentos" class="py-24 bg-skySoft/70 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-cyanDark">Confiança de Quem Gerencia Grandes Ativos</span>
+        <h2 class="text-3xl sm:text-5xl font-extrabold text-petroleum mt-2 tracking-tight">
+          Avaliações de Gestores de Facilities & Síndicos
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
+        <!-- Testimonial 1 -->
+        <div class="bg-white p-7 rounded-3xl border border-slate-200 shadow-corporate flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-amber-400 text-sm font-bold tracking-widest">★★★★★</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-cyanTint text-cyanDark text-[11px] font-bold">Contrato há 4 Anos</span>
+            </div>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              “A maior dor que tínhamos com fornecedores anteriores era o absenteísmo sem reposição e a documentação trabalhista atrasada. Com a PureCare, temos cobertura em menos de 2 horas e o dossiê de compliance chega junto com a nota fiscal.”
+            </p>
+          </div>
+          <div class="flex items-center gap-3.5 pt-4 border-t border-slate-100">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=200&q=80" alt="Marcelo Vasconcelos" class="w-12 h-12 rounded-full object-cover border-2 border-cyanHosp" />
+            <div>
+              <h4 class="font-extrabold text-petroleum text-sm">Eng. Marcelo Vasconcelos</h4>
+              <span class="text-xs text-slate-500 block">Head of Corporate Facilities • Grupo Vértice</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="bg-white p-7 rounded-3xl border border-slate-200 shadow-corporate flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-amber-400 text-sm font-bold tracking-widest">★★★★★</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-emeraldTint text-emeraldDark text-[11px] font-bold">Condomínio 22 Andares</span>
+            </div>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              “Como síndica profissional de três torres comerciais na Berrini, a apresentação dos funcionários, o tratamento técnico do granito do lobby e a manutenção preventiva elétrica reduziram nossas chamadas emergenciais em mais de 70%.”
+            </p>
+          </div>
+          <div class="flex items-center gap-3.5 pt-4 border-t border-slate-100">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80" alt="Patrícia Nogueira" class="w-12 h-12 rounded-full object-cover border-2 border-emeraldEco" />
+            <div>
+              <h4 class="font-extrabold text-petroleum text-sm">Dra. Patrícia Nogueira</h4>
+              <span class="text-xs text-slate-500 block">Síndica Profissional Certificada • PN Gestão Predial</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="bg-white p-7 rounded-3xl border border-slate-200 shadow-corporate flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-amber-400 text-sm font-bold tracking-widest">★★★★★</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-sky-100 text-sky-800 text-[11px] font-bold">Entrega Pós-Obra</span>
+            </div>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              “Contratamos a PureCare para a limpeza fina pós-obra de 3.200 m² antes da inauguração da nossa clínica. Levaram lavadoras tripuladas, plataformas e entregaram cada vidro e rodapé impecáveis dentro do cronograma.”
+            </p>
+          </div>
+          <div class="flex items-center gap-3.5 pt-4 border-t border-slate-100">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Renata Alencar" class="w-12 h-12 rounded-full object-cover border-2 border-cyanHosp" />
+            <div>
+              <h4 class="font-extrabold text-petroleum text-sm">Arq. Renata Alencar</h4>
+              <span class="text-xs text-slate-500 block">Gerente de Implantação & Obras • Rede VitaCare</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <button onclick="alert('Agendamento pré-confirmado! Levamos todos os equipamentos e produtos.')" class="mt-6 w-full py-3.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs uppercase tracking-widest transition">
-        Agendar Equipe Técnica →
-      </button>
     </div>
-  </main>
+  </section>
 
+  <!-- 8. FORMULÁRIO COMPLETO PARA SOLICITAÇÃO DE PROPOSTA TÉCNICA -->
+  <section id="proposta-tecnica" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-petroleum rounded-3xl p-7 sm:p-12 shadow-2xl border border-slate-800 text-white">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          
+          <!-- Left 5 Cols: SLA & Direct Commitment -->
+          <div class="lg:col-span-5 space-y-6">
+            <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyanHosp/20 border border-cyanHosp/40 text-cyan-300 text-xs font-bold uppercase tracking-wider">
+              Retorno Comercial em até 90 Minutos
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight">
+              Solicite sua Proposta Técnica ou Visita de Engenharia.
+            </h2>
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+              Enviamos o cronograma operacional detalhado, a planilha aberta de composição de custos (mão de obra, encargos, insumos e maquinário) e nossos certificados ISO e apólice de seguro.
+            </p>
+
+            <div class="space-y-4 pt-4 border-t border-white/10 text-xs sm:text-sm text-slate-200">
+              <div class="flex items-center gap-3">
+                <span class="w-6 h-6 rounded-full bg-emeraldEco/20 text-emerald-400 flex items-center justify-center font-bold">✓</span>
+                <span>Vistoria técnica presencial gratuita sem compromisso</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="w-6 h-6 rounded-full bg-emeraldEco/20 text-emerald-400 flex items-center justify-center font-bold">✓</span>
+                <span>Demonstração gratuita de tratamento em 10 m² do seu piso</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="w-6 h-6 rounded-full bg-emeraldEco/20 text-emerald-400 flex items-center justify-center font-bold">✓</span>
+                <span>Atendimento para contratos recorrentes ou serviços pontuais</span>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between">
+              <div>
+                <span class="text-[11px] uppercase tracking-wider text-slate-400 block">Mesa de Operações & Comercial</span>
+                <strong class="text-lg font-extrabold text-cyan-300">0800 591 8420 • (11) 3090-8420</strong>
+              </div>
+              <i data-lucide="headset" class="w-8 h-8 text-cyanHosp"></i>
+            </div>
+          </div>
+
+          <!-- Right 7 Cols: Proposal Form -->
+          <div class="lg:col-span-7 bg-white text-petroleum p-6 sm:p-9 rounded-2xl shadow-xl">
+            <form id="corporate-proposal-form" onsubmit="handleProposalSubmit(event)" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-1.5">Nome / Responsável *</label>
+                  <input id="p-name" type="text" required placeholder="Ex: Roberto Almeida" class="w-full px-4 py-3 rounded-xl bg-surfaceIce border border-slate-300 text-sm text-petroleum font-medium focus:border-cyanHosp focus:outline-none" />
+                </div>
+                <div>
+                  <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-1.5">Empresa / Condomínio *</label>
+                  <input id="p-company" type="text" required placeholder="Ex: Edifício Corporate Tower" class="w-full px-4 py-3 rounded-xl bg-surfaceIce border border-slate-300 text-sm text-petroleum font-medium focus:border-cyanHosp focus:outline-none" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-1.5">E-mail Corporativo *</label>
+                  <input id="p-email" type="email" required placeholder="voce@empresa.com.br" class="w-full px-4 py-3 rounded-xl bg-surfaceIce border border-slate-300 text-sm text-petroleum font-medium focus:border-cyanHosp focus:outline-none" />
+                </div>
+                <div>
+                  <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-1.5">Telefone / WhatsApp *</label>
+                  <input id="p-phone" type="tel" required placeholder="(11) 99999-9999" class="w-full px-4 py-3 rounded-xl bg-surfaceIce border border-slate-300 text-sm text-petroleum font-medium focus:border-cyanHosp focus:outline-none" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-1.5">Serviço Principal Desejado</label>
+                  <select id="p-service" class="w-full px-4 py-3 rounded-xl bg-surfaceIce border border-slate-300 text-sm font-bold text-petroleum focus:border-cyanHosp focus:outline-none">
+                    <option value="Limpeza Técnica Pós-Obra Pesada c/ Maquinário">Limpeza Técnica Pós-Obra Pesada c/ Maquinário</option>
+                    <option value="Limpeza Técnica Corporativa & Hospitalar">Limpeza Técnica Corporativa & Hospitalar</option>
+                    <option value="Tratamento e Restauração de Pisos">Tratamento e Restauração de Pisos</option>
+                    <option value="Manutenção Predial Preventiva & PMOC">Manutenção Predial Preventiva & PMOC</option>
+                    <option value="Limpeza de Fachadas e Vidros em Altura NR-35">Limpeza de Fachadas e Vidros em Altura NR-35</option>
+                    <option value="Jardinagem Corporativa, Portaria & Recepção">Jardinagem Corporativa, Portaria & Recepção</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-1.5">Escopo / Metragem Calculada</label>
+                  <input id="p-scope" type="text" value="250 m² • 5 Profissionais + Maquinário (R$ 3.000)" class="w-full px-4 py-3 rounded-xl bg-cyanTint border border-cyanHosp/40 text-sm text-cyanDark font-extrabold focus:border-cyanHosp focus:outline-none" />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-500 mb-1.5">Observações de Horário, Localização ou Urgência</label>
+                <textarea id="p-notes" rows="2" placeholder="Informe a cidade/bairro e se deseja agendar vistoria presencial ou receber cotação imediata..." class="w-full px-4 py-3 rounded-xl bg-surfaceIce border border-slate-300 text-sm text-petroleum focus:border-cyanHosp focus:outline-none"></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-4 rounded-xl bg-cyanHosp hover:bg-cyanDark text-white font-extrabold text-xs sm:text-sm uppercase tracking-widest shadow-cyan-glow transition-all flex items-center justify-center gap-2">
+                <span>Emitir Proposta Técnica & Agendar Equipe</span>
+                <i data-lucide="send" class="w-4 h-4"></i>
+              </button>
+            </form>
+
+            <!-- Immediate Submission Feedback -->
+            <div id="proposal-success-alert" class="hidden mt-5 p-5 rounded-2xl bg-emeraldTint border border-emeraldEco text-xs text-emeraldDark space-y-1.5">
+              <div class="flex items-center justify-between font-extrabold text-sm">
+                <span>✓ Solicitação de Proposta Técnica Protocolada!</span>
+                <span id="proposal-protocol" class="font-mono">#PCF-2026</span>
+              </div>
+              <p id="proposal-confirm-text" class="leading-relaxed text-slate-700"></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. RODAPÉ COM CANAIS 24H PARA EMERGÊNCIAS PREDIAIS, COMPLIANCE E CERTIFICAÇÕES -->
+  <footer class="bg-[#090e1a] text-slate-400 pt-16 pb-12 border-t border-slate-800 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-slate-800">
+        
+        <!-- Brand & Compliance (4 cols) -->
+        <div class="lg:col-span-4 space-y-4">
+          <div class="flex items-center gap-2.5">
+            <span class="font-extrabold text-xl text-white">✨ PURECARE</span>
+            <span class="text-[10px] uppercase tracking-widest px-2 py-0.5 rounded bg-cyanHosp/20 text-cyan-300 font-bold">Facilities</span>
+          </div>
+          <p class="text-slate-400 leading-relaxed max-w-sm">
+            Engenharia de Facilities, Limpeza Técnica Corporativa e Hospitalar, Pós-Obra e Manutenção Predial. Operação 100% própria, segurada e auditada.
+          </p>
+          <div class="flex flex-wrap gap-2 pt-1">
+            <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[11px] text-slate-300 font-semibold">ISO 9001:2015</span>
+            <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[11px] text-emerald-400 font-semibold">ISO 14001 Ambiental</span>
+            <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-[11px] text-cyan-300 font-semibold">ANVISA / POP</span>
+          </div>
+        </div>
+
+        <!-- Serviços (3 cols) -->
+        <div class="lg:col-span-3 space-y-2.5">
+          <h4 class="font-extrabold text-white uppercase tracking-wider text-xs mb-3">Divisões Operacionais</h4>
+          <ul class="space-y-2">
+            <li><a href="#pilares" class="hover:text-cyan-400 transition-colors">Limpeza Técnica Corporativa & Hospitalar</a></li>
+            <li><a href="#pilares" class="hover:text-cyan-400 transition-colors">Limpeza Pós-Obra Pesada c/ Maquinário</a></li>
+            <li><a href="#pilares" class="hover:text-cyan-400 transition-colors">Tratamento e Restauração de Pisos</a></li>
+            <li><a href="#pilares" class="hover:text-cyan-400 transition-colors">Manutenção Predial & PMOC</a></li>
+            <li><a href="#pilares" class="hover:text-cyan-400 transition-colors">Fachadas em Altura NR-35</a></li>
+          </ul>
+        </div>
+
+        <!-- Compliance & Governança (2 cols) -->
+        <div class="lg:col-span-2 space-y-2.5">
+          <h4 class="font-extrabold text-white uppercase tracking-wider text-xs mb-3">Governança & ESG</h4>
+          <ul class="space-y-2">
+            <li><a href="#protocolos-verdes" class="hover:text-emerald-400 transition-colors">Química Verde ABNT</a></li>
+            <li><a href="#protocolos-verdes" class="hover:text-emerald-400 transition-colors">Filtragem HEPA H14</a></li>
+            <li><a href="#protocolos-verdes" class="hover:text-emerald-400 transition-colors">Certidões & CND Mensal</a></li>
+            <li><a href="#calculadora" class="hover:text-emerald-400 transition-colors">Simulador por m²</a></li>
+          </ul>
+        </div>
+
+        <!-- Plantão 24h de Emergências Prediais (3 cols) -->
+        <div class="lg:col-span-3 bg-petroleumLight/70 p-5 rounded-2xl border border-slate-700/80 space-y-3">
+          <div class="flex items-center gap-2 text-rose-400 font-extrabold uppercase tracking-wider text-[11px]">
+            <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+            <span>Central 24h • Emergências Prediais</span>
+          </div>
+          <p class="text-slate-300 text-[11px] leading-relaxed">
+            Unidade móvel de resposta rápida para alagamentos, sinistros, panes elétricas/hidráulicas ou limpeza pós-evento urgente.
+          </p>
+          <div class="font-extrabold text-base text-white">
+            0800 591 8420
+          </div>
+          <button onclick="openEmergencyModal()" class="w-full py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs uppercase tracking-wider transition-colors">
+            Acionar Equipe de Emergência
+          </button>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
+        <p>© 2026 PURECARE FACILITIES Gestão de Serviços Corporativos Ltda. CNPJ 39.410.882/0001-90.</p>
+        <div class="flex items-center gap-6">
+          <span>São Paulo • Campinas • Rio de Janeiro • Belo Horizonte</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL DE PLANTÃO 24H PARA EMERGÊNCIAS PREDIAIS -->
+  <div id="emergency-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-7 border border-slate-200 shadow-2xl">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-200">
+        <div class="flex items-center gap-2 text-rose-600 font-extrabold text-sm uppercase tracking-wider">
+          <i data-lucide="siren" class="w-5 h-5"></i>
+          <span>Acionamento Plantão Predial 24h</span>
+        </div>
+        <button onclick="closeEmergencyModal()" class="p-1.5 rounded-lg hover:bg-slate-100 text-slate-500">✕</button>
+      </div>
+      <div class="py-5 space-y-4 text-xs sm:text-sm text-slate-600">
+        <p>Nossa viatura técnica com bombas de sucção, gerador portátil, eletricistas NR-10 e equipe de contenção atende chamados críticos em até <strong class="text-petroleum">90 minutos</strong>.</p>
+        <div class="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-950 space-y-1">
+          <div class="font-extrabold">Linha Direta do Engenheiro Plantonista:</div>
+          <div class="text-lg font-extrabold text-rose-600">0800 591 8420 • Ramal 9 (Urgência)</div>
+        </div>
+      </div>
+      <div class="flex justify-end gap-3">
+        <button onclick="closeEmergencyModal()" class="px-5 py-2.5 rounded-xl border border-slate-300 text-xs font-bold text-slate-600">
+          Fechar
+        </button>
+        <button onclick="closeEmergencyModal(); selectServiceInForm('PLANTÃO EMERGENCIAL 24H — Atendimento Imediato');" class="px-5 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold uppercase tracking-wider">
+          Solicitar Despacho Online →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- VANILLA JAVASCRIPT: CALCULADORA DE ESCOPO/M², FILTROS E FORMULÁRIO      -->
+  <!-- ======================================================================= -->
   <script>
-    const cType = document.getElementById('clean-type'), cSlider = document.getElementById('clean-slider');
-    function calcClean() {
-      const rate = Number(cType.value), m2 = Number(cSlider.value);
-      const staff = Math.max(2, Math.ceil(m2 / 60));
-      document.getElementById('m2-clean').textContent = m2 + ' m²';
-      document.getElementById('clean-staff').textContent = `${staff} Profissionais + Maquinário`;
-      document.getElementById('clean-total').textContent = 'R$ ' + Math.round(m2 * rate).toLocaleString('pt-BR');
+    const cType = document.getElementById('clean-type');
+    const cSlider = document.getElementById('clean-slider');
+    let currentFrequency = 'pontual'; // 'diaria', 'semanal', 'pontual'
+
+    window.selectEnvPreset = function(rateVal, defaultM2, defaultFreq, btnEl) {
+      cType.value = rateVal;
+      cSlider.value = defaultM2;
+      currentFrequency = defaultFreq;
+
+      document.querySelectorAll('.env-btn').forEach(b => {
+        b.className = 'env-btn p-3 rounded-xl border border-slate-200 bg-white text-slate-700 hover:border-cyanHosp text-left transition-all';
+      });
+      if (btnEl) {
+        btnEl.className = 'env-btn p-3 rounded-xl border border-cyanHosp bg-cyanTint text-petroleum text-left transition-all';
+      }
+
+      updateFrequencyButtonsUI();
+      calcClean();
+    };
+
+    window.setFrequency = function(freq) {
+      currentFrequency = freq;
+      updateFrequencyButtonsUI();
+      calcClean();
+    };
+
+    function updateFrequencyButtonsUI() {
+      document.querySelectorAll('.freq-btn').forEach(btn => {
+        if (btn.getAttribute('data-freq') === currentFrequency) {
+          btn.className = 'freq-btn p-3.5 rounded-xl border border-cyanHosp bg-cyanTint text-left transition-all';
+        } else {
+          btn.className = 'freq-btn p-3.5 rounded-xl border border-slate-200 bg-white text-left transition-all';
+        }
+      });
     }
-    cType.addEventListener('change', calcClean); cSlider.addEventListener('input', calcClean);
-    calcClean();
+
+    function calcClean() {
+      const baseRate = Number(cType.value);
+      const m2 = Number(cSlider.value);
+      const includeGlass = document.getElementById('addon-glass').checked;
+
+      // Dimensionamento de equipe proporcional à metragem e severidade do serviço
+      const productivityFactor = baseRate >= 10 ? 55 : baseRate >= 8 ? 85 : 180;
+      const staffCount = Math.max(2, Math.ceil(m2 / productivityFactor));
+
+      // Multiplicador por frequência e adicionais
+      let freqMultiplier = 1;
+      let scheduleText = 'Entrega garantida em 1 a 2 turnos (8h–16h)';
+      let priceLabel = 'INVESTIMENTO ESTIMADO (INTERVENÇÃO COMPLETA)';
+      let unitInfo = '100% Material, Químicos Verdes & Maquinário Inclusos';
+
+      if (currentFrequency === 'diaria') {
+        freqMultiplier = 0.85; // Desconto na taxa unitária em contrato fixo mensal
+        scheduleText = 'Equipe residente Seg a Sex (07h–16h) + Sábados';
+        priceLabel = 'ESTIMATIVA DE CONTRATO MENSAL (TUDO INCLUSO)';
+        unitInfo = 'Salários, Encargos CLT, Reserva Técnica e Insumos';
+      } else if (currentFrequency === 'semanal') {
+        freqMultiplier = 0.92;
+        scheduleText = 'Atendimento programado 2x por semana c/ supervisão';
+        priceLabel = 'INVESTIMENTO PROGRAMADO (PACOTE MENSAL)';
+        unitInfo = 'Equipe volante motorizada + equipamentos';
+      }
+
+      const glassAddonMultiplier = includeGlass ? 1.12 : 1.0;
+
+      // Cálculo do valor final mantendo consistência com o modelo por m²
+      let rawTotal = m2 * baseRate * freqMultiplier * glassAddonMultiplier;
+      if (currentFrequency === 'diaria') {
+        // Contrato mensal recorrente considera piso mínimo por posto CLT alocado
+        rawTotal = Math.max(rawTotal * 3.2, staffCount * 3850);
+      } else if (currentFrequency === 'semanal') {
+        rawTotal = Math.max(rawTotal * 1.8, 1650);
+      }
+
+      const totalFormatted = 'R$ ' + Math.round(rawTotal).toLocaleString('pt-BR');
+
+      // Equipamentos recomendados conforme metragem
+      const equipText = m2 >= 600
+        ? 'Lavadora de piso automática + Enceradeira Industrial + Aspiradores HEPA'
+        : 'Enceradeira rotativa + Extratora + Aspiradores Industriais HEPA';
+
+      document.getElementById('m2-clean').textContent = m2.toLocaleString('pt-BR') + ' m²';
+      document.getElementById('clean-staff').textContent = `${staffCount} Profissionais + Encarregado Técnico`;
+      document.getElementById('clean-equipment').textContent = equipText;
+      document.getElementById('clean-schedule').textContent = scheduleText;
+      document.getElementById('price-label-mode').textContent = priceLabel;
+      document.getElementById('clean-unit-info').textContent = unitInfo;
+      document.getElementById('clean-total').textContent = totalFormatted;
+
+      // Sincroniza resumo no formulário de proposta técnica
+      const scopeInput = document.getElementById('p-scope');
+      if (scopeInput) {
+        scopeInput.value = `${m2} m² (${currentFrequency.toUpperCase()}) • ${staffCount} Profissionais (${totalFormatted})`;
+      }
+    }
+
+    cType.addEventListener('change', calcClean);
+    cSlider.addEventListener('input', calcClean);
+
+    window.transferScopeToProposal = function() {
+      calcClean();
+      const selectedOptionText = cType.options[cType.selectedIndex].text.split(' (')[0];
+      const serviceSelect = document.getElementById('p-service');
+      if (serviceSelect) {
+        for (let i = 0; i < serviceSelect.options.length; i++) {
+          if (selectedOptionText.includes(serviceSelect.options[i].value.slice(0, 12))) {
+            serviceSelect.selectedIndex = i;
+            break;
+          }
+        }
+      }
+      document.getElementById('proposta-tecnica').scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        document.getElementById('p-name').focus();
+      }, 600);
+    };
+
+    window.selectServiceInForm = function(serviceName) {
+      const serviceSelect = document.getElementById('p-service');
+      if (serviceSelect) {
+        for (let i = 0; i < serviceSelect.options.length; i++) {
+          if (serviceSelect.options[i].value === serviceName) {
+            serviceSelect.selectedIndex = i;
+            break;
+          }
+        }
+      }
+      document.getElementById('p-scope').value = `${serviceName} — Solicitação de Vistoria / Cotação`;
+      document.getElementById('proposta-tecnica').scrollIntoView({ behavior: 'smooth' });
+    };
+
+    window.handleProposalSubmit = function(e) {
+      e.preventDefault();
+      const name = document.getElementById('p-name').value.trim();
+      const company = document.getElementById('p-company').value.trim();
+      const scope = document.getElementById('p-scope').value.trim();
+      const protocol = '#PCF-2026-' + Math.floor(1000 + Math.random() * 9000);
+
+      document.getElementById('proposal-protocol').textContent = protocol;
+      document.getElementById('proposal-confirm-text').textContent =
+        `Olá, ${name} (${company})! Seu escopo [${scope}] foi encaminhado ao nosso Engenheiro de Operações. Em até 90 minutos úteis enviaremos a proposta comercial detalhada no seu e-mail e WhatsApp.`;
+      document.getElementById('proposal-success-alert').classList.remove('hidden');
+    };
+
+    window.openEmergencyModal = function() {
+      const m = document.getElementById('emergency-modal');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    };
+
+    window.closeEmergencyModal = function() {
+      const m = document.getElementById('emergency-modal');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    };
+
+    window.toggleMobileMenu = function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      calcClean();
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
   </script>
+
   <!-- Vercel Web Analytics & Speed Insights -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
