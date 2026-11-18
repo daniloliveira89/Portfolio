@@ -75,55 +75,40 @@ function renderProjects() {
 
   if (emptyState) emptyState.classList.add('hidden');
 
-  container.innerHTML = filtered.map(project => `
-    <article class="group relative flex flex-col bg-slate-900/85 rounded-2xl border border-slate-800/80 hover:border-sky-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-sky-500/10 overflow-hidden transform hover:-translate-y-1.5 cursor-pointer"
+  container.innerHTML = filtered.map(project => {
+    const displayTitle = project.category === 'layouts' ? project.categoryLabel : project.title;
+    return `
+    <article class="group relative flex flex-col bg-slate-900/85 rounded-2xl border border-slate-800/80 hover:border-sky-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-sky-500/10 overflow-hidden transform hover:-translate-y-1.5 cursor-pointer shadow-lg"
              onclick="openProjectModal('${project.id}')">
       <!-- Imagem de Apresentação Limpa -->
       <div class="relative h-52 sm:h-56 w-full overflow-hidden bg-slate-950">
         <img 
           src="${project.image}" 
-          alt="${project.title}" 
+          alt="${displayTitle}" 
           class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
           loading="lazy"
           onerror="this.src='assets/images/radar-ia.jpg'"
         />
-        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-60"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-50"></div>
       </div>
 
       <!-- Conteúdo do Card -->
       <div class="p-5 flex flex-col flex-1 justify-between">
         <div>
-          <div class="flex items-center justify-between gap-2 mb-2">
-            <span class="text-[11px] font-semibold text-sky-400 uppercase tracking-wider">
-              ${project.categoryLabel}
-            </span>
-            ${project.badge ? `
-              <span class="text-[10px] font-medium text-slate-400">
-                ${project.badge}
-              </span>
-            ` : ''}
-          </div>
-
           <h3 class="text-base font-bold text-white group-hover:text-sky-400 transition-colors line-clamp-1">
-            ${project.title}
+            ${displayTitle}
           </h3>
         </div>
 
         <!-- Rodapé Minimalista -->
-        <div class="pt-4 mt-2 flex items-center justify-between">
-          <div class="flex items-center gap-1.5 text-xs text-slate-400">
-            ${project.tags.slice(0, 2).map(tag => `
-              <span class="text-[11px] text-slate-400">#${tag}</span>
-            `).join(' · ')}
-          </div>
-
+        <div class="pt-4 mt-2 flex items-center justify-end">
           ${project.links && project.links.demo ? `
             <a 
               href="${getDemoUrl(project.links.demo)}" 
               target="_blank" 
               rel="noopener noreferrer" 
               onclick="event.stopPropagation()"
-              class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500 hover:text-slate-950 transition"
+              class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500 hover:text-slate-950 transition shadow-sm"
               title="Acessar demonstração online"
             >
               Demo ↗
@@ -136,7 +121,8 @@ function renderProjects() {
         </div>
       </div>
     </article>
-  `).join('');
+    `;
+  }).join('');
 }
 
 // Configura filtros de categoria

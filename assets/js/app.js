@@ -158,49 +158,35 @@ document.addEventListener('DOMContentLoaded', () => {
     grid.classList.remove('hidden');
     if (emptyState) emptyState.classList.add('hidden');
 
-    grid.innerHTML = filtered.map(project => `
+    grid.innerHTML = filtered.map(project => {
+      const displayTitle = project.category === 'layouts' ? project.categoryLabel : project.title;
+      return `
       <article class="group rounded-2xl overflow-hidden border border-electric/15 hover:border-electric/50 transition-all duration-300 flex flex-col justify-between transform hover:-translate-y-1.5 cursor-pointer shadow-lg hover:shadow-electric/10"
                style="background: rgba(13,18,32,0.92); backdrop-filter: blur(10px);"
                onclick="openProjectModal('${project.id}')">
         <div>
-          <!-- Imagem de Capa 100% Limpa e em Destaque -->
+          <!-- Imagem de Capa 100% Limpa -->
           <div class="relative h-52 overflow-hidden bg-void">
-            <img src="${project.image}" alt="${project.title}" loading="lazy"
+            <img src="${project.image}" alt="${displayTitle}" loading="lazy"
                  class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                  onerror="this.src='assets/images/radar-ia-real.png'">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#0D1220] via-transparent to-transparent opacity-60"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0D1220] via-transparent to-transparent opacity-50"></div>
           </div>
 
-          <!-- Corpo do Card -->
+          <!-- Título Limpo -->
           <div class="p-5">
-            <div class="flex items-center justify-between gap-2 mb-2">
-              <span class="text-[11px] font-semibold text-electric uppercase tracking-wider">
-                ${project.categoryLabel}
-              </span>
-              ${project.badge ? `
-                <span class="text-[10px] font-medium text-frost/60">
-                  ${project.badge}
-                </span>
-              ` : ''}
-            </div>
             <h3 class="font-display text-base font-bold text-white group-hover:text-glow transition-colors line-clamp-1">
-              ${project.title}
+              ${displayTitle}
             </h3>
           </div>
         </div>
 
-        <!-- Rodapé Minimalista -->
-        <div class="px-5 pb-5 pt-0 flex items-center justify-between">
-          <div class="flex items-center gap-1.5 text-xs text-frost/60">
-            ${project.tags.slice(0, 2).map(tag => `
-              <span class="text-[11px] text-frost/60">#${tag}</span>
-            `).join(' · ')}
-          </div>
-
+        <!-- Botão de Ação Direto -->
+        <div class="px-5 pb-5 pt-0 flex items-center justify-end">
           ${project.links && project.links.demo ? `
             <a href="${getDemoUrl(project.links.demo)}" target="_blank" rel="noopener noreferrer"
                onclick="event.stopPropagation()"
-               class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500 hover:text-slate-950 transition flex items-center gap-1">
+               class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500 hover:text-slate-950 transition flex items-center gap-1.5 shadow-sm">
               Demo ↗
             </a>
           ` : `
@@ -210,7 +196,8 @@ document.addEventListener('DOMContentLoaded', () => {
           `}
         </div>
       </article>
-    `).join('');
+      `;
+    }).join('');
   }
 
   filterBtns.forEach(btn => {
