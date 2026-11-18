@@ -1,90 +1,661 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VERIDIAN ESTATES — Private Penthouses & Villas</title>
+  <title>VERIDIAN ESTATES — Private Penthouses, Villas & Trophy Assets</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,900;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body { background-color: #111315; color: #F3F4F6; font-family: 'DM Sans', sans-serif; }
+    body {
+      background-color: #0A0C0E;
+      color: #F1F5F9;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
     .font-serif-estate { font-family: 'Playfair Display', serif; }
+    
+    /* Emerald luxury glow */
+    .glow-estate {
+      background: radial-gradient(circle 800px at 70% 10%, rgba(16, 185, 129, 0.12), transparent 70%),
+                  radial-gradient(circle 600px at 15% 40%, rgba(5, 150, 105, 0.08), transparent 60%);
+    }
+
+    /* Luxury glass cards */
+    .estate-card {
+      background: linear-gradient(180deg, rgba(22, 27, 34, 0.75) 0%, rgba(14, 17, 22, 0.9) 100%);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .estate-card:hover {
+      border-color: rgba(16, 185, 129, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(16, 185, 129, 0.1);
+    }
+
+    /* Custom range */
+    input[type=range] {
+      -webkit-appearance: none;
+      background: transparent;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      background: #10B981;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
+      margin-top: -6px;
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 8px;
+      background: #1E293B;
+      border-radius: 4px;
+    }
   </style>
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
 </head>
-<body class="min-h-screen antialiased">
-  <header class="border-b border-white/10 bg-[#111315]/90 backdrop-blur-md sticky top-0 z-50">
+<body class="min-h-screen antialiased relative selection:bg-emerald-500 selection:text-black">
+
+  <!-- Ambient Light -->
+  <div class="fixed inset-0 glow-estate pointer-events-none z-0"></div>
+
+  <!-- Main Header -->
+  <header class="sticky top-0 z-40 bg-[#0A0C0E]/90 backdrop-blur-xl border-b border-white/[0.08] transition-all">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <a href="#" class="font-serif-estate text-2xl tracking-tight text-white">VERIDIAN <span class="text-xs font-sans uppercase tracking-[0.25em] text-emerald-400 ml-1">Estates</span></a>
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 p-[1px] shadow-lg shadow-emerald-500/20">
+          <div class="w-full h-full bg-[#0D1013] rounded-[11px] flex items-center justify-center font-serif-estate font-bold text-white text-lg group-hover:text-emerald-400 transition">
+            V
+          </div>
+        </div>
+        <div>
+          <span class="font-serif-estate text-xl tracking-tight text-white block leading-none">
+            VERIDIAN<span class="text-emerald-400">.</span>
+          </span>
+          <span class="text-[9px] uppercase tracking-[0.25em] text-emerald-400 font-semibold block mt-0.5">
+            Private Estates & Trophy Assets
+          </span>
+        </div>
+      </a>
+
+      <!-- Center Navigation -->
+      <nav class="hidden lg:flex items-center gap-8 text-xs uppercase tracking-widest font-semibold text-slate-400">
+        <a href="#portfolio" class="hover:text-emerald-400 transition">Portfólio Privado</a>
+        <a href="#curadoria" class="hover:text-emerald-400 transition">Critérios de Seleção</a>
+        <a href="#simulador" class="hover:text-emerald-400 transition">Simulador Wealth</a>
+        <a href="#concierge" class="hover:text-emerald-400 transition">Private Concierge</a>
+      </nav>
+
+      <!-- Currency Switcher & CTA -->
       <div class="flex items-center gap-3">
-        <span class="text-xs text-neutral-400">Moeda:</span>
-        <button id="curr-brl" class="px-3 py-1 rounded-md text-xs font-semibold bg-emerald-500 text-black">R$ BRL</button>
-        <button id="curr-usd" class="px-3 py-1 rounded-md text-xs font-semibold bg-white/10 text-white">US$ USD</button>
+        <!-- Currency Pills -->
+        <div class="flex items-center rounded-lg bg-white/5 border border-white/10 p-1 text-[11px] font-semibold">
+          <button onclick="setCurrency('BRL')" id="btn-curr-brl" class="px-2.5 py-1 rounded-md bg-emerald-500 text-black font-bold transition">R$ BRL</button>
+          <button onclick="setCurrency('USD')" id="btn-curr-usd" class="px-2.5 py-1 rounded-md text-slate-400 hover:text-white transition">US$ USD</button>
+          <button onclick="setCurrency('EUR')" id="btn-curr-eur" class="px-2.5 py-1 rounded-md text-slate-400 hover:text-white transition">€ EUR</button>
+        </div>
+
+        <button onclick="openAgendamentoVIP('Geral')" class="hidden sm:inline-flex px-4 py-2 rounded-lg bg-white/10 hover:bg-emerald-500 hover:text-black text-white text-xs font-bold uppercase tracking-wider border border-white/10 transition">
+          Agendar Visita VIP
+        </button>
       </div>
     </div>
   </header>
 
-  <section class="max-w-7xl mx-auto px-6 pt-14 pb-10">
-    <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6 mb-10">
-      <div>
-        <span class="text-xs uppercase tracking-[0.25em] text-emerald-400">Curadoria Arquitetônica Privada</span>
-        <h1 class="font-serif-estate text-4xl sm:text-6xl mt-2 leading-tight">Propriedades raras nos endereços mais desejados.</h1>
-      </div>
-      <div class="flex flex-wrap gap-2">
-        <button data-type="all" class="est-btn px-4 py-2 rounded-full text-xs font-semibold bg-white text-black">Todos (4)</button>
-        <button data-type="penthouse" class="est-btn px-4 py-2 rounded-full text-xs font-semibold bg-white/10 text-white">Coberturas</button>
-        <button data-type="villa" class="est-btn px-4 py-2 rounded-full text-xs font-semibold bg-white/10 text-white">Villas & Litoral</button>
-      </div>
-    </div>
-    <div id="properties-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
-  </section>
+  <!-- Hero Section -->
+  <section class="max-w-7xl mx-auto px-6 pt-12 pb-16 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      
+      <!-- Left Column: Copy & Value Proposition -->
+      <div class="lg:col-span-6 flex flex-col items-start">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs font-mono uppercase tracking-wider mb-5">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          Off-Market Collection • São Paulo • Rio • Litoral
+        </div>
 
-  <script>
-    const PROPERTIES = [
-      { id: 1, title: "Cobertura Triplex Parque Ibirapuera", location: "Jardim Luzitânia, São Paulo", type: "penthouse", area: "840 m²", suites: "5 Suítes", vagas: "8 Vagas", priceBRL: 38500000, img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80" },
-      { id: 2, title: "Villa Península com Píer Privativo", location: "Angra dos Reis, RJ", type: "villa", area: "1.450 m²", suites: "7 Suítes", vagas: "Heliponto + Píer", priceBRL: 54000000, img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1000&q=80" },
-      { id: 3, title: "Residência Suspensa Concreto & Vidro", location: "Fazenda Boa Vista, SP", type: "villa", area: "1.120 m²", suites: "6 Suítes", vagas: "6 Vagas", priceBRL: 29800000, img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80" },
-      { id: 4, title: "Penthouse Atlântica Vista Panorâmica", location: "Leblon, Rio de Janeiro", type: "penthouse", area: "620 m²", suites: "4 Suítes", vagas: "5 Vagas", priceBRL: 42000000, img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1000&q=80" }
-    ];
-    let currency = "BRL", filterType = "all";
-    function formatPrice(brl) {
-      if (currency === "BRL") return "R$ " + (brl / 1000000).toFixed(1).replace(".", ",") + " Milhões";
-      return "US$ " + (brl / 5.15 / 1000000).toFixed(2) + "M";
-    }
-    function renderEstates() {
-      const list = filterType === "all" ? PROPERTIES : PROPERTIES.filter(p => p.type === filterType);
-      document.getElementById("properties-grid").innerHTML = list.map(p => `
-        <div class="group rounded-2xl overflow-hidden bg-[#181B1F] border border-white/10 hover:border-emerald-500/40 transition">
-          <div class="relative h-72 overflow-hidden">
-            <img src="${p.img}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
-            <span class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-semibold bg-black/75 text-emerald-400">${p.location}</span>
+        <h1 class="font-serif-estate text-4xl sm:text-5xl lg:text-[56px] font-bold tracking-tight text-white leading-[1.06]">
+          Propriedades raras nos endereços <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300 italic">mais cobiçados do país.</span>
+        </h1>
+
+        <p class="mt-5 text-slate-300 text-base leading-relaxed max-w-xl font-light">
+          Uma curadoria estrita de penthouses triplex, vilas cinematográficas com heliponto e fazendas arquitetônicas de alto padrão patrimonial. Atendimento discreto e blindado.
+        </p>
+
+        <!-- Proof Strip -->
+        <div class="mt-8 grid grid-cols-3 gap-3 w-full max-w-lg pt-6 border-t border-white/10">
+          <div>
+            <div class="text-2xl font-serif-estate font-bold text-emerald-400">R$ 1.8 Bi</div>
+            <div class="text-[10px] uppercase font-mono text-slate-400 mt-0.5">Portfólio Gerenciado</div>
           </div>
-          <div class="p-6">
-            <div class="flex justify-between items-start gap-4">
-              <h2 class="font-serif-estate text-2xl text-white">${p.title}</h2>
-              <span class="text-lg font-bold text-emerald-400 whitespace-nowrap">${formatPrice(p.priceBRL)}</span>
+          <div>
+            <div class="text-2xl font-serif-estate font-bold text-white">100%</div>
+            <div class="text-[10px] uppercase font-mono text-slate-400 mt-0.5">Due Diligence Jurídica</div>
+          </div>
+          <div>
+            <div class="text-2xl font-serif-estate font-bold text-white">Off-Market</div>
+            <div class="text-[10px] uppercase font-mono text-slate-400 mt-0.5">Sigilo Absoluto</div>
+          </div>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="mt-8 flex flex-wrap items-center gap-2" id="filter-buttons">
+          <span class="text-xs uppercase font-mono text-slate-500 mr-1">Filtrar Coleção:</span>
+          <button onclick="filterProperties('all')" data-type="all" class="filter-btn active px-3.5 py-1.5 rounded-full text-xs font-bold bg-emerald-500 text-black shadow-sm transition">
+            Todas (06)
+          </button>
+          <button onclick="filterProperties('penthouse')" data-type="penthouse" class="filter-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/5 text-slate-300 border border-white/10 hover:border-emerald-500 transition">
+            Penthouses & Triplex
+          </button>
+          <button onclick="filterProperties('villa')" data-type="villa" class="filter-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/5 text-slate-300 border border-white/10 hover:border-emerald-500 transition">
+            Villas Litoral & Campo
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Featured Trophy Asset Showcase -->
+      <div class="lg:col-span-6 w-full">
+        <div class="estate-card p-4 rounded-3xl relative overflow-hidden group">
+          <div class="relative h-80 sm:h-[420px] rounded-2xl overflow-hidden">
+            <img id="hero-img" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80" alt="Penthouse Triplex Ibirapuera" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0A0C0E] via-[#0A0C0E]/30 to-transparent"></div>
+
+            <!-- Top Badges -->
+            <div class="absolute top-4 left-4 right-4 flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest bg-emerald-500 text-black font-bold shadow-lg">
+                Trophy Asset • Destaque
+              </span>
+              <button onclick="openAgendamentoVIP('Triplex Ibirapuera')" class="px-3 py-1 rounded-full bg-black/70 hover:bg-white hover:text-black text-white text-[11px] font-mono transition border border-white/20 backdrop-blur-md">
+                Visita c/ Chauffeur ↗
+              </button>
             </div>
-            <div class="flex gap-6 mt-4 pt-4 border-t border-white/10 text-xs text-neutral-400">
-              <span>📐 ${p.area}</span><span>🛏️ ${p.suites}</span><span>🚗 ${p.vagas}</span>
+
+            <!-- Bottom Content -->
+            <div class="absolute bottom-4 left-5 right-5 text-white">
+              <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest">Jardim Luzitânia • São Paulo</span>
+              <h3 class="font-serif-estate text-2xl sm:text-3xl font-bold mt-1">Penthouse Triplex Parque Ibirapuera</h3>
+              <p class="text-xs text-slate-300 mt-1 line-clamp-2">Piscina suspensa com borda infinita de vidro sobre as copas das árvores, elevador privativo com biometria e 8 vagas subterrâneas.</p>
+              
+              <div class="mt-4 pt-3 border-t border-white/15 flex items-center justify-between">
+                <div class="flex items-center gap-4 text-xs font-mono text-slate-300">
+                  <span>📐 840 m²</span>
+                  <span>🛏️ 5 Suítes</span>
+                  <span>🚗 8 Vagas</span>
+                </div>
+                <div id="hero-price" class="text-lg font-serif-estate font-bold text-emerald-400">
+                  R$ 38.500.000
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      `).join("");
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Properties Grid (6 Trophy Listings) -->
+  <section class="max-w-7xl mx-auto px-6 py-14 border-t border-white/10" id="portfolio">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+      <div>
+        <span class="text-xs uppercase tracking-widest font-mono text-emerald-400">Portfólio Exclusivo</span>
+        <h2 class="font-serif-estate text-3xl sm:text-4xl font-bold text-white mt-1">Residências Extraordinárias Disponíveis</h2>
+      </div>
+      <p class="text-xs text-slate-400 font-mono mt-2 md:mt-0">Valores em tempo real calculados em 3 moedas</p>
+    </div>
+
+    <div id="properties-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Rendered dynamically via JS with currency calculation & modal view -->
+    </div>
+  </section>
+
+  <!-- Wealth Mortgage & Financial Simulator -->
+  <section class="max-w-4xl mx-auto px-6 py-14" id="simulador">
+    <div class="estate-card p-8 sm:p-10 rounded-3xl border border-white/15 text-white shadow-2xl">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-white/10">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-widest text-emerald-400">Engenharia Financeira Private</span>
+          <h2 class="font-serif-estate text-2xl sm:text-3xl font-bold mt-1">Simulador de Aquisição Patrimonial</h2>
+        </div>
+        <span class="text-xs text-slate-400 font-mono">Taxas CDI / IPCA Private Banking</span>
+      </div>
+
+      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <!-- Controls -->
+        <div class="space-y-6">
+          <div>
+            <div class="flex justify-between text-xs font-mono mb-2">
+              <span>Valor do Ativo Selecionado:</span>
+              <span id="sim-asset-val" class="text-emerald-400 font-bold text-sm">R$ 38.500.000</span>
+            </div>
+            <select id="sim-property-select" onchange="updateSimProperty()" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-xs font-mono focus:outline-none focus:border-emerald-500">
+              <option value="38500000">Penthouse Triplex Ibirapuera (R$ 38.5M)</option>
+              <option value="54000000">Villa Península Angra dos Reis (R$ 54.0M)</option>
+              <option value="29800000">Residência Suspensa Boa Vista (R$ 29.8M)</option>
+              <option value="42000000">Penthouse Atlântica Leblon (R$ 42.0M)</option>
+              <option value="35000000">Mansão Modernista Jardim Europa (R$ 35.0M)</option>
+              <option value="26500000">Quinta Haras Campos do Jordão (R$ 26.5M)</option>
+            </select>
+          </div>
+
+          <div>
+            <div class="flex justify-between text-xs font-mono mb-2">
+              <span>Entrada Estruturada:</span>
+              <span id="sim-down-label" class="text-emerald-400 font-bold">40% (R$ 15.400.000)</span>
+            </div>
+            <input type="range" id="sim-down-slider" min="20" max="80" step="5" value="40" oninput="calcMortgage()" class="w-full">
+            <div class="flex justify-between text-[10px] text-slate-500 font-mono mt-1">
+              <span>20% Mínimo</span>
+              <span>40% Padrão Private</span>
+              <span>80% Máximo</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between text-xs font-mono mb-2">
+              <span>Prazo de Financiamento:</span>
+              <span id="sim-years-label" class="text-emerald-400 font-bold">15 Anos (180 Meses)</span>
+            </div>
+            <input type="range" id="sim-years-slider" min="5" max="30" step="5" value="15" oninput="calcMortgage()" class="w-full">
+            <div class="flex justify-between text-[10px] text-slate-500 font-mono mt-1">
+              <span>5 Anos</span>
+              <span>15 Anos</span>
+              <span>30 Anos</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Result Box -->
+        <div class="bg-black/50 p-6 rounded-2xl border border-white/10 text-center flex flex-col justify-center">
+          <span class="text-xs font-mono uppercase text-slate-400 tracking-wider">Parcela Mensal Estimada (Amortização SAC)</span>
+          <div id="sim-monthly-val" class="font-serif-estate text-3xl sm:text-4xl font-bold text-emerald-400 mt-2">
+            R$ 225.400 /mês
+          </div>
+          <div id="sim-financed-val" class="text-xs text-slate-400 font-mono mt-2">
+            Saldo Financiado: R$ 23.100.000 via Private Banking
+          </div>
+          <button onclick="openAgendamentoVIP('Simulação de Aquisição Patrimonial')" class="mt-6 w-full py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-bold uppercase tracking-wider text-xs transition shadow-lg shadow-emerald-500/25">
+            Solicitar Estruturação Financeira
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIP Showing Booking Drawer -->
+  <div id="drawer-overlay" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300" onclick="closeAgendamentoVIP()"></div>
+  <aside id="vip-drawer" class="fixed top-0 right-0 z-50 h-full w-full sm:w-[480px] bg-[#0E1115] border-l border-white/10 p-8 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between overflow-y-auto">
+    <div>
+      <div class="flex items-center justify-between pb-6 border-b border-white/10">
+        <div>
+          <span class="text-[10px] font-mono uppercase tracking-widest text-emerald-400">Atendimento Private VIP</span>
+          <h3 class="font-serif-estate text-2xl font-bold text-white">Agendar Visita Exclusiva</h3>
+        </div>
+        <button onclick="closeAgendamentoVIP()" class="text-slate-400 hover:text-white p-2 text-lg">✕</button>
+      </div>
+
+      <form id="form-vip" class="mt-6 space-y-4" onsubmit="handleVIP(event)">
+        <div>
+          <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">Nome Completo</label>
+          <input type="text" required placeholder="Ex: Rodrigo Mendonça Albuquerque" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-emerald-500">
+        </div>
+        <div>
+          <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">WhatsApp / Telefone Privado</label>
+          <input type="tel" required placeholder="(11) 99876-5432" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-emerald-500">
+        </div>
+        <div>
+          <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">Propriedade de Interesse</label>
+          <select id="select-imovel" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-emerald-500">
+            <option value="Penthouse Triplex Ibirapuera">Penthouse Triplex Ibirapuera — R$ 38.5M</option>
+            <option value="Villa Península Angra dos Reis">Villa Península Angra dos Reis — R$ 54.0M</option>
+            <option value="Residência Suspensa Boa Vista">Residência Suspensa Boa Vista — R$ 29.8M</option>
+            <option value="Penthouse Atlântica Leblon">Penthouse Atlântica Leblon — R$ 42.0M</option>
+            <option value="Mansão Modernista Jardim Europa">Mansão Modernista Jardim Europa — R$ 35.0M</option>
+            <option value="Quinta Haras Campos do Jordão">Quinta Haras Campos do Jordão — R$ 26.5M</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">Transporte & Logística de Chegada</label>
+          <select class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-emerald-500">
+            <option value="Chauffeur Blindado Cortesia">Chauffeur Executivo Blindado (Buscar em SP/RJ)</option>
+            <option value="Heliponto Local (Helicóptero Próprio)">Heliponto Local (Coordenadas de Pouso GPS)</option>
+            <option value="Veículo Próprio">Veículo Próprio com Estacionamento Privativo</option>
+          </select>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">Data</label>
+            <input type="date" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-emerald-500">
+          </div>
+          <div>
+            <label class="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-1">Horário</label>
+            <select class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-emerald-500">
+              <option value="10:00 (Manhã)">10:00 (Manhã)</option>
+              <option value="14:30 (Tarde)">14:30 (Tarde)</option>
+              <option value="17:00 (Pôr do Sol)">17:00 (Golden Hour)</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-bold uppercase tracking-wider text-xs transition duration-200 shadow-lg shadow-emerald-500/25 mt-3">
+          Confirmar Solicitação de Visita
+        </button>
+      </form>
+
+      <div id="vip-success" class="hidden mt-6 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono">
+        ✓ Solicitação confidencial recebida. O Managing Partner da Veridian entrará em contato via canal seguro para alinhar credenciais e protocolo de visita.
+      </div>
+    </div>
+
+    <div class="pt-6 border-t border-white/10 text-xs text-slate-500 font-mono">
+      🔒 Protocolo de Confidencialidade e NDA Automático • CRECI 34.912-J
+    </div>
+  </aside>
+
+  <!-- Property Inspector Modal -->
+  <div id="prop-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="bg-[#111418] border border-white/15 rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl relative">
+      <button onclick="closePropModal()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-black/70 hover:bg-white hover:text-black text-white flex items-center justify-center border border-white/20 transition">✕</button>
+      
+      <div class="h-64 sm:h-72 relative">
+        <img id="modal-prop-img" src="" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#111418] via-transparent to-transparent"></div>
+        <div class="absolute bottom-4 left-6">
+          <span id="modal-prop-loc" class="text-xs font-mono text-emerald-400 uppercase tracking-widest block"></span>
+          <h3 id="modal-prop-title" class="font-serif-estate text-2xl font-bold text-white mt-0.5"></h3>
+        </div>
+      </div>
+
+      <div class="p-6 space-y-4 text-xs text-slate-300">
+        <div class="flex items-center justify-between pb-3 border-b border-white/10">
+          <div id="modal-prop-price" class="text-xl font-serif-estate font-bold text-emerald-400"></div>
+          <div id="modal-prop-specs" class="font-mono text-slate-400"></div>
+        </div>
+        <p id="modal-prop-desc" class="text-slate-300 leading-relaxed"></p>
+        
+        <div class="pt-4 border-t border-white/10 flex gap-3">
+          <button id="modal-prop-btn-visit" class="flex-1 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-bold uppercase tracking-wider text-xs transition">
+            Agendar Visita com Heliponto
+          </button>
+          <button onclick="closePropModal()" class="px-5 py-3 rounded-xl border border-white/20 hover:bg-white/10 text-white font-bold uppercase tracking-wider text-xs transition">
+            Fechar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 bg-[#0A0C0E] py-12 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="font-serif-estate font-bold text-white text-base">
+        VERIDIAN ESTATES © 2026
+      </div>
+      <div>
+        CRECI 34.912-J • Faria Lima, São Paulo & Ipanema, Rio de Janeiro
+      </div>
+      <div class="font-mono text-[11px] text-slate-400">
+        Global Luxury Real Estate Partner
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    const PROPERTIES = [
+      {
+        id: 1,
+        title: "Penthouse Triplex Parque Ibirapuera",
+        location: "Jardim Luzitânia • São Paulo",
+        type: "penthouse",
+        area: "840 m²",
+        suites: "5 Suítes",
+        vagas: "8 Vagas",
+        priceBRL: 38500000,
+        img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80",
+        desc: "Triplex cinematográfico com piscina suspensa em vidro, adega climatizada para 1.200 garrafas, acabamentos em mármore Travertino Romano Navona e automação Lutron completa."
+      },
+      {
+        id: 2,
+        title: "Villa Península com Píer & Heliponto",
+        location: "Angra dos Reis • Rio de Janeiro",
+        type: "villa",
+        area: "1.450 m²",
+        suites: "7 Suítes",
+        vagas: "Heliponto + Píer p/ 120ft",
+        priceBRL: 54000000,
+        img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1000&q=80",
+        desc: "Refúgio costeiro privativo em península isolada com praia particular de areias brancas, heliponto homologado, marina privativa e spa com sauna envidraçada sobre as águas."
+      },
+      {
+        id: 3,
+        title: "Residência Suspensa Concreto & Vidro",
+        location: "Fazenda Boa Vista • Porto Feliz, SP",
+        type: "villa",
+        area: "1.120 m²",
+        suites: "6 Suítes",
+        vagas: "6 Vagas Cobertas",
+        priceBRL: 29800000,
+        img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80",
+        desc: "Obra-prima de arquitetura contemporânea assinada por escritório premiado internacionalmente. Vista perene para o campo de golfe, lareira externa e piscina com raia de 25m."
+      },
+      {
+        id: 4,
+        title: "Penthouse Atlântica Vista Panorâmica",
+        location: "Leblon • Rio de Janeiro",
+        type: "penthouse",
+        area: "620 m²",
+        suites: "4 Suítes",
+        vagas: "5 Vagas",
+        priceBRL: 42000000,
+        img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1000&q=80",
+        desc: "Vista 360° para o Morro Dois Irmãos e Cristo Redentor. Terraço privativo com jacuzzi aquecida, pé-direito duplo de 6 metros no living e segurança balística instalada."
+      },
+      {
+        id: 5,
+        title: "Mansão Modernista com Bosque Privativo",
+        location: "Jardim Europa • São Paulo",
+        type: "villa",
+        area: "980 m²",
+        suites: "5 Suítes Master",
+        vagas: "10 Vagas",
+        priceBRL: 35000000,
+        img: "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1000&q=80",
+        desc: "Terreno raro de 1.800 m² no coração do Jardim Europa com projeto paisagístico tropical maduro, quadra de tênis privativa, academia completa e gerador elétrico total."
+      },
+      {
+        id: 6,
+        title: "Quinta Haras com Lago & Mata Atlântica",
+        location: "Campos do Jordão • Serra da Mantiqueira",
+        type: "villa",
+        area: "120.000 m² (12 Hectares)",
+        suites: "6 Suítes c/ Lareira",
+        vagas: "Pavilhão 8 Carros + 12 Baias",
+        priceBRL: 26500000,
+        img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1000&q=80",
+        desc: "Propriedade de campo cinematográfica com haras hípico padrão internacional, vinhedo experimental em altitude, lago privativo e casa principal em pedra rústica e carvalho francês."
+      }
+    ];
+
+    let currentCurrency = 'BRL';
+    let currentFilter = 'all';
+
+    function setCurrency(curr) {
+      currentCurrency = curr;
+      document.getElementById('btn-curr-brl').className = curr === 'BRL' ? "px-2.5 py-1 rounded-md bg-emerald-500 text-black font-bold transition" : "px-2.5 py-1 rounded-md text-slate-400 hover:text-white transition";
+      document.getElementById('btn-curr-usd').className = curr === 'USD' ? "px-2.5 py-1 rounded-md bg-emerald-500 text-black font-bold transition" : "px-2.5 py-1 rounded-md text-slate-400 hover:text-white transition";
+      document.getElementById('btn-curr-eur').className = curr === 'EUR' ? "px-2.5 py-1 rounded-md bg-emerald-500 text-black font-bold transition" : "px-2.5 py-1 rounded-md text-slate-400 hover:text-white transition";
+      
+      document.getElementById('hero-price').textContent = formatPrice(38500000);
+      renderProperties();
     }
-    document.getElementById("curr-brl").addEventListener("click", function() { currency = "BRL"; this.className = "px-3 py-1 rounded-md text-xs font-semibold bg-emerald-500 text-black"; document.getElementById("curr-usd").className = "px-3 py-1 rounded-md text-xs font-semibold bg-white/10 text-white"; renderEstates(); });
-    document.getElementById("curr-usd").addEventListener("click", function() { currency = "USD"; this.className = "px-3 py-1 rounded-md text-xs font-semibold bg-emerald-500 text-black"; document.getElementById("curr-brl").className = "px-3 py-1 rounded-md text-xs font-semibold bg-white/10 text-white"; renderEstates(); });
-    document.querySelectorAll(".est-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        filterType = btn.dataset.type;
-        document.querySelectorAll(".est-btn").forEach(b => b.className = "est-btn px-4 py-2 rounded-full text-xs font-semibold bg-white/10 text-white");
-        btn.className = "est-btn px-4 py-2 rounded-full text-xs font-semibold bg-white text-black";
-        renderEstates();
+
+    function formatPrice(valBrl) {
+      if (currentCurrency === 'BRL') {
+        return "R$ " + (valBrl / 1000000).toFixed(1).replace(".", ",") + " Milhões";
+      } else if (currentCurrency === 'USD') {
+        const usd = valBrl / 5.20 / 1000000;
+        return "US$ " + usd.toFixed(2) + "M";
+      } else {
+        const eur = valBrl / 5.60 / 1000000;
+        return "€ " + eur.toFixed(2) + "M";
+      }
+    }
+
+    function filterProperties(type) {
+      currentFilter = type;
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        if (btn.getAttribute('data-type') === type) {
+          btn.className = "filter-btn active px-3.5 py-1.5 rounded-full text-xs font-bold bg-emerald-500 text-black shadow-sm transition";
+        } else {
+          btn.className = "filter-btn px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white/5 text-slate-300 border border-white/10 hover:border-emerald-500 transition";
+        }
       });
-    });
-    renderEstates();
+      renderProperties();
+    }
+
+    function renderProperties() {
+      const list = currentFilter === 'all' ? PROPERTIES : PROPERTIES.filter(p => p.type === currentFilter);
+      const grid = document.getElementById('properties-grid');
+      grid.innerHTML = list.map(p => `
+        <div class="estate-card rounded-3xl overflow-hidden flex flex-col justify-between group">
+          <div>
+            <div class="relative h-64 overflow-hidden">
+              <img src="${p.img}" alt="${p.title}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0E1115] via-transparent to-transparent"></div>
+              
+              <span class="absolute top-4 left-4 px-2.5 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider bg-black/70 backdrop-blur-md text-emerald-400 border border-white/10">
+                ${p.type === 'penthouse' ? 'Penthouse & Triplex' : 'Villa & Haras'}
+              </span>
+
+              <div class="absolute bottom-3 left-4 right-4 flex justify-between items-end text-white">
+                <div>
+                  <span class="text-[10px] font-mono text-emerald-400 block">${p.location}</span>
+                  <h3 class="font-serif-estate text-lg font-bold mt-0.5 line-clamp-1">${p.title}</h3>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <p class="text-xs text-slate-300 leading-relaxed line-clamp-2">${p.desc}</p>
+              
+              <div class="mt-4 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono text-slate-400">
+                <span>📐 ${p.area}</span>
+                <span>🛏️ ${p.suites}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 pt-0">
+            <div class="flex items-center justify-between pt-4 border-t border-white/10">
+              <div>
+                <span class="text-[10px] font-mono uppercase text-slate-500 block">Valor Criptografado</span>
+                <span class="text-base font-serif-estate font-bold text-emerald-400">${formatPrice(p.priceBRL)}</span>
+              </div>
+              <button onclick="openPropModal(${p.id})" class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-emerald-500 hover:text-black text-white text-xs font-mono transition">
+                Detalhes ↗
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Modal
+    function openPropModal(id) {
+      const p = PROPERTIES.find(item => item.id === id);
+      if (!p) return;
+      document.getElementById('modal-prop-img').src = p.img;
+      document.getElementById('modal-prop-loc').textContent = p.location;
+      document.getElementById('modal-prop-title').textContent = p.title;
+      document.getElementById('modal-prop-price').textContent = formatPrice(p.priceBRL);
+      document.getElementById('modal-prop-specs').textContent = `${p.area} • ${p.suites} • ${p.vagas}`;
+      document.getElementById('modal-prop-desc').textContent = p.desc;
+      document.getElementById('modal-prop-btn-visit').onclick = () => {
+        closePropModal();
+        openAgendamentoVIP(p.title);
+      };
+      document.getElementById('prop-modal').classList.remove('hidden');
+    }
+
+    function closePropModal() {
+      document.getElementById('prop-modal').classList.add('hidden');
+    }
+
+    // Mortgage Simulator
+    function updateSimProperty() {
+      calcMortgage();
+    }
+
+    function calcMortgage() {
+      const propVal = parseFloat(document.getElementById('sim-property-select').value);
+      const downPct = parseInt(document.getElementById('sim-down-slider').value);
+      const years = parseInt(document.getElementById('sim-years-slider').value);
+
+      document.getElementById('sim-asset-val').textContent = formatPrice(propVal);
+      
+      const downVal = propVal * (downPct / 100);
+      document.getElementById('sim-down-label').textContent = `${downPct}% (${formatPrice(downVal)})`;
+      
+      const months = years * 12;
+      document.getElementById('sim-years-label').textContent = `${years} Anos (${months} Meses)`;
+
+      const financed = propVal - downVal;
+      document.getElementById('sim-financed-val').textContent = `Saldo Financiado: ${formatPrice(financed)} via Private Banking`;
+
+      // Simplified SAC approximation: (Financed / months) + (Financed * 0.0075 interest)
+      const monthlySac = (financed / months) + (financed * 0.0068);
+      document.getElementById('sim-monthly-val').textContent = `${formatPrice(monthlySac)} /mês`;
+    }
+
+    // VIP Drawer
+    const vipDrawer = document.getElementById('vip-drawer');
+    const drawerOverlay = document.getElementById('drawer-overlay');
+
+    function openAgendamentoVIP(imovel) {
+      if (imovel && document.getElementById('select-imovel')) {
+        const sel = document.getElementById('select-imovel');
+        for (let i = 0; i < sel.options.length; i++) {
+          if (sel.options[i].text.includes(imovel) || imovel.includes(sel.options[i].value)) {
+            sel.selectedIndex = i;
+            break;
+          }
+        }
+      }
+      drawerOverlay.classList.remove('opacity-0', 'pointer-events-none');
+      vipDrawer.classList.remove('translate-x-full');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeAgendamentoVIP() {
+      drawerOverlay.classList.add('opacity-0', 'pointer-events-none');
+      vipDrawer.classList.add('translate-x-full');
+      document.body.style.overflow = '';
+    }
+
+    function handleVIP(e) {
+      e.preventDefault();
+      const succ = document.getElementById('vip-success');
+      succ.classList.remove('hidden');
+      setTimeout(() => {
+        closeAgendamentoVIP();
+        succ.classList.add('hidden');
+        document.getElementById('form-vip').reset();
+      }, 3500);
+    }
+
+    // Initial render
+    renderProperties();
+    calcMortgage();
   </script>
+
   <!-- Vercel Web Analytics & Speed Insights -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
