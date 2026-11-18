@@ -1,84 +1,1600 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PAWS & CO. — Pet Boutique, Spa & Hospital 24h</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <style>body { background-color: #FFFDF9; color: #1E1B18; font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PAWS & CO. — Pet Boutique, Spa Estético, Hotelzinho & Nutrição Natural</title>
+  <meta name="description" content="O cuidado e carinho que seu melhor amigo merece, com padrão 5 estrelas. Banho & Tosa na tesoura, Ozonioterapia, Spa Canino/Felino, Daycare monitorado e Boutique Natural." />
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Outfit, Plus Jakarta Sans & Nunito -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            terracotta: '#ea580c',
+            terracottaDark: '#c2410c',
+            terracottaSoft: '#ffedd5',
+            sage: '#15803d',
+            sageDark: '#166534',
+            sageSoft: '#dcfce7',
+            butter: '#fefce8',
+            butterWarm: '#fef9c3',
+            offwhite: '#fafaf9',
+            espresso: '#1E1B18'
+          },
+          fontFamily: {
+            display: ['"Outfit"', 'sans-serif'],
+            rounded: ['"Nunito"', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          },
+          boxShadow: {
+            'cozy': '0 20px 45px -15px rgba(234, 88, 12, 0.12)',
+            'cozy-hover': '0 25px 50px -12px rgba(234, 88, 12, 0.22)',
+            'sage-glow': '0 15px 35px -10px rgba(21, 128, 61, 0.2)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #fafaf9;
+      color: #1E1B18;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Outfit', sans-serif;
+    }
+    .font-badge {
+      font-family: 'Nunito', sans-serif;
+    }
+
+    /* Subtle Paw Print Pattern Background */
+    .bg-paw-pattern {
+      background-color: #fafaf9;
+      background-image: radial-gradient(rgba(234, 88, 12, 0.06) 1.5px, transparent 1.5px), radial-gradient(rgba(21, 128, 61, 0.04) 1.5px, #fafaf9 1.5px);
+      background-size: 44px 44px;
+      background-position: 0 0, 22px 22px;
+    }
+
+    /* Affectionate Card Microinteractions */
+    .pet-card {
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .pet-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 50px -12px rgba(234, 88, 12, 0.16);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #fefce8;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #fdba74;
+      border-radius: 999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ea580c;
+    }
+
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-6px) rotate(3deg); }
+    }
+    .animate-paw {
+      animation: floatSlow 4s ease-in-out infinite;
+    }
+  </style>
 </head>
-<body class="min-h-screen antialiased">
-  <header class="border-b border-orange-950/10 bg-white sticky top-0 z-40">
-    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-      <span class="font-extrabold text-2xl text-orange-600">🐾 PAWS & CO.</span>
-      <span class="px-3.5 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">Hospital Veterinário 24h • Banho c/ Câmeras Ao Vivo</span>
+
+<body class="min-h-screen antialiased bg-paw-pattern selection:bg-terracotta selection:text-white">
+
+  <!-- TOPBAR ACOLHEDORA COM CÂMERAS AO VIVO & HOSPITAL PARCEIRO -->
+  <div class="bg-espresso text-butter text-xs border-b border-stone-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5">
+        <span class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-sage text-white font-badge font-bold text-[11px]">
+          <span class="w-1.5 h-1.5 rounded-full bg-butter animate-ping"></span>
+          <span class="w-1.5 h-1.5 rounded-full bg-butter -ml-3"></span>
+          Salas de Banho 100% Envidraçadas & Câmeras Ao Vivo
+        </span>
+        <span class="hidden md:inline text-stone-300">
+          Certificação Fear Free® (Zero Estresse e Sem Gaiolas) • Toalhas Esterilizadas Individuais
+        </span>
+      </div>
+      <div class="flex items-center gap-4 ml-auto">
+        <button type="button" onclick="openLiveCamModal()" class="text-amber-300 hover:text-white font-bold flex items-center gap-1.5 transition-colors">
+          <i data-lucide="video" class="w-3.5 h-3.5"></i>
+          <span>Espiar Câmeras do Spa</span>
+        </button>
+        <span class="text-stone-600 hidden sm:inline">|</span>
+        <span class="hidden sm:inline text-emerald-300 font-semibold">🚑 Retaguarda Hospital Veterinário 24h</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. HEADER FIXO COM LOGO PAWS & CO., MENU E CTA -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-orange-950/10 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Logo Paws & Co. -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-terracotta to-amber-500 flex items-center justify-center text-white shadow-md group-hover:rotate-6 transition-transform">
+          <span class="text-xl">🐾</span>
+        </div>
+        <div>
+          <span class="font-heading font-extrabold text-2xl tracking-tight text-espresso block leading-none">
+            PAWS <span class="text-terracotta">&amp;</span> CO.
+          </span>
+          <span class="font-badge text-[10px] uppercase tracking-[0.18em] text-sage font-extrabold block mt-1">
+            Boutique • Spa • Daycare
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-stone-700">
+        <a href="#servicos" class="hover:text-terracotta transition-colors">Serviços</a>
+        <a href="#agendamento" class="hover:text-terracotta transition-colors flex items-center gap-1.5 text-terracotta font-bold">
+          <i data-lucide="sparkles" class="w-4 h-4"></i>
+          Spa &amp; Simulador
+        </a>
+        <a href="#boutique" class="hover:text-terracotta transition-colors">Boutique &amp; Nutrição</a>
+        <a href="#espaco-bem-estar" class="hover:text-terracotta transition-colors">Hotel &amp; Daycare</a>
+        <a href="#depoimentos" class="hover:text-terracotta transition-colors">Antes &amp; Depois</a>
+        <a href="#faq" class="hover:text-terracotta transition-colors">Dúvidas</a>
+        <a href="#contato" class="hover:text-terracotta transition-colors">Contato</a>
+      </nav>
+
+      <!-- Header Right Actions -->
+      <div class="flex items-center gap-2.5 sm:gap-3">
+        <button 
+          type="button" 
+          onclick="openBoutiqueBagModal()" 
+          class="relative p-2.5 rounded-2xl bg-butter border border-amber-300/80 text-espresso hover:border-terracotta transition-all"
+          aria-label="Sacola da Boutique"
+          title="Sacola da Boutique"
+        >
+          <i data-lucide="shopping-bag" class="w-5 h-5 text-terracotta"></i>
+          <span id="bag-count-badge" class="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-sage text-white font-badge text-[11px] font-extrabold flex items-center justify-center">
+            0
+          </span>
+        </button>
+
+        <a 
+          href="#agendamento" 
+          class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-terracotta hover:bg-terracottaDark text-white font-heading font-bold text-xs sm:text-sm tracking-wide shadow-cozy hover:scale-[1.02] transition-all"
+        >
+          <span>Agendar Banho &amp; Tosa</span>
+          <span>🐾</span>
+        </a>
+
+        <button type="button" onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-2xl border border-stone-200 text-stone-700 hover:bg-stone-100" aria-label="Menu">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-stone-200 px-6 py-5 space-y-3 text-sm font-semibold text-stone-700 shadow-xl">
+      <a href="#agendamento" onclick="toggleMobileMenu()" class="block py-2 text-terracotta font-bold">🐾 Simulador &amp; Agendamento de Spa</a>
+      <a href="#servicos" onclick="toggleMobileMenu()" class="block py-2 hover:text-terracotta">Serviços Premium &amp; Táxi Dog</a>
+      <a href="#boutique" onclick="toggleMobileMenu()" class="block py-2 hover:text-terracotta">Boutique &amp; Alimentação Natural</a>
+      <a href="#espaco-bem-estar" onclick="toggleMobileMenu()" class="block py-2 hover:text-terracotta">Espaço Envidraçado, Hotel &amp; Daycare</a>
+      <a href="#depoimentos" onclick="toggleMobileMenu()" class="block py-2 hover:text-terracotta">Mural de Pets (Antes &amp; Depois)</a>
+      <a href="#faq" onclick="toggleMobileMenu()" class="block py-2 hover:text-terracotta">FAQ (Vacinas, Filhotes &amp; Banhos)</a>
+      <a href="#contato" onclick="toggleMobileMenu()" class="block py-3 text-center rounded-2xl bg-terracotta text-white font-bold">Agendar Agora via WhatsApp</a>
     </div>
   </header>
 
-  <main class="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-    <div class="lg:col-span-6">
-      <span class="text-xs font-extrabold uppercase tracking-wider text-orange-600">Estética Pet & Bem-Estar</span>
-      <h1 class="text-4xl sm:text-6xl font-extrabold mt-2 leading-tight">Carinho de família, estrutura de hospital.</h1>
-      <p class="text-stone-600 mt-4">Toalhas esterilizadas individualmente, shampoos veganos hipoalergênicos, secagem silenciosa sem gaiolas e creche gramada.</p>
-      <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=900&q=80" class="w-full h-64 object-cover rounded-3xl mt-6 shadow-md" alt="Golden Retriever">
+  <!-- 2. HERO SECTION ACOLHEDORA COM FOTOS ENCANTADORAS HD -->
+  <section class="relative pt-10 pb-20 lg:pt-16 lg:pb-24 overflow-hidden border-b border-orange-950/10 bg-gradient-to-b from-butter/70 via-offwhite to-offwhite">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Column (7 Cols): Affectionate Headline, Badges & Dual CTA -->
+        <div class="lg:col-span-7 space-y-7">
+          <div class="inline-flex flex-wrap items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-orange-200 shadow-sm">
+            <span class="px-2.5 py-0.5 rounded-full bg-terracottaSoft text-terracotta font-badge text-xs font-extrabold uppercase tracking-wider">
+              🐾 Pet Care 5 Estrelas
+            </span>
+            <span class="text-xs text-stone-600 font-semibold">
+              Carinho de família • Estrutura clínica • Secagem silenciosa sem gaiolas
+            </span>
+          </div>
+
+          <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold text-espresso tracking-tight leading-[1.1]">
+            O cuidado e carinho que seu melhor amigo merece, com <span class="text-terracotta underline decoration-amber-300/80 decoration-wavy decoration-4 underline-offset-8">padrão 5 estrelas.</span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-stone-600 leading-relaxed max-w-2xl">
+            Um refúgio de bem-estar com água mineral aquecida, shampoos veganos hipoalergênicos, aromaterapia calmante, salas de banho 100% envidraçadas, creche gramada monitorada por veterinários e nutrição natural fresca.
+          </p>
+
+          <!-- Dual CTA -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-1">
+            <a 
+              href="#agendamento" 
+              class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-terracotta hover:bg-terracottaDark text-white font-heading font-bold text-base shadow-cozy hover:scale-[1.01] transition-all"
+            >
+              <span>Simular &amp; Agendar Spa Agora</span>
+              <i data-lucide="calendar-heart" class="w-5 h-5"></i>
+            </a>
+            <a 
+              href="#boutique" 
+              class="inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-2xl bg-white hover:bg-butter text-espresso border border-stone-200 font-heading font-bold text-sm shadow-sm transition-all"
+            >
+              <i data-lucide="bone" class="w-5 h-5 text-sage"></i>
+              <span>Explorar Boutique &amp; Nutrição</span>
+            </a>
+          </div>
+
+          <!-- Cute Trust Metrics -->
+          <div class="pt-6 border-t border-stone-200/80 grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div class="bg-white p-4 rounded-2xl border border-orange-100 shadow-sm">
+              <div class="font-heading text-2xl font-extrabold text-terracotta">+8.400</div>
+              <p class="text-xs text-stone-500 font-medium mt-0.5">Pets mimados e felizes sem estresse</p>
+            </div>
+            <div class="bg-white p-4 rounded-2xl border border-emerald-100 shadow-sm">
+              <div class="font-heading text-2xl font-extrabold text-sage">100% Vidro</div>
+              <p class="text-xs text-stone-500 font-medium mt-0.5">Transparência total e câmeras HD no app</p>
+            </div>
+            <div class="bg-white p-4 rounded-2xl border border-amber-100 shadow-sm">
+              <div class="font-heading text-2xl font-extrabold text-espresso">36°C</div>
+              <p class="text-xs text-stone-500 font-medium mt-0.5">Água mineral filtrada e ozonizada</p>
+            </div>
+            <div class="bg-white p-4 rounded-2xl border border-orange-100 shadow-sm">
+              <div class="font-heading text-2xl font-extrabold text-terracotta">4.98 ★</div>
+              <p class="text-xs text-stone-500 font-medium mt-0.5">Avaliação dos tutores no Google</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column (5 Cols): Charming Collage of Dogs & Cats -->
+        <div class="lg:col-span-5 relative">
+          <div class="grid grid-cols-12 gap-4 items-center">
+            <!-- Main Happy Golden Retriever -->
+            <div class="col-span-12 sm:col-span-8 lg:col-span-12 relative rounded-3xl overflow-hidden border-4 border-white shadow-cozy bg-butter">
+              <img 
+                src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=1000&q=85" 
+                alt="Golden Retriever feliz após banho de spa na Paws & Co." 
+                class="w-full h-80 sm:h-96 object-cover object-center"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-espresso/75 via-transparent to-transparent"></div>
+
+              <!-- Top Floating Cute Badge -->
+              <div class="absolute top-4 left-4 right-4 flex items-center justify-between gap-2">
+                <span class="px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md text-espresso font-badge text-xs font-extrabold shadow-md flex items-center gap-1.5">
+                  <span class="text-terracotta">🛁</span> Hidratação de Ozônio &amp; Lavanda
+                </span>
+                <span class="px-3 py-1.5 rounded-full bg-sage text-white font-badge text-xs font-extrabold shadow-md">
+                  Fear Free®
+                </span>
+              </div>
+
+              <!-- Bottom Floating Pet Profile -->
+              <div class="absolute bottom-4 left-4 right-4 p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-orange-100 flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <img 
+                    src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=200&q=80" 
+                    alt="Gatinho no Spa Felino" 
+                    class="w-12 h-12 rounded-2xl object-cover border-2 border-terracotta shrink-0"
+                  />
+                  <div>
+                    <span class="font-badge text-[10px] uppercase tracking-wider text-sage font-extrabold block">ALA EXCLUSIVA PARA GATOS</span>
+                    <p class="font-heading font-bold text-espresso text-sm">Cat Spa Silencioso c/ Feliway®</p>
+                  </div>
+                </div>
+                <a href="#agendamento" class="px-3.5 py-2 rounded-xl bg-terracottaSoft text-terracotta font-badge font-extrabold text-xs hover:bg-terracotta hover:text-white transition-colors shrink-0">
+                  Reservar →
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
+  </section>
 
-    <!-- Configurador de Spa por Porte do Pet -->
-    <div class="lg:col-span-6 bg-white p-8 rounded-3xl border border-orange-200 shadow-xl">
-      <h2 class="text-2xl font-extrabold mb-2">Simulador de Spa & Daycare</h2>
-      <p class="text-xs text-stone-500 mb-5">1. Escolha o porte do seu pet:</p>
-
-      <div class="grid grid-cols-3 gap-2 mb-6">
-        <button onclick="setPorte(1, this)" class="porte-btn py-2.5 rounded-xl text-xs font-bold bg-orange-500 text-white">Pequeno (até 8kg)</button>
-        <button onclick="setPorte(1.35, this)" class="porte-btn py-2.5 rounded-xl text-xs font-bold bg-orange-50 text-orange-900">Médio (9-20kg)</button>
-        <button onclick="setPorte(1.75, this)" class="porte-btn py-2.5 rounded-xl text-xs font-bold bg-orange-50 text-orange-900">Grande (+20kg)</button>
+  <!-- 3. SIMULADOR / AGENDADOR INTERATIVO DE SPA E GROOMING -->
+  <section id="agendamento" class="py-20 lg:py-28 bg-butter/80 border-b border-orange-950/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-terracottaSoft text-terracotta font-badge text-xs font-extrabold uppercase tracking-widest">
+          <span>🐾</span> Orçamento Transparente em Tempo Real
+        </span>
+        <h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-espresso mt-3">
+          Simulador &amp; Agendador Interativo de Spa
+        </h2>
+        <p class="text-stone-600 mt-3 text-sm sm:text-base">
+          Personalize a sessão de estética e bem-estar do seu cão ou gato. Veja na hora a duração estimada do atendimento, o valor completo sem taxas ocultas e confirme pelo WhatsApp.
+        </p>
       </div>
 
-      <div class="space-y-3 text-sm">
-        <label class="flex justify-between items-center p-3.5 rounded-xl border border-stone-200 cursor-pointer">
-          <span><input type="checkbox" checked class="pet-chk accent-orange-500 mr-2" value="75"> Banho Ozônio + Escovação Dental</span>
-          <strong class="text-orange-600">Base R$ 75</strong>
-        </label>
-        <label class="flex justify-between items-center p-3.5 rounded-xl border border-stone-200 cursor-pointer">
-          <span><input type="checkbox" class="pet-chk accent-orange-500 mr-2" value="65"> Tosa na Tesoura / Higiênica</span>
-          <strong class="text-orange-600">Base R$ 65</strong>
-        </label>
-        <label class="flex justify-between items-center p-3.5 rounded-xl border border-stone-200 cursor-pointer">
-          <span><input type="checkbox" class="pet-chk accent-orange-500 mr-2" value="90"> Diária Daycare (Creche c/ Monitor)</span>
-          <strong class="text-orange-600">Base R$ 90</strong>
-        </label>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left 7 Cols: Interactive Step-by-Step Controls -->
+        <div class="lg:col-span-7 bg-white p-6 sm:p-9 rounded-3xl border border-orange-200/90 shadow-cozy space-y-7">
+          
+          <!-- Step 1: Pet Species & Name -->
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-4 items-end">
+            <div class="sm:col-span-7">
+              <label class="block font-badge text-xs font-extrabold uppercase tracking-wider text-stone-500 mb-2">
+                1. Quem vamos mimar hoje?
+              </label>
+              <div class="grid grid-cols-2 gap-2.5">
+                <button 
+                  type="button" 
+                  onclick="setSpecies('cao', this)" 
+                  id="species-btn-cao"
+                  class="species-btn py-3 px-4 rounded-2xl font-heading font-bold text-sm flex items-center justify-center gap-2 bg-terracotta text-white shadow-sm transition-all"
+                >
+                  <span>🐶</span>
+                  <span>Cãozinho</span>
+                </button>
+                <button 
+                  type="button" 
+                  onclick="setSpecies('gato', this)" 
+                  id="species-btn-gato"
+                  class="species-btn py-3 px-4 rounded-2xl font-heading font-bold text-sm flex items-center justify-center gap-2 bg-orange-50 text-orange-950 border border-orange-200/70 hover:bg-orange-100 transition-all"
+                >
+                  <span>🐱</span>
+                  <span>Gatinho (Cat Spa)</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="sm:col-span-5">
+              <label for="pet-name-input" class="block font-badge text-xs font-extrabold uppercase tracking-wider text-stone-500 mb-2">
+                Nome do seu Pet
+              </label>
+              <input 
+                id="pet-name-input" 
+                type="text" 
+                value="Bento" 
+                oninput="calcPet()"
+                placeholder="Ex: Bento, Luna, Thor..." 
+                class="w-full px-4 py-3 rounded-2xl bg-offwhite border border-stone-200 font-heading font-bold text-sm text-espresso focus:border-terracotta focus:outline-none"
+              />
+            </div>
+          </div>
+
+          <!-- Step 2: Seletor de Porte (Pequeno até 10kg, Médio até 25kg, Grande/Gigante 25kg+) -->
+          <div>
+            <label class="block font-badge text-xs font-extrabold uppercase tracking-wider text-stone-500 mb-2">
+              2. Selecione o Porte do Pet
+            </label>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+              <button 
+                type="button" 
+                onclick="setPorte(1, this, 'Pequeno (até 10kg)')" 
+                class="porte-btn py-3 px-4 rounded-2xl text-xs font-bold bg-terracotta text-white shadow-sm text-left transition-all"
+              >
+                <div class="font-heading text-sm font-extrabold">Pequeno</div>
+                <span class="opacity-90 block text-[11px]">Até 10 kg (Spitz, Shih Tzu, Pug)</span>
+              </button>
+              <button 
+                type="button" 
+                onclick="setPorte(1.35, this, 'Médio (10kg a 25kg)')" 
+                class="porte-btn py-3 px-4 rounded-2xl text-xs font-bold bg-orange-50 text-orange-950 border border-orange-200/60 hover:bg-orange-100 text-left transition-all"
+              >
+                <div class="font-heading text-sm font-extrabold">Médio</div>
+                <span class="opacity-75 block text-[11px]">Até 25 kg (Bulldog, Beagle, Border)</span>
+              </button>
+              <button 
+                type="button" 
+                onclick="setPorte(1.75, this, 'Grande / Gigante (25kg+)')" 
+                class="porte-btn py-3 px-4 rounded-2xl text-xs font-bold bg-orange-50 text-orange-950 border border-orange-200/60 hover:bg-orange-100 text-left transition-all"
+              >
+                <div class="font-heading text-sm font-extrabold">Grande / Gigante</div>
+                <span class="opacity-75 block text-[11px]">25 kg+ (Golden, Labrador, Bernese)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 3: Tipo de Pelagem (Curta, Longa, Dupla/Subpelo) -->
+          <div>
+            <label class="block font-badge text-xs font-extrabold uppercase tracking-wider text-stone-500 mb-2">
+              3. Tipo de Pelagem
+            </label>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+              <button 
+                type="button" 
+                onclick="setCoat(1.0, 0, 'Pelagem Curta', this)" 
+                class="coat-btn py-3 px-4 rounded-2xl text-xs font-bold bg-sage text-white shadow-sm text-left transition-all"
+              >
+                <div class="font-heading text-sm font-extrabold">Pelagem Curta</div>
+                <span class="opacity-90 block text-[11px]">Secagem rápida e escovação macia</span>
+              </button>
+              <button 
+                type="button" 
+                onclick="setCoat(1.18, 20, 'Pelagem Longa / Sedosa', this)" 
+                class="coat-btn py-3 px-4 rounded-2xl text-xs font-bold bg-stone-100 text-stone-700 border border-stone-200 hover:bg-stone-200/70 text-left transition-all"
+              >
+                <div class="font-heading text-sm font-extrabold">Pelagem Longa</div>
+                <span class="opacity-75 block text-[11px]">Desembolo delicado + finalizador (+18%)</span>
+              </button>
+              <button 
+                type="button" 
+                onclick="setCoat(1.28, 35, 'Pelagem Dupla / Subpelo', this)" 
+                class="coat-btn py-3 px-4 rounded-2xl text-xs font-bold bg-stone-100 text-stone-700 border border-stone-200 hover:bg-stone-200/70 text-left transition-all"
+              >
+                <div class="font-heading text-sm font-extrabold">Dupla / Subpelo</div>
+                <span class="opacity-75 block text-[11px]">Remoção de subpelo morto (+28%)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 4: Serviços Adicionais com Checkboxes -->
+          <div>
+            <label class="block font-badge text-xs font-extrabold uppercase tracking-wider text-stone-500 mb-2.5">
+              4. Rituais de Spa, Estética &amp; Cuidados Inclusos
+            </label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs sm:text-sm">
+              
+              <label class="flex justify-between items-center p-3.5 rounded-2xl border border-orange-200 bg-butter/60 cursor-pointer hover:border-terracotta transition-all">
+                <span class="flex items-center gap-2.5 font-semibold text-espresso">
+                  <input type="checkbox" checked class="pet-chk w-4 h-4 accent-orange-600 rounded" value="75" data-time="45" data-label="Banho Relaxante & Hidratação c/ Ozônio" />
+                  <span>🛁 Hidratação com Ozônio</span>
+                </span>
+                <strong class="text-terracotta font-heading text-xs">Base R$ 75</strong>
+              </label>
+
+              <label class="flex justify-between items-center p-3.5 rounded-2xl border border-stone-200 bg-offwhite cursor-pointer hover:border-terracotta transition-all">
+                <span class="flex items-center gap-2.5 font-semibold text-espresso">
+                  <input type="checkbox" class="pet-chk w-4 h-4 accent-orange-600 rounded" value="65" data-time="45" data-label="Tosa da Raça / Tesoura" />
+                  <span>✂️ Tosa da Raça / Tesoura</span>
+                </span>
+                <strong class="text-terracotta font-heading text-xs">Base R$ 65</strong>
+              </label>
+
+              <label class="flex justify-between items-center p-3.5 rounded-2xl border border-stone-200 bg-offwhite cursor-pointer hover:border-terracotta transition-all">
+                <span class="flex items-center gap-2.5 font-semibold text-espresso">
+                  <input type="checkbox" checked class="pet-chk w-4 h-4 accent-orange-600 rounded" value="35" data-time="20" data-label="Tosa Higiênica Delicada" />
+                  <span>✨ Tosa Higiênica</span>
+                </span>
+                <strong class="text-terracotta font-heading text-xs">Base R$ 35</strong>
+              </label>
+
+              <label class="flex justify-between items-center p-3.5 rounded-2xl border border-stone-200 bg-offwhite cursor-pointer hover:border-terracotta transition-all">
+                <span class="flex items-center gap-2.5 font-semibold text-espresso">
+                  <input type="checkbox" checked class="pet-chk w-4 h-4 accent-orange-600 rounded" value="20" data-time="15" data-label="Corte de Unhas & Limpeza Auricular" />
+                  <span>🐾 Corte de Unhas &amp; Orelhas</span>
+                </span>
+                <strong class="text-terracotta font-heading text-xs">Base R$ 20</strong>
+              </label>
+
+              <label class="flex justify-between items-center p-3.5 rounded-2xl border border-stone-200 bg-offwhite cursor-pointer hover:border-terracotta transition-all">
+                <span class="flex items-center gap-2.5 font-semibold text-espresso">
+                  <input type="checkbox" class="pet-chk w-4 h-4 accent-orange-600 rounded" value="25" data-time="10" data-label="Escovação de Dentes c/ Gel Enzimático" />
+                  <span>🪥 Escovação de Dentes</span>
+                </span>
+                <strong class="text-terracotta font-heading text-xs">Base R$ 25</strong>
+              </label>
+
+              <label class="flex justify-between items-center p-3.5 rounded-2xl border border-stone-200 bg-offwhite cursor-pointer hover:border-terracotta transition-all">
+                <span class="flex items-center gap-2.5 font-semibold text-espresso">
+                  <input type="checkbox" class="pet-chk w-4 h-4 accent-orange-600 rounded" value="90" data-time="180" data-label="Diária Daycare (Recreação Monitorada)" />
+                  <span>🎾 Diária Daycare Gramado</span>
+                </span>
+                <strong class="text-sage font-heading text-xs">Base R$ 90</strong>
+              </label>
+
+            </div>
+          </div>
+
+          <!-- Optional Taxi Dog Toggle -->
+          <div class="p-4 rounded-2xl bg-sageSoft/60 border border-sage/25 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">🚐</span>
+              <div>
+                <span class="font-heading font-bold text-sm text-espresso block">Incluir Táxi Dog Climatizado (Leva &amp; Traz)</span>
+                <span class="text-xs text-stone-600">Transporte seguro em caixas higienizadas com cinto Isofix (+R$ 35)</span>
+              </div>
+            </div>
+            <input id="taxi-dog-chk" type="checkbox" onchange="calcPet()" class="w-5 h-5 accent-green-700 rounded cursor-pointer" />
+          </div>
+
+        </div>
+
+        <!-- Right 5 Cols: Real-Time Summary Card, Session Time & WhatsApp Booking -->
+        <div class="lg:col-span-5 bg-white p-7 sm:p-9 rounded-3xl border-2 border-terracotta/30 shadow-cozy flex flex-col justify-between space-y-6 sticky top-28">
+          <div>
+            <div class="flex items-center justify-between pb-4 border-b border-stone-200">
+              <div>
+                <span class="font-badge text-[11px] font-extrabold uppercase tracking-widest text-sage block">
+                  RESUMO DO PROTOCOLO SPA
+                </span>
+                <h3 id="sim-pet-title" class="font-heading text-2xl font-extrabold text-espresso mt-0.5">
+                  Sessão para Bento 🐶
+                </h3>
+              </div>
+              <span id="sim-species-badge" class="px-3 py-1 rounded-full bg-terracottaSoft text-terracotta font-badge text-xs font-extrabold">
+                Ala Canina
+              </span>
+            </div>
+
+            <!-- Selected Specs Pills -->
+            <div class="py-4 space-y-3 border-b border-stone-100 text-xs">
+              <div class="flex justify-between">
+                <span class="text-stone-500">Porte Selecionado:</span>
+                <strong id="sim-size-label" class="text-espresso font-bold">Pequeno (até 10kg)</strong>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-stone-500">Tipo de Pelagem:</span>
+                <strong id="sim-coat-label" class="text-espresso font-bold">Pelagem Curta</strong>
+              </div>
+              <div>
+                <span class="text-stone-500 block mb-1.5">Serviços &amp; Mimos Escolhidos:</span>
+                <div id="sim-services-list" class="flex flex-wrap gap-1.5">
+                  <!-- Populated by JS -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Duration & Total Price Highlight -->
+            <div class="grid grid-cols-2 gap-3 my-5">
+              <div class="p-4 rounded-2xl bg-butter border border-amber-200">
+                <span class="text-[11px] text-stone-500 font-semibold block">Tempo Estimado de Sessão</span>
+                <strong id="pet-duration" class="font-heading text-xl sm:text-2xl font-extrabold text-espresso mt-1 block">
+                  1h 20min
+                </strong>
+                <span class="text-[10px] text-sage font-bold block mt-0.5">Sem espera em gaiolas</span>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-terracottaSoft/60 border border-terracotta/30">
+                <span class="text-[11px] text-stone-600 font-semibold block">Valor Total Estimado</span>
+                <strong id="pet-total" class="font-heading text-2xl sm:text-3xl font-extrabold text-terracotta mt-1 block">
+                  R$ 130
+                </strong>
+                <span class="text-[10px] text-stone-500 block mt-0.5">Laço/Gravata &amp; Perfume inclusos</span>
+              </div>
+            </div>
+
+            <!-- Date & Shift Picker -->
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-stone-500 mb-1">Dia Preferido</label>
+                <select id="sim-day" class="w-full px-3 py-2.5 rounded-xl bg-offwhite border border-stone-200 text-xs font-bold text-espresso">
+                  <option value="Hoje">Hoje (Vagas Express)</option>
+                  <option value="Amanhã" selected>Amanhã</option>
+                  <option value="Esta Sexta-feira">Esta Sexta-feira</option>
+                  <option value="Este Sábado">Este Sábado</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold uppercase text-stone-500 mb-1">Período</label>
+                <select id="sim-shift" class="w-full px-3 py-2.5 rounded-xl bg-offwhite border border-stone-200 text-xs font-bold text-espresso">
+                  <option value="Manhã (09h às 12h)">Manhã (09h às 12h)</option>
+                  <option value="Tarde (13h30 às 17h)" selected>Tarde (13h30 às 17h)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-3 pt-2">
+            <button 
+              type="button" 
+              onclick="confirmSpaViaWhatsApp()" 
+              class="w-full py-4 px-6 rounded-2xl bg-sage hover:bg-sageDark text-white font-heading font-bold text-sm uppercase tracking-wider shadow-sage-glow transition-all flex items-center justify-center gap-2.5"
+            >
+              <i data-lucide="message-circle" class="w-5 h-5"></i>
+              <span>Confirmar Agendamento no WhatsApp</span>
+            </button>
+
+            <div id="spa-booking-ticket" class="hidden p-4 rounded-2xl bg-sageSoft border border-sage/40 text-xs text-sageDark space-y-1.5">
+              <div class="font-extrabold flex items-center justify-between">
+                <span>✓ Horário Pré-Reservado com Carinho!</span>
+                <span id="spa-ticket-code" class="font-mono">#PAWS-842</span>
+              </div>
+              <p id="spa-ticket-text" class="leading-relaxed"></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. SERVIÇOS PREMIUM (5 PILARES DE CUIDADO) -->
+  <section id="servicos" class="py-24 border-b border-orange-950/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+        <div>
+          <span class="font-badge text-xs font-extrabold uppercase tracking-widest text-terracotta">
+            Protocolos Assinados por Médicos Veterinários
+          </span>
+          <h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-espresso mt-2">
+            Serviços Premium de Estética &amp; Lazer
+          </h2>
+        </div>
+        <p class="text-sm sm:text-base text-stone-600 max-w-md">
+          Cada atendimento começa com uma inspeção gentil de pele, pelagem e ouvidos para escolher a linha de dermocosméticos ideal.
+        </p>
       </div>
 
-      <div class="mt-6 pt-5 border-t border-stone-200 flex justify-between items-center">
-        <span class="text-xs font-bold uppercase text-stone-500">Valor para o Porte Selecionado</span>
-        <strong id="pet-total" class="text-3xl font-extrabold text-orange-600">R$ 75</strong>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+        
+        <!-- Service 1: Banho Relaxante com Aromaterapia -->
+        <article class="pet-card bg-white rounded-3xl p-7 border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-13 h-13 p-3.5 rounded-2xl bg-terracottaSoft text-terracotta">
+                <i data-lucide="sparkles" class="w-6 h-6"></i>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-butterWarm text-amber-900 font-badge text-xs font-extrabold">
+                Óleos Essenciais Puros
+              </span>
+            </div>
+            <h3 class="font-heading text-xl font-extrabold text-espresso">Banho Relaxante com Aromaterapia</h3>
+            <p class="text-sm text-stone-600 mt-3 leading-relaxed">
+              Imersão morna em água mineral filtrada com difusão de óleo essencial de lavanda francesa e camomila romana, massagem miofascial relaxante e shampoos veganos biodegradáveis.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between text-xs font-bold text-terracotta">
+            <span>Ideal para pets ansiosos ou filhotes</span>
+            <a href="#agendamento" class="hover:underline">Simular →</a>
+          </div>
+        </article>
+
+        <!-- Service 2: Tosa Especializada na Tesoura -->
+        <article class="pet-card bg-white rounded-3xl p-7 border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-13 h-13 p-3.5 rounded-2xl bg-terracottaSoft text-terracotta">
+                <i data-lucide="scissors" class="w-6 h-6"></i>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-terracottaSoft text-terracotta font-badge text-xs font-extrabold">
+                Asian Style &amp; Breed Trim
+              </span>
+            </div>
+            <h3 class="font-heading text-xl font-extrabold text-espresso">Tosa Especializada na Tesoura</h3>
+            <p class="text-sm text-stone-600 mt-3 leading-relaxed">
+              Groomers premiados especialistas em tosa bebê, estilo asiático e padrão oficial de raças (Spitz Alemão, Poodle, Bichon, Shih Tzu e Golden) sem uso agressivo de lâminas baixas que agridem o folículo.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between text-xs font-bold text-terracotta">
+            <span>Acabamento aveludado artesanal</span>
+            <a href="#agendamento" class="hover:underline">Simular →</a>
+          </div>
+        </article>
+
+        <!-- Service 3: Ozonioterapia Dermatológica -->
+        <article class="pet-card bg-white rounded-3xl p-7 border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-13 h-13 p-3.5 rounded-2xl bg-sageSoft text-sage">
+                <i data-lucide="droplets" class="w-6 h-6"></i>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-sageSoft text-sage font-badge text-xs font-extrabold">
+                Terapêutico &amp; Hipoalergênico
+              </span>
+            </div>
+            <h3 class="font-heading text-xl font-extrabold text-espresso">Ozonioterapia Dermatológica</h3>
+            <p class="text-sm text-stone-600 mt-3 leading-relaxed">
+              Hidromassagem com microbolhas de Ozônio medicinal ($O_3$) que oxigena a pele, auxilia no controle de dermatites atópicas, fungos e alergias, além de promover brilho espelhado na pelagem.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between text-xs font-bold text-sage">
+            <span>Recomendado por dermatologistas vet</span>
+            <a href="#agendamento" class="hover:underline">Simular →</a>
+          </div>
+        </article>
+
+        <!-- Service 4: Daycare com Recreação Monitorada -->
+        <article class="pet-card bg-white rounded-3xl p-7 border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-13 h-13 p-3.5 rounded-2xl bg-sageSoft text-sage">
+                <i data-lucide="trees" class="w-6 h-6"></i>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-sageSoft text-sage font-badge text-xs font-extrabold">
+                Enriquecimento Ambiental
+              </span>
+            </div>
+            <h3 class="font-heading text-xl font-extrabold text-espresso">Daycare &amp; Hotelzinho Boutique</h3>
+            <p class="text-sm text-stone-600 mt-3 leading-relaxed">
+              Mais de 450 m² de área gramada natural, piscina rasa climatizada, circuitos de agilidade, música clássica na hora da soneca e turmas separadas por porte e energia, com boletim diário por vídeo.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between text-xs font-bold text-sage">
+            <span>Monitoria 100% presencial 24h</span>
+            <a href="#agendamento" class="hover:underline">Reservar Vaga →</a>
+          </div>
+        </article>
+
+        <!-- Service 5: Taxi Dog com Transporte Climatizado -->
+        <article class="pet-card bg-white rounded-3xl p-7 border border-stone-200/80 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-13 h-13 p-3.5 rounded-2xl bg-terracottaSoft text-terracotta">
+                <i data-lucide="car" class="w-6 h-6"></i>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-butterWarm text-amber-900 font-badge text-xs font-extrabold">
+                GPS Ao Vivo p/ Tutor
+              </span>
+            </div>
+            <h3 class="font-heading text-xl font-extrabold text-espresso">Táxi Dog VIP Climatizado</h3>
+            <p class="text-sm text-stone-600 mt-3 leading-relaxed">
+              Frota própria com ar-condicionado digital, kennels individuais higienizados a cada viagem com amônia quaternária, cinto peitoral Isofix e motoristas treinados em manejo gentil.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between text-xs font-bold text-terracotta">
+            <span>Você recebe o link da rota em tempo real</span>
+            <a href="#agendamento" class="hover:underline">Incluir no Banho →</a>
+          </div>
+        </article>
+
+        <!-- Service 6: Cat Spa Exclusivo -->
+        <article class="pet-card bg-butter rounded-3xl p-7 border border-amber-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-13 h-13 p-3.5 rounded-2xl bg-white text-terracotta shadow-sm">
+                <i data-lucide="cat" class="w-6 h-6"></i>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-white text-espresso font-badge text-xs font-extrabold">
+                Zero Contato com Cães
+              </span>
+            </div>
+            <h3 class="font-heading text-xl font-extrabold text-espresso">Cat Spa &amp; Escovação Felina</h3>
+            <p class="text-sm text-stone-600 mt-3 leading-relaxed">
+              Sala acústica exclusiva para felinos com difusores de feromônio sintético Feliway®, secadores ultra-silenciosos (abaixo de 50 dB) e especialistas certificadas em comportamento felino.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-amber-200/80 flex items-center justify-between text-xs font-bold text-terracotta">
+            <span>Atendimento com hora marcada</span>
+            <a href="#agendamento" onclick="setSpecies('gato', document.getElementById('species-btn-gato'))" class="hover:underline">Simular Gatinho →</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. BOUTIQUE & ALIMENTAÇÃO NATURAL -->
+  <section id="boutique" class="py-24 bg-white border-b border-orange-950/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+        <div>
+          <span class="font-badge text-xs font-extrabold uppercase tracking-widest text-sage">
+            Curadoria Saudável &amp; Design Autoral Pet
+          </span>
+          <h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-espresso mt-2">
+            Boutique &amp; Alimentação Natural
+          </h2>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="flex flex-wrap gap-2" id="boutique-filters">
+          <button type="button" onclick="filterBoutique('all')" data-bcat="all" class="bcat-btn px-4 py-2.5 rounded-full font-badge text-xs font-extrabold bg-terracotta text-white shadow-sm transition-all">
+            Todos os Mimos (6)
+          </button>
+          <button type="button" onclick="filterBoutique('nutricao')" data-bcat="nutricao" class="bcat-btn px-4 py-2.5 rounded-full font-badge text-xs font-extrabold bg-offwhite border border-stone-200 text-stone-700 hover:border-terracotta transition-all">
+            Alimentação Natural &amp; Petiscos
+          </button>
+          <button type="button" onclick="filterBoutique('conforto')" data-bcat="conforto" class="bcat-btn px-4 py-2.5 rounded-full font-badge text-xs font-extrabold bg-offwhite border border-stone-200 text-stone-700 hover:border-terracotta transition-all">
+            Caminhas Ortopédicas
+          </button>
+          <button type="button" onclick="filterBoutique('design')" data-bcat="design" class="bcat-btn px-4 py-2.5 rounded-full font-badge text-xs font-extrabold bg-offwhite border border-stone-200 text-stone-700 hover:border-terracotta transition-all">
+            Coleiras &amp; Passeio
+          </button>
+        </div>
       </div>
 
-      <button onclick="alert('Horário de Spa agendado! Buscamos seu pet em casa com o Táxi Dog.')" class="mt-5 w-full py-3.5 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs uppercase tracking-widest transition">
-        Agendar Horário (Leva & Traz) →
+      <!-- Boutique Products Grid -->
+      <div id="boutique-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+        <!-- Populated dynamically via JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 6. ESPAÇO & BEM-ESTAR (TRANSPARÊNCIA TOTAL) -->
+  <section id="espaco-bem-estar" class="py-24 bg-gradient-to-b from-butter/70 to-offwhite border-b border-orange-950/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left 6 Cols: Wellness Standards -->
+        <div class="lg:col-span-6 space-y-6">
+          <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-sageSoft text-sage font-badge text-xs font-extrabold uppercase tracking-wider">
+            <i data-lucide="shield-check" class="w-4 h-4"></i>
+            Arquitetura Pensada para o Bem-Estar Animal
+          </span>
+          <h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-espresso leading-tight">
+            Salas 100% envidraçadas: nós não temos nada a esconder e muito amor para mostrar.
+          </h2>
+          <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
+            Sabemos que deixar seu melhor amigo para o banho exige confiança absoluta. Por isso, abolimos paredes fechadas e gaiolas de espera. Você pode assistir a tudo tomando um café especial no nosso lounge ou acompanhar ao vivo pelo celular.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div class="p-5 rounded-2xl bg-white border border-orange-100 shadow-sm space-y-1.5">
+              <div class="flex items-center gap-2 font-heading font-bold text-espresso text-base">
+                <span class="text-terracotta">🌡️</span>
+                <span>Água Mineral Aquecida</span>
+              </div>
+              <p class="text-xs text-stone-600 leading-relaxed">
+                Duchas com controle termostático digital a 36°C e tripla filtragem sem cloro para proteger a barreira cutânea.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white border border-emerald-100 shadow-sm space-y-1.5">
+              <div class="flex items-center gap-2 font-heading font-bold text-espresso text-base">
+                <span class="text-sage">🧺</span>
+                <span>Toalhas Esterilizadas</span>
+              </div>
+              <p class="text-xs text-stone-600 leading-relaxed">
+                Cada pet utiliza uma toalha 100% algodão egípcio higienizada em autoclave hospitalar e embalada a vácuo individualmente.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white border border-amber-100 shadow-sm space-y-1.5">
+              <div class="flex items-center gap-2 font-heading font-bold text-espresso text-base">
+                <span class="text-terracotta">🎵</span>
+                <span>Acústica &amp; Bio-Música</span>
+              </div>
+              <p class="text-xs text-stone-600 leading-relaxed">
+                Frequências sonoras calibradas a 432 Hz ("Through a Dog's Ear") que reduzem os batimentos cardíacos dos pets durante a secagem.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white border border-orange-100 shadow-sm space-y-1.5">
+              <div class="flex items-center gap-2 font-heading font-bold text-espresso text-base">
+                <span class="text-sage">📹</span>
+                <span>Câmeras Ao Vivo no App</span>
+              </div>
+              <p class="text-xs text-stone-600 leading-relaxed">
+                Ao fazer o check-in, você recebe uma chave privada para assistir à bancada do seu pet em alta definição de onde estiver.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 6 Cols: Photo Gallery of the Space -->
+        <div class="lg:col-span-6 grid grid-cols-12 gap-4">
+          <div class="col-span-12 relative rounded-3xl overflow-hidden border-4 border-white shadow-cozy">
+            <img 
+              src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=1000&q=85" 
+              alt="Banho relaxante com espuma vegana na Paws & Co." 
+              class="w-full h-72 object-cover"
+            />
+            <span class="absolute bottom-3 left-3 px-3.5 py-1.5 rounded-full bg-white/95 text-espresso font-badge text-xs font-extrabold shadow">
+              🛁 Sala de Banho Envidraçada #01 • Banhos Terapêuticos
+            </span>
+          </div>
+
+          <div class="col-span-6 relative rounded-3xl overflow-hidden border-4 border-white shadow-md">
+            <img 
+              src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=600&q=80" 
+              alt="Gramado do Daycare Paws & Co." 
+              class="w-full h-48 object-cover"
+            />
+            <span class="absolute bottom-2.5 left-2.5 px-3 py-1 rounded-full bg-sage text-white font-badge text-[11px] font-extrabold">
+              🌿 Gramado Daycare 450m²
+            </span>
+          </div>
+
+          <div class="col-span-6 relative rounded-3xl overflow-hidden border-4 border-white shadow-md">
+            <img 
+              src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&w=600&q=80" 
+              alt="Acabamento na tesoura sem gaiolas" 
+              class="w-full h-48 object-cover"
+            />
+            <span class="absolute bottom-2.5 left-2.5 px-3 py-1 rounded-full bg-terracotta text-white font-badge text-[11px] font-extrabold">
+              ✂️ Lounge Livre Sem Gaiolas
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. DEPOIMENTOS DE "PAIS DE PET" COM ANTES E DEPOIS DO SPA -->
+  <section id="depoimentos" class="py-24 bg-white border-b border-orange-950/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="font-badge text-xs font-extrabold uppercase tracking-widest text-terracotta">
+          Histórias de Amor &amp; Transformação
+        </span>
+        <h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-espresso mt-2">
+          O Que Dizem os Pais e Mães de Pet
+        </h2>
+        <p class="text-stone-600 mt-3 text-sm sm:text-base">
+          Veja os relatos e o resultado das sessões de spa dos nossos clientes de quatro patas.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Review 1 -->
+        <article class="pet-card bg-offwhite rounded-3xl p-7 border border-stone-200/90 flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <!-- Before/After Transformation Header -->
+            <div class="grid grid-cols-2 gap-2.5 p-2.5 rounded-2xl bg-white border border-orange-100">
+              <div class="relative rounded-xl overflow-hidden aspect-square">
+                <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=400&q=80" alt="Paçoca Antes" class="w-full h-full object-cover sepia-[.25] contrast-90" />
+                <span class="absolute bottom-1.5 left-1.5 px-2 py-0.5 rounded bg-stone-900/80 text-white font-badge text-[10px] font-bold">ANTES (Pós-Parquinho)</span>
+              </div>
+              <div class="relative rounded-xl overflow-hidden aspect-square">
+                <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=400&q=80" alt="Paçoca Depois do Spa" class="w-full h-full object-cover brightness-105" />
+                <span class="absolute bottom-1.5 left-1.5 px-2 py-0.5 rounded bg-sage text-white font-badge text-[10px] font-bold">DEPOIS (Spa Ozônio ✨)</span>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between">
+              <span class="text-amber-500 font-bold text-sm">★★★★★</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-terracottaSoft text-terracotta font-badge text-[11px] font-extrabold">Cliente Semanal</span>
+            </div>
+
+            <p class="text-sm text-stone-600 leading-relaxed">
+              “O Paçoca costumava tremer quando ia em pet shops comuns. Na Paws &amp; Co. ele entra abanando o rabo e puxando a guia! Acompanhar o banho pelas câmeras e sentir o cheirinho de lavanda natural que dura a semana toda não tem preço.”
+            </p>
+          </div>
+
+          <div class="pt-4 border-t border-stone-200 flex items-center justify-between">
+            <div>
+              <h4 class="font-heading font-bold text-espresso text-sm">Mariana &amp; Paçoca (Golden)</h4>
+              <span class="text-xs text-stone-500">Pacote Mensal Banho Ozônio + Daycare</span>
+            </div>
+            <span class="text-xl">🐶</span>
+          </div>
+        </article>
+
+        <!-- Review 2 -->
+        <article class="pet-card bg-offwhite rounded-3xl p-7 border border-stone-200/90 flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="grid grid-cols-2 gap-2.5 p-2.5 rounded-2xl bg-white border border-orange-100">
+              <div class="relative rounded-xl overflow-hidden aspect-square">
+                <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=400&q=80" alt="Amora no Banho" class="w-full h-full object-cover" />
+                <span class="absolute bottom-1.5 left-1.5 px-2 py-0.5 rounded bg-stone-900/80 text-white font-badge text-[10px] font-bold">DURANTE (Espuma)</span>
+              </div>
+              <div class="relative rounded-xl overflow-hidden aspect-square">
+                <img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&w=400&q=80" alt="Amora Tosa Tesoura" class="w-full h-full object-cover" />
+                <span class="absolute bottom-1.5 left-1.5 px-2 py-0.5 rounded bg-terracotta text-white font-badge text-[10px] font-bold">DEPOIS (Tosa Tesoura)</span>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between">
+              <span class="text-amber-500 font-bold text-sm">★★★★★</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-sageSoft text-sage font-badge text-[11px] font-extrabold">Tosa Asiática</span>
+            </div>
+
+            <p class="text-sm text-stone-600 leading-relaxed">
+              “A tosa na tesoura da Amora parece uma escultura! Nunca erraram no comprimento do subpelo do Spitz e a hidratação deixou o pelo parecendo uma nuvem de algodão. Também compramos toda a alimentação natural dela na Boutique.”
+            </p>
+          </div>
+
+          <div class="pt-4 border-t border-stone-200 flex items-center justify-between">
+            <div>
+              <h4 class="font-heading font-bold text-espresso text-sm">Dr. Felipe &amp; Amora (Spitz)</h4>
+              <span class="text-xs text-stone-500">Tosa na Tesoura + Nutrição Natural</span>
+            </div>
+            <span class="text-xl">✂️</span>
+          </div>
+        </article>
+
+        <!-- Review 3 -->
+        <article class="pet-card bg-offwhite rounded-3xl p-7 border border-stone-200/90 flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="grid grid-cols-2 gap-2.5 p-2.5 rounded-2xl bg-white border border-orange-100">
+              <div class="relative rounded-xl overflow-hidden aspect-square">
+                <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=400&q=80" alt="Romeu Antes" class="w-full h-full object-cover" />
+                <span class="absolute bottom-1.5 left-1.5 px-2 py-0.5 rounded bg-stone-900/80 text-white font-badge text-[10px] font-bold">CHECK-IN CAT SPA</span>
+              </div>
+              <div class="relative rounded-xl overflow-hidden aspect-square">
+                <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=400&q=80" alt="Romeu Depois" class="w-full h-full object-cover" />
+                <span class="absolute bottom-1.5 left-1.5 px-2 py-0.5 rounded bg-sage text-white font-badge text-[10px] font-bold">RELAXADO c/ FELIWAY®</span>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between">
+              <span class="text-amber-500 font-bold text-sm">★★★★★</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-butterWarm text-amber-900 font-badge text-[11px] font-extrabold">Cat Friendly Gold</span>
+            </div>
+
+            <p class="text-sm text-stone-600 leading-relaxed">
+              “Ter uma sala exclusiva para gatos, sem cheiro ou latido de cachorros por perto, fez toda a diferença para o Romeu. Removeram todos os nós da pelagem persa com uma paciência e delicadeza emocionantes.”
+            </p>
+          </div>
+
+          <div class="pt-4 border-t border-stone-200 flex items-center justify-between">
+            <div>
+              <h4 class="font-heading font-bold text-espresso text-sm">Beatriz &amp; Romeu (Persa)</h4>
+              <span class="text-xs text-stone-500">Cat Spa &amp; Remoção de Subpelo</span>
+            </div>
+            <span class="text-xl">🐱</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. FAQ INTERATIVO (VACINAÇÃO, FREQUÊNCIA DE BANHOS E FILHOTES) -->
+  <section id="faq" class="py-24 bg-butter/70 border-b border-orange-950/10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-14">
+        <span class="font-badge text-xs font-extrabold uppercase tracking-widest text-sage">
+          Guia para Tutores Cuidadosos
+        </span>
+        <h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-espresso mt-2">
+          Perguntas Frequentes (FAQ)
+        </h2>
+      </div>
+
+      <div id="faq-container" class="space-y-4">
+        <!-- Populated dynamically via JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 9. RODAPÉ COMPLETO COM HORÁRIOS, EMERGÊNCIA 24H E FEED DO INSTAGRAM -->
+  <footer id="contato" class="bg-espresso text-stone-300 pt-20 pb-12 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Instagram Feed Bar -->
+      <div class="mb-16 pb-12 border-b border-white/10">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+          <div>
+            <span class="font-badge text-xs font-extrabold uppercase tracking-widest text-terracotta block">
+              @pawsandco.boutique
+            </span>
+            <h3 class="font-heading text-2xl font-bold text-white mt-0.5">
+              Acompanhe a Fofura Diária no Nosso Instagram
+            </h3>
+          </div>
+          <a href="#agendamento" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-terracotta text-white font-badge font-bold text-xs transition-colors w-max">
+            <i data-lucide="instagram" class="w-4 h-4"></i>
+            <span>Seguir @pawsandco.boutique</span>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+          <div class="group relative rounded-2xl overflow-hidden aspect-square bg-stone-800">
+            <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&w=400&q=80" alt="Feed Pet 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-terracotta/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white font-bold">♥ 1.4k</div>
+          </div>
+          <div class="group relative rounded-2xl overflow-hidden aspect-square bg-stone-800">
+            <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=400&q=80" alt="Feed Pet 2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-terracotta/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white font-bold">♥ 980</div>
+          </div>
+          <div class="group relative rounded-2xl overflow-hidden aspect-square bg-stone-800">
+            <img src="https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&w=400&q=80" alt="Feed Pet 3" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-terracotta/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white font-bold">♥ 2.1k</div>
+          </div>
+          <div class="group relative rounded-2xl overflow-hidden aspect-square bg-stone-800">
+            <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=400&q=80" alt="Feed Pet 4" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-terracotta/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white font-bold">♥ 1.7k</div>
+          </div>
+          <div class="group relative rounded-2xl overflow-hidden aspect-square bg-stone-800">
+            <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=400&q=80" alt="Feed Pet 5" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-terracotta/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white font-bold">♥ 1.2k</div>
+          </div>
+          <div class="group relative rounded-2xl overflow-hidden aspect-square bg-stone-800">
+            <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=400&q=80" alt="Feed Pet 6" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-terracotta/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white font-bold">♥ 1.9k</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Main Columns -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+        
+        <!-- Brand Info (4 cols) -->
+        <div class="lg:col-span-4 space-y-4">
+          <div class="flex items-center gap-2.5">
+            <span class="text-2xl">🐾</span>
+            <span class="font-heading font-extrabold text-2xl text-white">PAWS <span class="text-terracotta">&amp;</span> CO.</span>
+          </div>
+          <p class="text-stone-400 leading-relaxed max-w-sm">
+            Pet Boutique, Spa Estético Fear Free®, Daycare Gramado, Hotelzinho sem gaiolas e Alimentação Natural formulada por nutrólogos veterinários.
+          </p>
+          <div class="flex flex-wrap gap-2 pt-1 font-badge text-[11px]">
+            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-amber-300 font-bold">Fear Free® Certified</span>
+            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-emerald-300 font-bold">CRMV-SP Responsável Técnico</span>
+          </div>
+        </div>
+
+        <!-- Horários & Endereço (3 cols) -->
+        <div class="lg:col-span-3 space-y-2.5">
+          <h4 class="font-heading font-bold text-white uppercase tracking-wider text-xs mb-3">
+            Endereço &amp; Horários
+          </h4>
+          <p class="text-stone-300 font-semibold">Rua João Cachoeira, 1180 — Vila Nova Conceição / Itaim Bibi, São Paulo - SP</p>
+          <p class="text-stone-400">Estacionamento próprio com manobrista e embarque coberto para pets.</p>
+          <div class="pt-2 space-y-1 text-stone-300">
+            <div><strong class="text-amber-300">Spa &amp; Boutique:</strong> Seg a Sáb, 08h às 20h</div>
+            <div><strong class="text-emerald-300">Daycare:</strong> Seg a Sex, 07h às 20h</div>
+            <div><strong class="text-white">Hotelzinho Boutique:</strong> Monitoria 24h / 365 dias</div>
+          </div>
+        </div>
+
+        <!-- Links Rápidos (2 cols) -->
+        <div class="lg:col-span-2 space-y-2.5">
+          <h4 class="font-heading font-bold text-white uppercase tracking-wider text-xs mb-3">
+            Experiências
+          </h4>
+          <ul class="space-y-2">
+            <li><a href="#agendamento" class="hover:text-terracotta transition-colors">Simulador Banho &amp; Tosa</a></li>
+            <li><a href="#servicos" class="hover:text-terracotta transition-colors">Banho de Ozônio &amp; Lavanda</a></li>
+            <li><a href="#servicos" class="hover:text-terracotta transition-colors">Cat Spa Exclusivo</a></li>
+            <li><a href="#boutique" class="hover:text-terracotta transition-colors">Alimentação Natural</a></li>
+            <li><a href="#faq" class="hover:text-terracotta transition-colors">Protocolo de Vacinas</a></li>
+          </ul>
+        </div>
+
+        <!-- Emergência Veterinária 24h Parceira (3 cols) -->
+        <div class="lg:col-span-3 bg-white/5 p-5 rounded-3xl border border-white/10 space-y-3">
+          <div class="flex items-center gap-2 text-emerald-400 font-badge font-extrabold uppercase tracking-wider text-xs">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+            <span>Emergência Veterinária 24h</span>
+          </div>
+          <p class="text-stone-300 text-[11px] leading-relaxed">
+            Retaguarda clínica 24 horas integrada ao Hospital Veterinário Parceiro PawsVet (a 300m da unidade) com UTI e ambulância pet dedicada.
+          </p>
+          <div class="font-heading font-extrabold text-base text-white">
+            📞 (11) 3045-9200 • Plantão 24h
+          </div>
+          <a href="#agendamento" class="block w-full py-2.5 rounded-xl bg-terracotta hover:bg-terracottaDark text-white text-center font-heading font-bold text-xs uppercase tracking-wider transition-all">
+            Falar com Concierge Pet
+          </a>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-stone-500">
+        <p>© 2026 PAWS &amp; CO. Pet Care &amp; Boutique Ltda. Feito com amor para cães e gatos.</p>
+        <div class="flex items-center gap-6">
+          <span>Shampoos 100% Veganos &amp; Cruelty-Free</span>
+          <span>•</span>
+          <span>Secagem Sem Gaiolas</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL DE CÂMERAS AO VIVO DO SPA -->
+  <div id="live-cam-modal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 border border-orange-200 shadow-2xl">
+      <div class="flex items-center justify-between pb-4 border-b border-stone-200">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></span>
+          <h3 class="font-heading text-xl font-extrabold text-espresso">Transmissão Ao Vivo — Sala de Banho #01</h3>
+        </div>
+        <button type="button" onclick="closeLiveCamModal()" class="p-1.5 rounded-xl hover:bg-stone-100 text-stone-500">✕</button>
+      </div>
+      <div class="my-4 relative rounded-2xl overflow-hidden aspect-video bg-stone-900">
+        <img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=900&q=80" alt="Câmera Ao Vivo Spa" class="w-full h-full object-cover" />
+        <div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/70 text-white font-mono text-[11px] flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span>CAM 01 • BANCADA OZÔNIO • ÁGUA 36.0°C</span>
+        </div>
+      </div>
+      <p class="text-xs text-stone-600 leading-relaxed mb-5">
+        Ao realizar o check-in presencial ou via Táxi Dog, enviamos no seu WhatsApp o link exclusivo da câmera que acompanha o seu pet do início ao fim do banho.
+      </p>
+      <div class="flex justify-end">
+        <button type="button" onclick="closeLiveCamModal()" class="px-6 py-2.5 rounded-xl bg-terracotta text-white font-heading font-bold text-xs uppercase tracking-wider">
+          Fechar Visualização
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DA SACOLA DA BOUTIQUE -->
+  <div id="boutique-bag-modal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 border border-orange-200 shadow-2xl">
+      <div class="flex items-center justify-between pb-4 border-b border-stone-200">
+        <h3 class="font-heading text-xl font-extrabold text-espresso">🛍️ Sua Sacola Paws &amp; Co.</h3>
+        <button type="button" onclick="closeBoutiqueBagModal()" class="p-1.5 rounded-xl hover:bg-stone-100 text-stone-500">✕</button>
+      </div>
+      <div id="bag-items-container" class="py-5 space-y-3 max-h-72 overflow-y-auto text-xs">
+        <!-- Populated by JS -->
+      </div>
+      <div class="pt-4 border-t border-stone-200 flex items-center justify-between mb-5">
+        <span class="font-bold text-stone-500 text-xs uppercase">Total dos Mimos:</span>
+        <strong id="bag-total-price" class="font-heading text-2xl font-extrabold text-terracotta">R$ 0,00</strong>
+      </div>
+      <button type="button" onclick="checkoutBoutiqueWhatsApp()" class="w-full py-3.5 rounded-2xl bg-sage hover:bg-sageDark text-white font-heading font-bold text-xs uppercase tracking-widest">
+        Receber em Casa ou Junto com o Táxi Dog →
       </button>
     </div>
-  </main>
+  </div>
 
+  <!-- TOAST NOTIFICATION -->
+  <div id="paws-toast" class="fixed bottom-6 right-6 z-50 px-5 py-3.5 rounded-2xl bg-espresso text-butter border border-terracotta shadow-2xl font-badge text-xs font-extrabold hidden items-center gap-2.5">
+    <span>🐾</span>
+    <span id="paws-toast-msg">Mimo adicionado à sacola!</span>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- VANILLA JAVASCRIPT: SIMULADOR SPA, BOUTIQUE, FAQ & MODAIS               -->
+  <!-- ======================================================================= -->
   <script>
-    let mult = 1;
-    function calcPet() {
-      let sum = 0;
-      document.querySelectorAll('.pet-chk:checked').forEach(c => sum += Number(c.value));
-      document.getElementById('pet-total').textContent = 'R$ ' + Math.round(sum * mult);
-    }
-    window.setPorte = function(m, btn) {
-      mult = m;
-      document.querySelectorAll('.porte-btn').forEach(b => b.className = 'porte-btn py-2.5 rounded-xl text-xs font-bold bg-orange-50 text-orange-900');
-      btn.className = 'porte-btn py-2.5 rounded-xl text-xs font-bold bg-orange-500 text-white';
+    // 1. SIMULADOR / AGENDADOR INTERATIVO DE SPA & GROOMING
+    let mult = 1; // Multiplicador de porte (1, 1.35, 1.75)
+    let coatMult = 1.0; // Multiplicador de pelagem (1.0, 1.18, 1.28)
+    let coatExtraTime = 0; // Minutos adicionais por pelagem
+    let currentSpecies = 'cao';
+    let currentSizeLabel = 'Pequeno (até 10kg)';
+    let currentCoatLabel = 'Pelagem Curta';
+
+    window.setSpecies = function(sp, btn) {
+      currentSpecies = sp;
+      document.querySelectorAll('.species-btn').forEach(b => {
+        b.className = 'species-btn py-3 px-4 rounded-2xl font-heading font-bold text-sm flex items-center justify-center gap-2 bg-orange-50 text-orange-950 border border-orange-200/70 hover:bg-orange-100 transition-all';
+      });
+      if (btn) {
+        btn.className = 'species-btn py-3 px-4 rounded-2xl font-heading font-bold text-sm flex items-center justify-center gap-2 bg-terracotta text-white shadow-sm transition-all';
+      }
+      document.getElementById('sim-species-badge').textContent = sp === 'gato' ? 'Cat Spa Silencioso 🐱' : 'Ala Canina 🐶';
       calcPet();
     };
+
+    window.setPorte = function(m, btn, labelText) {
+      mult = m;
+      if (labelText) currentSizeLabel = labelText;
+      document.querySelectorAll('.porte-btn').forEach(b => {
+        b.className = 'porte-btn py-3 px-4 rounded-2xl text-xs font-bold bg-orange-50 text-orange-950 border border-orange-200/60 hover:bg-orange-100 text-left transition-all';
+      });
+      if (btn) {
+        btn.className = 'porte-btn py-3 px-4 rounded-2xl text-xs font-bold bg-terracotta text-white shadow-sm text-left transition-all';
+      }
+      calcPet();
+    };
+
+    window.setCoat = function(cMult, extraMin, labelText, btn) {
+      coatMult = cMult;
+      coatExtraTime = extraMin;
+      currentCoatLabel = labelText;
+      document.querySelectorAll('.coat-btn').forEach(b => {
+        b.className = 'coat-btn py-3 px-4 rounded-2xl text-xs font-bold bg-stone-100 text-stone-700 border border-stone-200 hover:bg-stone-200/70 text-left transition-all';
+      });
+      if (btn) {
+        btn.className = 'coat-btn py-3 px-4 rounded-2xl text-xs font-bold bg-sage text-white shadow-sm text-left transition-all';
+      }
+      calcPet();
+    };
+
+    function calcPet() {
+      const petName = (document.getElementById('pet-name-input').value || 'Seu Pet').trim();
+      const emoji = currentSpecies === 'gato' ? '🐱' : '🐶';
+      document.getElementById('sim-pet-title').textContent = `Sessão para ${petName} ${emoji}`;
+      document.getElementById('sim-size-label').textContent = currentSizeLabel;
+      document.getElementById('sim-coat-label').textContent = currentCoatLabel;
+
+      let baseSum = 0;
+      let totalMinutes = 15 + coatExtraTime; // 15 min recepção + avaliação clínica
+      const selectedLabels = [];
+
+      document.querySelectorAll('.pet-chk:checked').forEach(c => {
+        baseSum += Number(c.value);
+        totalMinutes += Number(c.getAttribute('data-time') || 20);
+        const lbl = c.getAttribute('data-label');
+        if (lbl) selectedLabels.push(lbl);
+      });
+
+      const taxiChk = document.getElementById('taxi-dog-chk');
+      const taxiAdd = (taxiChk && taxiChk.checked) ? 35 : 0;
+      if (taxiAdd > 0) selectedLabels.push('Táxi Dog Climatizado');
+
+      // Ajuste de tempo por porte
+      if (mult > 1.5) totalMinutes += 30;
+      else if (mult > 1.2) totalMinutes += 15;
+
+      const finalTotal = Math.round((baseSum * mult * coatMult) + taxiAdd);
+      document.getElementById('pet-total').textContent = 'R$ ' + finalTotal.toLocaleString('pt-BR');
+
+      // Formatação de horas e minutos
+      const hrs = Math.floor(totalMinutes / 60);
+      const mins = totalMinutes % 60;
+      const durationStr = hrs > 0
+        ? `${hrs}h ${mins > 0 ? mins + 'min' : ''}`
+        : `${mins} min`;
+      document.getElementById('pet-duration').textContent = durationStr;
+
+      // Renderiza tags de serviços selecionados
+      const listContainer = document.getElementById('sim-services-list');
+      if (selectedLabels.length === 0) {
+        listContainer.innerHTML = `<span class="text-stone-400 italic">Selecione ao menos 1 cuidado ao lado</span>`;
+      } else {
+        listContainer.innerHTML = selectedLabels.map(item => `
+          <span class="px-2.5 py-1 rounded-full bg-butterWarm border border-amber-200 text-espresso font-badge text-[11px] font-bold">
+            ✓ ${item}
+          </span>
+        `).join('');
+      }
+    }
+
     document.querySelectorAll('.pet-chk').forEach(c => c.addEventListener('change', calcPet));
-    calcPet();
+
+    window.confirmSpaViaWhatsApp = function() {
+      const petName = (document.getElementById('pet-name-input').value || 'Meu Pet').trim();
+      const totalStr = document.getElementById('pet-total').textContent;
+      const durationStr = document.getElementById('pet-duration').textContent;
+      const day = document.getElementById('sim-day').value;
+      const shift = document.getElementById('sim-shift').value;
+
+      const code = '#PAWS-' + Math.floor(100 + Math.random() * 900);
+      document.getElementById('spa-ticket-code').textContent = code;
+      document.getElementById('spa-ticket-text').textContent =
+        `Protocolo ${code} gerado para ${petName} (${currentSizeLabel} • ${currentCoatLabel}) — ${day} no período da ${shift}. Valor estimado: ${totalStr} (Duração: ${durationStr}). Nossa recepção já preparou a toalha esterilizada e a sala climatizada!`;
+      document.getElementById('spa-booking-ticket').classList.remove('hidden');
+
+      showToast(`Horário de ${petName} pré-reservado (${code})!`);
+    };
+
+    // 2. BOUTIQUE & ALIMENTAÇÃO NATURAL
+    const BOUTIQUE_PRODUCTS = [
+      {
+        id: 'p-01',
+        name: 'Bowl Nutrição Natural Cozida a Vapor (Frango Orgânico & Abóbora)',
+        cat: 'nutricao',
+        badge: '100% Human-Grade',
+        desc: 'Kit com 7 porções congeladas a vácuo formuladas por nutrólogos veterinários, sem conservantes.',
+        price: 168.00,
+        img: 'https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'p-02',
+        name: 'Petiscos Desidratados 100% Naturais (Filé de Salmão & Batata Doce)',
+        cat: 'nutricao',
+        badge: 'Rico em Ômega 3',
+        desc: 'Desidratados lentamente em baixa temperatura para preservar nutrientes e crocância. Pacote 180g.',
+        price: 54.00,
+        img: 'https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'p-03',
+        name: 'Caminha Ortopédica Nuvem Memory Foam (Linho Impermeável)',
+        cat: 'conforto',
+        badge: 'Alívio Articular',
+        desc: 'Espuma viscoelástica de alta densidade que protege as articulações, capa removível lavável em linho terracota.',
+        price: 420.00,
+        img: 'https://images.unsplash.com/photo-1541599540903-216a46ca1dc0?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'p-04',
+        name: 'Conjunto Coleira & Guia Couro Botânico + Latão Escovado',
+        cat: 'design',
+        badge: 'Feito à Mão',
+        desc: 'Couro curtido vegetalmente em tom sálvia/caramelo com medalha gravada a laser com o nome do pet.',
+        price: 215.00,
+        img: 'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'p-05',
+        name: 'Ração Super Premium Grain-Free Cordeiro & Mirtilo (7,5 kg)',
+        cat: 'nutricao',
+        badge: 'Zero Grãos & Transgênicos',
+        desc: '80% proteína de origem animal com prebióticos naturais e extrato de Yucca para digestão perfeita.',
+        price: 310.00,
+        img: 'https://images.unsplash.com/photo-1585846416120-3a7354ed7d39?auto=format&fit=crop&w=700&q=80'
+      },
+      {
+        id: 'p-06',
+        name: 'Manta Térmica Tricot Algodão Orgânico Paws & Co.',
+        cat: 'conforto',
+        badge: 'Hipoalergênica',
+        desc: 'Trama macia em algodão penteado cru para aquecer cães e gatos sem acumular eletricidade estática.',
+        price: 175.00,
+        img: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=700&q=80'
+      }
+    ];
+
+    let boutiqueBag = [];
+
+    window.filterBoutique = function(cat) {
+      document.querySelectorAll('.bcat-btn').forEach(btn => {
+        if (btn.getAttribute('data-bcat') === cat) {
+          btn.className = 'bcat-btn px-4 py-2.5 rounded-full font-badge text-xs font-extrabold bg-terracotta text-white shadow-sm transition-all';
+        } else {
+          btn.className = 'bcat-btn px-4 py-2.5 rounded-full font-badge text-xs font-extrabold bg-offwhite border border-stone-200 text-stone-700 hover:border-terracotta transition-all';
+        }
+      });
+
+      const list = cat === 'all' ? BOUTIQUE_PRODUCTS : BOUTIQUE_PRODUCTS.filter(p => p.cat === cat);
+      document.getElementById('boutique-grid').innerHTML = list.map(prod => `
+        <article class="pet-card bg-offwhite rounded-3xl border border-stone-200/80 overflow-hidden flex flex-col justify-between">
+          <div>
+            <div class="relative h-56 overflow-hidden bg-butter">
+              <img src="${prod.img}" alt="${prod.name}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/95 text-sage font-badge text-[11px] font-extrabold shadow-sm">
+                🌿 ${prod.badge}
+              </span>
+            </div>
+            <div class="p-6">
+              <h3 class="font-heading text-lg font-extrabold text-espresso leading-snug">${prod.name}</h3>
+              <p class="text-xs text-stone-600 mt-2 leading-relaxed">${prod.desc}</p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-3 border-t border-stone-200/70 flex items-center justify-between gap-3">
+            <strong class="font-heading text-2xl font-extrabold text-terracotta">
+              R$ ${prod.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+            </strong>
+            <button 
+              type="button" 
+              onclick="addToBoutiqueBag('${prod.id}')" 
+              class="px-4 py-2.5 rounded-xl bg-espresso hover:bg-terracotta text-white font-heading font-bold text-xs transition-colors"
+            >
+              + Sacola
+            </button>
+          </div>
+        </article>
+      `).join('');
+    };
+
+    window.addToBoutiqueBag = function(prodId) {
+      const prod = BOUTIQUE_PRODUCTS.find(p => p.id === prodId);
+      if (!prod) return;
+      boutiqueBag.push(prod);
+      document.getElementById('bag-count-badge').textContent = boutiqueBag.length;
+      showToast(`${prod.name.slice(0, 28)}... adicionado à sacola!`);
+    };
+
+    window.openBoutiqueBagModal = function() {
+      const container = document.getElementById('bag-items-container');
+      if (boutiqueBag.length === 0) {
+        container.innerHTML = `<p class="text-center text-stone-400 py-8">Sua sacola de mimos ainda está vazia 🐾</p>`;
+        document.getElementById('bag-total-price').textContent = 'R$ 0,00';
+      } else {
+        let sum = 0;
+        container.innerHTML = boutiqueBag.map((item, idx) => {
+          sum += item.price;
+          return `
+            <div class="flex items-center justify-between gap-3 p-3 rounded-2xl bg-offwhite border border-stone-200">
+              <div class="font-semibold text-espresso">${item.name}</div>
+              <div class="flex items-center gap-2 shrink-0">
+                <strong class="text-terracotta">R$ ${item.price.toFixed(2)}</strong>
+                <button onclick="removeBoutiqueItem(${idx})" class="text-stone-400 hover:text-red-600">✕</button>
+              </div>
+            </div>
+          `;
+        }).join('');
+        document.getElementById('bag-total-price').textContent = 'R$ ' + sum.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+      }
+      const m = document.getElementById('boutique-bag-modal');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    };
+
+    window.removeBoutiqueItem = function(idx) {
+      boutiqueBag.splice(idx, 1);
+      document.getElementById('bag-count-badge').textContent = boutiqueBag.length;
+      openBoutiqueBagModal();
+    };
+
+    window.closeBoutiqueBagModal = function() {
+      const m = document.getElementById('boutique-bag-modal');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    };
+
+    window.checkoutBoutiqueWhatsApp = function() {
+      closeBoutiqueBagModal();
+      showToast('Pedido da Boutique enviado para separação!');
+    };
+
+    // 3. FAQ ACCORDION INTERATIVO
+    const FAQS = [
+      {
+        q: "Quais vacinas são exigidas para o Hotelzinho e Daycare?",
+        a: "Para garantir a biossegurança de toda a matilha, exigimos carteira de vacinação em dia com V8 ou V10, Antirrábica, Gripe Canina (Bordetella) e Giardíase, além de controle antipulgas/carrapatos ativo e vermifugação recente. Antes do primeiro dia no Daycare, realizamos uma avaliação comportamental gratuita com nossa veterinária."
+      },
+      {
+        q: "Com quantos meses meu filhote pode tomar o primeiro banho no Spa?",
+        a: "O primeiro banho pode ser realizado 15 dias após o término do ciclo inicial de vacinas obrigatórias (ou antes mediante autorização expressa do médico veterinário responsável). Temos o protocolo 'Meu 1º Spa': água mineral a 36°C, bancada higienizada exclusivamente para o filhote, algodão hidrofóbico nos ouvidos e associação positiva com petiscos naturais."
+      },
+      {
+        q: "Qual é a frequência ideal de banhos para cães e gatos?",
+        a: "Para cães de pelagem longa ou que frequentam parques/creche, recomendamos banhos semanais ou quinzenais com shampoos veganos de pH balanceado e hidratação com ozônio, que repõem a camada lipídica sem ressecar. Para cães de pelo curto, a cada 15 dias é o ideal. Já para gatos no nosso Cat Spa, indicamos escovação profissional mensal e banhos a cada 45 a 60 dias para raças de pelo longo como Persa e Maine Coon."
+      },
+      {
+        q: "Como funciona a secagem sem gaiolas e a certificação Fear Free®?",
+        a: "Nunca deixamos cães ou gatos presos em gaiolas de ferro ou caixas de secagem fechadas. Todo o processo é feito individualmente na bancada com sopradores silenciosos e toalhas aquecidas de alta absorção, respeitando as pausas para água fresca e carinho."
+      }
+    ];
+
+    let activeFaq = 0;
+    function renderFaq() {
+      const container = document.getElementById('faq-container');
+      container.innerHTML = FAQS.map((item, idx) => {
+        const isOpen = idx === activeFaq;
+        return `
+          <div class="bg-white rounded-3xl border ${isOpen ? 'border-terracotta shadow-sm' : 'border-stone-200'} overflow-hidden transition-all">
+            <button 
+              type="button" 
+              onclick="toggleFaq(${idx})" 
+              class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 hover:bg-orange-50/40 transition-colors"
+            >
+              <span class="font-heading font-bold text-base sm:text-lg text-espresso">${item.q}</span>
+              <span class="w-8 h-8 rounded-2xl bg-terracottaSoft text-terracotta flex items-center justify-center font-extrabold shrink-0">
+                ${isOpen ? '−' : '+'}
+              </span>
+            </button>
+            <div class="${isOpen ? 'block' : 'hidden'} px-5 sm:px-6 pb-6 pt-1 text-sm text-stone-600 leading-relaxed border-t border-stone-100">
+              ${item.a}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    window.toggleFaq = function(idx) {
+      activeFaq = activeFaq === idx ? -1 : idx;
+      renderFaq();
+    };
+
+    // 4. MODAIS & UTILITÁRIOS
+    window.openLiveCamModal = function() {
+      const m = document.getElementById('live-cam-modal');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    };
+
+    window.closeLiveCamModal = function() {
+      const m = document.getElementById('live-cam-modal');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    };
+
+    window.toggleMobileMenu = function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    };
+
+    function showToast(msg) {
+      const t = document.getElementById('paws-toast');
+      document.getElementById('paws-toast-msg').textContent = msg;
+      t.classList.remove('hidden');
+      t.classList.add('flex');
+      setTimeout(() => {
+        t.classList.add('hidden');
+        t.classList.remove('flex');
+      }, 3000);
+    }
+
+    // Inicialização
+    document.addEventListener('DOMContentLoaded', () => {
+      calcPet();
+      filterBoutique('all');
+      renderFaq();
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
   </script>
+
   <!-- Vercel Web Analytics & Speed Insights -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
