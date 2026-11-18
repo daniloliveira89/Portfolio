@@ -1,448 +1,881 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>THE GENTLEMAN'S ATELIER — Barbearia Tradicional, Visagismo & Bourbon Bar</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THE GENTLEMAN'S ATELIER — Barbearia, Visagismo & Bourbon Bar</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
   <style>
+    :root {
+      --leather-dark: #0D0B0A;
+      --wood-noble: #1C1815;
+      --brass-amber: #D97706;
+      --brass-light: #F59E0B;
+    }
     body {
-      background-color: #0E0C0A;
-      color: #F5EFEB;
+      background-color: var(--leather-dark);
+      color: #E7E2DD;
       font-family: 'Plus Jakarta Sans', sans-serif;
       overflow-x: hidden;
     }
-    .font-vintage { font-family: 'Cinzel', serif; }
-    
-    /* Warm Amber Glow */
-    .glow-amber {
-      background: radial-gradient(circle 700px at 75% 15%, rgba(217, 119, 6, 0.15), transparent 70%),
-                  radial-gradient(circle 500px at 20% 40%, rgba(180, 83, 9, 0.1), transparent 60%);
+    .font-cinzel {
+      font-family: 'Cinzel', serif;
     }
-
-    .leather-card {
-      background: linear-gradient(180deg, rgba(28, 24, 21, 0.85) 0%, rgba(18, 15, 13, 0.95) 100%);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(217, 119, 6, 0.2);
+    .bg-leather {
+      background-color: var(--leather-dark);
+    }
+    .bg-wood {
+      background-color: var(--wood-noble);
+    }
+    .text-brass {
+      color: var(--brass-amber);
+    }
+    .border-brass {
+      border-color: rgba(217, 119, 6, 0.32);
+    }
+    .bg-brass-gradient {
+      background: linear-gradient(135deg, #F59E0B 0%, #D97706 55%, #92400E 100%);
+    }
+    .text-brass-gradient {
+      background: linear-gradient(135deg, #FDE68A 0%, #F59E0B 45%, #D97706 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .speakeasy-glow {
+      background: radial-gradient(circle at 50% 0%, rgba(217, 119, 6, 0.14) 0%, rgba(28, 24, 21, 0.4) 45%, rgba(13, 11, 10, 0) 75%);
+    }
+    .service-card {
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .service-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(217, 119, 6, 0.6);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.85), 0 0 25px -5px rgba(217, 119, 6, 0.15);
+    }
+    .barber-card {
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .leather-card:hover {
-      border-color: rgba(217, 119, 6, 0.5);
-      transform: translateY(-2px);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 25px rgba(217, 119, 6, 0.1);
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #0D0B0A;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(217, 119, 6, 0.35);
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: rgba(217, 119, 6, 0.65);
     }
   </style>
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="shortcut icon" href="/favicon.ico" />
 </head>
-<body class="min-h-screen antialiased relative selection:bg-amber-600 selection:text-black">
+<body class="min-h-screen selection:bg-[#D97706] selection:text-black antialiased">
 
-  <div class="fixed inset-0 glow-amber pointer-events-none z-0"></div>
-
-  <!-- Header -->
-  <header class="sticky top-0 z-40 bg-[#0E0C0A]/90 backdrop-blur-xl border-b border-amber-600/20 transition-all">
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 border-b border-[#D97706]/20 bg-[#0D0B0A]/90 backdrop-blur-xl">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-3 group">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-600 to-amber-400 p-[1px] shadow-lg shadow-amber-500/20">
-          <div class="w-full h-full bg-[#120F0D] rounded-[11px] flex items-center justify-center font-vintage font-bold text-amber-500 text-lg group-hover:text-amber-400 transition">
-            G
-          </div>
+      <a href="#" class="flex items-center gap-3.5 group">
+        <div class="w-10 h-10 rounded-full border border-[#D97706]/60 bg-[#1C1815] flex items-center justify-center text-[#D97706] font-cinzel font-bold text-lg shadow-[0_0_15px_rgba(217,119,6,0.15)] group-hover:scale-105 transition-transform">
+          GA
         </div>
-        <div>
-          <span class="font-vintage text-lg font-bold tracking-widest text-white block leading-none">
-            GENTLEMAN'S<span class="text-amber-500">.</span>ATELIER
-          </span>
-          <span class="text-[9px] uppercase tracking-[0.25em] text-amber-500/80 font-semibold block mt-0.5">
-            Corte Clássico • Visagismo • Bourbon Bar
-          </span>
+        <div class="border-l border-white/10 pl-3.5">
+          <span class="font-cinzel tracking-[0.22em] text-base sm:text-lg font-bold text-white block leading-none">THE GENTLEMAN'S ATELIER</span>
+          <span class="block text-[9px] uppercase tracking-[0.3em] text-[#D97706] mt-1">Visagismo • Bespoke Grooming • Bourbon Bar</span>
         </div>
       </a>
 
-      <nav class="hidden lg:flex items-center gap-8 text-xs uppercase tracking-widest font-semibold text-stone-300">
-        <a href="#experiencia" class="hover:text-amber-400 transition">O Ritual</a>
-        <a href="#servicos" class="hover:text-amber-400 transition">Menu de Serviços</a>
-        <a href="#mestres" class="hover:text-amber-400 transition">Mestres Barbeiros</a>
-        <a href="#speakeasy" class="hover:text-amber-400 transition">Bourbon Lounge</a>
+      <nav class="hidden lg:flex items-center gap-8 text-xs uppercase tracking-[0.2em] text-stone-400">
+        <a href="#heranca" class="hover:text-[#D97706] transition-colors">Tradição</a>
+        <a href="#servicos" class="hover:text-[#D97706] transition-colors">Serviços & Ritual</a>
+        <a href="#mestres" class="hover:text-[#D97706] transition-colors">Mestres Barbeiros</a>
+        <a href="#calculadora" class="hover:text-[#D97706] transition-colors">Simulador de Cadeira</a>
       </nav>
 
-      <div class="flex items-center gap-3">
-        <div class="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] font-mono text-amber-300 border border-amber-600/30 bg-amber-600/10">
-          <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-          Single Barrel Bourbon Cortesia
-        </div>
-        <button onclick="openAgendamento()" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-black font-bold text-xs uppercase tracking-wider shadow-lg shadow-amber-600/25 transition">
+      <div class="flex items-center gap-4">
+        <button onclick="openBookingDrawer()" class="px-5 py-2.5 rounded-sm bg-brass-gradient text-black font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 transition-all duration-300 shadow-[0_0_25px_rgba(217,119,6,0.25)]">
           Reservar Cadeira
         </button>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="max-w-7xl mx-auto px-6 pt-12 pb-16 relative z-10" id="experiencia">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-      
-      <div class="lg:col-span-6 flex flex-col items-start">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 text-xs font-mono uppercase tracking-wider mb-5">
-          <span>Tradição Londrina desde 2016 • Jardins & Itaim Bibi</span>
+  <!-- HERO SECTION -->
+  <section id="heranca" class="relative overflow-hidden pt-14 pb-24 speakeasy-glow">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Coluna Texto & Selo Vintage -->
+        <div class="lg:col-span-7 text-left">
+          <!-- Selo Vintage de Tradição -->
+          <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full border border-[#D97706]/40 bg-[#1C1815]/90 mb-7 shadow-inner">
+            <span class="w-2 h-2 rounded-full bg-[#D97706] animate-pulse"></span>
+            <span class="text-[11px] font-mono uppercase tracking-[0.22em] text-amber-400">
+              EST. 1924 • HERANÇA SAVILE ROW & SPEAKEASY LOUNGE
+            </span>
+          </div>
+
+          <h1 class="font-cinzel text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.12] tracking-tight">
+            A Arte Clássica da Navalha & o Calor do <span class="text-brass-gradient italic font-normal">Bourbon Puro.</span>
+          </h1>
+
+          <p class="mt-6 text-stone-300 text-sm sm:text-base leading-relaxed max-w-2xl font-light">
+            Mais que uma barbearia, um refúgio masculino de madeira nobre, couro inglês Chesterfield e alfaiataria capilar. Sente-se em nossas cadeiras <strong class="text-white font-medium">Takara Belmont de 1962</strong>, deguste um Kentucky Straight Bourbon por conta da casa e entregue seu estilo aos maiores visagistas do país.
+          </p>
+
+          <!-- CTAs do Hero -->
+          <div class="mt-9 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <a href="#servicos" class="px-8 py-4 rounded-sm bg-brass-gradient text-black font-bold text-xs uppercase tracking-[0.22em] text-center hover:brightness-110 transition-all shadow-[0_12px_30px_rgba(217,119,6,0.28)]">
+              Personalizar Meu Ritual
+            </a>
+            <button onclick="openBookingDrawer()" class="px-8 py-4 rounded-sm border border-[#D97706]/40 bg-[#1C1815]/80 hover:border-[#D97706] text-stone-200 hover:text-[#D97706] text-xs uppercase tracking-[0.22em] transition-all">
+              Agendamento Direto
+            </button>
+          </div>
+
+          <!-- Métricas de Satisfação & Prestígio -->
+          <div class="mt-12 pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-5">
+            <div class="p-3.5 rounded-lg bg-[#1C1815]/70 border border-white/5">
+              <div class="flex items-center gap-1 text-[#D97706] text-sm font-bold">
+                <span>★ 4.98</span>
+                <span class="text-[10px] font-mono text-stone-400">/ 5.0</span>
+              </div>
+              <p class="text-[11px] text-stone-300 font-medium mt-1">Índice de Satisfação</p>
+              <span class="text-[10px] text-stone-500 block">+2.400 avaliações verificadas</span>
+            </div>
+
+            <div class="p-3.5 rounded-lg bg-[#1C1815]/70 border border-white/5">
+              <span class="font-cinzel text-lg font-bold text-white block">18.500+</span>
+              <p class="text-[11px] text-stone-300 font-medium mt-1">Rituais Executados</p>
+              <span class="text-[10px] text-stone-500 block">Visagismo & Barboterapia</span>
+            </div>
+
+            <div class="p-3.5 rounded-lg bg-[#1C1815]/70 border border-white/5">
+              <span class="font-cinzel text-lg font-bold text-[#D97706] block">42 Rótulos</span>
+              <p class="text-[11px] text-stone-300 font-medium mt-1">Bourbon & Single Malt</p>
+              <span class="text-[10px] text-stone-500 block">1ª dose cortesia no ritual</span>
+            </div>
+
+            <div class="p-3.5 rounded-lg bg-[#1C1815]/70 border border-white/5">
+              <span class="font-cinzel text-lg font-bold text-white block">100%</span>
+              <p class="text-[11px] text-stone-300 font-medium mt-1">Toalhas Esterilizadas</p>
+              <span class="text-[10px] text-stone-500 block">Óleos essenciais orgânicos</span>
+            </div>
+          </div>
         </div>
 
-        <h1 class="font-vintage text-4xl sm:text-5xl lg:text-[54px] font-bold tracking-tight text-white leading-[1.08]">
-          Mais que um corte. <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-200 italic">Um ritual de distinção.</span>
-        </h1>
+        <!-- Coluna Foto de Alta Resolução Barbearia Inglesa / Speakeasy -->
+        <div class="lg:col-span-5">
+          <div class="relative rounded-2xl overflow-hidden border border-[#D97706]/35 bg-[#1C1815] shadow-[0_30px_80px_rgba(0,0,0,0.95)] group">
+            <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1400&q=85" 
+                 alt="Interior Clássico The Gentleman's Atelier Barbearia e Speakeasy" 
+                 class="w-full h-[460px] sm:h-[540px] object-cover object-center group-hover:scale-105 transition-transform duration-1000">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0D0B0A] via-[#0D0B0A]/25 to-transparent"></div>
 
-        <p class="mt-5 text-stone-300 text-base leading-relaxed max-w-xl font-light">
-          Visagismo facial sob medida, toalhas aquecidas em óleos essenciais de cedro e sândalo, e navalhas japonesas artesanais. Acompanhado de uma dose do melhor Bourbon de Kentucky.
-        </p>
+            <!-- Selo Flutuante de Autenticidade -->
+            <div class="absolute top-5 left-5 right-5 flex items-center justify-between">
+              <span class="px-3 py-1 rounded bg-[#0D0B0A]/85 backdrop-blur-md border border-[#D97706]/40 text-[10px] font-mono uppercase tracking-widest text-[#D97706]">
+                Itaim Bibi • São Paulo
+              </span>
+              <span class="px-3 py-1 rounded bg-[#0D0B0A]/85 backdrop-blur-md border border-white/10 text-[10px] font-mono uppercase tracking-widest text-stone-300">
+                Acústica Jazz & Blues
+              </span>
+            </div>
 
-        <!-- Stats -->
-        <div class="mt-8 grid grid-cols-3 gap-3 w-full max-w-lg pt-6 border-t border-white/10">
-          <div>
-            <div class="text-2xl font-vintage font-bold text-amber-400">18.000+</div>
-            <div class="text-[10px] uppercase font-mono text-stone-400 mt-0.5">Rituais Realizados</div>
-          </div>
-          <div>
-            <div class="text-2xl font-vintage font-bold text-white">4.9 ★</div>
-            <div class="text-[10px] uppercase font-mono text-stone-400 mt-0.5">Google Reviews</div>
-          </div>
-          <div>
-            <div class="text-2xl font-vintage font-bold text-white">100%</div>
-            <div class="text-[10px] uppercase font-mono text-stone-400 mt-0.5">Navalha Japonesa</div>
+            <!-- Card Interno Rodapé da Foto -->
+            <div class="absolute bottom-5 left-5 right-5 p-5 rounded-xl bg-[#1C1815]/95 backdrop-blur-md border border-[#D97706]/30">
+              <div class="flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-[#D97706] block">Cortesia de Boas-Vindas</span>
+                  <h3 class="font-cinzel text-lg text-white font-semibold mt-0.5">The Speakeasy Bourbon Ritual</h3>
+                </div>
+                <span class="text-xs font-mono px-2.5 py-1 rounded bg-[#D97706]/20 text-amber-400 border border-[#D97706]/30">
+                  Incluso
+                </span>
+              </div>
+              <p class="text-xs text-stone-300 mt-2 leading-relaxed">
+                Todo agendamento inclui uma dose de Bourbon envelhecido em carvalho americano servida com esfera de gelo cristalino.
+              </p>
+            </div>
           </div>
         </div>
 
-        <div class="mt-8 flex items-center gap-4">
-          <a href="#servicos" class="px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-amber-500/20">
-            Personalizar Meu Ritual
-          </a>
-          <button onclick="openAgendamento()" class="px-6 py-3.5 rounded-xl border border-white/20 hover:border-amber-400 text-stone-300 hover:text-white font-bold text-xs uppercase tracking-wider transition">
-            Ver Horários de Hoje
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO INTERATIVA DE SERVIÇOS & VISAGISMO -->
+  <section id="servicos" class="py-20 border-t border-white/10 bg-[#120F0D]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-[0.28em] text-[#D97706] block">Curadoria de Serviços</span>
+          <h2 class="font-cinzel text-3xl sm:text-5xl text-white mt-2">Selecione Seu Ritual de Cadeira</h2>
+          <p class="text-xs sm:text-sm text-stone-400 mt-2 max-w-2xl">
+            Clique nos cartões abaixo para compor sua sessão personalizada. O tempo total de cadeira e o investimento são atualizados instantaneamente na calculadora.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button onclick="selectPresetCombo('completo')" class="px-4 py-2.5 rounded-sm border border-[#D97706]/50 bg-[#1C1815] hover:bg-[#D97706] hover:text-black text-xs font-mono uppercase tracking-wider text-[#D97706] transition">
+            ✦ Selecionar Ritual Completo
+          </button>
+          <button onclick="clearAllServices()" class="px-4 py-2.5 rounded-sm border border-white/10 bg-white/[0.02] hover:border-white/30 text-xs font-mono uppercase tracking-wider text-stone-400 hover:text-white transition">
+            Limpar Seleção
           </button>
         </div>
       </div>
 
-      <!-- Hero Visual Card -->
-      <div class="lg:col-span-6 w-full">
-        <div class="leather-card p-4 rounded-3xl relative overflow-hidden group">
-          <div class="relative h-80 sm:h-[420px] rounded-2xl overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=1200&q=80" alt="Barbearia Gentleman's Atelier" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#0E0C0A] via-[#0E0C0A]/40 to-transparent"></div>
+      <!-- Grid dos 6 Serviços Interativos -->
+      <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Injetado dinamicamente pelo JS -->
+      </div>
+    </div>
+  </section>
 
-            <div class="absolute top-4 left-4 right-4 flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest bg-amber-500 text-black font-bold shadow-lg">
-                Atelier Jardins
+  <!-- SEÇÃO BARBEIROS MESTRES & CALCULADORA EM TEMPO REAL -->
+  <section id="calculadora" class="py-20 border-t border-white/10 bg-[#0D0B0A]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+
+        <!-- Seleção de Barbeiro Mestre (7 Colunas) -->
+        <div id="mestres" class="lg:col-span-7 space-y-6">
+          <div>
+            <span class="text-xs font-mono uppercase tracking-[0.28em] text-[#D97706] block">Artesãos da Lâmina</span>
+            <h2 class="font-cinzel text-2xl sm:text-4xl text-white mt-1">Escolha Seu Barbeiro Mestre</h2>
+            <p class="text-xs sm:text-sm text-stone-400 mt-2">
+              Nossos profissionais possuem formação internacional em visagismo facial, tricologia e barboterapia clássica.
+            </p>
+          </div>
+
+          <div id="barbers-list" class="space-y-4">
+            <!-- Injetado via JS -->
+          </div>
+
+          <!-- Escolha do Rótulo do Bourbon Cortesia -->
+          <div class="p-6 rounded-2xl bg-[#1C1815] border border-[#D97706]/30 mt-8">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+              <div>
+                <span class="text-[10px] font-mono uppercase tracking-[0.25em] text-[#D97706]">The Bourbon Bar</span>
+                <h3 class="font-cinzel text-lg text-white">Escolha o Rótulo da Sua Dose Cortesia</h3>
+              </div>
+              <span class="text-[11px] font-mono text-amber-400 bg-[#D97706]/15 px-3 py-1 rounded border border-[#D97706]/30 self-start sm:self-auto">
+                Dose 50ml • R$ 0
               </span>
-              <span class="px-3 py-1 rounded-full bg-black/70 text-amber-300 text-[11px] font-mono border border-amber-500/30 backdrop-blur-md">
-                6 Cadeiras Belmont 1968
-              </span>
             </div>
 
-            <div class="absolute bottom-4 left-5 right-5 text-white">
-              <span class="text-xs font-mono text-amber-400 uppercase tracking-widest">Experiência Exclusiva</span>
-              <h3 class="font-vintage text-2xl font-bold mt-1">Cadeiras Vintage Belmont & Sommelier de Bourbon</h3>
-              <p class="text-xs text-stone-300 mt-1">Acústica de jazz em vinil, charutos selecionados e barbear tradicional com toalhas vaporizadas.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="bourbon-selector">
+              <button type="button" onclick="selectBourbon('Woodford Reserve Double Oaked')" data-bourbon="Woodford Reserve Double Oaked" class="bourbon-btn p-3 rounded-xl border border-[#D97706] bg-[#D97706]/15 text-left transition">
+                <span class="text-xs font-bold text-white block">Woodford Reserve</span>
+                <span class="text-[10px] text-amber-300 font-mono block mt-0.5">Double Oaked • Notas de Caramelo & Carvalho</span>
+              </button>
+              <button type="button" onclick="selectBourbon('Maker\'s Mark 46 French Oaked')" data-bourbon="Maker's Mark 46 French Oaked" class="bourbon-btn p-3 rounded-xl border border-white/10 bg-[#0D0B0A]/60 hover:border-white/30 text-left transition">
+                <span class="text-xs font-bold text-white block">Maker's Mark 46</span>
+                <span class="text-[10px] text-stone-400 font-mono block mt-0.5">French Oaked • Baunilha & Especiarias Tostadas</span>
+              </button>
+              <button type="button" onclick="selectBourbon('Espresso Tônica Speakeasy (Sem Álcool)')" data-bourbon="Espresso Tônica Speakeasy (Sem Álcool)" class="bourbon-btn p-3 rounded-xl border border-white/10 bg-[#0D0B0A]/60 hover:border-white/30 text-left transition">
+                <span class="text-xs font-bold text-white block">Espresso Speakeasy</span>
+                <span class="text-[10px] text-stone-400 font-mono block mt-0.5">0% Álcool • Café Arábica, Tônica & Laranja Bahia</span>
+              </button>
             </div>
           </div>
         </div>
-      </div>
 
-    </div>
-  </section>
-
-  <!-- Interactive Ritual Builder (Calculadora de Tempo e Valor em Tempo Real) -->
-  <section class="max-w-7xl mx-auto px-6 py-14 border-t border-white/10" id="servicos">
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
-      <div>
-        <span class="text-xs uppercase tracking-widest font-mono text-amber-400">Monte Seu Ritual</span>
-        <h2 class="font-vintage text-3xl sm:text-4xl font-bold text-white mt-1">Selecione os Serviços de Barbearia</h2>
-      </div>
-      <p class="text-xs text-stone-400 font-mono mt-2 md:mt-0">O tempo de cadeira e o valor final atualizam automaticamente</p>
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-      
-      <!-- Services Checkbox List -->
-      <div class="lg:col-span-7 space-y-3.5" id="services-container">
-        <!-- Rendered via JS -->
-      </div>
-
-      <!-- Live Reservation Summary Card -->
-      <div class="lg:col-span-5 sticky top-28">
-        <div class="leather-card p-7 rounded-3xl border border-amber-500/30 shadow-2xl">
-          <div class="flex items-center justify-between pb-4 border-b border-white/10">
-            <h3 class="font-vintage text-xl font-bold text-amber-400">Resumo da Cadeira</h3>
-            <span class="text-xs text-stone-400 font-mono" id="selected-count">0 selecionados</span>
-          </div>
-
-          <!-- Items list -->
-          <div id="summary-items" class="py-4 space-y-2.5 min-h-[140px] text-xs text-stone-300">
-            <div class="text-stone-500 italic py-6 text-center">Nenhum serviço selecionado ainda. Clique nos serviços ao lado para montar seu ritual.</div>
-          </div>
-
-          <!-- Barbeiro Selector -->
-          <div class="pt-4 border-t border-white/10">
-            <label class="block text-xs font-mono uppercase text-stone-400 mb-1.5">Escolha o Barbeiro Mestre:</label>
-            <select id="barbeiro-select" class="w-full px-4 py-2.5 rounded-xl bg-white/5 border border-white/15 text-white text-xs font-mono focus:outline-none focus:border-amber-500">
-              <option value="Arthur Pendelton (Master Barber)">Arthur Pendelton (Master Barber — 14 anos)</option>
-              <option value="Mateus Cavalcanti (Visagista)">Mateus Cavalcanti (Visagista & Navalha)</option>
-              <option value="Julio Sartori (Especialista Barba)">Julio Sartori (Especialista Barboterapia)</option>
-            </select>
-          </div>
-
-          <!-- Total Strip -->
-          <div class="pt-5 mt-4 border-t border-white/10 flex items-center justify-between">
-            <div>
-              <span class="text-[10px] font-mono text-stone-400 uppercase block">Tempo Estimado</span>
-              <strong id="summary-time" class="text-lg font-bold text-white font-mono">0 min</strong>
+        <!-- Painel Calculadora em Tempo Real (5 Colunas - Sticky) -->
+        <div class="lg:col-span-5 lg:sticky lg:top-28">
+          <div class="rounded-2xl bg-[#1C1815] border-2 border-[#D97706]/45 shadow-[0_25px_70px_rgba(0,0,0,0.9)] overflow-hidden">
+            <!-- Topo da Calculadora -->
+            <div class="p-6 bg-gradient-to-r from-[#0D0B0A] via-[#1C1815] to-[#0D0B0A] border-b border-[#D97706]/25 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] font-mono uppercase tracking-[0.25em] text-[#D97706] block">Calculadora de Sessão</span>
+                <h3 class="font-cinzel text-xl text-white font-bold mt-0.5">Resumo da Sua Cadeira</h3>
+              </div>
+              <div class="text-right">
+                <span class="text-[10px] font-mono uppercase text-stone-400 block">Tempo Estimado</span>
+                <span id="calc-total-time" class="font-mono text-lg font-bold text-amber-400">120 min</span>
+              </div>
             </div>
-            <div class="text-right">
-              <span class="text-[10px] font-mono text-stone-400 uppercase block">Investimento Total</span>
-              <strong id="summary-price" class="text-2xl font-vintage font-bold text-amber-400">R$ 0</strong>
+
+            <!-- Corpo da Calculadora -->
+            <div class="p-6 space-y-5">
+              <!-- Barbeiro Selecionado -->
+              <div class="p-3.5 rounded-xl bg-[#0D0B0A] border border-white/10 flex items-center justify-between">
+                <div>
+                  <span class="text-[10px] font-mono uppercase tracking-widest text-stone-400 block">Mestre Responsável</span>
+                  <span id="calc-barber-name" class="text-sm font-semibold text-white">Mestre Arthur Vance</span>
+                  <span id="calc-barber-role" class="text-[11px] text-[#D97706] block">Diretor de Visagismo</span>
+                </div>
+                <span id="calc-barber-fee" class="text-xs font-mono text-stone-300 px-2.5 py-1 rounded bg-white/5">+ R$ 40</span>
+              </div>
+
+              <!-- Lista de Serviços Ativos -->
+              <div>
+                <div class="flex items-center justify-between text-[11px] font-mono uppercase tracking-wider text-stone-400 mb-2.5">
+                  <span>Serviços Selecionados (<span id="calc-count">0</span>)</span>
+                  <span>Tempo / Valor</span>
+                </div>
+                <div id="calc-services-list" class="space-y-2 max-h-60 overflow-y-auto custom-scrollbar pr-1">
+                  <!-- Preenchido via JS -->
+                </div>
+              </div>
+
+              <!-- Barra Visual de Tempo de Cadeira -->
+              <div class="pt-3 border-t border-white/10">
+                <div class="flex justify-between text-xs mb-1.5">
+                  <span class="text-stone-400 font-mono">Ocupação da Cadeira Takara Belmont</span>
+                  <span id="calc-time-badge" class="text-amber-400 font-mono font-semibold">2h 00min</span>
+                </div>
+                <div class="w-full h-2 rounded-full bg-[#0D0B0A] overflow-hidden border border-white/10">
+                  <div id="calc-time-bar" class="h-full bg-brass-gradient transition-all duration-500" style="width: 50%"></div>
+                </div>
+              </div>
+
+              <!-- Total Financeiro -->
+              <div class="p-4 rounded-xl bg-[#0D0B0A] border border-[#D97706]/35 flex items-baseline justify-between">
+                <div>
+                  <span class="text-[10px] font-mono uppercase tracking-widest text-stone-400 block">Investimento Total</span>
+                  <span class="text-[11px] text-amber-400/90">Pagamento apenas no Atelier</span>
+                </div>
+                <span id="calc-total-price" class="font-cinzel text-3xl font-bold text-[#D97706]">R$ 370</span>
+              </div>
+
+              <button onclick="openBookingDrawer()" class="w-full py-4 rounded-sm bg-brass-gradient text-black font-bold text-xs uppercase tracking-[0.22em] hover:brightness-110 transition-all shadow-[0_10px_25px_rgba(217,119,6,0.3)]">
+                Avançar para Escolha de Horário →
+              </button>
             </div>
           </div>
-
-          <button onclick="openAgendamentoWithSummary()" class="mt-6 w-full py-4 rounded-xl bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-black font-bold uppercase tracking-wider text-xs transition duration-200 shadow-lg shadow-amber-600/30">
-            Confirmar Horário com Estes Serviços →
-          </button>
         </div>
-      </div>
 
-    </div>
-  </section>
-
-  <!-- Bourbon Lounge Speakeasy Section -->
-  <section class="max-w-7xl mx-auto px-6 py-16 border-t border-white/10" id="speakeasy">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-      <div class="lg:col-span-5">
-        <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-amber-600/30">
-          <img src="https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=900&q=80" alt="Bourbon Lounge" class="w-full h-[400px] object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-[#0E0C0A] via-transparent to-transparent"></div>
-          <div class="absolute bottom-4 left-5 right-5 text-white">
-            <span class="text-xs font-mono text-amber-400 uppercase tracking-widest">Kentucky & Highlands</span>
-            <h4 class="font-vintage text-xl font-bold mt-1">Coleção Privada de Rótulos Raros</h4>
-          </div>
-        </div>
-      </div>
-      <div class="lg:col-span-7">
-        <span class="text-xs font-mono uppercase tracking-widest text-amber-500">Hospitalidade Gentleman's</span>
-        <h2 class="font-vintage text-3xl sm:text-4xl font-bold text-white mt-2">
-          Degustação de Bourbon e Café Espresso Cortesia em cada atendimento.
-        </h2>
-        <p class="mt-4 text-stone-300 text-sm sm:text-base leading-relaxed font-light">
-          Enquanto espera ou durante o ritual da toalha quente, desfrute de rótulos selecionados de Bourbon (Woodford Reserve, Maker's Mark, Buffalo Trace) ou cerveja artesanal gelada. Um ambiente pensado para desacelerar o ritmo da cidade.
-        </p>
-
-        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono text-stone-300">
-          <div class="p-4 rounded-xl bg-white/5 border border-white/10">
-            <span class="text-amber-400 font-bold block mb-1">🥃 Single Barrel Bar</span>
-            <span>Dose de cortesia em todos os rituais completos.</span>
-          </div>
-          <div class="p-4 rounded-xl bg-white/5 border border-white/10">
-            <span class="text-amber-400 font-bold block mb-1">🎷 Vinil & Jazz Clássico</span>
-            <span>Acervo de vinis de Miles Davis, Coltrane e Chet Baker.</span>
-          </div>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- Reservation Drawer -->
-  <div id="drawer-overlay" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300" onclick="closeAgendamento()"></div>
-  <aside id="agendamento-drawer" class="fixed top-0 right-0 z-50 h-full w-full sm:w-[480px] bg-[#14110E] border-l border-amber-600/30 p-8 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between overflow-y-auto">
+  <!-- DRAWER LATERAL DE AGENDAMENTO -->
+  <div id="drawer-overlay" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <aside id="booking-drawer" class="fixed top-0 right-0 z-50 h-full w-full sm:w-[520px] bg-[#1C1815] border-l border-[#D97706]/40 p-6 sm:p-8 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between overflow-y-auto custom-scrollbar">
     <div>
-      <div class="flex items-center justify-between pb-6 border-b border-white/10">
+      <!-- Cabeçalho do Drawer -->
+      <div class="flex items-center justify-between pb-5 border-b border-white/10">
         <div>
-          <span class="text-[10px] font-mono uppercase tracking-widest text-amber-500">Agendamento de Cadeira</span>
-          <h3 class="font-vintage text-2xl font-bold text-white">Reservar Atendimento</h3>
+          <span class="text-[10px] font-mono uppercase tracking-[0.25em] text-[#D97706]">Concierge do Atelier</span>
+          <h3 class="font-cinzel text-2xl text-white font-bold">Agendar Horário de Cadeira</h3>
         </div>
-        <button onclick="closeAgendamento()" class="text-stone-400 hover:text-white p-2 text-lg">✕</button>
+        <button id="btn-close-drawer" onclick="closeBookingDrawer()" class="w-9 h-9 rounded-lg border border-white/15 text-stone-400 hover:text-white hover:border-[#D97706] flex items-center justify-center transition">
+          ✕
+        </button>
       </div>
 
-      <form id="form-agendar" class="mt-6 space-y-4" onsubmit="handleAgendar(event)">
-        <div>
-          <label class="block text-xs font-mono uppercase tracking-wider text-stone-400 mb-1">Nome Completo</label>
-          <input type="text" required placeholder="Ex: Bernardo F. Guimarães" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-amber-500">
-        </div>
-        <div>
-          <label class="block text-xs font-mono uppercase tracking-wider text-stone-400 mb-1">WhatsApp</label>
-          <input type="tel" required placeholder="(11) 98765-4321" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-amber-500">
-        </div>
-        <div>
-          <label class="block text-xs font-mono uppercase tracking-wider text-stone-400 mb-1">Unidade Desejada</label>
-          <select class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-amber-500">
-            <option value="Jardins">Unidade Jardins (Rua Bela Cintra, 1920)</option>
-            <option value="Itaim Bibi">Unidade Itaim Bibi (Rua Joaquim Floriano, 880)</option>
-          </select>
-        </div>
-        <div class="grid grid-cols-2 gap-3">
-          <div>
-            <label class="block text-xs font-mono uppercase tracking-wider text-stone-400 mb-1">Data</label>
-            <input type="date" required class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-amber-500">
+      <form id="booking-form" class="mt-6 space-y-5">
+        <!-- Resumo Compacto dos Serviços e Barbeiro -->
+        <div class="p-4 rounded-xl bg-[#0D0B0A] border border-[#D97706]/30 space-y-2">
+          <div class="flex items-center justify-between border-b border-white/10 pb-2">
+            <span class="text-[11px] font-mono uppercase tracking-wider text-[#D97706]" id="drawer-barber-summary">Mestre Arthur Vance</span>
+            <span class="text-xs font-mono text-amber-400 font-semibold" id="drawer-duration-summary">120 min de cadeira</span>
           </div>
-          <div>
-            <label class="block text-xs font-mono uppercase tracking-wider text-stone-400 mb-1">Horário</label>
-            <select class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-amber-500">
-              <option value="10:00">10:00</option>
-              <option value="11:30">11:30</option>
-              <option value="14:00">14:00</option>
-              <option value="15:30">15:30</option>
-              <option value="17:00">17:00</option>
-              <option value="18:30">18:30</option>
-              <option value="20:00">20:00 (Happy Hour)</option>
-            </select>
+          <div id="drawer-services-tags" class="flex flex-wrap gap-1.5 pt-1">
+            <!-- Tags injetadas via JS -->
+          </div>
+          <div class="pt-2 border-t border-white/10 flex items-center justify-between text-xs">
+            <span class="text-stone-400">Bourbon Cortesia: <strong id="drawer-bourbon-summary" class="text-stone-200">Woodford Reserve</strong></span>
+            <span id="drawer-price-summary" class="font-cinzel text-lg font-bold text-[#D97706]">R$ 370</span>
           </div>
         </div>
 
-        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-amber-600 to-amber-500 hover:from-amber-500 hover:to-amber-400 text-black font-bold uppercase tracking-wider text-xs transition duration-200 shadow-lg shadow-amber-600/30 mt-3">
-          Confirmar Reserva no Atelier
+        <!-- 1. Escolha do Dia -->
+        <div>
+          <label class="block text-[11px] font-mono uppercase tracking-widest text-stone-300 mb-2">
+            1. Escolha o Dia da Sessão
+          </label>
+          <input type="date" id="booking-date" required class="w-full px-4 py-3 rounded-lg bg-[#0D0B0A] border border-white/15 text-white text-sm focus:outline-none focus:border-[#D97706]">
+        </div>
+
+        <!-- 2. Seletor Interativo de Horário -->
+        <div>
+          <label class="block text-[11px] font-mono uppercase tracking-widest text-stone-300 mb-2">
+            2. Escolha o Horário Disponível
+          </label>
+          <div id="time-slots-grid" class="grid grid-cols-3 sm:grid-cols-4 gap-2.5">
+            <!-- Botões de horário gerados pelo JS -->
+          </div>
+        </div>
+
+        <!-- 3. Dados do Cavalheiro -->
+        <div class="space-y-3 pt-2 border-t border-white/10">
+          <div>
+            <label class="block text-[10px] font-mono uppercase tracking-wider text-stone-400 mb-1">Nome Completo</label>
+            <input type="text" id="client-name" required placeholder="Ex: Henrique Vasconcelos" class="w-full px-3.5 py-2.5 rounded-lg bg-[#0D0B0A] border border-white/15 text-white text-sm focus:outline-none focus:border-[#D97706]">
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[10px] font-mono uppercase tracking-wider text-stone-400 mb-1">WhatsApp</label>
+              <input type="tel" id="client-phone" required placeholder="(11) 99876-5432" class="w-full px-3.5 py-2.5 rounded-lg bg-[#0D0B0A] border border-white/15 text-white text-sm focus:outline-none focus:border-[#D97706]">
+            </div>
+            <div>
+              <label class="block text-[10px] font-mono uppercase tracking-wider text-stone-400 mb-1">E-mail</label>
+              <input type="email" id="client-email" required placeholder="henrique@dominio.com" class="w-full px-3.5 py-2.5 rounded-lg bg-[#0D0B0A] border border-white/15 text-white text-sm focus:outline-none focus:border-[#D97706]">
+            </div>
+          </div>
+          <div>
+            <label class="block text-[10px] font-mono uppercase tracking-wider text-stone-400 mb-1">Preferências de Visagismo ou Bebida</label>
+            <textarea id="client-notes" rows="2" placeholder="Ex: Prefiro conversa silenciosa, toalha extra quente, gelo em esfera no Bourbon..." class="w-full px-3.5 py-2 rounded-lg bg-[#0D0B0A] border border-white/15 text-white text-xs sm:text-sm focus:outline-none focus:border-[#D97706] resize-none"></textarea>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full py-4 rounded-sm bg-brass-gradient text-black font-bold uppercase tracking-[0.22em] text-xs hover:brightness-110 transition shadow-[0_10px_25px_rgba(217,119,6,0.3)]">
+          Confirmar Reserva de Cadeira
         </button>
       </form>
-
-      <div id="agendamento-success" class="hidden mt-6 p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-mono">
-        ✓ Cadeira reservada com sucesso! Um Bourbon gelado e nossa equipe aguardam você no Atelier.
-      </div>
     </div>
 
-    <div class="pt-6 border-t border-white/10 text-xs text-stone-500 font-mono">
-      Jardins • Terça a Sábado das 09h às 21h • Valet cortesia
+    <div class="pt-5 mt-6 border-t border-white/10 text-[11px] text-stone-400 flex items-center justify-between font-mono">
+      <span>Rua Bandeira Paulista • Itaim Bibi</span>
+      <span>Valet Cortesia no Local</span>
     </div>
   </aside>
 
-  <!-- Footer -->
-  <footer class="border-t border-white/10 bg-[#0E0C0A] py-12 text-center text-xs text-stone-500">
-    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="font-vintage font-bold text-white text-base">
-        THE GENTLEMAN'S ATELIER © 2026
+  <!-- MODAL DE CONFIRMAÇÃO DE AGENDAMENTO -->
+  <div id="success-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
+    <div class="w-full max-w-lg rounded-2xl bg-[#1C1815] border-2 border-[#D97706]/60 p-6 sm:p-8 text-center shadow-[0_25px_90px_rgba(217,119,6,0.25)]">
+      <div class="w-16 h-16 rounded-full bg-[#0D0B0A] border-2 border-[#D97706] flex items-center justify-center mx-auto mb-5 text-[#D97706] font-cinzel text-xl font-bold">
+        GA
       </div>
-      <div>
-        Barbearia Clássica, Visagismo Facial & Speakeasy Bar
+      <span class="text-[10px] font-mono uppercase tracking-[0.3em] text-[#D97706]">Passaporte de Cadeira Emitido</span>
+      <h3 class="font-cinzel text-2xl sm:text-3xl text-white mt-1 font-bold">Cadeira Reservada com Sucesso</h3>
+      <p class="text-xs sm:text-sm text-stone-300 mt-2 leading-relaxed">
+        Seu horário foi bloqueado na agenda do Mestre selecionado e sua dose de Bourbon já está reservada em nosso Speakeasy Bar.
+      </p>
+
+      <div id="modal-receipt-details" class="mt-6 p-4 rounded-xl bg-[#0D0B0A] border border-[#D97706]/30 text-left space-y-2 text-xs">
+        <!-- Preenchido via JS -->
       </div>
-      <div class="font-mono text-[11px] text-stone-400">
-        Jardins & Itaim Bibi • São Paulo
+
+      <button onclick="closeSuccessModal()" class="mt-6 w-full py-3.5 rounded-sm bg-brass-gradient text-black font-bold text-xs uppercase tracking-[0.2em] hover:brightness-110 transition">
+        Fechar e Voltar ao Atelier
+      </button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/10 bg-[#080706] py-14">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3.5">
+        <div class="w-9 h-9 rounded-full border border-[#D97706]/50 bg-[#1C1815] flex items-center justify-center text-[#D97706] font-cinzel font-bold text-sm">
+          GA
+        </div>
+        <div>
+          <span class="font-cinzel tracking-[0.22em] text-sm font-bold text-white block">THE GENTLEMAN'S ATELIER</span>
+          <p class="text-[11px] text-stone-500 font-mono">Itaim Bibi, São Paulo • Terça a Sábado das 10h às 21h</p>
+        </div>
+      </div>
+      <div class="text-center sm:text-right text-xs text-stone-500 font-mono">
+        <p>The Gentleman's Atelier © 2026 • Savile Row Bespoke Grooming</p>
+        <p class="text-[10px] text-stone-600 mt-1">Proibido para menores de 18 anos no serviço de Bourbon Bar</p>
       </div>
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <!-- JAVASCRIPT PURO EMBUTIDO -->
   <script>
-    const SERVICES = [
-      { id: 'corte', title: 'Corte de Cabelo Visagista', desc: 'Análise de geometria craniana, corte na tesoura e acabamento a navalha japonesa.', time: 45, price: 110, icon: '✂️' },
-      { id: 'barba', title: 'Barboterapia com Toalha Quente', desc: 'Vapor de ozônio, óleos aromáticos, esfoliação facial e navalha afiada à perfeição.', time: 40, price: 95, icon: '🪒' },
-      { id: 'camuflagem', title: 'Camuflagem de Fios Grisalhos', desc: 'Tonalização sutil e progressiva sem efeito artificial de tintura.', time: 25, price: 80, icon: '🎨' },
-      { id: 'alinhamento', title: 'Alinhamento Capilar com Queratina', desc: 'Redução de volume e controle de frizz com produtos botânicos sem formol.', time: 40, price: 120, icon: '✨' },
-      { id: 'ozonio', title: 'Terapia Capilar com Ozonioterapia', desc: 'Tratamento intensivo de desobstrução folicular e combate à queda capilar.', time: 30, price: 130, icon: '🌿' },
-      { id: 'completo', title: 'Ritual Completo Imperial (Corte + Barba + Bourbon)', desc: 'Nosso ritual assinatura completo com corte, barboterapia, massagem e 2 doses.', time: 80, price: 190, icon: '👑' }
+    // 1. DADOS DOS 6 SERVIÇOS DE ALTA BARBEARIA
+    const servicesData = [
+      {
+        id: 'corte-visagista',
+        name: 'Corte Visagista',
+        subtitle: 'Análise Morfológica & Tesoura Japonesa',
+        duration: 60,
+        price: 190,
+        badge: 'Assinatura',
+        description: 'Estudo das proporções cranianas e ângulos da mandíbula, corte esculpido à tesoura de cobalto, lavagem relaxante e finalização com pomada inglesa matte.',
+        selected: true
+      },
+      {
+        id: 'barboterapia',
+        name: 'Barboterapia com Toalha Quente',
+        subtitle: 'Ritual de 3 Toalhas & Navalha Clássica',
+        duration: 45,
+        price: 140,
+        badge: 'Clássico 1924',
+        description: 'Abertura térmica dos poros com toalhas infusionadas em óleo essencial de cedro e bergamota, espuma densa batida em tigela de latão, escanhoamento e pós-barba calmante.',
+        selected: true
+      },
+      {
+        id: 'camuflagem-grisalhos',
+        name: 'Camuflagem de Grisalhos',
+        subtitle: 'Pigmentação Sutil de Efeito Natural',
+        duration: 35,
+        price: 130,
+        badge: 'Discrição',
+        description: 'Tonalização rápida sem amônia que suaviza de 40% a 70% dos fios brancos no cabelo ou barba, preservando nuances grisalhas nobres sem aspecto artificial.',
+        selected: false
+      },
+      {
+        id: 'alinhamento-fios',
+        name: 'Alinhamento de Fios',
+        subtitle: 'Controle de Volume & Texturização',
+        duration: 40,
+        price: 150,
+        badge: 'Disciplina',
+        description: 'Redução de frizz e remodelagem térmica das fibras capilares com blend de aminoácidos vegetais, garantindo caimento natural e penteado prático todos os dias.',
+        selected: false
+      },
+      {
+        id: 'ozonioterapia',
+        name: 'Tratamento Capilar com Ozônio',
+        subtitle: 'Terapia Folicular & Detox com Argila Negra',
+        duration: 45,
+        price: 175,
+        badge: 'Tricologia',
+        description: 'Vapor de ozônio medicinal para oxigenação profunda do bulbo capilar, peeling de argila vulcânica e massagem craniana revigorante de alta frequência.',
+        selected: false
+      },
+      {
+        id: 'bourbon-cortesia',
+        name: 'Degustação de Bourbon Cortesia',
+        subtitle: 'Single Barrel 50ml com Esfera de Gelo',
+        duration: 15,
+        price: 0,
+        badge: 'Cortesia da Casa',
+        description: 'Experiência no Speakeasy Bar antes ou durante o serviço de cadeira. Deguste um legítimo Kentucky Straight Bourbon ou nosso Espresso Tônica autoral.',
+        selected: true
+      }
     ];
 
-    let selectedServices = ['corte', 'barba']; // Default selection
+    // 2. DADOS DOS BARBEIROS MESTRES
+    const masterBarbers = [
+      {
+        id: 'arthur',
+        name: 'Mestre Arthur Vance',
+        role: 'Diretor de Visagismo & Fundador',
+        experience: '18 anos • Ex-Truefitt & Hill (Mayfair, Londres)',
+        specialty: 'Especialista em Morfologia Craniana & Cortes Executivos',
+        fee: 40,
+        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80'
+      },
+      {
+        id: 'lorenzo',
+        name: 'Mestre Lorenzo Moretti',
+        role: 'Senior Master Barber',
+        experience: '14 anos • Escola Clássica de Milão',
+        specialty: 'Mestre em Barboterapia Real com Toalha Quente & Navalha',
+        fee: 0,
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80'
+      },
+      {
+        id: 'henrique',
+        name: 'Mestre Henrique Albuquerque',
+        role: 'Master Trichologist & Alquimista',
+        experience: '11 anos • Especialista em Terapia Capilar',
+        specialty: 'Camuflagem de Grisalhos, Alinhamento & Ozonioterapia',
+        fee: 0,
+        avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80'
+      }
+    ];
 
+    const availableTimeSlots = [
+      '10:00', '11:30', '13:30', '15:00', '16:30', '18:00', '19:30', '20:30'
+    ];
+
+    // Estado da Aplicação
+    let selectedBarberId = 'arthur';
+    let selectedBourbon = 'Woodford Reserve Double Oaked';
+    let selectedTimeSlot = '18:00';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const dateInput = document.getElementById('booking-date');
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      dateInput.value = tomorrow.toISOString().split('T')[0];
+      dateInput.min = new Date().toISOString().split('T')[0];
+
+      renderServices();
+      renderBarbers();
+      renderTimeSlots();
+      updateCalculator();
+    });
+
+    // RENDERIZAR CARDS DE SERVIÇOS
     function renderServices() {
-      const container = document.getElementById('services-container');
-      container.innerHTML = SERVICES.map(s => {
-        const isChecked = selectedServices.includes(s.id);
+      const grid = document.getElementById('services-grid');
+      grid.innerHTML = servicesData.map(service => {
+        const isSelected = service.selected;
+        const priceDisplay = service.price === 0 ? 'Cortesia (R$ 0)' : `R$ ${service.price}`;
+
         return `
-          <div onclick="toggleService('${s.id}')" class="leather-card p-5 rounded-2xl cursor-pointer flex items-center justify-between border ${isChecked ? 'border-amber-500 bg-amber-500/10' : 'border-white/10'} transition">
-            <div class="flex items-center gap-4">
-              <span class="text-2xl">${s.icon}</span>
-              <div>
-                <h4 class="font-vintage text-base font-bold text-white">${s.title}</h4>
-                <p class="text-xs text-stone-400 mt-0.5">${s.desc}</p>
-                <div class="mt-2 flex items-center gap-3 text-xs font-mono text-stone-400">
-                  <span>⏱️ ${s.time} minutos</span>
-                  <span class="text-amber-400 font-bold">R$ ${s.price}</span>
+          <div onclick="toggleService('${service.id}')" 
+               class="service-card cursor-pointer rounded-2xl p-6 border ${isSelected ? 'border-[#D97706] bg-[#1C1815] shadow-[0_0_30px_rgba(217,119,6,0.14)]' : 'border-white/10 bg-[#1C1815]/50'} flex flex-col justify-between relative">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="px-2.5 py-0.5 rounded text-[10px] font-mono uppercase tracking-widest ${service.price === 0 ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40' : 'bg-[#0D0B0A] text-[#D97706] border border-[#D97706]/30'}">
+                  ${service.badge}
+                </span>
+                <div class="w-6 h-6 rounded-full border ${isSelected ? 'border-[#D97706] bg-[#D97706] text-black' : 'border-white/25 bg-[#0D0B0A] text-transparent'} flex items-center justify-center text-xs font-bold transition-all">
+                  ✓
                 </div>
               </div>
+
+              <h3 class="font-cinzel text-xl text-white font-bold">${service.name}</h3>
+              <p class="text-xs font-mono text-[#D97706] mt-0.5">${service.subtitle}</p>
+              <p class="text-xs text-stone-300 mt-3 leading-relaxed">${service.description}</p>
             </div>
-            <div class="w-6 h-6 rounded-lg border ${isChecked ? 'bg-amber-500 border-amber-500 text-black' : 'border-white/20'} flex items-center justify-center font-bold text-xs transition">
-              ${isChecked ? '✓' : ''}
+
+            <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between font-mono">
+              <span class="text-xs text-stone-400 flex items-center gap-1.5">
+                ⏱ ${service.duration} min
+              </span>
+              <span class="text-sm font-bold ${service.price === 0 ? 'text-amber-400' : 'text-white'}">
+                ${priceDisplay}
+              </span>
             </div>
           </div>
         `;
       }).join('');
-      updateSummary();
     }
 
-    function toggleService(id) {
-      if (selectedServices.includes(id)) {
-        selectedServices = selectedServices.filter(item => item !== id);
-      } else {
-        selectedServices.push(id);
+    function toggleService(serviceId) {
+      const item = servicesData.find(s => s.id === serviceId);
+      if (!item) return;
+      item.selected = !item.selected;
+
+      // Garantir pelo menos 1 serviço selecionado
+      if (servicesData.filter(s => s.selected).length === 0) {
+        item.selected = true;
+      }
+
+      renderServices();
+      updateCalculator();
+    }
+
+    function selectPresetCombo(type) {
+      if (type === 'completo') {
+        servicesData.forEach(s => s.selected = true);
       }
       renderServices();
+      updateCalculator();
     }
 
-    function updateSummary() {
-      const summaryItems = document.getElementById('summary-items');
-      const countEl = document.getElementById('selected-count');
-      const timeEl = document.getElementById('summary-time');
-      const priceEl = document.getElementById('summary-price');
+    function clearAllServices() {
+      servicesData.forEach((s, idx) => {
+        s.selected = idx === 0 || s.id === 'bourbon-cortesia';
+      });
+      renderServices();
+      updateCalculator();
+    }
 
-      countEl.textContent = `${selectedServices.length} serviço(s)`;
+    // RENDERIZAR BARBEIROS MESTRES
+    function renderBarbers() {
+      const container = document.getElementById('barbers-list');
+      container.innerHTML = masterBarbers.map(barber => {
+        const active = barber.id === selectedBarberId;
+        const feeText = barber.fee > 0 ? `+ R$ ${barber.fee} (Taxa Diretor)` : 'Tarifa Padrão Inclusa';
 
-      if (selectedServices.length === 0) {
-        summaryItems.innerHTML = '<div class="text-stone-500 italic py-6 text-center">Nenhum serviço selecionado ainda.</div>';
-        timeEl.textContent = '0 min';
-        priceEl.textContent = 'R$ 0';
-        return;
-      }
-
-      let totalTime = 0;
-      let totalPrice = 0;
-
-      summaryItems.innerHTML = selectedServices.map(id => {
-        const s = SERVICES.find(item => item.id === id);
-        if (!s) return '';
-        totalTime += s.time;
-        totalPrice += s.price;
         return `
-          <div class="flex justify-between items-center py-1">
-            <span>${s.title}</span>
-            <span class="font-mono text-amber-400 font-bold">R$ ${s.price} (${s.time}m)</span>
+          <div onclick="selectBarber('${barber.id}')" 
+               class="barber-card cursor-pointer p-4 sm:p-5 rounded-2xl border ${active ? 'border-[#D97706] bg-[#1C1815] shadow-[0_0_25px_rgba(217,119,6,0.15)]' : 'border-white/10 bg-[#1C1815]/50 hover:border-white/25'} flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+              <img src="${barber.avatar}" alt="${barber.name}" class="w-14 h-14 rounded-full object-cover border-2 ${active ? 'border-[#D97706]' : 'border-white/20'}">
+              <div>
+                <div class="flex items-center gap-2">
+                  <h4 class="font-cinzel text-base sm:text-lg text-white font-bold">${barber.name}</h4>
+                  ${active ? '<span class="px-2 py-0.5 rounded bg-[#D97706] text-black font-mono text-[10px] font-bold uppercase">Selecionado</span>' : ''}
+                </div>
+                <p class="text-xs text-[#D97706] font-mono">${barber.role} • ${barber.experience}</p>
+                <p class="text-xs text-stone-400 mt-1">${barber.specialty}</p>
+              </div>
+            </div>
+            <div class="self-end sm:self-center shrink-0 text-right">
+              <span class="text-xs font-mono px-3 py-1.5 rounded-lg bg-[#0D0B0A] border border-white/10 text-stone-200 block">
+                ${feeText}
+              </span>
+            </div>
           </div>
         `;
       }).join('');
-
-      timeEl.textContent = `${totalTime} min`;
-      priceEl.textContent = `R$ ${totalPrice}`;
     }
 
-    // Drawer Agendamento
-    const drawer = document.getElementById('agendamento-drawer');
-    const drawerOverlay = document.getElementById('drawer-overlay');
+    function selectBarber(barberId) {
+      selectedBarberId = barberId;
+      renderBarbers();
+      updateCalculator();
+    }
 
-    function openAgendamento() {
-      drawerOverlay.classList.remove('opacity-0', 'pointer-events-none');
-      drawer.classList.remove('translate-x-full');
+    function selectBourbon(bourbonName) {
+      selectedBourbon = bourbonName;
+      document.querySelectorAll('.bourbon-btn').forEach(btn => {
+        if (btn.dataset.bourbon === bourbonName) {
+          btn.className = 'bourbon-btn p-3 rounded-xl border border-[#D97706] bg-[#D97706]/15 text-left transition';
+        } else {
+          btn.className = 'bourbon-btn p-3 rounded-xl border border-white/10 bg-[#0D0B0A]/60 hover:border-white/30 text-left transition';
+        }
+      });
+      updateCalculator();
+    }
+
+    // ATUALIZAR CALCULADORA EM TEMPO REAL E RESUMO DO DRAWER
+    function updateCalculator() {
+      const activeServices = servicesData.filter(s => s.selected);
+      const barber = masterBarbers.find(b => b.id === selectedBarberId);
+
+      const servicesTime = activeServices.reduce((acc, s) => acc + s.duration, 0);
+      const servicesPrice = activeServices.reduce((acc, s) => acc + s.price, 0);
+      const totalPrice = servicesPrice + (barber ? barber.fee : 0);
+
+      // Formatação de Horas e Minutos
+      const hours = Math.floor(servicesTime / 60);
+      const mins = servicesTime % 60;
+      const formattedHours = hours > 0 ? `${hours}h ${String(mins).padStart(2, '0')}min` : `${mins} min`;
+
+      // Atualizar DOM da Calculadora
+      document.getElementById('calc-total-time').textContent = `${servicesTime} min`;
+      document.getElementById('calc-time-badge').textContent = formattedHours;
+      document.getElementById('calc-count').textContent = activeServices.length;
+      document.getElementById('calc-barber-name').textContent = barber.name;
+      document.getElementById('calc-barber-role').textContent = barber.role;
+      document.getElementById('calc-barber-fee').textContent = barber.fee > 0 ? `+ R$ ${barber.fee}` : 'Incluso';
+      document.getElementById('calc-total-price').textContent = `R$ ${totalPrice.toLocaleString('pt-BR')}`;
+
+      // Barra de progresso (máximo de 240 min)
+      const pct = Math.min(100, Math.round((servicesTime / 240) * 100));
+      document.getElementById('calc-time-bar').style.width = `${pct}%`;
+
+      // Lista de Serviços na Calculadora
+      const listEl = document.getElementById('calc-services-list');
+      listEl.innerHTML = activeServices.map(s => `
+        <div class="flex items-center justify-between p-2.5 rounded-lg bg-[#0D0B0A]/90 border border-white/5 text-xs">
+          <div>
+            <span class="text-white font-medium block">${s.name}</span>
+            <span class="text-[10px] font-mono text-stone-400">${s.duration} min de cadeira</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="font-mono font-semibold ${s.price === 0 ? 'text-amber-400' : 'text-stone-200'}">
+              ${s.price === 0 ? 'Cortesia' : `R$ ${s.price}`}
+            </span>
+            <button type="button" onclick="toggleService('${s.id}')" class="text-stone-500 hover:text-amber-400 text-xs" title="Remover">✕</button>
+          </div>
+        </div>
+      `).join('');
+
+      // Sincronizar Resumo no Drawer Lateral
+      document.getElementById('drawer-barber-summary').textContent = barber.name;
+      document.getElementById('drawer-duration-summary').textContent = `${servicesTime} min (${formattedHours})`;
+      document.getElementById('drawer-bourbon-summary').textContent = selectedBourbon;
+      document.getElementById('drawer-price-summary').textContent = `R$ ${totalPrice.toLocaleString('pt-BR')}`;
+
+      const tagsEl = document.getElementById('drawer-services-tags');
+      tagsEl.innerHTML = activeServices.map(s => `
+        <span class="px-2.5 py-1 rounded bg-[#1C1815] border border-[#D97706]/30 text-[11px] text-stone-200 font-mono">
+          ${s.name}
+        </span>
+      `).join('');
+
+      return { activeServices, barber, servicesTime, formattedHours, totalPrice };
+    }
+
+    // HORÁRIOS DO DRAWER
+    function renderTimeSlots() {
+      const grid = document.getElementById('time-slots-grid');
+      grid.innerHTML = availableTimeSlots.map(slot => {
+        const isSelected = slot === selectedTimeSlot;
+        return `
+          <button type="button" onclick="selectTimeSlot('${slot}')"
+                  class="py-2.5 px-3 rounded-lg font-mono text-xs border transition ${isSelected ? 'border-[#D97706] bg-[#D97706] text-black font-bold' : 'border-white/15 bg-[#0D0B0A] text-stone-300 hover:border-[#D97706]/50'}">
+            ${slot}
+          </button>
+        `;
+      }).join('');
+    }
+
+    function selectTimeSlot(slot) {
+      selectedTimeSlot = slot;
+      renderTimeSlots();
+    }
+
+    // CONTROLE DO DRAWER E MODAL
+    function openBookingDrawer() {
+      updateCalculator();
+      document.getElementById('drawer-overlay').classList.remove('opacity-0', 'pointer-events-none');
+      document.getElementById('booking-drawer').classList.remove('translate-x-full');
       document.body.style.overflow = 'hidden';
     }
 
-    function openAgendamentoWithSummary() {
-      openAgendamento();
-    }
-
-    function closeAgendamento() {
-      drawerOverlay.classList.add('opacity-0', 'pointer-events-none');
-      drawer.classList.add('translate-x-full');
+    function closeBookingDrawer() {
+      document.getElementById('drawer-overlay').classList.add('opacity-0', 'pointer-events-none');
+      document.getElementById('booking-drawer').classList.add('translate-x-full');
       document.body.style.overflow = '';
     }
 
-    function handleAgendar(e) {
+    document.getElementById('drawer-overlay').addEventListener('click', closeBookingDrawer);
+
+    document.getElementById('booking-form').addEventListener('submit', (e) => {
       e.preventDefault();
-      const succ = document.getElementById('agendamento-success');
-      succ.classList.remove('hidden');
-      setTimeout(() => {
-        closeAgendamento();
-        succ.classList.add('hidden');
-        document.getElementById('form-agendar').reset();
-      }, 3000);
+      const { activeServices, barber, servicesTime, formattedHours, totalPrice } = updateCalculator();
+      const clientName = document.getElementById('client-name').value;
+      const clientPhone = document.getElementById('client-phone').value;
+      const dateRaw = document.getElementById('booking-date').value;
+      const formattedDate = dateRaw.split('-').reverse().join('/');
+      const protocol = 'GA-' + Math.floor(100000 + Math.random() * 900000);
+
+      const receiptEl = document.getElementById('modal-receipt-details');
+      receiptEl.innerHTML = `
+        <div class="flex justify-between pb-2 border-b border-white/10">
+          <span class="text-stone-400 font-mono">Código de Reserva</span>
+          <span class="text-[#D97706] font-mono font-bold">${protocol}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-stone-400">Cavalheiro</span>
+          <span class="text-white font-semibold">${clientName} (${clientPhone})</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-stone-400">Data & Horário</span>
+          <span class="text-amber-400 font-mono font-semibold">${formattedDate} às ${selectedTimeSlot}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-stone-400">Barbeiro Mestre</span>
+          <span class="text-white">${barber.name}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-stone-400">Tempo de Cadeira</span>
+          <span class="text-stone-200 font-mono">${servicesTime} min (${formattedHours})</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-stone-400">Ritual Selecionado</span>
+          <span class="text-stone-200 text-right max-w-[60%]">${activeServices.map(s => s.name).join(', ')}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-stone-400">Bourbon Cortesia</span>
+          <span class="text-amber-300">${selectedBourbon}</span>
+        </div>
+        <div class="flex justify-between pt-2 border-t border-white/10">
+          <span class="text-stone-300 font-mono uppercase">Total a Pagar no Atelier</span>
+          <span class="font-cinzel text-lg font-bold text-[#D97706]">R$ ${totalPrice.toLocaleString('pt-BR')}</span>
+        </div>
+      `;
+
+      closeBookingDrawer();
+      const modal = document.getElementById('success-modal');
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('booking-form').reset();
+    });
+
+    function closeSuccessModal() {
+      const modal = document.getElementById('success-modal');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = '';
     }
 
-    // Initial render
-    renderServices();
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeBookingDrawer();
+        closeSuccessModal();
+      }
+    });
   </script>
 
-  <!-- Vercel Web Analytics & Speed Insights -->
+  <!-- SCRIPTS VERCEL ANALYTICS & SPEED INSIGHTS PRESERVADOS -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
