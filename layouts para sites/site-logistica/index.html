@@ -1,89 +1,1553 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth dark">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VELOX LOGISTICS — Supply Chain & Frete Expresso</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-  <style>body { background-color: #090D16; color: #F8FAFC; font-family: 'Inter', sans-serif; }</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VELOX LOGISTICS — Operador Logístico Integrado, Supply Chain & Carga Aérea</title>
+  <meta name="description" content="Logística inteligente conectando o Brasil com velocidade, rastreamento total via satélite e precisão cirúrgica. Frete fracionado, lotação, armazenagem WMS e carga aérea expressa." />
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Montserrat, Space Grotesk, Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Montserrat:wght@600;700;800;900&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            navyDeep: '#0b192c',
+            navyDark: '#07101d',
+            graphite: '#1e293b',
+            graphiteLight: '#334155',
+            veloxOrange: '#ff5722',
+            veloxOrangeHover: '#f4511e',
+            veloxAmber: '#ff8a50'
+          },
+          fontFamily: {
+            display: ['"Montserrat"', 'sans-serif'],
+            tech: ['"Space Grotesk"', 'sans-serif'],
+            sans: ['"Inter"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          },
+          boxShadow: {
+            'orange-glow': '0 0 35px -5px rgba(255, 87, 34, 0.45)',
+            'panel-shadow': '0 25px 50px -12px rgba(7, 16, 29, 0.7)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+    body {
+      background-color: #0b192c;
+      color: #F8FAFC;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, .font-heading {
+      font-family: 'Montserrat', sans-serif;
+    }
+    .font-metric {
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    /* Industrial Tech Grid Background */
+    .bg-logistics-grid {
+      background-size: 48px 48px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    }
+
+    /* Glass Panels & Tech Cards */
+    .tech-panel {
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.88) 0%, rgba(11, 25, 44, 0.96) 100%);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .tech-card {
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.75) 0%, rgba(11, 25, 44, 0.92) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .tech-card:hover {
+      border-color: rgba(255, 87, 34, 0.55);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -15px rgba(255, 87, 34, 0.22);
+    }
+
+    /* Custom Range Slider */
+    input[type=range].velox-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 7px;
+      background: #07101d;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      outline: none;
+    }
+    input[type=range].velox-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #ff5722;
+      border: 3px solid #ffffff;
+      box-shadow: 0 0 14px rgba(255, 87, 34, 0.9);
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+    input[type=range].velox-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+
+    /* Animated Timeline Pulse */
+    @keyframes radarPing {
+      0% { transform: scale(1); opacity: 0.9; }
+      75%, 100% { transform: scale(2.2); opacity: 0; }
+    }
+    .radar-dot::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background-color: #ff5722;
+      animation: radarPing 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #07101d;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ff5722;
+    }
+  </style>
 </head>
-<body class="min-h-screen antialiased">
-  <header class="border-b border-white/10 bg-[#090D16]/90 sticky top-0 z-40">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <span class="font-extrabold text-xl tracking-tight">🚚 VELOX <span class="text-orange-500">LOGISTICS</span></span>
-      <span class="text-xs font-mono text-slate-400">Frota Rastreada via Satélite • 99.4% On-Time Delivery</span>
+
+<body class="min-h-screen antialiased bg-navyDeep text-slate-100 bg-logistics-grid selection:bg-veloxOrange selection:text-white">
+
+  <!-- TOPBAR DE TELEMETRIA E CERTIFICAÇÕES -->
+  <div class="bg-navyDark border-b border-white/10 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-veloxOrange/15 border border-veloxOrange/40 text-veloxAmber font-mono font-semibold text-[11px]">
+          <span class="w-2 h-2 rounded-full bg-veloxOrange animate-pulse"></span>
+          CCO SATÉLITE 24/7 ATIVO
+        </span>
+        <span class="hidden md:inline text-slate-300 font-medium">
+          Homologação ANVISA • Certificação SASSMAQ & ISO 9001 • Seguro RCTR-C & RCF-DC Automático
+        </span>
+      </div>
+      <div class="flex items-center gap-5 ml-auto font-mono text-[11px] text-slate-400">
+        <span class="hidden sm:inline text-emerald-400">● 99.2% On-Time Delivery</span>
+        <span>Plantão Cargas Críticas: <strong class="text-white">0800 880 9900</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. HEADER FIXO COM NAVEGAÇÃO SUAVE E CTA DUPLO -->
+  <header class="sticky top-0 z-40 bg-navyDeep/90 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Logo Velox Logistics -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-veloxOrange to-amber-600 flex items-center justify-center text-white shadow-orange-glow group-hover:scale-105 transition-transform">
+          <i data-lucide="truck" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="font-heading font-black text-xl sm:text-2xl tracking-tight text-white">VELOX</span>
+            <span class="font-heading font-bold text-xl sm:text-2xl tracking-tight text-veloxOrange">LOGISTICS</span>
+          </div>
+          <span class="block font-mono text-[10px] uppercase tracking-[0.22em] text-slate-400">
+            Global Supply Chain & Air Cargo
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
+        <a href="#hero-widget" onclick="switchHeroTab('tracking')" class="hover:text-veloxOrange transition-colors flex items-center gap-1.5">
+          <i data-lucide="radar" class="w-4 h-4 text-veloxOrange"></i>
+          Rastreamento
+        </a>
+        <a href="#solucoes" class="hover:text-veloxOrange transition-colors">Soluções</a>
+        <a href="#telemetria" class="hover:text-veloxOrange transition-colors">Tecnologia 24/7</a>
+        <a href="#numeros" class="hover:text-veloxOrange transition-colors">Indicadores</a>
+        <a href="#centros-distribuicao" class="hover:text-veloxOrange transition-colors">Malha & CDs</a>
+        <a href="#cotacao-b2b" class="hover:text-veloxOrange transition-colors">Cotação B2B</a>
+      </nav>
+
+      <!-- Dual CTA Buttons -->
+      <div class="flex items-center gap-2.5 sm:gap-3">
+        <button 
+          type="button" 
+          onclick="openClientAreaModal()" 
+          class="hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-graphite hover:bg-graphiteLight border border-white/15 text-xs font-semibold text-white transition-all"
+        >
+          <i data-lucide="lock" class="w-3.5 h-3.5 text-veloxOrange"></i>
+          <span>Área do Cliente</span>
+        </button>
+
+        <a 
+          href="#cotacao-b2b" 
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-veloxOrange hover:bg-veloxOrangeHover text-white font-heading font-bold text-xs uppercase tracking-wider shadow-orange-glow transition-all"
+        >
+          <span>Cotação Instantânea</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+
+        <button type="button" onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-xl bg-graphite border border-white/10 text-slate-200" aria-label="Menu">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-navyDark border-t border-white/10 px-6 py-5 space-y-3 text-sm font-medium">
+      <a href="#hero-widget" onclick="switchHeroTab('tracking'); toggleMobileMenu();" class="block py-2 text-veloxOrange font-bold">📍 Rastreador de Carga em Tempo Real</a>
+      <a href="#hero-widget" onclick="switchHeroTab('freight'); toggleMobileMenu();" class="block py-2 text-slate-200">⚡ Simulador Rápido de Frete</a>
+      <a href="#solucoes" onclick="toggleMobileMenu()" class="block py-2 text-slate-200">Soluções de Transporte & WMS</a>
+      <a href="#telemetria" onclick="toggleMobileMenu()" class="block py-2 text-slate-200">Tecnologia e Monitoramento 24/7</a>
+      <a href="#centros-distribuicao" onclick="toggleMobileMenu()" class="block py-2 text-slate-200">Mapa de Rotas e CDs (SP, RJ, CWB, BSB, REC)</a>
+      <a href="#cotacao-b2b" onclick="toggleMobileMenu()" class="block py-2 text-slate-200">Cotação Empresarial B2B</a>
+      <div class="pt-3 border-t border-white/10 flex gap-3">
+        <button onclick="openClientAreaModal(); toggleMobileMenu();" class="flex-1 py-2.5 rounded-xl bg-graphite text-white text-xs font-bold">Área do Cliente</button>
+        <a href="#cotacao-b2b" onclick="toggleMobileMenu()" class="flex-1 py-2.5 rounded-xl bg-veloxOrange text-white text-center text-xs font-bold">Cotar Agora</a>
+      </div>
     </div>
   </header>
 
-  <main class="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-    <div class="lg:col-span-6">
-      <span class="px-3 py-1 rounded-full bg-orange-500/15 text-orange-400 text-xs font-bold uppercase">Malha Rodoviária & Aérea Nacional</span>
-      <h1 class="text-4xl sm:text-6xl font-extrabold mt-4 leading-tight">Sua carga entregue no prazo. Sem desculpas.</h1>
-      <p class="text-slate-400 mt-4">Centros de distribuição climatizados em SP, MG, SC e PE, com seguro de carga RCTR-C automático e telemetria em tempo real.</p>
-
-      <!-- Rastreador Rápido -->
-      <div class="mt-8 p-5 rounded-2xl bg-[#111827] border border-white/10">
-        <label class="text-xs font-bold uppercase text-orange-400 block mb-2">Rastreamento de Conhecimento (CT-e)</label>
-        <div class="flex gap-2">
-          <input id="track-code" type="text" value="VLX-89402-BR" class="flex-1 px-4 py-2.5 rounded-xl bg-black border border-white/15 font-mono text-sm text-white">
-          <button onclick="rastrear()" class="px-5 py-2.5 rounded-xl bg-orange-500 text-black font-bold text-xs uppercase">Rastrear</button>
-        </div>
-        <p id="track-status" class="mt-3 text-xs font-mono text-emerald-400">● Em trânsito: Rod. Presidente Dutra (KM 142) → Previsão: Hoje às 16:40</p>
-      </div>
+  <!-- 2. HERO SECTION COM FROTA MODERNA E WIDGET INTEGRADO DE 2 ABAS -->
+  <section class="relative pt-10 pb-20 lg:pt-16 lg:pb-24 overflow-hidden border-b border-white/10">
+    <!-- Background Image Overlay -->
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=2000&q=85" 
+        alt="Centro de Distribuição Automatizado e Frota Velox Logistics" 
+        class="w-full h-full object-cover object-center opacity-25 contrast-125"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-navyDeep via-navyDeep/95 to-navyDeep/80"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-navyDeep via-transparent to-navyDeep/70"></div>
     </div>
 
-    <!-- Calculadora de Cotação de Frete -->
-    <div class="lg:col-span-6 bg-[#111827] border border-orange-500/30 rounded-3xl p-8">
-      <h2 class="text-xl font-bold mb-1">Simulador de Frete Corporativo</h2>
-      <p class="text-xs text-slate-400 mb-6">Calcule o custo estimado por peso cubado e modal de transporte:</p>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Left Column (6 Cols): Headline, Fleet Showcase & Highlights -->
+        <div class="lg:col-span-6 space-y-7">
+          <div class="inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 rounded-full bg-graphite/90 border border-veloxOrange/40">
+            <span class="px-2 py-0.5 rounded-full bg-veloxOrange text-white font-mono text-[10px] font-bold uppercase">
+              MALHA RODOVIÁRIA & AÉREA
+            </span>
+            <span class="text-xs text-slate-200 font-medium">
+              Frota Euro 6 Rastreada via Satélite • WMS Cloud Fulfillment
+            </span>
+          </div>
 
-      <div class="space-y-4">
-        <div>
-          <div class="flex justify-between text-xs mb-1"><span>Peso da Carga</span><strong id="peso-lbl">150 kg</strong></div>
-          <input id="peso-slider" type="range" min="10" max="2000" step="10" value="150" class="w-full accent-orange-500">
+          <h1 class="font-heading text-3xl sm:text-5xl lg:text-[50px] font-black tracking-tight leading-[1.1] text-white">
+            Logística inteligente conectando o Brasil com <span class="text-veloxOrange">velocidade, rastreamento total e precisão cirúrgica.</span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-300 leading-relaxed">
+            Operamos de ponta a ponta no seu Supply Chain: transporte rodoviário dedicado e fracionado, embarques aéreos expressos no próximo voo e centros de distribuição climatizados com integração ERP/WMS em tempo real.
+          </p>
+
+          <!-- Fleet Visual Trio Cards -->
+          <div class="grid grid-cols-3 gap-3 pt-2">
+            <div class="rounded-2xl overflow-hidden border border-white/15 bg-graphite/60 group">
+              <div class="h-24 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=600&q=80" alt="Frota Rodoviária Carretas" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <div class="absolute inset-0 bg-gradient-to-t from-navyDark/90 via-transparent to-transparent"></div>
+                <span class="absolute bottom-2 left-2.5 font-mono text-[10px] font-bold text-white">RODOVIÁRIO</span>
+              </div>
+            </div>
+            <div class="rounded-2xl overflow-hidden border border-white/15 bg-graphite/60 group">
+              <div class="h-24 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=600&q=80" alt="Galpão Automatizado WMS" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <div class="absolute inset-0 bg-gradient-to-t from-navyDark/90 via-transparent to-transparent"></div>
+                <span class="absolute bottom-2 left-2.5 font-mono text-[10px] font-bold text-veloxAmber">FULFILLMENT WMS</span>
+              </div>
+            </div>
+            <div class="rounded-2xl overflow-hidden border border-white/15 bg-graphite/60 group">
+              <div class="h-24 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?auto=format&fit=crop&w=600&q=80" alt="Avião Cargueiro Velox Air" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <div class="absolute inset-0 bg-gradient-to-t from-navyDark/90 via-transparent to-transparent"></div>
+                <span class="absolute bottom-2 left-2.5 font-mono text-[10px] font-bold text-white">AÉREO EXPRESS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Trust Badges -->
+          <div class="grid grid-cols-3 gap-4 pt-4 border-t border-white/10 text-xs">
+            <div>
+              <strong class="font-metric text-2xl font-bold text-white block">+2.800</strong>
+              <span class="text-slate-400">Cidades atendidas no Brasil</span>
+            </div>
+            <div>
+              <strong class="font-metric text-2xl font-bold text-veloxOrange block">99.2%</strong>
+              <span class="text-slate-400">Índice On-Time Delivery</span>
+            </div>
+            <div>
+              <strong class="font-metric text-2xl font-bold text-emerald-400 block">100%</strong>
+              <span class="text-slate-400">Cargas averbadas RCTR-C</span>
+            </div>
+          </div>
         </div>
-        <div>
-          <label class="text-xs text-slate-400 block mb-1">Modalidade de Envio</label>
-          <select id="modal-frete" class="w-full px-4 py-3 rounded-xl bg-black border border-white/15 text-sm">
-            <option value="2.4">Rodoviário Standard (3 a 5 dias úteis)</option>
-            <option value="3.8" selected>Rodoviário Expresso Dedicado (24h a 48h)</option>
-            <option value="6.5">Aéreo Cargo Próximo Voo (Mesmo Dia)</option>
-          </select>
+
+        <!-- Right Column (6 Cols): WIDGET INTEGRADO NO HERO (2 ABAS: RASTREADOR & SIMULADOR) -->
+        <div id="hero-widget" class="lg:col-span-6 tech-panel rounded-3xl border border-veloxOrange/40 shadow-panel-shadow overflow-hidden">
+          
+          <!-- Widget Tabs Header -->
+          <div class="grid grid-cols-2 bg-navyDark border-b border-white/10">
+            <button 
+              type="button" 
+              id="tab-btn-tracking"
+              onclick="switchHeroTab('tracking')" 
+              class="py-4 px-5 font-heading font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 border-b-2 border-veloxOrange bg-graphite/60 text-white transition-all"
+            >
+              <i data-lucide="radar" class="w-4 h-4 text-veloxOrange"></i>
+              <span>1. Rastreador em Tempo Real</span>
+            </button>
+            <button 
+              type="button" 
+              id="tab-btn-freight"
+              onclick="switchHeroTab('freight')" 
+              class="py-4 px-5 font-heading font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 border-b-2 border-transparent text-slate-400 hover:text-white transition-all"
+            >
+              <i data-lucide="calculator" class="w-4 h-4 text-veloxOrange"></i>
+              <span>2. Simulador Rápido de Frete</span>
+            </button>
+          </div>
+
+          <!-- ABA 1: RASTREADOR DE CARGA EM TEMPO REAL -->
+          <div id="tab-panel-tracking" class="p-6 sm:p-8 space-y-6">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <label for="track-code" class="text-xs font-bold uppercase tracking-wider text-veloxAmber">
+                  Código de Rastreamento (CT-e / AWB / Nota Fiscal)
+                </label>
+                <span class="font-mono text-[11px] text-slate-400">Exemplos: VLX-9821 • VLX-89402-BR</span>
+              </div>
+              <div class="flex flex-col sm:flex-row gap-2.5">
+                <input 
+                  id="track-code" 
+                  type="text" 
+                  value="VLX-9821" 
+                  placeholder="Digite o código ex: VLX-9821" 
+                  class="flex-1 px-4 py-3.5 rounded-xl bg-navyDark border border-white/15 font-mono text-sm text-white uppercase focus:border-veloxOrange focus:outline-none"
+                />
+                <button 
+                  type="button" 
+                  onclick="rastrear()" 
+                  class="px-6 py-3.5 rounded-xl bg-veloxOrange hover:bg-veloxOrangeHover text-white font-heading font-bold text-xs uppercase tracking-wider shadow-orange-glow transition-all flex items-center justify-center gap-2"
+                >
+                  <i data-lucide="search" class="w-4 h-4"></i>
+                  <span>Rastrear Carga</span>
+                </button>
+              </div>
+
+              <!-- Quick Preset Chips -->
+              <div class="flex flex-wrap items-center gap-2 mt-2.5 text-[11px] font-mono">
+                <span class="text-slate-400">Testar código:</span>
+                <button type="button" onclick="setTrackPreset('VLX-9821')" class="px-2.5 py-0.5 rounded bg-white/5 hover:bg-veloxOrange/20 text-veloxAmber border border-white/10">VLX-9821 (Rodoviário)</button>
+                <button type="button" onclick="setTrackPreset('VLX-AIR-409')" class="px-2.5 py-0.5 rounded bg-white/5 hover:bg-veloxOrange/20 text-veloxAmber border border-white/10">VLX-AIR-409 (Aéreo Pharma)</button>
+                <button type="button" onclick="setTrackPreset('VLX-89402-BR')" class="px-2.5 py-0.5 rounded bg-white/5 hover:bg-veloxOrange/20 text-veloxAmber border border-white/10">VLX-89402-BR (Entregue)</button>
+              </div>
+            </div>
+
+            <!-- Live Telemetry Banner -->
+            <div class="p-4 rounded-2xl bg-navyDark/90 border border-white/10 space-y-3">
+              <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3">
+                <div class="flex items-center gap-2">
+                  <span class="relative w-3 h-3 rounded-full bg-veloxOrange radar-dot inline-block"></span>
+                  <strong id="track-header-code" class="font-mono text-sm text-white">MANIFESTO #VLX-9821</strong>
+                </div>
+                <span id="track-badge-modal" class="px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 font-mono text-[11px] font-semibold">
+                  EM TRÂNSITO • NO PRAZO
+                </span>
+              </div>
+
+              <p id="track-status" class="text-xs font-mono text-emerald-400 leading-relaxed">
+                ● Em trânsito: Rod. Presidente Dutra (KM 142 - São José dos Campos/SP) → Previsão de Entrega: Hoje às 16:40
+              </p>
+
+              <!-- Progress Bar -->
+              <div class="w-full h-2 bg-graphite rounded-full overflow-hidden">
+                <div id="track-progress-bar" class="h-full bg-gradient-to-r from-veloxOrange to-emerald-400 transition-all duration-700" style="width: 75%"></div>
+              </div>
+
+              <!-- 4-Step Animated Timeline -->
+              <div id="track-timeline-steps" class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <!-- Populated by JS -->
+              </div>
+
+              <!-- Sensor Telemetry Footer -->
+              <div class="pt-3 border-t border-white/10 grid grid-cols-3 gap-2 font-mono text-[11px]">
+                <div>
+                  <span class="text-slate-500 block">TELEMETRIA GPS</span>
+                  <span id="track-gps" class="text-slate-200">-23.1791° S, -45.8872° W</span>
+                </div>
+                <div>
+                  <span class="text-slate-500 block">TEMP. BAÚ / CARGA</span>
+                  <span id="track-temp" class="text-cyan-400 font-semibold">+18.4 °C (Estável)</span>
+                </div>
+                <div>
+                  <span class="text-slate-500 block">TRAVA SATELITAL</span>
+                  <span class="text-emerald-400 font-semibold">🔒 BLINDADA</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ABA 2: SIMULADOR RÁPIDO DE FRETE -->
+          <div id="tab-panel-freight" class="hidden p-6 sm:p-8 space-y-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">CEP de Origem *</label>
+                <input id="cep-origem" type="text" value="07190-100 (Guarulhos/SP)" oninput="calcFrete()" class="w-full px-3.5 py-2.5 rounded-xl bg-navyDark border border-white/15 font-mono text-xs text-white focus:border-veloxOrange focus:outline-none" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">CEP de Destino *</label>
+                <input id="cep-destino" type="text" value="81260-000 (Curitiba/PR)" oninput="calcFrete()" class="w-full px-3.5 py-2.5 rounded-xl bg-navyDark border border-white/15 font-mono text-xs text-white focus:border-veloxOrange focus:outline-none" />
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-baseline text-xs mb-1.5">
+                <span class="font-bold uppercase tracking-wider text-slate-300">Peso Bruto / Cubado da Carga</span>
+                <strong id="peso-lbl" class="font-metric text-xl font-bold text-veloxOrange">150 kg</strong>
+              </div>
+              <input id="peso-slider" type="range" min="10" max="5000" step="10" value="150" class="velox-slider" />
+              <div class="flex justify-between font-mono text-[10px] text-slate-400 mt-1">
+                <span>10 kg (Fracionado)</span>
+                <span>1.000 kg (Pallet)</span>
+                <span>5.000 kg (Lotação)</span>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Modalidade de Envio</label>
+                <select id="modal-frete" class="w-full px-3.5 py-3 rounded-xl bg-navyDark border border-white/15 text-xs font-semibold text-white focus:border-veloxOrange focus:outline-none">
+                  <option value="2.4">Rodoviário Fracionado Standard (3 a 5 dias úteis)</option>
+                  <option value="3.8" selected>Rodoviário Expresso Dedicado (24h a 48h)</option>
+                  <option value="6.5">Aéreo Cargo Próximo Voo (Same-Day / 12h)</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Natureza da Carga</label>
+                <select id="cargo-nature" onchange="calcFrete()" class="w-full px-3.5 py-3 rounded-xl bg-navyDark border border-white/15 text-xs font-semibold text-white focus:border-veloxOrange focus:outline-none">
+                  <option value="1.0" selected>Carga Geral Seca / E-commerce</option>
+                  <option value="1.25">Farmacêutica / Climatizada ANVISA (+15°C a +25°C)</option>
+                  <option value="1.35">Alto Valor Agregado / Eletrônicos (Escolta)</option>
+                  <option value="1.20">Químicos Classificados (SASSMAQ)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Output Box -->
+            <div class="p-4 rounded-2xl bg-navyDark border border-veloxOrange/40 grid grid-cols-2 gap-4 items-center">
+              <div>
+                <span class="text-[11px] text-slate-400 block">Prazo Estimado de Entrega</span>
+                <strong id="frete-prazo" class="font-metric text-lg font-bold text-emerald-400">24h a 48h úteis</strong>
+                <span class="text-[10px] font-mono text-slate-400 block">Coleta em até 3h na Grande SP</span>
+              </div>
+              <div class="text-right">
+                <span class="text-[11px] text-slate-400 block">Frete Estimado (c/ Seguro RCTR-C)</span>
+                <strong id="frete-total" class="font-metric text-2xl sm:text-3xl font-extrabold text-veloxOrange">R$ 690,00</strong>
+              </div>
+            </div>
+
+            <button 
+              type="button" 
+              onclick="transferSimToB2BForm()" 
+              class="w-full py-3.5 rounded-xl bg-veloxOrange hover:bg-veloxOrangeHover text-white font-heading font-bold text-xs uppercase tracking-widest shadow-orange-glow transition-all flex items-center justify-center gap-2"
+            >
+              <span>Formalizar Cotação & Solicitar Coleta Agora</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+
         </div>
-      </div>
 
-      <div class="mt-6 p-4 rounded-xl bg-black border border-white/10 flex justify-between items-center">
-        <span class="text-xs text-slate-400">Frete Estimado (c/ Seguro Grátis)</span>
-        <strong id="frete-total" class="text-2xl font-extrabold text-orange-400">R$ 690,00</strong>
       </div>
-
-      <button onclick="alert('Coleta agendada! Nossa equipe enviará o manifesto de carga.')" class="mt-5 w-full py-3.5 rounded-xl bg-orange-500 hover:bg-orange-400 text-black font-bold text-xs uppercase tracking-widest transition">
-        Solicitar Coleta Agora →
-      </button>
     </div>
-  </main>
+  </section>
 
+  <!-- 3. SOLUÇÕES DE TRANSPORTE E SUPPLY CHAIN -->
+  <section id="solucoes" class="py-24 border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+        <div>
+          <span class="font-mono text-xs uppercase tracking-[0.25em] text-veloxOrange font-bold block mb-2">
+            [ 01 // OPERAÇÃO MULTIMODAL INTEGRADA ]
+          </span>
+          <h2 class="font-heading text-3xl sm:text-5xl font-black text-white tracking-tight">
+            Soluções de Transporte & Fulfillment
+          </h2>
+        </div>
+        <p class="text-slate-300 text-sm sm:text-base max-w-md">
+          Infraestrutura própria e malha conectada para atender desde embarques urgentes de 10 kg até operações dedicadas de 30 toneladas.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Card 1: Rodoviário Dedicado e Fracionado -->
+        <article class="tech-card rounded-3xl p-7 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-12 h-12 rounded-2xl bg-veloxOrange/15 border border-veloxOrange/40 flex items-center justify-center text-veloxOrange">
+                <i data-lucide="truck" class="w-6 h-6"></i>
+              </div>
+              <span class="font-mono text-[10px] uppercase px-2.5 py-1 rounded-full bg-white/5 text-slate-300 border border-white/10">
+                FTL & LTL
+              </span>
+            </div>
+            <h3 class="font-heading text-xl font-bold text-white">Rodoviário Dedicado & Fracionado</h3>
+            <p class="text-xs sm:text-sm text-slate-300 mt-3 leading-relaxed">
+              Saídas diárias com horários fixos entre os principais polos industriais (LTL Fracionado com cross-docking rápido) e carretas sider/baú dedicadas (FTL Lotação) para grandes volumes.
+            </p>
+            <ul class="mt-4 space-y-1.5 text-xs text-slate-400 font-mono">
+              <li class="text-emerald-400">✓ Frota Euro 6 com bloqueio satelital</li>
+              <li>✓ EDI / API para emissão automática CT-e</li>
+            </ul>
+          </div>
+          <a href="#cotacao-b2b" onclick="prefillB2BModal('Rodoviário Dedicado & Fracionado (FTL/LTL)')" class="mt-6 pt-4 border-t border-white/10 text-xs font-heading font-bold uppercase tracking-wider text-veloxAmber hover:text-white flex items-center justify-between">
+            <span>Cotar Modal Rodoviário</span>
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </a>
+        </article>
+
+        <!-- Card 2: Carga Aérea Expressa -->
+        <article class="tech-card rounded-3xl p-7 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-12 h-12 rounded-2xl bg-veloxOrange/15 border border-veloxOrange/40 flex items-center justify-center text-veloxOrange">
+                <i data-lucide="plane-takeoff" class="w-6 h-6"></i>
+              </div>
+              <span class="font-mono text-[10px] uppercase px-2.5 py-1 rounded-full bg-veloxOrange/20 text-veloxAmber border border-veloxOrange/30">
+                SAME-DAY / NEXT FLIGHT
+              </span>
+            </div>
+            <h3 class="font-heading text-xl font-bold text-white">Carga Aérea Expressa Nacional</h3>
+            <p class="text-xs sm:text-sm text-slate-300 mt-3 leading-relaxed">
+              Acordos prioritários de porão com as principais companhias aéreas e aeronaves cargueiras fretadas. Coleta expressa e entrega porta a porta em até 12 horas nas capitais.
+            </p>
+            <ul class="mt-4 space-y-1.5 text-xs text-slate-400 font-mono">
+              <li class="text-emerald-400">✓ Embarque para peças críticas (AOG/Parada)</li>
+              <li>✓ Base operacional dentro de GRU e VCP</li>
+            </ul>
+          </div>
+          <a href="#cotacao-b2b" onclick="prefillB2BModal('Carga Aérea Expressa — Próximo Voo')" class="mt-6 pt-4 border-t border-white/10 text-xs font-heading font-bold uppercase tracking-wider text-veloxAmber hover:text-white flex items-center justify-between">
+            <span>Solicitar Embarque Aéreo</span>
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </a>
+        </article>
+
+        <!-- Card 3: Armazenagem & Fulfillment WMS -->
+        <article class="tech-card rounded-3xl p-7 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-12 h-12 rounded-2xl bg-veloxOrange/15 border border-veloxOrange/40 flex items-center justify-center text-veloxOrange">
+                <i data-lucide="boxes" class="w-6 h-6"></i>
+              </div>
+              <span class="font-mono text-[10px] uppercase px-2.5 py-1 rounded-full bg-white/5 text-slate-300 border border-white/10">
+                WMS CLOUD
+              </span>
+            </div>
+            <h3 class="font-heading text-xl font-bold text-white">Armazenagem & Fulfillment WMS</h3>
+            <p class="text-xs sm:text-sm text-slate-300 mt-3 leading-relaxed">
+              Gestão completa de estoque em condomínios logísticos Triple-A com coletores RF, picking por voz, packing, etiquetagem e integração nativa com SAP, TOTVS, Bling e VTEX.
+            </p>
+            <ul class="mt-4 space-y-1.5 text-xs text-slate-400 font-mono">
+              <li class="text-emerald-400">✓ Acuracidade de inventário de 99,95%</li>
+              <li>✓ Áreas climatizadas ANVISA para saúde</li>
+            </ul>
+          </div>
+          <a href="#cotacao-b2b" onclick="prefillB2BModal('Armazenagem & Fulfillment c/ WMS Integrado')" class="mt-6 pt-4 border-t border-white/10 text-xs font-heading font-bold uppercase tracking-wider text-veloxAmber hover:text-white flex items-center justify-between">
+            <span>Consultar Posições-Pallet</span>
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </a>
+        </article>
+
+        <!-- Card 4: Logística Reversa -->
+        <article class="tech-card rounded-3xl p-7 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-12 h-12 rounded-2xl bg-veloxOrange/15 border border-veloxOrange/40 flex items-center justify-center text-veloxOrange">
+                <i data-lucide="refresh-ccw" class="w-6 h-6"></i>
+              </div>
+              <span class="font-mono text-[10px] uppercase px-2.5 py-1 rounded-full bg-white/5 text-slate-300 border border-white/10">
+                AFTER-SALES & ESG
+              </span>
+            </div>
+            <h3 class="font-heading text-xl font-bold text-white">Logística Reversa Inteligente</h3>
+            <p class="text-xs sm:text-sm text-slate-300 mt-3 leading-relaxed">
+              Coleta domiciliar ou B2B em todo o território nacional com triagem técnica no CD, teste de qualidade, reintegração imediata ao estoque de vendas ou descarte ecológico certificado.
+            </p>
+            <ul class="mt-4 space-y-1.5 text-xs text-slate-400 font-mono">
+              <li class="text-emerald-400">✓ Portal self-service de devolução</li>
+              <li>✓ Redução de 40% no ciclo de troca</li>
+            </ul>
+          </div>
+          <a href="#cotacao-b2b" onclick="prefillB2BModal('Operação de Logística Reversa Nacional')" class="mt-6 pt-4 border-t border-white/10 text-xs font-heading font-bold uppercase tracking-wider text-veloxAmber hover:text-white flex items-center justify-between">
+            <span>Estruturar Reversa</span>
+            <i data-lucide="chevron-right" class="w-4 h-4"></i>
+          </a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. TECNOLOGIA E MONITORAMENTO 24/7 (CCO & TELEMETRIA) -->
+  <section id="telemetria" class="py-24 bg-navyDark/90 border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left 6 Cols: Tech Specs & Risk Management -->
+        <div class="lg:col-span-6 space-y-6">
+          <span class="font-mono text-xs uppercase tracking-[0.25em] text-veloxOrange font-bold block">
+            [ 02 // CENTRO DE CONTROLE OPERACIONAL 24/7 ]
+          </span>
+          <h2 class="font-heading text-3xl sm:text-5xl font-black text-white leading-tight">
+            Telemetria Satelital, Cadeia Fria e Gerenciamento de Risco.
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+            Nossa torre de controle monitora 100% da frota em tempo real via conexão híbrida <strong class="text-white">4G/5G + Satélite Órbita Baixa</strong>. Cada veículo possui sensores IoT embarcados que transmitem telemetria a cada 15 segundos.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div class="p-5 rounded-2xl bg-graphite/60 border border-white/10 space-y-2">
+              <div class="flex items-center gap-2 text-cyan-400 font-mono text-xs font-bold">
+                <i data-lucide="thermometer-snowflake" class="w-4 h-4"></i>
+                <span>CADEIA FRIA FARMA (ANVISA)</span>
+              </div>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Sensores calibrados RBC de temperatura e umidade (-20°C a +25°C) com alerta automático ao CCO em caso de desvio térmico de 0,5°C.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-graphite/60 border border-white/10 space-y-2">
+              <div class="flex items-center gap-2 text-veloxOrange font-mono text-xs font-bold">
+                <i data-lucide="shield-check" class="w-4 h-4"></i>
+                <span>BLOQUEIO REMOTO & ISCAS RF</span>
+              </div>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Travas de 5ª roda eletromagnéticas, sensores de abertura de baú com cerca eletrônica (Geofencing) e iscas de carga redundantes.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-graphite/60 border border-white/10 space-y-2">
+              <div class="flex items-center gap-2 text-emerald-400 font-mono text-xs font-bold">
+                <i data-lucide="eye" class="w-4 h-4"></i>
+                <span>TELEMETRIA DE FADIGA IA</span>
+              </div>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Câmeras DMS na cabine que detectam sinais de fadiga ou distração do motorista, reduzindo a sinistralidade rodoviária a zero.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-graphite/60 border border-white/10 space-y-2">
+              <div class="flex items-center gap-2 text-amber-400 font-mono text-xs font-bold">
+                <i data-lucide="webhook" class="w-4 h-4"></i>
+                <span>WEBHOOKS & EDI EM TEMPO REAL</span>
+              </div>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Integração via API REST e arquivos EDI (PROCEDA: NOTFIS, OCOREN, CONEMB) e canhoto digital assinado com geolocalização.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 6 Cols: Interactive Live Telemetry Dashboard Mockup -->
+        <div class="lg:col-span-6">
+          <div class="tech-panel rounded-3xl p-6 border border-white/15 shadow-panel-shadow space-y-5">
+            <div class="flex items-center justify-between border-b border-white/10 pb-4">
+              <div class="flex items-center gap-2.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                <span class="font-mono text-xs font-bold text-white">VELOX TOWER OS v4.8 // TELEMETRIA DE FROTA</span>
+              </div>
+              <span class="font-mono text-[11px] px-2.5 py-0.5 rounded bg-veloxOrange/20 text-veloxAmber border border-veloxOrange/40">
+                412 VEÍCULOS EM ROTA
+              </span>
+            </div>
+
+            <!-- Simulated Fleet Selector -->
+            <div class="grid grid-cols-3 gap-2 font-mono text-xs">
+              <button type="button" onclick="selectTelemetryVehicle(0)" id="telem-btn-0" class="py-2 px-3 rounded-xl bg-veloxOrange text-white font-bold text-left">
+                <div>CAVALO #VLX-104</div>
+                <span class="text-[10px] opacity-85">Farma • BR-116</span>
+              </button>
+              <button type="button" onclick="selectTelemetryVehicle(1)" id="telem-btn-1" class="py-2 px-3 rounded-xl bg-navyDark border border-white/10 text-slate-300 hover:border-white/30 text-left">
+                <div>CARRETA #VLX-289</div>
+                <span class="text-[10px] text-slate-400">Eletrônicos • BR-381</span>
+              </button>
+              <button type="button" onclick="selectTelemetryVehicle(2)" id="telem-btn-2" class="py-2 px-3 rounded-xl bg-navyDark border border-white/10 text-slate-300 hover:border-white/30 text-left">
+                <div>AIR CARGO #V-737</div>
+                <span class="text-[10px] text-slate-400">GRU → REC</span>
+              </button>
+            </div>
+
+            <!-- Telemetry Visual Screen -->
+            <div class="relative rounded-2xl overflow-hidden border border-white/10 bg-navyDark p-5 space-y-4">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <div>
+                  <span id="telem-route" class="font-mono text-xs text-veloxAmber font-bold block">ROTA: GUARULHOS (SP) → CURITIBA (PR)</span>
+                  <h4 id="telem-driver" class="font-heading text-base font-bold text-white">Scania R540 Euro 6 • Condutor: Marcos R. (Score 99.8)</h4>
+                </div>
+                <span id="telem-lock" class="px-3 py-1 rounded-lg bg-emerald-500/15 border border-emerald-500/30 font-mono text-xs text-emerald-400 font-bold">
+                  🔒 BAÚ TRAVADO
+                </span>
+              </div>
+
+              <!-- 4 Live Gauges -->
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+                <div class="p-3 rounded-xl bg-graphite/70 border border-white/10">
+                  <span class="font-mono text-[10px] text-slate-400 block">TEMPERATURA</span>
+                  <strong id="telem-temp" class="font-metric text-xl font-bold text-cyan-400">+4.2 °C</strong>
+                  <span class="text-[10px] text-emerald-400 block">Alvo: 2°C a 8°C</span>
+                </div>
+                <div class="p-3 rounded-xl bg-graphite/70 border border-white/10">
+                  <span class="font-mono text-[10px] text-slate-400 block">UMIDADE REL.</span>
+                  <strong id="telem-hum" class="font-metric text-xl font-bold text-white">48%</strong>
+                  <span class="text-[10px] text-slate-400 block">Padrão ANVISA</span>
+                </div>
+                <div class="p-3 rounded-xl bg-graphite/70 border border-white/10">
+                  <span class="font-mono text-[10px] text-slate-400 block">VELOCIDADE</span>
+                  <strong id="telem-speed" class="font-metric text-xl font-bold text-white">82 km/h</strong>
+                  <span class="text-[10px] text-emerald-400 block">Cruzeiro Eco</span>
+                </div>
+                <div class="p-3 rounded-xl bg-graphite/70 border border-white/10">
+                  <span class="font-mono text-[10px] text-slate-400 block">ETA DESTINO</span>
+                  <strong id="telem-eta" class="font-metric text-xl font-bold text-veloxAmber">03h 18m</strong>
+                  <span class="text-[10px] text-slate-400 block">Sem retenções</span>
+                </div>
+              </div>
+
+              <!-- Simulated Security Log -->
+              <div class="p-3 rounded-xl bg-black/40 border border-white/5 font-mono text-[11px] text-slate-300 space-y-1">
+                <div class="text-emerald-400">[16:08:12] Ping Satelital StarLink/Iridium OK • Rota dentro da Cerca Virtual.</div>
+                <div id="telem-log-line" class="text-slate-400">[16:05:00] Averbação Eletrônica AT&M confirmada • Apólice R$ 2.500.000,00.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. NÚMEROS DA OPERAÇÃO -->
+  <section id="numeros" class="py-20 bg-gradient-to-r from-navyDark via-graphite to-navyDark border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="p-7 rounded-3xl bg-navyDeep/80 border border-white/10 border-l-4 border-l-veloxOrange">
+          <span class="font-mono text-xs uppercase text-slate-400 block">CAPILARIDADE NACIONAL</span>
+          <strong class="font-metric text-4xl sm:text-5xl font-bold text-white mt-2 block">+2.800</strong>
+          <p class="text-xs text-slate-300 mt-2">Cidades atendidas com prazos expressos e rastreamento ponta a ponta.</p>
+        </div>
+
+        <div class="p-7 rounded-3xl bg-navyDeep/80 border border-white/10 border-l-4 border-l-emerald-400">
+          <span class="font-mono text-xs uppercase text-slate-400 block">PRECISÃO OPERACIONAL</span>
+          <strong class="font-metric text-4xl sm:text-5xl font-bold text-emerald-400 mt-2 block">99.2%</strong>
+          <p class="text-xs text-slate-300 mt-2">On-Time Delivery auditado em contratos industriais, farma e varejo.</p>
+        </div>
+
+        <div class="p-7 rounded-3xl bg-navyDeep/80 border border-white/10 border-l-4 border-l-veloxAmber">
+          <span class="font-mono text-xs uppercase text-slate-400 block">VOLUME MOVIMENTADO</span>
+          <strong class="font-metric text-4xl sm:text-5xl font-bold text-veloxAmber mt-2 block">+1,5 Mi</strong>
+          <p class="text-xs text-slate-300 mt-2">Toneladas de cargas transportadas anualmente com sinistralidade quase zero.</p>
+        </div>
+
+        <div class="p-7 rounded-3xl bg-navyDeep/80 border border-white/10 border-l-4 border-l-cyan-400">
+          <span class="font-mono text-xs uppercase text-slate-400 block">ÁREA DE ARMAZENAGEM</span>
+          <strong class="font-metric text-4xl sm:text-5xl font-bold text-white mt-2 block">240 mil m²</strong>
+          <p class="text-xs text-slate-300 mt-2">Em Centros de Distribuição Triple-A com docas automatizadas e WMS.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. MAPA DE ROTAS E CENTROS DE DISTRIBUIÇÃO (GRID INTERATIVO) -->
+  <section id="centros-distribuicao" class="py-24 border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+        <div>
+          <span class="font-mono text-xs uppercase tracking-[0.25em] text-veloxOrange font-bold block mb-2">
+            [ 03 // INFRAESTRUTURA FÍSICA & CORREDORES LOGÍSTICOS ]
+          </span>
+          <h2 class="font-heading text-3xl sm:text-5xl font-black text-white">
+            Mapa de Rotas & Centros de Distribuição
+          </h2>
+        </div>
+
+        <!-- Hub Filter Pills -->
+        <div class="flex flex-wrap gap-2" id="hub-selector-buttons">
+          <button type="button" onclick="selectHub('sp')" data-hub="sp" class="hub-btn px-4 py-2.5 rounded-xl font-mono text-xs font-bold bg-veloxOrange text-white shadow-orange-glow transition-all">
+            São Paulo (Matriz GRU)
+          </button>
+          <button type="button" onclick="selectHub('rj')" data-hub="rj" class="hub-btn px-4 py-2.5 rounded-xl font-mono text-xs font-bold bg-graphite text-slate-300 border border-white/10 hover:border-veloxOrange transition-all">
+            Rio de Janeiro
+          </button>
+          <button type="button" onclick="selectHub('cwb')" data-hub="cwb" class="hub-btn px-4 py-2.5 rounded-xl font-mono text-xs font-bold bg-graphite text-slate-300 border border-white/10 hover:border-veloxOrange transition-all">
+            Curitiba (Sul)
+          </button>
+          <button type="button" onclick="selectHub('bsb')" data-hub="bsb" class="hub-btn px-4 py-2.5 rounded-xl font-mono text-xs font-bold bg-graphite text-slate-300 border border-white/10 hover:border-veloxOrange transition-all">
+            Brasília (Centro-Oeste)
+          </button>
+          <button type="button" onclick="selectHub('rec')" data-hub="rec" class="hub-btn px-4 py-2.5 rounded-xl font-mono text-xs font-bold bg-graphite text-slate-300 border border-white/10 hover:border-veloxOrange transition-all">
+            Recife (Nordeste)
+          </button>
+        </div>
+      </div>
+
+      <!-- Featured Hub Active Detail Card -->
+      <div id="hub-detail-panel" class="tech-panel rounded-3xl p-7 sm:p-10 border border-veloxOrange/40 mb-8">
+        <!-- Populated dynamically via JS -->
+      </div>
+
+      <!-- All 5 Hubs Overview Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <div onclick="selectHub('sp')" class="cursor-pointer p-5 rounded-2xl bg-graphite/50 border border-white/10 hover:border-veloxOrange transition-all">
+          <span class="font-mono text-[10px] text-veloxAmber uppercase">HUB SUDESTE I</span>
+          <h4 class="font-heading font-bold text-white text-base mt-1">São Paulo / Guarulhos</h4>
+          <p class="text-xs text-slate-400 mt-1">95.000 m² • 84 Docas • Conexão Direta GRU Airport</p>
+        </div>
+        <div onclick="selectHub('rj')" class="cursor-pointer p-5 rounded-2xl bg-graphite/50 border border-white/10 hover:border-veloxOrange transition-all">
+          <span class="font-mono text-[10px] text-veloxAmber uppercase">HUB SUDESTE II</span>
+          <h4 class="font-heading font-bold text-white text-base mt-1">Rio de Janeiro / Caxias</h4>
+          <p class="text-xs text-slate-400 mt-1">38.000 m² • 36 Docas • Arco Metropolitano & Porto</p>
+        </div>
+        <div onclick="selectHub('cwb')" class="cursor-pointer p-5 rounded-2xl bg-graphite/50 border border-white/10 hover:border-veloxOrange transition-all">
+          <span class="font-mono text-[10px] text-veloxAmber uppercase">HUB SUL</span>
+          <h4 class="font-heading font-bold text-white text-base mt-1">Curitiba / CIC</h4>
+          <p class="text-xs text-slate-400 mt-1">42.000 m² • 40 Docas • Corredor Mercosul BR-116</p>
+        </div>
+        <div onclick="selectHub('bsb')" class="cursor-pointer p-5 rounded-2xl bg-graphite/50 border border-white/10 hover:border-veloxOrange transition-all">
+          <span class="font-mono text-[10px] text-veloxAmber uppercase">HUB CENTRO-OESTE</span>
+          <h4 class="font-heading font-bold text-white text-base mt-1">Brasília / SIA</h4>
+          <p class="text-xs text-slate-400 mt-1">25.000 m² • 24 Docas • Cross-Docking Agro & Farma</p>
+        </div>
+        <div onclick="selectHub('rec')" class="cursor-pointer p-5 rounded-2xl bg-graphite/50 border border-white/10 hover:border-veloxOrange transition-all">
+          <span class="font-mono text-[10px] text-veloxAmber uppercase">HUB NORDESTE</span>
+          <h4 class="font-heading font-bold text-white text-base mt-1">Recife / Suape</h4>
+          <p class="text-xs text-slate-400 mt-1">40.000 m² • 38 Docas • Distribuição 9 Estados NE</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 7. DEPOIMENTOS DE DIRETORES DE SUPPLY CHAIN -->
+  <section class="py-24 bg-navyDark/80 border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="font-mono text-xs uppercase tracking-[0.25em] text-veloxOrange font-bold block mb-2">
+          [ 04 // PARCEIROS DE MISSÃO CRÍTICA ]
+        </span>
+        <h2 class="font-heading text-3xl sm:text-5xl font-black text-white">
+          Aprovado por Diretores de Supply Chain
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
+        <!-- Testimonial 1 -->
+        <div class="tech-card p-7 rounded-3xl flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-veloxOrange font-bold text-sm">★★★★★</span>
+              <span class="font-mono text-[10px] px-2.5 py-1 rounded bg-white/5 text-emerald-400 border border-emerald-500/30">OTIF: 99,6%</span>
+            </div>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              “A migração da nossa malha Sul-Sudeste e Nordeste para a Velox reduziu nosso lead time em 36 horas. A integração via webhook do TMS deles direto no nosso SAP eliminou 100% das consultas manuais de rastreamento.”
+            </p>
+          </div>
+          <div class="flex items-center gap-3.5 pt-4 border-t border-white/10">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=200&q=80" alt="Henrique Bastos" class="w-12 h-12 rounded-full object-cover border-2 border-veloxOrange" />
+            <div>
+              <h4 class="font-heading font-bold text-white text-sm">Henrique Bastos</h4>
+              <span class="text-xs text-slate-400 block">Diretor de Supply Chain LatAm • TechGear S.A.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="tech-card p-7 rounded-3xl flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-veloxOrange font-bold text-sm">★★★★★</span>
+              <span class="font-mono text-[10px] px-2.5 py-1 rounded bg-white/5 text-cyan-400 border border-cyan-500/30">Cadeia Fria ANVISA</span>
+            </div>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              “No setor farmacêutico não existe margem para excursão térmica. Os baús refrigerados validados da Velox com laudo de temperatura minuto a minuto nos deram segurança total nas auditorias da ANVISA.”
+            </p>
+          </div>
+          <div class="flex items-center gap-3.5 pt-4 border-t border-white/10">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80" alt="Cláudia Monteiro" class="w-12 h-12 rounded-full object-cover border-2 border-veloxOrange" />
+            <div>
+              <h4 class="font-heading font-bold text-white text-sm">Dra. Cláudia Monteiro</h4>
+              <span class="text-xs text-slate-400 block">VP de Logística & Qualidade • BioLife Labs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="tech-card p-7 rounded-3xl flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-veloxOrange font-bold text-sm">★★★★★</span>
+              <span class="font-mono text-[10px] px-2.5 py-1 rounded bg-white/5 text-veloxAmber border border-veloxOrange/30">Fulfillment E-commerce</span>
+            </div>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              “Durante a Black Friday processamos 180 mil pedidos no CD de Guarulhos da Velox com expedição no mesmo dia. A operação de logística reversa deles também aumentou a retenção dos nossos clientes.”
+            </p>
+          </div>
+          <div class="flex items-center gap-3.5 pt-4 border-t border-white/10">
+            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80" alt="Rodrigo Valença" class="w-12 h-12 rounded-full object-cover border-2 border-veloxOrange" />
+            <div>
+              <h4 class="font-heading font-bold text-white text-sm">Rodrigo Valença</h4>
+              <span class="text-xs text-slate-400 block">Head of Operations & Fulfillment • Aura Commerce</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 8. FORMULÁRIO DE COTAÇÃO DE FRETE EMPRESARIAL B2B -->
+  <section id="cotacao-b2b" class="py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="tech-panel rounded-3xl p-7 sm:p-12 border border-veloxOrange/40 shadow-panel-shadow">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          
+          <!-- Left 5 Cols: B2B SLA & Insurance Details -->
+          <div class="lg:col-span-5 space-y-6">
+            <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-veloxOrange/15 border border-veloxOrange/40 text-veloxAmber font-mono text-xs font-bold uppercase">
+              Mesa de Pricing B2B • Retorno em 15 Min
+            </span>
+            <h2 class="font-heading text-3xl sm:text-4xl font-black text-white leading-tight">
+              Cotação de Frete Empresarial & Contratos Spot / BID.
+            </h2>
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+              Informe os dados fiscais, dimensões e valor de Nota Fiscal para cálculo exato do frete-peso, cubagem (fator 300 kg/m³ rodoviário ou 166,6 kg/m³ aéreo) e averbação de seguro.
+            </p>
+
+            <div class="space-y-3 pt-4 border-t border-white/10 text-xs text-slate-200 font-mono">
+              <div class="flex items-center gap-3">
+                <span class="w-6 h-6 rounded-lg bg-veloxOrange/20 text-veloxOrange flex items-center justify-center font-bold">✓</span>
+                <span>Apólice RCTR-C e RCF-DC até R$ 10 Milhões por embarque</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="w-6 h-6 rounded-lg bg-veloxOrange/20 text-veloxOrange flex items-center justify-center font-bold">✓</span>
+                <span>Tabelas customizadas para embarques recorrentes (BID)</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="w-6 h-6 rounded-lg bg-veloxOrange/20 text-veloxOrange flex items-center justify-center font-bold">✓</span>
+                <span>Gerente de Conta dedicado e emissão automática via EDI</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right 7 Cols: Complete B2B Freight Quote Form -->
+          <div class="lg:col-span-7 bg-navyDark/90 p-6 sm:p-9 rounded-2xl border border-white/10">
+            <form id="b2b-quote-form" onsubmit="handleB2BQuoteSubmit(event)" class="space-y-4">
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Razão Social / Empresa *</label>
+                  <input id="b2b-company" type="text" required placeholder="Ex: Indústria Metalúrgica Atlas S.A." class="w-full px-4 py-3 rounded-xl bg-navyDeep border border-white/15 text-sm text-white focus:border-veloxOrange focus:outline-none" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">CNPJ / Contato Corporativo *</label>
+                  <input id="b2b-cnpj" type="text" required placeholder="00.000.000/0001-00 ou E-mail" class="w-full px-4 py-3 rounded-xl bg-navyDeep border border-white/15 text-sm text-white focus:border-veloxOrange focus:outline-none" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Valor da NF-e (R$) *</label>
+                  <input id="b2b-nf" type="number" required value="85000" min="100" class="w-full px-4 py-3 rounded-xl bg-navyDeep border border-white/15 font-mono text-sm text-white focus:border-veloxOrange focus:outline-none" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Peso Total (kg) *</label>
+                  <input id="b2b-weight" type="number" required value="150" min="1" class="w-full px-4 py-3 rounded-xl bg-navyDeep border border-white/15 font-mono text-sm text-white focus:border-veloxOrange focus:outline-none" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Dimensões / Cubagem *</label>
+                  <input id="b2b-dims" type="text" required value="120 x 100 x 140 cm (1 Pallet)" class="w-full px-4 py-3 rounded-xl bg-navyDeep border border-white/15 font-mono text-xs text-white focus:border-veloxOrange focus:outline-none" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Origem → Destino *</label>
+                  <input id="b2b-route" type="text" required value="07190-100 (Guarulhos/SP) → 81260-000 (Curitiba/PR)" class="w-full px-4 py-3 rounded-xl bg-navyDeep border border-white/15 font-mono text-xs text-white focus:border-veloxOrange focus:outline-none" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-1.5">Modal & Cobertura de Seguro (GR)</label>
+                  <select id="b2b-insurance" class="w-full px-4 py-3 rounded-xl bg-navyDeep border border-veloxOrange/40 text-xs font-bold text-veloxAmber focus:border-veloxOrange focus:outline-none">
+                    <option value="RCTR-C + RCF-DC Padrão (Averbação Automática 0,05%)">RCTR-C + RCF-DC Padrão (Averbação Automática)</option>
+                    <option value="Gerenciamento de Risco Alto Valor + Isca RF + Escolta">Alto Valor Agregado + Isca Satelital + Escolta</option>
+                    <option value="Cadeia Fria Validada ANVISA (-20°C a +25°C)">Cadeia Fria Validada ANVISA (-20°C a +25°C)</option>
+                    <option value="Químicos Classificados SASSMAQ">Químicos Classificados (Licença SASSMAQ)</option>
+                  </select>
+                </div>
+              </div>
+
+              <button type="submit" class="w-full py-4 rounded-xl bg-veloxOrange hover:bg-veloxOrangeHover text-white font-heading font-bold text-xs sm:text-sm uppercase tracking-widest shadow-orange-glow transition-all flex items-center justify-center gap-2">
+                <span>Gerar Cotação Formal B2B & Agendar Coleta</span>
+                <i data-lucide="send" class="w-4 h-4"></i>
+              </button>
+            </form>
+
+            <!-- Instant B2B Quotation Output -->
+            <div id="b2b-quote-result" class="hidden mt-5 p-5 rounded-2xl bg-emerald-500/10 border border-emerald-500/40 font-mono text-xs space-y-2">
+              <div class="flex items-center justify-between text-emerald-400 font-bold text-sm">
+                <span>✓ COTAÇÃO B2B EMITIDA & AVERBAÇÃO PRÉ-APROVADA</span>
+                <span id="b2b-protocol">#VLX-B2B-9042</span>
+              </div>
+              <p id="b2b-summary-text" class="text-slate-200 leading-relaxed"></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. RODAPÉ COMPLETO COM CERTIFICAÇÕES SASSMAQ, ANVISA E CANAIS 24H -->
+  <footer class="bg-navyDark border-t border-white/10 pt-16 pb-12 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+        
+        <!-- Brand & Certifications (4 cols) -->
+        <div class="lg:col-span-4 space-y-4">
+          <div class="flex items-center gap-2.5">
+            <span class="font-heading font-black text-xl text-white">🚚 VELOX <span class="text-veloxOrange">LOGISTICS</span></span>
+          </div>
+          <p class="text-slate-400 leading-relaxed max-w-sm">
+            Operador Logístico Integrado multimodal. Transporte rodoviário dedicado e fracionado, carga aérea expressa e armazenagem WMS de alta tecnologia.
+          </p>
+          <div class="flex flex-wrap gap-2 pt-1 font-mono text-[10px]">
+            <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-veloxAmber font-bold">SASSMAQ CERTIFICADA</span>
+            <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-cyan-400 font-bold">AFE ANVISA FARMA</span>
+            <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-emerald-400 font-bold">ISO 9001:2015</span>
+            <span class="px-2.5 py-1 rounded bg-white/5 border border-white/10 text-slate-200 font-bold">RNTRC ANTT</span>
+          </div>
+        </div>
+
+        <!-- Modais & Serviços (3 cols) -->
+        <div class="lg:col-span-3 space-y-2.5">
+          <h4 class="font-heading font-bold text-white uppercase tracking-wider text-xs mb-3">Soluções & Modais</h4>
+          <ul class="space-y-2">
+            <li><a href="#solucoes" class="hover:text-veloxOrange transition-colors">Rodoviário Lotação (FTL) & Fracionado (LTL)</a></li>
+            <li><a href="#solucoes" class="hover:text-veloxOrange transition-colors">Velox Air Cargo — Próximo Voo</a></li>
+            <li><a href="#solucoes" class="hover:text-veloxOrange transition-colors">Fulfillment & Armazenagem WMS</a></li>
+            <li><a href="#solucoes" class="hover:text-veloxOrange transition-colors">Logística Reversa Nacional</a></li>
+            <li><a href="#telemetria" class="hover:text-veloxOrange transition-colors">Transporte Climatizado ANVISA</a></li>
+          </ul>
+        </div>
+
+        <!-- Hubs & Filiais (2 cols) -->
+        <div class="lg:col-span-2 space-y-2.5">
+          <h4 class="font-heading font-bold text-white uppercase tracking-wider text-xs mb-3">Hubs Principais</h4>
+          <ul class="space-y-2">
+            <li><a href="#centros-distribuicao" onclick="selectHub('sp')" class="hover:text-veloxOrange transition-colors">Guarulhos / SP (Matriz)</a></li>
+            <li><a href="#centros-distribuicao" onclick="selectHub('rj')" class="hover:text-veloxOrange transition-colors">Duque de Caxias / RJ</a></li>
+            <li><a href="#centros-distribuicao" onclick="selectHub('cwb')" class="hover:text-veloxOrange transition-colors">Curitiba / PR</a></li>
+            <li><a href="#centros-distribuicao" onclick="selectHub('bsb')" class="hover:text-veloxOrange transition-colors">Brasília / DF</a></li>
+            <li><a href="#centros-distribuicao" onclick="selectHub('rec')" class="hover:text-veloxOrange transition-colors">Recife — Suape / PE</a></li>
+          </ul>
+        </div>
+
+        <!-- Canais 24h Motoristas & Clientes (3 cols) -->
+        <div class="lg:col-span-3 bg-graphite/60 p-5 rounded-2xl border border-white/10 space-y-3">
+          <div class="font-mono text-[11px] font-bold uppercase text-veloxAmber flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-veloxOrange animate-ping"></span>
+            <span>Canais Operacionais 24/7</span>
+          </div>
+          <div class="space-y-1.5 text-[11px]">
+            <div>
+              <span class="text-slate-400 block">Central Clientes & Cargas Críticas:</span>
+              <strong class="text-white font-mono text-sm">0800 880 9900</strong>
+            </div>
+            <div>
+              <span class="text-slate-400 block">CCO Apoio ao Motorista & GR 24h:</span>
+              <strong class="text-emerald-400 font-mono text-sm">0800 880 9911 (WhatsApp/Sat)</strong>
+            </div>
+          </div>
+          <button type="button" onclick="openClientAreaModal()" class="w-full py-2.5 rounded-xl bg-veloxOrange hover:bg-veloxOrangeHover text-white font-heading font-bold text-xs uppercase tracking-wider transition-all">
+            Portal EDI / Área do Cliente
+          </button>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[11px] text-slate-500">
+        <p>© 2026 VELOX LOGISTICS Operador Logístico Integrado S.A. • CNPJ 28.541.900/0001-44.</p>
+        <div class="flex items-center gap-6">
+          <span>Frota 100% Rastreada via Satélite</span>
+          <span>•</span>
+          <span>99.2% On-Time Delivery</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL ÁREA DO CLIENTE / PORTAL EDI -->
+  <div id="client-area-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="tech-panel max-w-md w-full rounded-3xl p-7 border border-veloxOrange/40 shadow-2xl">
+      <div class="flex items-center justify-between pb-4 border-b border-white/10">
+        <div>
+          <span class="font-mono text-[10px] text-veloxAmber uppercase tracking-widest">VELOX CLOUD PORTAL</span>
+          <h3 class="font-heading text-xl font-bold text-white mt-0.5">Área do Cliente & Portal EDI</h3>
+        </div>
+        <button type="button" onclick="closeClientAreaModal()" class="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400">✕</button>
+      </div>
+      <form onsubmit="handleClientLogin(event)" class="py-5 space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-300 mb-1.5">CNPJ ou E-mail Corporativo</label>
+          <input type="text" required placeholder="embarcador@empresa.com.br" class="w-full px-4 py-3 rounded-xl bg-navyDark border border-white/15 text-sm text-white focus:border-veloxOrange focus:outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase text-slate-300 mb-1.5">Chave de Acesso / Token API</label>
+          <input type="password" required value="••••••••••••" class="w-full px-4 py-3 rounded-xl bg-navyDark border border-white/15 text-sm text-white focus:border-veloxOrange focus:outline-none" />
+        </div>
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-veloxOrange hover:bg-veloxOrangeHover text-white font-heading font-bold text-xs uppercase tracking-widest">
+          Acessar Painel de Embarques & XML CT-e
+        </button>
+      </form>
+      <p id="client-login-feedback" class="hidden text-xs font-mono text-emerald-400 text-center pb-2">
+        ✓ Autenticando sessão segura SSO... Redirecionando para o painel do embarcador.
+      </p>
+    </div>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- VANILLA JAVASCRIPT: RASTREADOR, SIMULADOR, TELEMETRIA, HUBS & B2B       -->
+  <!-- ======================================================================= -->
   <script>
-    function rastrear() {
-      const code = document.getElementById('track-code').value || 'VLX-001';
-      document.getElementById('track-status').textContent = `● Carga [${code}] localizada no Hub Guarulhos/SP • Status: Saiu para entrega ao destinatário.`;
-    }
+    // 1. ALTERNÂNCIA DAS ABAS DO WIDGET NO HERO
+    window.switchHeroTab = function(tab) {
+      const btnTrack = document.getElementById('tab-btn-tracking');
+      const btnFreight = document.getElementById('tab-btn-freight');
+      const panelTrack = document.getElementById('tab-panel-tracking');
+      const panelFreight = document.getElementById('tab-panel-freight');
+
+      if (tab === 'tracking') {
+        btnTrack.className = 'py-4 px-5 font-heading font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 border-b-2 border-veloxOrange bg-graphite/60 text-white transition-all';
+        btnFreight.className = 'py-4 px-5 font-heading font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 border-b-2 border-transparent text-slate-400 hover:text-white transition-all';
+        panelTrack.classList.remove('hidden');
+        panelFreight.classList.add('hidden');
+      } else {
+        btnFreight.className = 'py-4 px-5 font-heading font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 border-b-2 border-veloxOrange bg-graphite/60 text-white transition-all';
+        btnTrack.className = 'py-4 px-5 font-heading font-bold text-xs sm:text-sm uppercase tracking-wider flex items-center justify-center gap-2 border-b-2 border-transparent text-slate-400 hover:text-white transition-all';
+        panelFreight.classList.remove('hidden');
+        panelTrack.classList.add('hidden');
+      }
+    };
+
+    // 2. RASTREADOR DE CARGA EM TEMPO REAL COM LINHA DO TEMPO ANIMADA
+    const TRACKING_DB = {
+      'VLX-9821': {
+        badge: 'EM TRÂNSITO • RODOVIÁRIO EXPRESSO',
+        statusLine: '● Em trânsito: Rod. Presidente Dutra (KM 142 - São José dos Campos/SP) → Previsão: Hoje às 16:40',
+        progress: 75,
+        gps: '-23.1791° S, -45.8872° W',
+        temp: '+18.4 °C (Carga Seca)',
+        steps: [
+          { title: '1. Coleta & Averbação CT-e', time: 'Ontem, 18:20 • CD Guarulhos/SP', done: true },
+          { title: '2. Cross-Docking & Triagem WMS', time: 'Hoje, 04:15 • Doca 14 Automatizada', done: true },
+          { title: '3. Em Trânsito Rodoviário Satelital', time: 'Agora • BR-116 KM 142 (82 km/h)', active: true },
+          { title: '4. Entrega Final ao Destinatário', time: 'Previsto Hoje até 16:40', done: false }
+        ]
+      },
+      'VLX-AIR-409': {
+        badge: 'AÉREO NEXT FLIGHT • CADEIA FRIA ANVISA',
+        statusLine: '● Carga [VLX-AIR-409] desembarcada no Terminal de Cargas Recife (REC) • Saiu em veículo refrigerado para entrega.',
+        progress: 90,
+        gps: '-8.1264° S, -34.9228° W',
+        temp: '+4.1 °C (Farma 2°C-8°C)',
+        steps: [
+          { title: '1. Recebimento Câmara Fria GRU', time: 'Hoje, 05:30 • Aeroporto Guarulhos/SP', done: true },
+          { title: '2. Decolagem Voo Cargueiro VLX', time: 'Hoje, 07:45 • AWB #774-9021', done: true },
+          { title: '3. Desembarque & Liberação TECA REC', time: 'Hoje, 10:50 • Recife/PE', done: true },
+          { title: '4. Last-Mile Refrigerado em Rota', time: 'Agora • Entrega em 25 min', active: true }
+        ]
+      },
+      'VLX-89402-BR': {
+        badge: 'ENTREGUE • CANHOTO DIGITAL ASSINADO',
+        statusLine: '● Carga [VLX-89402-BR] localizada no Hub Guarulhos/SP • Status: Saiu para entrega e recebida com assinatura biométrica.',
+        progress: 100,
+        gps: '-25.4284° S, -49.2733° W',
+        temp: '+20.0 °C (Concluído)',
+        steps: [
+          { title: '1. Coleta & Manifesto Eletrônico', time: '16/11 • Hub Matriz Guarulhos/SP', done: true },
+          { title: '2. Transferência Corredor Sul BR-116', time: '17/11 • Trânsito sem paradas', done: true },
+          { title: '3. Chegada Hub Curitiba / CIC', time: 'Hoje, 06:10 • Conferência 100%', done: true },
+          { title: '4. Entregue (Canhoto Digital XML)', time: 'Hoje, 11:25 • Recebido por Almoxarifado', done: true }
+        ]
+      }
+    };
+
+    window.setTrackPreset = function(code) {
+      document.getElementById('track-code').value = code;
+      rastrear();
+    };
+
+    window.rastrear = function() {
+      const rawCode = (document.getElementById('track-code').value || 'VLX-9821').trim().toUpperCase();
+      const data = TRACKING_DB[rawCode] || {
+        badge: 'EM ROTA DE ENTREGA • MONITORADO',
+        statusLine: `● Carga [${rawCode}] localizada no Hub Guarulhos/SP • Status: Saiu para entrega ao destinatário.`,
+        progress: 82,
+        gps: '-23.4356° S, -46.4731° W',
+        temp: '+19.2 °C (Estável)',
+        steps: [
+          { title: '1. Coleta & Emissão CT-e', time: 'Confirmado • Origem Validada', done: true },
+          { title: '2. Triagem Automatizada Hub SP', time: 'Confirmado • Cross-Docking OK', done: true },
+          { title: '3. Saiu para Entrega ao Destinatário', time: `Agora • Manifesto [${rawCode}]`, active: true },
+          { title: '4. Baixa por Canhoto Digital', time: 'Aguardando assinatura no destino', done: false }
+        ]
+      };
+
+      document.getElementById('track-header-code').textContent = `MANIFESTO #${rawCode}`;
+      document.getElementById('track-badge-modal').textContent = data.badge;
+      document.getElementById('track-status').textContent = data.statusLine;
+      document.getElementById('track-progress-bar').style.width = `${data.progress}%`;
+      document.getElementById('track-gps').textContent = data.gps;
+      document.getElementById('track-temp').textContent = data.temp;
+
+      const stepsContainer = document.getElementById('track-timeline-steps');
+      stepsContainer.innerHTML = data.steps.map(st => {
+        if (st.active) {
+          return `
+            <div class="p-3 rounded-xl bg-veloxOrange/15 border border-veloxOrange flex items-start gap-2.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-veloxOrange mt-1 animate-ping shrink-0"></span>
+              <div>
+                <div class="font-heading font-bold text-xs text-white">${st.title}</div>
+                <span class="font-mono text-[10px] text-veloxAmber">${st.time}</span>
+              </div>
+            </div>
+          `;
+        }
+        if (st.done) {
+          return `
+            <div class="p-3 rounded-xl bg-graphite/60 border border-emerald-500/30 flex items-start gap-2.5">
+              <span class="text-emerald-400 font-bold text-xs mt-0.5">✓</span>
+              <div>
+                <div class="font-heading font-bold text-xs text-slate-200">${st.title}</div>
+                <span class="font-mono text-[10px] text-slate-400">${st.time}</span>
+              </div>
+            </div>
+          `;
+        }
+        return `
+          <div class="p-3 rounded-xl bg-navyDeep/50 border border-white/5 flex items-start gap-2.5 opacity-60">
+            <span class="w-2 h-2 rounded-full bg-slate-500 mt-1.5 shrink-0"></span>
+            <div>
+              <div class="font-heading font-bold text-xs text-slate-400">${st.title}</div>
+              <span class="font-mono text-[10px] text-slate-500">${st.time}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    };
+
+    // 3. SIMULADOR RÁPIDO DE FRETE (Compatível com peso-slider e modal-frete)
     const pSlider = document.getElementById('peso-slider');
     const mSelect = document.getElementById('modal-frete');
-    function calcFrete() {
+
+    window.calcFrete = function() {
       const kg = Number(pSlider.value);
       const factor = Number(mSelect.value);
-      const total = 120 + kg * factor;
-      document.getElementById('peso-lbl').textContent = kg + ' kg';
-      document.getElementById('frete-total').textContent = 'R$ ' + total.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
-    }
+      const natureSelect = document.getElementById('cargo-nature');
+      const natureFactor = natureSelect ? Number(natureSelect.value) : 1.0;
+
+      const total = (120 + (kg * factor)) * natureFactor;
+      document.getElementById('peso-lbl').textContent = kg.toLocaleString('pt-BR') + ' kg';
+      document.getElementById('frete-total').textContent = 'R$ ' + total.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+      const prazoEl = document.getElementById('frete-prazo');
+      if (prazoEl) {
+        if (factor >= 6) prazoEl.textContent = 'Same-Day / Até 12h (Aéreo)';
+        else if (factor >= 3.5) prazoEl.textContent = '24h a 48h úteis (Expresso)';
+        else prazoEl.textContent = '3 a 5 dias úteis (Standard)';
+      }
+    };
+
     pSlider.addEventListener('input', calcFrete);
     mSelect.addEventListener('change', calcFrete);
-    calcFrete();
+
+    window.transferSimToB2BForm = function() {
+      const kg = pSlider.value;
+      const orig = document.getElementById('cep-origem').value;
+      const dest = document.getElementById('cep-destino').value;
+      document.getElementById('b2b-weight').value = kg;
+      document.getElementById('b2b-route').value = `${orig} → ${dest}`;
+      document.getElementById('cotacao-b2b').scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        document.getElementById('b2b-company').focus();
+      }, 600);
+    };
+
+    // 4. TELEMETRIA AO VIVO (PAINEL CCO 24/7)
+    const TELEMETRY_VEHICLES = [
+      {
+        route: 'ROTA: GUARULHOS (SP) → CURITIBA (PR) • BR-116',
+        driver: 'Scania R540 Euro 6 • Condutor: Marcos R. (Score 99.8)',
+        lock: '🔒 BAÚ TRAVADO SAT',
+        temp: '+4.2 °C',
+        hum: '48%',
+        speed: '82 km/h',
+        eta: '03h 18m',
+        log: '[16:05:00] Averbação Eletrônica AT&M confirmada • Termógrafo ANVISA sem desvios.'
+      },
+      {
+        route: 'ROTA: CAJAMAR (SP) → BELO HORIZONTE (MG) • BR-381',
+        driver: 'Volvo FH 540 • Condutor: Roberto S. (Score 99.5)',
+        lock: '🔒 TRAVA 5ª RODA ATIVA',
+        temp: '+21.0 °C',
+        hum: '42%',
+        speed: '78 km/h',
+        eta: '04h 45m',
+        log: '[16:07:30] Escolta eletrônica & Isca RF redundante operantes • Carga Eletrônicos.'
+      },
+      {
+        route: 'ROTA AÉREA: GUARULHOS (GRU) → RECIFE (REC)',
+        driver: 'Boeing 737-800BCF Cargo • Voo VLX-904',
+        lock: '✈️ EM VOO DE CRUZEIRO',
+        temp: '+5.0 °C',
+        hum: '45%',
+        speed: '840 km/h',
+        eta: '01h 52m',
+        log: '[16:09:00] Contêiner Envirotrainer ativo no porão principal • Pouso estimado às 18:00.'
+      }
+    ];
+
+    window.selectTelemetryVehicle = function(idx) {
+      [0, 1, 2].forEach(i => {
+        const btn = document.getElementById(`telem-btn-${i}`);
+        if (i === idx) {
+          btn.className = 'py-2 px-3 rounded-xl bg-veloxOrange text-white font-bold text-left';
+        } else {
+          btn.className = 'py-2 px-3 rounded-xl bg-navyDark border border-white/10 text-slate-300 hover:border-white/30 text-left';
+        }
+      });
+
+      const v = TELEMETRY_VEHICLES[idx];
+      document.getElementById('telem-route').textContent = v.route;
+      document.getElementById('telem-driver').textContent = v.driver;
+      document.getElementById('telem-lock').textContent = v.lock;
+      document.getElementById('telem-temp').textContent = v.temp;
+      document.getElementById('telem-hum').textContent = v.hum;
+      document.getElementById('telem-speed').textContent = v.speed;
+      document.getElementById('telem-eta').textContent = v.eta;
+      document.getElementById('telem-log-line').textContent = v.log;
+    };
+
+    // 5. MAPA DE ROTAS E CENTROS DE DISTRIBUIÇÃO (SP, RJ, CURITIBA, BRASÍLIA, RECIFE)
+    const HUBS_DATA = {
+      sp: {
+        code: 'HUB MATRIZ SUDESTE I • GUARULHOS & CAJAMAR (SP)',
+        title: 'Centro de Distribuição Automatizado & Hub Aéreo GRU',
+        address: 'Rod. Presidente Dutra, KM 214 — Guarulhos/SP (A 8 min do TECA GRU)',
+        area: '95.000 m² de área construída',
+        docks: '84 Docas com niveladoras hidráulicas e Sorter Cross-Belt',
+        tempZone: 'Câmaras Frias ANVISA (+2°C a +8°C e +15°C a +25°C)',
+        routes: 'Saídas de hora em hora para Grande SP, Campinas, Vale do Paraíba, RJ, MG, Sul e conexões aéreas nacionais.',
+        img: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1000&q=85'
+      },
+      rj: {
+        code: 'HUB SUDESTE II • DUQUE DE CAXIAS (RJ)',
+        title: 'Terminal Logístico Rio & Arco Metropolitano',
+        address: 'Rod. Washington Luíz, KM 110 — Duque de Caxias/RJ (Acesso Linha Vermelha e Porto)',
+        area: '38.000 m² Triple-A',
+        docks: '36 Docas de Cross-Docking e Fulfillment',
+        tempZone: 'Armazenagem Geral, Farma & Químicos SASSMAQ',
+        routes: 'Atendimento Same-Day para Capital RJ, Niterói, Baixada, Região dos Lagos e conexão expressa SP-RJ.',
+        img: 'https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1000&q=85'
+      },
+      cwb: {
+        code: 'HUB REGIONAL SUL • CURITIBA (PR)',
+        title: 'Centro de Distribuição Cidade Industrial (CIC)',
+        address: 'Contorno Sul, KM 598 — CIC, Curitiba/PR (Eixo BR-116 / BR-277)',
+        area: '42.000 m² com pátio blindado',
+        docks: '40 Docas com expedição automatizada',
+        tempZone: 'Climatizado Industrial, Automotivo & E-commerce',
+        routes: 'Distribuição expressa em 24h para Paraná, Santa Catarina (Joinville, Itajaí, Florianópolis) e Rio Grande do Sul.',
+        img: 'https://images.unsplash.com/photo-1565891741441-64926e441838?auto=format&fit=crop&w=1000&q=85'
+      },
+      bsb: {
+        code: 'HUB CENTRO-OESTE • BRASÍLIA (DF)',
+        title: 'Terminal Multimodal SIA / Parque Industrial',
+        address: 'SIA Trecho 4, Lote 1120 — Brasília/DF (Conexão BR-060 e Aeroporto BSB)',
+        area: '25.000 m²',
+        docks: '24 Docas de alta rotação',
+        tempZone: 'Especializado em Hospitalar, Governo, Agro & Varejo',
+        routes: 'Ponte rodoviária e aérea para Goiânia, Anápolis (Porto Seco), Cuiabá, Campo Grande e Palmas.',
+        img: 'https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1000&q=85'
+      },
+      rec: {
+        code: 'HUB REGIONAL NORDESTE • RECIFE / SUAPE (PE)',
+        title: 'Complexo Logístico Jaboatão & Porto de Suape',
+        address: 'BR-101 Sul, KM 82 — Jaboatão dos Guararapes/PE',
+        area: '40.000 m² com certificação LEED',
+        docks: '38 Docas com sistema WMS Voice-Picking',
+        tempZone: 'Cadeia Fria validada para o clima do Nordeste',
+        routes: 'Abastecimento diário para PE, PB, RN, CE, AL, SE, BA, MA e PI com frota própria rastreada.',
+        img: 'https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=1000&q=85'
+      }
+    };
+
+    window.selectHub = function(hubKey) {
+      document.querySelectorAll('.hub-btn').forEach(btn => {
+        if (btn.getAttribute('data-hub') === hubKey) {
+          btn.className = 'hub-btn px-4 py-2.5 rounded-xl font-mono text-xs font-bold bg-veloxOrange text-white shadow-orange-glow transition-all';
+        } else {
+          btn.className = 'hub-btn px-4 py-2.5 rounded-xl font-mono text-xs font-bold bg-graphite text-slate-300 border border-white/10 hover:border-veloxOrange transition-all';
+        }
+      });
+
+      const h = HUBS_DATA[hubKey];
+      document.getElementById('hub-detail-panel').innerHTML = `
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 space-y-4">
+            <span class="px-3 py-1 rounded-full bg-veloxOrange/15 border border-veloxOrange/40 font-mono text-xs text-veloxAmber font-bold">
+              ${h.code}
+            </span>
+            <h3 class="font-heading text-2xl sm:text-3xl font-black text-white">${h.title}</h3>
+            <p class="font-mono text-xs text-slate-400">📍 ${h.address}</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+              <div class="p-3.5 rounded-2xl bg-navyDark border border-white/10">
+                <span class="text-[10px] font-mono text-slate-400 block">CAPACIDADE</span>
+                <strong class="text-sm font-bold text-white">${h.area}</strong>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-navyDark border border-white/10">
+                <span class="text-[10px] font-mono text-slate-400 block">EXPEDIÇÃO</span>
+                <strong class="text-sm font-bold text-veloxAmber">${h.docks}</strong>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-navyDark border border-white/10">
+                <span class="text-[10px] font-mono text-slate-400 block">CLIMATIZAÇÃO</span>
+                <strong class="text-sm font-bold text-cyan-400">${h.tempZone}</strong>
+              </div>
+            </div>
+
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed pt-1">
+              <strong class="text-white">Malha e Rotas Atendidas:</strong> ${h.routes}
+            </p>
+          </div>
+
+          <div class="lg:col-span-5">
+            <div class="rounded-2xl overflow-hidden border border-white/15 aspect-[16/10] relative">
+              <img src="${h.img}" alt="${h.title}" class="w-full h-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-navyDark/80 via-transparent to-transparent"></div>
+              <span class="absolute bottom-3 left-3 px-3 py-1 rounded-lg bg-navyDark/90 border border-white/10 font-mono text-[11px] text-emerald-400">
+                ● Operação 24/7 • Segurança Armada & CFTV IA
+              </span>
+            </div>
+          </div>
+        </div>
+      `;
+    };
+
+    // 6. FORMULÁRIO B2B E MODAIS
+    window.prefillB2BModal = function(serviceText) {
+      const routeInput = document.getElementById('b2b-route');
+      if (routeInput) routeInput.value = `${serviceText} — Guarulhos/SP → Destino Nacional`;
+    };
+
+    window.handleB2BQuoteSubmit = function(e) {
+      e.preventDefault();
+      const company = document.getElementById('b2b-company').value.trim();
+      const nfVal = Number(document.getElementById('b2b-nf').value).toLocaleString('pt-BR');
+      const weight = document.getElementById('b2b-weight').value;
+      const dims = document.getElementById('b2b-dims').value;
+      const route = document.getElementById('b2b-route').value;
+      const ins = document.getElementById('b2b-insurance').value;
+
+      const protocol = '#VLX-B2B-' + Math.floor(1000 + Math.random() * 9000);
+      document.getElementById('b2b-protocol').textContent = protocol;
+      document.getElementById('b2b-summary-text').textContent =
+        `Embarcador: ${company} | NF-e Declarada: R$ ${nfVal} (${weight} kg • ${dims}) | Rota: ${route} | Seguro: ${ins}. Nossa Mesa de Pricing corporativo enviou a tabela formal e o link de agendamento de coleta para seu contato.`;
+      document.getElementById('b2b-quote-result').classList.remove('hidden');
+    };
+
+    window.openClientAreaModal = function() {
+      const m = document.getElementById('client-area-modal');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    };
+
+    window.closeClientAreaModal = function() {
+      const m = document.getElementById('client-area-modal');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    };
+
+    window.handleClientLogin = function(e) {
+      e.preventDefault();
+      document.getElementById('client-login-feedback').classList.remove('hidden');
+      setTimeout(() => {
+        closeClientAreaModal();
+        document.getElementById('client-login-feedback').classList.add('hidden');
+      }, 1500);
+    };
+
+    window.toggleMobileMenu = function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    };
+
+    // Inicialização
+    document.addEventListener('DOMContentLoaded', () => {
+      rastrear();
+      calcFrete();
+      selectHub('sp');
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
   </script>
+
   <!-- Vercel Web Analytics & Speed Insights -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
