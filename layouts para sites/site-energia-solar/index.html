@@ -1,81 +1,1475 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth dark">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HELIOS SOLAR — Engenharia Fotovoltaica & Usinas Solares</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <style>body { background-color: #06141F; color: #F8FAFC; font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HELIOS SOLAR — Energia Solar Fotovoltaica & Armazenamento Inteligente</title>
+  <meta name="description" content="Independência energética e economia de até 95% na conta de luz. Projetos fotovoltaicos residenciais, comerciais e agronegócio com módulos N-Type Tier-1 Bloomberg e baterias de lítio." />
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="shortcut icon" href="/favicon.ico" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Outfit, Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            spaceDeep: '#0b132b',
+            spaceCard: '#111d3d',
+            spaceSurface: '#162447',
+            emeraldEco: '#10b981',
+            emeraldLight: '#34d399',
+            solarAmber: '#f59e0b',
+            solarLight: '#fbbf24'
+          },
+          fontFamily: {
+            display: ['"Outfit"', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', '"Inter"', 'sans-serif'],
+            mono: ['"Inter"', 'monospace']
+          },
+          boxShadow: {
+            'emerald-glow': '0 0 35px -5px rgba(16, 185, 129, 0.35)',
+            'solar-glow': '0 0 35px -5px rgba(245, 158, 11, 0.35)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+    body {
+      background-color: #0b132b;
+      color: #F8FAFC;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* Glassmorphism & Illuminated Borders */
+    .glass-panel {
+      background: linear-gradient(145deg, rgba(17, 29, 61, 0.82) 0%, rgba(11, 19, 43, 0.92) 100%);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+    }
+    .glass-card-hover {
+      background: linear-gradient(145deg, rgba(22, 36, 71, 0.72) 0%, rgba(11, 19, 43, 0.90) 100%);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card-hover:hover {
+      border-color: rgba(16, 185, 129, 0.45);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -15px rgba(16, 185, 129, 0.22);
+    }
+    .glass-card-solar:hover {
+      border-color: rgba(245, 158, 11, 0.5);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -15px rgba(245, 158, 11, 0.22);
+    }
+
+    /* Subtle Clean Energy Grid */
+    .bg-solar-grid {
+      background-size: 52px 52px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    }
+
+    /* Custom Range Slider */
+    input[type=range].solar-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 8px;
+      background: #070c1d;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      outline: none;
+    }
+    input[type=range].solar-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f59e0b 0%, #10b981 100%);
+      border: 3px solid #0b132b;
+      box-shadow: 0 0 18px rgba(245, 158, 11, 0.85);
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+    input[type=range].solar-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0b132b;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e3163;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #10b981;
+    }
+  </style>
 </head>
-<body class="min-h-screen antialiased">
-  <header class="border-b border-white/10 bg-[#06141F]/90 sticky top-0 z-40">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <span class="font-extrabold text-xl tracking-tight">☀️ HELIOS <span class="text-amber-400">SOLAR</span></span>
-      <span class="text-xs bg-amber-400/15 text-amber-300 px-3.5 py-1 rounded-full font-semibold">Painéis Tier-1 Bloomberg • Garantia de 25 Anos</span>
+
+<body class="min-h-screen antialiased selection:bg-emeraldEco selection:text-spaceDeep relative">
+
+  <!-- Ambient Clean Tech Glows -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute -top-40 -left-40 w-[550px] h-[550px] rounded-full bg-emeraldEco/15 blur-[150px]"></div>
+    <div class="absolute top-1/4 -right-40 w-[520px] h-[520px] rounded-full bg-solarAmber/15 blur-[150px]"></div>
+    <div class="absolute bottom-10 left-1/3 w-[600px] h-[400px] rounded-full bg-emeraldEco/10 blur-[160px]"></div>
+    <div class="absolute inset-0 bg-solar-grid"></div>
+  </div>
+
+  <!-- TOPBAR DE AUTORIDADE E TELEMETRIA -->
+  <div class="relative z-50 bg-[#070d1f] border-b border-white/10 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emeraldEco/15 border border-emeraldEco/30 text-emeraldLight font-semibold">
+          <span class="w-2 h-2 rounded-full bg-emeraldEco animate-ping"></span>
+          <span class="w-2 h-2 rounded-full bg-emeraldEco -ml-3.5"></span>
+          +12.000 Projetos Homologados
+        </span>
+        <span class="hidden md:inline text-slate-300">
+          Painéis Tier-1 Bloomberg • Garantia de Performance Linear de 25 Anos
+        </span>
+      </div>
+      <div class="flex items-center gap-5 ml-auto text-slate-300">
+        <span class="hidden sm:inline-flex items-center gap-1.5 text-solarLight font-medium">
+          <i data-lucide="zap" class="w-3.5 h-3.5"></i>
+          Geração Clientes Hoje: <strong class="text-white">418.4 MWh</strong>
+        </span>
+        <a href="#cotacao-rapida" class="text-emeraldLight hover:underline font-semibold flex items-center gap-1">
+          <span>Atendimento Engenharia</span>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. HEADER FIXO COM NAVEGAÇÃO SUAVE E CTA -->
+  <header class="sticky top-0 z-40 bg-[#0b132b]/85 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Logo Helios Solar -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-solarAmber via-solarLight to-emeraldEco p-[1px] shadow-solar-glow">
+          <div class="w-full h-full bg-[#0b132b] rounded-[15px] flex items-center justify-center">
+            <i data-lucide="sun" class="w-6 h-6 text-solarAmber group-hover:rotate-45 transition-transform duration-500"></i>
+          </div>
+        </div>
+        <div>
+          <span class="font-heading font-extrabold text-xl sm:text-2xl tracking-tight text-white">
+            HELIOS <span class="text-solarAmber">SOLAR</span>
+          </span>
+          <span class="block text-[10px] uppercase tracking-[0.2em] text-emeraldLight font-semibold">
+            Smart Energy & Storage
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-200">
+        <a href="#simulador" class="hover:text-solarAmber transition-colors flex items-center gap-1.5">
+          <i data-lucide="calculator" class="w-4 h-4 text-emeraldEco"></i>
+          Calculadora Solar
+        </a>
+        <a href="#solucoes" class="hover:text-solarAmber transition-colors">Soluções</a>
+        <a href="#tecnologia" class="hover:text-solarAmber transition-colors">Tecnologia N-Type</a>
+        <a href="#projetos" class="hover:text-solarAmber transition-colors">Projetos</a>
+        <a href="#como-funciona" class="hover:text-solarAmber transition-colors">Passo a Passo</a>
+        <a href="#depoimentos" class="hover:text-solarAmber transition-colors">Clientes</a>
+        <a href="#faq" class="hover:text-solarAmber transition-colors">FAQ</a>
+      </nav>
+
+      <!-- CTA Button & Mobile Menu Trigger -->
+      <div class="flex items-center gap-3">
+        <a href="#simulador" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-emeraldEco to-emerald-500 hover:from-emerald-400 hover:to-emeraldEco text-spaceDeep font-heading font-bold text-xs sm:text-sm uppercase tracking-wider shadow-emerald-glow transition-all">
+          <span>Simular Economia</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+
+        <button onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-xl bg-white/5 border border-white/10 text-slate-200 hover:text-solarAmber" aria-label="Menu">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-[#0f1a38] border-t border-white/10 px-6 py-5 space-y-3 text-sm font-medium">
+      <a href="#simulador" onclick="toggleMobileMenu()" class="block py-2 text-solarAmber font-bold">⚡ Calculadora de Economia Solar</a>
+      <a href="#solucoes" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-emeraldLight">Soluções (Residencial, Comercial & Agro)</a>
+      <a href="#tecnologia" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-emeraldLight">Tecnologia Bifacial & Baterias LFP</a>
+      <a href="#projetos" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-emeraldLight">Casos de Sucesso e Usinas</a>
+      <a href="#como-funciona" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-emeraldLight">Passo a Passo (Instalação 48h)</a>
+      <a href="#depoimentos" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-emeraldLight">Faturas Antes / Depois</a>
+      <a href="#faq" onclick="toggleMobileMenu()" class="block py-2 text-slate-200 hover:text-emeraldLight">Perguntas Frequentes</a>
+      <a href="#cotacao-rapida" onclick="toggleMobileMenu()" class="block py-3 text-center rounded-xl bg-solarAmber text-spaceDeep font-bold uppercase tracking-wider">Solicitar Orçamento Gratuito</a>
     </div>
   </header>
 
-  <main class="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-    <div class="lg:col-span-6">
-      <span class="text-xs uppercase tracking-widest text-amber-400 font-bold">Homologação Completa na Concessionária</span>
-      <h1 class="text-4xl sm:text-6xl font-extrabold mt-3 leading-tight">Reduza sua conta de energia em até <span class="text-amber-400">95%.</span></h1>
-      <p class="text-slate-300 mt-4 leading-relaxed">Projetamos e instalamos sistemas fotovoltaicos residenciais, comerciais e usinas de investimento com monitoramento pelo celular.</p>
-      <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=900&q=80" class="w-full h-60 object-cover rounded-2xl mt-6 border border-white/10" alt="Painéis Solares">
+  <!-- 2. HERO SECTION DE ALTO IMPACTO -->
+  <section class="relative z-10 pt-10 pb-20 lg:pt-16 lg:pb-24 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Column: Copy, Badges & CTAs -->
+        <div class="lg:col-span-7 space-y-7">
+          <div class="inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 rounded-full glass-panel border-emeraldEco/40">
+            <span class="px-2.5 py-0.5 rounded-full bg-solarAmber/20 text-solarLight text-xs font-bold uppercase tracking-wider">
+              Tier-1 Bloomberg NEF
+            </span>
+            <span class="text-xs text-slate-200 font-medium">
+              Engenharia Própria • Homologação Completa na Concessionária
+            </span>
+          </div>
+
+          <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08] text-white">
+            Independência energética e economia de até <span class="bg-gradient-to-r from-solarAmber via-solarLight to-emeraldLight bg-clip-text text-transparent">95% na conta de luz.</span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl">
+            Projetamos, homologamos e instalamos usinas fotovoltaicas de alta performance e sistemas de armazenamento inteligente em baterias de lítio para residências de alto padrão, indústrias e agronegócio.
+          </p>
+
+          <!-- Main Hero Buttons -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-1">
+            <a href="#simulador" class="inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl bg-gradient-to-r from-solarAmber to-amber-400 hover:from-amber-400 hover:to-solarAmber text-slate-950 font-heading font-extrabold text-base shadow-solar-glow hover:scale-[1.01] transition-all">
+              <span>Simular Minha Economia Agora</span>
+              <i data-lucide="sliders" class="w-5 h-5"></i>
+            </a>
+            <a href="#projetos" class="inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-2xl glass-panel hover:border-emeraldEco/50 text-white font-semibold text-sm transition-all">
+              <i data-lucide="play-circle" class="w-5 h-5 text-emeraldEco"></i>
+              <span>Ver Usinas Instaladas</span>
+            </a>
+          </div>
+
+          <!-- Authority Badges Grid -->
+          <div class="pt-6 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div class="glass-panel p-4 rounded-2xl border-l-2 border-l-emeraldEco">
+              <div class="font-heading text-2xl sm:text-3xl font-extrabold text-white">+12.000</div>
+              <p class="text-xs text-slate-400 mt-1">Projetos instalados e conectados no Brasil</p>
+            </div>
+            <div class="glass-panel p-4 rounded-2xl border-l-2 border-l-solarAmber">
+              <div class="font-heading text-2xl sm:text-3xl font-extrabold text-solarAmber">Tier-1</div>
+              <p class="text-xs text-slate-400 mt-1">Painéis N-Type certificados Bloomberg</p>
+            </div>
+            <div class="glass-panel p-4 rounded-2xl border-l-2 border-l-emeraldLight">
+              <div class="font-heading text-2xl sm:text-3xl font-extrabold text-emeraldLight">25 Anos</div>
+              <p class="text-xs text-slate-400 mt-1">Garantia de geração linear de fábrica</p>
+            </div>
+            <div class="glass-panel p-4 rounded-2xl border-l-2 border-l-sky-400">
+              <div class="font-heading text-2xl sm:text-3xl font-extrabold text-white">Até 48h</div>
+              <p class="text-xs text-slate-400 mt-1">Instalação limpa com equipe NR-35 própria</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: HD Solar Image + Live Telemetry HUD -->
+        <div class="lg:col-span-5">
+          <div class="relative rounded-3xl p-2.5 glass-panel border border-emeraldEco/30 shadow-emerald-glow">
+            <!-- Top Live Status -->
+            <div class="flex items-center justify-between px-4 py-2.5 bg-[#070d1f]/90 rounded-t-2xl border-b border-white/10 text-xs">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emeraldEco animate-pulse"></span>
+                <span class="font-semibold text-slate-200">HELIOS CLOUD OS // TELEMETRIA EM TEMPO REAL</span>
+              </div>
+              <span class="text-emeraldLight font-mono text-[11px] bg-emeraldEco/15 px-2 py-0.5 rounded border border-emeraldEco/30">
+                PR 98.4%
+              </span>
+            </div>
+
+            <!-- Solar Plant Image -->
+            <div class="relative rounded-b-2xl overflow-hidden aspect-[4/4.2]">
+              <img 
+                src="https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1200&q=85" 
+                alt="Usina Solar Fotovoltaica Helios Solar" 
+                class="w-full h-full object-cover object-center brightness-95 contrast-105"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0b132b] via-[#0b132b]/35 to-transparent"></div>
+
+              <!-- Floating Badge Top -->
+              <div class="absolute top-4 left-4 right-4 flex justify-between items-center">
+                <div class="px-3.5 py-1.5 rounded-xl bg-[#0b132b]/85 backdrop-blur-md border border-white/15 text-xs text-slate-200 flex items-center gap-2">
+                  <i data-lucide="battery-charging" class="w-4 h-4 text-emeraldEco"></i>
+                  <span>Bateria LFP Backup: <strong class="text-emeraldLight">100% Carregada</strong></span>
+                </div>
+              </div>
+
+              <!-- Floating Telemetry Card Bottom -->
+              <div class="absolute bottom-4 left-4 right-4 p-5 rounded-2xl bg-[#0b132b]/95 backdrop-blur-xl border border-white/15 space-y-3">
+                <div class="flex items-center justify-between text-xs">
+                  <span class="text-solarAmber font-bold uppercase tracking-wider">USINA RESIDENCIAL / COMERCIAL</span>
+                  <span class="text-emeraldLight font-semibold">Autossuficiência: 96%</span>
+                </div>
+                <div class="grid grid-cols-3 gap-3 pt-2 border-t border-white/10">
+                  <div>
+                    <span class="text-[11px] text-slate-400 block">Fatura Antes</span>
+                    <span class="text-sm font-bold text-rose-400 line-through">R$ 2.480/mês</span>
+                  </div>
+                  <div>
+                    <span class="text-[11px] text-slate-400 block">Fatura Helios</span>
+                    <span class="text-base font-extrabold text-emeraldLight">R$ 124/mês</span>
+                  </div>
+                  <div>
+                    <span class="text-[11px] text-slate-400 block">Payback Real</span>
+                    <span class="text-sm font-bold text-solarAmber">2,8 Anos</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
+  </section>
 
-    <!-- Calculadora Solar -->
-    <div class="lg:col-span-6 bg-[#0C2133] border border-amber-400/30 rounded-3xl p-8 shadow-2xl">
-      <h2 class="text-2xl font-extrabold text-white mb-1">Calculadora de Dimensionamento Solar</h2>
-      <p class="text-xs text-slate-300 mb-6">Informe o valor médio mensal da sua conta de luz:</p>
-
-      <div>
-        <div class="flex justify-between items-baseline mb-2">
-          <span class="text-xs text-slate-300">Conta de Luz Atual</span>
-          <strong id="luz-val" class="text-3xl font-extrabold text-amber-400">R$ 800 /mês</strong>
-        </div>
-        <input id="luz-slider" type="range" min="300" max="6000" step="100" value="800" class="w-full accent-amber-400">
+  <!-- 3. SIMULADOR / CALCULADORA SOLAR INTERATIVA -->
+  <section id="simulador" class="relative z-10 py-20 bg-[#080f23]/90 border-y border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-400/15 border border-amber-400/30 text-amber-300 text-xs font-bold uppercase tracking-widest">
+          <i data-lucide="sun-medium" class="w-4 h-4"></i>
+          Dimensionamento Fotovoltaico Instantâneo
+        </span>
+        <h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-white mt-3">
+          Calculadora de Economia & Retorno Solar
+        </h2>
+        <p class="text-slate-300 mt-3 text-sm sm:text-base">
+          Deslize o controle abaixo com o valor médio da sua fatura mensal de energia e descubra a potência ideal do sistema, o tempo de retorno (payback) e o impacto ambiental.
+        </p>
       </div>
 
-      <div class="grid grid-cols-2 gap-4 mt-6">
-        <div class="p-4 rounded-xl bg-black/30 border border-white/10">
-          <span class="text-xs text-slate-400 block">Módulos Solares (585W)</span>
-          <strong id="placas-qtd" class="text-lg font-extrabold text-white">10 Placas</strong>
-        </div>
-        <div class="p-4 rounded-xl bg-black/30 border border-white/10">
-          <span class="text-xs text-slate-400 block">Potência do Sistema</span>
-          <strong id="potencia-kwp" class="text-lg font-extrabold text-amber-300">5.85 kWp</strong>
-        </div>
-      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- Left Panel: Controls (6 cols) -->
+        <div class="lg:col-span-6 glass-panel rounded-3xl p-6 sm:p-8 border border-amber-400/30 flex flex-col justify-between space-y-7">
+          <div class="space-y-6">
+            <!-- Step 1: Property Type -->
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-slate-400 font-semibold mb-3">
+                1. Selecione o Perfil da Unidade Consumidora
+              </label>
+              <div class="grid grid-cols-3 gap-2.5" id="calc-segment-btns">
+                <button type="button" onclick="setSolarSegment('residencial', 800)" data-seg="residencial" class="seg-btn p-3.5 rounded-2xl border text-left transition-all bg-emeraldEco/15 border-emeraldEco text-white">
+                  <i data-lucide="home" class="w-5 h-5 text-emeraldLight mb-1"></i>
+                  <div class="font-heading font-bold text-sm">Residencial</div>
+                  <span class="text-[11px] text-slate-400 block">Casas & Condomínios</span>
+                </button>
+                <button type="button" onclick="setSolarSegment('comercial', 3200)" data-seg="comercial" class="seg-btn p-3.5 rounded-2xl border text-left transition-all bg-spaceDeep/60 border-white/10 text-slate-300 hover:border-white/30">
+                  <i data-lucide="building-2" class="w-5 h-5 text-solarAmber mb-1"></i>
+                  <div class="font-heading font-bold text-sm">Comercial</div>
+                  <span class="text-[11px] text-slate-400 block">Empresas & Indústrias</span>
+                </button>
+                <button type="button" onclick="setSolarSegment('agro', 6500)" data-seg="agro" class="seg-btn p-3.5 rounded-2xl border text-left transition-all bg-spaceDeep/60 border-white/10 text-slate-300 hover:border-white/30">
+                  <i data-lucide="sprout" class="w-5 h-5 text-emeraldLight mb-1"></i>
+                  <div class="font-heading font-bold text-sm">Agronegócio</div>
+                  <span class="text-[11px] text-slate-400 block">Fazendas & Pivôs</span>
+                </button>
+              </div>
+            </div>
 
-      <div class="mt-4 p-4 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex justify-between items-center">
-        <span class="text-xs text-emerald-200">Economia Acumulada Anual:</span>
-        <strong id="solar-save" class="text-2xl font-extrabold text-emerald-400">R$ 9.120 /ano</strong>
-      </div>
+            <!-- Step 2: Monthly Bill Slider -->
+            <div class="space-y-3 pt-2">
+              <div class="flex justify-between items-baseline">
+                <label for="luz-slider" class="text-xs uppercase tracking-wider text-slate-300 font-semibold">
+                  2. Conta de Luz Atual (Média Mensal)
+                </label>
+                <strong id="luz-val" class="font-heading text-3xl sm:text-4xl font-extrabold text-solarAmber">
+                  R$ 800 /mês
+                </strong>
+              </div>
 
-      <button onclick="alert('Estudo fotovoltaico gratuito gerado! Enviaremos a proposta técnica por WhatsApp.')" class="mt-6 w-full py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs uppercase tracking-widest transition">
-        Receber Orçamento do Kit Solar →
-      </button>
+              <input 
+                id="luz-slider" 
+                type="range" 
+                min="300" 
+                max="15000" 
+                step="100" 
+                value="800" 
+                class="solar-slider"
+              />
+
+              <div class="flex justify-between text-[11px] text-slate-400 font-medium pt-1">
+                <span>R$ 300</span>
+                <span>R$ 2.500</span>
+                <span>R$ 5.000</span>
+                <span>R$ 10.000</span>
+                <span>R$ 15.000+</span>
+              </div>
+            </div>
+
+            <!-- Step 3: Battery Backup Option -->
+            <div class="p-4 rounded-2xl bg-spaceDeep/80 border border-white/10 flex items-center justify-between gap-4">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-emeraldEco/15 border border-emeraldEco/30 flex items-center justify-center text-emeraldLight shrink-0">
+                  <i data-lucide="battery-charging" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <span class="font-heading font-bold text-sm text-white block">Incluir Backup de Bateria LFP (Híbrido)</span>
+                  <span class="text-xs text-slate-400">Proteção contra quedas de rede e uso no horário de ponta</span>
+                </div>
+              </div>
+              <input id="battery-toggle" type="checkbox" onchange="calcSolar()" class="w-5 h-5 accent-emerald-500 rounded cursor-pointer" />
+            </div>
+          </div>
+
+          <!-- Technical Spec Summary Box -->
+          <div class="grid grid-cols-3 gap-3 pt-4 border-t border-white/10">
+            <div class="p-3.5 rounded-xl bg-black/30 border border-white/10">
+              <span class="text-[11px] text-slate-400 block">Módulos N-Type (585W)</span>
+              <strong id="placas-qtd" class="font-heading text-lg sm:text-xl font-extrabold text-white">10 Placas</strong>
+            </div>
+            <div class="p-3.5 rounded-xl bg-black/30 border border-white/10">
+              <span class="text-[11px] text-slate-400 block">Potência do Sistema</span>
+              <strong id="potencia-kwp" class="font-heading text-lg sm:text-xl font-extrabold text-solarLight">5.85 kWp</strong>
+            </div>
+            <div class="p-3.5 rounded-xl bg-black/30 border border-white/10">
+              <span class="text-[11px] text-slate-400 block">Área Estimada</span>
+              <strong id="area-m2" class="font-heading text-lg sm:text-xl font-extrabold text-slate-200">26 m²</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Panel: Real-time Financial & Environmental Outputs (6 cols) -->
+        <div class="lg:col-span-6 glass-panel rounded-3xl p-6 sm:p-8 border border-emeraldEco/40 shadow-emerald-glow flex flex-col justify-between space-y-6">
+          <div>
+            <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-emeraldLight block">ESTUDO DE VIABILIDADE HELIOS</span>
+                <h3 class="font-heading text-2xl font-bold text-white">Retorno Financeiro & Ambiental</h3>
+              </div>
+              <span id="roi-badge" class="px-3 py-1 rounded-full bg-emeraldEco/20 border border-emeraldEco/40 text-emeraldLight text-xs font-bold">
+                Rentabilidade: 34% a.a.
+              </span>
+            </div>
+
+            <!-- Main Savings Highlight -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-5">
+              <div class="p-5 rounded-2xl bg-emeraldEco/15 border border-emeraldEco/35">
+                <span class="text-xs text-emerald-200 font-medium block">Economia Acumulada Anual</span>
+                <strong id="solar-save" class="font-heading text-3xl sm:text-4xl font-extrabold text-emeraldLight mt-1 block">
+                  R$ 9.120 /ano
+                </strong>
+                <span id="new-bill-est" class="text-xs text-slate-300 mt-1 block">
+                  Nova conta estimada: ~R$ 40 /mês
+                </span>
+              </div>
+
+              <div class="p-5 rounded-2xl bg-solarAmber/15 border border-solarAmber/35">
+                <span class="text-xs text-amber-200 font-medium block">Tempo Médio de Payback</span>
+                <strong id="payback-time" class="font-heading text-3xl sm:text-4xl font-extrabold text-solarLight mt-1 block">
+                  2,9 Anos
+                </strong>
+                <span class="text-xs text-slate-300 mt-1 block">
+                  Lucro líquido por +22 anos após retorno
+                </span>
+              </div>
+            </div>
+
+            <!-- 25-Year Wealth & Environmental Metrics -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div class="p-4 rounded-2xl bg-spaceDeep/90 border border-white/10">
+                <div class="flex items-center gap-1.5 text-xs text-slate-400 mb-1">
+                  <i data-lucide="trending-up" class="w-4 h-4 text-solarAmber"></i>
+                  <span>Economia em 25 Anos</span>
+                </div>
+                <strong id="save-25y" class="font-heading text-lg font-extrabold text-white">R$ 284.000</strong>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-spaceDeep/90 border border-white/10">
+                <div class="flex items-center gap-1.5 text-xs text-slate-400 mb-1">
+                  <i data-lucide="cloud-off" class="w-4 h-4 text-emeraldEco"></i>
+                  <span>Redução de CO₂ / ano</span>
+                </div>
+                <strong id="co2-avoided" class="font-heading text-lg font-extrabold text-emeraldLight">4,2 Toneladas</strong>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-spaceDeep/90 border border-white/10">
+                <div class="flex items-center gap-1.5 text-xs text-slate-400 mb-1">
+                  <i data-lucide="trees" class="w-4 h-4 text-emeraldEco"></i>
+                  <span>Árvores Equivalentes</span>
+                </div>
+                <strong id="trees-planted" class="font-heading text-lg font-extrabold text-white">+30 Árvores/ano</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Button transferring data to Quote Form -->
+          <div class="pt-4 border-t border-white/10 space-y-3">
+            <div class="flex items-center justify-between text-xs text-slate-300">
+              <span>✓ Financiamento em até 120x (parcela menor que a conta atual)</span>
+            </div>
+            <button onclick="transferSimulationToQuote()" class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-solarAmber to-amber-400 hover:from-amber-300 hover:to-solarAmber text-slate-950 font-heading font-extrabold text-sm uppercase tracking-wider shadow-solar-glow flex items-center justify-center gap-2 transition-all">
+              <span>Receber Proposta Técnica Deste Kit Solar</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
     </div>
-  </main>
+  </section>
 
+  <!-- 4. SOLUÇÕES ESPECIALIZADAS (ABAS E CARDS PARA RESIDÊNCIAS, EMPRESAS E AGRO) -->
+  <section id="solucoes" class="relative z-10 py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-emeraldLight">Engenharia Customizada por Setor</span>
+          <h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-white mt-2">
+            Soluções Especializadas para Cada Demanda
+          </h2>
+        </div>
+
+        <!-- Interactive Solution Tabs -->
+        <div class="flex flex-wrap gap-2" id="solutions-tab-buttons">
+          <button onclick="switchSolutionTab('res')" data-sol="res" class="sol-tab-btn px-5 py-2.5 rounded-xl text-xs font-heading font-bold uppercase tracking-wider bg-emeraldEco text-spaceDeep shadow-emerald-glow transition-all">
+            Residências & Condomínios
+          </button>
+          <button onclick="switchSolutionTab('com')" data-sol="com" class="sol-tab-btn px-5 py-2.5 rounded-xl text-xs font-heading font-bold uppercase tracking-wider bg-white/5 hover:bg-white/10 text-slate-200 border border-white/10 transition-all">
+            Empresas & Indústrias
+          </button>
+          <button onclick="switchSolutionTab('agro')" data-sol="agro" class="sol-tab-btn px-5 py-2.5 rounded-xl text-xs font-heading font-bold uppercase tracking-wider bg-white/5 hover:bg-white/10 text-slate-200 border border-white/10 transition-all">
+            Agronegócio & Usinas
+          </button>
+        </div>
+      </div>
+
+      <!-- Highlighted Tab Detail Panel -->
+      <div id="solution-detail-panel" class="glass-panel rounded-3xl p-6 sm:p-10 border border-emeraldEco/30 mb-10">
+        <!-- Populated via JS -->
+      </div>
+
+      <!-- 3 Summary Pillar Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass-card-hover p-7 rounded-3xl flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-emeraldEco/15 border border-emeraldEco/30 flex items-center justify-center text-emeraldLight mb-5">
+              <i data-lucide="home" class="w-6 h-6"></i>
+            </div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emeraldLight">Grupo B • Baixa Tensão</span>
+            <h3 class="font-heading text-2xl font-bold text-white mt-1">Residencial Premium & Wallbox EV</h3>
+            <p class="text-sm text-slate-300 mt-3 leading-relaxed">
+              Integração estética com telhados coloniais, fibrocimento, metálicos ou lajes impermeabilizadas. Preparado para recarga de veículos elétricos (Wallbox) e backup contra apagões.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs">
+            <span class="text-slate-400">Payback médio: <strong class="text-white">2,6 a 3,2 anos</strong></span>
+            <a href="#cotacao-rapida" class="text-emeraldLight font-bold hover:underline">Orçar Residência →</a>
+          </div>
+        </div>
+
+        <div class="glass-card-hover glass-card-solar p-7 rounded-3xl flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-solarAmber/15 border border-solarAmber/30 flex items-center justify-center text-solarAmber mb-5">
+              <i data-lucide="factory" class="w-6 h-6"></i>
+            </div>
+            <span class="text-xs font-bold uppercase tracking-wider text-solarAmber">Grupo A & B • Demanda Contratada</span>
+            <h3 class="font-heading text-2xl font-bold text-white mt-1">Comércio, Galpões & Indústrias</h3>
+            <p class="text-sm text-slate-300 mt-3 leading-relaxed">
+              Transforme o telhado do seu galpão ou estacionamento (Carport Solar) em um ativo gerador de caixa. Abatimento de consumo em horário de ponta e autoconsumo remoto para redes de lojas.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs">
+            <span class="text-slate-400">Payback médio: <strong class="text-solarLight">2,2 a 2,8 anos</strong></span>
+            <a href="#cotacao-rapida" class="text-solarAmber font-bold hover:underline">Estudo Corporativo →</a>
+          </div>
+        </div>
+
+        <div class="glass-card-hover p-7 rounded-3xl flex flex-col justify-between">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-emeraldEco/15 border border-emeraldEco/30 flex items-center justify-center text-emeraldLight mb-5">
+              <i data-lucide="tractor" class="w-6 h-6"></i>
+            </div>
+            <span class="text-xs font-bold uppercase tracking-wider text-emeraldLight">Produtor Rural • Plano Safra</span>
+            <h3 class="font-heading text-2xl font-bold text-white mt-1">Agronegócio & Irrigação Solar</h3>
+            <p class="text-sm text-slate-300 mt-3 leading-relaxed">
+              Usinas de solo com estruturas em aço galvanizado a fogo e trackers solares para alimentar pivôs de irrigação, silos de secagem, aviários e ordenha com linhas de crédito rural bonificadas.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs">
+            <span class="text-slate-400">Payback médio: <strong class="text-white">2,4 a 3,0 anos</strong></span>
+            <a href="#cotacao-rapida" class="text-emeraldLight font-bold hover:underline">Projeto Rural →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5. TECNOLOGIA E DIFERENCIAIS -->
+  <section id="tecnologia" class="relative z-10 py-24 bg-[#080f23]/80 border-y border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold uppercase tracking-widest text-solarAmber">Hardware Fotovoltaico de Última Geração</span>
+        <h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-white mt-2">
+          Tecnologia Tier-1 que Gera até 28% Mais Energia
+        </h2>
+        <p class="text-slate-300 mt-3 text-sm sm:text-base">
+          Trabalhamos exclusivamente com equipamentos listados no ranking global Bloomberg NEF Tier-1, garantindo eficiência superior mesmo em dias nublados ou altas temperaturas.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Tech 1 -->
+        <div class="glass-card-hover p-6 rounded-3xl space-y-4">
+          <div class="w-12 h-12 rounded-2xl bg-solarAmber/15 border border-solarAmber/30 flex items-center justify-center text-solarAmber">
+            <i data-lucide="layers" class="w-6 h-6"></i>
+          </div>
+          <span class="inline-block px-2.5 py-0.5 rounded-md bg-solarAmber/15 text-solarLight text-[11px] font-bold">
+            EFICIÊNCIA 22.8%
+          </span>
+          <h3 class="font-heading text-xl font-bold text-white">Módulos Bifaciais N-Type TOPCon</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Células tipo N com vidro duplo que captam a radiação solar direta na face frontal e a luz refletida no solo/telhado na face traseira, com baixíssima degradação anual (0,4%/ano).
+          </p>
+        </div>
+
+        <!-- Tech 2 -->
+        <div class="glass-card-hover p-6 rounded-3xl space-y-4">
+          <div class="w-12 h-12 rounded-2xl bg-emeraldEco/15 border border-emeraldEco/30 flex items-center justify-center text-emeraldLight">
+            <i data-lucide="cpu" class="w-6 h-6"></i>
+          </div>
+          <span class="inline-block px-2.5 py-0.5 rounded-md bg-emeraldEco/15 text-emeraldLight text-[11px] font-bold">
+            MPPT INDIVIDUAL
+          </span>
+          <h3 class="font-heading text-xl font-bold text-white">Microinversores & Inversores AFCI</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Otimização independente por painel: se uma folha ou sombra cobrir um módulo, os demais continuam gerando 100%. Proteção ativa contra arco elétrico (AFCI) e desligamento rápido.
+          </p>
+        </div>
+
+        <!-- Tech 3 -->
+        <div class="glass-card-hover p-6 rounded-3xl space-y-4">
+          <div class="w-12 h-12 rounded-2xl bg-sky-500/15 border border-sky-400/30 flex items-center justify-center text-sky-400">
+            <i data-lucide="smartphone" class="w-6 h-6"></i>
+          </div>
+          <span class="inline-block px-2.5 py-0.5 rounded-md bg-sky-500/15 text-sky-300 text-[11px] font-bold">
+            APP IOS & ANDROID
+          </span>
+          <h3 class="font-heading text-xl font-bold text-white">Monitoramento Inteligente via App</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Acompanhe na palma da mão a geração em tempo real, o consumo instantâneo da residência/empresa e a economia acumulada em Reais, com alertas preditivos da nossa central.
+          </p>
+        </div>
+
+        <!-- Tech 4 -->
+        <div class="glass-card-hover p-6 rounded-3xl space-y-4">
+          <div class="w-12 h-12 rounded-2xl bg-emeraldEco/15 border border-emeraldEco/30 flex items-center justify-center text-emeraldLight">
+            <i data-lucide="battery-full" class="w-6 h-6"></i>
+          </div>
+          <span class="inline-block px-2.5 py-0.5 rounded-md bg-emeraldEco/15 text-emeraldLight text-[11px] font-bold">
+            6.000+ CICLOS LFP
+          </span>
+          <h3 class="font-heading text-xl font-bold text-white">Baterias de Lítio LiFePO4 (Backup)</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Armazenamento seguro em Fosfato de Ferro-Lítio com comutação automática em menos de 10 milissegundos. Mantenha ar-condicionado, câmeras, servidores e iluminação ativos sem oscilação.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 6. CASOS DE SUCESSO / PROJETOS EXECUTADOS -->
+  <section id="projetos" class="relative z-10 py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-emeraldLight">Portfólio Auditado de Engenharia</span>
+          <h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-white mt-2">
+            Usinas e Projetos Executados
+          </h2>
+        </div>
+
+        <div class="flex flex-wrap gap-2">
+          <button onclick="filterProjects('all')" data-pfilter="all" class="proj-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-solarAmber text-spaceDeep">
+            Todos (6)
+          </button>
+          <button onclick="filterProjects('Residencial')" data-pfilter="Residencial" class="proj-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white/5 text-slate-300 border border-white/10">
+            Residencial
+          </button>
+          <button onclick="filterProjects('Comercial')" data-pfilter="Comercial" class="proj-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white/5 text-slate-300 border border-white/10">
+            Industrial & Comercial
+          </button>
+          <button onclick="filterProjects('Agronegócio')" data-pfilter="Agronegócio" class="proj-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white/5 text-slate-300 border border-white/10">
+            Usinas & Agro
+          </button>
+        </div>
+      </div>
+
+      <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+        <!-- Populated dynamically via JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 7. PASSO A PASSO DA INSTALAÇÃO (CHAVE NA MÃO / TURNKEY) -->
+  <section id="como-funciona" class="relative z-10 py-24 bg-[#080f23]/90 border-y border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold uppercase tracking-widest text-solarAmber">Jornada Turnkey Sem Burocracia</span>
+        <h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-white mt-2">
+          Do Projeto à Economia em 4 Passos Simples
+        </h2>
+        <p class="text-slate-300 mt-3 text-sm sm:text-base">
+          Cuidamos de 100% do processo técnico, documental e regulatório junto à sua concessionária de energia.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Step 1 -->
+        <div class="glass-panel p-7 rounded-3xl relative border-t-2 border-t-solarAmber">
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-heading text-4xl font-extrabold text-solarAmber/30">01</span>
+            <span class="px-2.5 py-1 rounded-full bg-solarAmber/15 text-solarLight text-xs font-bold">Dia 1 a 3</span>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-white">Engenharia & Mapeamento 3D</h3>
+          <p class="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
+            Levantamento com drone, simulação de sombreamento 3D e emissão da ART pelos nossos engenheiros eletricistas para máxima geração por metro quadrado.
+          </p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="glass-panel p-7 rounded-3xl relative border-t-2 border-t-emeraldEco">
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-heading text-4xl font-extrabold text-emeraldEco/30">02</span>
+            <span class="px-2.5 py-1 rounded-full bg-emeraldEco/15 text-emeraldLight text-xs font-bold">Protocolo Ágil</span>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-white">Homologação na Concessionária</h3>
+          <p class="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
+            Aprovação do parecer de acesso junto à concessionária local (Enel, CPFL, Cemig, Copel, Equatorial, Neoenergia) sem que você precise preencher nenhum formulário.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="glass-panel p-7 rounded-3xl relative border-t-2 border-t-solarAmber">
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-heading text-4xl font-extrabold text-solarAmber/30">03</span>
+            <span class="px-2.5 py-1 rounded-full bg-solarAmber/15 text-solarLight text-xs font-bold">Até 48 Horas</span>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-white">Instalação Limpa em até 48h</h3>
+          <p class="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
+            Execução rápida para sistemas residenciais com equipe própria certificada NR-10 e NR-35, estruturas em alumínio anodizado e vedação estanque garantida.
+          </p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="glass-panel p-7 rounded-3xl relative border-t-2 border-t-emeraldEco">
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-heading text-4xl font-extrabold text-emeraldEco/30">04</span>
+            <span class="px-2.5 py-1 rounded-full bg-emeraldEco/15 text-emeraldLight text-xs font-bold">25 Anos</span>
+          </div>
+          <h3 class="font-heading text-xl font-bold text-white">Pós-Venda & Monitoramento</h3>
+          <p class="text-xs sm:text-sm text-slate-300 mt-2 leading-relaxed">
+            Troca para o medidor bidirecional, ativação do aplicativo Helios OS e acompanhamento contínuo da performance da sua usina pela nossa central de engenharia.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 8. DEPOIMENTOS DE CLIENTES COM FATURAS ANTES / DEPOIS -->
+  <section id="depoimentos" class="relative z-10 py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold uppercase tracking-widest text-emeraldLight">Resultados Comprovados na Fatura</span>
+        <h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-white mt-2">
+          Quem Instalou Helios Solar Recomenda
+        </h2>
+        <p class="text-slate-300 mt-3 text-sm sm:text-base">
+          Nota 4.9/5.0 no Google Reviews com mais de 1.850 avaliações verificadas de clientes residenciais, empresários e produtores rurais.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-7">
+        <!-- Testimonial 1 -->
+        <div class="glass-card-hover p-7 rounded-3xl flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Ricardo Mendes" class="w-12 h-12 rounded-full object-cover border border-emeraldEco" />
+                <div>
+                  <h4 class="font-heading font-bold text-white text-base">Ricardo Mendes</h4>
+                  <span class="text-xs text-slate-400">Condomínio Alphaville • Campinas, SP</span>
+                </div>
+              </div>
+              <span class="text-solarAmber text-sm font-bold">★★★★★</span>
+            </div>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              “Instalamos 16 módulos N-Type com carregador para nosso carro elétrico e bateria de backup. A instalação levou menos de dois dias e o acabamento no telhado ficou impecável.”
+            </p>
+          </div>
+
+          <!-- Before/After Invoice Card -->
+          <div class="p-4 rounded-2xl bg-[#070d1f] border border-emeraldEco/30">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 block mb-2">COMPARATIVO AUDITADO DE FATURA (CPFL)</span>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="p-2.5 rounded-xl bg-rose-500/10 border border-rose-500/25">
+                <span class="text-[11px] text-rose-300 block">Fatura Antes</span>
+                <strong class="font-heading text-lg text-rose-400 line-through">R$ 1.490,00</strong>
+              </div>
+              <div class="p-2.5 rounded-xl bg-emeraldEco/15 border border-emeraldEco/35">
+                <span class="text-[11px] text-emerald-200 block">Fatura Depois</span>
+                <strong class="font-heading text-lg text-emeraldLight">R$ 92,40</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="glass-card-hover p-7 rounded-3xl flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80" alt="Fernanda Albuquerque" class="w-12 h-12 rounded-full object-cover border border-solarAmber" />
+                <div>
+                  <h4 class="font-heading font-bold text-white text-base">Fernanda Albuquerque</h4>
+                  <span class="text-xs text-slate-400">Rede de Supermercados • Uberlândia, MG</span>
+                </div>
+              </div>
+              <span class="text-solarAmber text-sm font-bold">★★★★★</span>
+            </div>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              “Nossa câmara fria consumia uma fortuna todos os meses. A Helios projetou uma usina de 75 kWp e a economia mensal supera com folga a parcela do financiamento bancário.”
+            </p>
+          </div>
+
+          <!-- Before/After Invoice Card -->
+          <div class="p-4 rounded-2xl bg-[#070d1f] border border-solarAmber/30">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 block mb-2">COMPARATIVO AUDITADO DE FATURA (CEMIG)</span>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="p-2.5 rounded-xl bg-rose-500/10 border border-rose-500/25">
+                <span class="text-[11px] text-rose-300 block">Fatura Antes</span>
+                <strong class="font-heading text-lg text-rose-400 line-through">R$ 9.850,00</strong>
+              </div>
+              <div class="p-2.5 rounded-xl bg-emeraldEco/15 border border-emeraldEco/35">
+                <span class="text-[11px] text-emerald-200 block">Fatura Depois</span>
+                <strong class="font-heading text-lg text-emeraldLight">R$ 540,00</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="glass-card-hover p-7 rounded-3xl flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="Eng. Gustavo Silveira" class="w-12 h-12 rounded-full object-cover border border-emeraldEco" />
+                <div>
+                  <h4 class="font-heading font-bold text-white text-base">Gustavo Silveira</h4>
+                  <span class="text-xs text-slate-400">Fazenda Santa Helena • Rio Verde, GO</span>
+                </div>
+              </div>
+              <span class="text-solarAmber text-sm font-bold">★★★★★</span>
+            </div>
+            <p class="text-sm text-slate-300 leading-relaxed">
+              “Substituímos parte do custo com diesel e energia da rede por uma usina de solo bifacial da Helios. O monitoramento por celular nos dá controle total da produção da fazenda.”
+            </p>
+          </div>
+
+          <!-- Before/After Invoice Card -->
+          <div class="p-4 rounded-2xl bg-[#070d1f] border border-emeraldEco/30">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 block mb-2">COMPARATIVO AUDITADO DE FATURA (EQUATORIAL)</span>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="p-2.5 rounded-xl bg-rose-500/10 border border-rose-500/25">
+                <span class="text-[11px] text-rose-300 block">Fatura Antes</span>
+                <strong class="font-heading text-lg text-rose-400 line-through">R$ 16.400,00</strong>
+              </div>
+              <div class="p-2.5 rounded-xl bg-emeraldEco/15 border border-emeraldEco/35">
+                <span class="text-[11px] text-emerald-200 block">Fatura Depois</span>
+                <strong class="font-heading text-lg text-emeraldLight">R$ 890,00</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 9. FAQ INTERATIVO EM ACCORDION -->
+  <section id="faq" class="relative z-10 py-24 bg-[#080f23]/90 border-y border-white/10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-12">
+        <span class="text-xs font-bold uppercase tracking-widest text-solarAmber">Tire Suas Dúvidas Técnicas e Regulatórias</span>
+        <h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-white mt-2">
+          Perguntas Frequentes (FAQ)
+        </h2>
+      </div>
+
+      <div id="faq-accordion" class="space-y-4">
+        <!-- Populated via JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 10. FORMULÁRIO DE COTAÇÃO RÁPIDA -->
+  <section id="cotacao-rapida" class="relative z-10 py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="glass-panel rounded-3xl p-6 sm:p-12 border border-emeraldEco/40 shadow-emerald-glow">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          <!-- Left Copy & Guarantees -->
+          <div class="lg:col-span-5 space-y-6">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emeraldEco/15 border border-emeraldEco/30 text-emeraldLight text-xs font-bold uppercase tracking-wider">
+              Estudo de Engenharia 100% Gratuito
+            </span>
+            <h2 class="font-heading text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+              Receba seu Projeto Fotovoltaico Personalizado em até 2 Horas.
+            </h2>
+            <p class="text-sm sm:text-base text-slate-300 leading-relaxed">
+              Nossos engenheiros realizam o dimensionamento por imagem de satélite de alta resolução da sua propriedade e entregam a proposta completa com simulação de financiamento.
+            </p>
+
+            <div class="space-y-3 pt-2 text-sm text-slate-200">
+              <div class="flex items-center gap-3">
+                <span class="w-6 h-6 rounded-full bg-emeraldEco/20 text-emeraldLight flex items-center justify-center text-xs font-bold">✓</span>
+                <span>Análise de irradiação solar do seu CEP (Base CRESESB)</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="w-6 h-6 rounded-full bg-emeraldEco/20 text-emeraldLight flex items-center justify-center text-xs font-bold">✓</span>
+                <span>Simulação de parcelamento em até 120x com carência de 90 dias</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="w-6 h-6 rounded-full bg-emeraldEco/20 text-emeraldLight flex items-center justify-center text-xs font-bold">✓</span>
+                <span>Garantia contratual de geração mínima em kWh</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Form -->
+          <div class="lg:col-span-7 bg-[#070d1f] p-6 sm:p-8 rounded-3xl border border-white/10">
+            <form id="solar-quote-form" onsubmit="handleQuoteSubmit(event)" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">Nome Completo *</label>
+                  <input id="q-name" type="text" required placeholder="Ex: Carlos Eduardo" class="w-full px-4 py-3 rounded-xl bg-spaceDeep border border-white/15 text-sm text-white focus:border-emeraldEco focus:outline-none" />
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">WhatsApp com DDD *</label>
+                  <input id="q-phone" type="tel" required placeholder="(11) 99999-9999" class="w-full px-4 py-3 rounded-xl bg-spaceDeep border border-white/15 text-sm text-white focus:border-emeraldEco focus:outline-none" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">Cidade / UF *</label>
+                  <input id="q-city" type="text" required placeholder="Ex: Ribeirão Preto - SP" class="w-full px-4 py-3 rounded-xl bg-spaceDeep border border-white/15 text-sm text-white focus:border-emeraldEco focus:outline-none" />
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">Valor Médio da Conta de Luz *</label>
+                  <input id="q-bill" type="text" required value="R$ 800 /mês (5.85 kWp)" class="w-full px-4 py-3 rounded-xl bg-spaceDeep border border-solarAmber/40 text-sm text-solarLight font-bold focus:border-solarAmber focus:outline-none" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">Tipo de Imóvel</label>
+                  <select id="q-type" class="w-full px-4 py-3 rounded-xl bg-spaceDeep border border-white/15 text-sm text-white focus:border-emeraldEco focus:outline-none">
+                    <option value="Residencial">Residencial / Condomínio</option>
+                    <option value="Comercial / Industrial">Comercial / Galpão Industrial</option>
+                    <option value="Agronegócio / Rural">Agronegócio / Propriedade Rural</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">Tipo de Telhado / Solo</label>
+                  <select id="q-roof" class="w-full px-4 py-3 rounded-xl bg-spaceDeep border border-white/15 text-sm text-white focus:border-emeraldEco focus:outline-none">
+                    <option value="Cerâmico / Colonial">Telha Cerâmica / Colonial</option>
+                    <option value="Metálico / Zinco">Telhado Metálico / Galpão</option>
+                    <option value="Laje / Fibrocimento">Laje / Fibrocimento</option>
+                    <option value="Solo / Carport">Usina de Solo / Carport</option>
+                  </select>
+                </div>
+              </div>
+
+              <button type="submit" class="w-full py-4 rounded-2xl bg-gradient-to-r from-emeraldEco to-emerald-400 hover:from-emerald-400 hover:to-emeraldEco text-spaceDeep font-heading font-extrabold text-sm uppercase tracking-wider shadow-emerald-glow transition-all flex items-center justify-center gap-2">
+                <span>Gerar Estudo Fotovoltaico & Receber Orçamento</span>
+                <i data-lucide="send" class="w-4 h-4"></i>
+              </button>
+            </form>
+
+            <!-- Confirmation Box after Submission -->
+            <div id="quote-success-box" class="hidden mt-5 p-5 rounded-2xl bg-emeraldEco/15 border border-emeraldEco text-sm space-y-2">
+              <div class="flex items-center justify-between text-emeraldLight font-heading font-bold text-base">
+                <span>✓ Estudo Fotovoltaico Protocolado com Sucesso!</span>
+                <span id="quote-protocol" class="font-mono text-xs">#HLS-2026</span>
+              </div>
+              <p id="quote-summary-text" class="text-slate-200 text-xs leading-relaxed"></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. RODAPÉ COMPLETO -->
+  <footer class="relative z-10 bg-[#060b19] border-t border-white/10 pt-16 pb-12 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+        
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center gap-3">
+            <span class="font-heading font-extrabold text-xl text-white">☀️ HELIOS <span class="text-solarAmber">SOLAR</span></span>
+          </div>
+          <p class="text-slate-400 max-w-sm leading-relaxed">
+            Engenharia Fotovoltaica, Usinas Solares e Sistemas de Armazenamento em Baterias LFP. Mais de 12.000 unidades consumidoras gerando a própria energia limpa no Brasil.
+          </p>
+          <p class="text-[11px] text-slate-500">
+            Registro CREA-SP / CREA-MG Ativo • Homologada ANEEL • Membro ABSOLAR
+          </p>
+        </div>
+
+        <div class="space-y-2.5">
+          <h4 class="font-heading font-bold text-white uppercase tracking-wider text-xs">Soluções</h4>
+          <ul class="space-y-2">
+            <li><a href="#solucoes" class="hover:text-emeraldLight transition-colors">Energia Solar Residencial</a></li>
+            <li><a href="#solucoes" class="hover:text-emeraldLight transition-colors">Usinas para Empresas (Grupo A)</a></li>
+            <li><a href="#solucoes" class="hover:text-emeraldLight transition-colors">Agronegócio & Irrigação</a></li>
+            <li><a href="#tecnologia" class="hover:text-emeraldLight transition-colors">Baterias LFP & Carregadores EV</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-2.5">
+          <h4 class="font-heading font-bold text-white uppercase tracking-wider text-xs">Engenharia</h4>
+          <ul class="space-y-2">
+            <li><a href="#simulador" class="hover:text-solarAmber transition-colors">Calculadora Solar 2026</a></li>
+            <li><a href="#tecnologia" class="hover:text-solarAmber transition-colors">Painéis Bifaciais N-Type</a></li>
+            <li><a href="#projetos" class="hover:text-solarAmber transition-colors">Portfólio de Usinas</a></li>
+            <li><a href="#faq" class="hover:text-solarAmber transition-colors">Lei 14.300 & Regras ANEEL</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-2.5">
+          <h4 class="font-heading font-bold text-white uppercase tracking-wider text-xs">Central de Atendimento</h4>
+          <ul class="space-y-2">
+            <li class="text-white font-semibold">0800 777 4800</li>
+            <li>engenharia@heliossolar.com.br</li>
+            <li>Av. Paulista, 1842 — Torre Norte, São Paulo - SP</li>
+            <li class="text-emeraldLight font-semibold pt-1">● Plantão Técnico 24/7 Ativo</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p>© 2026 HELIOS SOLAR Engenharia Fotovoltaica S.A. Todos os direitos reservados.</p>
+        <div class="flex items-center gap-6">
+          <span>Equipamentos Tier-1 Bloomberg</span>
+          <span>•</span>
+          <span>Garantia de 25 Anos</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================================= -->
+  <!-- VANILLA JAVASCRIPT: CALCULADORA SOLAR, ABAS, PROJETOS, FAQ & COTAÇÃO     -->
+  <!-- ======================================================================= -->
   <script>
+    // 1. CALCULADORA SOLAR INTERATIVA (Baseada no index_3.html + Expansão Payback, CO2 e 25 Anos)
     const lSlider = document.getElementById('luz-slider');
+    let currentSegment = 'residencial';
+
+    window.setSolarSegment = function(seg, defaultBill) {
+      currentSegment = seg;
+      lSlider.value = defaultBill;
+
+      document.querySelectorAll('.seg-btn').forEach(btn => {
+        if (btn.getAttribute('data-seg') === seg) {
+          btn.className = 'seg-btn p-3.5 rounded-2xl border text-left transition-all bg-emeraldEco/15 border-emeraldEco text-white';
+        } else {
+          btn.className = 'seg-btn p-3.5 rounded-2xl border text-left transition-all bg-spaceDeep/60 border-white/10 text-slate-300 hover:border-white/30';
+        }
+      });
+
+      calcSolar();
+    };
+
     function calcSolar() {
       const bill = Number(lSlider.value);
+      const hasBattery = document.getElementById('battery-toggle').checked;
+
+      // Dimensionamento técnico preservando a proporção de placas de 585W do código original
       const placas = Math.max(4, Math.round(bill / 80));
       const kwp = (placas * 0.585).toFixed(2);
-      const saveYear = Math.round(bill * 0.95 * 12);
+      const areaM2 = Math.ceil(placas * 2.6);
+
+      // Economia anual de até 95%
+      const saveRate = hasBattery ? 0.96 : 0.95;
+      const saveYear = Math.round(bill * saveRate * 12);
+      const newMonthlyBill = Math.max(35, Math.round(bill * (1 - saveRate)));
+
+      // Estimativa de investimento e Payback realista por porte
+      const costPerKwp = bill > 3500 ? 2750 : 3050;
+      const batteryAddon = hasBattery ? (bill * 8.5) : 0;
+      const estimatedCapex = (Number(kwp) * costPerKwp) + batteryAddon;
+      const paybackYears = (estimatedCapex / saveYear).toFixed(1).replace('.', ',');
+      const annualRoi = Math.round((saveYear / estimatedCapex) * 100);
+
+      // Economia em 25 anos considerando reajuste tarifário conservador
+      const save25Years = Math.round(saveYear * 25 * 1.25);
+
+      // Impacto Ambiental (CO2 evitado e árvores equivalentes)
+      const co2Tons = (Number(kwp) * 0.72).toFixed(1).replace('.', ',');
+      const treesCount = Math.max(5, Math.round(Number(kwp) * 5.2));
+
       document.getElementById('luz-val').textContent = 'R$ ' + bill.toLocaleString('pt-BR') + ' /mês';
       document.getElementById('placas-qtd').textContent = placas + ' Placas';
       document.getElementById('potencia-kwp').textContent = kwp + ' kWp';
+      document.getElementById('area-m2').textContent = areaM2 + ' m²';
+
       document.getElementById('solar-save').textContent = 'R$ ' + saveYear.toLocaleString('pt-BR') + ' /ano';
+      document.getElementById('new-bill-est').textContent = `Nova conta estimada: ~R$ ${newMonthlyBill.toLocaleString('pt-BR')} /mês`;
+      document.getElementById('payback-time').textContent = `${paybackYears} Anos`;
+      document.getElementById('roi-badge').textContent = `Rentabilidade: ${annualRoi}% a.a.`;
+      document.getElementById('save-25y').textContent = 'R$ ' + save25Years.toLocaleString('pt-BR');
+      document.getElementById('co2-avoided').textContent = `${co2Tons} Toneladas`;
+      document.getElementById('trees-planted').textContent = `+${treesCount} Árvores/ano`;
+
+      // Atualiza também o campo do formulário de cotação
+      const qBillInput = document.getElementById('q-bill');
+      if (qBillInput) {
+        qBillInput.value = `R$ ${bill.toLocaleString('pt-BR')}/mês (${kwp} kWp • ${placas} Placas)`;
+      }
     }
+
     lSlider.addEventListener('input', calcSolar);
-    calcSolar();
+
+    window.transferSimulationToQuote = function() {
+      calcSolar();
+      const quoteSection = document.getElementById('cotacao-rapida');
+      quoteSection.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        document.getElementById('q-name').focus();
+      }, 600);
+    };
+
+    // 2. ABAS DE SOLUÇÕES ESPECIALIZADAS
+    const SOLUTIONS_DATA = {
+      res: {
+        tag: 'SOLUÇÃO RESIDENCIAL & CONDOMÍNIOS DE ALTO PADRÃO',
+        title: 'Conforto Térmico Ilimitado, Carregador Veicular e Zero Preocupação com Bandeira Vermelha',
+        desc: 'Projetado para famílias que desejam utilizar ar-condicionado em todos os ambientes, aquecimento de piscina e carregar carros elétricos na garagem sem surpresas na fatura do fim do mês.',
+        metrics: [
+          { label: 'Economia na Fatura', val: 'Até 95%' },
+          { label: 'Tempo de Instalação', val: 'Até 48 Horas' },
+          { label: 'Valorização do Imóvel', val: '+8% a 12%' }
+        ],
+        bullets: [
+          'Microinversores com desligamento rápido (Rapid Shutdown) ultra-seguros para telhados residenciais',
+          'Integração nativa com Wallbox para veículos elétricos (BYD, Volvo, Tesla, Porsche, GWM)',
+          'Opção de Bateria LFP silenciosa que substitui geradores a diesel barulhentos em condomínios'
+        ],
+        img: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000&q=85'
+      },
+      com: {
+        tag: 'SOLUÇÃO CORPORATIVA, COMERCIAL & INDUSTRIAL (GRUPO A e B)',
+        title: 'Blinde o Fluxo de Caixa da Sua Empresa Contra a Inflação Energética',
+        desc: 'Ideal para supermercados, frigoríficos, academias, hotéis, hospitais e indústrias. Reduza drasticamente o custo operacional fixo com depreciação acelerada e linhas de crédito com carência.',
+        metrics: [
+          { label: 'Payback Corporativo', val: '2,2 a 2,8 Anos' },
+          { label: 'Linhas de Crédito', val: 'Até 120 Meses' },
+          { label: 'Certificação ESG', val: 'Selo Energia Limpa' }
+        ],
+        bullets: [
+          'Geração remota (Autoconsumo Remoto) para abater a conta de matriz e múltiplas filiais no mesmo CNPJ',
+          'Estruturas de Carport Solar que transformam o estacionamento de clientes em usina geradora',
+          'Engenharia especializada em subestações, cabines primárias e correção de fator de potência'
+        ],
+        img: 'https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=1000&q=85'
+      },
+      agro: {
+        tag: 'SOLUÇÃO AGRONEGÓCIO, IRRIGAÇÃO & USINAS DE INVESTIMENTO',
+        title: 'Alta Produtividade no Campo com Energia Própria de Sol a Sol',
+        desc: 'Desenvolvido para propriedades rurais que operam pivôs centrais, bombeamento de água, resfriadores de leite, aviários e armazéns graneleiros com alta demanda energética.',
+        metrics: [
+          { label: 'Crédito Plano Safra', val: 'Taxas Bonificadas' },
+          { label: 'Módulos Bifaciais', val: '+28% Ganho Solo' },
+          { label: 'Resistência Granizo', val: 'Certificação IEC' }
+        ],
+        bullets: [
+          'Estruturas de solo cravadas a laser em aço galvanizado a fogo com garantia anticorrosão de 20 anos',
+          'Sistemas Híbridos Off-Grid / Zero-Grid para propriedades distantes da rede trifásica',
+          'Telemetria via satélite / 4G rural integrada ao aplicativo Helios OS'
+        ],
+        img: 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1000&q=85'
+      }
+    };
+
+    window.switchSolutionTab = function(key) {
+      document.querySelectorAll('.sol-tab-btn').forEach(btn => {
+        if (btn.getAttribute('data-sol') === key) {
+          btn.className = 'sol-tab-btn px-5 py-2.5 rounded-xl text-xs font-heading font-bold uppercase tracking-wider bg-emeraldEco text-spaceDeep shadow-emerald-glow transition-all';
+        } else {
+          btn.className = 'sol-tab-btn px-5 py-2.5 rounded-xl text-xs font-heading font-bold uppercase tracking-wider bg-white/5 hover:bg-white/10 text-slate-200 border border-white/10 transition-all';
+        }
+      });
+
+      const data = SOLUTIONS_DATA[key];
+      const panel = document.getElementById('solution-detail-panel');
+      panel.innerHTML = `
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 space-y-5">
+            <span class="px-3 py-1 rounded-full bg-emeraldEco/15 border border-emeraldEco/30 text-emeraldLight text-xs font-bold uppercase tracking-wider">
+              ${data.tag}
+            </span>
+            <h3 class="font-heading text-2xl sm:text-3xl font-extrabold text-white leading-tight">
+              ${data.title}
+            </h3>
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+              ${data.desc}
+            </p>
+            <ul class="space-y-2.5 pt-1">
+              ${data.bullets.map(b => `
+                <li class="flex items-start gap-2.5 text-xs sm:text-sm text-slate-200">
+                  <span class="w-5 h-5 rounded-full bg-solarAmber/20 text-solarAmber flex items-center justify-center shrink-0 mt-0.5 font-bold">✓</span>
+                  <span>${b}</span>
+                </li>
+              `).join('')}
+            </ul>
+            <div class="grid grid-cols-3 gap-3 pt-4">
+              ${data.metrics.map(m => `
+                <div class="p-3.5 rounded-2xl bg-spaceDeep/90 border border-white/10">
+                  <span class="text-[11px] text-slate-400 block">${m.label}</span>
+                  <strong class="font-heading text-lg font-extrabold text-solarLight">${m.val}</strong>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          <div class="lg:col-span-5">
+            <div class="rounded-2xl overflow-hidden border border-white/15 aspect-[4/3] relative">
+              <img src="${data.img}" alt="${data.title}" class="w-full h-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-spaceDeep/80 via-transparent to-transparent"></div>
+            </div>
+          </div>
+        </div>
+      `;
+    };
+
+    // 3. GALERIA DE PROJETOS EXECUTADOS
+    const PROJECTS = [
+      {
+        title: "Residência Alto Padrão & Backup LFP",
+        category: "Residencial",
+        location: " Quinta da Baroneza, Bragança Paulista - SP",
+        kwp: "14,04 kWp",
+        modules: "24 Módulos 585W N-Type",
+        savings: "R$ 21.800 / ano",
+        img: "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        title: "Centro Logístico & Frigorífico",
+        category: "Comercial",
+        location: "Joinville - SC",
+        kwp: "117,0 kWp",
+        modules: "200 Módulos Bifaciais",
+        savings: "R$ 168.400 / ano",
+        img: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        title: "Usina de Solo Agro & Pivô Central",
+        category: "Agronegócio",
+        location: "Cristalina - GO",
+        kwp: "351,0 kWp",
+        modules: "600 Módulos Bifaciais Solo",
+        savings: "R$ 492.000 / ano",
+        img: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        title: "Condomínio Horizontal Sustentável",
+        category: "Residencial",
+        location: "Lago Sul, Brasília - DF",
+        kwp: "9,36 kWp",
+        modules: "16 Módulos 585W + Wallbox",
+        savings: "R$ 14.900 / ano",
+        img: "https://images.unsplash.com/photo-1558449028-b53a39d100fc?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        title: "Carport Solar Rede Atacadista",
+        category: "Comercial",
+        location: "Sorocaba - SP",
+        kwp: "87,75 kWp",
+        modules: "150 Módulos Duplo Vidro",
+        savings: "R$ 126.000 / ano",
+        img: "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        title: "Complexo Avícola Automatizado",
+        category: "Agronegócio",
+        location: "Toledo - PR",
+        kwp: "175,5 kWp",
+        modules: "300 Módulos Tier-1",
+        savings: "R$ 248.000 / ano",
+        img: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=800&q=80"
+      }
+    ];
+
+    window.filterProjects = function(cat) {
+      document.querySelectorAll('.proj-filter-btn').forEach(btn => {
+        if (btn.getAttribute('data-pfilter') === cat) {
+          btn.className = 'proj-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-solarAmber text-spaceDeep';
+        } else {
+          btn.className = 'proj-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white/5 text-slate-300 border border-white/10 hover:border-white/30';
+        }
+      });
+
+      const filtered = cat === 'all' ? PROJECTS : PROJECTS.filter(p => p.category === cat);
+      document.getElementById('projects-grid').innerHTML = filtered.map(p => `
+        <article class="glass-card-hover rounded-3xl overflow-hidden flex flex-col justify-between">
+          <div>
+            <div class="relative h-56 overflow-hidden">
+              <img src="${p.img}" alt="${p.title}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              <div class="absolute inset-0 bg-gradient-to-t from-spaceDeep via-transparent to-transparent"></div>
+              <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-spaceDeep/90 border border-white/15 text-[11px] font-bold text-solarLight">
+                ${p.category}
+              </span>
+              <span class="absolute bottom-3 left-3 px-3 py-1 rounded-lg bg-emeraldEco text-spaceDeep font-heading font-extrabold text-xs">
+                ⚡ ${p.kwp}
+              </span>
+            </div>
+            <div class="p-6">
+              <span class="text-xs text-slate-400 block">${p.location}</span>
+              <h3 class="font-heading text-xl font-bold text-white mt-1">${p.title}</h3>
+              <p class="text-xs text-slate-300 mt-2">${p.modules}</p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-3 border-t border-white/10 flex items-center justify-between text-xs">
+            <span class="text-slate-400">Economia Real:</span>
+            <strong class="text-emeraldLight font-heading text-base font-extrabold">${p.savings}</strong>
+          </div>
+        </article>
+      `).join('');
+    };
+
+    // 4. FAQ INTERATIVO EM ACCORDION
+    const FAQS = [
+      {
+        q: "Como funciona a energia solar à noite ou em dias chuvosos e nublados?",
+        a: "Durante o dia, os módulos N-Type de alta sensibilidade geram energia mesmo sob nebulosidade. O excedente produzido nos dias ensolarados é injetado na rede da concessionária e gera créditos energéticos (válidos por 60 meses) que abatem automaticamente o seu consumo noturno. Caso opte pelo sistema Híbrido com Baterias LFP, você também armazena a própria energia para uso noturno ou durante quedas de rede."
+      },
+      {
+        q: "Com a Lei 14.300 (Marco Legal da Energia Solar), ainda vale a pena instalar em 2026?",
+        a: "Sim, mais do que nunca! A queda expressiva no custo dos módulos bifaciais N-Type e o aumento constante nas tarifas das concessionárias (bandeiras tarifárias) fizeram com que o tempo médio de retorno (payback) caísse para cerca de 2,5 a 3 anos, gerando uma rentabilidade superior a 30% ao ano livre de impostos."
+      },
+      {
+        q: "Posso financiar 100% do sistema e pagar com a própria economia da conta de luz?",
+        a: "Sim! Através de nossas parcerias diretas com Santander, BV, Sicredi, Sicoob e BNDES/Plano Safra, você pode financiar até 100% do equipamento e instalação em até 120 meses, com carência de até 90 dias. Na maioria dos casos, a parcela mensal do financiamento fica menor do que o valor que você já pagava na conta de luz."
+      },
+      {
+        q: "Qual é a vida útil e a necessidade de manutenção dos painéis solares?",
+        a: "Os módulos Tier-1 instalados pela Helios Solar possuem vida útil superior a 30 anos, com garantia linear em contrato de 25 anos mantendo ao menos 87,4% da potência original. A manutenção é mínima: apenas limpeza preventiva com água a cada 6 ou 12 meses (muitas vezes realizada pela própria água da chuva em telhados inclinados)."
+      },
+      {
+        q: "Posso abater a conta de luz de outros imóveis com uma única usina instalada?",
+        a: "Sim! Pelo modelo de Autoconsumo Remoto regulamentado pela ANEEL, você pode instalar o sistema na sua casa, empresa ou terreno e transferir o excedente de créditos de energia para abater a fatura de outros imóveis (casa de praia, apartamento, filiais comerciais) desde que estejam na mesma área de concessão e sob o mesmo CPF ou CNPJ."
+      }
+    ];
+
+    let openFaqIndex = 0;
+
+    function renderFaq() {
+      const container = document.getElementById('faq-accordion');
+      container.innerHTML = FAQS.map((item, idx) => {
+        const isOpen = idx === openFaqIndex;
+        return `
+          <div class="glass-panel rounded-2xl border ${isOpen ? 'border-emeraldEco/50' : 'border-white/10'} overflow-hidden transition-all">
+            <button 
+              type="button"
+              onclick="toggleFaq(${idx})"
+              class="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 hover:bg-white/5 transition-colors"
+            >
+              <span class="font-heading font-bold text-base sm:text-lg text-white">${item.q}</span>
+              <span class="w-8 h-8 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-solarAmber shrink-0 font-bold">
+                ${isOpen ? '−' : '+'}
+              </span>
+            </button>
+            <div class="${isOpen ? 'block' : 'hidden'} px-5 sm:px-6 pb-6 pt-1 text-sm text-slate-300 leading-relaxed border-t border-white/5">
+              ${item.a}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    window.toggleFaq = function(idx) {
+      openFaqIndex = openFaqIndex === idx ? -1 : idx;
+      renderFaq();
+    };
+
+    // 5. SUBMISSÃO DO FORMULÁRIO DE COTAÇÃO RÁPIDA
+    window.handleQuoteSubmit = function(e) {
+      e.preventDefault();
+      const name = document.getElementById('q-name').value.trim();
+      const city = document.getElementById('q-city').value.trim();
+      const billInfo = document.getElementById('q-bill').value.trim();
+      const type = document.getElementById('q-type').value;
+
+      const protocol = '#HLS-2026-' + Math.floor(1000 + Math.random() * 9000);
+      document.getElementById('quote-protocol').textContent = protocol;
+      document.getElementById('quote-summary-text').textContent = `Olá, ${name}! Recebemos os dados da sua unidade (${type} em ${city} • ${billInfo}). Nosso engenheiro especialista já iniciou o mapeamento de irradiação via satélite e enviará o estudo completo no seu WhatsApp.`;
+      document.getElementById('quote-success-box').classList.remove('hidden');
+    };
+
+    window.toggleMobileMenu = function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    };
+
+    // Inicialização de todos os módulos
+    document.addEventListener('DOMContentLoaded', () => {
+      calcSolar();
+      switchSolutionTab('res');
+      filterProjects('all');
+      renderFaq();
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
   </script>
+
   <!-- Vercel Web Analytics & Speed Insights -->
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
