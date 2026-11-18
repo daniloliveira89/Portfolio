@@ -173,27 +173,24 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="absolute inset-0 bg-gradient-to-t from-[#0D1220] via-transparent to-transparent opacity-50"></div>
           </div>
 
-          <!-- Título Limpo -->
-          <div class="p-5">
-            <h3 class="font-display text-base font-bold text-white group-hover:text-glow transition-colors line-clamp-1">
+          <!-- Título e Botão na mesma linha -->
+          <div class="p-5 flex items-center justify-between gap-3">
+            <h3 class="font-display text-base font-bold text-white group-hover:text-glow transition-colors line-clamp-1 flex-1">
               ${displayTitle}
             </h3>
-          </div>
-        </div>
 
-        <!-- Botão de Ação Direto -->
-        <div class="px-5 pb-5 pt-0 flex items-center justify-end">
-          ${project.links && project.links.demo ? `
-            <a href="${getDemoUrl(project.links.demo)}" target="_blank" rel="noopener noreferrer"
-               onclick="event.stopPropagation()"
-               class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500 hover:text-slate-950 transition flex items-center gap-1.5 shadow-sm">
-              Demo ↗
-            </a>
-          ` : `
-            <span class="text-xs text-electric/80 group-hover:text-glow flex items-center gap-1 font-medium">
-              Ver mais →
-            </span>
-          `}
+            ${project.links && project.links.demo ? `
+              <a href="${getDemoUrl(project.links.demo)}" target="_blank" rel="noopener noreferrer"
+                 onclick="event.stopPropagation()"
+                 class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500 hover:text-slate-950 transition flex items-center gap-1.5 shadow-sm">
+                Demo ↗
+              </a>
+            ` : `
+              <span class="shrink-0 text-xs text-electric/80 group-hover:text-glow flex items-center gap-1 font-medium">
+                Ver mais →
+              </span>
+            `}
+          </div>
         </div>
       </article>
       `;

@@ -92,33 +92,28 @@ function renderProjects() {
         <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-50"></div>
       </div>
 
-      <!-- Conteúdo do Card -->
-      <div class="p-5 flex flex-col flex-1 justify-between">
-        <div>
-          <h3 class="text-base font-bold text-white group-hover:text-sky-400 transition-colors line-clamp-1">
-            ${displayTitle}
-          </h3>
-        </div>
+      <!-- Conteúdo do Card com Título e Botão na mesma linha -->
+      <div class="p-5 flex items-center justify-between gap-3">
+        <h3 class="text-base font-bold text-white group-hover:text-sky-400 transition-colors line-clamp-1 flex-1">
+          ${displayTitle}
+        </h3>
 
-        <!-- Rodapé Minimalista -->
-        <div class="pt-4 mt-2 flex items-center justify-end">
-          ${project.links && project.links.demo ? `
-            <a 
-              href="${getDemoUrl(project.links.demo)}" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              onclick="event.stopPropagation()"
-              class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500 hover:text-slate-950 transition shadow-sm"
-              title="Acessar demonstração online"
-            >
-              Demo ↗
-            </a>
-          ` : `
-            <span class="text-xs text-sky-400 group-hover:text-sky-300 flex items-center gap-1 font-medium">
-              Ver mais →
-            </span>
-          `}
-        </div>
+        ${project.links && project.links.demo ? `
+          <a 
+            href="${getDemoUrl(project.links.demo)}" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            onclick="event.stopPropagation()"
+            class="shrink-0 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500 hover:text-slate-950 transition shadow-sm"
+            title="Acessar demonstração online"
+          >
+            Demo ↗
+          </a>
+        ` : `
+          <span class="shrink-0 text-xs text-sky-400 group-hover:text-sky-300 flex items-center gap-1 font-medium">
+            Ver mais →
+          </span>
+        `}
       </div>
     </article>
     `;
