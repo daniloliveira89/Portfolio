@@ -135,31 +135,112 @@ const newLangBlock = `<!-- Language Switcher Pill with Flags -->
         </div>`;
 html = html.replace(oldLangBlockRegex, newLangBlock);
 
+// 3. Update Hero Bio and 3D card stats to focus on Webdesign
+html = html
+  .replace(
+    'Desenvolvo aplicações modernas de alta performance — desde observatórios inteligentes e pipelines de I.A. Generativa até jogos táticos em WebGL e extensões ultrarrápidas de navegador.',
+    'Desenvolvo websites comerciais modernos, landing pages de alta conversão e identidades visuais exclusivas com performance impecável e foco total em vendas.'
+  )
+  .replace(
+    'Desarrollo aplicaciones modernas de alto rendimiento — desde observatorios inteligentes y pipelines de I.A. Generativa hasta juegos tácticos en WebGL.',
+    'Desarrollo sitios web comerciales modernos, landing pages de alta conversión e identidades visuales exclusivas con alto rendimiento y enfoque en ventas.'
+  )
+  .replace(
+    'I build high-performance modern applications — from Generative AI observatories and LLM pipelines to tactical WebGL games and fast Chrome extensions.',
+    'I design and build modern commercial websites, high-conversion landing pages, and distinctive visual identities with peak performance and business results.'
+  );
+
+// Update 3D card stats: 39+ Sites, 100% Responsivo, 48+ Logos
+html = html
+  .replace('<p class="font-display font-bold text-xl t-heading">54+</p>', '<p class="font-display font-bold text-xl t-heading">39+</p>')
+  .replace('<p class="text-[10px] t-muted uppercase font-mono-code mt-0.5">Projetos</p>', '<p class="text-[10px] t-muted uppercase font-mono-code mt-0.5">Sites</p>')
+  .replace('<p class="font-display font-bold text-xl t-cyan">5</p>', '<p class="font-display font-bold text-xl t-cyan">100%</p>')
+  .replace('<p class="text-[10px] t-muted uppercase font-mono-code mt-0.5">Áreas</p>', '<p class="text-[10px] t-muted uppercase font-mono-code mt-0.5">Responsivo</p>')
+  .replace('<p class="font-display font-bold text-xl t-orchid">10+</p>', '<p class="font-display font-bold text-xl t-orchid">48+</p>')
+  .replace('<p class="text-[10px] t-muted uppercase font-mono-code mt-0.5">Extensões</p>', '<p class="text-[10px] t-muted uppercase font-mono-code mt-0.5">Logos</p>')
+  .replace('Software Engineer & AI Architect', 'Web Designer & Frontend Specialist');
+
+// Update Rotating Roles in Hero
+html = html.replace(
+  /const ROLES = \[[\s\S]*?\];/,
+  `const ROLES = [
+      'Web Designer & UI/UX',
+      'Especialista em Sites Comerciais',
+      'Landing Pages de Alta Conversão',
+      'Identidade Visual & Branding'
+    ];`
+);
+
+// Update Terminal simulator commands
+html = html
+  .replace(
+    "whoami: 'Danilo Oliveira — Engenheiro de Software, I.A. Generativa & WebGL.'",
+    "whoami: 'Danilo Oliveira — Web Designer & Especialista em Websites Comerciais.'"
+  )
+  .replace(
+    "stack: 'TypeScript • React/Next.js • PixiJS/WebGL • LLMs • Cloudflare Workers • Chrome V3.'",
+    "stack: 'UI/UX Design • Landing Pages • Tailwind CSS • React/Next.js • Identidade Visual • SEO & Performance.'"
+  )
+  .replace(
+    "projetos: 'Radar IA, Prompt Studio AI, IVFR Economia, Vanguard WebGL, Atlas PWA.'",
+    "projetos: '39 Websites Comerciais em produção (Restaurantes, Clínicas, Hotelaria, E-commerce, Advocacia) e 48 Logos.'"
+  );
+
+// Update SERVICES to match Web Design focus
+const oldServicesRegex = /const SERVICES = \[[\s\S]*?\];\s*const DIFFERENTIALS = \[/;
+const newServicesCode = `const SERVICES = [
+      {
+        id: '01',
+        title: 'Websites Comerciais & Institucionais',
+        desc: 'Projetos sob medida para clínicas, escritórios de advocacia, hotelaria, imobiliárias e consultorias com design refinado e foco em autoridade.',
+        deliverables: ['Design exclusivo sob medida', 'Arquitetura de informação clara', 'Painel de agendamento & contato'],
+        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>'
+      },
+      {
+        id: '02',
+        title: 'Lojas Virtuais & E-commerce',
+        desc: 'Vitrines dinâmicas com catálogo de produtos, filtros em tempo real, sacola de compras ágil e integração direta com WhatsApp para fechamento imediato.',
+        deliverables: ['Carrinho de compras dinâmico', 'Filtro instantâneo por categoria', 'Checkout via WhatsApp'],
+        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>'
+      },
+      {
+        id: '03',
+        title: 'Landing Pages de Alta Conversão',
+        desc: 'Páginas estratégicas projetadas para tráfego pago (Google/Meta Ads), com gatilhos visuais, quebra de objeções e chamadas para ação assertivas.',
+        deliverables: ['Copywriting estruturado', 'Design persuasivo & moderno', 'Métricas de conversão'],
+        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/>'
+      },
+      {
+        id: '04',
+        title: 'Identidade Visual & Logotipos',
+        desc: 'Criação de marcas marcantes e logotipos vetorizados em alta resolução, paletas de cores contemporâneas e guias visuais completos.',
+        deliverables: ['Logotipo em vetor & PNG transparente', 'Paleta cromática exclusiva', 'Aplicações para redes e impressos'],
+        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>'
+      },
+      {
+        id: '05',
+        title: 'Performance & Otimização SEO',
+        desc: 'Carregamento instantâneo em 4G, notas 95+ no Google PageSpeed, estrutura semântica para indexação orgânica e zero lentidão.',
+        deliverables: ['Carregamento sub-segundo', 'SEO técnico estruturado', 'Código limpo sem plugins pesados'],
+        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/>'
+      },
+      {
+        id: '06',
+        title: '100% Responsivo & Mobile First',
+        desc: 'Layouts perfeitamente adaptados para smartphones, tablets e desktops de qualquer proporção, garantindo legibilidade e usabilidade plena.',
+        deliverables: ['Adaptação para todas as telas', 'Navegação tátil fluida', 'Tipografia proporcional'],
+        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>'
+      }
+    ];
+
+    const DIFFERENTIALS = [`;
+
+html = html.replace(oldServicesRegex, newServicesCode);
+
 // Define comprehensive mapping for Site Types in PT, ES, EN + LOGOS_DATA
 const siteTypeDictCode = `
     const SITE_TYPE_DICT = {
-      // Web Apps & I.A.
-      'radar-ia': { pt: 'Observatório de I.A.', es: 'Observatorio de I.A.', en: 'A.I. Observatory' },
-      'prompt-studio-ai': { pt: 'Estúdio de Prompts I.A.', es: 'Estudio de Prompts I.A.', en: 'A.I. Prompt Studio' },
-      'prompt-studio': { pt: 'Estúdio de Prompts I.A.', es: 'Estudio de Prompts I.A.', en: 'A.I. Prompt Studio' },
-      'ivfr-economia': { pt: 'Comparador Econômico', es: 'Comparador Económico', en: 'Economic Index' },
-      'ivfr': { pt: 'Comparador Econômico', es: 'Comparador Económico', en: 'Economic Index' },
-      'calculadora-juros-compostos': { pt: 'Simulador Financeiro', es: 'Simulador Financiero', en: 'Financial Simulator' },
-
-      // Jogos & WebGL
-      'neon-synapse': { pt: 'Jogo Tático Cyberpunk', es: 'Juego Táctico Cyberpunk', en: 'Cyberpunk Game' },
-      'prancheta-tatica': { pt: 'Simulador Tático de Futebol', es: 'Pizarra Táctica de Fútbol', en: 'Tactical Board' },
-      'webgl-tactics': { pt: 'Jogo Tático WebGL', es: 'Juego Táctico WebGL', en: 'Tactical WebGL Game' },
-
-      // Atlas Suite
-      'music-atlas': { pt: 'Streaming & Música PWA', es: 'Streaming & Música PWA', en: 'Music Streaming PWA' },
-      'atlas-suite': { pt: 'Streaming & Música PWA', es: 'Streaming & Música PWA', en: 'Music Streaming PWA' },
-      'atlas-pwa': { pt: 'Streaming & Música PWA', es: 'Streaming & Música PWA', en: 'Music Streaming PWA' },
-      'bookshelf-atlas': { pt: 'Biblioteca & Diário Literário', es: 'Biblioteca Literaria', en: 'Literary Library' },
-      'cinematheque-atlas': { pt: 'Catálogo de Cinema', es: 'Catálogo de Cine', en: 'Film Archive' },
-      'game-atlas': { pt: 'Diário Gamer & Backlog', es: 'Diario Gamer & Backlog', en: 'Gamer Journal' },
-
-      // Layouts Comerciais (39 sites)
+      // 39 Commercial Web Design Sites
       'layout-ecommerce': { pt: 'Loja Virtual & E-commerce', es: 'Tienda Virtual & E-commerce', en: 'E-Commerce Store' },
       'layout-omakase': { pt: 'Restaurante Japonês', es: 'Restaurante Japonés', en: 'Japanese Restaurant' },
       'layout-odontologia': { pt: 'Clínica Odontológica', es: 'Clínica Dental', en: 'Dental Clinic' },
@@ -173,9 +254,19 @@ const siteTypeDictCode = `
       'layout-hotel-resort': { pt: 'Hotel & Eco-Resort', es: 'Hotel & Eco-Resort', en: 'Hotel & Eco-Resort' },
       'layout-agencia-viagens': { pt: 'Agência de Turismo', es: 'Agencia de Viajes', en: 'Travel Agency' },
       'layout-arquitetura': { pt: 'Escritório de Arquitetura', es: 'Estudio de Arquitectura', en: 'Architecture Studio' },
+      'layout-coworking': { pt: 'Coworking & Hub de Inovação', es: 'Coworking & Espacio Flexible', en: 'Coworking Hub' },
+      'layout-cafeteria': { pt: 'Cafeteria & Grãos Especiais', es: 'Cafetería de Especialidad', en: 'Specialty Coffee' },
+      'layout-hamburgueria': { pt: 'Hamburgueria Artesanal', es: 'Hamburguesería Artesanal', en: 'Artisan Burger Bar' },
+      'layout-pizzaria': { pt: 'Pizzaria Napolitana', es: 'Pizzería Napolitana', en: 'Neapolitan Pizzeria' },
+      'layout-confeitaria': { pt: 'Confeitaria & Chocolateria', es: 'Pastelería & Chocolatería', en: 'Artisan Bakery' },
+      'layout-pet-shop': { pt: 'Pet Shop & Spa Pet', es: 'Pet Shop & Spa Canino', en: 'Pet Shop & Spa' },
+      'layout-veterinaria': { pt: 'Hospital Veterinário 24h', es: 'Hospital Veterinario 24h', en: 'Veterinary Hospital' },
+      'layout-advocacia': { pt: 'Escritório de Advocacia', es: 'Bufete de Abogados', en: 'Law Firm' },
+      'layout-consultoria': { pt: 'Consultoria Empresarial', es: 'Consultoría Estratégica', en: 'Business Consulting' },
+      'layout-fintech': { pt: 'Fintech & Câmbio Global', es: 'Fintech & Cambio Global', en: 'Fintech & Currency' },
+      'layout-imobiliaria': { pt: 'Imobiliária de Luxo', es: 'Inmobiliaria de Lujo', en: 'Luxury Real Estate' },
       'layout-construtora': { pt: 'Construtora & Incorporadora', es: 'Constructora & Inmobiliaria', en: 'Construction Company' },
-      'layout-petshop': { pt: 'Pet Shop & Spa Pet', es: 'Pet Shop & Spa Canino', en: 'Pet Shop & Spa' },
-      'layout-cafeteria': { pt: 'Cafeteria & Cafés Especiais', es: 'Cafetería & Microtostaduría', en: 'Specialty Coffee Shop' },
+      'layout-engenharia': { pt: 'Engenharia Estrutural BIM', es: 'Ingeniería Estructural BIM', en: 'Structural Engineering' },
       'layout-escola-cursos': { pt: 'Cursos & Escola de Tecnologia', es: 'Escuela de Tecnología', en: 'Tech Academy' },
       'layout-saas-ai': { pt: 'SaaS & Startup de I.A.', es: 'SaaS & Startup de I.A.', en: 'AI SaaS Landing' },
       'layout-agencia-publicidade': { pt: 'Agência de Marketing & Branding', es: 'Agencia de Marketing & Branding', en: 'Marketing Agency' },
@@ -183,45 +274,27 @@ const siteTypeDictCode = `
       'layout-logistica': { pt: 'Transportadora & Logística', es: 'Operador Logístico', en: 'Logistics & Freight' },
       'layout-energia-solar': { pt: 'Energia Solar & Fotovoltaica', es: 'Energía Solar Fotovoltaica', en: 'Solar Energy' },
       'layout-fotografo': { pt: 'Estúdio de Fotografia', es: 'Estudio de Fotografía', en: 'Photography Studio' },
-      'layout-consultoria': { pt: 'Consultoria Empresarial', es: 'Consultoría Estratégica', en: 'Business Consulting' },
-      'layout-marca-roupas': { pt: 'Marca de Moda & Streetwear', es: 'Marca de Moda Urbana', en: 'Streetwear Brand' },
-      'layout-clinica-veterinaria': { pt: 'Hospital Veterinário 24h', es: 'Hospital Veterinario 24h', en: 'Veterinary Hospital' },
-      'layout-spa-massagem': { pt: 'Spa & Massagens', es: 'Spa & Terapias', en: 'Wellness Spa' },
-      'layout-motel': { pt: 'Motel Boutique & Suítes', es: 'Motel Boutique & Suites', en: 'Boutique Motel' },
-      'layout-produtora-eventos': { pt: 'Produtora de Eventos & Shows', es: 'Productora de Eventos', en: 'Events Production' },
-      'layout-engenharia': { pt: 'Engenharia Estrutural BIM', es: 'Ingeniería Estructural BIM', en: 'Structural Engineering' },
-      'layout-moveis-decoracao': { pt: 'Loja de Móveis & Decoração', es: 'Tienda de Muebles & Diseño', en: 'Furniture Store' },
-      'layout-produtora-audiovisual': { pt: 'Produtora de Cinema & Vídeo', es: 'Productora Audiovisual', en: 'Film Production' },
-      'layout-limpeza-manutencao': { pt: 'Limpeza Técnica & Facilities', es: 'Limpieza Técnica & Facilities', en: 'Cleaning & Facilities' },
-      'layout-psicologia': { pt: 'Consultório de Psicologia', es: 'Consultorio de Psicología', en: 'Psychology Clinic' },
-      'layout-banda-gravadora': { pt: 'Banda & Gravadora Musical', es: 'Banda & Sello Musical', en: 'Band & Record Label' },
-      'layout-ferramentaria-caldeiraria': { pt: 'Indústria Metalúrgica & CNC', es: 'Industria Metalúrgica & CNC', en: 'CNC Machining' },
-      'layout-meridian-wave': { pt: 'Fintech & Câmbio Global', es: 'Fintech & Cambio Global', en: 'Fintech & Currency' },
-      'layout-site-face': { pt: 'Portfólio de Arte Editorial', es: 'Portafolio de Arte Editorial', en: 'Art Portfolio' },
-      'layout-site-tattoo': { pt: 'Estúdio de Tatuagem', es: 'Estudio de Tatuajes', en: 'Tattoo Studio' },
-
-      // Extensões & Desktop
-      'universal-music-downloader': { pt: 'Extensão de Download de Áudio', es: 'Extensión de Audio', en: 'Audio Downloader Ext' },
-      'youtube-power-tools': { pt: 'Suíte de Extensões YouTube', es: 'Suite de Extensiones YouTube', en: 'YouTube Extensions' },
-      'sync-to-notion-suite': { pt: 'Extensão de Sincronização Notion', es: 'Extensión para Notion', en: 'Notion Extension' },
-      'rclone-manager-desktop': { pt: 'App Desktop Multi-Nuvem', es: 'App Desktop Multi-Nube', en: 'Multi-Cloud Desktop App' },
-      'torrent-rename-normalizer': { pt: 'Automação de Arquivos Desktop', es: 'Automatización de Archivos', en: 'File Automation Tool' }
+      'layout-eventos': { pt: 'Produtora de Eventos & Shows', es: 'Productora de Eventos', en: 'Events Production' },
+      'layout-cinema': { pt: 'Produtora de Cinema & Vídeo', es: 'Productora Audiovisual', en: 'Film Production' },
+      'layout-tattoo': { pt: 'Estúdio de Tatuagem', es: 'Estudio de Tatuajes', en: 'Tattoo Studio' },
+      'layout-banda': { pt: 'Banda & Gravadora Musical', es: 'Banda & Sello Musical', en: 'Band & Record Label' },
+      'layout-arte': { pt: 'Portfólio de Arte Editorial', es: 'Portafolio de Arte Editorial', en: 'Art Portfolio' }
     };
 
     const LOGOS_DATA = [
-      { id: 'logo-01', name: 'Aether Gear', file: '01-aether-gear.png', pt: 'Loja Virtual & E-commerce', es: 'Tienda Virtual & E-commerce', en: 'E-Commerce Store', demoUrl: 'https://daniloliveira89.github.io/site---techwear-audio-store/' },
-      { id: 'logo-02', name: 'Division 89', file: '02-division-89.png', pt: 'Marca de Moda & Streetwear', es: 'Marca de Moda Urbana', en: 'Streetwear Brand', demoUrl: 'https://daniloliveira89.github.io/site---streetwear-drops/' },
-      { id: 'logo-03', name: 'Norden Atelier', file: '03-norden-atelier.png', pt: 'Móveis & Design Escandinavo', es: 'Muebles & Diseño Escandinavo', en: 'Furniture & Design', demoUrl: 'https://daniloliveira89.github.io/site---moveis-design-escandinavo/' },
-      { id: 'logo-04', name: 'Kuro Omakase', file: '04-kuro-omakase.png', pt: 'Restaurante Japonês', es: 'Restaurante Japonés', en: 'Japanese Restaurant', demoUrl: 'https://daniloliveira89.github.io/site---omakase-alta-gastronomia/' },
-      { id: 'logo-05', name: 'Origem 85', file: '05-origem-85.png', pt: 'Cafeteria & Cafés Especiais', es: 'Cafetería & Microtostaduría', en: 'Specialty Coffee', demoUrl: 'https://daniloliveira89.github.io/site---microtorrefacao-cafes-especiais/' },
-      { id: 'logo-06', name: 'Vale das Nuvens', file: '06-vale-das-nuvens.png', pt: 'Hotel & Eco-Resort', es: 'Hotel & Eco-Resort', en: 'Hotel & Eco-Resort', demoUrl: 'https://daniloliveira89.github.io/site---luxury-eco-resort/' },
-      { id: 'logo-07', name: 'Velvet Suites', file: '07-velvet-suites.png', pt: 'Motel Boutique & Suítes', es: 'Motel Boutique & Suites', en: 'Boutique Motel', demoUrl: 'https://daniloliveira89.github.io/site---motel-boutique/' },
-      { id: 'logo-08', name: 'Horizon Expeditions', file: '08-horizon-expeditions.png', pt: 'Agência de Turismo', es: 'Agencia de Viajes', en: 'Travel Agency', demoUrl: 'https://daniloliveira89.github.io/site---expedicoes-roteiros-sob-medida/' },
-      { id: 'logo-09', name: 'Lumina Smile', file: '09-lumina-smile.png', pt: 'Clínica Odontológica', es: 'Clínica Dental', en: 'Dental Clinic', demoUrl: 'https://daniloliveira89.github.io/site---odontologia-digital/' },
-      { id: 'logo-10', name: 'Nexus Medicina', file: '10-nexus.png', pt: 'Centro Médico & Hospital', es: 'Centro Médico', en: 'Medical Center', demoUrl: 'https://daniloliveira89.github.io/site---centro-medico-checkup/' },
-      { id: 'logo-11', name: 'Derma Reveal', file: '11-derma-reveal.png', pt: 'Clínica de Estética & Laser', es: 'Clínica de Estética & Láser', en: 'Aesthetic Clinic', demoUrl: 'https://daniloliveira89.github.io/site---estetica-avancada-laser/' },
-      { id: 'logo-12', name: 'Mente & Fluxo', file: '12-mente-and-fluxo.png', pt: 'Consultório de Psicologia', es: 'Consultorio de Psicología', en: 'Psychology Clinic', demoUrl: 'https://daniloliveira89.github.io/site---psicologia-clinica-tcc/' },
-      { id: 'logo-13', name: 'Sanctuary Spa', file: '13-sanctuary.png', pt: 'Spa & Massagens', es: 'Spa & Terapias', en: 'Wellness Spa', demoUrl: 'https://daniloliveira89.github.io/site---massagens-terapeuticas-ofuro/' },
+      { id: 'logo-01', name: 'Aurum Omakase', file: '01-aurum.png', pt: 'Restaurante Japonês', es: 'Restaurante Japonés', en: 'Japanese Restaurant', demoUrl: 'https://daniloliveira89.github.io/site---omakase-japan/' },
+      { id: 'logo-02', name: 'OrtoLuxe', file: '02-ortoluxe.png', pt: 'Clínica Odontológica', es: 'Clínica Dental', en: 'Dental Clinic', demoUrl: 'https://daniloliveira89.github.io/site---odontologia-estetica/' },
+      { id: 'logo-03', name: 'VitaMed', file: '03-vitamed.png', pt: 'Centro Médico & Hospital', es: 'Centro Médico', en: 'Medical Center', demoUrl: 'https://daniloliveira89.github.io/site---clinica-medica-especialidades/' },
+      { id: 'logo-04', name: 'Vanguard Realty', file: '04-vanguard.png', pt: 'Imobiliária de Luxo', es: 'Inmobiliaria de Lujo', en: 'Luxury Real Estate', demoUrl: 'https://daniloliveira89.github.io/site---real-estate-investments/' },
+      { id: 'logo-05', name: 'Lex Corporate', file: '05-lex-corporate.png', pt: 'Escritório de Advocacia', es: 'Bufete de Abogados', en: 'Law Firm', demoUrl: 'https://daniloliveira89.github.io/site---corporate-law-tax/' },
+      { id: 'logo-06', name: 'Navalha Real', file: '06-navalha-real.png', pt: 'Barbearia & Visagismo', es: 'Barbería & Visagismo', en: 'Barbershop', demoUrl: 'https://daniloliveira89.github.io/site---barbearia-classic-cuts/' },
+      { id: 'logo-07', name: 'Titan Force Gym', file: '07-titan-force.png', pt: 'Academia & Fitness', es: 'Gimnasio & Fitness', en: 'Gym & Fitness', demoUrl: 'https://daniloliveira89.github.io/site---academia-performance/' },
+      { id: 'logo-08', name: 'Apex Motors', file: '08-apex-motors.png', pt: 'Concessionária & Blindados', es: 'Concesionaria & Blindados', en: 'Car Dealership', demoUrl: 'https://daniloliveira89.github.io/site---concessionaria-veiculos-premium/' },
+      { id: 'logo-09', name: 'Dermacare Estética', file: '09-dermacare.png', pt: 'Clínica de Estética & Laser', es: 'Clínica de Estética & Láser', en: 'Aesthetic Clinic', demoUrl: 'https://daniloliveira89.github.io/site---clinica-estetica-dermatologia/' },
+      { id: 'logo-10', name: 'Botanique Eco Resort', file: '10-botanique.png', pt: 'Hotel & Eco-Resort', es: 'Hotel & Eco-Resort', en: 'Hotel & Eco-Resort', demoUrl: 'https://daniloliveira89.github.io/site---hotel-resort-spa/' },
+      { id: 'logo-11', name: 'Horizonte Viagens', file: '11-horizonte.png', pt: 'Agência de Turismo', es: 'Agencia de Viajes', en: 'Travel Agency', demoUrl: 'https://daniloliveira89.github.io/site---agencia-viagens-turismo/' },
+      { id: 'logo-12', name: 'Atelier Arquitetura', file: '12-atelier.png', pt: 'Escritório de Arquitetura', es: 'Estudio de Arquitectura', en: 'Architecture Studio', demoUrl: 'https://daniloliveira89.github.io/site---arquitetura-urbanismo/' },
+      { id: 'logo-13', name: 'Nexus Coworking', file: '13-nexus.png', pt: 'Coworking & Hub de Inovação', es: 'Coworking & Espacio Flexible', en: 'Coworking Hub', demoUrl: 'https://daniloliveira89.github.io/site---coworking-spaces/' },
       { id: 'logo-14', name: 'Pet Majesty', file: '14-pet-majesty.png', pt: 'Pet Shop & Spa Pet', es: 'Pet Shop & Spa Canino', en: 'Pet Shop & Spa', demoUrl: 'https://daniloliveira89.github.io/site---pet-boutique-spa/' },
       { id: 'logo-15', name: 'Vet Life 24h', file: '15-vet-life-24h.png', pt: 'Hospital Veterinário 24h', es: 'Hospital Veterinario 24h', en: 'Veterinary Hospital', demoUrl: 'https://daniloliveira89.github.io/site---uti-veterinaria-planos-pet/' },
       { id: 'logo-16', name: 'Valoris Law', file: '16-valoris.png', pt: 'Escritório de Advocacia', es: 'Bufete de Abogados', en: 'Law Firm', demoUrl: 'https://daniloliveira89.github.io/site---advocacia-corporate-law/' },
@@ -229,14 +302,14 @@ const siteTypeDictCode = `
       { id: 'logo-18', name: 'Apex Consulting', file: '18-apex.png', pt: 'Consultoria Empresarial', es: 'Consultoría Estratégica', en: 'Business Consulting', demoUrl: 'https://daniloliveira89.github.io/site---consultoria-gestao-ebitda/' },
       { id: 'logo-19', name: 'Pulse Pay', file: '19-pulse-pay.png', pt: 'Fintech & Câmbio Global', es: 'Fintech & Cambio Global', en: 'Fintech & Currency', demoUrl: 'https://daniloliveira89.github.io/site---fintech-liquid-wave/' },
       { id: 'logo-20', name: 'Prime Villas', file: '20-prime-villas.png', pt: 'Imobiliária de Luxo', es: 'Inmobiliaria de Lujo', en: 'Luxury Real Estate', demoUrl: 'https://daniloliveira89.github.io/site---luxury-real-estate/' },
-      { id: 'logo-21', name: 'Studio Arq 89', file: '21-studio-arq-89.png', pt: 'Escritório de Arquitetura', es: 'Estudio de Arquitectura', en: 'Architecture Studio', demoUrl: 'https://daniloliveira89.github.io/site---arquitetura-design-editorial/' },
+      { id: 'logo-21', name: 'Origem Café', file: '21-origem-cafe.png', pt: 'Cafeteria & Grãos Especiais', es: 'Cafetería de Especialidad', en: 'Specialty Coffee', demoUrl: 'https://daniloliveira89.github.io/site---cafeteria-artesanal/' },
       { id: 'logo-22', name: 'Vértice Construtora', file: '22-vertice.png', pt: 'Construtora & Incorporadora', es: 'Constructora & Inmobiliaria', en: 'Construction Company', demoUrl: 'https://daniloliveira89.github.io/site---construtora-incorporacao/' },
       { id: 'logo-23', name: 'BIM Struct', file: '23-bim-struct.png', pt: 'Engenharia Estrutural BIM', es: 'Ingeniería Estructural BIM', en: 'Structural Engineering', demoUrl: 'https://daniloliveira89.github.io/site---projetos-estruturais-bim/' },
       { id: 'logo-24', name: 'Solaris Energia', file: '24-solaris.png', pt: 'Energia Solar & Fotovoltaica', es: 'Energía Solar Fotovoltaica', en: 'Solar Energy', demoUrl: 'https://daniloliveira89.github.io/site---engenharia-fotovoltaica-usinas/' },
-      { id: 'logo-25', name: 'Prime Clean', file: '25-prime-clean.png', pt: 'Limpeza Técnica & Facilities', es: 'Limpeza Técnica & Facilities', en: 'Cleaning & Facilities', demoUrl: 'https://daniloliveira89.github.io/site---limpeza-pos-obra-manutencao/' },
-      { id: 'logo-26', name: 'Veloce Motors', file: '26-veloce-motors.png', pt: 'Concessionária & Blindados', es: 'Concesionaria & Blindados', en: 'Car Dealership', demoUrl: 'https://daniloliveira89.github.io/site---superesportivos-blindados/' },
-      { id: 'logo-27', name: 'CargoMax', file: '27-cargomax.png', pt: 'Transportadora & Logística', es: 'Operador Logístico', en: 'Logistics & Freight', demoUrl: 'https://daniloliveira89.github.io/site---supply-chain-frete-expresso/' },
-      { id: 'logo-28', name: 'Precision CNC', file: '28-precision-cnc.png', pt: 'Indústria Metalúrgica & CNC', es: 'Industria Metalúrgica & CNC', en: 'CNC Machining', demoUrl: 'https://daniloliveira89.github.io/site---usinagem-cnc-caldeiraria/' },
+      { id: 'logo-25', name: 'Smash & Beer', file: '25-smash-beer.png', pt: 'Hamburgueria Artesanal', es: 'Hamburguesería Artesanal', en: 'Artisan Burger Bar', demoUrl: 'https://daniloliveira89.github.io/site---hamburgueria-artesanal-delivery/' },
+      { id: 'logo-26', name: 'Don Forno Pizza', file: '26-don-forno.png', pt: 'Pizzaria Napolitana', es: 'Pizzería Napolitana', en: 'Neapolitan Pizzeria', demoUrl: 'https://daniloliveira89.github.io/site---pizzaria-forno-lenha/' },
+      { id: 'logo-27', name: 'Dolce Arte', file: '27-dolce-arte.png', pt: 'Confeitaria & Chocolateria', es: 'Pastelería & Chocolatería', en: 'Artisan Bakery', demoUrl: 'https://daniloliveira89.github.io/site---confeitaria-doceria-fina/' },
+      { id: 'logo-28', name: 'Velocita Express', file: '28-velocita.png', pt: 'Transportadora & Logística', es: 'Operador Logístico', en: 'Logistics & Freight', demoUrl: 'https://daniloliveira89.github.io/site---logistica-cargas-expressas/' },
       { id: 'logo-29', name: 'Studio Matrix', file: '29-studio-matrix.png', pt: 'Agência de Marketing & Branding', es: 'Agencia de Marketing & Branding', en: 'Marketing Agency', demoUrl: 'https://daniloliveira89.github.io/site---creative-growth-branding/' },
       { id: 'logo-30', name: 'Lumière Photo', file: '30-lumiere.png', pt: 'Estúdio de Fotografia', es: 'Estudio de Fotografía', en: 'Photography Studio', demoUrl: 'https://daniloliveira89.github.io/site---fine-art-editorial-photography/' },
       { id: 'logo-31', name: 'Stage Live', file: '31-stage-live.png', pt: 'Produtora de Eventos & Shows', es: 'Productora de Eventos', en: 'Events Production', demoUrl: 'https://daniloliveira89.github.io/site---produtora-eventos-shows-av/' },
@@ -260,65 +333,65 @@ const siteTypeDictCode = `
     ];
 `;
 
-// Replace PROJECTS declaration with full dynamic mapping from PROJECTS_DATA
+// Replace PROJECTS declaration with Web Design filtered projects (39 Layouts & Sites)
 const oldProjectsRegex = /const PROJECTS = \[[\s\S]*?\];\s*const state = {/;
 const newProjectsCode = `${siteTypeDictCode}
 
     const DEFAULT_PROJECTS = [
-      { id: 'radar-ia', title: 'Radar IA — Observatório Global', badge: 'Web Apps & I.A.', cat: 'Web Apps & I.A.', desc: 'Observatório em tempo real de lançamentos, benchmarks e custos por milhão de tokens.', tags: ['TypeScript', 'React & Next.js'], demoType: 'radar' },
-      { id: 'prompt-studio', title: 'Prompt Studio AI — Estúdio Visual', badge: 'GenAI • Live', cat: 'Web Apps & I.A.', desc: 'Estúdio interativo para construção de prompts otimizados.', tags: ['TypeScript', 'Tailwind & UI/UX'], demoType: 'prompt' },
-      { id: 'ivfr', title: 'IVFR — Viabilidade Econômica', badge: '103 Cidades', cat: 'Layouts & Sites', desc: 'Comparador global de poder de compra real.', tags: ['React & Next.js', 'Python'], demoType: 'ivfr' },
-      { id: 'webgl-tactics', title: 'Vanguard — Jogo Tático WebGL', badge: '60 FPS • PixiJS', cat: 'Jogos & WebGL', desc: 'Engine tática por turnos no navegador.', tags: ['TypeScript', 'WebGL & PixiJS'], demoType: 'tactics' },
-      { id: 'atlas-pwa', title: 'Atlas Suite — Streaming PWA', badge: 'PWA • Edge', cat: 'Atlas Suite', desc: 'Player progressivo com reprodução em background.', tags: ['TypeScript', 'Cloudflare Workers'], demoType: 'audio' },
-      { id: 'chrome-suite', title: 'Chromium Productivity Suite', badge: 'Manifest V3', cat: 'Extensões', desc: 'Mais de 10 extensões leves para produtividade.', tags: ['TypeScript', 'Manifest V3'], demoType: 'ext' }
+      { id: 'layout-ecommerce', title: 'Techwear Luxury Store', badge: 'Loja Virtual & E-commerce', cat: 'Layouts & Sites', desc: 'Loja virtual minimalista de alta conversão.', tags: ['E-commerce', 'Tailwind CSS'] },
+      { id: 'layout-omakase', title: 'Aurum Omakase', badge: 'Restaurante Japonês', cat: 'Layouts & Sites', desc: 'Restaurante contemporâneo com menu degustação.', tags: ['Gastronomia', 'UI/UX'] },
+      { id: 'layout-hotel-resort', title: 'Botanique Eco Resort', badge: 'Hotel & Eco-Resort', cat: 'Layouts & Sites', desc: 'Hotel boutique e spa nas montanhas.', tags: ['Hotelaria', 'Next.js'] },
+      { id: 'layout-odontologia', title: 'OrtoLuxe Odontologia', badge: 'Clínica Odontológica', cat: 'Layouts & Sites', desc: 'Clínica estética de alta tecnologia.', tags: ['Saúde', 'Tailwind CSS'] }
     ];
 
+    // Filter ONLY webdesign layout sites (39 total commercial sites)
     const PROJECTS = (typeof PROJECTS_DATA !== 'undefined' && Array.isArray(PROJECTS_DATA))
-      ? PROJECTS_DATA.map(p => {
-          let cat = 'Layouts & Sites';
-          if (p.category === 'web-ai') cat = 'Web Apps & I.A.';
-          else if (p.category === 'games') cat = 'Jogos & WebGL';
-          else if (p.category === 'atlas') cat = 'Atlas Suite';
-          else if (p.category === 'extensions') cat = 'Extensões';
-          else if (p.category === 'desktop') cat = 'Desktop & Ferramentas';
-          else if (p.category === 'layouts') cat = 'Layouts & Sites';
-
-          return {
-            id: p.id,
-            title: p.title,
-            badge: p.badge || p.categoryLabel || 'Projeto',
-            cat: cat,
-            rawCat: p.category,
-            desc: p.shortDescription || p.description || '',
-            fullDesc: p.fullDescription || p.shortDescription || p.description || '',
-            image: p.image || '/assets/images/radar-ia-real.png',
-            gallery: (p.gallery && p.gallery.length) ? p.gallery : [p.image || '/assets/images/radar-ia-real.png'],
-            tags: p.tags || [],
-            links: p.links || {},
-            features: p.features || []
-          };
-        })
+      ? PROJECTS_DATA
+          .filter(p => p.category === 'layouts')
+          .map(p => {
+            return {
+              id: p.id,
+              title: p.title,
+              badge: p.badge || p.categoryLabel || 'Projeto',
+              cat: 'Layouts & Sites',
+              rawCat: p.category,
+              desc: p.shortDescription || p.description || '',
+              fullDesc: p.fullDescription || p.shortDescription || p.description || '',
+              image: p.image || '/assets/images/radar-ia-real.png',
+              gallery: (p.gallery && p.gallery.length) ? p.gallery : [p.image || '/assets/images/radar-ia-real.png'],
+              tags: p.tags || [],
+              links: p.links || {},
+              features: p.features || []
+            };
+          })
       : DEFAULT_PROJECTS;
 
-    const state = {`;
+    const state = {
+      theme: 'dark',
+      lang: 'pt',
+      projectCat: 'Layouts & Sites',
+      techFilter: null,
+      fxActive: true
+    };`;
 html = html.replace(oldProjectsRegex, newProjectsCode);
 
-// 3. Redesign renderProjects with LOGOS TAB included
+// 4. Redesign renderProjects with ONLY "Layouts & Sites (39)" and "Logos (48)"
 const oldRenderRegex = /function renderProjects\(\) \{[\s\S]*?\}\s*function openProjectDemo\(projId\) \{[\s\S]*?\}\s*\/\/ =========================================================================\s*\/\/ 6\. COMMAND PALETTE/;
 
 const newRenderCode = `function renderProjects() {
+      // Clean 2-tab system focused exclusively on Web Design deliverables
       const cats = [
-        { label: 'Todos', key: 'Todos', count: PROJECTS.length },
-        { label: 'Layouts & Sites', key: 'Layouts & Sites', count: PROJECTS.filter(p => p.cat === 'Layouts & Sites').length },
-        { label: 'Logos', key: 'Logos', count: LOGOS_DATA.length },
-        { label: 'Web Apps & I.A.', key: 'Web Apps & I.A.', count: PROJECTS.filter(p => p.cat === 'Web Apps & I.A.').length },
-        { label: 'Jogos & WebGL', key: 'Jogos & WebGL', count: PROJECTS.filter(p => p.cat === 'Jogos & WebGL').length },
-        { label: 'Atlas Suite', key: 'Atlas Suite', count: PROJECTS.filter(p => p.cat === 'Atlas Suite').length },
-        { label: 'Extensões & Desktop', key: 'Extensões & Desktop', count: PROJECTS.filter(p => p.cat === 'Extensões' || p.cat === 'Desktop & Ferramentas').length }
+        { label: 'Layouts & Sites', key: 'Layouts & Sites', count: PROJECTS.length },
+        { label: 'Logos', key: 'Logos', count: LOGOS_DATA.length }
       ];
 
+      // Normalize active tab
+      if (state.projectCat !== 'Logos') {
+        state.projectCat = 'Layouts & Sites';
+      }
+
       document.getElementById('project-filters').innerHTML = cats.map(c => \`
-        <button type="button" data-proj-cat="\${c.key}" class="px-4 py-1.5 rounded-full text-xs font-semibold border transition inline-flex items-center gap-1.5 \${state.projectCat === c.key ? 'tab-pill-active' : 'b-subtle t-body hover:border-cyan-400/50'}">
+        <button type="button" data-proj-cat="\${c.key}" class="px-5 py-2 rounded-full text-xs font-semibold border transition inline-flex items-center gap-2 cursor-pointer \${state.projectCat === c.key ? 'tab-pill-active' : 'b-subtle t-body hover:border-cyan-400/50'}">
           <span>\${c.label}</span>
           <span class="text-[10px] opacity-75 font-mono-code font-normal">(\${c.count})</span>
         </button>
@@ -335,20 +408,20 @@ const newRenderCode = `function renderProjects() {
       const grid = document.getElementById('projects-grid');
       const curLang = state.lang || 'pt';
 
-      // RENDER LOGOS TAB
+      // 1. RENDER LOGOS TAB (48 Logos)
       if (state.projectCat === 'Logos') {
         grid.innerHTML = LOGOS_DATA.map(l => {
           const siteType = l[curLang] || l.pt;
           const openUrl = l.demoUrl || ('/assets/images/logos-ia/' + l.file);
           return \`
           <a href="\${openUrl}" target="_blank" rel="noopener noreferrer" class="clean-proj-card spotlight-card rounded-2xl overflow-hidden block relative aspect-[16/10] bg-slate-950 border b-subtle group cursor-pointer shadow-md">
-            <!-- 1. Imagem de Alta Resolução da Logo -->
+            <!-- Imagem de Alta Resolução da Logo -->
             <img src="/assets/images/logos-ia/\${l.file}" alt="\${l.name}" class="w-full h-full object-cover object-center transition duration-500 group-hover:scale-105" loading="lazy" />
             
-            <!-- 2. Overlay Suave com Gradiente -->
+            <!-- Overlay Suave com Gradiente -->
             <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent transition-opacity duration-300"></div>
 
-            <!-- 3. Nome da Marca e Nicho por Cima da Imagem -->
+            <!-- Nome da Marca e Nicho por Cima da Imagem -->
             <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none">
               <span class="px-3 py-1.5 rounded-xl text-xs sm:text-[13px] font-semibold tracking-wide text-white bg-slate-950/80 backdrop-blur-md border border-white/15 shadow-lg group-hover:border-cyan-400/60 group-hover:text-cyan-300 transition-all duration-200 truncate max-w-[85%]">
                 \${l.name} • \${siteType}
@@ -362,13 +435,8 @@ const newRenderCode = `function renderProjects() {
         return;
       }
 
-      // RENDER WEBSITES / PROJECTS TABS
+      // 2. RENDER WEBSITES / LAYOUTS (39 Commercial Sites)
       let list = PROJECTS;
-      if (state.projectCat === 'Extensões & Desktop') {
-        list = list.filter(p => p.cat === 'Extensões' || p.cat === 'Desktop & Ferramentas');
-      } else if (state.projectCat !== 'Todos') {
-        list = list.filter(p => p.cat === state.projectCat);
-      }
 
       if (state.techFilter) {
         const tf = state.techFilter.toLowerCase();
@@ -387,13 +455,13 @@ const newRenderCode = `function renderProjects() {
 
         return \`
         <a href="\${openUrl}" target="_blank" rel="noopener noreferrer" class="clean-proj-card spotlight-card rounded-2xl overflow-hidden block relative aspect-[16/10] bg-slate-950 border b-subtle group cursor-pointer shadow-md">
-          <!-- 1. Miniatura em Tela Cheia do Card -->
+          <!-- Miniatura em Tela Cheia do Card -->
           <img src="\${p.image}" alt="\${siteType}" class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105" loading="lazy" onerror="this.onerror=null; this.src='/assets/images/radar-ia-real.png';" />
           
-          <!-- 2. Overlay Suave com Gradiente -->
+          <!-- Overlay Suave com Gradiente -->
           <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent transition-opacity duration-300"></div>
 
-          <!-- 3. Estilo do Site por Cima da Miniatura (Sem Botão Abrir) -->
+          <!-- Estilo do Site por Cima da Miniatura (Sem Botão Abrir) -->
           <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none">
             <span class="px-3 py-1.5 rounded-xl text-xs sm:text-[13px] font-semibold tracking-wide text-white bg-slate-950/80 backdrop-blur-md border border-white/15 shadow-lg group-hover:border-cyan-400/60 group-hover:text-cyan-300 transition-all duration-200">
               \${siteType}
@@ -415,7 +483,7 @@ if (oldRenderRegex.test(html)) {
   console.log('WARNING: oldRenderRegex did not match!');
 }
 
-// 4. Update applyTranslations to cleanly toggle .active without overwriting SVG flags
+// 5. Update applyTranslations to cleanly toggle .active without overwriting SVG flags
 const oldApplyTranslationsRegex = /function applyTranslations\(\) \{[\s\S]*?\}\s*document\.addEventListener\('click'/;
 const newApplyTranslationsCode = `function applyTranslations() {
       const t = I18N[state.lang] || I18N.pt;
