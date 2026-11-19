@@ -25,48 +25,6 @@ a:hover {
   color: #ffffff;
 }
 
-/* Barra auxiliar para selecionar as 2 fotos direto do computador */
-.image-picker-bar {
-  position: fixed;
-  top: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 999;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(20, 24, 32, 0.92);
-  border: 1px solid rgba(240, 240, 238, 0.35);
-  padding: 8px 14px;
-  font-size: 13px;
-}
-
-.image-picker-bar.hidden {
-  display: none;
-}
-
-.picker-btn {
-  cursor: pointer;
-  padding: 5px 10px;
-  background: #f0f0ee;
-  color: #2b3342;
-  font-weight: 500;
-  font-size: 12px;
-}
-
-.picker-btn:hover {
-  background: #ffffff;
-}
-
-.picker-close {
-  background: transparent;
-  border: none;
-  color: #f0f0ee;
-  cursor: pointer;
-  font-size: 14px;
-  padding: 2px 6px;
-}
-
 /* Seção Hero: 100vh, overflow: hidden, position: relative */
 .hero {
   position: relative;

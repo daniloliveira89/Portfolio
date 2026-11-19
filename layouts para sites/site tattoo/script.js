@@ -109,32 +109,4 @@ document.addEventListener('DOMContentLoaded', () => {
     revealLayer.style.opacity = '0';
     cursorRing.style.opacity = '0';
   });
-
-  // Suporte à barra de upload de imagens (usada no site tattoo)
-  const inputClean = document.getElementById('input-clean');
-  const inputTattoo = document.getElementById('input-tattoo');
-  const pickerClose = document.getElementById('picker-close');
-  const pickerBar = document.getElementById('picker-bar');
-
-  if (inputClean) {
-    inputClean.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (file && imgClean) imgClean.src = URL.createObjectURL(file);
-    });
-  }
-
-  if (inputTattoo) {
-    inputTattoo.addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (file) {
-        const url = URL.createObjectURL(file);
-        revealLayer.src = url;
-        if (imgStatic) imgStatic.src = url;
-      }
-    });
-  }
-
-  if (pickerClose && pickerBar) {
-    pickerClose.addEventListener('click', () => pickerBar.classList.add('hidden'));
-  }
 });
