@@ -100,6 +100,65 @@ const customCss = `
       transform: translate(2px, -2px) scale(1.08);
       box-shadow: 0 4px 18px rgba(245, 158, 11, 0.7) !important;
     }
+
+    /* === CUSTOM CURSOR COM TRAILING RING === */
+    @media (hover: hover) and (pointer: fine) {
+      body, a, button, input, select, textarea, [data-cursor="pointer"], label, [role="button"] {
+        cursor: none !important;
+      }
+
+      .custom-cursor-dot {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 6px;
+        height: 6px;
+        background-color: #D4AF37;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 10000;
+        box-shadow: 0 0 10px rgba(212, 175, 55, 0.9), 0 0 4px rgba(245, 158, 11, 0.8);
+        transition: opacity 0.3s ease;
+        will-change: transform;
+      }
+
+      .custom-cursor-ring {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 34px;
+        height: 34px;
+        border: 1.5px solid rgba(212, 175, 55, 0.75);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        box-shadow: 0 0 14px rgba(212, 175, 55, 0.28);
+        transition: opacity 0.3s ease, border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+        will-change: transform;
+      }
+
+      .custom-cursor-ring.cursor-hover {
+        border-color: rgba(245, 158, 11, 0.95);
+        background-color: rgba(212, 175, 55, 0.18);
+        box-shadow: 0 0 22px rgba(245, 158, 11, 0.45);
+      }
+
+      .custom-cursor-ring.cursor-active {
+        border-color: #FBBF24;
+        background-color: rgba(251, 191, 36, 0.32);
+        box-shadow: 0 0 16px rgba(251, 191, 36, 0.6);
+      }
+
+      .custom-cursor-hidden {
+        opacity: 0 !important;
+      }
+    }
+
+    @media (hover: none) or (pointer: coarse) {
+      .custom-cursor-dot, .custom-cursor-ring {
+        display: none !important;
+      }
+    }
 `;
 
 // Insert custom CSS
@@ -556,6 +615,114 @@ if (oldApplyTranslationsRegex.test(html)) {
 } else {
   console.log('WARNING: oldApplyTranslationsRegex did not match!');
 }
+
+// 6. Custom Cursor (Trailing Ring com lerp via requestAnimationFrame)
+const cursorElementsHtml = `
+  <!-- Custom Cursor (Trailing Ring) -->
+  <div id="cursor-dot" class="custom-cursor-dot custom-cursor-hidden" aria-hidden="true"></div>
+  <div id="cursor-ring" class="custom-cursor-ring custom-cursor-hidden" aria-hidden="true"></div>
+`;
+html = html.replace('</body>', `${cursorElementsHtml}\n</body>`);
+
+const cursorScript = `
+    // =========================================================================
+    // CUSTOM CURSOR COM TRAILING RING (LERP VIA RAF)
+    // =========================================================================
+    (() => {
+      // 5. Mobile check: activate only on devices with fine pointer and hover
+      if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+      const dot = document.getElementById('cursor-dot');
+      const ring = document.getElementById('cursor-ring');
+      if (!dot || !ring) return;
+
+      let mouseX = -100;
+      let mouseY = -100;
+      let ringX = -100;
+      let ringY = -100;
+      let targetScale = 1;
+      let currentScale = 1;
+      let isVisible = false;
+      let isHovered = false;
+
+      // Linear interpolation helper
+      const lerp = (a, b, n) => (1 - n) * a + n * b;
+
+      // Real-time mouse position tracking for central dot (6px)
+      window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        dot.style.transform = \`translate3d(\${mouseX}px, \${mouseY}px, 0) translate(-50%, -50%)\`;
+
+        if (!isVisible) {
+          isVisible = true;
+          dot.classList.remove('custom-cursor-hidden');
+          ring.classList.remove('custom-cursor-hidden');
+          ringX = mouseX;
+          ringY = mouseY;
+        }
+      });
+
+      // Smooth trailing ring via linear interpolation (lerp) inside RAF
+      function renderCursor() {
+        if (isVisible) {
+          ringX = lerp(ringX, mouseX, 0.16);
+          ringY = lerp(ringY, mouseY, 0.16);
+          currentScale = lerp(currentScale, targetScale, 0.2);
+          ring.style.transform = \`translate3d(\${ringX}px, \${ringY}px, 0) translate(-50%, -50%) scale(\${currentScale})\`;
+        }
+        requestAnimationFrame(renderCursor);
+      }
+      requestAnimationFrame(renderCursor);
+
+      // Interactive hover states on clickable elements
+      const interactiveSelector = 'a, button, input, select, textarea, [data-cursor="pointer"], .clean-proj-card, .lang-btn, [role="button"], label';
+
+      document.addEventListener('mouseover', (e) => {
+        if (e.target && e.target.closest && e.target.closest(interactiveSelector)) {
+          isHovered = true;
+          targetScale = 1.6;
+          ring.classList.add('cursor-hover');
+        }
+      });
+
+      document.addEventListener('mouseout', (e) => {
+        if (e.target && e.target.closest && e.target.closest(interactiveSelector)) {
+          const nextInteractive = e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest(interactiveSelector);
+          if (!nextInteractive) {
+            isHovered = false;
+            targetScale = 1;
+            ring.classList.remove('cursor-hover');
+          }
+        }
+      });
+
+      // Click states (mousedown contracts to 0.85, mouseup restores)
+      window.addEventListener('mousedown', () => {
+        targetScale = 0.85;
+        ring.classList.add('cursor-active');
+      });
+
+      window.addEventListener('mouseup', () => {
+        ring.classList.remove('cursor-active');
+        targetScale = isHovered ? 1.6 : 1;
+      });
+
+      // Hide cursor smoothly on mouseleave window
+      document.addEventListener('mouseleave', () => {
+        isVisible = false;
+        dot.classList.add('custom-cursor-hidden');
+        ring.classList.add('custom-cursor-hidden');
+      });
+
+      document.addEventListener('mouseenter', () => {
+        dot.classList.remove('custom-cursor-hidden');
+        ring.classList.remove('custom-cursor-hidden');
+      });
+    })();
+`;
+
+html = html.replace('</script>\n</body>', `${cursorScript}\n  </script>\n</body>`);
 
 console.log('Final HTML length:', html.length);
 
