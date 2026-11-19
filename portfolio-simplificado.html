@@ -1,0 +1,1749 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Favicon & Browser Icons -->
+  <link rel="icon" type="image/x-icon" href="https://portfolio-danilo-oliveira.vercel.app/favicon.ico?v=4" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://portfolio-danilo-oliveira.vercel.app/favicon-32x32.png?v=4" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://portfolio-danilo-oliveira.vercel.app/favicon-16x16.png?v=4" />
+  <link rel="icon" type="image/png" sizes="48x48" href="https://portfolio-danilo-oliveira.vercel.app/favicon-48x48.png?v=4" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://portfolio-danilo-oliveira.vercel.app/apple-touch-icon.png?v=4" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#06070B" />
+
+  <title>Danilo Oliveira — Layout Simplificado (Web Design)</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,400&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,600..800;1,600&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+
+  <style>
+    :root {
+      --bg-void: #06070B;
+      --bg-surface: rgba(13, 15, 22, 0.86);
+      --bg-surface-solid: #0D1018;
+      --bg-panel: rgba(20, 23, 34, 0.85);
+      --bg-input: rgba(6, 7, 11, 0.65);
+      --bg-nav: rgba(6, 7, 11, 0.82);
+      --bg-footer: #05060A;
+      --cyan: #22D3EE;
+      --orchid: #E879F9;
+      --text-heading: #F8FAFC;
+      --text-body: #B4BDD0;
+      --text-muted: #7C879E;
+      --border-subtle: rgba(255, 255, 255, 0.11);
+      --border-strong: rgba(34, 211, 238, 0.42);
+      --card-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      --tilt-bg: linear-gradient(155deg, rgba(17, 20, 30, 0.94), rgba(9, 11, 17, 0.97));
+      --hero-grad: linear-gradient(95deg, #22D3EE 0%, #60A5FA 42%, #C084FC 74%, #E879F9 100%);
+      --btn-primary-text: #05070B;
+      --chip-bg: rgba(255, 255, 255, 0.04);
+      --dock-bg: rgba(11, 13, 20, 0.92);
+    }
+
+    body[data-theme="light"] {
+      --bg-void: #F5F7FC;
+      --bg-surface: rgba(255, 255, 255, 0.88);
+      --bg-surface-solid: #FFFFFF;
+      --bg-panel: rgba(241, 245, 252, 0.92);
+      --bg-input: #F8FAFC;
+      --bg-nav: rgba(255, 255, 255, 0.86);
+      --bg-footer: #EEF2F8;
+      --cyan: #0891B2;
+      --orchid: #C026D3;
+      --text-heading: #0F172A;
+      --text-body: #334155;
+      --text-muted: #64748B;
+      --border-subtle: rgba(15, 23, 42, 0.11);
+      --border-strong: rgba(8, 145, 178, 0.45);
+      --card-shadow: 0 16px 38px rgba(15, 23, 42, 0.08);
+      --tilt-bg: linear-gradient(155deg, rgba(255, 255, 255, 0.96), rgba(244, 247, 254, 0.96));
+      --hero-grad: linear-gradient(95deg, #0891B2 0%, #2563EB 44%, #9333EA 76%, #C026D3 100%);
+      --btn-primary-text: #FFFFFF;
+      --chip-bg: rgba(15, 23, 42, 0.04);
+      --dock-bg: rgba(255, 255, 255, 0.94);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--bg-void);
+      color: var(--text-body);
+      min-height: 100vh;
+      overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .font-display { font-family: 'Playfair Display', serif; }
+    .font-mono-code { font-family: 'JetBrains Mono', monospace; }
+
+    .t-heading { color: var(--text-heading); }
+    .t-body { color: var(--text-body); }
+    .t-muted { color: var(--text-muted); }
+    .t-cyan { color: var(--cyan); }
+    .t-orchid { color: var(--orchid); }
+    .b-subtle { border-color: var(--border-subtle); }
+    .bg-panel-var { background-color: var(--bg-panel); }
+    .bg-input-var { background-color: var(--bg-input); }
+    .bg-surface-solid { background-color: var(--bg-surface-solid); }
+    .bg-chip-var { background-color: var(--chip-bg); }
+
+    .brand-gradient-text {
+      background: var(--hero-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .brand-ring {
+      background: linear-gradient(135deg, #22D3EE 0%, #818CF8 50%, #D946EF 100%);
+      padding: 2px;
+    }
+
+    .brand-glow-bg {
+      background:
+        radial-gradient(ellipse 48% 42% at 72% 38%, rgba(34, 211, 238, 0.13), transparent 65%),
+        radial-gradient(ellipse 42% 45% at 86% 62%, rgba(217, 70, 239, 0.13), transparent 65%),
+        radial-gradient(ellipse 35% 35% at 12% 20%, rgba(34, 211, 238, 0.07), transparent 60%);
+    }
+    body[data-theme="light"] .brand-glow-bg {
+      background:
+        radial-gradient(ellipse 48% 42% at 72% 38%, rgba(8, 145, 178, 0.09), transparent 65%),
+        radial-gradient(ellipse 42% 45% at 86% 62%, rgba(192, 38, 211, 0.08), transparent 65%);
+    }
+
+    .nav-glass {
+      background: var(--bg-nav);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .spotlight-card {
+      position: relative;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      backdrop-filter: blur(16px);
+      overflow: hidden;
+      transition: border-color 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease, background-color 0.3s ease;
+      --mx: 50%;
+      --my: 50%;
+    }
+    .spotlight-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(320px circle at var(--mx) var(--my), rgba(34, 211, 238, 0.14), rgba(217, 70, 239, 0.07) 45%, transparent 72%);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .spotlight-card:hover::before { opacity: 1; }
+    .spotlight-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-2px);
+      box-shadow: var(--card-shadow);
+    }
+    .spotlight-card > * { position: relative; z-index: 1; }
+
+    .tilt-stage { perspective: 1100px; }
+    .tilt-card {
+      transform-style: preserve-3d;
+      transition: transform 0.15s ease-out, box-shadow 0.25s ease, background 0.3s ease;
+      background: var(--tilt-bg);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--card-shadow);
+    }
+
+    .btn-cyan {
+      background: linear-gradient(135deg, #22D3EE 0%, #06B6D4 100%);
+      color: #05070B;
+      font-weight: 700;
+      box-shadow: 0 0 24px rgba(34, 211, 238, 0.3);
+      transition: all 0.2s ease;
+    }
+    body[data-theme="light"] .btn-cyan {
+      background: linear-gradient(135deg, #0891B2 0%, #2563EB 100%);
+      color: #FFFFFF;
+      box-shadow: 0 8px 22px rgba(8, 145, 178, 0.28);
+    }
+    .btn-cyan:hover { filter: brightness(1.08); transform: translateY(-1px); }
+
+    .btn-ghost {
+      color: var(--text-heading);
+      border: 1px solid var(--border-subtle);
+      background: var(--chip-bg);
+      transition: all 0.2s ease;
+    }
+    .btn-ghost:hover {
+      border-color: var(--orchid);
+      background: rgba(217, 70, 239, 0.1);
+    }
+
+    @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+    .cursor-blink { animation: blink 1s step-end infinite; color: var(--cyan); }
+
+    .tab-pill-active {
+      background: linear-gradient(135deg, rgba(34, 211, 238, 0.22), rgba(217, 70, 239, 0.22));
+      border-color: var(--border-strong);
+      color: var(--text-heading);
+      font-weight: 700;
+    }
+
+    .chip-selected {
+      background: linear-gradient(135deg, #22D3EE, #D946EF);
+      color: #05070B;
+      border-color: transparent;
+      font-weight: 700;
+    }
+    body[data-theme="light"] .chip-selected { color: #FFFFFF; }
+
+    .wave-dock {
+      background: var(--dock-bg);
+      backdrop-filter: blur(18px);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--card-shadow);
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-void); }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #22D3EE, #D946EF); border-radius: 9999px; }
+  
+    /* === LANGUAGE PILL SELECTOR WITH FLAGS === */
+    .lang-pill-container {
+      background: rgba(11, 14, 23, 0.9);
+      border: 1px solid rgba(59, 130, 246, 0.28);
+      border-radius: 0.85rem;
+      padding: 0.25rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.4);
+    }
+    body[data-theme="light"] .lang-pill-container {
+      background: rgba(241, 245, 252, 0.95);
+      border: 1px solid rgba(37, 99, 235, 0.24);
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.06);
+    }
+    .lang-btn {
+      padding: 0.35rem 0.55rem;
+      border-radius: 0.55rem;
+      font-size: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      outline: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .lang-btn:hover {
+      color: var(--text-heading);
+    }
+    .lang-btn.active {
+      background: #2563EB !important;
+      color: #FFFFFF !important;
+      font-weight: 700;
+      box-shadow: 0 1px 6px rgba(37, 99, 235, 0.45);
+    }
+    body[data-theme="light"] .lang-btn.active {
+      background: #2563EB !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 1px 6px rgba(37, 99, 235, 0.35);
+    }
+
+    /* === CLEAN PROJECT CARDS WITH OVERLAY === */
+    .clean-proj-card {
+      transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.28s ease, border-color 0.28s ease;
+      will-change: transform;
+    }
+    .clean-proj-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.7), 0 0 24px rgba(245, 158, 11, 0.25);
+      border-color: rgba(245, 158, 11, 0.5);
+    }
+    body[data-theme="light"] .clean-proj-card:hover {
+      box-shadow: 0 16px 32px -8px rgba(15, 23, 42, 0.14), 0 0 20px rgba(217, 119, 6, 0.25);
+      border-color: rgba(217, 119, 6, 0.45);
+    }
+
+    /* === LUXURY GOLD FLOATING BADGE === */
+    .badge-gold {
+      background: linear-gradient(135deg, #D97706 0%, #F59E0B 35%, #FBBF24 70%, #B45309 100%) !important;
+      color: #090B12 !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.02em;
+      border: 1px solid rgba(254, 243, 199, 0.85) !important;
+      box-shadow: 0 4px 18px -1px rgba(217, 119, 6, 0.5), 0 2px 6px rgba(0, 0, 0, 0.4) !important;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .clean-proj-card:hover .badge-gold {
+      background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 35%, #FDE047 70%, #D97706 100%) !important;
+      box-shadow: 0 6px 24px rgba(245, 158, 11, 0.7), 0 0 18px rgba(253, 224, 71, 0.5) !important;
+      transform: translateY(-1px);
+    }
+
+    .arrow-gold {
+      background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%) !important;
+      color: #090B12 !important;
+      font-weight: 800 !important;
+      border: 1px solid rgba(254, 243, 199, 0.85) !important;
+      box-shadow: 0 3px 12px rgba(217, 119, 6, 0.5) !important;
+      transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .clean-proj-card:hover .arrow-gold {
+      transform: translate(2px, -2px) scale(1.08);
+      box-shadow: 0 4px 18px rgba(245, 158, 11, 0.7) !important;
+    }
+
+  
+    /* === DESATIVAÇÃO DE INTERATIVIDADE / BOTOES VISUAIS (LAYOUT SIMPLIFICADO) === */
+    button, a {
+      pointer-events: none !important;
+      cursor: default !important;
+    }
+    /* Manter visual de botões intacto */
+    .btn-cyan, .lang-btn, .badge-gold, .arrow-gold {
+      pointer-events: none !important;
+    }
+
+  </style>
+  <script src="https://portfolio-danilo-oliveira.vercel.app/assets/js/projects-data.js"></script>
+</head>
+<body class="relative selection:bg-cyan-400 selection:text-slate-950" data-theme="dark">
+
+  <!-- Liquid Wave Engine Canvas -->
+  <canvas id="liquid-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
+  <div class="fixed inset-0 brand-glow-bg pointer-events-none z-0"></div>
+
+  <!-- ============================================================ -->
+  <!-- 1. HEADER -->
+  <!-- ============================================================ -->
+  <header id="top" class="sticky top-0 z-40 nav-glass">
+    <div class="max-w-6xl mx-auto px-5 sm:px-6 py-3.5 flex items-center justify-between gap-3">
+      <a href="#top" id="btn-brand-home" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;" class="flex items-center gap-3 no-underline group cursor-pointer" title="Ir para o topo">
+        <div class="brand-ring rounded-xl w-10 h-10 transition-transform group-hover:scale-105 shadow-md">
+          <div class="w-full h-full rounded-[10px] bg-[#090B12] overflow-hidden flex items-center justify-center p-1">
+            <img src="https://portfolio-danilo-oliveira.vercel.app/assets/images/brand-rabbit.png" alt="Danilo Oliveira — Brand Logo" class="w-full h-full object-contain filter drop-shadow" />
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-bold text-base t-heading leading-tight">Danilo Oliveira</span>
+          <span class="text-[11px] t-muted font-mono-code">@daniloliveira89</span>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-7 text-xs sm:text-sm font-medium t-body">
+        <a href="#services" class="hover:t-cyan transition" data-i18n="nav_services">Serviços</a>
+        <a href="#skills" class="hover:t-cyan transition" data-i18n="nav_skills">Tecnologias</a>
+        <a href="#portfolio" class="hover:t-cyan transition" data-i18n="nav_projects">Projetos</a>
+        <a href="#differentials" class="hover:t-cyan transition" data-i18n="nav_diff">Diferenciais</a>
+        <a href="#contact" class="hover:t-cyan transition" data-i18n="nav_contact">Contato</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <!-- Theme Toggle (Dark / Light) -->
+        <button type="button" id="btn-toggle-theme" class="px-3 py-1.5 rounded-xl border b-subtle bg-chip-var text-xs font-mono-code t-heading hover:border-cyan-400/60 transition flex items-center gap-1.5" title="Alternar modo Claro / Escuro">
+          <span id="theme-icon">☀️</span>
+          <span id="theme-label" class="hidden sm:inline">Claro</span>
+        </button>
+
+        <!-- Command Palette -->
+        <button type="button" id="btn-cmdk" class="hidden md:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border b-subtle bg-chip-var hover:border-cyan-400/50 text-xs t-body transition" title="Abrir Menu Rápido">
+          <span>Buscar</span>
+          <kbd class="px-1.5 py-0.5 text-[10px] font-mono-code rounded bg-panel-var t-cyan">⌘K</kbd>
+        </button>
+
+        <!-- Toggle Liquid Wave -->
+        <button type="button" id="btn-toggle-fx" class="px-2.5 py-1.5 rounded-xl border border-cyan-500/35 bg-cyan-500/10 text-[11px] font-mono-code t-cyan hover:bg-cyan-500/20 transition" title="Ativar/Desativar onda líquida">
+          Onda: ON
+        </button>
+
+        <!-- Language Switcher Pill with Flags -->
+        <div class="lang-pill-container">
+          <button type="button" data-lang="pt" class="lang-btn active" title="Português">
+            <span class="text-[9px] font-bold tracking-wider leading-none">PT</span>
+            <svg class="w-4 h-2.5 rounded-[2px] mt-1 shadow-sm shrink-0" viewBox="0 0 720 504" aria-hidden="true">
+              <rect width="720" height="504" fill="#009b3a"/>
+              <polygon points="360,42 666,252 360,462 54,252" fill="#fedf00"/>
+              <circle cx="360" cy="252" r="126" fill="#002776"/>
+            </svg>
+          </button>
+          <button type="button" data-lang="es" class="lang-btn" title="Español">
+            <span class="text-[9px] font-bold tracking-wider leading-none">ES</span>
+            <svg class="w-4 h-2.5 rounded-[2px] mt-1 shadow-sm shrink-0" viewBox="0 0 750 500" aria-hidden="true">
+              <rect width="750" height="500" fill="#c60b1e"/>
+              <rect y="125" width="750" height="250" fill="#ffc400"/>
+            </svg>
+          </button>
+          <button type="button" data-lang="en" class="lang-btn" title="English">
+            <span class="text-[9px] font-bold tracking-wider leading-none">EN</span>
+            <svg class="w-4 h-2.5 rounded-[2px] mt-1 shadow-sm shrink-0" viewBox="0 0 60 30" aria-hidden="true">
+              <clipPath id="flag-en-s"><path d="M0,0 v30 h60 v-30 z"/></clipPath>
+              <clipPath id="flag-en-t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath>
+              <g clip-path="url(#flag-en-s)">
+                <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
+                <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+                <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#flag-en-t)" stroke="#C8102E" stroke-width="4"/>
+                <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
+                <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+              </g>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10">
+
+    <!-- ============================================================ -->
+    <!-- 2. INTERACTIVE HERO SECTION -->
+    <!-- ============================================================ -->
+    <section class="relative min-h-[84vh] flex items-center py-14 sm:py-20">
+      <div class="max-w-6xl mx-auto px-5 sm:px-6 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+        <div class="lg:col-span-7">
+          <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border b-subtle bg-chip-var mb-7">
+            <span class="relative flex h-2.5 w-2.5">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-500"></span>
+            </span>
+            <span class="text-[11px] font-mono-code tracking-wider uppercase t-heading" data-i18n="avail">Disponível para projetos & contratos</span>
+          </div>
+
+          <h1 class="font-display text-5xl sm:text-6xl lg:text-[4.4rem] font-bold t-heading leading-[1.05] mb-5">
+            <span data-i18n="hero_hi">Olá, eu sou</span><br>
+            <span class="brand-gradient-text">Danilo Oliveira</span>
+          </h1>
+
+          <div class="flex items-center gap-1.5 text-lg sm:text-2xl font-medium t-heading mb-6 h-8">
+            <span id="typing-role">Engenheiro de Software</span><span class="cursor-blink font-mono-code font-bold">|</span>
+          </div>
+
+          <p class="t-body text-sm sm:text-base leading-relaxed max-w-xl mb-9" data-i18n="hero_bio">
+            Desenvolvo websites comerciais modernos, landing pages de alta conversão e identidades visuais exclusivas com performance impecável e foco total em vendas.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-3.5 mb-9">
+            <a href="#portfolio" class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl text-sm btn-cyan">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <span data-i18n="cta_projects">Explorar Projetos</span>
+            </a>
+            <a href="#contact" class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl text-sm font-semibold btn-ghost">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              <span data-i18n="cta_contact">Entrar em Contato</span>
+            </a>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-3 text-xs font-mono-code t-muted">
+            <span class="uppercase tracking-widest text-[11px]" data-i18n="find_me">Encontre-me em</span>
+            <button type="button" id="btn-copy-gh" class="px-3 py-1.5 rounded-lg border b-subtle bg-chip-var hover:border-cyan-400/50 t-heading transition">github/daniloliveira89</button>
+            <a href="https://instagram.com/daniloliveira89" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border b-subtle bg-chip-var hover:border-fuchsia-400/60 t-heading transition">
+              <svg class="w-3.5 h-3.5 t-orchid" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              <span>@daniloliveira89</span>
+            </a>
+            <button type="button" id="btn-open-terminal-shortcut" class="px-3 py-1.5 rounded-lg border border-fuchsia-500/35 bg-fuchsia-500/10 hover:bg-fuchsia-500/20 t-orchid transition">⚡ Testar Terminal</button>
+          </div>
+        </div>
+
+        <!-- Right Column: 3D Interactive Card -->
+        <div class="lg:col-span-5 flex justify-center lg:justify-end tilt-stage">
+          <div id="hero-tilt-card" class="tilt-card relative w-full max-w-[380px] rounded-3xl p-5 sm:p-6">
+
+            <button type="button" data-card-tab="profile" class="hidden sm:inline-flex items-center gap-1.5 absolute -top-3.5 -left-5 px-3 py-1.5 rounded-xl bg-surface-solid border b-subtle text-[11px] font-mono-code t-heading shadow-xl hover:border-cyan-400/60 transition">
+              <span class="t-cyan">&lt;/&gt;</span> Clean Code
+            </button>
+            <button type="button" data-card-tab="playground" class="hidden sm:inline-flex items-center gap-1.5 absolute top-1/2 -right-5 px-3 py-1.5 rounded-xl bg-surface-solid border b-subtle text-[11px] font-mono-code t-heading shadow-xl hover:border-fuchsia-400/60 transition">
+              <span class="t-orchid">⚡</span> WebGL & I.A.
+            </button>
+
+            <div class="grid grid-cols-3 gap-1.5 p-1 rounded-2xl bg-panel-var border b-subtle mb-5 text-[11px] font-mono-code">
+              <button type="button" data-card-tab="profile" class="card-tab-btn py-1.5 rounded-xl border border-transparent tab-pill-active transition font-semibold">Perfil</button>
+              <button type="button" data-card-tab="terminal" class="card-tab-btn py-1.5 rounded-xl border border-transparent t-muted hover:t-heading transition">Terminal</button>
+              <button type="button" data-card-tab="playground" class="card-tab-btn py-1.5 rounded-xl border border-transparent t-muted hover:t-heading transition">Canvas Lab</button>
+            </div>
+
+            <!-- TAB 1: PROFILE -->
+            <div id="tab-profile" class="space-y-5">
+              <div class="h-44 rounded-2xl border b-subtle bg-gradient-to-br from-cyan-500/10 via-transparent to-fuchsia-500/10 flex flex-col items-center justify-center relative overflow-hidden">
+                <div class="brand-ring rounded-full w-28 h-28 shadow-2xl">
+                  <div class="w-full h-full rounded-full bg-[#090B12] overflow-hidden flex items-center justify-center p-2.5">
+                    <img src="https://portfolio-danilo-oliveira.vercel.app/assets/images/brand-rabbit.png" alt="Danilo Oliveira — Brand Logo" class="w-full h-full object-contain filter drop-shadow" />
+                  </div>
+                </div>
+                <span class="mt-3 text-[10px] font-mono-code t-muted">Mova o mouse para efeito 3D</span>
+              </div>
+
+              <div>
+                <p class="font-display text-xl font-bold t-heading">Danilo Oliveira</p>
+                <p class="text-xs t-muted mt-0.5">Web Designer & Frontend Specialist</p>
+              </div>
+
+              <div class="grid grid-cols-3 gap-2 text-center pt-4 border-t b-subtle">
+                <div>
+                  <p class="font-display font-bold text-xl t-heading">39+</p>
+                  <p class="text-[10px] t-muted uppercase font-mono-code mt-0.5">Sites</p>
+                </div>
+                <div class="border-x b-subtle">
+                  <p class="font-display font-bold text-xl t-cyan">100%</p>
+                  <p class="text-[10px] t-muted uppercase font-mono-code mt-0.5">Responsivo</p>
+                </div>
+                <div>
+                  <p class="font-display font-bold text-xl t-orchid">48+</p>
+                  <p class="text-[10px] t-muted uppercase font-mono-code mt-0.5">Logos</p>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between pt-2">
+                <span class="text-[11px] font-mono-code t-muted">Brasil • Remoto</span>
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-[11px] font-semibold t-cyan">
+                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span> Open to Work
+                </span>
+              </div>
+            </div>
+
+            <!-- TAB 2: INTERACTIVE TERMINAL -->
+            <div id="tab-terminal" class="hidden space-y-3 font-mono-code text-xs">
+              <div id="term-output" class="h-56 overflow-y-auto rounded-2xl bg-[#090B11] border border-white/10 p-3.5 space-y-2 text-[11px] leading-relaxed text-slate-200">
+                <p class="text-slate-400"># Terminal interativo — clique ou digite um comando:</p>
+                <p><span class="text-cyan-400">➜</span> <span class="text-fuchsia-300">whoami</span></p>
+                <p class="text-slate-200 pl-3">Danilo Oliveira — Engenheiro de Software, I.A. & WebGL.</p>
+              </div>
+              <div class="flex flex-wrap gap-1.5">
+                <button type="button" data-cmd="stack" class="px-2.5 py-1 rounded-lg bg-chip-var hover:bg-cyan-500/15 border b-subtle text-[10px] t-cyan transition">stack</button>
+                <button type="button" data-cmd="projetos" class="px-2.5 py-1 rounded-lg bg-chip-var hover:bg-fuchsia-500/15 border b-subtle text-[10px] t-orchid transition">projetos</button>
+                <button type="button" data-cmd="contato" class="px-2.5 py-1 rounded-lg bg-chip-var border b-subtle text-[10px] t-heading transition">contato</button>
+                <button type="button" data-cmd="clear" class="px-2.5 py-1 rounded-lg bg-chip-var border b-subtle text-[10px] t-muted transition">clear</button>
+              </div>
+              <form id="term-form" class="flex gap-2">
+                <input id="term-input" type="text" placeholder="Digite 'help', 'stack', 'projetos'..." class="flex-1 px-3 py-2 rounded-xl bg-input-var border b-subtle t-heading text-[11px] focus:outline-none focus:border-cyan-400" />
+                <button type="submit" class="px-3.5 py-2 rounded-xl text-[11px] btn-cyan">Run</button>
+              </form>
+            </div>
+
+            <!-- TAB 3: MINI CANVAS PLAYGROUND -->
+            <div id="tab-playground" class="hidden space-y-3">
+              <div class="relative rounded-2xl overflow-hidden border b-subtle bg-[#07080E] h-60">
+                <canvas id="mini-lab-canvas" class="w-full h-full block cursor-crosshair"></canvas>
+                <span class="absolute top-2.5 left-3 text-[10px] font-mono-code text-cyan-300 pointer-events-none">Clique ou arraste para gerar ondas</span>
+                <span id="lab-count" class="absolute bottom-2.5 right-3 text-[10px] font-mono-code text-fuchsia-300 pointer-events-none">0 partículas</span>
+              </div>
+              <div class="flex items-center justify-between gap-2">
+                <button type="button" id="btn-lab-burst" class="flex-1 py-2 rounded-xl text-xs font-semibold btn-cyan">⚡ Pulso de Energia</button>
+                <button type="button" id="btn-lab-clear" class="px-4 py-2 rounded-xl text-xs btn-ghost">Limpar</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 3. SERVIÇOS (ESTILO REFERÊNCIA COM ÍCONES + INTERATIVIDADE) -->
+    <!-- ============================================================ -->
+    <section id="services" class="py-20 border-t b-subtle">
+      <div class="max-w-6xl mx-auto px-5 sm:px-6">
+        <div class="text-center mb-14">
+          <p class="text-xs font-semibold tracking-[0.3em] uppercase t-cyan mb-3 font-mono-code" data-i18n="sec_services_kicker">Especialidades & Domínios</p>
+          <h2 class="font-display text-3xl md:text-4xl font-bold t-heading" data-i18n="sec_services_title">Serviços que Ofereço</h2>
+          <div class="mt-4 mx-auto w-16 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+        </div>
+        <div id="services-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 4. STACK EXPLORÁVEL -->
+    <!-- ============================================================ -->
+    <section id="skills" class="py-20 border-t b-subtle">
+      <div class="max-w-6xl mx-auto px-5 sm:px-6">
+        <div class="text-center mb-10">
+          <p class="text-xs font-semibold tracking-[0.3em] uppercase t-orchid mb-3 font-mono-code" data-i18n="sec_skills_kicker">Tecnologias & Ferramentas</p>
+          <h2 class="font-display text-3xl md:text-4xl font-bold t-heading" data-i18n="sec_skills_title">Stack & Proficiência</h2>
+          <p class="mt-2.5 text-xs t-muted font-mono-code">Clique em uma tecnologia para filtrar os projetos correspondentes</p>
+          <div class="mt-4 mx-auto w-16 h-px bg-gradient-to-r from-transparent via-fuchsia-400 to-transparent"></div>
+        </div>
+
+        <div id="skill-filters" class="flex flex-wrap justify-center gap-2 mb-10"></div>
+        <div id="skills-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 5. PROJETOS EM DESTAQUE COM DEMOS -->
+    <!-- ============================================================ -->
+    <section id="portfolio" class="py-20 border-t b-subtle">
+      <div class="max-w-6xl mx-auto px-5 sm:px-6">
+        <div class="text-center mb-8">
+          <p class="text-xs font-semibold tracking-[0.3em] uppercase t-cyan mb-3 font-mono-code" data-i18n="sec_portfolio_kicker">Catálogo de Trabalhos</p>
+          <h2 class="font-display text-3xl md:text-4xl font-bold t-heading">
+            Projetos em <span class="brand-gradient-text">Destaque</span>
+          </h2>
+          <div class="mt-4 mx-auto w-16 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+        </div>
+
+        <div class="flex flex-wrap justify-center items-center gap-3 mb-10">
+          <div id="project-filters" class="flex flex-wrap justify-center gap-2">
+            <button type="button" class="px-5 py-2 rounded-full text-xs font-semibold border transition inline-flex items-center gap-2 tab-pill-active cursor-default">
+              <span>Layouts & Sites</span>
+              <span class="text-[10px] opacity-75 font-mono-code font-normal">(39)</span>
+            </button>
+            <button type="button" class="px-5 py-2 rounded-full text-xs font-semibold border transition inline-flex items-center gap-2 b-subtle t-body cursor-default">
+              <span>Logos</span>
+              <span class="text-[10px] opacity-75 font-mono-code font-normal">(48)</span>
+            </button></div>
+          <div id="active-tech-banner" class="hidden items-center gap-2 px-3 py-1.5 rounded-full bg-fuchsia-500/15 border border-fuchsia-500/40 text-xs t-orchid font-mono-code">
+            <span id="active-tech-label"></span>
+            <button type="button" id="clear-tech-filter" class="t-heading hover:t-cyan font-bold ml-1">✕</button>
+          </div>
+        </div>
+
+        <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 6. DIFERENCIAIS TÉCNICOS & SEGURANÇA (ESTILO REFERÊNCIA) -->
+    <!-- ============================================================ -->
+    <section id="differentials" class="py-20 border-t b-subtle relative overflow-hidden">
+      <div class="max-w-6xl mx-auto px-5 sm:px-6 relative z-10">
+        <div class="text-center mb-16">
+          <p class="text-xs font-semibold tracking-[0.3em] uppercase t-orchid mb-3 font-mono-code">Engenharia & Confiabilidade</p>
+          <h2 class="font-display text-3xl md:text-4xl font-bold t-heading">Padrão de Entrega & Segurança</h2>
+          <p class="mt-3 t-body text-sm max-w-2xl mx-auto leading-relaxed">
+            Muito além do visual: estruturas construídas com foco em velocidade, conversão e proteção jurídica para o seu negócio.
+          </p>
+          <div class="mt-4 mx-auto w-16 h-px bg-gradient-to-r from-transparent via-fuchsia-400 to-transparent"></div>
+        </div>
+
+        <div id="diff-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+      </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- 7. CONTATO COM SEUS CANAIS DIRETOS + ESTIMADOR INTERATIVO -->
+    <!-- ============================================================ -->
+    <section id="contact" class="py-20 border-t b-subtle">
+      <div class="max-w-6xl mx-auto px-5 sm:px-6">
+        <div class="text-center mb-14">
+          <p class="text-xs font-semibold tracking-[0.3em] uppercase t-cyan mb-3 font-mono-code">Conectar & Colaborar</p>
+          <h2 class="font-display text-3xl md:text-4xl font-bold t-heading">
+            Vamos <span class="brand-gradient-text">Trabalhar Juntos</span>
+          </h2>
+          <div class="mt-4 mx-auto w-16 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+          <!-- Painel Esquerdo: Seus Contatos Diretos + Escopo Rápido -->
+          <div class="lg:col-span-2 space-y-5">
+            <div class="spotlight-card rounded-2xl p-6">
+              <h3 class="font-display text-lg font-bold t-heading mb-5">Canais Diretos</h3>
+              <div class="space-y-4 text-xs">
+                <div class="flex items-center justify-between gap-2 pb-3 border-b b-subtle">
+                  <div>
+                    <p class="t-muted uppercase tracking-wider text-[10px] font-mono-code">E-mail</p>
+                    <p class="t-heading font-mono-code mt-0.5">danilo.bls89@gmail.com</p>
+                  </div>
+                  <button type="button" id="btn-copy-email" class="px-2.5 py-1 rounded-lg border b-subtle bg-chip-var text-[10px] font-mono-code t-cyan hover:border-cyan-400 transition">Copiar</button>
+                </div>
+
+                <div class="flex items-center justify-between gap-2 pb-3 border-b b-subtle">
+                  <div>
+                    <p class="t-muted uppercase tracking-wider text-[10px] font-mono-code">GitHub</p>
+                    <p class="t-heading font-mono-code mt-0.5">github.com/daniloliveira89</p>
+                  </div>
+                  <button type="button" id="btn-copy-gh-contact" class="px-2.5 py-1 rounded-lg border b-subtle bg-chip-var text-[10px] font-mono-code t-orchid hover:border-fuchsia-400 transition">Copiar</button>
+                </div>
+
+                <div class="flex items-center justify-between gap-2 pb-3 border-b b-subtle">
+                  <div>
+                    <p class="t-muted uppercase tracking-wider text-[10px] font-mono-code">Instagram</p>
+                    <a href="https://instagram.com/daniloliveira89" target="_blank" rel="noopener noreferrer" class="t-heading font-mono-code mt-0.5 hover:t-orchid transition inline-block">@daniloliveira89</a>
+                  </div>
+                  <button type="button" id="btn-copy-ig-contact" class="px-2.5 py-1 rounded-lg border b-subtle bg-chip-var text-[10px] font-mono-code t-orchid hover:border-fuchsia-400 transition">Copiar</button>
+                </div>
+
+                <div>
+                  <p class="t-muted uppercase tracking-wider text-[10px] font-mono-code">Localização</p>
+                  <p class="t-heading mt-0.5">Brasil • Atuação Remota Global</p>
+                </div>
+
+                <div>
+                  <p class="t-muted uppercase tracking-wider text-[10px] font-mono-code">Tempo de Resposta</p>
+                  <p class="t-heading mt-0.5">Em até 24 horas</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="rounded-2xl p-4 border border-emerald-500/30 bg-emerald-500/10 flex items-center gap-3">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0 animate-pulse"></span>
+              <p class="text-xs text-emerald-500 font-semibold">Aberto a propostas de engenharia e contratos</p>
+            </div>
+
+
+          </div>
+
+          <!-- Formulário -->
+          <div class="lg:col-span-3">
+            <form id="contact-form" class="spotlight-card rounded-2xl p-7 space-y-4">
+              <h3 class="font-display text-lg font-bold t-heading mb-2">Envie uma Mensagem</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="c-name" class="block text-[11px] font-mono-code uppercase t-muted mb-1.5">Seu Nome</label>
+                  <input id="c-name" type="text" required placeholder="Ex: Carlos Silva" class="w-full px-4 py-2.5 rounded-xl bg-input-var border b-subtle t-heading text-xs focus:outline-none focus:border-cyan-400" />
+                </div>
+                <div>
+                  <label for="c-email" class="block text-[11px] font-mono-code uppercase t-muted mb-1.5">Seu E-mail</label>
+                  <input id="c-email" type="email" required placeholder="Ex: contato@empresa.com" class="w-full px-4 py-2.5 rounded-xl bg-input-var border b-subtle t-heading text-xs focus:outline-none focus:border-cyan-400" />
+                </div>
+              </div>
+              <div>
+                <label for="c-subject" class="block text-[11px] font-mono-code uppercase t-muted mb-1.5">Assunto</label>
+                <input id="c-subject" type="text" required placeholder="Ex: Projeto Web App / Consultoria" class="w-full px-4 py-2.5 rounded-xl bg-input-var border b-subtle t-heading text-xs focus:outline-none focus:border-cyan-400" />
+              </div>
+              <div>
+                <label for="c-msg" class="block text-[11px] font-mono-code uppercase t-muted mb-1.5">Mensagem</label>
+                <textarea id="c-msg" rows="4" required placeholder="Conte mais sobre o projeto, escopo ou objetivo..." class="w-full px-4 py-2.5 rounded-xl bg-input-var border b-subtle t-heading text-xs focus:outline-none focus:border-cyan-400 resize-none"></textarea>
+              </div>
+              <button type="submit" class="w-full sm:w-auto px-8 py-3 rounded-xl text-xs btn-cyan">Enviar Mensagem</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-10 border-t b-subtle relative z-10" style="background: var(--bg-footer);">
+    <div class="max-w-6xl mx-auto px-5 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="brand-ring rounded-lg w-8 h-8">
+          <div class="w-full h-full rounded-[6px] bg-[#090B12] overflow-hidden flex items-center justify-center p-0.5">
+            <img src="https://portfolio-danilo-oliveira.vercel.app/assets/images/brand-rabbit.png" alt="Danilo Oliveira — Brand Logo" class="w-full h-full object-contain filter drop-shadow" />
+          </div>
+        </div>
+        <p class="text-xs t-muted">&copy; 2026 <strong class="t-heading">Danilo Oliveira</strong>. Todos os direitos reservados.</p>
+      </div>
+      <div class="flex items-center gap-5 text-xs t-muted">
+        <a href="#services" class="hover:t-cyan transition">Serviços</a>
+        <a href="#skills" class="hover:t-cyan transition">Tecnologias</a>
+        <a href="#portfolio" class="hover:t-cyan transition">Projetos</a>
+        <a href="#contact" class="hover:t-cyan transition">Contato</a>
+        <a href="#top" class="t-cyan font-semibold hover:underline">Topo ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================ -->
+  <!-- MODAL: PROJECT DEMO -->
+  <!-- ============================================================ -->
+  <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/75 backdrop-blur-md p-4">
+    <div class="w-full max-w-xl rounded-3xl bg-surface-solid border b-subtle p-6 shadow-2xl">
+      <div class="flex items-start justify-between gap-4 mb-4">
+        <div>
+          <span id="pm-badge" class="inline-block px-3 py-1 rounded-full text-[10px] font-mono-code font-bold bg-cyan-500/15 t-cyan border border-cyan-500/30 mb-2"></span>
+          <h3 id="pm-title" class="font-display text-2xl font-bold t-heading"></h3>
+        </div>
+        <button type="button" id="close-project-modal" class="w-8 h-8 rounded-xl border b-subtle t-muted hover:t-heading flex items-center justify-center">✕</button>
+      </div>
+      <p id="pm-desc" class="text-xs sm:text-sm t-body leading-relaxed mb-4"></p>
+      <div class="rounded-2xl bg-panel-var border b-subtle p-4 mb-5">
+        <div class="flex items-center justify-between mb-3">
+          <span class="text-[10px] font-mono-code uppercase tracking-wider t-orchid">⚡ Prévia Interativa</span>
+          <span class="text-[10px] font-mono-code t-muted">Simulação ao vivo</span>
+        </div>
+        <div id="pm-demo-area"></div>
+      </div>
+      <div id="pm-tags" class="flex flex-wrap gap-1.5 mb-5"></div>
+      <div class="flex justify-end">
+        <button type="button" id="pm-close-btn" class="px-5 py-2.5 rounded-xl text-xs btn-cyan">Fechar Demo</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- MODAL: COMMAND PALETTE (⌘K) -->
+  <!-- ============================================================ -->
+  <div id="cmdk-modal" class="fixed inset-0 z-50 hidden items-start justify-center pt-20 bg-black/75 backdrop-blur-md p-4">
+    <div class="w-full max-w-lg rounded-2xl bg-surface-solid border b-subtle overflow-hidden shadow-2xl">
+      <div class="flex items-center gap-3 px-4 py-3 border-b b-subtle">
+        <span class="t-cyan font-mono-code text-sm">⌘</span>
+        <input id="cmdk-input" type="text" placeholder="Ir para seção, alternar tema ou copiar contato..." class="w-full bg-transparent text-sm t-heading focus:outline-none" />
+        <button type="button" id="close-cmdk" class="text-xs font-mono-code t-muted hover:t-heading px-2 py-0.5 rounded bg-chip-var">ESC</button>
+      </div>
+      <div id="cmdk-list" class="max-h-72 overflow-y-auto p-2 space-y-1"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- CONTROLES FLUTUANTES DA ONDA LÍQUIDA (FORÇA & VEL. NO MÁXIMO) -->
+  <!-- ============================================================ -->
+  <div class="fixed bottom-4 left-4 z-40">
+    <div id="wave-controls-panel" class="wave-dock rounded-2xl px-4 py-3 flex flex-wrap items-center gap-3 sm:gap-4 text-[11px] font-mono-code t-body">
+      <div class="flex items-center gap-2 pr-1 border-r b-subtle">
+        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+        <span class="t-heading font-semibold">Onda Líquida</span>
+      </div>
+      <label class="flex items-center gap-1.5">
+        <span>Espaço</span>
+        <input id="ctrl-spacing" type="range" min="20" max="40" value="28" class="w-16 accent-cyan-500 cursor-pointer" />
+      </label>
+      <label class="flex items-center gap-1.5">
+        <span>Força</span>
+        <input id="ctrl-wave" type="range" min="0.4" max="2.2" step="0.1" value="2.2" class="w-16 accent-cyan-500 cursor-pointer" />
+      </label>
+      <label class="flex items-center gap-1.5">
+        <span>Vel.</span>
+        <input id="ctrl-speed" type="range" min="0.05" max="0.9" step="0.05" value="0.45" class="w-16 accent-fuchsia-500 cursor-pointer" />
+      </label>
+      <label class="flex items-center gap-1.5">
+        <span>Raio</span>
+        <input id="ctrl-radius" type="range" min="240" max="700" value="440" class="w-16 accent-fuchsia-500 cursor-pointer" />
+      </label>
+      <button type="button" id="btn-hide-wave-ctrl" class="px-2 py-0.5 rounded-lg bg-chip-var t-muted hover:t-heading transition" title="Minimizar controles">▾</button>
+    </div>
+    <button type="button" id="btn-show-wave-ctrl" class="hidden wave-dock rounded-full px-4 py-2 text-[11px] font-mono-code t-cyan hover:border-fuchsia-400/60 transition">
+      ✦ Ajustar Onda Líquida
+    </button>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- BOTÃO FLUTUANTE WHATSAPP (ACOMPANHA TODA A PÁGINA) -->
+  <!-- ============================================================ -->
+  <div class="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-2.5">
+    <div id="wa-popover" class="hidden wave-dock rounded-2xl p-4 w-72 shadow-2xl">
+      <div class="flex items-center justify-between mb-2.5">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="text-xs font-bold t-heading">WhatsApp • Danilo</span>
+        </div>
+        <button type="button" id="btn-close-wa" class="text-xs t-muted hover:t-heading px-1">✕</button>
+      </div>
+      <p class="text-[11px] t-body mb-3 leading-relaxed">Envie uma mensagem rápida sobre seu projeto ou orçamento:</p>
+      <textarea id="wa-msg-input" rows="2" class="w-full px-3 py-2 rounded-xl bg-input-var border b-subtle t-heading text-xs focus:outline-none focus:border-emerald-400 resize-none mb-2.5">Olá Danilo! Vi seu portfólio e gostaria de conversar sobre um projeto.</textarea>
+      <button type="button" id="btn-send-wa" class="w-full py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition flex items-center justify-center gap-2 shadow-lg">
+        <span>Iniciar no WhatsApp</span>
+      </button>
+    </div>
+
+    <button type="button" id="btn-wa-float" class="group flex items-center gap-2.5 px-4 py-3 rounded-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs shadow-2xl shadow-emerald-500/35 transition hover:scale-105" title="Falar no WhatsApp">
+      <svg class="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24">
+        <path d="M20.52 3.48A11.86 11.86 0 0012.06 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.15 1.59 5.96L0 24l6.31-1.65a11.86 11.86 0 005.75 1.47h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.45-8.44zm-8.46 18.33h-.01a9.87 9.87 0 01-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 01-1.51-5.28c0-5.45 4.44-9.89 9.9-9.89 2.64 0 5.13 1.03 7 2.9a9.83 9.83 0 012.89 7c0 5.46-4.44 9.9-9.9 9.9zm5.43-7.42c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.21 5.09 4.5.71.31 1.27.49 1.7.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35z"/>
+      </svg>
+      <span class="hidden sm:inline">WhatsApp</span>
+    </button>
+  </div>
+
+  <!-- TOAST -->
+  <div id="toast" class="fixed bottom-20 right-5 z-50 hidden px-4 py-2.5 rounded-xl bg-surface-solid border border-cyan-400/60 t-heading text-xs font-semibold shadow-2xl"></div>
+
+  <script>
+    const I18N = {
+      pt: {
+        nav_services: 'Serviços', nav_skills: 'Tecnologias', nav_projects: 'Projetos', nav_diff: 'Diferenciais', nav_contact: 'Contato',
+        avail: 'Disponível para projetos & contratos', hero_hi: 'Olá, eu sou',
+        hero_bio: 'Desenvolvo aplicações modernas de alta performance — desde observatórios inteligentes e pipelines de I.A. Generativa até jogos táticos em WebGL e extensões ultrarrápidas de navegador.',
+        cta_projects: 'Explorar Projetos', cta_contact: 'Entrar em Contato', find_me: 'Encontre-me em',
+        sec_services_kicker: 'Especialidades & Domínios', sec_services_title: 'Serviços que Ofereço',
+        sec_skills_kicker: 'Tecnologias & Ferramentas', sec_skills_title: 'Stack & Proficiência',
+        sec_portfolio_kicker: 'Catálogo de Trabalhos'
+      },
+      es: {
+        nav_services: 'Servicios', nav_skills: 'Tecnologías', nav_projects: 'Proyectos', nav_diff: 'Diferenciales', nav_contact: 'Contacto',
+        avail: 'Disponible para proyectos y contratos', hero_hi: 'Hola, soy',
+        hero_bio: 'Desarrollo sitios web comerciales modernos, landing pages de alta conversión e identidades visuales exclusivas con alto rendimiento y enfoque en ventas.',
+        cta_projects: 'Explorar Proyectos', cta_contact: 'Contactar', find_me: 'Encuéntrame en',
+        sec_services_kicker: 'Especialidades & Dominios', sec_services_title: 'Servicios que Ofrezco',
+        sec_skills_kicker: 'Tecnologías & Herramientas', sec_skills_title: 'Stack & Dominio',
+        sec_portfolio_kicker: 'Catálogo de Trabajos'
+      },
+      en: {
+        nav_services: 'Services', nav_skills: 'Tech Stack', nav_projects: 'Projects', nav_diff: 'Standards', nav_contact: 'Contact',
+        avail: 'Available for projects & contracts', hero_hi: "Hi, I'm",
+        hero_bio: 'I design and build modern commercial websites, high-conversion landing pages, and distinctive visual identities with peak performance and business results.',
+        cta_projects: 'Explore Projects', cta_contact: 'Get in Touch', find_me: 'Find me on',
+        sec_services_kicker: 'Specialties & Domains', sec_services_title: 'Services I Offer',
+        sec_skills_kicker: 'Technologies & Tools', sec_skills_title: 'Stack & Proficiency',
+        sec_portfolio_kicker: 'Selected Works'
+      }
+    };
+
+    const ROLES = [
+      'Web Designer & UI/UX',
+      'Especialista em Sites Comerciais',
+      'Landing Pages de Alta Conversão',
+      'Identidade Visual & Branding'
+    ];
+
+    const SERVICES = [
+      {
+        id: '01',
+        title: 'Websites Comerciais & Institucionais',
+        desc: 'Projetos sob medida para clínicas, escritórios de advocacia, hotelaria, imobiliárias e consultorias com design refinado e foco em autoridade.',
+        deliverables: ['Design exclusivo sob medida', 'Arquitetura de informação clara', 'Painel de agendamento & contato'],
+        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>'
+      },
+      {
+        id: '02',
+        title: 'Lojas Virtuais & E-commerce',
+        desc: 'Vitrines dinâmicas com catálogo de produtos, filtros em tempo real, sacola de compras ágil e integração direta com WhatsApp para fechamento imediato.',
+        deliverables: ['Carrinho de compras dinâmico', 'Filtro instantâneo por categoria', 'Checkout via WhatsApp'],
+        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>'
+      },
+      {
+        id: '03',
+        title: 'Landing Pages de Alta Conversão',
+        desc: 'Páginas estratégicas projetadas para tráfego pago (Google/Meta Ads), com gatilhos visuais, quebra de objeções e chamadas para ação assertivas.',
+        deliverables: ['Copywriting estruturado', 'Design persuasivo & moderno', 'Métricas de conversão'],
+        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/>'
+      },
+      {
+        id: '04',
+        title: 'Identidade Visual & Logotipos',
+        desc: 'Criação de marcas marcantes e logotipos vetorizados em alta resolução, paletas de cores contemporâneas e guias visuais completos.',
+        deliverables: ['Logotipo em vetor & PNG transparente', 'Paleta cromática exclusiva', 'Aplicações para redes e impressos'],
+        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>'
+      },
+      {
+        id: '05',
+        title: 'Performance & Otimização SEO',
+        desc: 'Carregamento instantâneo em 4G, notas 95+ no Google PageSpeed, estrutura semântica para indexação orgânica e zero lentidão.',
+        deliverables: ['Carregamento sub-segundo', 'SEO técnico estruturado', 'Código limpo sem plugins pesados'],
+        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/>'
+      },
+      {
+        id: '06',
+        title: '100% Responsivo & Mobile First',
+        desc: 'Layouts perfeitamente adaptados para smartphones, tablets e desktops de qualquer proporção, garantindo legibilidade e usabilidade plena.',
+        deliverables: ['Adaptação para todas as telas', 'Navegação tátil fluida', 'Tipografia proporcional'],
+        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>'
+      }
+    ];
+
+    const DIFFERENTIALS = [
+      {
+        tag: 'Borda em Nuvem',
+        title: 'Blindagem & Segurança',
+        desc: 'Proteção nativa contra clonagem e scripts maliciosos com cabeçalhos de segurança na nuvem, sem vulnerabilidades de CMS genéricos.',
+        foot: 'Zero banco exposto',
+        tone: 'cyan',
+        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>'
+      },
+      {
+        tag: 'Conversão Direta',
+        title: 'Velocidade & WhatsApp',
+        desc: 'Código ultraleve que abre instantaneamente no 4G móvel, com botões estratégicos que enviam pedidos direto para o WhatsApp.',
+        foot: 'Carregamento < 1s',
+        tone: 'emerald',
+        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/>'
+      },
+      {
+        tag: 'Conformidade Legal',
+        title: 'Adequação à LGPD',
+        desc: 'Estruturas entregues com termos de privacidade e consentimento de dados configurados, garantindo transparência jurídica.',
+        foot: 'Privacidade blindada',
+        tone: 'fuchsia',
+        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>'
+      },
+      {
+        tag: 'Patrimônio Real',
+        title: 'Propriedade 100% Sua',
+        desc: 'O domínio é registrado diretamente no seu CPF ou CNPJ. Você mantém a posse legal total do seu patrimônio digital.',
+        foot: 'Posse legal garantida',
+        tone: 'amber',
+        icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/>'
+      }
+    ];
+
+    const SKILLS = [
+      { name: 'TypeScript', pct: 95, cat: 'Frontend & WebGL' },
+      { name: 'React & Next.js', pct: 92, cat: 'Frontend & WebGL' },
+      { name: 'Tailwind & UI/UX', pct: 96, cat: 'Frontend & WebGL' },
+      { name: 'WebGL & PixiJS', pct: 89, cat: 'Frontend & WebGL' },
+      { name: 'LLMs & GenAI', pct: 95, cat: 'I.A. & Backend' },
+      { name: 'Cloudflare Workers', pct: 90, cat: 'I.A. & Backend' },
+      { name: 'Python', pct: 91, cat: 'I.A. & Backend' },
+      { name: 'Manifest V3', pct: 96, cat: 'Extensões & DevOps' },
+      { name: 'GitHub Actions', pct: 88, cat: 'Extensões & DevOps' }
+    ];
+
+    
+    const SITE_TYPE_DICT = {
+      // 39 Commercial Web Design Sites
+      'layout-ecommerce': { pt: 'Loja Virtual & E-commerce', es: 'Tienda Virtual & E-commerce', en: 'E-Commerce Store' },
+      'layout-omakase': { pt: 'Restaurante Japonês', es: 'Restaurante Japonés', en: 'Japanese Restaurant' },
+      'layout-odontologia': { pt: 'Clínica Odontológica', es: 'Clínica Dental', en: 'Dental Clinic' },
+      'layout-clinica-medica': { pt: 'Centro Médico & Hospital', es: 'Centro Médico', en: 'Medical Center' },
+      'layout-real-estate': { pt: 'Imobiliária de Luxo', es: 'Inmobiliaria de Lujo', en: 'Luxury Real Estate' },
+      'layout-corporate': { pt: 'Escritório de Advocacia', es: 'Bufete de Abogados', en: 'Law Firm' },
+      'layout-barbearia': { pt: 'Barbearia & Visagismo', es: 'Barbería & Visagismo', en: 'Barbershop' },
+      'layout-academia': { pt: 'Academia & Fitness', es: 'Gimnasio & Fitness', en: 'Gym & Fitness' },
+      'layout-concessionaria': { pt: 'Concessionária & Blindados', es: 'Concesionaria & Blindados', en: 'Car Dealership' },
+      'layout-estetica': { pt: 'Clínica de Estética & Laser', es: 'Clínica de Estética & Láser', en: 'Aesthetic Clinic' },
+      'layout-hotel-resort': { pt: 'Hotel & Eco-Resort', es: 'Hotel & Eco-Resort', en: 'Hotel & Eco-Resort' },
+      'layout-agencia-viagens': { pt: 'Agência de Turismo', es: 'Agencia de Viajes', en: 'Travel Agency' },
+      'layout-arquitetura': { pt: 'Escritório de Arquitetura', es: 'Estudio de Arquitectura', en: 'Architecture Studio' },
+      'layout-coworking': { pt: 'Coworking & Hub de Inovação', es: 'Coworking & Espacio Flexible', en: 'Coworking Hub' },
+      'layout-cafeteria': { pt: 'Cafeteria & Grãos Especiais', es: 'Cafetería de Especialidad', en: 'Specialty Coffee' },
+      'layout-hamburgueria': { pt: 'Hamburgueria Artesanal', es: 'Hamburguesería Artesanal', en: 'Artisan Burger Bar' },
+      'layout-pizzaria': { pt: 'Pizzaria Napolitana', es: 'Pizzería Napolitana', en: 'Neapolitan Pizzeria' },
+      'layout-confeitaria': { pt: 'Confeitaria & Chocolateria', es: 'Pastelería & Chocolatería', en: 'Artisan Bakery' },
+      'layout-pet-shop': { pt: 'Pet Shop & Spa Pet', es: 'Pet Shop & Spa Canino', en: 'Pet Shop & Spa' },
+      'layout-veterinaria': { pt: 'Hospital Veterinário 24h', es: 'Hospital Veterinario 24h', en: 'Veterinary Hospital' },
+      'layout-advocacia': { pt: 'Escritório de Advocacia', es: 'Bufete de Abogados', en: 'Law Firm' },
+      'layout-consultoria': { pt: 'Consultoria Empresarial', es: 'Consultoría Estratégica', en: 'Business Consulting' },
+      'layout-fintech': { pt: 'Fintech & Câmbio Global', es: 'Fintech & Cambio Global', en: 'Fintech & Currency' },
+      'layout-imobiliaria': { pt: 'Imobiliária de Luxo', es: 'Inmobiliaria de Lujo', en: 'Luxury Real Estate' },
+      'layout-construtora': { pt: 'Construtora & Incorporadora', es: 'Constructora & Inmobiliaria', en: 'Construction Company' },
+      'layout-engenharia': { pt: 'Engenharia Estrutural BIM', es: 'Ingeniería Estructural BIM', en: 'Structural Engineering' },
+      'layout-escola-cursos': { pt: 'Cursos & Escola de Tecnologia', es: 'Escuela de Tecnología', en: 'Tech Academy' },
+      'layout-saas-ai': { pt: 'SaaS & Startup de I.A.', es: 'SaaS & Startup de I.A.', en: 'AI SaaS Landing' },
+      'layout-agencia-publicidade': { pt: 'Agência de Marketing & Branding', es: 'Agencia de Marketing & Branding', en: 'Marketing Agency' },
+      'layout-contabilidade': { pt: 'Escritório de Contabilidade', es: 'Estudio Contable & BPO', en: 'Accounting Firm' },
+      'layout-logistica': { pt: 'Transportadora & Logística', es: 'Operador Logístico', en: 'Logistics & Freight' },
+      'layout-energia-solar': { pt: 'Energia Solar & Fotovoltaica', es: 'Energía Solar Fotovoltaica', en: 'Solar Energy' },
+      'layout-fotografo': { pt: 'Estúdio de Fotografia', es: 'Estudio de Fotografía', en: 'Photography Studio' },
+      'layout-eventos': { pt: 'Produtora de Eventos & Shows', es: 'Productora de Eventos', en: 'Events Production' },
+      'layout-cinema': { pt: 'Produtora de Cinema & Vídeo', es: 'Productora Audiovisual', en: 'Film Production' },
+      'layout-tattoo': { pt: 'Estúdio de Tatuagem', es: 'Estudio de Tatuajes', en: 'Tattoo Studio' },
+      'layout-banda': { pt: 'Banda & Gravadora Musical', es: 'Banda & Sello Musical', en: 'Band & Record Label' },
+      'layout-arte': { pt: 'Portfólio de Arte Editorial', es: 'Portafolio de Arte Editorial', en: 'Art Portfolio' }
+    };
+
+    const LOGOS_DATA = [
+      { id: 'logo-01', name: 'Aurum Omakase', file: '01-aurum.png', pt: 'Restaurante Japonês', es: 'Restaurante Japonés', en: 'Japanese Restaurant', demoUrl: 'https://daniloliveira89.github.io/site---omakase-japan/' },
+      { id: 'logo-02', name: 'OrtoLuxe', file: '02-ortoluxe.png', pt: 'Clínica Odontológica', es: 'Clínica Dental', en: 'Dental Clinic', demoUrl: 'https://daniloliveira89.github.io/site---odontologia-estetica/' },
+      { id: 'logo-03', name: 'VitaMed', file: '03-vitamed.png', pt: 'Centro Médico & Hospital', es: 'Centro Médico', en: 'Medical Center', demoUrl: 'https://daniloliveira89.github.io/site---clinica-medica-especialidades/' },
+      { id: 'logo-04', name: 'Vanguard Realty', file: '04-vanguard.png', pt: 'Imobiliária de Luxo', es: 'Inmobiliaria de Lujo', en: 'Luxury Real Estate', demoUrl: 'https://daniloliveira89.github.io/site---real-estate-investments/' },
+      { id: 'logo-05', name: 'Lex Corporate', file: '05-lex-corporate.png', pt: 'Escritório de Advocacia', es: 'Bufete de Abogados', en: 'Law Firm', demoUrl: 'https://daniloliveira89.github.io/site---corporate-law-tax/' },
+      { id: 'logo-06', name: 'Navalha Real', file: '06-navalha-real.png', pt: 'Barbearia & Visagismo', es: 'Barbería & Visagismo', en: 'Barbershop', demoUrl: 'https://daniloliveira89.github.io/site---barbearia-classic-cuts/' },
+      { id: 'logo-07', name: 'Titan Force Gym', file: '07-titan-force.png', pt: 'Academia & Fitness', es: 'Gimnasio & Fitness', en: 'Gym & Fitness', demoUrl: 'https://daniloliveira89.github.io/site---academia-performance/' },
+      { id: 'logo-08', name: 'Apex Motors', file: '08-apex-motors.png', pt: 'Concessionária & Blindados', es: 'Concesionaria & Blindados', en: 'Car Dealership', demoUrl: 'https://daniloliveira89.github.io/site---concessionaria-veiculos-premium/' },
+      { id: 'logo-09', name: 'Dermacare Estética', file: '09-dermacare.png', pt: 'Clínica de Estética & Laser', es: 'Clínica de Estética & Láser', en: 'Aesthetic Clinic', demoUrl: 'https://daniloliveira89.github.io/site---clinica-estetica-dermatologia/' },
+      { id: 'logo-10', name: 'Botanique Eco Resort', file: '10-botanique.png', pt: 'Hotel & Eco-Resort', es: 'Hotel & Eco-Resort', en: 'Hotel & Eco-Resort', demoUrl: 'https://daniloliveira89.github.io/site---hotel-resort-spa/' },
+      { id: 'logo-11', name: 'Horizonte Viagens', file: '11-horizonte.png', pt: 'Agência de Turismo', es: 'Agencia de Viajes', en: 'Travel Agency', demoUrl: 'https://daniloliveira89.github.io/site---agencia-viagens-turismo/' },
+      { id: 'logo-12', name: 'Atelier Arquitetura', file: '12-atelier.png', pt: 'Escritório de Arquitetura', es: 'Estudio de Arquitectura', en: 'Architecture Studio', demoUrl: 'https://daniloliveira89.github.io/site---arquitetura-urbanismo/' },
+      { id: 'logo-13', name: 'Nexus Coworking', file: '13-nexus.png', pt: 'Coworking & Hub de Inovação', es: 'Coworking & Espacio Flexible', en: 'Coworking Hub', demoUrl: 'https://daniloliveira89.github.io/site---coworking-spaces/' },
+      { id: 'logo-14', name: 'Pet Majesty', file: '14-pet-majesty.png', pt: 'Pet Shop & Spa Pet', es: 'Pet Shop & Spa Canino', en: 'Pet Shop & Spa', demoUrl: 'https://daniloliveira89.github.io/site---pet-boutique-spa/' },
+      { id: 'logo-15', name: 'Vet Life 24h', file: '15-vet-life-24h.png', pt: 'Hospital Veterinário 24h', es: 'Hospital Veterinario 24h', en: 'Veterinary Hospital', demoUrl: 'https://daniloliveira89.github.io/site---uti-veterinaria-planos-pet/' },
+      { id: 'logo-16', name: 'Valoris Law', file: '16-valoris.png', pt: 'Escritório de Advocacia', es: 'Bufete de Abogados', en: 'Law Firm', demoUrl: 'https://daniloliveira89.github.io/site---advocacia-corporate-law/' },
+      { id: 'logo-17', name: 'ContaFlow', file: '17-contaflow.png', pt: 'Escritório de Contabilidade', es: 'Estudio Contable & BPO', en: 'Accounting Firm', demoUrl: 'https://daniloliveira89.github.io/site---contabilidade-consultiva-tributario/' },
+      { id: 'logo-18', name: 'Apex Consulting', file: '18-apex.png', pt: 'Consultoria Empresarial', es: 'Consultoría Estratégica', en: 'Business Consulting', demoUrl: 'https://daniloliveira89.github.io/site---consultoria-gestao-ebitda/' },
+      { id: 'logo-19', name: 'Pulse Pay', file: '19-pulse-pay.png', pt: 'Fintech & Câmbio Global', es: 'Fintech & Cambio Global', en: 'Fintech & Currency', demoUrl: 'https://daniloliveira89.github.io/site---fintech-liquid-wave/' },
+      { id: 'logo-20', name: 'Prime Villas', file: '20-prime-villas.png', pt: 'Imobiliária de Luxo', es: 'Inmobiliaria de Lujo', en: 'Luxury Real Estate', demoUrl: 'https://daniloliveira89.github.io/site---luxury-real-estate/' },
+      { id: 'logo-21', name: 'Origem Café', file: '21-origem-cafe.png', pt: 'Cafeteria & Grãos Especiais', es: 'Cafetería de Especialidad', en: 'Specialty Coffee', demoUrl: 'https://daniloliveira89.github.io/site---cafeteria-artesanal/' },
+      { id: 'logo-22', name: 'Vértice Construtora', file: '22-vertice.png', pt: 'Construtora & Incorporadora', es: 'Constructora & Inmobiliaria', en: 'Construction Company', demoUrl: 'https://daniloliveira89.github.io/site---construtora-incorporacao/' },
+      { id: 'logo-23', name: 'BIM Struct', file: '23-bim-struct.png', pt: 'Engenharia Estrutural BIM', es: 'Ingeniería Estructural BIM', en: 'Structural Engineering', demoUrl: 'https://daniloliveira89.github.io/site---projetos-estruturais-bim/' },
+      { id: 'logo-24', name: 'Solaris Energia', file: '24-solaris.png', pt: 'Energia Solar & Fotovoltaica', es: 'Energía Solar Fotovoltaica', en: 'Solar Energy', demoUrl: 'https://daniloliveira89.github.io/site---engenharia-fotovoltaica-usinas/' },
+      { id: 'logo-25', name: 'Smash & Beer', file: '25-smash-beer.png', pt: 'Hamburgueria Artesanal', es: 'Hamburguesería Artesanal', en: 'Artisan Burger Bar', demoUrl: 'https://daniloliveira89.github.io/site---hamburgueria-artesanal-delivery/' },
+      { id: 'logo-26', name: 'Don Forno Pizza', file: '26-don-forno.png', pt: 'Pizzaria Napolitana', es: 'Pizzería Napolitana', en: 'Neapolitan Pizzeria', demoUrl: 'https://daniloliveira89.github.io/site---pizzaria-forno-lenha/' },
+      { id: 'logo-27', name: 'Dolce Arte', file: '27-dolce-arte.png', pt: 'Confeitaria & Chocolateria', es: 'Pastelería & Chocolatería', en: 'Artisan Bakery', demoUrl: 'https://daniloliveira89.github.io/site---confeitaria-doceria-fina/' },
+      { id: 'logo-28', name: 'Velocita Express', file: '28-velocita.png', pt: 'Transportadora & Logística', es: 'Operador Logístico', en: 'Logistics & Freight', demoUrl: 'https://daniloliveira89.github.io/site---logistica-cargas-expressas/' },
+      { id: 'logo-29', name: 'Studio Matrix', file: '29-studio-matrix.png', pt: 'Agência de Marketing & Branding', es: 'Agencia de Marketing & Branding', en: 'Marketing Agency', demoUrl: 'https://daniloliveira89.github.io/site---creative-growth-branding/' },
+      { id: 'logo-30', name: 'Lumière Photo', file: '30-lumiere.png', pt: 'Estúdio de Fotografia', es: 'Estudio de Fotografía', en: 'Photography Studio', demoUrl: 'https://daniloliveira89.github.io/site---fine-art-editorial-photography/' },
+      { id: 'logo-31', name: 'Stage Live', file: '31-stage-live.png', pt: 'Produtora de Eventos & Shows', es: 'Productora de Eventos', en: 'Events Production', demoUrl: 'https://daniloliveira89.github.io/site---produtora-eventos-shows-av/' },
+      { id: 'logo-32', name: 'Framework Filmes', file: '32-framework.png', pt: 'Produtora de Cinema & Vídeo', es: 'Productora Audiovisual', en: 'Film Production', demoUrl: 'https://daniloliveira89.github.io/site---produtora-cinematografica/' },
+      { id: 'logo-33', name: 'The Barber Club', file: '33-the-barber-club.png', pt: 'Barbearia & Visagismo', es: 'Barbería & Visagismo', en: 'Barbershop', demoUrl: 'https://daniloliveira89.github.io/site---barbearia-visagismo/' },
+      { id: 'logo-34', name: 'Black Needle', file: '34-black-needle.png', pt: 'Estúdio de Tatuagem', es: 'Estudio de Tatuajes', en: 'Tattoo Studio', demoUrl: 'https://daniloliveira89.github.io/site---tattoo-studio/' },
+      { id: 'logo-35', name: 'Neon Horizon', file: '35-neon-horizon.png', pt: 'Banda & Gravadora Musical', es: 'Banda & Sello Musical', en: 'Band & Record Label', demoUrl: 'https://daniloliveira89.github.io/site---banda-gravadora-musical/' },
+      { id: 'logo-36', name: 'Iron Core Gym', file: '36-iron-core.png', pt: 'Academia & Fitness', es: 'Gimnasio & Fitness', en: 'Gym & Fitness', demoUrl: 'https://daniloliveira89.github.io/site---high-performance-gym/' },
+      { id: 'logo-37', name: 'Aurea Atelier', file: '37-aurea-atelier.png', pt: 'Portfólio de Arte Editorial', es: 'Portafolio de Arte Editorial', en: 'Art Portfolio', demoUrl: 'https://daniloliveira89.github.io/site---gold-mask-reveal/' },
+      { id: 'logo-38', name: 'Hyperion Academy', file: '38-hyperion.png', pt: 'Cursos & Escola de Tecnologia', es: 'Escuela de Tecnología', en: 'Tech Academy', demoUrl: 'https://daniloliveira89.github.io/site---cursos-tech-ia/' },
+      { id: 'logo-39', name: 'FlowGate AI', file: '39-flowgate-ai.png', pt: 'SaaS & Startup de I.A.', es: 'SaaS & Startup de I.A.', en: 'AI SaaS Landing', demoUrl: 'https://daniloliveira89.github.io/site---saas-ai-gateway/' },
+      { id: 'logo-40', name: 'Radar IA', file: '40-radar-ia.png', pt: 'Observatório de I.A.', es: 'Observatorio de I.A.', en: 'A.I. Observatory', demoUrl: 'https://daniloliveira89.github.io/site---Radar-IA/' },
+      { id: 'logo-41', name: 'Prompt Studio', file: '41-prompt-studio.png', pt: 'Estúdio de Prompts I.A.', es: 'Estudio de Prompts I.A.', en: 'A.I. Prompt Studio', demoUrl: 'https://daniloliveira89.github.io/site---Prompt-Studio-AI/' },
+      { id: 'logo-42', name: 'IVFR Global', file: '42-ivfr-global.png', pt: 'Comparador Econômico', es: 'Comparador Económico', en: 'Economic Index', demoUrl: 'https://daniloliveira89.github.io/site---IVFR-Economia/' },
+      { id: 'logo-43', name: 'Music Atlas', file: '43-music-atlas.png', pt: 'Streaming & Música PWA', es: 'Streaming & Música PWA', en: 'Music Streaming PWA', demoUrl: 'https://music-atlas.vercel.app/' },
+      { id: 'logo-44', name: 'Game Atlas', file: '44-game-atlas.png', pt: 'Diário Gamer & Backlog', es: 'Diario Gamer & Backlog', en: 'Gamer Journal', demoUrl: 'https://game-atlas.vercel.app/' },
+      { id: 'logo-45', name: 'Cinematheque Atlas', file: '45-cinematheque-atlas.png', pt: 'Catálogo de Cinema', es: 'Catálogo de Cine', en: 'Film Archive', demoUrl: 'https://github.com/daniloliveira89/cinematheque-atlas' },
+      { id: 'logo-46', name: 'Bookshelf Atlas', file: '46-bookshelf-atlas.png', pt: 'Biblioteca & Diário Literário', es: 'Biblioteca Literaria', en: 'Literary Library', demoUrl: 'https://github.com/daniloliveira89/bookshelf-atlas' },
+      { id: 'logo-47', name: 'Neon Synapse', file: '47-neon-synapse.png', pt: 'Jogo Tático Cyberpunk', es: 'Juego Táctico Cyberpunk', en: 'Cyberpunk Game', demoUrl: 'https://daniloliveira89.github.io/jogo---Neon-Synapse-Card-Game/' },
+      { id: 'logo-48', name: 'Prancheta Tática', file: '48-prancheta-tatica.png', pt: 'Simulador Tático de Futebol', es: 'Pizarra Táctica de Fútbol', en: 'Tactical Board', demoUrl: 'https://daniloliveira89.github.io/site---prancheta-tatica-futebol/' }
+    ];
+
+
+    const DEFAULT_PROJECTS = [
+      { id: 'layout-ecommerce', title: 'Techwear Luxury Store', badge: 'Loja Virtual & E-commerce', cat: 'Layouts & Sites', desc: 'Loja virtual minimalista de alta conversão.', tags: ['E-commerce', 'Tailwind CSS'] },
+      { id: 'layout-omakase', title: 'Aurum Omakase', badge: 'Restaurante Japonês', cat: 'Layouts & Sites', desc: 'Restaurante contemporâneo com menu degustação.', tags: ['Gastronomia', 'UI/UX'] },
+      { id: 'layout-hotel-resort', title: 'Botanique Eco Resort', badge: 'Hotel & Eco-Resort', cat: 'Layouts & Sites', desc: 'Hotel boutique e spa nas montanhas.', tags: ['Hotelaria', 'Next.js'] },
+      { id: 'layout-odontologia', title: 'OrtoLuxe Odontologia', badge: 'Clínica Odontológica', cat: 'Layouts & Sites', desc: 'Clínica estética de alta tecnologia.', tags: ['Saúde', 'Tailwind CSS'] }
+    ];
+
+    // Filter ONLY webdesign layout sites (39 total commercial sites)
+    const PROJECTS = (typeof PROJECTS_DATA !== 'undefined' && Array.isArray(PROJECTS_DATA))
+      ? PROJECTS_DATA
+          .filter(p => p.category === 'layouts')
+          .map(p => {
+            return {
+              id: p.id,
+              title: p.title,
+              badge: p.badge || p.categoryLabel || 'Projeto',
+              cat: 'Layouts & Sites',
+              rawCat: p.category,
+              desc: p.shortDescription || p.description || '',
+              fullDesc: p.fullDescription || p.shortDescription || p.description || '',
+              image: p.image || '/assets/images/radar-ia-real.png',
+              gallery: (p.gallery && p.gallery.length) ? p.gallery : [p.image || '/assets/images/radar-ia-real.png'],
+              tags: p.tags || [],
+              links: p.links || {},
+              features: p.features || []
+            };
+          })
+      : DEFAULT_PROJECTS;
+
+    const state = {
+      theme: 'dark',
+      lang: 'pt',
+      skillCat: 'Todas',
+      projectCat: 'Layouts & Sites',
+      techFilter: null,
+      expandedService: null,
+      selectedScopes: new Set(),
+      fxEnabled: true
+    };
+
+    // =========================================================================
+    // 1. MOTOR DE ONDA LÍQUIDA (FORÇA & VELOCIDADE NO MÁXIMO + SUPORTE CLARO/ESCURO)
+    // =========================================================================
+    const liquidCanvas = document.getElementById('liquid-canvas');
+    const lCtx = liquidCanvas.getContext('2d');
+
+    const Simplex3D = (() => {
+      const F3 = 1 / 3, G3 = 1 / 6;
+      const grad3 = [[1,1,0],[-1,1,0],[1,-1,0],[-1,-1,0],[1,0,1],[-1,0,1],[1,0,-1],[-1,0,-1],[0,1,1],[0,-1,1],[0,1,-1],[0,-1,-1]];
+      const p = new Uint8Array(256);
+      for (let i = 0; i < 256; i++) p[i] = i;
+      let seed = 1337;
+      for (let i = 255; i > 0; i--) {
+        seed = (seed * 16807) % 2147483647;
+        const j = seed % (i + 1);
+        const tmp = p[i]; p[i] = p[j]; p[j] = tmp;
+      }
+      const perm = new Uint8Array(512), permMod12 = new Uint8Array(512);
+      for (let i = 0; i < 512; i++) { perm[i] = p[i & 255]; permMod12[i] = perm[i] % 12; }
+
+      return function noise3D(xin, yin, zin) {
+        const s = (xin + yin + zin) * F3;
+        const i = Math.floor(xin + s), j = Math.floor(yin + s), k = Math.floor(zin + s);
+        const t = (i + j + k) * G3;
+        const X0 = i - t, Y0 = j - t, Z0 = k - t;
+        const x0 = xin - X0, y0 = yin - Y0, z0 = zin - Z0;
+        let i1, j1, k1, i2, j2, k2;
+        if (x0 >= y0) {
+          if (y0 >= z0) { i1=1; j1=0; k1=0; i2=1; j2=1; k2=0; }
+          else if (x0 >= z0) { i1=1; j1=0; k1=0; i2=1; j2=0; k2=1; }
+          else { i1=0; j1=0; k1=1; i2=1; j2=0; k2=1; }
+        } else {
+          if (y0 < z0) { i1=0; j1=0; k1=1; i2=0; j2=1; k2=1; }
+          else if (x0 < z0) { i1=0; j1=1; k1=0; i2=0; j2=1; k2=1; }
+          else { i1=0; j1=1; k1=0; i2=1; j2=1; k2=0; }
+        }
+        const x1 = x0 - i1 + G3, y1 = y0 - j1 + G3, z1 = z0 - k1 + G3;
+        const x2 = x0 - i2 + 2.0 * G3, y2 = y0 - j2 + 2.0 * G3, z2 = z0 - k2 + 2.0 * G3;
+        const x3 = x0 - 1.0 + 3.0 * G3, y3 = y0 - 1.0 + 3.0 * G3, z3 = z0 - 1.0 + 3.0 * G3;
+        const ii = i & 255, jj = j & 255, kk = k & 255;
+        const gi0 = permMod12[ii + perm[jj + perm[kk]]];
+        const gi1 = permMod12[ii + i1 + perm[jj + j1 + perm[kk + k1]]];
+        const gi2 = permMod12[ii + i2 + perm[jj + j2 + perm[kk + k2]]];
+        const gi3 = permMod12[ii + 1 + perm[jj + 1 + perm[kk + 1]]];
+        let n0 = 0, n1 = 0, n2 = 0, n3 = 0;
+        let t0 = 0.6 - x0*x0 - y0*y0 - z0*z0;
+        if (t0 > 0) { t0 *= t0; const g = grad3[gi0]; n0 = t0 * t0 * (g[0]*x0 + g[1]*y0 + g[2]*z0); }
+        let t1 = 0.6 - x1*x1 - y1*y1 - z1*z1;
+        if (t1 > 0) { t1 *= t1; const g = grad3[gi1]; n1 = t1 * t1 * (g[0]*x1 + g[1]*y1 + g[2]*z1); }
+        let t2 = 0.6 - x2*x2 - y2*y2 - z2*z2;
+        if (t2 > 0) { t2 *= t2; const g = grad3[gi2]; n2 = t2 * t2 * (g[0]*x2 + g[1]*y2 + g[2]*z2); }
+        let t3 = 0.6 - x3*x3 - y3*y3 - z3*z3;
+        if (t3 > 0) { t3 *= t3; const g = grad3[gi3]; n3 = t3 * t3 * (g[0]*x3 + g[1]*y3 + g[2]*z3); }
+        return 32.0 * (n0 + n1 + n2 + n3);
+      };
+    })();
+
+    const waveConfig = {
+      spacing: 28,
+      ringRadius: 440,
+      ringBandWidth: 320,
+      waveStrength: 2.2,  // Máximo solicitado
+      waveSpeed: 0.45,    // 50% da velocidade máxima
+      colorSpeed: 0.03,
+    };
+
+    let lWidth = 0, lHeight = 0, lDpr = Math.min(window.devicePixelRatio || 1, 2);
+    let waveParticles = [];
+    const waveCursor = {
+      rawX: window.innerWidth * 0.68, rawY: window.innerHeight * 0.42,
+      midX: window.innerWidth * 0.68, midY: window.innerHeight * 0.42,
+      x: window.innerWidth * 0.68, y: window.innerHeight * 0.42, vx: 0, vy: 0,
+    };
+
+    const wavePaletteDark = [
+      [34, 211, 238], [96, 165, 250], [129, 140, 248],
+      [192, 132, 252], [217, 70, 239], [6, 182, 212]
+    ];
+    const wavePaletteLight = [
+      [8, 145, 178], [37, 99, 235], [79, 70, 229],
+      [147, 51, 234], [192, 38, 211], [14, 116, 144]
+    ];
+
+    function getConicColor(t) {
+      const pal = state.theme === 'light' ? wavePaletteLight : wavePaletteDark;
+      const n = pal.length;
+      const wrapped = ((t % 1) + 1) % 1;
+      const scaled = wrapped * n;
+      const i = Math.floor(scaled), f = scaled - i;
+      const c1 = pal[i % n], c2 = pal[(i + 1) % n];
+      return [
+        (c1[0] + (c2[0] - c1[0]) * f) | 0,
+        (c1[1] + (c2[1] - c1[1]) * f) | 0,
+        (c1[2] + (c2[2] - c1[2]) * f) | 0,
+      ];
+    }
+
+    function buildWaveGrid() {
+      waveParticles = [];
+      const s = waveConfig.spacing, margin = s * 4;
+      const cols = Math.ceil((lWidth + margin * 2) / s);
+      const rows = Math.ceil((lHeight + margin * 2) / s);
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const hx = -margin + c * s, hy = -margin + r * s;
+          waveParticles.push({ hx, hy, x: hx, y: hy });
+        }
+      }
+    }
+
+    function resizeLiquidCanvas() {
+      lWidth = window.innerWidth;
+      lHeight = window.innerHeight;
+      lDpr = Math.min(window.devicePixelRatio || 1, 2);
+      liquidCanvas.width = lWidth * lDpr;
+      liquidCanvas.height = lHeight * lDpr;
+      lCtx.setTransform(lDpr, 0, 0, lDpr, 0, 0);
+      const diag = Math.hypot(lWidth, lHeight);
+      waveConfig.ringRadius = Math.round(Math.min(Math.max(diag * 0.22, 300), 560));
+      waveConfig.ringBandWidth = Math.round(Math.min(Math.max(diag * 0.16, 220), 420));
+      document.getElementById('ctrl-radius').value = waveConfig.ringRadius;
+      buildWaveGrid();
+    }
+
+    document.getElementById('ctrl-spacing').addEventListener('input', (e) => { waveConfig.spacing = Number(e.target.value); buildWaveGrid(); });
+    document.getElementById('ctrl-wave').addEventListener('input', (e) => { waveConfig.waveStrength = Number(e.target.value); });
+    document.getElementById('ctrl-speed').addEventListener('input', (e) => { waveConfig.waveSpeed = Number(e.target.value); });
+    document.getElementById('ctrl-radius').addEventListener('input', (e) => { waveConfig.ringRadius = Number(e.target.value); });
+    document.getElementById('btn-hide-wave-ctrl').addEventListener('click', () => {
+      document.getElementById('wave-controls-panel').classList.add('hidden');
+      document.getElementById('btn-show-wave-ctrl').classList.remove('hidden');
+    });
+    document.getElementById('btn-show-wave-ctrl').addEventListener('click', () => {
+      document.getElementById('wave-controls-panel').classList.remove('hidden');
+      document.getElementById('btn-show-wave-ctrl').classList.add('hidden');
+    });
+
+    window.addEventListener('resize', resizeLiquidCanvas);
+    window.addEventListener('mousemove', (e) => { waveCursor.rawX = e.clientX; waveCursor.rawY = e.clientY; });
+    window.addEventListener('touchmove', (e) => {
+      if (e.touches.length > 0) { waveCursor.rawX = e.touches[0].clientX; waveCursor.rawY = e.touches[0].clientY; }
+    }, { passive: true });
+
+    const waveStartTime = performance.now();
+    function animateLiquidWave(now) {
+      lCtx.clearRect(0, 0, lWidth, lHeight);
+      if (state.fxEnabled) {
+        const elapsed = (now - waveStartTime) * 0.001;
+        const t = elapsed * waveConfig.waveSpeed;
+        const tideX = Math.sin(t * 0.9) * 42 + Math.cos(t * 0.5) * 25;
+        const tideY = Math.cos(t * 0.75) * 36 + Math.sin(t * 0.42) * 22;
+
+        waveCursor.midX += (waveCursor.rawX + tideX - waveCursor.midX) * 0.045;
+        waveCursor.midY += (waveCursor.rawY + tideY - waveCursor.midY) * 0.045;
+        const prevX = waveCursor.x, prevY = waveCursor.y;
+        waveCursor.x += (waveCursor.midX - waveCursor.x) * 0.035;
+        waveCursor.y += (waveCursor.midY - waveCursor.y) * 0.035;
+        waveCursor.vx = waveCursor.x - prevX;
+        waveCursor.vy = waveCursor.y - prevY;
+
+        lCtx.fillStyle = state.theme === 'light' ? 'rgba(100, 116, 139, 0.22)' : 'rgba(148, 163, 184, 0.16)';
+        lCtx.beginPath();
+
+        const activeCapsules = [];
+        const ws = waveConfig.waveStrength;
+
+        for (let i = 0; i < waveParticles.length; i++) {
+          const p = waveParticles[i];
+          const swell1 = Simplex3D(p.hx * 0.0017 + t * 0.42, p.hy * 0.0017 + t * 0.28, t * 0.55);
+          const swell2 = Simplex3D(p.hx * 0.0034 - t * 0.31, p.hy * 0.0034 + t * 0.38, t * 0.75 + 12.5);
+          const dx = p.hx - waveCursor.x, dy = p.hy - waveCursor.y;
+          const dist = Math.hypot(dx, dy) || 0.001;
+          const dirX = dx / dist, dirY = dy / dist;
+          const angle = Math.atan2(dy, dx);
+          const warpedDist = dist + (swell1 * 78 + swell2 * 36) * ws;
+          const radialRipple = Math.sin(warpedDist * 0.014 - t * 3.2);
+          const rawHeight = 0.5 + 0.5 * (swell1 * 0.52 + swell2 * 0.26 + radialRipple * 0.22);
+          const waveHeight = rawHeight * rawHeight * (3 - 2 * rawHeight);
+          const distFromRing = warpedDist - waveConfig.ringRadius;
+          const normBand = distFromRing / waveConfig.ringBandWidth;
+          const ringEnvelope = Math.exp(-normBand * normBand * 1.45);
+          const radialPush = (radialRipple * 18 + swell1 * 24) * ringEnvelope * ws;
+          const orbitalX = swell2 * 16 * ws + dirX * radialPush;
+          const orbitalY = swell1 * 16 * ws + dirY * radialPush;
+          const wakeStrength = Math.exp(-dist / 500) * 4.5;
+          const targetX = p.hx + orbitalX + waveCursor.vx * wakeStrength;
+          const targetY = p.hy + orbitalY + waveCursor.vy * wakeStrength;
+          p.x += (targetX - p.x) * 0.08;
+          p.y += (targetY - p.y) * 0.08;
+          if (p.x < -20 || p.x > lWidth + 20 || p.y < -20 || p.y > lHeight + 20) continue;
+          const intensity = ringEnvelope * (0.12 + 0.88 * waveHeight);
+          if (intensity < 0.025) {
+            lCtx.rect(p.x - 0.75, p.y - 0.75, 1.5, 1.5);
+          } else {
+            const waterTilt = (swell2 * 0.18 + swell1 * 0.10) * ws;
+            activeCapsules.push({ x: p.x, y: p.y, angle: angle + waterTilt, intensity, colorShift: swell1 * 0.04 });
+          }
+        }
+        lCtx.fill();
+
+        lCtx.lineCap = 'round';
+        for (let i = 0; i < activeCapsules.length; i++) {
+          const cap = activeCapsules[i];
+          const colorPos = cap.angle / (Math.PI * 2) + elapsed * waveConfig.colorSpeed + cap.colorShift;
+          const [r, g, b] = getConicColor(colorPos);
+          const s = cap.intensity;
+          const length = 0.8 + s * 7.5;
+          const thickness = 1.2 + s * 3.4;
+          const alpha = Math.min((state.theme === 'light' ? 0.14 : 0.18) + s * (state.theme === 'light' ? 0.65 : 0.85), 0.96);
+          const halfLen = length * 0.5;
+          const cosA = Math.cos(cap.angle), sinA = Math.sin(cap.angle);
+          lCtx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${alpha.toFixed(3)})`;
+          lCtx.lineWidth = thickness;
+          lCtx.beginPath();
+          lCtx.moveTo(cap.x - cosA * halfLen, cap.y - sinA * halfLen);
+          lCtx.lineTo(cap.x + cosA * halfLen, cap.y + sinA * halfLen);
+          lCtx.stroke();
+        }
+      }
+      requestAnimationFrame(animateLiquidWave);
+    }
+    resizeLiquidCanvas();
+    requestAnimationFrame(animateLiquidWave);
+
+    // =========================================================================
+    // 2. THEME TOGGLE (CLARO / ESCURO)
+    // =========================================================================
+    function toggleTheme() {
+      state.theme = state.theme === 'dark' ? 'light' : 'dark';
+      document.body.setAttribute('data-theme', state.theme);
+      document.getElementById('theme-icon').textContent = state.theme === 'dark' ? '☀️' : '🌙';
+      document.getElementById('theme-label').textContent = state.theme === 'dark' ? 'Claro' : 'Escuro';
+      showToast(state.theme === 'light' ? 'Modo Claro ativado' : 'Modo Escuro ativado');
+    }
+    document.getElementById('btn-toggle-theme').addEventListener('click', toggleTheme);
+
+    // =========================================================================
+    // 3. TYPING EFFECT & 3D TILT
+    // =========================================================================
+    let roleIdx = 0, charIdx = ROLES[0].length, deleting = true;
+    function tickTyping() {
+      const target = ROLES[roleIdx], el = document.getElementById('typing-role');
+      if (!deleting) {
+        charIdx++; el.textContent = target.slice(0, charIdx);
+        if (charIdx === target.length) { deleting = true; setTimeout(tickTyping, 1800); return; }
+        setTimeout(tickTyping, 55);
+      } else {
+        charIdx--; el.textContent = target.slice(0, charIdx);
+        if (charIdx === 0) { deleting = false; roleIdx = (roleIdx + 1) % ROLES.length; setTimeout(tickTyping, 320); return; }
+        setTimeout(tickTyping, 30);
+      }
+    }
+    setTimeout(tickTyping, 1800);
+
+    const tiltCard = document.getElementById('hero-tilt-card');
+    tiltCard.addEventListener('mousemove', (e) => {
+      const r = tiltCard.getBoundingClientRect();
+      tiltCard.style.transform = `rotateY(${((e.clientX - r.left) / r.width - 0.5) * 11}deg) rotateX(${-((e.clientY - r.top) / r.height - 0.5) * 11}deg)`;
+    });
+    tiltCard.addEventListener('mouseleave', () => { tiltCard.style.transform = 'rotateY(0deg) rotateX(0deg)'; });
+
+    document.addEventListener('mousemove', (e) => {
+      const card = e.target.closest('.spotlight-card');
+      if (card) {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+        card.style.setProperty('--my', `${e.clientY - r.top}px`);
+      }
+    });
+
+    // =========================================================================
+    // 4. MINI CANVAS LAB & TERMINAL
+    // =========================================================================
+    const labCanvas = document.getElementById('mini-lab-canvas'), labCtx = labCanvas.getContext('2d');
+    let labOrbs = [], labDrawing = false;
+    function initLabCanvas() {
+      const rect = labCanvas.parentElement.getBoundingClientRect();
+      labCanvas.width = Math.max(260, rect.width); labCanvas.height = Math.max(200, rect.height);
+    }
+    function spawnLabOrbs(x, y, count = 8) {
+      for (let i = 0; i < count; i++) {
+        const a = Math.random() * Math.PI * 2, sp = Math.random() * 2.6 + 0.8;
+        labOrbs.push({ x, y, vx: Math.cos(a)*sp, vy: Math.sin(a)*sp, r: Math.random()*3.5+1.5, life: 1, color: Math.random()>0.5?'#22D3EE':'#E879F9' });
+      }
+      if (labOrbs.length > 140) labOrbs = labOrbs.slice(-140);
+    }
+    function animateLab() {
+      if (!document.getElementById('tab-playground').classList.contains('hidden')) {
+        labCtx.fillStyle = 'rgba(6, 7, 11, 0.22)';
+        labCtx.fillRect(0, 0, labCanvas.width, labCanvas.height);
+        labOrbs.forEach(o => {
+          o.x += o.vx; o.y += o.vy; o.vx *= 0.985; o.vy *= 0.985; o.life -= 0.012;
+          if (o.x < 0 || o.x > labCanvas.width) o.vx *= -1;
+          if (o.y < 0 || o.y > labCanvas.height) o.vy *= -1;
+          labCtx.beginPath(); labCtx.arc(o.x, o.y, o.r, 0, Math.PI*2);
+          labCtx.fillStyle = o.color; labCtx.globalAlpha = Math.max(0, o.life); labCtx.fill();
+        });
+        labCtx.globalAlpha = 1;
+        labOrbs = labOrbs.filter(o => o.life > 0);
+        document.getElementById('lab-count').textContent = `${labOrbs.length} partículas`;
+      }
+      requestAnimationFrame(animateLab);
+    }
+    animateLab();
+    labCanvas.addEventListener('pointerdown', (e) => { labDrawing = true; const r = labCanvas.getBoundingClientRect(); spawnLabOrbs(e.clientX - r.left, e.clientY - r.top, 14); });
+    labCanvas.addEventListener('pointermove', (e) => { if (!labDrawing) return; const r = labCanvas.getBoundingClientRect(); spawnLabOrbs(e.clientX - r.left, e.clientY - r.top, 4); });
+    window.addEventListener('pointerup', () => { labDrawing = false; });
+    document.getElementById('btn-lab-burst').addEventListener('click', () => { initLabCanvas(); spawnLabOrbs(labCanvas.width/2, labCanvas.height/2, 32); });
+    document.getElementById('btn-lab-clear').addEventListener('click', () => { labOrbs = []; labCtx.clearRect(0,0,labCanvas.width,labCanvas.height); });
+
+    function switchHeroTab(tab) {
+      ['profile', 'terminal', 'playground'].forEach(t => document.getElementById(`tab-${t}`).classList.toggle('hidden', t !== tab));
+      document.querySelectorAll('.card-tab-btn').forEach(btn => {
+        const active = btn.getAttribute('data-card-tab') === tab;
+        btn.classList.toggle('tab-pill-active', active);
+        btn.classList.toggle('t-muted', !active);
+      });
+      if (tab === 'playground') setTimeout(() => { initLabCanvas(); spawnLabOrbs(labCanvas.width/2, labCanvas.height/2, 20); }, 30);
+    }
+
+    function runTerminalCmd(raw) {
+      const cmd = raw.trim().toLowerCase(), out = document.getElementById('term-output');
+      if (cmd === 'clear') { out.innerHTML = '<p class="text-slate-400"># Terminal limpo. Digite "help".</p>'; return; }
+      const map = {
+        help: 'Comandos: whoami, stack, projetos, contato, clear',
+        whoami: 'Danilo Oliveira — Web Designer & Especialista em Websites Comerciais.',
+        stack: 'UI/UX Design • Landing Pages • Tailwind CSS • React/Next.js • Identidade Visual • SEO & Performance.',
+        projetos: '39 Websites Comerciais em produção (Restaurantes, Clínicas, Hotelaria, E-commerce, Advocacia) e 48 Logos.',
+        contato: 'E-mail: danilo.bls89@gmail.com | Instagram: @daniloliveira89 | GitHub: github.com/daniloliveira89'
+      };
+      out.innerHTML += `<p><span class="text-cyan-400">➜</span> <span class="text-fuchsia-300">${raw}</span></p><p class="text-slate-200 pl-3">${map[cmd] || 'Comando não encontrado. Use: help'}</p>`;
+      out.scrollTop = out.scrollHeight;
+    }
+    document.getElementById('term-form').addEventListener('submit', (e) => {
+      e.preventDefault(); const inp = document.getElementById('term-input');
+      if (inp.value.trim()) { runTerminalCmd(inp.value); inp.value = ''; }
+    });
+
+    // =========================================================================
+    // 5. RENDERERS (SERVIÇOS & DIFERENCIAIS NO ESTILO DA REFERÊNCIA)
+    // =========================================================================
+    function renderServices() {
+      document.getElementById('services-grid').innerHTML = SERVICES.map(s => {
+        const isOpen = state.expandedService === s.id;
+        return `
+          <div data-toggle-service="${s.id}" class="spotlight-card rounded-2xl p-7 cursor-pointer select-none flex flex-col justify-between ${isOpen ? 'border-cyan-400/60' : ''}">
+            <div>
+              <div class="flex items-start justify-between mb-5">
+                <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-cyan-500/15 border border-cyan-500/25 t-cyan">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">${s.icon}</svg>
+                </div>
+                <span class="text-[11px] font-mono-code t-muted">${isOpen ? '− Menos' : '+ Detalhes'}</span>
+              </div>
+              <h3 class="font-display text-lg font-bold t-heading mb-2.5">${s.title}</h3>
+              <p class="text-xs t-body leading-relaxed">${s.desc}</p>
+            </div>
+            ${isOpen ? `
+              <ul class="mt-4 pt-4 border-t b-subtle space-y-1.5 text-xs t-cyan font-mono-code">
+                ${s.deliverables.map(d => `<li>✦ ${d}</li>`).join('')}
+              </ul>` : ''}
+          </div>`;
+      }).join('');
+    }
+
+    function renderDifferentials() {
+      const tones = {
+        cyan: { box: 'bg-cyan-500/15 border-cyan-500/25 t-cyan', badge: 'bg-cyan-500/10 border-cyan-500/25 t-cyan' },
+        emerald: { box: 'bg-emerald-500/15 border-emerald-500/25 text-emerald-500', badge: 'bg-emerald-500/10 border-emerald-500/25 text-emerald-500' },
+        fuchsia: { box: 'bg-fuchsia-500/15 border-fuchsia-500/25 t-orchid', badge: 'bg-fuchsia-500/10 border-fuchsia-500/25 t-orchid' },
+        amber: { box: 'bg-amber-500/15 border-amber-500/25 text-amber-500', badge: 'bg-amber-500/10 border-amber-500/25 text-amber-500' }
+      };
+      document.getElementById('diff-grid').innerHTML = DIFFERENTIALS.map(d => {
+        const tn = tones[d.tone];
+        return `
+          <div class="spotlight-card rounded-2xl p-7 flex flex-col justify-between">
+            <div>
+              <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5 border ${tn.box}">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">${d.icon}</svg>
+              </div>
+              <span class="text-[10px] font-mono-code uppercase tracking-wider font-semibold px-2.5 py-0.5 rounded border mb-3 inline-block ${tn.badge}">${d.tag}</span>
+              <h3 class="font-display text-lg font-bold t-heading mb-2.5">${d.title}</h3>
+              <p class="text-xs t-body leading-relaxed">${d.desc}</p>
+            </div>
+            <div class="pt-4 mt-4 border-t b-subtle text-[11px] font-mono-code t-muted">${d.foot}</div>
+          </div>`;
+      }).join('');
+    }
+
+    function renderSkills() {
+      const cats = ['Todas', 'Frontend & WebGL', 'I.A. & Backend', 'Extensões & DevOps'];
+      document.getElementById('skill-filters').innerHTML = cats.map(c => `
+        <button type="button" data-skill-cat="${c}" class="px-4 py-1.5 rounded-full text-xs font-semibold border transition ${state.skillCat === c ? 'tab-pill-active' : 'b-subtle t-body hover:border-cyan-400/50'}">${c}</button>
+      `).join('');
+      const list = state.skillCat === 'Todas' ? SKILLS : SKILLS.filter(s => s.cat === state.skillCat);
+      document.getElementById('skills-grid').innerHTML = list.map(s => {
+        const isSel = state.techFilter === s.name;
+        return `
+          <button type="button" data-select-tech="${s.name}" class="spotlight-card text-left rounded-2xl p-5 w-full ${isSel ? 'border-fuchsia-400/70' : ''}">
+            <div class="flex justify-between items-center mb-2.5">
+              <span class="text-xs font-bold t-heading">${s.name}</span>
+              <span class="text-xs font-mono-code ${isSel ? 't-orchid' : 't-cyan'}">${s.pct}%</span>
+            </div>
+            <div class="w-full h-1.5 rounded-full bg-panel-var overflow-hidden">
+              <div class="h-full rounded-full" style="width:${s.pct}%; background: linear-gradient(90deg, #22D3EE, #D946EF);"></div>
+            </div>
+          </button>`;
+      }).join('');
+    }
+
+    function renderProjects() {
+      // Clean 2-tab system focused exclusively on Web Design deliverables
+      const cats = [
+        { label: 'Layouts & Sites', key: 'Layouts & Sites', count: PROJECTS.length },
+        { label: 'Logos', key: 'Logos', count: LOGOS_DATA.length }
+      ];
+
+      // Normalize active tab
+      if (state.projectCat !== 'Logos') {
+        state.projectCat = 'Layouts & Sites';
+      }
+
+      document.getElementById('project-filters').innerHTML = cats.map(c => `
+        <button type="button" data-proj-cat="${c.key}" class="px-5 py-2 rounded-full text-xs font-semibold border transition inline-flex items-center gap-2 cursor-pointer ${state.projectCat === c.key ? 'tab-pill-active' : 'b-subtle t-body hover:border-cyan-400/50'}">
+          <span>${c.label}</span>
+          <span class="text-[10px] opacity-75 font-mono-code font-normal">(${c.count})</span>
+        </button>
+      `).join('');
+
+      const banner = document.getElementById('active-tech-banner');
+      if (state.techFilter && state.projectCat !== 'Logos') {
+        banner.classList.remove('hidden'); banner.classList.add('inline-flex');
+        document.getElementById('active-tech-label').textContent = `Tech: ${state.techFilter}`;
+      } else {
+        banner.classList.add('hidden'); banner.classList.remove('inline-flex');
+      }
+
+      const grid = document.getElementById('projects-grid');
+      const curLang = state.lang || 'pt';
+
+      // 1. RENDER LOGOS TAB (48 Logos)
+      if (state.projectCat === 'Logos') {
+        grid.innerHTML = LOGOS_DATA.map(l => {
+          const siteType = l[curLang] || l.pt;
+          const openUrl = l.demoUrl || ('/assets/images/logos-ia/' + l.file);
+          return `
+          <a href="${openUrl}" target="_blank" rel="noopener noreferrer" class="clean-proj-card spotlight-card rounded-2xl overflow-hidden block relative aspect-[16/10] bg-slate-950 border b-subtle group cursor-pointer shadow-md">
+            <!-- Imagem de Alta Resolução da Logo -->
+            <img src="https://portfolio-danilo-oliveira.vercel.app/assets/images/logos-ia/${l.file}" alt="${l.name}" class="w-full h-full object-cover object-center transition duration-500 group-hover:scale-105" loading="lazy" />
+            
+            <!-- Overlay Suave com Gradiente -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent transition-opacity duration-300"></div>
+
+            <!-- Nome da Marca e Nicho por Cima da Imagem em Dourado -->
+            <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+              <span class="badge-gold px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] tracking-wide truncate max-w-[85%]">
+                ${l.name} • ${siteType}
+              </span>
+              <span class="arrow-gold w-7 h-7 rounded-xl flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 shrink-0">
+                ↗
+              </span>
+            </div>
+          </a>`;
+        }).join('');
+        return;
+      }
+
+      // 2. RENDER WEBSITES / LAYOUTS (39 Commercial Sites)
+      let list = PROJECTS;
+
+      if (state.techFilter) {
+        const tf = state.techFilter.toLowerCase();
+        list = list.filter(p => p.tags.some(t => t.toLowerCase() === tf || t.toLowerCase().includes(tf)));
+      }
+
+      if (!list.length) {
+        grid.innerHTML = `<div class="col-span-full text-center py-12 rounded-2xl border b-subtle text-sm t-muted">Nenhum projeto encontrado com os filtros selecionados.</div>`;
+        return;
+      }
+
+      grid.innerHTML = list.map(p => {
+        const openUrl = (p.links && p.links.demo) ? p.links.demo : ((p.links && p.links.github) ? p.links.github : '#');
+        const siteTypeInfo = SITE_TYPE_DICT[p.id];
+        const siteType = (siteTypeInfo && siteTypeInfo[curLang]) ? siteTypeInfo[curLang] : (p.title.split('—')[0].trim());
+
+        return `
+        <a href="${openUrl}" target="_blank" rel="noopener noreferrer" class="clean-proj-card spotlight-card rounded-2xl overflow-hidden block relative aspect-[16/10] bg-slate-950 border b-subtle group cursor-pointer shadow-md">
+          <!-- Miniatura em Tela Cheia do Card -->
+          <img src="${p.image}" alt="${siteType}" class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105" loading="lazy" onerror="this.onerror=null; this.src='/assets/images/radar-ia-real.png';" />
+          
+          <!-- Overlay Suave com Gradiente -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent transition-opacity duration-300"></div>
+
+          <!-- Estilo do Site por Cima da Miniatura em Dourado -->
+          <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+            <span class="badge-gold px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] tracking-wide truncate max-w-[85%]">
+              ${siteType}
+            </span>
+            <span class="arrow-gold w-7 h-7 rounded-xl flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 shrink-0">
+              ↗
+            </span>
+          </div>
+        </a>`;
+      }).join('');
+    }
+
+    // =========================================================================
+    // 6. COMMAND PALETTE, HELPERS & EVENTS
+    // =========================================================================
+    const CMD_ITEMS = [
+      { label: 'Alternar Tema Claro / Escuro', hint: 'Tema', action: toggleTheme },
+      { label: 'Ir para Serviços', hint: '#services', action: () => location.hash = '#services' },
+      { label: 'Ir para Diferenciais', hint: '#differentials', action: () => location.hash = '#differentials' },
+      { label: 'Ir para Contato', hint: '#contact', action: () => location.hash = '#contact' },
+      { label: 'Abrir Terminal no Hero', hint: 'CLI', action: () => { window.scrollTo({ top: 0, behavior: 'smooth' }); switchHeroTab('terminal'); } },
+      { label: 'Copiar E-mail (danilo.bls89@gmail.com)', hint: 'Copy', action: () => copyText('danilo.bls89@gmail.com', 'E-mail copiado!') },
+      { label: 'Copiar GitHub (@daniloliveira89)', hint: 'Copy', action: () => copyText('https://github.com/daniloliveira89', 'GitHub copiado!') },
+      { label: 'Copiar Instagram (@daniloliveira89)', hint: 'Copy', action: () => copyText('https://instagram.com/daniloliveira89', 'Instagram copiado!') }
+    ];
+
+    function renderCmdk(filter = '') {
+      const q = filter.toLowerCase();
+      const filtered = CMD_ITEMS.filter(i => i.label.toLowerCase().includes(q) || i.hint.toLowerCase().includes(q));
+      document.getElementById('cmdk-list').innerHTML = filtered.map(item => `
+        <button type="button" data-cmd-idx="${CMD_ITEMS.indexOf(item)}" class="w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-left text-xs t-heading hover:bg-cyan-500/15 transition">
+          <span>${item.label}</span><span class="font-mono-code text-[10px] t-cyan px-2 py-0.5 rounded bg-panel-var">${item.hint}</span>
+        </button>`).join('') || '<p class="p-4 text-xs t-muted text-center">Nenhum comando encontrado.</p>';
+    }
+    function openCmdk() { renderCmdk(''); const m = document.getElementById('cmdk-modal'); m.classList.remove('hidden'); m.classList.add('flex'); document.getElementById('cmdk-input').value = ''; setTimeout(() => document.getElementById('cmdk-input').focus(), 30); }
+    function closeCmdk() { const m = document.getElementById('cmdk-modal'); m.classList.add('hidden'); m.classList.remove('flex'); }
+
+    function showToast(msg) { const el = document.getElementById('toast'); el.textContent = msg; el.classList.remove('hidden'); clearTimeout(el._t); el._t = setTimeout(() => el.classList.add('hidden'), 2400); }
+    function copyText(text, msg) {
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(() => showToast(msg)).catch(() => fallbackCopy(text, msg));
+      else fallbackCopy(text, msg);
+    }
+    function fallbackCopy(text, msg) { const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); showToast(msg); }
+
+    function applyTranslations() {
+      const t = I18N[state.lang] || I18N.pt;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const k = el.getAttribute('data-i18n');
+        if (t[k]) el.textContent = t[k];
+      });
+      document.querySelectorAll('.lang-btn').forEach(b => {
+        const act = b.getAttribute('data-lang') === state.lang;
+        if (act) {
+          b.classList.add('active');
+        } else {
+          b.classList.remove('active');
+        }
+      });
+      document.documentElement.lang = state.lang === 'pt' ? 'pt-BR' : (state.lang === 'es' ? 'es-ES' : 'en-US');
+      try { localStorage.setItem('portfolio_lang', state.lang); } catch(e) {}
+      renderProjects();
+    }
+
+    // Explicit scroll-to-top binding
+    document.addEventListener('DOMContentLoaded', () => {
+      const btnHome = document.getElementById('btn-brand-home');
+      if (btnHome) {
+        btnHome.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      const tabBtn = e.target.closest('[data-card-tab]'); if (tabBtn) { switchHeroTab(tabBtn.getAttribute('data-card-tab')); return; }
+      const termBtn = e.target.closest('[data-cmd]'); if (termBtn) { runTerminalCmd(termBtn.getAttribute('data-cmd')); return; }
+      const langBtn = e.target.closest('[data-lang]'); if (langBtn) { state.lang = langBtn.getAttribute('data-lang'); applyTranslations(); return; }
+      const srvCard = e.target.closest('[data-toggle-service]'); if (srvCard) { const id = srvCard.getAttribute('data-toggle-service'); state.expandedService = state.expandedService === id ? null : id; renderServices(); return; }
+      const skBtn = e.target.closest('[data-skill-cat]'); if (skBtn) { state.skillCat = skBtn.getAttribute('data-skill-cat'); renderSkills(); return; }
+      const techBtn = e.target.closest('[data-select-tech]'); if (techBtn) {
+        const tech = techBtn.getAttribute('data-select-tech');
+        state.techFilter = state.techFilter === tech ? null : tech;
+        renderSkills(); renderProjects();
+        if (state.techFilter) { showToast(`Filtrando projetos com ${state.techFilter}`); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' }); }
+        return;
+      }
+      const prBtn = e.target.closest('[data-proj-cat]'); if (prBtn) { state.projectCat = prBtn.getAttribute('data-proj-cat'); renderProjects(); return; }
+      const demoBtn = e.target.closest('[data-open-demo]'); if (demoBtn) { openProjectDemo(demoBtn.getAttribute('data-open-demo')); return; }
+      const cmdBtn = e.target.closest('[data-cmd-idx]'); if (cmdBtn) { const idx = Number(cmdBtn.getAttribute('data-cmd-idx')); closeCmdk(); CMD_ITEMS[idx].action(); return; }
+
+    });
+
+    document.getElementById('clear-tech-filter').addEventListener('click', () => { state.techFilter = null; renderSkills(); renderProjects(); });
+    document.getElementById('btn-toggle-fx').addEventListener('click', (e) => { state.fxEnabled = !state.fxEnabled; e.target.textContent = state.fxEnabled ? 'Onda: ON' : 'Onda: OFF'; showToast(state.fxEnabled ? 'Onda líquida ativada' : 'Onda líquida pausada'); });
+    document.getElementById('btn-copy-gh').addEventListener('click', () => copyText('https://github.com/daniloliveira89', 'GitHub copiado!'));
+    document.getElementById('btn-copy-gh-contact').addEventListener('click', () => copyText('https://github.com/daniloliveira89', 'GitHub copiado!'));
+    document.getElementById('btn-copy-email').addEventListener('click', () => copyText('danilo.bls89@gmail.com', 'E-mail copiado!'));
+    document.getElementById('btn-copy-ig-contact').addEventListener('click', () => copyText('https://instagram.com/daniloliveira89', 'Instagram @daniloliveira89 copiado!'));
+    document.getElementById('btn-wa-float').addEventListener('click', () => {
+      document.getElementById('wa-popover').classList.toggle('hidden');
+    });
+    document.getElementById('btn-close-wa').addEventListener('click', () => {
+      document.getElementById('wa-popover').classList.add('hidden');
+    });
+    document.getElementById('btn-send-wa').addEventListener('click', () => {
+      const msg = encodeURIComponent(document.getElementById('wa-msg-input').value.trim() || 'Olá Danilo!');
+      window.open(`https://wa.me/?text=${msg}`, '_blank', 'noopener,noreferrer');
+      document.getElementById('wa-popover').classList.add('hidden');
+      showToast('Abrindo conversa no WhatsApp...');
+    });
+    document.getElementById('btn-open-terminal-shortcut').addEventListener('click', () => switchHeroTab('terminal'));
+    document.getElementById('btn-cmdk').addEventListener('click', openCmdk);
+    document.getElementById('close-cmdk').addEventListener('click', closeCmdk);
+    document.getElementById('cmdk-input').addEventListener('input', (e) => renderCmdk(e.target.value));
+
+    window.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); openCmdk(); }
+      else if (e.key === 'Escape') { closeCmdk(); closeProjectModal(); }
+    });
+
+    function closeProjectModal() { const m = document.getElementById('project-modal'); m.classList.add('hidden'); m.classList.remove('flex'); }
+    document.getElementById('close-project-modal').addEventListener('click', closeProjectModal);
+    document.getElementById('pm-close-btn').addEventListener('click', closeProjectModal);
+
+    document.getElementById('contact-form').addEventListener('submit', (e) => {
+      e.preventDefault(); e.target.reset();
+      showToast('Mensagem enviada com sucesso! Retorno em até 24h.');
+    });
+
+    applyTranslations();
+    renderServices();
+    renderSkills();
+    renderProjects();
+    renderDifferentials();
+  </script>
+</body>
+</html>
