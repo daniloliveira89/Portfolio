@@ -225,11 +225,20 @@
 
       <!-- Action Buttons -->
       <div class="hidden sm:flex items-center gap-3">
-        <!-- Language Switcher -->
-        <div class="flex items-center rounded-lg border border-electric/25 bg-surface/80 p-0.5 text-xs font-mono">
-          <a href="/" class="px-2 py-1 rounded text-frost hover:text-white transition">PT</a>
-          <a href="/es/" class="px-2 py-1 rounded text-frost hover:text-white transition">ES</a>
-          <span class="px-2 py-1 rounded bg-electric text-white font-bold cursor-default">EN</span>
+        <!-- Language Switcher with Flags Below Initials -->
+        <div class="flex items-center rounded-xl border border-electric/25 bg-surface/85 p-1 text-xs font-mono shadow-sm">
+          <a href="/" class="flex flex-col items-center justify-center px-2.5 py-1 rounded-lg text-frost hover:text-white hover:bg-panel/60 transition leading-none">
+            <span class="text-[10px] tracking-wider">PT</span>
+            <span class="text-[12px] mt-1 leading-none">🇧🇷</span>
+          </a>
+          <a href="/es/" class="flex flex-col items-center justify-center px-2.5 py-1 rounded-lg text-frost hover:text-white hover:bg-panel/60 transition leading-none">
+            <span class="text-[10px] tracking-wider">ES</span>
+            <span class="text-[12px] mt-1 leading-none">🇪🇸</span>
+          </a>
+          <span class="flex flex-col items-center justify-center px-2.5 py-1 rounded-lg bg-electric text-white font-bold cursor-default leading-none">
+            <span class="text-[10px] tracking-wider">EN</span>
+            <span class="text-[12px] mt-1 leading-none">🇺🇸</span>
+          </span>
         </div>
 
         <button onclick="copyPortfolioLink()" class="btn-outline" title="Copiar link do portfólio">
@@ -265,14 +274,25 @@
         <a href="#differentials" class="text-frost hover:text-white py-1">Standards</a>
         <a href="#about" class="text-frost hover:text-white py-1">About</a>
         <a href="#contact" class="text-frost hover:text-white py-1">Contact</a>
-        <div class="flex items-center gap-2 pt-2 border-t border-electric/15">
+        <div class="flex items-center gap-3 pt-2 border-t border-electric/15">
           <span class="text-xs text-smoke font-mono">Language:</span>
-          <a href="/" class="px-2 py-1 rounded text-frost hover:text-white text-xs">PT</a>
-          <a href="/es/" class="px-2 py-1 rounded text-frost hover:text-white text-xs">ES</a>
-          <span class="px-2 py-1 rounded bg-electric text-white font-bold text-xs">EN</span>
+          <div class="flex items-center rounded-xl border border-electric/25 bg-surface/85 p-1 text-xs font-mono">
+            <a href="/" class="flex flex-col items-center justify-center px-2 py-1 rounded-lg text-frost hover:text-white leading-none">
+              <span class="text-[10px]">PT</span>
+              <span class="text-[11px] mt-0.5 leading-none">🇧🇷</span>
+            </a>
+            <a href="/es/" class="flex flex-col items-center justify-center px-2 py-1 rounded-lg text-frost hover:text-white leading-none">
+              <span class="text-[10px]">ES</span>
+              <span class="text-[11px] mt-0.5 leading-none">🇪🇸</span>
+            </a>
+            <span class="flex flex-col items-center justify-center px-2 py-1 rounded-lg bg-electric text-white font-bold cursor-default leading-none">
+              <span class="text-[10px]">EN</span>
+              <span class="text-[11px] mt-0.5 leading-none">🇺🇸</span>
+            </span>
+          </div>
         </div>
         <div class="pt-2 flex gap-3">
-          <button onclick="copyPortfolioLink()" class="btn-outline flex-1 justify-center">Compartilhar</button>
+          <button onclick="copyPortfolioLink()" class="btn-outline flex-1 justify-center">Share</button>
           <a href="https://github.com/daniloliveira89" target="_blank" class="btn-solid flex-1 justify-center">GitHub</a>
         </div>
       </div>
