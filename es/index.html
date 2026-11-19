@@ -378,6 +378,10 @@
   <script src="/assets/js/projects-data.js"></script>
 </head>
 <body class="relative selection:bg-cyan-400 selection:text-slate-950" data-theme="dark">
+  <!-- Custom Cursor (Trailing Ring) -->
+  <div id="cursor-dot" class="custom-cursor-dot custom-cursor-hidden" aria-hidden="true"></div>
+  <div id="cursor-ring" class="custom-cursor-ring custom-cursor-hidden" aria-hidden="true"></div>
+
 
   <!-- Liquid Wave Engine Canvas -->
   <canvas id="liquid-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
@@ -1791,11 +1795,129 @@
     renderSkills();
     renderProjects();
     renderDifferentials();
+
+    // =========================================================================
+    // CUSTOM CURSOR COM TRAILING RING (LERP VIA RAF)
+    // =========================================================================
+    (() => {
+      let dot = document.getElementById('cursor-dot');
+      let ring = document.getElementById('cursor-ring');
+      if (!dot) {
+        dot = document.createElement('div');
+        dot.id = 'cursor-dot';
+        dot.className = 'custom-cursor-dot custom-cursor-hidden';
+        dot.setAttribute('aria-hidden', 'true');
+        document.body.appendChild(dot);
+      }
+      if (!ring) {
+        ring = document.createElement('div');
+        ring.id = 'cursor-ring';
+        ring.className = 'custom-cursor-ring custom-cursor-hidden';
+        ring.setAttribute('aria-hidden', 'true');
+        document.body.appendChild(ring);
+      }
+
+      let isInitialized = false;
+      let mouseX = -100;
+      let mouseY = -100;
+      let ringX = -100;
+      let ringY = -100;
+      let targetScale = 1;
+      let currentScale = 1;
+      let isVisible = false;
+      let isHovered = false;
+
+      // Linear interpolation helper
+      const lerp = (a, b, n) => (1 - n) * a + n * b;
+
+      // Detect pure touch devices vs real mouse pointer
+      let isTouchOnly = false;
+      window.addEventListener('touchstart', () => {
+        if (!isInitialized && ('ontouchstart' in window) && !window.matchMedia('(hover: hover)').matches) {
+          isTouchOnly = true;
+        }
+      }, { passive: true, once: true });
+
+      // Real-time mouse position tracking for central dot (6px)
+      window.addEventListener('mousemove', (e) => {
+        if (isTouchOnly) return;
+
+        if (!isInitialized) {
+          isInitialized = true;
+          document.body.classList.add('has-custom-cursor');
+          requestAnimationFrame(renderCursor);
+        }
+
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+
+        if (!isVisible) {
+          isVisible = true;
+          dot.classList.remove('custom-cursor-hidden');
+          ring.classList.remove('custom-cursor-hidden');
+          ringX = mouseX;
+          ringY = mouseY;
+        }
+      });
+
+      // Smooth trailing ring via linear interpolation (lerp) inside RAF
+      function renderCursor() {
+        if (isVisible) {
+          ringX = lerp(ringX, mouseX, 0.16);
+          ringY = lerp(ringY, mouseY, 0.16);
+          currentScale = lerp(currentScale, targetScale, 0.2);
+          ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%) scale(${currentScale})`;
+        }
+        requestAnimationFrame(renderCursor);
+      }
+
+      // Interactive hover states on clickable elements
+      const interactiveSelector = 'a, button, input, select, textarea, [data-cursor="pointer"], .clean-proj-card, .lang-btn, [role="button"], label';
+
+      document.addEventListener('mouseover', (e) => {
+        if (e.target && e.target.closest && e.target.closest(interactiveSelector)) {
+          isHovered = true;
+          targetScale = 1.6;
+          ring.classList.add('cursor-hover');
+        }
+      });
+
+      document.addEventListener('mouseout', (e) => {
+        if (e.target && e.target.closest && e.target.closest(interactiveSelector)) {
+          const nextInteractive = e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest(interactiveSelector);
+          if (!nextInteractive) {
+            isHovered = false;
+            targetScale = 1;
+            ring.classList.remove('cursor-hover');
+          }
+        }
+      });
+
+      // Click states (mousedown contracts to 0.85, mouseup restores)
+      window.addEventListener('mousedown', () => {
+        targetScale = 0.85;
+        ring.classList.add('cursor-active');
+      });
+
+      window.addEventListener('mouseup', () => {
+        ring.classList.remove('cursor-active');
+        targetScale = isHovered ? 1.6 : 1;
+      });
+
+      // Hide cursor smoothly on mouseleave window
+      document.addEventListener('mouseleave', () => {
+        isVisible = false;
+        dot.classList.add('custom-cursor-hidden');
+        ring.classList.add('custom-cursor-hidden');
+      });
+
+      document.addEventListener('mouseenter', () => {
+        dot.classList.remove('custom-cursor-hidden');
+        ring.classList.remove('custom-cursor-hidden');
+      });
+    })();
+
   </script>
-
-  <!-- Custom Cursor (Trailing Ring) -->
-  <div id="cursor-dot" class="custom-cursor-dot custom-cursor-hidden" aria-hidden="true"></div>
-  <div id="cursor-ring" class="custom-cursor-ring custom-cursor-hidden" aria-hidden="true"></div>
-
 </body>
 </html>

@@ -629,16 +629,29 @@ const cursorElementsHtml = `
   <div id="cursor-dot" class="custom-cursor-dot custom-cursor-hidden" aria-hidden="true"></div>
   <div id="cursor-ring" class="custom-cursor-ring custom-cursor-hidden" aria-hidden="true"></div>
 `;
-html = html.replace('</body>', `${cursorElementsHtml}\n</body>`);
+html = html.replace(/<body[^>]*>/, `$&${cursorElementsHtml}`);
 
 const cursorScript = `
     // =========================================================================
     // CUSTOM CURSOR COM TRAILING RING (LERP VIA RAF)
     // =========================================================================
     (() => {
-      const dot = document.getElementById('cursor-dot');
-      const ring = document.getElementById('cursor-ring');
-      if (!dot || !ring) return;
+      let dot = document.getElementById('cursor-dot');
+      let ring = document.getElementById('cursor-ring');
+      if (!dot) {
+        dot = document.createElement('div');
+        dot.id = 'cursor-dot';
+        dot.className = 'custom-cursor-dot custom-cursor-hidden';
+        dot.setAttribute('aria-hidden', 'true');
+        document.body.appendChild(dot);
+      }
+      if (!ring) {
+        ring = document.createElement('div');
+        ring.id = 'cursor-ring';
+        ring.className = 'custom-cursor-ring custom-cursor-hidden';
+        ring.setAttribute('aria-hidden', 'true');
+        document.body.appendChild(ring);
+      }
 
       let isInitialized = false;
       let mouseX = -100;
@@ -742,7 +755,11 @@ const cursorScript = `
     })();
 `;
 
-html = html.replace('</script>\n</body>', `${cursorScript}\n  </script>\n</body>`);
+if (html.includes('renderDifferentials();')) {
+  html = html.replace('renderDifferentials();', `renderDifferentials();\n${cursorScript}`);
+} else {
+  console.log('WARNING: renderDifferentials() not found!');
+}
 
 console.log('Final HTML length:', html.length);
 
