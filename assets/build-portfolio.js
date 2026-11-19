@@ -5,13 +5,13 @@ const path = require('path');
 const templatePath = 'C:/Users/Zombie PC/.gemini/antigravity/brain/1c2a9853-6515-4feb-8e6e-791b68c45782/.user_uploaded/media_1795097314429_375d6e0e.html';
 let html = fs.readFileSync(templatePath, 'utf8');
 
-// 2. Custom CSS for Language Switcher Pill matching user's attached screenshot + Clean Project Cards
+// 2. Custom CSS for Language Switcher with Flags + Clean Floating Overlay Project Cards
 const customCss = `
-    /* === LANGUAGE PILL SELECTOR (MATCHING USER SCREENSHOT) === */
+    /* === LANGUAGE PILL SELECTOR WITH FLAGS === */
     .lang-pill-container {
       background: rgba(11, 14, 23, 0.9);
       border: 1px solid rgba(59, 130, 246, 0.28);
-      border-radius: 0.75rem;
+      border-radius: 0.85rem;
       padding: 0.25rem;
       display: inline-flex;
       align-items: center;
@@ -24,19 +24,21 @@ const customCss = `
       box-shadow: inset 0 1px 2px rgba(0,0,0,0.06);
     }
     .lang-btn {
-      padding: 0.35rem 0.65rem;
-      border-radius: 0.45rem;
+      padding: 0.35rem 0.55rem;
+      border-radius: 0.55rem;
       font-size: 0.75rem;
       font-family: 'JetBrains Mono', monospace;
       font-weight: 600;
-      line-height: 1;
-      letter-spacing: 0.05em;
       color: var(--text-muted);
       transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       cursor: pointer;
       background: transparent;
       border: none;
       outline: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
     .lang-btn:hover {
       color: var(--text-heading);
@@ -45,26 +47,26 @@ const customCss = `
       background: #2563EB !important;
       color: #FFFFFF !important;
       font-weight: 700;
-      box-shadow: 0 1px 4px rgba(37, 99, 235, 0.4);
+      box-shadow: 0 1px 6px rgba(37, 99, 235, 0.45);
     }
     body[data-theme="light"] .lang-btn.active {
       background: #2563EB !important;
       color: #FFFFFF !important;
-      box-shadow: 0 1px 4px rgba(37, 99, 235, 0.3);
+      box-shadow: 0 1px 6px rgba(37, 99, 235, 0.35);
     }
 
-    /* === CLEAN PROJECT CARDS === */
+    /* === CLEAN PROJECT CARDS WITH OVERLAY === */
     .clean-proj-card {
       transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.28s ease, border-color 0.28s ease;
       will-change: transform;
     }
     .clean-proj-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.6), 0 0 20px rgba(34, 211, 238, 0.15);
+      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.7), 0 0 24px rgba(34, 211, 238, 0.2);
       border-color: rgba(34, 211, 238, 0.5);
     }
     body[data-theme="light"] .clean-proj-card:hover {
-      box-shadow: 0 16px 32px -8px rgba(15, 23, 42, 0.12), 0 0 18px rgba(8, 145, 178, 0.18);
+      box-shadow: 0 16px 32px -8px rgba(15, 23, 42, 0.14), 0 0 20px rgba(8, 145, 178, 0.2);
       border-color: rgba(8, 145, 178, 0.45);
     }
 `;
@@ -77,13 +79,44 @@ if (!html.includes('projects-data.js')) {
   html = html.replace('</head>', '  <script src="/assets/js/projects-data.js"></script>\n</head>');
 }
 
-// Replace the old Language Switcher block with the clean Pill
+// 1. Fix Header Brand Logo button to scroll smoothly to the top of page
+const oldBrandLogo = `<a href="#top" class="flex items-center gap-3 no-underline group">`;
+const newBrandLogo = `<a href="#top" id="btn-brand-home" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;" class="flex items-center gap-3 no-underline group cursor-pointer" title="Ir para o topo">`;
+html = html.replace(oldBrandLogo, newBrandLogo);
+
+// 2. Language Switcher with Flags right below initials
 const oldLangBlockRegex = /<!-- Language Switcher with Country Flags -->[\s\S]*?<\/div>/;
-const newLangBlock = `<!-- Language Switcher Pill (Matching User Screenshot) -->
+const newLangBlock = `<!-- Language Switcher Pill with Flags -->
         <div class="lang-pill-container">
-          <button type="button" data-lang="pt" class="lang-btn active" title="Português">PT</button>
-          <button type="button" data-lang="es" class="lang-btn" title="Español">ES</button>
-          <button type="button" data-lang="en" class="lang-btn" title="English">EN</button>
+          <button type="button" data-lang="pt" class="lang-btn active" title="Português">
+            <span class="text-[9px] font-bold tracking-wider leading-none">PT</span>
+            <svg class="w-4 h-2.5 rounded-[2px] mt-1 shadow-sm shrink-0" viewBox="0 0 720 504" aria-hidden="true">
+              <rect width="720" height="504" fill="#009b3a"/>
+              <polygon points="360,42 666,252 360,462 54,252" fill="#fedf00"/>
+              <circle cx="360" cy="252" r="126" fill="#002776"/>
+            </svg>
+          </button>
+          <button type="button" data-lang="es" class="lang-btn" title="Español">
+            <span class="text-[9px] font-bold tracking-wider leading-none">ES</span>
+            <svg class="w-4 h-2.5 rounded-[2px] mt-1 shadow-sm shrink-0" viewBox="0 0 750 500" aria-hidden="true">
+              <rect width="750" height="500" fill="#c60b1e"/>
+              <rect y="125" width="750" height="250" fill="#ffc400"/>
+            </svg>
+          </button>
+          <button type="button" data-lang="en" class="lang-btn" title="English">
+            <span class="text-[9px] font-bold tracking-wider leading-none">EN</span>
+            <svg class="w-4 h-2.5 rounded-[2px] mt-1 shadow-sm shrink-0" viewBox="0 0 60 30" aria-hidden="true">
+              <clipPath id="flag-en-s"><path d="M0,0 v30 h60 v-30 z"/></clipPath>
+              <clipPath id="flag-en-t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath>
+              <g clip-path="url(#flag-en-s)">
+                <path d="M0,0 v30 h60 v-30 z" fill="#012169"/>
+                <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/>
+                <path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#flag-en-t)" stroke="#C8102E" stroke-width="4"/>
+                <path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/>
+                <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/>
+              </g>
+            </svg>
+          </button>
         </div>`;
 html = html.replace(oldLangBlockRegex, newLangBlock);
 
@@ -204,7 +237,7 @@ const newProjectsCode = `${siteTypeDictCode}
     const state = {`;
 html = html.replace(oldProjectsRegex, newProjectsCode);
 
-// Redesign renderProjects for ultra-clean layout: ONLY Thumbnail + Site Type + "Abrir ↗" button
+// 3. Redesign renderProjects: NO "Abrir" buttons, Site Style floating directly OVER the thumbnail
 const oldRenderRegex = /function renderProjects\(\) \{[\s\S]*?\}\s*function openProjectDemo\(projId\) \{[\s\S]*?\}\s*\/\/ =========================================================================\s*\/\/ 6\. COMMAND PALETTE/;
 
 const newRenderCode = `function renderProjects() {
@@ -251,7 +284,6 @@ const newRenderCode = `function renderProjects() {
       }
 
       const curLang = state.lang || 'pt';
-      const openBtnText = curLang === 'en' ? 'Open' : 'Abrir';
 
       grid.innerHTML = list.map(p => {
         const openUrl = (p.links && p.links.demo) ? p.links.demo : ((p.links && p.links.github) ? p.links.github : '#');
@@ -259,21 +291,23 @@ const newRenderCode = `function renderProjects() {
         const siteType = (siteTypeInfo && siteTypeInfo[curLang]) ? siteTypeInfo[curLang] : (p.title.split('—')[0].trim());
 
         return \`
-        <article class="clean-proj-card spotlight-card rounded-2xl overflow-hidden flex flex-col justify-between group border b-subtle bg-surface-solid">
-          <!-- 1. Miniatura (Preview Image) -->
-          <a href="\${openUrl}" target="_blank" rel="noopener noreferrer" class="relative block aspect-[16/10] overflow-hidden bg-slate-950">
-            <img src="\${p.image}" alt="\${siteType}" class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105" loading="lazy" onerror="this.onerror=null; this.src='/assets/images/radar-ia-real.png';" />
-            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </a>
+        <a href="\${openUrl}" target="_blank" rel="noopener noreferrer" class="clean-proj-card spotlight-card rounded-2xl overflow-hidden block relative aspect-[16/10] bg-slate-950 border b-subtle group cursor-pointer shadow-md">
+          <!-- 1. Miniatura em Tela Cheia do Card -->
+          <img src="\${p.image}" alt="\${siteType}" class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105" loading="lazy" onerror="this.onerror=null; this.src='/assets/images/radar-ia-real.png';" />
+          
+          <!-- 2. Overlay Suave com Gradiente -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent transition-opacity duration-300"></div>
 
-          <!-- 2. Rodapé Limpo: Tipo de Site + Botão Abrir -->
-          <div class="p-3.5 sm:p-4 flex items-center justify-between gap-3 bg-surface-solid border-t b-subtle">
-            <span class="font-medium text-xs sm:text-sm t-heading truncate tracking-wide" title="\${siteType}">\${siteType}</span>
-            <a href="\${openUrl}" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-xl text-xs font-bold btn-cyan inline-flex items-center gap-1 shrink-0 shadow-sm transition hover:scale-105">
-              \${openBtnText} ↗
-            </a>
+          <!-- 3. Estilo do Site por Cima da Miniatura (Sem Botão Abrir) -->
+          <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+            <span class="px-3 py-1.5 rounded-xl text-xs sm:text-[13px] font-semibold tracking-wide text-white bg-slate-950/80 backdrop-blur-md border border-white/15 shadow-lg group-hover:border-cyan-400/60 group-hover:text-cyan-300 transition-all duration-200">
+              \${siteType}
+            </span>
+            <span class="w-7 h-7 rounded-xl bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 flex items-center justify-center text-xs opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shadow-sm">
+              ↗
+            </span>
           </div>
-        </article>\`;
+        </a>\`;
       }).join('');
     }
 
@@ -286,7 +320,7 @@ if (oldRenderRegex.test(html)) {
   console.log('WARNING: oldRenderRegex did not match!');
 }
 
-// Replace applyTranslations to toggle active class cleanly and re-render projects with new language
+// 4. Update applyTranslations to cleanly toggle .active without overwriting SVG flags
 const oldApplyTranslationsRegex = /function applyTranslations\(\) \{[\s\S]*?\}\s*document\.addEventListener\('click'/;
 const newApplyTranslationsCode = `function applyTranslations() {
       const t = I18N[state.lang] || I18N.pt;
@@ -307,6 +341,17 @@ const newApplyTranslationsCode = `function applyTranslations() {
       renderProjects();
     }
 
+    // Explicit scroll-to-top binding
+    document.addEventListener('DOMContentLoaded', () => {
+      const btnHome = document.getElementById('btn-brand-home');
+      if (btnHome) {
+        btnHome.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    });
+
     document.addEventListener('click'`;
 
 if (oldApplyTranslationsRegex.test(html)) {
@@ -317,11 +362,11 @@ if (oldApplyTranslationsRegex.test(html)) {
 
 console.log('Final HTML length:', html.length);
 
-// 3. Write index.html
+// Write index.html
 fs.writeFileSync('index.html', html, 'utf8');
 console.log('Successfully wrote index.html');
 
-// 4. Create Spanish version for /es/index.html
+// Create Spanish version for /es/index.html
 let esHtml = html
   .replace('<html lang="pt-BR"', '<html lang="es-ES"')
   .replace("lang: 'pt',", "lang: 'es',")
@@ -332,7 +377,7 @@ if (!fs.existsSync('es')) fs.mkdirSync('es', { recursive: true });
 fs.writeFileSync('es/index.html', esHtml, 'utf8');
 console.log('Successfully wrote es/index.html');
 
-// 5. Create English version for /en/index.html
+// Create English version for /en/index.html
 let enHtml = html
   .replace('<html lang="pt-BR"', '<html lang="en-US"')
   .replace("lang: 'pt',", "lang: 'en',")
