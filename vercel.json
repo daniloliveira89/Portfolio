@@ -49,8 +49,20 @@
   ],
   "rewrites": [
     {
+      "source": "/(en|es)/assets/(.*)",
+      "destination": "/assets/$2"
+    },
+    {
       "source": "/assets/(.*)",
       "destination": "/assets/$1"
+    },
+    {
+      "source": "/(en|es)/layouts/(.*)",
+      "destination": "/layouts para sites/$2"
+    },
+    {
+      "source": "/(en|es)/layouts para sites/(.*)",
+      "destination": "/layouts para sites/$2"
     },
     {
       "source": "/layouts/(.*)",

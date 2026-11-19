@@ -1,356 +1,389 @@
-// Gerenciamento e Interatividade do Portfólio
-
-let activeCategory = 'all';
-let searchQuery = '';
-
-function getDemoUrl(url) {
-  if (!url) return '#';
-  if (url.startsWith('http://') || url.startsWith('https://')) return url;
-  var clean = url;
-  while (clean.startsWith('../')) {
-    clean = clean.substring(3);
-  }
-  if (!clean.startsWith('/')) {
-    clean = '/' + clean;
-  }
-  return clean;
-}
-
 document.addEventListener('DOMContentLoaded', () => {
-  renderStats();
-  renderProjects();
-  setupFilterListeners();
-  setupSearchListener();
-  setupModalHandlers();
-});
+  // ==========================================
+  // 1. TYPEWRITER EFFECT NO HERO
+  // ==========================================
+  const roles = [
+    "Engenheiro de Software & I.A.",
+    "Full-Stack Web Developer",
+    "Criador de Layouts & Experiências WebGL",
+    "Especialista em Extensões Chrome MV3",
+    "Arquiteto de Soluções Serverless & PWA"
+  ];
+  const typedEl = document.getElementById('typed-role');
+  let roleIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
 
-// Atualiza contadores do cabeçalho
-function renderStats() {
-  const statProjects = document.getElementById('stat-total-projects');
-  const statDemos = document.getElementById('stat-live-demos');
-  const statCategories = document.getElementById('stat-categories');
+  function typeEffect() {
+    if (!typedEl) return;
+    const currentRole = roles[roleIndex];
+    typedEl.textContent = currentRole.substring(0, charIndex);
 
-  if (statProjects) statProjects.textContent = PROJECTS_DATA.length;
-  if (statDemos) statDemos.textContent = PORTFOLIO_STATS.liveDemos;
-  if (statCategories) statCategories.textContent = PORTFOLIO_STATS.totalCategories;
+    let speed = isDeleting ? 35 : 75;
 
-  // Atualiza contadores nos botões de filtro
-  document.querySelectorAll('[data-category]').forEach(btn => {
-    const cat = btn.getAttribute('data-category');
-    const badge = btn.querySelector('.filter-count');
-    if (badge) {
-      if (cat === 'all') {
-        badge.textContent = PROJECTS_DATA.length;
-      } else {
-        const count = PROJECTS_DATA.filter(p => p.category === cat).length;
-        badge.textContent = count;
-      }
+    if (!isDeleting && charIndex === currentRole.length) {
+      speed = 2200;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      roleIndex = (roleIndex + 1) % roles.length;
+      speed = 400;
+    } else {
+      charIndex += isDeleting ? -1 : 1;
     }
-  });
-}
+    setTimeout(typeEffect, speed);
+  }
+  typeEffect();
 
-// Renderiza a lista de projetos na grade
-function renderProjects() {
-  const container = document.getElementById('projects-grid');
-  const emptyState = document.getElementById('empty-state');
-  if (!container) return;
+  // ==========================================
+  // 2. MATRIZ DE SKILLS COM FILTRO
+  // ==========================================
+  const SKILLS_DATA = [
+    { name: "TypeScript / ESNext", level: 95, category: "frontend" },
+    { name: "React & Next.js", level: 92, category: "frontend" },
+    { name: "Tailwind CSS & UI/UX Editorial", level: 96, category: "frontend" },
+    { name: "PixiJS / WebGL / Canvas 2D", level: 88, category: "frontend" },
+    { name: "Engenharia de Prompts & LLMs", level: 95, category: "ai-backend" },
+    { name: "Cloudflare Workers (Serverless)", level: 90, category: "ai-backend" },
+    { name: "Python 3 & Automação de Dados", level: 90, category: "ai-backend" },
+    { name: "Notion API & Google Sheets API", level: 94, category: "ai-backend" },
+    { name: "Chrome Extensions (Manifest V3)", level: 96, category: "tools" },
+    { name: "PWA & Web Audio / MediaSession", level: 92, category: "tools" },
+    { name: "GitHub Actions CI/CD & Vercel", level: 90, category: "tools" },
+    { name: "C# / .NET & Rclone CLI", level: 84, category: "tools" }
+  ];
 
-  const filtered = PROJECTS_DATA.filter(project => {
-    const matchesCategory = activeCategory === 'all' || project.category === activeCategory;
-    const query = searchQuery.toLowerCase().trim();
-    const matchesSearch = !query || 
-      project.title.toLowerCase().includes(query) ||
-      project.shortDescription.toLowerCase().includes(query) ||
-      project.categoryLabel.toLowerCase().includes(query) ||
-      project.tags.some(tag => tag.toLowerCase().includes(query));
+  const skillsContainer = document.getElementById('skills-container');
+  const skillBtns = document.querySelectorAll('.skill-filter-btn');
 
-    return matchesCategory && matchesSearch;
-  });
-
-  if (filtered.length === 0) {
-    container.innerHTML = '';
-    if (emptyState) emptyState.classList.remove('hidden');
-    return;
+  function renderSkills(filter = 'all') {
+    if (!skillsContainer) return;
+    const filtered = filter === 'all' ? SKILLS_DATA : SKILLS_DATA.filter(s => s.category === filter);
+    skillsContainer.innerHTML = filtered.map(skill => `
+      <div class="rounded-2xl p-5 border border-electric/15 hover:border-electric/40 transition-all"
+           style="background: rgba(13,18,32,0.85);">
+        <div class="flex justify-between items-center mb-2.5">
+          <span class="text-xs font-semibold text-white">${skill.name}</span>
+          <span class="text-xs font-mono text-glow">${skill.level}%</span>
+        </div>
+        <div class="w-full h-1.5 rounded-full bg-panel overflow-hidden">
+          <div class="h-full rounded-full bg-gradient-to-r from-electric to-glow transition-all duration-700"
+               style="width: ${skill.level}%; box-shadow: 0 0 10px rgba(59,130,246,0.5);"></div>
+        </div>
+      </div>
+    `).join('');
   }
 
-  if (emptyState) emptyState.classList.add('hidden');
-
-  container.innerHTML = filtered.map(project => {
-    const displayTitle = project.category === 'layouts' ? project.categoryLabel : project.title;
-    return `
-    <article class="group relative flex flex-col bg-slate-900/85 rounded-2xl border border-slate-800/80 hover:border-sky-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-sky-500/10 overflow-hidden transform hover:-translate-y-1.5 cursor-pointer shadow-lg"
-             onclick="openProjectModal('${project.id}')">
-      <!-- Imagem de Apresentação Limpa -->
-      <div class="relative h-52 sm:h-56 w-full overflow-hidden bg-slate-950">
-        <img 
-          src="${project.image}" 
-          alt="${displayTitle}" 
-          class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-          loading="lazy"
-          onerror="this.src='assets/images/radar-ia.jpg'"
-        />
-        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-50"></div>
-      </div>
-
-      <!-- Conteúdo do Card com Título e Botão na mesma linha -->
-      <div class="p-5 flex items-center justify-between gap-3">
-        <h3 class="text-base font-bold text-white group-hover:text-sky-400 transition-colors line-clamp-1 flex-1">
-          ${displayTitle}
-        </h3>
-
-        ${project.links && project.links.demo ? `
-          <a 
-            href="${getDemoUrl(project.links.demo)}" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            onclick="event.stopPropagation()"
-            class="shrink-0 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500 hover:text-slate-950 transition shadow-sm"
-            title="Acessar demonstração online"
-          >
-            Demo ↗
-          </a>
-        ` : `
-          <span class="shrink-0 text-xs text-sky-400 group-hover:text-sky-300 flex items-center gap-1 font-medium">
-            Ver mais →
-          </span>
-        `}
-      </div>
-    </article>
-    `;
-  }).join('');
-}
-
-// Configura filtros de categoria
-function setupFilterListeners() {
-  const buttons = document.querySelectorAll('[data-category]');
-  buttons.forEach(btn => {
+  skillBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      buttons.forEach(b => {
-        b.classList.remove('bg-sky-500', 'text-slate-950', 'font-bold');
-        b.classList.add('bg-slate-900', 'text-slate-400', 'hover:text-white', 'hover:bg-slate-800');
+      skillBtns.forEach(b => {
+        b.classList.remove('bg-electric', 'border-electric', 'text-white');
+        b.classList.add('border-electric/25', 'text-frost');
       });
+      btn.classList.add('bg-electric', 'border-electric', 'text-white');
+      btn.classList.remove('border-electric/25', 'text-frost');
+      renderSkills(btn.dataset.skillFilter);
+    });
+  });
+  renderSkills();
 
-      btn.classList.remove('bg-slate-900', 'text-slate-400', 'hover:text-white', 'hover:bg-slate-800');
-      btn.classList.add('bg-sky-500', 'text-slate-950', 'font-bold');
+  // ==========================================
+  // 3. CATÁLOGO DE PROJETOS, BUSCA E CONTADORES
+  // ==========================================
+  const grid = document.getElementById('projects-grid');
+  const emptyState = document.getElementById('empty-state');
+  const searchInput = document.getElementById('search-input');
+  const clearSearchBtn = document.getElementById('clear-search');
+  const filterBtns = document.querySelectorAll('[data-category]');
 
-      activeCategory = btn.getAttribute('data-category');
+  let activeCategory = 'all';
+  let searchQuery = '';
+
+  function updateCounters() {
+    const totalEl = document.getElementById('stat-total-projects');
+    const cardTotalEl = document.getElementById('stat-card-projects');
+    const demosEl = document.getElementById('stat-live-demos');
+    const extensionsEl = document.getElementById('stat-extensions');
+
+    if (totalEl) totalEl.textContent = `${PROJECTS_DATA.length}+`;
+    if (cardTotalEl) cardTotalEl.textContent = `${PROJECTS_DATA.length}+`;
+    const demosCount = PROJECTS_DATA.filter(p => p.links && p.links.demo).length;
+    if (demosEl) demosEl.textContent = `${demosCount}+`;
+    const extensionsCount = PROJECTS_DATA.filter(p => p.category === 'extensions').length;
+    if (extensionsEl) extensionsEl.textContent = `${extensionsCount}+`;
+
+    filterBtns.forEach(btn => {
+      const cat = btn.dataset.category;
+      const countSpan = btn.querySelector('.filter-count');
+      if (!countSpan) return;
+      const count = cat === 'all'
+        ? PROJECTS_DATA.length
+        : PROJECTS_DATA.filter(p => p.category === cat).length;
+      countSpan.textContent = count;
+    });
+  }
+
+  function getDemoUrl(url) {
+    if (!url) return '#';
+    if (url.startsWith('http://') || url.startsWith('https://')) return url;
+    var clean = url;
+    while (clean.startsWith('../')) {
+      clean = clean.substring(3);
+    }
+    if (!clean.startsWith('/')) {
+      clean = '/' + clean;
+    }
+    if (clean.startsWith('/layouts para sites/')) {
+      clean = '/layouts/' + clean.substring(20);
+    }
+    return encodeURI(clean);
+  }
+
+  function renderProjects() {
+    if (!grid) return;
+    const filtered = PROJECTS_DATA.filter(project => {
+      const matchesCategory = activeCategory === 'all' || project.category === activeCategory;
+      const q = searchQuery.toLowerCase().trim();
+      const matchesSearch = !q ||
+        project.title.toLowerCase().includes(q) ||
+        project.shortDescription.toLowerCase().includes(q) ||
+        project.categoryLabel.toLowerCase().includes(q) ||
+        project.tags.some(t => t.toLowerCase().includes(q));
+      return matchesCategory && matchesSearch;
+    });
+
+    if (filtered.length === 0) {
+      grid.classList.add('hidden');
+      if (emptyState) emptyState.classList.remove('hidden');
+      return;
+    }
+
+    grid.classList.remove('hidden');
+    if (emptyState) emptyState.classList.add('hidden');
+
+    grid.innerHTML = filtered.map(project => {
+      const displayTitle = project.category === 'layouts' ? project.categoryLabel : project.title;
+      return `
+      <article class="group rounded-2xl overflow-hidden border border-electric/15 hover:border-electric/50 transition-all duration-300 flex flex-col justify-between transform hover:-translate-y-1.5 cursor-pointer shadow-lg hover:shadow-electric/10"
+               style="background: rgba(13,18,32,0.92); backdrop-filter: blur(10px);"
+               onclick="openProjectModal('${project.id}')">
+        <div>
+          <!-- Imagem de Capa 100% Limpa -->
+          <div class="relative h-52 overflow-hidden bg-void">
+            <img src="${project.image}" alt="${displayTitle}" loading="lazy"
+                 class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                 onerror="this.src='/assets/images/radar-ia-real.png'">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0D1220] via-transparent to-transparent opacity-50"></div>
+          </div>
+
+          <!-- Título e Botão na mesma linha -->
+          <div class="p-5 flex items-center justify-between gap-3">
+            <h3 class="font-display text-base font-bold text-white group-hover:text-glow transition-colors line-clamp-1 flex-1">
+              ${displayTitle}
+            </h3>
+
+            ${project.links && project.links.demo ? `
+              <a href="${getDemoUrl(project.links.demo)}" target="_blank" rel="noopener noreferrer"
+                 onclick="event.stopPropagation()"
+                 class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500 hover:text-slate-950 transition flex items-center gap-1.5 shadow-sm">
+                Demo ↗
+              </a>
+            ` : project.links && project.links.github ? `
+              <a href="${project.links.github}" target="_blank" rel="noopener noreferrer"
+                 onclick="event.stopPropagation()"
+                 class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-blue-500/15 text-blue-400 border border-blue-500/30 hover:bg-blue-500 hover:text-white transition flex items-center gap-1.5 shadow-sm">
+                GitHub ↗
+              </a>
+            ` : `
+              <span class="shrink-0 text-xs text-electric/80 group-hover:text-glow flex items-center gap-1 font-medium">
+                Ver mais →
+              </span>
+            `}
+          </div>
+        </div>
+      </article>
+      `;
+    }).join('');
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      activeCategory = btn.dataset.category;
+      filterBtns.forEach(b => {
+        b.classList.remove('bg-electric', 'border-electric', 'text-white');
+        b.classList.add('border-electric/25', 'text-frost');
+      });
+      btn.classList.add('bg-electric', 'border-electric', 'text-white');
+      btn.classList.remove('border-electric/25', 'text-frost');
       renderProjects();
     });
   });
-}
-
-// Configura busca em tempo real
-function setupSearchListener() {
-  const searchInput = document.getElementById('search-input');
-  const clearBtn = document.getElementById('clear-search');
 
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
       searchQuery = e.target.value;
-      if (clearBtn) {
-        if (searchQuery.length > 0) {
-          clearBtn.classList.remove('hidden');
-        } else {
-          clearBtn.classList.add('hidden');
-        }
+      if (clearSearchBtn) {
+        clearSearchBtn.classList.toggle('hidden', !searchQuery);
       }
       renderProjects();
     });
   }
 
-  if (clearBtn) {
-    clearBtn.addEventListener('click', () => {
-      if (searchInput) {
-        searchInput.value = '';
-        searchQuery = '';
-        clearBtn.classList.add('hidden');
-        renderProjects();
-      }
+  if (clearSearchBtn) {
+    clearSearchBtn.addEventListener('click', () => {
+      searchQuery = '';
+      if (searchInput) searchInput.value = '';
+      clearSearchBtn.classList.add('hidden');
+      renderProjects();
     });
   }
-}
 
-// Abre o Modal de Detalhes do Projeto
-function openProjectModal(projectId) {
-  const project = PROJECTS_DATA.find(p => p.id === projectId);
-  if (!project) return;
-
+  // ==========================================
+  // 4. MODAL COM GALERIA MULTI-FOTO
+  // ==========================================
   const modal = document.getElementById('project-modal');
-  const modalContent = document.getElementById('modal-content');
+  const closeModalBtn = document.getElementById('close-modal');
 
-  if (!modal || !modalContent) return;
+  window.openProjectModal = function(projectId) {
+    const project = PROJECTS_DATA.find(p => p.id === projectId);
+    if (!project || !modal) return;
 
-  modalContent.innerHTML = `
-    <!-- Header com Banner -->
-    <div class="relative h-64 sm:h-80 w-full overflow-hidden bg-slate-950">
-      <img 
-        id="modal-main-img"
-        src="${project.image}" 
-        alt="${project.title}" 
-        class="w-full h-full object-cover object-center"
-        onerror="this.src='assets/images/radar-ia-real.png'"
-      />
-      <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
-      
-      <!-- Botão Fechar -->
-      <button 
-        onclick="closeProjectModal()" 
-        class="absolute top-4 right-4 p-2.5 rounded-full bg-slate-950/70 hover:bg-slate-900 text-slate-300 hover:text-white border border-slate-700/60 backdrop-blur-md transition-colors"
-      >
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-        </svg>
-      </button>
+    const modalImg = document.getElementById('modal-image');
+    modalImg.src = project.image;
+    modalImg.alt = project.title;
 
-      <!-- Badges no Banner -->
-      <div class="absolute bottom-4 left-6 right-6 flex flex-wrap items-center justify-between gap-3">
-        <div class="flex items-center gap-2">
-          <span class="px-3 py-1 rounded-full text-xs font-semibold bg-sky-500/20 text-sky-300 border border-sky-500/30 backdrop-blur-md">
-            ${project.categoryLabel}
-          </span>
-          <span class="px-3 py-1 rounded-full text-xs font-semibold bg-slate-800/80 text-slate-300 border border-slate-700/60 backdrop-blur-md">
-            ${project.badge}
-          </span>
-        </div>
-      </div>
-    </div>
+    document.getElementById('modal-category').textContent = project.categoryLabel;
+    document.getElementById('modal-badge').textContent = project.badge;
+    document.getElementById('modal-title').textContent = project.title;
+    document.getElementById('modal-description').textContent = project.fullDescription;
 
-    <!-- Miniaturas da Galeria -->
-    ${project.gallery && project.gallery.length > 1 ? `
-      <div class="flex gap-2 px-6 pt-3 pb-2 overflow-x-auto bg-slate-950/90 border-b border-slate-800/80">
-        ${project.gallery.map((imgSrc, idx) => `
-          <button type="button" onclick="document.getElementById('modal-main-img').src='${imgSrc}'"
-                  class="w-20 h-12 rounded-lg overflow-hidden border-2 border-slate-700 hover:border-sky-400 flex-shrink-0 transition">
-            <img src="${imgSrc}" alt="Screenshot ${idx + 1}" class="w-full h-full object-cover"
-                 onerror="this.src='assets/images/radar-ia-real.png'">
-          </button>
-        `).join('')}
-      </div>
-    ` : ''}
+    // Galeria de miniaturas (se houver mais de 1 foto)
+    let galleryContainer = document.getElementById('modal-gallery-thumbs');
+    if (!galleryContainer) {
+      galleryContainer = document.createElement('div');
+      galleryContainer.id = 'modal-gallery-thumbs';
+      galleryContainer.className = 'flex gap-2 px-6 pt-4 overflow-x-auto';
+      modalImg.parentElement.insertAdjacentElement('afterend', galleryContainer);
+    }
 
-    <!-- Corpo do Modal -->
-    <div class="p-6 sm:p-8 space-y-6">
-      <div>
-        <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">
-          ${project.title}
-        </h2>
-        <p class="text-slate-300 leading-relaxed text-base whitespace-pre-line">
-          ${project.fullDescription}
-        </p>
-      </div>
-
-      <!-- Recursos & Funcionalidades Principais -->
-      <div>
-        <h4 class="text-xs font-bold uppercase tracking-wider text-sky-400 mb-3">
-          Principais Recursos & Arquitetura
-        </h4>
-        <ul class="space-y-2.5">
-          ${project.features.map(f => `
-            <li class="flex items-start gap-2.5 text-sm text-slate-300">
-              <svg class="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-              <span>${f}</span>
-            </li>
-          `).join('')}
-        </ul>
-      </div>
-
-      <!-- Tecnologias Utilizadas -->
-      <div>
-        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2.5">
-          Stack Tecnológico
-        </h4>
-        <div class="flex flex-wrap gap-2">
-          ${project.tags.map(tag => `
-            <span class="px-3 py-1 text-xs font-medium rounded-lg bg-slate-800 text-sky-300 border border-slate-700">
-              ${tag}
-            </span>
-          `).join('')}
-        </div>
-      </div>
-
-      <!-- Links & Ações -->
-      <div class="pt-6 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3">
-        <div class="flex items-center gap-3">
-          ${project.links.demo ? `
-            <a 
-              href="${getDemoUrl(project.links.demo)}" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-bold text-sm bg-sky-500 hover:bg-sky-400 text-slate-950 transition-all shadow-lg shadow-sky-500/25"
-            >
-              <span>Acessar Demo Online</span>
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-              </svg>
-            </a>
-          ` : ''}
-
-          ${project.links.github ? `
-            <a 
-              href="${project.links.github}" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-medium text-sm bg-slate-800 hover:bg-slate-700 text-white border border-slate-700 transition-colors"
-            >
-              <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
-              </svg>
-              <span>Ver Código no GitHub</span>
-            </a>
-          ` : ''}
-        </div>
-
-        <button 
-          onclick="closeProjectModal()" 
-          class="px-4 py-2 text-sm text-slate-400 hover:text-white transition-colors"
-        >
-          Fechar
+    if (project.gallery && project.gallery.length > 1) {
+      galleryContainer.classList.remove('hidden');
+      galleryContainer.innerHTML = project.gallery.map((imgSrc, idx) => `
+        <button type="button" onclick="document.getElementById('modal-image').src='${imgSrc}'"
+                class="w-20 h-12 rounded-lg overflow-hidden border-2 border-electric/30 hover:border-glow flex-shrink-0 transition">
+          <img src="${imgSrc}" alt="Screenshot ${idx + 1}" class="w-full h-full object-cover"
+               onerror="this.src='/assets/images/radar-ia-real.png'">
         </button>
-      </div>
-    </div>
-  `;
+      `).join('');
+    } else {
+      galleryContainer.classList.add('hidden');
+    }
 
-  modal.classList.remove('hidden');
-  document.body.style.overflow = 'hidden';
-}
+    // Features
+    document.getElementById('modal-features').innerHTML = project.features.map(f => `
+      <li class="flex items-start gap-2.5 text-xs text-frost">
+        <span class="w-1.5 h-1.5 rounded-full bg-electric mt-1.5 flex-shrink-0"></span>
+        <span>${f}</span>
+      </li>
+    `).join('');
 
-function closeProjectModal() {
-  const modal = document.getElementById('project-modal');
-  if (modal) {
+    // Tags
+    document.getElementById('modal-tags').innerHTML = project.tags.map(t => `
+      <span class="px-2.5 py-1 rounded-lg text-xs font-mono text-glow bg-panel border border-electric/20">
+        ${t}
+      </span>
+    `).join('');
+
+    // Links
+    const ghLink = document.getElementById('modal-github-link');
+    const demoLink = document.getElementById('modal-demo-link');
+
+    if (ghLink) ghLink.href = project.links.github || 'https://github.com/daniloliveira89';
+    if (demoLink) {
+      if (project.links.demo) {
+        demoLink.href = getDemoUrl(project.links.demo);
+        const demoSpan = demoLink.querySelector('span');
+        if (demoSpan) demoSpan.textContent = 'Acessar Demo Online';
+        demoLink.classList.remove('hidden');
+      } else if (project.links.github) {
+        demoLink.href = project.links.github;
+        const demoSpan = demoLink.querySelector('span');
+        if (demoSpan) demoSpan.textContent = 'Ver Repositório no GitHub';
+        demoLink.classList.remove('hidden');
+      } else {
+        demoLink.classList.add('hidden');
+      }
+    }
+
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  };
+
+  function closeModal() {
+    if (!modal) return;
     modal.classList.add('hidden');
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = '';
   }
-}
 
-function setupModalHandlers() {
-  const modal = document.getElementById('project-modal');
+  if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
   if (modal) {
     modal.addEventListener('click', (e) => {
-      if (e.target === modal) {
-        closeProjectModal();
+      if (e.target === modal) closeModal();
+    });
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // ==========================================
+  // 5. FORMULÁRIO DE CONTATO & COMPARTILHAR
+  // ==========================================
+  const contactForm = document.getElementById('contact-form');
+  const feedbackToast = document.getElementById('feedback-toast');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const textInputs = contactForm.querySelectorAll('input[type="text"]');
+      const name = textInputs[0] ? textInputs[0].value : '';
+      const email = contactForm.querySelector('input[type="email"]')?.value || '';
+      const subject = textInputs[1] ? textInputs[1].value : 'Contato Portfólio Danilo Oliveira';
+      const msg = contactForm.querySelector('textarea')?.value || '';
+
+      // Mostra o feedback toast
+      if (feedbackToast) {
+        feedbackToast.classList.remove('translate-y-20', 'opacity-0');
+        setTimeout(() => {
+          feedbackToast.classList.add('translate-y-20', 'opacity-0');
+        }, 4000);
       }
+
+      // Abre cliente de email com dados preenchidos
+      const mailtoUrl = `mailto:danilooliveira.dev@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Nome: ${name}\nE-mail: ${email}\n\nMensagem:\n${msg}`)}`;
+      window.open(mailtoUrl, '_blank');
+
+      contactForm.reset();
     });
   }
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closeProjectModal();
-    }
-  });
-}
-
-// Compartilhar / Copiar link
-function copyPortfolioLink() {
-  const url = window.location.href;
-  navigator.clipboard.writeText(url).then(() => {
-    const toast = document.getElementById('toast');
-    if (toast) {
-      toast.classList.remove('translate-y-20', 'opacity-0');
+  window.copyPortfolioLink = function() {
+    navigator.clipboard.writeText(window.location.href);
+    const copyToast = document.getElementById('copy-toast') || document.getElementById('toast');
+    if (copyToast) {
+      copyToast.classList.remove('-translate-y-2', 'translate-y-20', 'opacity-0');
       setTimeout(() => {
-        toast.classList.add('translate-y-20', 'opacity-0');
-      }, 3000);
+        copyToast.classList.add('opacity-0');
+      }, 2800);
     }
-  });
-}
+  };
+
+  // Menu Mobile
+  const mobileBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileBtn && mobileMenu) {
+    mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+  }
+
+  updateCounters();
+  renderProjects();
+});

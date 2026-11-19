@@ -133,7 +133,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!clean.startsWith('/')) {
       clean = '/' + clean;
     }
-    return clean;
+    if (clean.startsWith('/layouts para sites/')) {
+      clean = '/layouts/' + clean.substring(20);
+    }
+    return encodeURI(clean);
   }
 
   function renderProjects() {
@@ -169,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="relative h-52 overflow-hidden bg-void">
             <img src="${project.image}" alt="${displayTitle}" loading="lazy"
                  class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                 onerror="this.src='assets/images/radar-ia-real.png'">
+                 onerror="this.src='/assets/images/radar-ia-real.png'">
             <div class="absolute inset-0 bg-gradient-to-t from-[#0D1220] via-transparent to-transparent opacity-50"></div>
           </div>
 
@@ -184,6 +187,12 @@ document.addEventListener('DOMContentLoaded', () => {
                  onclick="event.stopPropagation()"
                  class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500 hover:text-slate-950 transition flex items-center gap-1.5 shadow-sm">
                 Demo ↗
+              </a>
+            ` : project.links && project.links.github ? `
+              <a href="${project.links.github}" target="_blank" rel="noopener noreferrer"
+                 onclick="event.stopPropagation()"
+                 class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-blue-500/15 text-blue-400 border border-blue-500/30 hover:bg-blue-500 hover:text-white transition flex items-center gap-1.5 shadow-sm">
+                GitHub ↗
               </a>
             ` : `
               <span class="shrink-0 text-xs text-electric/80 group-hover:text-glow flex items-center gap-1 font-medium">
@@ -263,7 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <button type="button" onclick="document.getElementById('modal-image').src='${imgSrc}'"
                 class="w-20 h-12 rounded-lg overflow-hidden border-2 border-electric/30 hover:border-glow flex-shrink-0 transition">
           <img src="${imgSrc}" alt="Screenshot ${idx + 1}" class="w-full h-full object-cover"
-               onerror="this.src='assets/images/radar-ia-real.png'">
+               onerror="this.src='/assets/images/radar-ia-real.png'">
         </button>
       `).join('');
     } else {
@@ -293,6 +302,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (demoLink) {
       if (project.links.demo) {
         demoLink.href = getDemoUrl(project.links.demo);
+        const demoSpan = demoLink.querySelector('span');
+        if (demoSpan) demoSpan.textContent = 'Acessar Demo Online';
+        demoLink.classList.remove('hidden');
+      } else if (project.links.github) {
+        demoLink.href = project.links.github;
+        const demoSpan = demoLink.querySelector('span');
+        if (demoSpan) demoSpan.textContent = 'Ver Repositório no GitHub';
         demoLink.classList.remove('hidden');
       } else {
         demoLink.classList.add('hidden');

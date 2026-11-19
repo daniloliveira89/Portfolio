@@ -655,30 +655,30 @@
         
         <!-- Header -->
         <div class="text-center mb-8">
-          <p class="text-xs font-semibold tracking-[0.3em] uppercase text-electric mb-3">Catálogo de Trabalhos</p>
+          <p class="text-xs font-semibold tracking-[0.3em] uppercase text-electric mb-3">Work Portfolio</p>
           <h2 class="font-display text-3xl md:text-4xl font-bold text-white">
-            Projetos em <span style="color:#60A5FA;">Destaque</span>
+            Featured <span style="color:#60A5FA;">Projects</span>
           </h2>
           <p class="mt-3 text-frost text-sm max-w-lg mx-auto">
-            Uma seleção completa de soluções funcionais — de observatórios e card games até utilitários de mídia e produtividade.
+            A curated showcase of production web apps, WebGL engines, PWA suites, and commercial architectures.
           </p>
           <div class="mt-4 mx-auto w-16 h-px bg-gradient-to-r from-transparent via-electric to-transparent"></div>
         </div>
 
-        <!-- Stats Strip (Estilo Pial) -->
+        <!-- Stats Strip (Pial Style) -->
         <div class="max-w-3xl mx-auto mb-10">
           <div class="grid grid-cols-3 gap-3 sm:gap-4">
             <div class="text-center rounded-2xl py-4 sm:py-5 border border-electric/15" style="background: rgba(13,18,32,0.8);">
-              <p class="font-display text-2xl font-bold text-white" id="stat-total-projects">17+</p>
-              <p class="text-[11px] text-smoke uppercase tracking-widest mt-1">Projetos Ativos</p>
+              <p class="font-display text-2xl font-bold text-white" id="stat-total-projects">54+</p>
+              <p class="text-[11px] text-smoke uppercase tracking-widest mt-1">Active Projects</p>
             </div>
             <div class="text-center rounded-2xl py-4 sm:py-5 border border-electric/15" style="background: rgba(13,18,32,0.8);">
-              <p class="font-display text-2xl font-bold text-white" id="stat-live-demos">3+</p>
-              <p class="text-[11px] text-smoke uppercase tracking-widest mt-1">Demos Online</p>
+              <p class="font-display text-2xl font-bold text-white" id="stat-live-demos">45+</p>
+              <p class="text-[11px] text-smoke uppercase tracking-widest mt-1">Live Demos</p>
             </div>
             <div class="text-center rounded-2xl py-4 sm:py-5 border border-electric/15" style="background: rgba(13,18,32,0.8);">
-              <p class="font-display text-2xl font-bold text-white" id="stat-extensions">10+</p>
-              <p class="text-[11px] text-smoke uppercase tracking-widest mt-1">Extensões Chrome</p>
+              <p class="font-display text-2xl font-bold text-white" id="stat-extensions">3+</p>
+              <p class="text-[11px] text-smoke uppercase tracking-widest mt-1">Chrome Extensions</p>
             </div>
           </div>
         </div>
@@ -694,11 +694,11 @@
             <input 
               type="text" 
               id="search-input" 
-              placeholder="Buscar por título, tag ou stack..." 
+              placeholder="Search by title, tag, or stack..." 
               class="w-full pl-10 pr-10 py-2.5 rounded-full border border-electric/25 text-white placeholder-frost/50 text-xs sm:text-sm focus:outline-none focus:border-glow transition-all"
               style="background: rgba(13,18,32,0.9);"
             />
-            <button id="clear-search" class="hidden absolute inset-y-0 right-0 pr-3.5 flex items-center text-frost/60 hover:text-white" title="Limpar busca">
+            <button id="clear-search" class="hidden absolute inset-y-0 right-0 pr-3.5 flex items-center text-frost/60 hover:text-white" title="Clear search">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
               </svg>
@@ -706,18 +706,18 @@
           </div>
         </div>
 
-        <!-- Filter Tabs (Pills da Referência) -->
+        <!-- Filter Tabs -->
         <div class="flex flex-wrap justify-center gap-2 mb-12">
           <button data-category="all" class="filter-btn px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider border transition-all duration-200 bg-electric border-electric text-white">
-            <span>Todos</span>
+            <span>All</span>
             <span class="filter-count ml-1.5 px-1.5 py-0.2 rounded-full text-[10px] bg-white/20">0</span>
           </button>
           <button data-category="web-ai" class="filter-btn px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider border border-electric/25 text-frost hover:border-electric hover:text-white transition-all duration-200">
-            <span>Web Apps & I.A.</span>
+            <span>Web Apps & A.I.</span>
             <span class="filter-count ml-1.5 px-1.5 py-0.2 rounded-full text-[10px] bg-electric/20">0</span>
           </button>
           <button data-category="games" class="filter-btn px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider border border-electric/25 text-frost hover:border-electric hover:text-white transition-all duration-200">
-            <span>Jogos & WebGL</span>
+            <span>Games & WebGL</span>
             <span class="filter-count ml-1.5 px-1.5 py-0.2 rounded-full text-[10px] bg-electric/20">0</span>
           </button>
           <button data-category="atlas" class="filter-btn px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider border border-electric/25 text-frost hover:border-electric hover:text-white transition-all duration-200">
@@ -729,11 +729,11 @@
             <span class="filter-count ml-1.5 px-1.5 py-0.2 rounded-full text-[10px] bg-electric/20">0</span>
           </button>
           <button data-category="extensions" class="filter-btn px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider border border-electric/25 text-frost hover:border-electric hover:text-white transition-all duration-200">
-            <span>Extensões Chrome</span>
+            <span>Chrome Extensions</span>
             <span class="filter-count ml-1.5 px-1.5 py-0.2 rounded-full text-[10px] bg-electric/20">0</span>
           </button>
           <button data-category="desktop" class="filter-btn px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider border border-electric/25 text-frost hover:border-electric hover:text-white transition-all duration-200">
-            <span>Desktop & Automação</span>
+            <span>Desktop & Automation</span>
             <span class="filter-count ml-1.5 px-1.5 py-0.2 rounded-full text-[10px] bg-electric/20">0</span>
           </button>
         </div>
