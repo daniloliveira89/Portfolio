@@ -269,46 +269,71 @@
     }
     .clean-proj-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.7), 0 0 24px rgba(245, 158, 11, 0.25);
-      border-color: rgba(245, 158, 11, 0.5);
+      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.7), 0 0 24px rgba(34, 211, 238, 0.25);
+      border-color: rgba(34, 211, 238, 0.5);
     }
     body[data-theme="light"] .clean-proj-card:hover {
-      box-shadow: 0 16px 32px -8px rgba(15, 23, 42, 0.14), 0 0 20px rgba(217, 119, 6, 0.25);
-      border-color: rgba(217, 119, 6, 0.45);
+      box-shadow: 0 16px 32px -8px rgba(15, 23, 42, 0.14), 0 0 20px rgba(8, 145, 178, 0.2);
+      border-color: rgba(8, 145, 178, 0.45);
     }
 
-    /* === LUXURY GOLD FLOATING BADGE === */
+    /* === HARMONIOUS CYAN/SKY FLOATING BADGE & ARROW === */
     .badge-gold {
-      background: linear-gradient(135deg, #D97706 0%, #F59E0B 35%, #FBBF24 70%, #B45309 100%) !important;
-      color: #090B12 !important;
-      font-weight: 800 !important;
+      background: linear-gradient(135deg, rgba(8, 145, 178, 0.38) 0%, rgba(30, 58, 138, 0.38) 100%) !important;
+      color: #F0FDFA !important;
+      font-weight: 700 !important;
       letter-spacing: 0.02em;
-      border: 1px solid rgba(254, 243, 199, 0.85) !important;
-      box-shadow: 0 4px 18px -1px rgba(217, 119, 6, 0.5), 0 2px 6px rgba(0, 0, 0, 0.4) !important;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(34, 211, 238, 0.45) !important;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5), 0 0 14px rgba(6, 182, 212, 0.22) !important;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
     .clean-proj-card:hover .badge-gold {
-      background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 35%, #FDE047 70%, #D97706 100%) !important;
-      box-shadow: 0 6px 24px rgba(245, 158, 11, 0.7), 0 0 18px rgba(253, 224, 71, 0.5) !important;
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.55) 0%, rgba(37, 99, 235, 0.5) 100%) !important;
+      border-color: rgba(34, 211, 238, 0.8) !important;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.6), 0 0 20px rgba(34, 211, 238, 0.45) !important;
       transform: translateY(-1px);
+    }
+    body[data-theme="light"] .badge-gold {
+      background: linear-gradient(135deg, rgba(8, 145, 178, 0.14) 0%, rgba(37, 99, 235, 0.12) 100%) !important;
+      color: #0E7490 !important;
+      border: 1px solid rgba(8, 145, 178, 0.35) !important;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08) !important;
+    }
+    body[data-theme="light"] .clean-proj-card:hover .badge-gold {
+      background: linear-gradient(135deg, rgba(8, 145, 178, 0.25) 0%, rgba(37, 99, 235, 0.2) 100%) !important;
+      border-color: rgba(8, 145, 178, 0.65) !important;
     }
 
     .arrow-gold {
-      background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%) !important;
-      color: #090B12 !important;
+      background: rgba(6, 182, 212, 0.22) !important;
+      color: #22D3EE !important;
       font-weight: 800 !important;
-      border: 1px solid rgba(254, 243, 199, 0.85) !important;
-      box-shadow: 0 3px 12px rgba(217, 119, 6, 0.5) !important;
+      border: 1px solid rgba(34, 211, 238, 0.5) !important;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4), 0 0 10px rgba(6, 182, 212, 0.2) !important;
       transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
     .clean-proj-card:hover .arrow-gold {
       transform: translate(2px, -2px) scale(1.08);
-      box-shadow: 0 4px 18px rgba(245, 158, 11, 0.7) !important;
+      background: #22D3EE !important;
+      color: #06070B !important;
+      border-color: #22D3EE !important;
+      box-shadow: 0 4px 18px rgba(34, 211, 238, 0.65) !important;
+    }
+    body[data-theme="light"] .arrow-gold {
+      background: rgba(8, 145, 178, 0.15) !important;
+      color: #0891B2 !important;
+      border: 1px solid rgba(8, 145, 178, 0.4) !important;
+    }
+    body[data-theme="light"] .clean-proj-card:hover .arrow-gold {
+      background: #0891B2 !important;
+      color: #FFFFFF !important;
+      border-color: #0891B2 !important;
+      box-shadow: 0 4px 16px rgba(8, 145, 178, 0.4) !important;
     }
 
-    /* === CUSTOM CURSOR COM TRAILING RING === */
+    /* === CUSTOM CURSOR COM TRAILING RING (SITE CYAN PALETTE) === */
     body.has-custom-cursor,
     body.has-custom-cursor a,
     body.has-custom-cursor button,
@@ -327,11 +352,11 @@
       left: 0;
       width: 6px;
       height: 6px;
-      background-color: #D4AF37;
+      background-color: #22D3EE;
       border-radius: 50%;
       pointer-events: none;
       z-index: 10000;
-      box-shadow: 0 0 10px rgba(212, 175, 55, 0.9), 0 0 4px rgba(245, 158, 11, 0.8);
+      box-shadow: 0 0 10px rgba(34, 211, 238, 0.95), 0 0 4px rgba(6, 182, 212, 0.85);
       transition: opacity 0.3s ease;
       will-change: transform;
       display: none;
@@ -343,11 +368,11 @@
       left: 0;
       width: 34px;
       height: 34px;
-      border: 1.5px solid rgba(212, 175, 55, 0.75);
+      border: 1.5px solid rgba(34, 211, 238, 0.75);
       border-radius: 50%;
       pointer-events: none;
       z-index: 9999;
-      box-shadow: 0 0 14px rgba(212, 175, 55, 0.28);
+      box-shadow: 0 0 14px rgba(34, 211, 238, 0.28);
       transition: opacity 0.3s ease, border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
       will-change: transform;
       display: none;
@@ -359,19 +384,37 @@
     }
 
     .custom-cursor-ring.cursor-hover {
-      border-color: rgba(245, 158, 11, 0.95);
-      background-color: rgba(212, 175, 55, 0.18);
-      box-shadow: 0 0 22px rgba(245, 158, 11, 0.45);
+      border-color: rgba(34, 211, 238, 0.95);
+      background-color: rgba(34, 211, 238, 0.16);
+      box-shadow: 0 0 22px rgba(34, 211, 238, 0.45);
     }
 
     .custom-cursor-ring.cursor-active {
-      border-color: #FBBF24;
-      background-color: rgba(251, 191, 36, 0.32);
-      box-shadow: 0 0 16px rgba(251, 191, 36, 0.6);
+      border-color: #38BDF8;
+      background-color: rgba(56, 189, 248, 0.3);
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.6);
     }
 
     .custom-cursor-hidden {
       opacity: 0 !important;
+    }
+
+    body[data-theme="light"] .custom-cursor-dot {
+      background-color: #0891B2;
+      box-shadow: 0 0 8px rgba(8, 145, 178, 0.8);
+    }
+    body[data-theme="light"] .custom-cursor-ring {
+      border-color: rgba(8, 145, 178, 0.7);
+      box-shadow: 0 0 12px rgba(8, 145, 178, 0.25);
+    }
+    body[data-theme="light"] .custom-cursor-ring.cursor-hover {
+      border-color: #0891B2;
+      background-color: rgba(8, 145, 178, 0.14);
+      box-shadow: 0 0 18px rgba(8, 145, 178, 0.4);
+    }
+    body[data-theme="light"] .custom-cursor-ring.cursor-active {
+      border-color: #0369A1;
+      background-color: rgba(3, 105, 161, 0.25);
     }
 
   </style>
@@ -394,8 +437,8 @@
     <div class="max-w-6xl mx-auto px-5 sm:px-6 py-3.5 flex items-center justify-between gap-3">
       <a href="#top" id="btn-brand-home" onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;" class="flex items-center gap-3 no-underline group cursor-pointer" title="Ir para o topo">
         <div class="brand-ring rounded-xl w-10 h-10 transition-transform group-hover:scale-105 shadow-md">
-          <div class="w-full h-full rounded-[10px] bg-[#090B12] overflow-hidden flex items-center justify-center p-1">
-            <img src="/assets/images/brand-rabbit.png" alt="Danilo Oliveira — Brand Logo" class="w-full h-full object-contain filter drop-shadow" />
+          <div class="w-full h-full rounded-[10px] bg-[#090B12] overflow-hidden flex items-center justify-center p-0.5">
+            <img src="/assets/images/brand-rabbit.png" alt="Danilo Oliveira — Brand Logo" class="w-full h-full object-contain filter drop-shadow transform scale-110 group-hover:scale-120 transition-transform" />
           </div>
         </div>
         <div class="flex flex-col">
