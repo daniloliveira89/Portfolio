@@ -164,41 +164,43 @@ document.addEventListener('DOMContentLoaded', () => {
     grid.innerHTML = filtered.map(project => {
       const displayTitle = project.category === 'layouts' ? project.categoryLabel : project.title;
       return `
-      <article class="group rounded-2xl overflow-hidden border border-electric/15 hover:border-electric/50 transition-all duration-300 flex flex-col justify-between transform hover:-translate-y-1.5 cursor-pointer shadow-lg hover:shadow-electric/10"
-               style="background: rgba(13,18,32,0.92); backdrop-filter: blur(10px);"
-               onclick="openProjectModal('${project.id}')">
-        <div>
-          <!-- Imagem de Capa 100% Limpa -->
-          <div class="relative h-52 overflow-hidden bg-void">
-            <img src="${project.image}" alt="${displayTitle}" loading="lazy"
-                 class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                 onerror="this.src='/assets/images/radar-ia-real.png'">
-            <div class="absolute inset-0 bg-gradient-to-t from-[#0D1220] via-transparent to-transparent opacity-50"></div>
-          </div>
+      <article class="group relative cursor-pointer" onclick="openProjectModal('${project.id}')">
+        <div class="rounded-2xl overflow-hidden border border-electric/15 group-hover:border-electric/50 transition-all duration-300 flex flex-col justify-between transform group-hover:-translate-y-1.5 shadow-lg group-hover:shadow-electric/10 h-full"
+             style="background: rgba(13,18,32,0.92);">
+          <div>
+            <!-- Imagem de Capa 100% Limpa -->
+            <div class="relative h-52 overflow-hidden bg-void">
+              <img src="${project.image}" alt="${displayTitle}" loading="lazy"
+                   class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105 will-change-transform"
+                   style="transform: translateZ(0); backface-visibility: hidden;"
+                   onerror="this.onerror=null; this.src='/assets/images/radar-ia-real.png';">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0D1220] via-transparent to-transparent opacity-50 pointer-events-none"></div>
+            </div>
 
-          <!-- Título e Botão na mesma linha -->
-          <div class="p-5 flex items-center justify-between gap-3">
-            <h3 class="font-display text-base font-bold text-white group-hover:text-glow transition-colors line-clamp-1 flex-1">
-              ${displayTitle}
-            </h3>
+            <!-- Título e Botão na mesma linha -->
+            <div class="p-5 flex items-center justify-between gap-3">
+              <h3 class="font-display text-base font-bold text-white group-hover:text-glow transition-colors line-clamp-1 flex-1">
+                ${displayTitle}
+              </h3>
 
-            ${project.links && project.links.demo ? `
-              <a href="${getDemoUrl(project.links.demo)}" target="_blank" rel="noopener noreferrer"
-                 onclick="event.stopPropagation()"
-                 class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500 hover:text-slate-950 transition flex items-center gap-1.5 shadow-sm">
-                Demo ↗
-              </a>
-            ` : project.links && project.links.github ? `
-              <a href="${project.links.github}" target="_blank" rel="noopener noreferrer"
-                 onclick="event.stopPropagation()"
-                 class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-blue-500/15 text-blue-400 border border-blue-500/30 hover:bg-blue-500 hover:text-white transition flex items-center gap-1.5 shadow-sm">
-                GitHub ↗
-              </a>
-            ` : `
-              <span class="shrink-0 text-xs text-electric/80 group-hover:text-glow flex items-center gap-1 font-medium">
-                Ver mais →
-              </span>
-            `}
+              ${project.links && project.links.demo ? `
+                <a href="${getDemoUrl(project.links.demo)}" target="_blank" rel="noopener noreferrer"
+                   onclick="event.stopPropagation()"
+                   class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500 hover:text-slate-950 transition flex items-center gap-1.5 shadow-sm">
+                  Demo ↗
+                </a>
+              ` : project.links && project.links.github ? `
+                <a href="${project.links.github}" target="_blank" rel="noopener noreferrer"
+                   onclick="event.stopPropagation()"
+                   class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-blue-500/15 text-blue-400 border border-blue-500/30 hover:bg-blue-500 hover:text-white transition flex items-center gap-1.5 shadow-sm">
+                  GitHub ↗
+                </a>
+              ` : `
+                <span class="shrink-0 text-xs text-electric/80 group-hover:text-glow flex items-center gap-1 font-medium">
+                  Ver mais →
+                </span>
+              `}
+            </div>
           </div>
         </div>
       </article>
@@ -272,7 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <button type="button" onclick="document.getElementById('modal-image').src='${imgSrc}'"
                 class="w-20 h-12 rounded-lg overflow-hidden border-2 border-electric/30 hover:border-glow flex-shrink-0 transition">
           <img src="${imgSrc}" alt="Screenshot ${idx + 1}" class="w-full h-full object-cover"
-               onerror="this.src='/assets/images/radar-ia-real.png'">
+               onerror="this.onerror=null; this.src='/assets/images/radar-ia-real.png';">
         </button>
       `).join('');
     } else {
