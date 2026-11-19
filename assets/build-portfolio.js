@@ -334,7 +334,7 @@ const siteTypeDictCode = `
 `;
 
 // Replace PROJECTS declaration with Web Design filtered projects (39 Layouts & Sites)
-const oldProjectsRegex = /const PROJECTS = \[[\s\S]*?\];\s*const state = {/;
+const oldProjectsRegex = /const PROJECTS = \[[\s\S]*?const state = \{[\s\S]*?\};/;
 const newProjectsCode = `${siteTypeDictCode}
 
     const DEFAULT_PROJECTS = [
@@ -369,9 +369,12 @@ const newProjectsCode = `${siteTypeDictCode}
     const state = {
       theme: 'dark',
       lang: 'pt',
+      skillCat: 'Todas',
       projectCat: 'Layouts & Sites',
       techFilter: null,
-      fxActive: true
+      expandedService: null,
+      selectedScopes: new Set(),
+      fxEnabled: true
     };`;
 html = html.replace(oldProjectsRegex, newProjectsCode);
 
