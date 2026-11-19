@@ -74,10 +74,25 @@ const customCss = `
 // Insert custom CSS
 html = html.replace('</style>', `${customCss}\n  </style>`);
 
-// Ensure projects-data.js script is included in <head>
+// Ensure projects-data.js script and Favicon tags are included in <head>
+const faviconAndHeadTags = `
+  <!-- Favicon & Browser Icons -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=4" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=4" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=4" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png?v=4" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=4" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#06070B" />
+`;
+html = html.replace('<title>', `${faviconAndHeadTags}\n  <title>`);
+
 if (!html.includes('projects-data.js')) {
   html = html.replace('</head>', '  <script src="/assets/js/projects-data.js"></script>\n</head>');
 }
+
+// Replace base64 brand/avatar images with brand-rabbit.png
+html = html.replace(/<img[^>]*src="data:image\/png;base64[^"]*"[^>]*>/g, '<img src="/assets/images/brand-rabbit.png" alt="Danilo Oliveira — Brand Logo" class="w-full h-full object-contain filter drop-shadow" />');
 
 // 1. Fix Header Brand Logo button to scroll smoothly to the top of page
 const oldBrandLogo = `<a href="#top" class="flex items-center gap-3 no-underline group">`;
