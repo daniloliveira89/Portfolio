@@ -27,6 +27,16 @@
   ],
   "redirects": [
     {
+      "source": "/es",
+      "destination": "/es/",
+      "permanent": false
+    },
+    {
+      "source": "/en",
+      "destination": "/en/",
+      "permanent": false
+    },
+    {
       "source": "/v2-editorial-dark-blue",
       "destination": "/v2-editorial-dark-blue/",
       "permanent": false
