@@ -300,9 +300,9 @@ html = html
     'I design and build modern commercial websites, high-conversion landing pages, and distinctive visual identities with peak performance and business results.'
   );
 
-// Update 3D card stats: 39+ Sites, 100% Responsivo, 48+ Logos
+// Update 3D card stats: 40+ Sites, 100% Responsivo, 48+ Logos
 html = html
-  .replace('<p class="font-display font-bold text-xl t-heading">54+</p>', '<p class="font-display font-bold text-xl t-heading">39+</p>')
+  .replace('<p class="font-display font-bold text-xl t-heading">54+</p>', '<p class="font-display font-bold text-xl t-heading">40+</p>')
   .replace('<p class="text-[10px] t-muted uppercase font-mono-code mt-0.5">Projetos</p>', '<p class="text-[10px] t-muted uppercase font-mono-code mt-0.5">Sites</p>')
   .replace('<p class="font-display font-bold text-xl t-cyan">5</p>', '<p class="font-display font-bold text-xl t-cyan">100%</p>')
   .replace('<p class="text-[10px] t-muted uppercase font-mono-code mt-0.5">Áreas</p>', '<p class="text-[10px] t-muted uppercase font-mono-code mt-0.5">Responsivo</p>')
@@ -333,7 +333,7 @@ html = html
   )
   .replace(
     "projetos: 'Radar IA, Prompt Studio AI, IVFR Economia, Vanguard WebGL, Atlas PWA.'",
-    "projetos: '39 Websites Comerciais em produção (Restaurantes, Clínicas, Hotelaria, E-commerce, Advocacia) e 48 Logos.'"
+    "projetos: '40 Websites Comerciais em produção (Restaurantes, Clínicas, Hotelaria, E-commerce, Advocacia, Portfólios 3D) e 48 Logos.'"
   );
 
 // Update SERVICES to match Web Design focus
@@ -428,7 +428,11 @@ const siteTypeDictCode = `
       'layout-cinema': { pt: 'Produtora de Cinema & Vídeo', es: 'Productora Audiovisual', en: 'Film Production' },
       'layout-tattoo': { pt: 'Estúdio de Tatuagem', es: 'Estudio de Tatuajes', en: 'Tattoo Studio' },
       'layout-banda': { pt: 'Banda & Gravadora Musical', es: 'Banda & Sello Musical', en: 'Band & Record Label' },
-      'layout-arte': { pt: 'Portfólio de Arte Editorial', es: 'Portafolio de Arte Editorial', en: 'Art Portfolio' }
+      'layout-arte': { pt: 'Portfólio de Arte Editorial', es: 'Portafolio de Arte Editorial', en: 'Art Portfolio' },
+      'layout-meridian-wave': { pt: 'Fintech & Liquid Wave 3D', es: 'Fintech & Onda Líquida 3D', en: 'Fintech & 3D Liquid Wave' },
+      'layout-site-face': { pt: 'Portfólio Editorial Dourado', es: 'Portafolio Editorial Dorado', en: 'Gold Mask Editorial' },
+      'layout-site-tattoo': { pt: 'Estúdio de Tatuagem X-Ray', es: 'Estudio de Tatuajes X-Ray', en: 'X-Ray Tattoo Studio' },
+      'layout-toca-white-rabbit': { pt: 'Portfólio Surrealista 3D', es: 'Portafolio Surrealista 3D', en: '3D Surreal Portfolio' }
     };
 
     const LOGOS_DATA = [

@@ -1156,6 +1156,29 @@ const PROJECTS_DATA = [
       "Transição suave de opacidade e borda difusa"
     ]
   },
+  {
+    id: "layout-toca-white-rabbit",
+    title: "TOCA // Portfólio Surrealista — White Rabbit's Hole",
+    category: "layouts",
+    categoryLabel: "Portfólio Surrealista & 3D Canvas",
+    badge: "3D Canvas • Surrealismo",
+    shortDescription: "Portfólio surrealista interativo com túnel 3D em Canvas 60fps, medidor vertical de profundidade (0 a 4.200m), relógio de bolso SVG funcional e distorção temporal.",
+    fullDescription: "Experiência web imersiva de alto impacto visual inspirada no universo de Alice e o Coelho Branco. Conta com túnel de perspectiva 3D procedural acelerado em Canvas 2D/3D a 60fps com controle de distorção temporal (Warp), mostrador analógico de precisão em tempo real, cartões com efeito 3D tilt e catálogo de projetos com modais detalhados.",
+    image: "/assets/images/layout-toca-white-rabbit.png",
+    gallery: [
+      "/assets/images/layout-toca-white-rabbit.png"
+    ],
+    tags: ["HTML5 Canvas 3D", "Tailwind CSS", "Surrealismo Digital", "SVG Procedural", "Web Audio"],
+    links: {
+      github: "https://github.com/daniloliveira89",
+      demo: "/layouts para sites/site-toca-white-rabbit/index.html"
+    },
+    features: [
+      "Túnel 3D procedural em Canvas 60fps com controle de distorção temporal (Warp)",
+      "Relógio de bolso clássico funcional em SVG sincronizado com hora local em tempo real",
+      "Medidor vertical de profundidade interativo descendo de 0m até 4.200m"
+    ]
+  },
 
   // ==========================================
   // 5. EXTENSÕES CHROME (MANIFEST V3)
