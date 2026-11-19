@@ -102,62 +102,69 @@ const customCss = `
     }
 
     /* === CUSTOM CURSOR COM TRAILING RING === */
-    @media (hover: hover) and (pointer: fine) {
-      body, a, button, input, select, textarea, [data-cursor="pointer"], label, [role="button"] {
-        cursor: none !important;
-      }
-
-      .custom-cursor-dot {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 6px;
-        height: 6px;
-        background-color: #D4AF37;
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 10000;
-        box-shadow: 0 0 10px rgba(212, 175, 55, 0.9), 0 0 4px rgba(245, 158, 11, 0.8);
-        transition: opacity 0.3s ease;
-        will-change: transform;
-      }
-
-      .custom-cursor-ring {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 34px;
-        height: 34px;
-        border: 1.5px solid rgba(212, 175, 55, 0.75);
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9999;
-        box-shadow: 0 0 14px rgba(212, 175, 55, 0.28);
-        transition: opacity 0.3s ease, border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
-        will-change: transform;
-      }
-
-      .custom-cursor-ring.cursor-hover {
-        border-color: rgba(245, 158, 11, 0.95);
-        background-color: rgba(212, 175, 55, 0.18);
-        box-shadow: 0 0 22px rgba(245, 158, 11, 0.45);
-      }
-
-      .custom-cursor-ring.cursor-active {
-        border-color: #FBBF24;
-        background-color: rgba(251, 191, 36, 0.32);
-        box-shadow: 0 0 16px rgba(251, 191, 36, 0.6);
-      }
-
-      .custom-cursor-hidden {
-        opacity: 0 !important;
-      }
+    body.has-custom-cursor,
+    body.has-custom-cursor a,
+    body.has-custom-cursor button,
+    body.has-custom-cursor input,
+    body.has-custom-cursor select,
+    body.has-custom-cursor textarea,
+    body.has-custom-cursor [data-cursor="pointer"],
+    body.has-custom-cursor label,
+    body.has-custom-cursor [role="button"] {
+      cursor: none !important;
     }
 
-    @media (hover: none) or (pointer: coarse) {
-      .custom-cursor-dot, .custom-cursor-ring {
-        display: none !important;
-      }
+    .custom-cursor-dot {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      background-color: #D4AF37;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.9), 0 0 4px rgba(245, 158, 11, 0.8);
+      transition: opacity 0.3s ease;
+      will-change: transform;
+      display: none;
+    }
+
+    .custom-cursor-ring {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 34px;
+      height: 34px;
+      border: 1.5px solid rgba(212, 175, 55, 0.75);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      box-shadow: 0 0 14px rgba(212, 175, 55, 0.28);
+      transition: opacity 0.3s ease, border-color 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+      will-change: transform;
+      display: none;
+    }
+
+    body.has-custom-cursor .custom-cursor-dot,
+    body.has-custom-cursor .custom-cursor-ring {
+      display: block;
+    }
+
+    .custom-cursor-ring.cursor-hover {
+      border-color: rgba(245, 158, 11, 0.95);
+      background-color: rgba(212, 175, 55, 0.18);
+      box-shadow: 0 0 22px rgba(245, 158, 11, 0.45);
+    }
+
+    .custom-cursor-ring.cursor-active {
+      border-color: #FBBF24;
+      background-color: rgba(251, 191, 36, 0.32);
+      box-shadow: 0 0 16px rgba(251, 191, 36, 0.6);
+    }
+
+    .custom-cursor-hidden {
+      opacity: 0 !important;
     }
 `;
 
@@ -629,13 +636,11 @@ const cursorScript = `
     // CUSTOM CURSOR COM TRAILING RING (LERP VIA RAF)
     // =========================================================================
     (() => {
-      // 5. Mobile check: activate only on devices with fine pointer and hover
-      if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-
       const dot = document.getElementById('cursor-dot');
       const ring = document.getElementById('cursor-ring');
       if (!dot || !ring) return;
 
+      let isInitialized = false;
       let mouseX = -100;
       let mouseY = -100;
       let ringX = -100;
@@ -648,8 +653,24 @@ const cursorScript = `
       // Linear interpolation helper
       const lerp = (a, b, n) => (1 - n) * a + n * b;
 
+      // Detect pure touch devices vs real mouse pointer
+      let isTouchOnly = false;
+      window.addEventListener('touchstart', () => {
+        if (!isInitialized && ('ontouchstart' in window) && !window.matchMedia('(hover: hover)').matches) {
+          isTouchOnly = true;
+        }
+      }, { passive: true, once: true });
+
       // Real-time mouse position tracking for central dot (6px)
       window.addEventListener('mousemove', (e) => {
+        if (isTouchOnly) return;
+
+        if (!isInitialized) {
+          isInitialized = true;
+          document.body.classList.add('has-custom-cursor');
+          requestAnimationFrame(renderCursor);
+        }
+
         mouseX = e.clientX;
         mouseY = e.clientY;
         dot.style.transform = \`translate3d(\${mouseX}px, \${mouseY}px, 0) translate(-50%, -50%)\`;
@@ -673,7 +694,6 @@ const cursorScript = `
         }
         requestAnimationFrame(renderCursor);
       }
-      requestAnimationFrame(renderCursor);
 
       // Interactive hover states on clickable elements
       const interactiveSelector = 'a, button, input, select, textarea, [data-cursor="pointer"], .clean-proj-card, .lang-btn, [role="button"], label';
