@@ -138,7 +138,14 @@
           var overlapsX = r.left < barRect.right + 12 && r.right > barRect.left - 8;
           var overlapsY = r.bottom > window.innerHeight - 70 && r.top < window.innerHeight && r.height < 140;
           if (overlapsX && overlapsY) {
-            bar.style.bottom = Math.round(window.innerHeight - r.top + 14) + 'px';
+            if (isBottomBar) {
+              bar.style.bottom = 'auto';
+              bar.style.left = 'auto';
+              bar.style.top = '16px';
+              bar.style.right = '16px';
+            } else {
+              bar.style.bottom = Math.round(window.innerHeight - r.top + 14) + 'px';
+            }
             break;
           }
         }
