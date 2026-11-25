@@ -431,7 +431,7 @@ const newDataBlock = `const I18N = {
         wa_send: 'Iniciar no WhatsApp', wa_btn_title: 'Falar no WhatsApp', wa_toast: 'Abrindo conversa no WhatsApp...',
         toast_filter: 'Filtrando projetos com', toast_wave_on: 'Onda líquida ativada', toast_wave_off: 'Onda líquida pausada',
         toast_light: 'Modo Claro ativado', toast_dark: 'Modo Escuro ativado',
-        toast_wa: 'WhatsApp +55 (11) 97888-3774 copiado!', toast_ig: 'Instagram @daniloliveira89 copiado!'
+        toast_ig: 'Instagram @daniloliveira89 copiado!'
       },
       es: {
         page_title: 'Danilo Oliveira — Diseñador Web y Especialista en Sitios Comerciales',
@@ -486,7 +486,7 @@ const newDataBlock = `const I18N = {
         wa_send: 'Abrir en WhatsApp', wa_btn_title: 'Chatear por WhatsApp', wa_toast: 'Abriendo chat de WhatsApp...',
         toast_filter: 'Filtrando proyectos con', toast_wave_on: 'Onda líquida activada', toast_wave_off: 'Onda líquida pausada',
         toast_light: 'Modo Claro activado', toast_dark: 'Modo Oscuro activado',
-        toast_wa: '¡WhatsApp +55 (11) 97888-3774 copiado!', toast_ig: '¡Instagram @daniloliveira89 copiado!'
+        toast_ig: '¡Instagram @daniloliveira89 copiado!'
       },
       en: {
         page_title: 'Danilo Oliveira — Web Designer & Commercial Website Specialist',
@@ -541,7 +541,7 @@ const newDataBlock = `const I18N = {
         wa_send: 'Chat on WhatsApp', wa_btn_title: 'Chat on WhatsApp', wa_toast: 'Opening WhatsApp chat...',
         toast_filter: 'Filtering projects with', toast_wave_on: 'Liquid wave enabled', toast_wave_off: 'Liquid wave paused',
         toast_light: 'Light mode enabled', toast_dark: 'Dark mode enabled',
-        toast_wa: 'WhatsApp +55 (11) 97888-3774 copied!', toast_ig: 'Instagram @daniloliveira89 copied!'
+        toast_ig: 'Instagram @daniloliveira89 copied!'
       }
     };
 
@@ -1120,7 +1120,7 @@ const newScriptsBlock = `// ====================================================
           whoami: 'Danilo Oliveira — Web Designer & Especialista em Websites Comerciais.',
           stack: 'UI/UX Design • Landing Pages • Tailwind CSS • React/Next.js • Identidade Visual • SEO & Performance.',
           projetos: '40 Websites Comerciais em produção (Restaurantes, Clínicas, Hotelaria, E-commerce, Advocacia, Portfólios 3D) e 48 Logos.',
-          contato: 'WhatsApp: +55 (11) 97888-3774 | Instagram: @daniloliveira89',
+          contato: 'Instagram: @daniloliveira89 | Formulário abaixo',
           notFound: 'Comando não encontrado. Use: help'
         },
         es: {
@@ -1129,8 +1129,8 @@ const newScriptsBlock = `// ====================================================
           stack: 'Diseño UI/UX • Landing Pages • Tailwind CSS • React/Next.js • Identidad Visual • SEO & Velocidad.',
           projetos: '40 Sitios Web Comerciales en producción (Restaurantes, Clínicas, Hoteles, E-commerce, Abogados, Portafolios 3D) y 48 Logos.',
           proyectos: '40 Sitios Web Comerciales en producción (Restaurantes, Clínicas, Hoteles, E-commerce, Abogados, Portafolios 3D) y 48 Logos.',
-          contato: 'WhatsApp: +55 (11) 97888-3774 | Instagram: @daniloliveira89',
-          contacto: 'WhatsApp: +55 (11) 97888-3774 | Instagram: @daniloliveira89',
+          contato: 'Instagram: @daniloliveira89 | Formulario abajo',
+          contacto: 'Instagram: @daniloliveira89 | Formulario abajo',
           notFound: 'Comando no encontrado. Usa: help'
         },
         en: {
@@ -1139,8 +1139,8 @@ const newScriptsBlock = `// ====================================================
           stack: 'UI/UX Design • Landing Pages • Tailwind CSS • React/Next.js • Brand Identity • SEO & Speed.',
           projetos: '40 Live Commercial Websites (Restaurants, Clinics, Hospitality, E-commerce, Law Firms, 3D Portfolios) & 48 Logos.',
           projects: '40 Live Commercial Websites (Restaurants, Clinics, Hospitality, E-commerce, Law Firms, 3D Portfolios) & 48 Logos.',
-          contato: 'WhatsApp: +55 (11) 97888-3774 | Instagram: @daniloliveira89',
-          contact: 'WhatsApp: +55 (11) 97888-3774 | Instagram: @daniloliveira89',
+          contato: 'Instagram: @daniloliveira89 | Contact form below',
+          contact: 'Instagram: @daniloliveira89 | Contact form below',
           notFound: 'Command not found. Type: help'
         }
       };
@@ -1343,8 +1343,6 @@ const newTailScript = `const CMD_ITEMS_I18N = {
         { label: 'Ir para Diferenciais', hint: '#differentials', action: () => location.hash = '#differentials' },
         { label: 'Ir para Contato', hint: '#contact', action: () => location.hash = '#contact' },
         { label: 'Abrir Terminal no Hero', hint: 'CLI', action: () => { window.scrollTo({ top: 0, behavior: 'smooth' }); switchHeroTab('terminal'); } },
-        { label: 'Copiar WhatsApp (+55 11 97888-3774)', hint: 'Copy', action: () => copyText('+55 11 97888-3774', I18N.pt.toast_wa) },
-        { label: 'Iniciar WhatsApp', hint: 'Chat', action: () => window.open('https://wa.me/5511978883774?text=' + encodeURIComponent(I18N.pt.wa_default_msg), '_blank', 'noopener,noreferrer') },
         { label: 'Copiar Instagram (@daniloliveira89)', hint: 'Copy', action: () => copyText('https://instagram.com/daniloliveira89', I18N.pt.toast_ig) }
       ],
       es: [
@@ -1353,8 +1351,6 @@ const newTailScript = `const CMD_ITEMS_I18N = {
         { label: 'Ir a Diferenciales', hint: '#differentials', action: () => location.hash = '#differentials' },
         { label: 'Ir a Contacto', hint: '#contact', action: () => location.hash = '#contact' },
         { label: 'Abrir Terminal en el Hero', hint: 'CLI', action: () => { window.scrollTo({ top: 0, behavior: 'smooth' }); switchHeroTab('terminal'); } },
-        { label: 'Copiar WhatsApp (+55 11 97888-3774)', hint: 'Copy', action: () => copyText('+55 11 97888-3774', I18N.es.toast_wa) },
-        { label: 'Abrir WhatsApp', hint: 'Chat', action: () => window.open('https://wa.me/5511978883774?text=' + encodeURIComponent(I18N.es.wa_default_msg), '_blank', 'noopener,noreferrer') },
         { label: 'Copiar Instagram (@daniloliveira89)', hint: 'Copy', action: () => copyText('https://instagram.com/daniloliveira89', I18N.es.toast_ig) }
       ],
       en: [
@@ -1363,8 +1359,6 @@ const newTailScript = `const CMD_ITEMS_I18N = {
         { label: 'Go to Standards', hint: '#differentials', action: () => location.hash = '#differentials' },
         { label: 'Go to Contact', hint: '#contact', action: () => location.hash = '#contact' },
         { label: 'Open Hero Terminal', hint: 'CLI', action: () => { window.scrollTo({ top: 0, behavior: 'smooth' }); switchHeroTab('terminal'); } },
-        { label: 'Copy WhatsApp (+55 11 97888-3774)', hint: 'Copy', action: () => copyText('+55 11 97888-3774', I18N.en.toast_wa) },
-        { label: 'Chat on WhatsApp', hint: 'Chat', action: () => window.open('https://wa.me/5511978883774?text=' + encodeURIComponent(I18N.en.wa_default_msg), '_blank', 'noopener,noreferrer') },
         { label: 'Copy Instagram (@daniloliveira89)', hint: 'Copy', action: () => copyText('https://instagram.com/daniloliveira89', I18N.en.toast_ig) }
       ]
     };
@@ -1485,7 +1479,6 @@ const newTailScript = `const CMD_ITEMS_I18N = {
       e.target.textContent = state.fxEnabled ? t.wave_on : t.wave_off;
       showToast(state.fxEnabled ? t.toast_wave_on : t.toast_wave_off);
     });
-    document.getElementById('btn-copy-wa-contact').addEventListener('click', () => copyText('+55 11 97888-3774', (I18N[state.lang] || I18N.pt).toast_wa));
     document.getElementById('btn-copy-ig-contact').addEventListener('click', () => copyText('https://instagram.com/daniloliveira89', (I18N[state.lang] || I18N.pt).toast_ig));
     document.getElementById('btn-wa-float').addEventListener('click', () => {
       document.getElementById('wa-popover').classList.toggle('hidden');
