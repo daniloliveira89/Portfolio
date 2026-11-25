@@ -1526,7 +1526,7 @@ const newTailScript = `const CMD_ITEMS_I18N = {
       btn.textContent = t.form_sending;
       if (fb) { fb.classList.add('hidden'); }
       try {
-        const res = await fetch('/api/contact', {
+        const res = await fetch('/api/contact/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
