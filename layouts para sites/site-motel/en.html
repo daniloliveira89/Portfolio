@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- demo-i18n-autodetect --><script>(function(){var cur=location.pathname.endsWith('/en.html')?'en':(location.pathname.endsWith('/es.html')?'es':'pt');var q=(new URLSearchParams(location.search).get('lang')||'').toLowerCase();var target=null;if(q==='pt'||q==='en'||q==='es'){target=q;try{localStorage.setItem('portfolio_lang',q);localStorage.setItem('portfolio_lang_manual','1');}catch(e){}}else if(cur==='pt'){try{if(localStorage.getItem('portfolio_lang_manual')==='1'){var saved=localStorage.getItem('portfolio_lang');if(saved==='en'||saved==='es'||saved==='pt')target=saved;}}catch(e){}if(!target){var langs=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||navigator.userLanguage||'en'];for(var i=0;i<langs.length;i++){var c=(langs[i]||'').toLowerCase().split('-')[0];if(c==='pt'){target='pt';break;}if(c==='es'){target='es';break;}if(c==='en'){target='en';break;}}if(!target)target='en';}}if(target&&target!==cur){var file=target==='en'?'en.html':(target==='es'?'es.html':'index.html');var p=location.pathname;var np=p.slice(-5).toLowerCase()==='.html'?p.slice(0,p.lastIndexOf('/')+1)+file:(p.endsWith('/')?p+file:p+'/'+file);location.replace(np+location.search+location.hash);}})();</script>
+  <title>ECLIPSE SUITES — Ultra-Luxury Boutique Motel | Privacy & Sensory Design</title>
+  <meta name="description" content="Non-negotiable privacy. Design that awakens the senses. Concept suites with private heated pool, retractable sunroof, scene automation, and 24h fine dining." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Cormorant Garamond, Syne & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#09090b',
+            velvetDark: '#120609',
+            burgundyDeep: '#450a0a',
+            burgundyRich: '#6b1118',
+            champagne: '#d4af37',
+            champagneLight: '#f3e5ab',
+            amberGlow: '#f59e0b',
+            roseVelvet: '#e11d48'
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            syne: ['"Syne"', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif']
+          },
+          boxShadow: {
+            'velvet': '0 25px 60px -15px rgba(69, 10, 10, 0.45)',
+            'champagne-glow': '0 0 35px -5px rgba(212, 175, 55, 0.28)',
+            'amber-indirect': '0 0 50px -10px rgba(245, 158, 11, 0.22)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+    body {
+      background-color: #09090b;
+      color: #F8F5FA;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    .font-serif-motel {
+      font-family: 'Cormorant Garamond', serif;
+    }
+    .font-syne {
+      font-family: 'Syne', sans-serif;
+    }
+
+    /* Velvety Glassmorphism & Indirect Amber Lighting */
+    .velvet-card {
+      background: linear-gradient(155deg, rgba(24, 11, 16, 0.88) 0%, rgba(9, 9, 11, 0.96) 100%);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(212, 175, 55, 0.16);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .velvet-card:hover {
+      border-color: rgba(212, 175, 55, 0.42);
+      box-shadow: 0 25px 60px -15px rgba(69, 10, 10, 0.65), 0 0 30px -8px rgba(212, 175, 55, 0.2);
+      transform: translateY(-3px);
+    }
+
+    /* Indirect Neon / Amber Rim Light */
+    .amber-rim {
+      position: relative;
+    }
+    .amber-rim::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.55), rgba(69, 10, 10, 0.2), rgba(245, 158, 11, 0.35));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    /* Subtle Sensual Grain & Vignette */
+    .bg-velvet-radial {
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(69, 10, 10, 0.38) 0%, transparent 45%),
+        radial-gradient(circle at 85% 30%, rgba(212, 175, 55, 0.10) 0%, transparent 45%),
+        radial-gradient(circle at 50% 85%, rgba(69, 10, 10, 0.30) 0%, transparent 55%);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #09090b;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #450a0a;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #d4af37;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen antialiased bg-obsidian text-[#F8F5FA] bg-velvet-radial selection:bg-champagne selection:text-obsidian">
+
+  <!-- ======================================================================= -->
+  <!-- MODO DISCRETO / TELA DE CAMUFLAGEM INSTANTÂNEA (ATIVADO POR 1 CLIQUE)   -->
+  <!-- ======================================================================= -->
+  <div id="discreet-camouflage-screen" class="fixed inset-0 z-[100] bg-[#f8fafc] text-slate-900 hidden flex-col justify-between p-6 sm:p-12 font-sans">
+    <div class="max-w-5xl mx-auto w-full">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-4 mb-8">
+        <div class="flex items-center gap-2">
+          <div class="w-3 h-3 rounded-full bg-blue-600"></div>
+          <span class="font-bold text-sm tracking-tight text-slate-800">ECONOMIC PORTAL & DAILY INDICATORS</span>
+        </div>
+        <span class="text-xs text-slate-400">Updated at 15:45 EST</span>
+      </div>
+      <h2 class="text-2xl font-bold text-slate-800 mb-4">Global Markets & FX Rate Summary</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+        <div class="p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+          <span class="text-xs text-slate-500 block">S&P 500</span>
+          <strong class="text-xl text-emerald-600">5,890.40 pts (+0.42%)</strong>
+        </div>
+        <div class="p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+          <span class="text-xs text-slate-500 block">EUR / USD SPOT RATE</span>
+          <strong class="text-xl text-slate-800">$1.0845 (-0.18%)</strong>
+        </div>
+        <div class="p-4 rounded-xl bg-white border border-slate-200 shadow-sm">
+          <span class="text-xs text-slate-500 block">US 10Y TREASURY</span>
+          <strong class="text-xl text-slate-800">4.28% p.a.</strong>
+        </div>
+      </div>
+      <p class="text-sm text-slate-600 leading-relaxed mb-6">
+        Major market indices are trading steady in today’s session, following the release of central bank minutes and Eurozone industrial output figures.
+      </p>
+      <div class="flex flex-wrap gap-3 pt-4 border-t border-slate-200">
+        <a href="https://www.google.com" class="px-5 py-2.5 rounded-lg bg-blue-600 text-white text-xs font-semibold hover:bg-blue-700">
+          Go to Google.com (Full Exit)
+        </a>
+        <button type="button" onclick="toggleDiscreetMode(false)" class="px-5 py-2.5 rounded-lg bg-slate-200 text-slate-700 text-xs font-semibold hover:bg-slate-300">
+          Restore Previous Session
+        </button>
+      </div>
+    </div>
+    <p class="text-center text-[11px] text-slate-400">Press the ESC key at any time to toggle Discreet Mode.</p>
+  </div>
+
+  <!-- TOPBAR DE DISCRIÇÃO E TELEMETRIA -->
+  <div class="relative z-40 bg-[#060407] border-b border-white/10 text-[11px]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-burgundyDeep/80 border border-champagne/30 text-champagneLight font-medium">
+          <span class="w-1.5 h-1.5 rounded-full bg-champagne animate-pulse"></span>
+          100% Digital & Anonymous Check-in
+        </span>
+        <span class="hidden md:inline text-zinc-400">
+          Automated Private Garage • Neutral Merchant Name on Card Statement
+        </span>
+      </div>
+
+      <div class="flex items-center gap-4 ml-auto">
+        <a href="#ocupacao-realtime" class="hidden sm:inline-flex items-center gap-1.5 text-emerald-400 font-medium hover:underline">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span class="w-2 h-2 rounded-full bg-emerald-400 -ml-3.5"></span>
+          <span id="topbar-free-count">4 Suites Available Now</span>
+        </a>
+        <span class="text-zinc-600 hidden sm:inline">|</span>
+        <span class="text-champagneLight/90 font-medium">24h Chef Gastronomy</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. HEADER FIXO DISCRETO COM BOTÃO DE SAÍDA RÁPIDA -->
+  <header class="sticky top-0 z-40 bg-[#09090b]/85 backdrop-blur-xl border-b border-champagne/15">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Logo Eclipse Suites -->
+      <a href="#" class="flex items-center gap-3.5 group">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-champagne via-burgundyRich to-obsidian p-[1px] shadow-champagne-glow">
+          <div class="w-full h-full bg-obsidian rounded-full flex items-center justify-center">
+            <span class="font-serif-motel text-xl text-champagne italic pr-0.5">E</span>
+          </div>
+        </div>
+        <div>
+          <span class="font-serif-motel text-2xl sm:text-3xl tracking-[0.22em] text-champagneLight block leading-none">
+            ECLIPSE <span class="text-champagne font-normal">SUITES</span>
+          </span>
+          <span class="text-[9px] uppercase tracking-[0.3em] text-zinc-400 block mt-1">
+            Boutique Hotel & Sensory Suites
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Menu -->
+      <nav class="hidden xl:flex items-center gap-7 text-xs uppercase tracking-[0.16em] text-zinc-300 font-medium">
+        <a href="#suites" class="hover:text-champagne transition-colors">Suites</a>
+        <a href="#gastronomia" class="hover:text-champagne transition-colors">24h Dining</a>
+        <a href="#experiencias" class="hover:text-champagne transition-colors">Experiences</a>
+        <a href="#privacidade" class="hover:text-champagne transition-colors">Privacy</a>
+        <a href="#tabela-periodos" class="hover:text-champagne transition-colors">Rates & Stays</a>
+        <a href="#reservas" class="hover:text-champagne transition-colors">Reservations</a>
+      </nav>
+
+      <!-- Right Actions: Discreet Mode / Quick Exit + Reserve CTA -->
+      <div class="flex items-center gap-2.5 sm:gap-3">
+        <button 
+          type="button" 
+          onclick="toggleDiscreetMode(true)" 
+          title="Immediately hides the screen behind a neutral financial news panel (Shortcut: ESC key)"
+          class="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-zinc-300 hover:text-white text-[11px] font-medium transition-all"
+        >
+          <i data-lucide="eye-off" class="w-3.5 h-3.5 text-champagne"></i>
+          <span>Discreet Mode / Quick Exit</span>
+        </button>
+
+        <a href="#reservas" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-champagne to-amber-500 text-obsidian font-syne font-bold text-xs uppercase tracking-wider shadow-champagne-glow hover:opacity-95 transition-all">
+          <span>Book Now</span>
+          <i data-lucide="key-round" class="w-3.5 h-3.5"></i>
+        </a>
+
+        <button type="button" onclick="toggleMobileNav()" class="xl:hidden p-2.5 rounded-full border border-white/15 text-champagneLight" aria-label="Menu">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-nav" class="hidden xl:hidden bg-[#0e070a] border-t border-champagne/20 px-6 py-6 space-y-3.5 text-xs uppercase tracking-[0.18em] text-zinc-200">
+      <a href="#ocupacao-realtime" onclick="toggleMobileNav()" class="block py-2 text-emerald-400 font-bold">● Live Suite Availability</a>
+      <a href="#suites" onclick="toggleMobileNav()" class="block py-2 border-b border-white/10 hover:text-champagne">01. Concept Suites</a>
+      <a href="#gastronomia" onclick="toggleMobileNav()" class="block py-2 border-b border-white/10 hover:text-champagne">02. 24h Gastronomy & Cocktails</a>
+      <a href="#experiencias" onclick="toggleMobileNav()" class="block py-2 border-b border-white/10 hover:text-champagne">03. Sensory Experiences</a>
+      <a href="#privacidade" onclick="toggleMobileNav()" class="block py-2 border-b border-white/10 hover:text-champagne">04. Absolute Privacy & Ozone</a>
+      <a href="#tabela-periodos" onclick="toggleMobileNav()" class="block py-2 border-b border-white/10 hover:text-champagne">05. Rates & Stay Policies</a>
+      <a href="#reservas" onclick="toggleMobileNav()" class="block py-3 text-center rounded-full bg-champagne text-obsidian font-bold">Book Suite w/ Anonymous Check-in</a>
+    </div>
+  </header>
+
+  <!-- 2. HERO SECTION COM ATMOSFERA SEDUTORA & SOFISTICADA -->
+  <section class="relative min-h-[88vh] flex items-center pt-12 pb-20 lg:py-24 overflow-hidden border-b border-champagne/15">
+    <!-- Background Atmospheric Luxury Suite Image -->
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=2000&q=85" 
+        alt="Master Suite with Heated Pool and Indirect Lighting at Eclipse Suites" 
+        class="w-full h-full object-cover object-center brightness-50 contrast-110 scale-105"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-[#09090b] via-[#09090b]/80 to-[#450a0a]/45"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-[#09090b] via-transparent to-[#09090b]/70"></div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left 7 Cols: Headline, Sensory Badges & Dual CTA -->
+        <div class="lg:col-span-7 space-y-7">
+          <div class="inline-flex flex-wrap items-center gap-2.5 px-4 py-1.5 rounded-full bg-burgundyDeep/70 backdrop-blur-md border border-champagne/35">
+            <span class="text-[11px] uppercase tracking-[0.22em] text-champagne font-semibold">
+              5-Star Boutique Motel • Adults Only
+            </span>
+          </div>
+
+          <h1 class="font-serif-motel text-5xl sm:text-6xl lg:text-7xl font-normal leading-[1.04] tracking-tight text-white">
+            Non-negotiable privacy. <br/>
+            <em class="italic font-normal bg-gradient-to-r from-champagneLight via-champagne to-amber-500 bg-clip-text text-transparent">
+              Design that awakens the senses.
+            </em>
+          </h1>
+
+          <p class="text-base sm:text-lg text-zinc-300 leading-relaxed max-w-2xl font-light">
+            Signature architecture clad in Nero marble, natural wood, and burgundy velvet. Heated pools with private waterfall, retractable sunroof, iPad-controlled lighting and sound automation, and 24h fine dining served with zero eye contact.
+          </p>
+
+          <!-- Dual CTA -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+            <a href="#suites" class="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-gradient-to-r from-champagne via-champagneLight to-amber-500 text-obsidian font-syne font-bold text-xs sm:text-sm uppercase tracking-widest shadow-champagne-glow hover:scale-[1.01] transition-all">
+              <span>Explore the Suites</span>
+              <i data-lucide="sparkles" class="w-4 h-4"></i>
+            </a>
+            <a href="#ocupacao-realtime" class="inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-full velvet-card hover:border-champagne/50 text-champagneLight font-medium text-xs sm:text-sm uppercase tracking-wider transition-all">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+              <span>Check Live Availability</span>
+            </a>
+          </div>
+
+          <!-- Sensory Highlights -->
+          <div class="pt-6 border-t border-white/10 grid grid-cols-3 gap-4 max-w-xl">
+            <div>
+              <span class="font-serif-motel text-2xl sm:text-3xl text-champagne block">34°C</span>
+              <span class="text-xs text-zinc-400">Pools & Whirlpools heated 24h</span>
+            </div>
+            <div class="border-x border-white/10 px-4">
+              <span class="font-serif-motel text-2xl sm:text-3xl text-champagne block">Zero</span>
+              <span class="text-xs text-zinc-400">Eye contact from check-in to check-out</span>
+            </div>
+            <div>
+              <span class="font-serif-motel text-2xl sm:text-3xl text-champagne block">Ozone + UV</span>
+              <span class="text-xs text-zinc-400">Hospital-grade sterilization between stays</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 5 Cols: Interactive Ambience Lighting Preview Card -->
+        <div class="lg:col-span-5">
+          <div class="velvet-card amber-rim rounded-3xl p-5 sm:p-6 shadow-velvet">
+            <div class="flex items-center justify-between pb-3 mb-4 border-b border-white/10">
+              <div class="flex items-center gap-2">
+                <i data-lucide="sliders" class="w-4 h-4 text-champagne"></i>
+                <span class="text-xs uppercase tracking-[0.18em] text-champagneLight font-semibold">
+                  Suite iPad Scene Simulator
+                </span>
+              </div>
+              <span id="scene-badge" class="px-2.5 py-0.5 rounded-full bg-burgundyDeep text-champagne text-[10px] uppercase tracking-widest border border-champagne/30">
+                Scene: Intimate Amber
+              </span>
+            </div>
+
+            <div class="relative rounded-2xl overflow-hidden aspect-[4/3] mb-4 bg-obsidian">
+              <img 
+                id="hero-scene-img"
+                src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1000&q=85" 
+                alt="Eclipse Suites Lighting Scene" 
+                class="w-full h-full object-cover transition-all duration-700"
+              />
+              <div id="hero-scene-overlay" class="absolute inset-0 bg-amber-900/25 mix-blend-multiply transition-all duration-700"></div>
+              <div class="absolute bottom-3 left-3 right-3 p-3.5 rounded-xl bg-obsidian/85 backdrop-blur-md border border-white/10 flex items-center justify-between text-xs">
+                <span id="scene-desc" class="text-zinc-200">2200K indirect glow • Lit fireplace • Lounge Soul playlist</span>
+                <span class="text-champagne font-mono text-[11px]">JBL Atmos</span>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2 text-xs">
+              <button type="button" onclick="setHeroScene('amber')" class="py-2.5 px-3 rounded-xl bg-amber-500/20 border border-amber-400/50 text-amber-200 font-semibold transition-all">
+                Amber Lounge
+              </button>
+              <button type="button" onclick="setHeroScene('crimson')" class="py-2.5 px-3 rounded-xl bg-rose-950/60 border border-rose-500/40 text-rose-200 font-semibold transition-all">
+                Velvet Rouge
+              </button>
+              <button type="button" onclick="setHeroScene('midnight')" class="py-2.5 px-3 rounded-xl bg-slate-900 border border-indigo-400/30 text-indigo-200 font-semibold transition-all">
+                Starlit Roof
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. PAINEL DE STATUS EM TEMPO REAL (LIVE AVAILABILITY MOCK EM JS) -->
+  <section id="ocupacao-realtime" class="py-12 bg-[#0c070a] border-b border-champagne/15">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6">
+        <div class="flex items-center gap-3">
+          <span class="w-3 h-3 rounded-full bg-emerald-400 animate-ping"></span>
+          <span class="w-3 h-3 rounded-full bg-emerald-400 -ml-6"></span>
+          <div>
+            <h2 class="font-serif-motel text-2xl sm:text-3xl text-white">
+              Live Suite Availability Dashboard
+            </h2>
+            <p class="text-xs text-zinc-400">
+              Automated monitoring of garage sensors and Ozone ($O_3$) sterilization cycles.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-4 text-xs">
+          <span class="inline-flex items-center gap-1.5 text-emerald-400">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Ready for Immediate Check-in
+          </span>
+          <span class="inline-flex items-center gap-1.5 text-amber-300">
+            <span class="w-2 h-2 rounded-full bg-amber-400"></span> Under Ozone (UV-C) Sanitization
+          </span>
+          <span class="inline-flex items-center gap-1.5 text-rose-400">
+            <span class="w-2 h-2 rounded-full bg-rose-500"></span> Occupied</span>
+          <button type="button" onclick="refreshAvailability()" class="px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-champagneLight flex items-center gap-1.5 transition-all">
+            <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+            <span>Refresh Now</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Live Status Units Grid -->
+      <div id="live-availability-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3">
+        <!-- Populated dynamically via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. CATÁLOGO DE SUÍTES TEMÁTICAS DE LUXO -->
+  <section id="suites" class="py-24 lg:py-32 border-b border-champagne/15">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header & Quick Period Selector -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-14 gap-6">
+        <div>
+          <span class="text-xs uppercase tracking-[0.25em] text-champagne font-semibold block mb-2">
+            Sensory Architecture & Absolute Privacy
+          </span>
+          <h2 class="font-serif-motel text-4xl sm:text-6xl text-white font-normal leading-none">
+            Curated Concept Suites
+          </h2>
+        </div>
+
+        <!-- Global Period Highlight Switcher (Compatible with setPeriodo) -->
+        <div class="bg-[#140a0e] p-1.5 rounded-full border border-champagne/25 flex flex-wrap gap-1">
+          <button type="button" onclick="setPeriodo('2h')" data-per="2h" class="per-btn px-4 py-2 rounded-full text-xs font-semibold text-zinc-300 hover:text-white transition-all">
+            2h Stay
+          </button>
+          <button type="button" onclick="setPeriodo('4h')" data-per="4h" class="per-btn px-4 py-2 rounded-full text-xs font-semibold bg-champagne text-obsidian shadow-champagne-glow transition-all">
+            4h Stay (Featured)
+          </button>
+          <button type="button" onclick="setPeriodo('12h')" data-per="12h" class="per-btn px-4 py-2 rounded-full text-xs font-semibold text-zinc-300 hover:text-white transition-all">
+            12h Day-Use
+          </button>
+          <button type="button" onclick="setPeriodo('pernoite')" data-per="pernoite" class="per-btn px-4 py-2 rounded-full text-xs font-semibold text-zinc-300 hover:text-white transition-all">
+            Overnight (w/ Breakfast)
+          </button>
+        </div>
+      </div>
+
+      <!-- Suites Cards Container (Rendered via JS with Carousels, Amenities & 4-Period Table) -->
+      <div id="suites-grid" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Populated dynamically via JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5. EXPERIÊNCIAS SENSORIAIS & PACOTES ESPECIAIS -->
+  <section id="experiencias" class="py-20 bg-gradient-to-b from-[#120609] to-obsidian border-b border-champagne/15">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <span class="text-xs uppercase tracking-[0.25em] text-champagne font-semibold block mb-2">
+            Bespoke Stay Upgrades
+          </span>
+          <h2 class="font-serif-motel text-4xl sm:text-5xl text-white">
+            Tailored Experiences & Rituals
+          </h2>
+        </div>
+        <p class="text-xs sm:text-sm text-zinc-400 max-w-md">
+          Add any ritual below to your advance booking. Prepared inside your suite minutes before arrival.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="velvet-card p-7 rounded-3xl flex flex-col justify-between">
+          <div>
+            <span class="text-[11px] uppercase tracking-widest text-champagne font-semibold">Ritual 01 • Celebration</span>
+            <h3 class="font-serif-motel text-3xl text-white mt-1">Moët Night & Fresh Rose Petals</h3>
+            <p class="text-xs sm:text-sm text-zinc-300 mt-3 leading-relaxed">
+              Styling with red Colombian roses, sandalwood and fig scented candles, 1 bottle of Moët & Chandon Brut Impérial Champagne in a silver chiller, and strawberries dipped in Callebaut Belgian chocolate.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+            <strong class="font-serif-motel text-2xl text-champagne">+ $690</strong>
+            <button type="button" onclick="selectExperienceInBooking('Moët Night & Fresh Rose Petals (+$690)')" class="text-xs uppercase tracking-widest text-champagneLight hover:text-champagne font-semibold">
+              Add to Reservation →
+            </button>
+          </div>
+        </div>
+
+        <div class="velvet-card p-7 rounded-3xl flex flex-col justify-between">
+          <div>
+            <span class="text-[11px] uppercase tracking-widest text-champagne font-semibold">Ritual 02 • Awaken the Senses</span>
+            <h3 class="font-serif-motel text-3xl text-white mt-1">Noir Sensory & Massage Kit</h3>
+            <p class="text-xs sm:text-sm text-zinc-300 mt-3 leading-relaxed">
+              Warm body massage candle with sweet almond oil and amber, 22-momme pure silk blindfold, effervescent whirlpool bath salts, and an exclusive binaural playlist on the suite iPad.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+            <strong class="font-serif-motel text-2xl text-champagne">+ $340</strong>
+            <button type="button" onclick="selectExperienceInBooking('Noir Sensory & Massage Kit (+$340)')" class="text-xs uppercase tracking-widest text-champagneLight hover:text-champagne font-semibold">
+              Add to Reservation →
+            </button>
+          </div>
+        </div>
+
+        <div class="velvet-card p-7 rounded-3xl flex flex-col justify-between">
+          <div>
+            <span class="text-[11px] uppercase tracking-widest text-champagne font-semibold">Ritual 03 • Fine Dining</span>
+            <h3 class="font-serif-motel text-3xl text-white mt-1">Aphrodisiac Tasting Menu (4 Courses)</h3>
+            <p class="text-xs sm:text-sm text-zinc-300 mt-3 leading-relaxed">
+              Complete dinner for two crafted by our Executive Chef (gratinated oysters or truffle carpaccio, saffron risotto with pink prawns or steak au poivre, dessert, and 2 signature cocktails).
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+            <strong class="font-serif-motel text-2xl text-champagne">+ $480</strong>
+            <button type="button" onclick="selectExperienceInBooking('4-Course Aphrodisiac Tasting Menu (+$480)')" class="text-xs uppercase tracking-widest text-champagneLight hover:text-champagne font-semibold">
+              Add to Reservation →
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. CARTA GASTRONÔMICA & DRINKS 24H (SERVIDOS VIA PASSA-PRATOS BLINDADO) -->
+  <section id="gastronomia" class="py-24 lg:py-32 border-b border-champagne/15">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end mb-12">
+        <div class="lg:col-span-7">
+          <span class="text-xs uppercase tracking-[0.25em] text-champagne font-semibold block mb-2">
+            24-Hour Room Service • Zero Eye Contact
+          </span>
+          <h2 class="font-serif-motel text-4xl sm:text-6xl text-white font-normal leading-none">
+            Fine Dining & Signature Mixology
+          </h2>
+        </div>
+        <div class="lg:col-span-5">
+          <div class="p-4 rounded-2xl bg-burgundyDeep/40 border border-champagne/25 flex items-center gap-3.5 text-xs text-zinc-200">
+            <i data-lucide="shield-alert" class="w-5 h-5 text-champagne shrink-0"></i>
+            <span>All orders are placed via the in-suite iPad and delivered through a <strong>double-locked armored thermal pass-through hatch</strong> (staff never see inside the suite).</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gastronomy Category Tabs -->
+      <div class="flex flex-wrap gap-2 mb-10" id="gastro-tabs">
+        <button type="button" onclick="switchGastroCategory('pratos')" data-gcat="pratos" class="gastro-tab-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-bold bg-champagne text-obsidian shadow-champagne-glow transition-all">
+          Chef Plates (24h)
+        </button>
+        <button type="button" onclick="switchGastroCategory('drinks')" data-gcat="drinks" class="gastro-tab-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-semibold bg-white/5 border border-white/10 text-zinc-300 hover:border-champagne/40 transition-all">
+          Signature Cocktails
+        </button>
+        <button type="button" onclick="switchGastroCategory('champagnes')" data-gcat="champagnes" class="gastro-tab-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-semibold bg-white/5 border border-white/10 text-zinc-300 hover:border-champagne/40 transition-all">
+          Champagnes & Cellar
+        </button>
+        <button type="button" onclick="switchGastroCategory('cafe')" data-gcat="cafe" class="gastro-tab-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-semibold bg-white/5 border border-white/10 text-zinc-300 hover:border-champagne/40 transition-all">
+          Breakfast & Brunch
+        </button>
+      </div>
+
+      <!-- Gastronomy Items Grid -->
+      <div id="gastronomy-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Populated dynamically via JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 7. PILAR DA PRIVACIDADE ABSOLUTA & BIOSSEGURANÇA -->
+  <section id="privacidade" class="py-24 lg:py-32 bg-[#0d0609] border-b border-champagne/15">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs uppercase tracking-[0.25em] text-champagne font-semibold block mb-2">
+          Ghost Hospitality™ Protocol
+        </span>
+        <h2 class="font-serif-motel text-4xl sm:text-6xl text-white font-normal">
+          The 4 Pillars of Absolute Privacy
+        </h2>
+        <p class="text-zinc-400 text-sm sm:text-base mt-3">
+          Every physical and digital detail is engineered so your experience unfolds in complete discretion, security, and biological purity.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Pillar 1 -->
+        <div class="velvet-card p-7 rounded-3xl space-y-4">
+          <div class="w-12 h-12 rounded-2xl bg-burgundyDeep border border-champagne/30 flex items-center justify-center text-champagne">
+            <i data-lucide="car" class="w-6 h-6"></i>
+          </div>
+          <span class="text-[10px] font-mono uppercase tracking-widest text-champagne">PILLAR 01 // ACCESS</span>
+          <h3 class="font-serif-motel text-2xl text-white">Automated Entry & Armored Garage</h3>
+          <p class="text-xs sm:text-sm text-zinc-300 leading-relaxed">
+            Automated barrier gate with no visible security booth. Your private double garage features a fast-closing motorized shutter triggered by an optical sensor the moment your vehicle parks.
+          </p>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="velvet-card p-7 rounded-3xl space-y-4">
+          <div class="w-12 h-12 rounded-2xl bg-burgundyDeep border border-champagne/30 flex items-center justify-center text-champagne">
+            <i data-lucide="credit-card" class="w-6 h-6"></i>
+          </div>
+          <span class="text-[10px] font-mono uppercase tracking-widest text-champagne">PILLAR 02 // FINANCIAL DISCRETION</span>
+          <h3 class="font-serif-motel text-2xl text-white">Anonymous Payment & Neutral Billing</h3>
+          <p class="text-xs sm:text-sm text-zinc-300 leading-relaxed">
+            Settle your bill directly via the suite iPad or wireless terminal at the pass-through hatch using Apple Pay, Card, or Instant Pay. Your card or bank statement displays only <strong class="text-champagneLight">"EC HOSPITALITY HOLDINGS LLC"</strong>.
+          </p>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="velvet-card p-7 rounded-3xl space-y-4">
+          <div class="w-12 h-12 rounded-2xl bg-burgundyDeep border border-champagne/30 flex items-center justify-center text-champagne">
+            <i data-lucide="sparkles" class="w-6 h-6"></i>
+          </div>
+          <span class="text-[10px] font-mono uppercase tracking-widest text-champagne">PILLAR 03 // BIOSECURITY</span>
+          <h3 class="font-serif-motel text-2xl text-white">Ozone ($O_3$) & UV-C Sterilization</h3>
+          <p class="text-xs sm:text-sm text-zinc-300 leading-relaxed">
+            Between every stay, each suite undergoes industrial oxy-sanitization with medical-grade Ozone generators and UV-C light, eliminating 99.99% of viruses, bacteria, and residual odors, paired with sealed 600-thread-count linens.
+          </p>
+        </div>
+
+        <!-- Pillar 4 -->
+        <div class="velvet-card p-7 rounded-3xl space-y-4">
+          <div class="w-12 h-12 rounded-2xl bg-burgundyDeep border border-champagne/30 flex items-center justify-center text-champagne">
+            <i data-lucide="volume-x" class="w-6 h-6"></i>
+          </div>
+          <span class="text-[10px] font-mono uppercase tracking-widest text-champagne">PILLAR 04 // ACOUSTICS</span>
+          <h3 class="font-serif-motel text-2xl text-white">Double Soundproofing & Wi-Fi 6 VPN</h3>
+          <p class="text-xs sm:text-sm text-zinc-300 leading-relaxed">
+            Walls lined with high-density mineral acoustic wool and 55 dB soundproof doors. Private Wi-Fi 6 network isolated on a dedicated per-suite VLAN with end-to-end encryption.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 8. TABELA COMPARATIVA DE PERÍODOS & FAQ (NORMAS DE PERMANÊNCIA) -->
+  <section id="tabela-periodos" class="py-24 lg:py-32 border-b border-champagne/15">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Left 6 Cols: Complete Period & Overnight Rules Table -->
+        <div class="lg:col-span-6 space-y-6">
+          <div>
+            <span class="text-xs uppercase tracking-[0.25em] text-champagne font-semibold block mb-2">
+              Transparent Rates & Schedules
+            </span>
+            <h2 class="font-serif-motel text-4xl sm:text-5xl text-white">
+              Full Rates & Stay Matrix
+            </h2>
+          </div>
+
+          <div class="velvet-card rounded-3xl overflow-hidden border border-champagne/25">
+            <table class="w-full text-left text-xs sm:text-sm">
+              <thead class="bg-burgundyDeep/80 text-champagne uppercase text-[11px] tracking-wider border-b border-champagne/20">
+                <tr>
+                  <th class="p-4">Suite Category</th>
+                  <th class="p-4">2 Hours</th>
+                  <th class="p-4">4 Hours</th>
+                  <th class="p-4">12 Hours</th>
+                  <th class="p-4">Overnight*</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-white/10 text-zinc-200">
+                <tr class="hover:bg-white/5">
+                  <td class="p-4 font-serif-motel text-lg text-white font-semibold">Velvet Loft Suite (110m²)</td>
+                  <td class="p-4">$220</td>
+                  <td class="p-4 text-champagne font-bold">$290</td>
+                  <td class="p-4">$380</td>
+                  <td class="p-4 text-emerald-300 font-semibold">$410</td>
+                </tr>
+                <tr class="hover:bg-white/5">
+                  <td class="p-4 font-serif-motel text-lg text-white font-semibold">Noir Sensations Suite (155m²)</td>
+                  <td class="p-4">$290</td>
+                  <td class="p-4 text-champagne font-bold">$380</td>
+                  <td class="p-4">$490</td>
+                  <td class="p-4 text-emerald-300 font-semibold">$530</td>
+                </tr>
+                <tr class="hover:bg-white/5">
+                  <td class="p-4 font-serif-motel text-lg text-white font-semibold">Eclipse Master Suite (220m²)</td>
+                  <td class="p-4">$390</td>
+                  <td class="p-4 text-champagne font-bold">$490</td>
+                  <td class="p-4">$620</td>
+                  <td class="p-4 text-emerald-300 font-semibold">$680</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-white/[0.03] border border-white/10 text-xs text-zinc-400 space-y-1.5">
+            <p><strong class="text-champagneLight">*Overnight Hours (includes Executive Breakfast):</strong></p>
+            <p>• Sunday to Thursday: Check-in from 8:00 PM with check-out until 12:00 PM the next day.</p>
+            <p>• Friday, Saturday & Holiday Eves: Check-in from 10:00 PM with check-out until 12:00 PM.</p>
+            <p>• Complimentary check-out grace period: 15 minutes.</p>
+          </div>
+        </div>
+
+        <!-- Right 6 Cols: Interactive FAQ Accordion -->
+        <div class="lg:col-span-6 space-y-6">
+          <div>
+            <span class="text-xs uppercase tracking-[0.25em] text-champagne font-semibold block mb-2">
+              Frequently Asked
+            </span>
+            <h2 class="font-serif-motel text-4xl sm:text-5xl text-white">
+              FAQ & Stay Policies
+            </h2>
+          </div>
+
+          <div id="faq-container" class="space-y-3.5">
+            <!-- Populated dynamically via JS -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. FORMULÁRIO / CANAL DE RESERVAS ANTECIPADAS PARA DATAS ESPECIAIS -->
+  <section id="reservas" class="py-24 lg:py-32 bg-gradient-to-b from-obsidian to-[#14070b]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="velvet-card amber-rim rounded-3xl p-7 sm:p-12 shadow-velvet">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          
+          <!-- Left 5 Cols: Anonymous Reservation Explanation -->
+          <div class="lg:col-span-5 space-y-6">
+            <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-champagne/15 border border-champagne/40 text-champagneLight text-xs font-semibold uppercase tracking-widest">
+              <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+              Encrypted Zero-Exposure Booking
+            </span>
+            <h2 class="font-serif-motel text-4xl sm:text-5xl text-white leading-tight">
+              Reserve Your Suite with a Direct Access Token.
+            </h2>
+            <p class="text-sm text-zinc-300 leading-relaxed">
+              We never require national IDs or full legal names to pre-book. Upon confirming below, our system issues a <strong class="text-champagneLight">Private Alphanumeric Token</strong>: simply scan it at the entry optical reader for immediate opening of your private garage.
+            </p>
+
+            <div class="space-y-3 pt-4 border-t border-white/10 text-xs text-zinc-300">
+              <div class="flex items-center gap-3">
+                <span class="w-5 h-5 rounded-full bg-champagne/20 text-champagne flex items-center justify-center font-bold">✓</span>
+                <span>Pool and whirlpool pre-heated to 34°C (93°F) before your arrival</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="w-5 h-5 rounded-full bg-champagne/20 text-champagne flex items-center justify-center font-bold">✓</span>
+                <span>Tailored lighting scene and climate control prepared in advance</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="w-5 h-5 rounded-full bg-champagne/20 text-champagne flex items-center justify-center font-bold">✓</span>
+                <span>Free cancellation up to 3 hours prior to arrival</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right 7 Cols: Interactive Booking Form -->
+          <div class="lg:col-span-7 bg-[#09090b]/90 p-6 sm:p-9 rounded-2xl border border-white/10">
+            <form id="vip-booking-form" onsubmit="handleBookingSubmit(event)" class="space-y-5">
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-[11px] uppercase tracking-widest text-zinc-400 font-semibold mb-2">
+                    Alias or Initials *
+                  </label>
+                  <input id="res-alias" type="text" required placeholder="e.g., Mr. M. & Guest" class="w-full px-4 py-3.5 rounded-xl bg-[#140b0f] border border-white/15 text-sm text-white focus:border-champagne focus:outline-none" />
+                </div>
+                <div>
+                  <label class="block text-[11px] uppercase tracking-widest text-zinc-400 font-semibold mb-2">
+                    Confidential WhatsApp or Email *
+                  </label>
+                  <input id="res-contact" type="text" required placeholder="+1 (555) 019-2834 or email" class="w-full px-4 py-3.5 rounded-xl bg-[#140b0f] border border-white/15 text-sm text-white focus:border-champagne focus:outline-none" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-[11px] uppercase tracking-widest text-zinc-400 font-semibold mb-2">
+                    Preferred Suite *
+                  </label>
+                  <select id="res-suite" class="w-full px-4 py-3.5 rounded-xl bg-[#140b0f] border border-white/15 text-sm text-white focus:border-champagne focus:outline-none">
+                    <option value="Eclipse Master Suite (Heated Pool & Sunroof)">Eclipse Master Suite (Heated Pool & Sunroof)</option>
+                    <option value="Noir Sensations Suite (Nero Marble & Double Whirlpool)">Noir Sensations Suite (Nero Marble & Whirlpool)</option>
+                    <option value="Velvet Loft Suite (Eco Fireplace & Private Garden)">Velvet Loft Suite (Eco Fireplace & Private Garden)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-[11px] uppercase tracking-widest text-zinc-400 font-semibold mb-2">
+                    Length of Stay *
+                  </label>
+                  <select id="res-period" class="w-full px-4 py-3.5 rounded-xl bg-[#140b0f] border border-white/15 text-sm text-white focus:border-champagne focus:outline-none">
+                    <option value="4-Hour Stay" selected>4-Hour Stay</option>
+                    <option value="12h Overnight (with Breakfast)">12h Overnight (with Breakfast)</option>
+                    <option value="12-Hour Day-Use">12-Hour Day-Use</option>
+                    <option value="2-Hour Express Stay">2-Hour Express Stay</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-[11px] uppercase tracking-widest text-zinc-400 font-semibold mb-2">
+                    Date & Estimated Arrival Time *
+                  </label>
+                  <input id="res-datetime" type="text" required value="Tonight, at 9:30 PM" class="w-full px-4 py-3.5 rounded-xl bg-[#140b0f] border border-white/15 text-sm text-white focus:border-champagne focus:outline-none" />
+                </div>
+                <div>
+                  <label class="block text-[11px] uppercase tracking-widest text-zinc-400 font-semibold mb-2">
+                    Pre-Booked Experience / Dining
+                  </label>
+                  <input id="res-experience" type="text" placeholder="Optional (e.g., Moët Champagne & Petals)" class="w-full px-4 py-3.5 rounded-xl bg-[#140b0f] border border-champagne/30 text-sm text-champagneLight focus:border-champagne focus:outline-none" />
+                </div>
+              </div>
+
+              <button type="submit" class="w-full py-4 rounded-full bg-gradient-to-r from-champagne via-champagneLight to-amber-500 text-obsidian font-syne font-bold text-xs sm:text-sm uppercase tracking-widest shadow-champagne-glow hover:opacity-95 transition-all flex items-center justify-center gap-2">
+                <span>Generate Anonymous Booking Token</span>
+                <i data-lucide="key-round" class="w-4 h-4"></i>
+              </button>
+            </form>
+
+            <!-- Instant Encrypted Pass Output -->
+            <div id="booking-pass-box" class="hidden mt-6 p-6 rounded-2xl bg-gradient-to-br from-burgundyDeep/80 to-obsidian border border-champagne shadow-champagne-glow space-y-4">
+              <div class="flex items-center justify-between border-b border-white/15 pb-3">
+                <div>
+                  <span class="text-[10px] uppercase tracking-widest text-emerald-400 font-bold block">✓ SUITE LOCKED & THERMAL PREP ACTIVE</span>
+                  <h4 class="font-serif-motel text-2xl text-white">Private Check-in Credential</h4>
+                </div>
+                <div class="text-right">
+                  <span class="text-[10px] text-zinc-400 block uppercase">GATE ACCESS TOKEN</span>
+                  <strong id="pass-token" class="font-mono text-lg text-champagne">#ECL-8942</strong>
+                </div>
+              </div>
+              <p id="pass-details" class="text-xs text-zinc-200 leading-relaxed"></p>
+              <div class="text-[11px] text-champagneLight/80 font-mono">
+                Present only the code above at the private entrance optical kiosk (Statement descriptor: EC HOSPITALITY LLC).
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. RODAPÉ SÓBRIO E ELEGANTE COM ROTAS DE ACESSO DISCRETO -->
+  <footer class="bg-[#050306] border-t border-white/10 pt-16 pb-12 text-xs text-zinc-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+        
+        <div class="lg:col-span-4 space-y-4">
+          <span class="font-serif-motel text-2xl tracking-[0.22em] text-champagneLight block">
+            ECLIPSE <span class="text-champagne">SUITES</span>
+          </span>
+          <p class="text-zinc-400 leading-relaxed max-w-sm">
+            Five-star adults-only boutique hospitality. Architectural suites, total privacy, and 24-hour fine dining.
+          </p>
+          <p class="text-[11px] text-zinc-500">
+            Discreet Billing Entity: EC HOSPITALITY HOLDINGS INC. • Tax ID 41.802.910/0001-12
+          </p>
+        </div>
+
+        <div class="lg:col-span-3 space-y-2.5">
+          <h4 class="text-white font-semibold uppercase tracking-widest text-[11px] mb-3">
+            Strategic & Discreet Access
+          </h4>
+          <p>Setback Tree-Lined Side Boulevard — Private Access (Independent South & North Entrances)</p>
+          <p class="text-champagneLight pt-1">Private GPS Coordinates: 23°36'14"S 46°41'52"W</p>
+          <p class="text-zinc-500">Dedicated exit lane with zero crossover with incoming vehicles.</p>
+        </div>
+
+        <div class="lg:col-span-2 space-y-2.5">
+          <h4 class="text-white font-semibold uppercase tracking-widest text-[11px] mb-3">
+            Navigation
+          </h4>
+          <ul class="space-y-2">
+            <li><a href="#suites" class="hover:text-champagne transition-colors">Concept Suites</a></li>
+            <li><a href="#ocupacao-realtime" class="hover:text-champagne transition-colors">Live Availability</a></li>
+            <li><a href="#gastronomia" class="hover:text-champagne transition-colors">24h Kitchen</a></li>
+            <li><a href="#privacidade" class="hover:text-champagne transition-colors">Ozone Protocol</a></li>
+            <li><a href="#tabela-periodos" class="hover:text-champagne transition-colors">Rates & Stays</a></li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-3 space-y-3">
+          <h4 class="text-white font-semibold uppercase tracking-widest text-[11px] mb-3">
+            24h Concierge & Security
+          </h4>
+          <p class="text-zinc-300 font-medium">Confidential Desk: +1 (555) 309-7700</p>
+          <p class="text-zinc-400">concierge@eclipsesuites.com.br</p>
+          <button type="button" onclick="toggleDiscreetMode(true)" class="mt-2 w-full py-2.5 px-4 rounded-full bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-zinc-300 text-[11px] flex items-center justify-center gap-2 transition-all">
+            <i data-lucide="eye-off" class="w-3.5 h-3.5 text-champagne"></i>
+            <span>Enable Discreet Mode (ESC)</span>
+          </button>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-zinc-500">
+        <p>© 2026 ECLIPSE SUITES Boutique Hospitality. Strictly 18+ adults only.</p>
+        <div class="flex items-center gap-6">
+          <span>Apple Pay • Anonymous Instant Pay • Unbranded Cards</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================================= -->
+  <!-- VANILLA JAVASCRIPT: SUÍTES, CARROSSEL, OCUPAÇÃO AO VIVO, MENU 24H E FAQ -->
+  <!-- ======================================================================= -->
+  <script>
+    // 1. MODO DISCRETO / SAÍDA RÁPIDA (TECLA ESC OU BOTÃO NO HEADER)
+    let isDiscreetActive = false;
+    window.toggleDiscreetMode = function(forceState) {
+      isDiscreetActive = typeof forceState === 'boolean' ? forceState : !isDiscreetActive;
+      const screen = document.getElementById('discreet-camouflage-screen');
+      if (isDiscreetActive) {
+        screen.classList.remove('hidden');
+        screen.classList.add('flex');
+        document.title = 'Global Markets & Daily FX Indicators — Market Brief';
+      } else {
+        screen.classList.add('hidden');
+        screen.classList.remove('flex');
+        document.title = 'ECLIPSE SUITES — Ultra-Luxury Boutique Motel | Privacy & Sensory Design';
+      }
+    };
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        toggleDiscreetMode();
+      }
+    });
+
+    // 2. SIMULADOR DE CENÁRIO IPAD NO HERO
+    const HERO_SCENES = {
+      amber: {
+        badge: 'Scene: Intimate Amber',
+        desc: '2200K indirect glow • Lit fireplace • Lounge Soul playlist',
+        img: 'https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1000&q=85',
+        overlayClass: 'absolute inset-0 bg-amber-900/25 mix-blend-multiply transition-all duration-700'
+      },
+      crimson: {
+        badge: 'Scene: Velvet Rouge',
+        desc: '30% dimming • Burgundy Neon • JBL Atmos Surround Sound',
+        img: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=85',
+        overlayClass: 'absolute inset-0 bg-rose-950/45 mix-blend-multiply transition-all duration-700'
+      },
+      midnight: {
+        badge: 'Scene: Starlit Sunroof',
+        desc: 'Retractable roof open • 34°C pool with illuminated waterfall',
+        img: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=85',
+        overlayClass: 'absolute inset-0 bg-indigo-950/30 mix-blend-multiply transition-all duration-700'
+      }
+    };
+
+    window.setHeroScene = function(key) {
+      const s = HERO_SCENES[key];
+      if (!s) return;
+      document.getElementById('scene-badge').textContent = s.badge;
+      document.getElementById('scene-desc').textContent = s.desc;
+      document.getElementById('hero-scene-img').src = s.img;
+      document.getElementById('hero-scene-overlay').className = s.overlayClass;
+    };
+
+    // 3. PAINEL DE DISPONIBILIDADE EM TEMPO REAL (LIVE AVAILABILITY MOCK)
+    const LIVE_UNITS = [
+      { unit: 'Suite #01', category: 'Eclipse Master', status: 'free', detail: 'Pool at 34°C • Ready' },
+      { unit: 'Suite #02', category: 'Eclipse Master', status: 'occupied', detail: 'Est. availability: 45 min' },
+      { unit: 'Suite #04', category: 'Noir Sensations', status: 'free', detail: 'Ozone complete • Ready' },
+      { unit: 'Suite #05', category: 'Noir Sensations', status: 'ozone', detail: 'Ozone UV-C Cycle (12 min)' },
+      { unit: 'Suite #07', category: 'Velvet Loft', status: 'free', detail: 'Fireplace ready • Free' },
+      { unit: 'Suite #08', category: 'Velvet Loft', status: 'free', detail: 'Ozone complete • Ready' }
+    ];
+
+    function renderLiveAvailability() {
+      const grid = document.getElementById('live-availability-grid');
+      let freeCount = 0;
+
+      grid.innerHTML = LIVE_UNITS.map(u => {
+        let badgeHtml = '';
+        let borderClass = 'border-white/10';
+        if (u.status === 'free') {
+          freeCount++;
+          borderClass = 'border-emerald-500/35';
+          badgeHtml = `<span class="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 text-[10px] font-bold">● AVAILABLE</span>`;
+        } else if (u.status === 'ozone') {
+          borderClass = 'border-amber-400/35';
+          badgeHtml = `<span class="px-2 py-0.5 rounded-full bg-amber-400/15 text-amber-300 text-[10px] font-bold">◐ OZONE O₃</span>`;
+        } else {
+          borderClass = 'border-rose-500/30 opacity-75';
+          badgeHtml = `<span class="px-2 py-0.5 rounded-full bg-rose-500/15 text-rose-300 text-[10px] font-bold">● OCCUPIED</span>`;
+        }
+
+        return `
+          <div class="p-4 rounded-2xl bg-[#140a0e] border ${borderClass} flex flex-col justify-between gap-2">
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-xs text-zinc-400 font-bold">${u.unit}</span>
+              ${badgeHtml}
+            </div>
+            <div>
+              <div class="font-serif-motel text-lg text-white leading-tight">${u.category}</div>
+              <span class="text-[11px] text-zinc-400 block mt-0.5">${u.detail}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      const topCount = document.getElementById('topbar-free-count');
+      if (topCount) topCount.textContent = `${freeCount} Suites Available Now`;
+    }
+
+    window.refreshAvailability = function() {
+      // Alterna sutilmente o status de higienização para demonstrar telemetria viva
+      const idx = LIVE_UNITS.findIndex(u => u.status === 'ozone');
+      if (idx !== -1) {
+        LIVE_UNITS[idx].status = 'free';
+        LIVE_UNITS[idx].detail = 'Ozone 100% cleared • Ready';
+      }
+      renderLiveAvailability();
+    };
+
+    // 4. CATÁLOGO DE SUÍTES COM CARROSSEL DE FOTOS, COMODIDADES E TABELA DE PERÍODOS
+    const SUITES = [
+      {
+        id: 'eclipse-master',
+        name: "Eclipse Master Suite",
+        area: "220 m² • Duplex Penthouse",
+        availability: "1 Suite Available Now",
+        items: "Private heated pool with volcanic stone waterfall, motorized retractable sunroof, dry sauna, illuminated pole dance lounge, and full iPad automation.",
+        amenities: [
+          "34°C Heated Pool w/ Waterfall",
+          "Retractable Sunroof",
+          "Dry Sauna & Dual Rain Shower",
+          "Illuminated Pole Dance Stage",
+          "Private Double Garage",
+          "King Bed 600-TC Egyptian Cotton"
+        ],
+        prices: { '2h': 390, '4h': 490, '12h': 620, 'pernoite': 680 },
+        p4h: 490,
+        pernoite: 680,
+        images: [
+          "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=85",
+          "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=1000&q=85",
+          "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=85"
+        ]
+      },
+      {
+        id: 'noir-sensations',
+        name: "Noir Sensations Suite",
+        area: "155 m² • Sensory Design",
+        availability: "1 Suite Available Now",
+        items: "Double soaking tub sculpted in Nero Marquina marble, sensory lighting scene automation, leather tantra lounge chair, and JBL surround sound.",
+        amenities: [
+          "Double Nero Marble Whirlpool",
+          "Dimmable Lighting Scenes",
+          "JBL Dolby Atmos Surround",
+          "Sensory Lounge & Ceiling Mirror",
+          "12-Bottle Wine Chiller",
+          "Armored Service Hatch"
+        ],
+        prices: { '2h': 290, '4h': 380, '12h': 490, 'pernoite': 530 },
+        p4h: 380,
+        pernoite: 530,
+        images: [
+          "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1000&q=85",
+          "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=85",
+          "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1000&q=85"
+        ]
+      },
+      {
+        id: 'velvet-loft',
+        name: "Velvet Loft Suite",
+        area: "110 m² • Intimate Sanctuary",
+        availability: "2 Suites Available Now",
+        items: "Heated eco-fireplace, King Size bed dressed in 600-thread-count Egyptian cotton, chromotherapy whirlpool tub, and private winter garden.",
+        amenities: [
+          "Real Bio-Ethanol Fireplace",
+          "600-TC Egyptian Cotton Linens",
+          "Private Winter Garden",
+          "Chromotherapy Whirlpool",
+          "Smart TV 75\" 4K OLED",
+          "Nespresso® Machine & Minibar"
+        ],
+        prices: { '2h': 220, '4h': 290, '12h': 380, 'pernoite': 410 },
+        p4h: 290,
+        pernoite: 410,
+        images: [
+          "https://images.unsplash.com/photo-1591088398332-8a7791972843?auto=format&fit=crop&w=1000&q=85",
+          "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1000&q=85",
+          "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=1000&q=85"
+        ]
+      }
+    ];
+
+    let per = '4h';
+    const suiteCarouselIndex = {
+      'eclipse-master': 0,
+      'noir-sensations': 0,
+      'velvet-loft': 0
+    };
+
+    window.setPeriodo = function(p) {
+      per = p;
+      document.querySelectorAll('.per-btn').forEach(btn => {
+        if (btn.getAttribute('data-per') === p) {
+          btn.className = 'per-btn px-4 py-2 rounded-full text-xs font-semibold bg-champagne text-obsidian shadow-champagne-glow transition-all';
+        } else {
+          btn.className = 'per-btn px-4 py-2 rounded-full text-xs font-semibold text-zinc-300 hover:text-white transition-all';
+        }
+      });
+      renderSuites();
+    };
+
+    window.changeSuiteSlide = function(suiteId, delta) {
+      const suite = SUITES.find(s => s.id === suiteId);
+      if (!suite) return;
+      const total = suite.images.length;
+      suiteCarouselIndex[suiteId] = (suiteCarouselIndex[suiteId] + delta + total) % total;
+
+      const imgEl = document.getElementById(`img-${suiteId}`);
+      const countEl = document.getElementById(`slide-count-${suiteId}`);
+      if (imgEl) imgEl.src = suite.images[suiteCarouselIndex[suiteId]];
+      if (countEl) countEl.textContent = `${suiteCarouselIndex[suiteId] + 1}/${total}`;
+    };
+
+    function renderSuites() {
+      const periodLabels = {
+        '2h': '2h Stay',
+        '4h': '4h Stay',
+        '12h': '12h Day-Use',
+        'pernoite': 'Overnight w/ Breakfast'
+      };
+
+      document.getElementById('suites-grid').innerHTML = SUITES.map(s => {
+        const activeImgIdx = suiteCarouselIndex[s.id] || 0;
+        const activePrice = s.prices[per] || s.p4h;
+
+        return `
+          <article class="velvet-card rounded-3xl overflow-hidden flex flex-col justify-between group">
+            <div>
+              <!-- Interactive Photo Carousel -->
+              <div class="relative h-64 sm:h-72 overflow-hidden bg-obsidian">
+                <img 
+                  id="img-${s.id}" 
+                  src="${s.images[activeImgIdx]}" 
+                  alt="${s.name}" 
+                  class="w-full h-full object-cover transition-all duration-500 group-hover:scale-105" 
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#120609] via-transparent to-black/40"></div>
+
+                <!-- Top Availability & Area Badge -->
+                <div class="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between text-[10px] font-semibold uppercase tracking-wider">
+                  <span class="px-3 py-1 rounded-full bg-obsidian/85 backdrop-blur-md text-champagne border border-champagne/30">
+                    ${s.area}
+                  </span>
+                  <span class="px-3 py-1 rounded-full bg-emerald-950/90 backdrop-blur-md text-emerald-300 border border-emerald-500/30">
+                    ● ${s.availability}
+                  </span>
+                </div>
+
+                <!-- Carousel Arrows -->
+                <button 
+                  type="button" 
+                  onclick="changeSuiteSlide('${s.id}', -1)" 
+                  class="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-obsidian/80 hover:bg-champagne text-white hover:text-obsidian border border-white/15 flex items-center justify-center transition-all"
+                  aria-label="Previous photo"
+                >
+                  ‹
+                </button>
+                <button 
+                  type="button" 
+                  onclick="changeSuiteSlide('${s.id}', 1)" 
+                  class="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-obsidian/80 hover:bg-champagne text-white hover:text-obsidian border border-white/15 flex items-center justify-center transition-all"
+                  aria-label="Next photo"
+                >
+                  ›
+                </button>
+
+                <span id="slide-count-${s.id}" class="absolute bottom-3 right-3 px-2.5 py-0.5 rounded-full bg-obsidian/80 text-[10px] font-mono text-zinc-300 border border-white/10">
+                  ${activeImgIdx + 1}/${s.images.length} Photos
+                </span>
+              </div>
+
+              <!-- Suite Details -->
+              <div class="p-6 sm:p-7">
+                <div class="flex justify-between items-start gap-3">
+                  <h3 class="font-serif-motel text-3xl text-white leading-tight">${s.name}</h3>
+                  <div class="text-right shrink-0">
+                    <span class="text-[10px] uppercase tracking-wider text-zinc-400 block">${periodLabels[per]}</span>
+                    <strong class="font-serif-motel text-3xl text-champagne">$${activePrice}</strong>
+                  </div>
+                </div>
+
+                <p class="text-xs text-zinc-300 mt-3 leading-relaxed">
+                  ${s.items}
+                </p>
+
+                <!-- Amenities List with Check Icons -->
+                <div class="mt-5 pt-4 border-t border-white/10 grid grid-cols-2 gap-2">
+                  ${s.amenities.map(am => `
+                    <div class="flex items-center gap-1.5 text-[11px] text-zinc-300">
+                      <span class="text-champagne">✦</span>
+                      <span class="truncate">${am}</span>
+                    </div>
+                  `).join('')}
+                </div>
+
+                <!-- 4-Period Mini Pricing Table -->
+                <div class="mt-5 p-3 rounded-2xl bg-obsidian/80 border border-white/10 grid grid-cols-4 gap-1 text-center text-[11px]">
+                  <div class="${per === '2h' ? 'bg-champagne/20 rounded-xl py-1.5 border border-champagne/40' : 'py-1.5'}">
+                    <span class="text-zinc-400 block text-[10px]">2 Hours</span>
+                    <strong class="text-white">$${s.prices['2h']}</strong>
+                  </div>
+                  <div class="${per === '4h' ? 'bg-champagne/20 rounded-xl py-1.5 border border-champagne/40' : 'py-1.5'}">
+                    <span class="text-zinc-400 block text-[10px]">4 Hours</span>
+                    <strong class="text-champagne">$${s.prices['4h']}</strong>
+                  </div>
+                  <div class="${per === '12h' ? 'bg-champagne/20 rounded-xl py-1.5 border border-champagne/40' : 'py-1.5'}">
+                    <span class="text-zinc-400 block text-[10px]">12 Hours</span>
+                    <strong class="text-white">$${s.prices['12h']}</strong>
+                  </div>
+                  <div class="${per === 'pernoite' ? 'bg-champagne/20 rounded-xl py-1.5 border border-champagne/40' : 'py-1.5'}">
+                    <span class="text-zinc-400 block text-[10px]">Overnight</span>
+                    <strong class="text-emerald-300">$${s.prices['pernoite']}</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="px-6 sm:px-7 pb-7">
+              <button 
+                type="button" 
+                onclick="selectSuiteForBooking('${s.name}', '${periodLabels[per]} ($${activePrice})')" 
+                class="w-full py-3.5 rounded-full bg-gradient-to-r from-burgundyRich to-roseVelvet hover:from-champagne hover:to-amber-500 text-white hover:text-obsidian font-syne font-bold text-xs uppercase tracking-widest transition-all"
+              >
+                Book ${s.name} Now →
+              </button>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    // 5. CARTA GASTRONÔMICA & DRINKS 24H
+    const GASTRO_MENU = {
+      pratos: [
+        {
+          name: "Saffron Risotto w/ Grilled Pink Prawns",
+          desc: "Italian Carnaroli rice, Spanish saffron threads, Cognac-flambeed jumbo prawns, and organic microgreens.",
+          price: "$148",
+          tag: "Chef Signature",
+          img: "https://images.unsplash.com/photo-1633964913295-ceb43826e7c9?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          name: "Filet Mignon Tournedos in Truffle Jus",
+          desc: "Thick-cut certified Angus medallion in an herb crust, Port wine and black truffle reduction, and potato mille-feuille.",
+          price: "$136",
+          tag: "24h Best-Seller",
+          img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          name: "Bourguignonne Fondue & Callebaut Belgian Chocolate",
+          desc: "Romantic two-course sharing ritual in a copper rechaud with filet mignon, artisan dips, fresh strawberries, and seedless grapes.",
+          price: "$210",
+          tag: "For Two",
+          img: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=700&q=80"
+        }
+      ],
+      drinks: [
+        {
+          name: "Smoked Eclipse Noir Negroni",
+          desc: "Tanqueray Ten Gin, Campari, and Carpano Antica Formula Vermouth tableside-smoked with oak chips and navel orange peel.",
+          price: "$54",
+          tag: "Signature Cocktail",
+          img: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          name: "Velvet Aphrodisiac Martini",
+          desc: "Grey Goose Vodka, black raspberry reduction, Chambord liqueur, ginger foam, and 24k edible gold leaf.",
+          price: "$58",
+          tag: "Sensory Mixology",
+          img: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          name: "Grilled Peach Bourbon Fitzgerald",
+          desc: "Woodford Reserve Bourbon, house-made charred peach cordial, Angostura bitters, and hand-carved crystal ice.",
+          price: "$52",
+          tag: "Modern Classic",
+          img: "https://images.unsplash.com/photo-1536935338788-846bb9981813?auto=format&fit=crop&w=700&q=80"
+        }
+      ],
+      champagnes: [
+        {
+          name: "Champagne Veuve Clicquot Brut 750ml",
+          desc: "Served at 6°C in a silver chiller with two Riedel crystal flutes through the armored pass-through hatch.",
+          price: "$590",
+          tag: "Reims, France",
+          img: "https://images.unsplash.com/photo-1594498653385-d5172c532c00?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          name: "Champagne Moët & Chandon Rosé Impérial",
+          desc: "Vibrant notes of wild red berries and peach with a fine, persistent perlage.",
+          price: "$640",
+          tag: "Epernay, France",
+          img: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          name: "Brunello di Montalcino DOCG Riserva",
+          desc: "Pre-decanted for 30 minutes by our head sommelier prior to discreet suite delivery.",
+          price: "$520",
+          tag: "Tuscany, Italy",
+          img: "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=700&q=80"
+        }
+      ],
+      cafe: [
+        {
+          name: "Eclipse Executive Brunch (Complimentary Overnight)",
+          desc: "Flaky French butter croissants, Eggs Benedict, seasonal fruit, artisan charcuterie, cold-pressed orange juice, and Nespresso coffee.",
+          price: "Included Overnight",
+          tag: "Served until 11:30 AM",
+          img: "https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          name: "Belgian Waffles w/ Berries & Mascarpone",
+          desc: "Freshly crisped golden batter topped with warm forest berry compote, vanilla mascarpone cream, and orange blossom honey.",
+          price: "$68",
+          tag: "Pâtisserie 24h",
+          img: "https://images.unsplash.com/photo-1562376552-0d160a2f238d?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          name: "Morning Artisan Cheese & Sourdough Board",
+          desc: "Truffle Brie, aged Gruyere, 18-month Parma prosciutto, fresh figs, pecans, and stone-baked sourdough.",
+          price: "$115",
+          tag: "For Two",
+          img: "https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&w=700&q=80"
+        }
+      ]
+    };
+
+    window.switchGastroCategory = function(catKey) {
+      document.querySelectorAll('.gastro-tab-btn').forEach(btn => {
+        if (btn.getAttribute('data-gcat') === catKey) {
+          btn.className = 'gastro-tab-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-bold bg-champagne text-obsidian shadow-champagne-glow transition-all';
+        } else {
+          btn.className = 'gastro-tab-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-semibold bg-white/5 border border-white/10 text-zinc-300 hover:border-champagne/40 transition-all';
+        }
+      });
+
+      const items = GASTRO_MENU[catKey] || [];
+      document.getElementById('gastronomy-grid').innerHTML = items.map(item => `
+        <article class="velvet-card rounded-3xl overflow-hidden flex flex-col justify-between">
+          <div>
+            <div class="relative h-48 overflow-hidden bg-obsidian">
+              <img src="${item.img}" alt="${item.name}" class="w-full h-full object-cover" />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#120609] via-transparent to-transparent"></div>
+              <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-obsidian/85 text-champagne text-[10px] uppercase tracking-widest border border-champagne/30">
+                ${item.tag}
+              </span>
+            </div>
+            <div class="p-6">
+              <div class="flex items-start justify-between gap-3">
+                <h3 class="font-serif-motel text-2xl text-white leading-snug">${item.name}</h3>
+                <strong class="font-serif-motel text-xl text-champagne whitespace-nowrap">${item.price}</strong>
+              </div>
+              <p class="text-xs text-zinc-300 mt-2 leading-relaxed">${item.desc}</p>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-3 border-t border-white/10 flex items-center justify-between text-xs">
+            <span class="text-zinc-500">Delivered via armored pass-through hatch</span>
+            <button type="button" onclick="selectExperienceInBooking('Dining: ${item.name} (${item.price})')" class="text-champagne hover:underline font-semibold">
+              Pre-Order to Suite →
+            </button>
+          </div>
+        </article>
+      `).join('');
+    };
+
+    // 6. FAQ ACCORDION INTERATIVO
+    const FAQS = [
+      {
+        q: "How does advance booking work without exposing my personal details?",
+        a: "We never ask for government IDs or legal names when booking online. Simply enter an alias or initials to receive an Alphanumeric Token. Upon arriving at our automated gate, enter or scan the Token QR Code and the barrier displays your private garage number."
+      },
+      {
+        q: "What merchant name appears on my credit card or bank statement?",
+        a: "For your complete discretion, all transactions via wireless terminals, Apple Pay, or instant transfer are processed under our neutral corporate entity: 'EC HOSPITALITY HOLDINGS INC.', with zero mention of the Eclipse Suites brand."
+      },
+      {
+        q: "How do you guarantee heated pool temperatures and suite sanitization?",
+        a: "All Eclipse Suites pools and whirlpools feature digital heat exchangers maintained continuously at 34°C (93°F) alongside medical-grade Ozone filtration. Between every stay, air and surfaces undergo hospital-grade sanitization with Ozone ($O_3$) generators and UV-C lamps."
+      },
+      {
+        q: "What are the policies for Overnight stays, extra hours, and additional guests?",
+        a: "Overnight stays include Executive Breakfast served in-suite between 7:00 AM and 11:00 AM. Should you wish to extend your stay beyond your booked block, our system automatically applies a progressive discount to fractional extra hours or upgrades to the 12-hour rate whenever more advantageous."
+      }
+    ];
+
+    let openFaqIdx = 0;
+    function renderFaq() {
+      const container = document.getElementById('faq-container');
+      container.innerHTML = FAQS.map((item, idx) => {
+        const isOpen = idx === openFaqIdx;
+        return `
+          <div class="velvet-card rounded-2xl overflow-hidden border ${isOpen ? 'border-champagne/50' : 'border-white/10'}">
+            <button 
+              type="button" 
+              onclick="toggleFaq(${idx})" 
+              class="w-full p-5 text-left flex items-center justify-between gap-4 hover:bg-white/[0.02] transition-colors"
+            >
+              <span class="font-serif-motel text-xl text-white">${item.q}</span>
+              <span class="w-7 h-7 rounded-full bg-burgundyDeep border border-champagne/30 flex items-center justify-center text-champagne shrink-0 font-bold">
+                ${isOpen ? '−' : '+'}
+              </span>
+            </button>
+            <div class="${isOpen ? 'block' : 'hidden'} px-5 pb-5 pt-1 text-xs sm:text-sm text-zinc-300 leading-relaxed border-t border-white/10">
+              ${item.a}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    window.toggleFaq = function(idx) {
+      openFaqIdx = openFaqIdx === idx ? -1 : idx;
+      renderFaq();
+    };
+
+    // 7. FUNÇÕES DE RESERVA ANTECIPADA E INTEGRAÇÃO DE CARDS
+    window.selectSuiteForBooking = function(suiteName, periodLabel) {
+      const suiteSelect = document.getElementById('res-suite');
+      if (suiteSelect) {
+        for (let i = 0; i < suiteSelect.options.length; i++) {
+          if (suiteSelect.options[i].value.includes(suiteName)) {
+            suiteSelect.selectedIndex = i;
+            break;
+          }
+        }
+      }
+      const expInput = document.getElementById('res-experience');
+      if (expInput && !expInput.value) {
+        expInput.value = `Selected rate: ${periodLabel}`;
+      }
+      document.getElementById('reservas').scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        document.getElementById('res-alias').focus();
+      }, 600);
+    };
+
+    window.selectExperienceInBooking = function(expText) {
+      const expInput = document.getElementById('res-experience');
+      if (expInput) expInput.value = expText;
+      document.getElementById('reservas').scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        document.getElementById('res-alias').focus();
+      }, 600);
+    };
+
+    window.handleBookingSubmit = function(e) {
+      e.preventDefault();
+      const alias = document.getElementById('res-alias').value.trim();
+      const suite = document.getElementById('res-suite').value;
+      const period = document.getElementById('res-period').value;
+      const dt = document.getElementById('res-datetime').value.trim();
+      const exp = document.getElementById('res-experience').value.trim();
+
+      const token = '#ECL-' + Math.floor(1000 + Math.random() * 9000);
+      document.getElementById('pass-token').textContent = token;
+      document.getElementById('pass-details').textContent =
+        `Guest: ${alias} • ${suite} (${period}) scheduled for ${dt}. ${exp ? 'Add-on included: ' + exp + '.' : ''} Pool heating and climate control scheduled to activate 45 minutes before your check-in.`;
+      document.getElementById('booking-pass-box').classList.remove('hidden');
+    };
+
+    window.toggleMobileNav = function() {
+      document.getElementById('mobile-nav').classList.toggle('hidden');
+    };
+
+    // Inicialização de Todos os Módulos
+    document.addEventListener('DOMContentLoaded', () => {
+      renderLiveAvailability();
+      renderSuites();
+      switchGastroCategory('pratos');
+      renderFaq();
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+  </script>
+
+  <!-- Vercel Web Analytics & Speed Insights -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script defer src="/assets/js/demo-i18n-bar.js"></script>
+</body>
+</html>

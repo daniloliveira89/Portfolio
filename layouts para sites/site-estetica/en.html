@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- demo-i18n-autodetect --><script>(function(){var cur=location.pathname.endsWith('/en.html')?'en':(location.pathname.endsWith('/es.html')?'es':'pt');var q=(new URLSearchParams(location.search).get('lang')||'').toLowerCase();var target=null;if(q==='pt'||q==='en'||q==='es'){target=q;try{localStorage.setItem('portfolio_lang',q);localStorage.setItem('portfolio_lang_manual','1');}catch(e){}}else if(cur==='pt'){try{if(localStorage.getItem('portfolio_lang_manual')==='1'){var saved=localStorage.getItem('portfolio_lang');if(saved==='en'||saved==='es'||saved==='pt')target=saved;}}catch(e){}if(!target){var langs=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||navigator.userLanguage||'en'];for(var i=0;i<langs.length;i++){var c=(langs[i]||'').toLowerCase().split('-')[0];if(c==='pt'){target='pt';break;}if(c==='es'){target='es';break;}if(c==='en'){target='en';break;}}if(!target)target='en';}}if(target&&target!==cur){var file=target==='en'?'en.html':(target==='es'?'es.html':'index.html');var p=location.pathname;var np=p.slice(-5).toLowerCase()==='.html'?p.slice(0,p.lastIndexOf('/')+1)+file:(p.endsWith('/')?p+file:p+'/'+file);location.replace(np+location.search+location.hash);}})();</script>
+  <title>AURA DERM CLINIC — Medical Dermatology, Trichology & Precision Cosmiatry</title>
+  <meta name="description" content="Ultra-luxury medical clinic specializing in Medical Dermatology, Advanced Trichology, and Precision Cosmiatry in São Paulo. Bespoke protocols for skin longevity." />
+
+  <!-- Required favicons preserved -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="alternate icon" href="/favicon.ico" />
+
+  <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            alabaster: '#FAF8F5',
+            pearl: '#F3EFEA',
+            champagne: '#E8B4A2',
+            champagneDark: '#D19682',
+            champagneLight: '#F6E5DF',
+            onyx: '#1A1D1B',
+            graphite: '#2C302E',
+            sage: '#6E7772',
+            gold: '#C5A880'
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            'luxury': '0 25px 50px -12px rgba(26, 29, 27, 0.07)',
+            'floating': '0 18px 40px -10px rgba(26, 29, 27, 0.12)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --bg-alabaster: #FAF8F5;
+      --accent-champagne: #E8B4A2;
+      --ink-onyx: #1A1D1B;
+    }
+
+    body {
+      background-color: var(--bg-alabaster);
+      color: var(--ink-onyx);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FAF8F5;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D8CFC6;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #E8B4A2;
+    }
+
+    /* Before & After Slider */
+    .ba-container {
+      position: relative;
+      user-select: none;
+      overflow: hidden;
+      touch-action: pan-y;
+    }
+    .ba-Overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 50%;
+      overflow: hidden;
+      will-change: width;
+    }
+    .ba-handle {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: #FAF8F5;
+      transform: translateX(-50%);
+      pointer-events: none;
+      box-shadow: 0 0 18px rgba(0,0,0,0.35);
+    }
+    .ba-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 52px;
+      height: 52px;
+      border-radius: 9999px;
+      background: #1A1D1B;
+      color: #FAF8F5;
+      border: 2px solid #E8B4A2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 25px rgba(26, 29, 27, 0.35);
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+    .ba-container:hover .ba-button {
+      transform: translate(-50%, -50%) scale(1.07);
+      background: #E8B4A2;
+      color: #1A1D1B;
+    }
+
+    /* Custom Range Input */
+    input[type="range"].luxury-range {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      background: #E2DBD2;
+      border-radius: 999px;
+      outline: none;
+    }
+    input[type="range"].luxury-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #1A1D1B;
+      border: 3px solid #E8B4A2;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(26,29,27,0.25);
+      transition: transform 0.15s ease;
+    }
+    input[type="range"].luxury-range::-webkit-slider-thumb:hover {
+      transform: scale(1.12);
+    }
+
+    /* Subtle grain texture overlay */
+    .editorial-border {
+      border-color: rgba(26, 29, 27, 0.09);
+    }
+
+    .glass-nav {
+      background: rgba(250, 248, 245, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    /* Accordion transition */
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.38s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+      opacity: 0;
+    }
+    .faq-item.active .faq-answer {
+      opacity: 1;
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+      background-color: #1A1D1B;
+      color: #FAF8F5;
+    }
+  </style>
+</head>
+
+<body class="selection:bg-champagne selection:text-onyx">
+
+  <!-- TOP MEDICAL CREDENTIAL BAR -->
+  <div class="bg-onyx text-alabaster text-xs py-2.5 px-4 sm:px-8 border-b border-white/10">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-3">
+        <span class="inline-block w-2 h-2 rounded-full bg-champagne animate-pulse"></span>
+        <span class="tracking-widest uppercase font-medium text-[11px] text-champagne">Medical Technical Direction:</span>
+        <span class="text-alabaster/90">Dr. Helena Vasconcelos • CRM-SP 168.420 | RQE 74.319 (SBD)</span>
+      </div>
+      <div class="hidden md:flex items-center gap-6 text-alabaster/75 text-[11px] tracking-wide">
+        <span>Jardins — São Paulo, SP</span>
+        <span>•</span>
+        <span>Private Appointments by Schedule Only</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY NAVIGATION -->
+  <header class="sticky top-0 z-40 glass-nav border-b editorial-border transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-full border border-onyx/20 flex items-center justify-center bg-pearl group-hover:border-champagne transition-colors">
+          <span class="font-serif text-lg tracking-tighter text-onyx">A</span>
+        </div>
+        <div>
+          <span class="font-serif text-xl sm:text-2xl tracking-[0.18em] text-onyx block leading-none">AURA DERM</span>
+          <span class="text-[10px] uppercase tracking-[0.28em] text-sage block mt-1">Medical & Cosmiatry</span>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-onyx/80">
+        <a href="#protocolos" class="hover:text-onyx transition-colors">Protocols</a>
+        <a href="#comparador" class="hover:text-onyx transition-colors">Clinical Results</a>
+        <a href="#diagnostico" class="hover:text-onyx transition-colors">Digital Diagnosis</a>
+        <a href="#calculadora" class="hover:text-onyx transition-colors">Biostimulation</a>
+        <a href="#corpo-clinico" class="hover:text-onyx transition-colors">Medical Staff</a>
+        <a href="#faq" class="hover:text-onyx transition-colors">FAQ</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button onclick="openVipDrawer('Global Dermatological Assessment')" class="bg-onyx text-alabaster hover:bg-champagne hover:text-onyx transition-all duration-300 px-5 sm:px-6 py-3 rounded-full text-xs uppercase tracking-[0.16em] font-semibold flex items-center gap-2.5 shadow-sm">
+          <span>VIP Concierge</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 1. CINEMATIC HERO -->
+  <section class="relative pt-10 pb-20 lg:pt-16 lg:pb-28 overflow-hidden border-b editorial-border">
+    <!-- Subtle Ambient Aura -->
+    <div class="absolute -top-32 -right-32 w-[520px] h-[520px] rounded-full bg-champagne/20 blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 left-1/4 w-[380px] h-[380px] rounded-full bg-pearl blur-2xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+        
+        <!-- Left Column: Editorial Typography & Medical Seals -->
+        <div class="lg:col-span-7 space-y-8">
+          <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-pearl border border-onyx/10">
+            <span class="w-2 h-2 rounded-full bg-champagneDark"></span>
+            <span class="text-[11px] uppercase tracking-[0.2em] font-semibold text-onyx/80">Skin Architecture & Cellular Longevity</span>
+          </div>
+
+          <h1 class="font-serif text-4xl sm:text-6xl lg:text-[64px] text-onyx leading-[1.08] tracking-tight">
+            The quiet science of <span class="italic font-normal text-champagneDark">naturally</span> extraordinary skin.
+          </h1>
+
+          <p class="text-sage text-base sm:text-lg leading-relaxed max-w-2xl font-normal">
+            At Aura Derm Clinic, we combine multimodal imaging diagnostics, dermal matrix technologies, and high-precision injectables to restore structure, radiance, and hair density — without altering your facial identity.
+          </p>
+
+          <!-- CTA Group -->
+          <div class="flex flex-col sm:flex-row sm:items-center gap-4 pt-2">
+            <button onclick="openVipDrawer('Precision Medical Consultation')" class="bg-onyx text-alabaster hover:bg-champagne hover:text-onyx transition-all duration-300 px-8 py-4 rounded-full text-xs uppercase tracking-[0.18em] font-semibold shadow-luxury flex items-center justify-center gap-3">
+              <span>Book Medical Consultation</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </button>
+            <a href="#diagnostico" class="px-7 py-4 rounded-full border border-onyx/20 hover:border-onyx text-onyx text-xs uppercase tracking-[0.18em] font-semibold transition-all text-center">
+              Start Clinical Diagnosis
+            </a>
+          </div>
+
+          <!-- Visible Specialist CRM / RQE Badges -->
+          <div class="pt-6 border-t editorial-border">
+            <p class="text-[11px] uppercase tracking-[0.2em] text-sage mb-4 font-semibold">Board-Certified Specialists • Brazilian Society of Dermatology</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <!-- Specialist 1 -->
+              <div class="p-4 rounded-2xl bg-white/80 border border-onyx/10 flex items-center gap-3.5 shadow-sm">
+                <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=240&q=80" alt="Dr. Helena Vasconcelos" class="w-12 h-12 rounded-full object-cover border border-champagne" />
+                <div>
+                  <div class="flex items-center gap-1.5">
+                    <h2 class="font-serif text-sm font-semibold text-onyx">Dr. Helena Vasconcelos</h2>
+                    <svg class="w-4 h-4 text-champagneDark shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                  </div>
+                  <p class="text-[11px] text-sage font-medium">Cosmiatry & Lasers</p>
+                  <p class="text-[10px] font-mono uppercase tracking-wider text-onyx bg-champagneLight px-2 py-0.5 rounded mt-1 inline-block">CRM-SP 168.420 • RQE 74.319</p>
+                </div>
+              </div>
+
+              <!-- Specialist 2 -->
+              <div class="p-4 rounded-2xl bg-white/80 border border-onyx/10 flex items-center gap-3.5 shadow-sm">
+                <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=240&q=80" alt="Dr. Eduardo Alencar" class="w-12 h-12 rounded-full object-cover border border-champagne" />
+                <div>
+                  <div class="flex items-center gap-1.5">
+                    <h2 class="font-serif text-sm font-semibold text-onyx">Dr. Eduardo Alencar</h2>
+                    <svg class="w-4 h-4 text-champagneDark shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                  </div>
+                  <p class="text-[11px] text-sage font-medium">Medical Trichology & Hair Restoration</p>
+                  <p class="text-[10px] font-mono uppercase tracking-wider text-onyx bg-champagneLight px-2 py-0.5 rounded mt-1 inline-block">CRM-SP 154.890 • RQE 68.104</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: High-End Medical Editorial Visual -->
+        <div class="lg:col-span-5 relative">
+          <div class="relative rounded-[32px] overflow-hidden shadow-luxury border border-onyx/10 bg-pearl aspect-[4/5]">
+            <img 
+              src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=1200&q=85" 
+              alt="Patient undergoing luxury aesthetic evaluation at Aura Derm Clinic" 
+              class="w-full h-full object-cover object-center"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-onyx/65 via-transparent to-transparent"></div>
+
+            <!-- Floating Clinical Badge -->
+            <div class="absolute top-5 left-5 right-5 flex justify-between items-center">
+              <span class="px-3.5 py-1.5 rounded-full bg-alabaster/90 backdrop-blur-md text-onyx text-[11px] font-semibold tracking-wider uppercase">
+                3D Digital Spectroscopy
+              </span>
+              <span class="w-9 h-9 rounded-full bg-onyx/80 text-champagne flex items-center justify-center backdrop-blur-md text-xs font-serif">
+                99%
+              </span>
+            </div>
+
+            <!-- Bottom Overlay Card -->
+            <div class="absolute bottom-5 left-5 right-5 p-5 rounded-2xl bg-alabaster/95 backdrop-blur-md border border-white/40 shadow-floating">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[10px] uppercase tracking-[0.2em] text-sage font-semibold">Aura Signature Protocol</span>
+                <span class="text-xs font-serif italic text-champagneDark">Quiet Beauty Standard</span>
+              </div>
+              <p class="font-serif text-base text-onyx leading-snug">
+                Pre-procedure dermal ultrasound mapping for absolute vascular safety.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. PRECISION PROCEDURES & PROTOCOLS SECTION -->
+  <section id="protocolos" class="py-24 bg-alabaster border-b editorial-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+        <div>
+          <span class="text-xs uppercase tracking-[0.24em] text-champagneDark font-semibold block mb-3">Curated Technology & Injectables</span>
+          <h2 class="font-serif text-3xl sm:text-5xl text-onyx leading-tight">High-Precision Clinical Protocols</h2>
+        </div>
+        <p class="text-sage max-w-md text-sm leading-relaxed">
+          We curate exclusively gold-standard technologies backed by scientific evidence, approved by the FDA and ANVISA, and performed solely by board-certified dermatologists.
+        </p>
+      </div>
+
+      <!-- Filter Pills -->
+      <div class="flex flex-wrap gap-2 mb-10" id="protocol-filters">
+        <button onclick="filterProtocols('all')" data-filter="all" class="proto-tab active bg-onyx text-alabaster px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-semibold transition-all">
+          All Protocols (4)
+        </button>
+        <button onclick="filterProtocols('injetaveis')" data-filter="injetaveis" class="proto-tab bg-pearl text-onyx/80 hover:bg-champagneLight px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-semibold transition-all">
+          Biostimulators & Matrix
+        </button>
+        <button onclick="filterProtocols('tecnologias')" data-filter="tecnologias" class="proto-tab bg-pearl text-onyx/80 hover:bg-champagneLight px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-semibold transition-all">
+          Robotics & Lasers
+        </button>
+        <button onclick="filterProtocols('tricologia')" data-filter="tricologia" class="proto-tab bg-pearl text-onyx/80 hover:bg-champagneLight px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-semibold transition-all">
+          Medical Trichology
+        </button>
+      </div>
+
+      <!-- Procedures Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="protocols-grid">
+        
+        <!-- Card 1: Bioestimuladores Radiesse / Sculptra -->
+        <article data-category="injetaveis" class="protocol-card group bg-white rounded-3xl p-8 border editorial-border shadow-luxury flex flex-col justify-between hover:border-champagne transition-all duration-300">
+          <div>
+            <div class="flex items-center justify-between gap-4 mb-6">
+              <span class="px-3.5 py-1 rounded-full bg-champagneLight text-onyx text-[11px] font-semibold uppercase tracking-wider">Dermal Biostimulation</span>
+              <span class="text-xs text-sage font-mono">Duration: 45 min • Zero Downtime</span>
+            </div>
+            <h3 class="font-serif text-2xl sm:text-3xl text-onyx mb-3">Radiesse® & Sculptra® Biostimulators</h3>
+            <p class="text-sage text-sm leading-relaxed mb-6">
+              Tensional architecture using calcium hydroxylapatite and poly-L-lactic acid in customized dilutions. Stimulates type I and III neocollagenesis, restoring dermal thickness, jawline contour, and neck firmness with progressive naturalness.
+            </p>
+            <div class="grid grid-cols-3 gap-3 p-4 rounded-2xl bg-alabaster border editorial-border mb-6 text-center">
+              <div>
+                <span class="block text-[10px] uppercase tracking-wider text-sage">Collagen Peak</span>
+                <span class="font-serif text-base font-semibold text-onyx">90 to 120 days</span>
+              </div>
+              <div class="border-x editorial-border">
+                <span class="block text-[10px] uppercase tracking-wider text-sage">Longevity</span>
+                <span class="font-serif text-base font-semibold text-onyx">18 to 24 months</span>
+              </div>
+              <div>
+                <span class="block text-[10px] uppercase tracking-wider text-sage">Anesthesia</span>
+                <span class="font-serif text-base font-semibold text-onyx">Topical + Local</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t editorial-border">
+            <span class="text-xs text-onyx/70 font-medium">Indicated for mild to moderate laxity</span>
+            <button onclick="openVipDrawer('Radiesse / Sculptra Biostimulators')" class="text-xs uppercase tracking-widest font-bold text-onyx group-hover:text-champagneDark flex items-center gap-2 transition-colors">
+              <span>Reserve Protocol</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </article>
+
+        <!-- Card 2: Ultraformer MPT -->
+        <article data-category="tecnologias" class="protocol-card group bg-white rounded-3xl p-8 border editorial-border shadow-luxury flex flex-col justify-between hover:border-champagne transition-all duration-300">
+          <div>
+            <div class="flex items-center justify-between gap-4 mb-6">
+              <span class="px-3.5 py-1 rounded-full bg-champagneLight text-onyx text-[11px] font-semibold uppercase tracking-wider">Micro & Macrofocused Ultrasound</span>
+              <span class="text-xs text-sage font-mono">Duration: 60 min • Immediate Return</span>
+            </div>
+            <h3 class="font-serif text-2xl sm:text-3xl text-onyx mb-3">Ultraformer MPT® Full Face & Neck</h3>
+            <p class="text-sage text-sm leading-relaxed mb-6">
+              Micropulsed Technology delivering 417 thermal coagulation points per shot. Targets the muscular fascia (SMAS) directly, promoting a non-surgical lifting effect, zygomatic anchoring, and selective submental contouring.
+            </p>
+            <div class="grid grid-cols-3 gap-3 p-4 rounded-2xl bg-alabaster border editorial-border mb-6 text-center">
+              <div>
+                <span class="block text-[10px] uppercase tracking-wider text-sage">Target Layer</span>
+                <span class="font-serif text-base font-semibold text-onyx">SMAS (4.5mm)</span>
+              </div>
+              <div class="border-x editorial-border">
+                <span class="block text-[10px] uppercase tracking-wider text-sage">Sessions</span>
+                <span class="font-serif text-base font-semibold text-onyx">1 to 2 / year</span>
+              </div>
+              <div>
+                <span class="block text-[10px] uppercase tracking-wider text-sage">Comfort</span>
+                <span class="font-serif text-base font-semibold text-onyx">3x faster</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t editorial-border">
+            <span class="text-xs text-onyx/70 font-medium">Non-invasive lifting and contour definition</span>
+            <button onclick="openVipDrawer('Ultraformer MPT Full Face')" class="text-xs uppercase tracking-widest font-bold text-onyx group-hover:text-champagneDark flex items-center gap-2 transition-colors">
+              <span>Reserve Protocol</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </article>
+
+        <!-- Card 3: Laser Lavieen -->
+        <article data-category="tecnologias" class="protocol-card group bg-white rounded-3xl p-8 border editorial-border shadow-luxury flex flex-col justify-between hover:border-champagne transition-all duration-300">
+          <div>
+            <div class="flex items-center justify-between gap-4 mb-6">
+              <span class="px-3.5 py-1 rounded-full bg-champagneLight text-onyx text-[11px] font-semibold uppercase tracking-wider">1927nm Thulium Laser</span>
+              <span class="text-xs text-sage font-mono">Duration: 40 min • Glow in 5 days</span>
+            </div>
+            <h3 class="font-serif text-2xl sm:text-3xl text-onyx mb-3">Lavieen® Laser & Drug Delivery</h3>
+            <p class="text-sage text-sm leading-relaxed mb-6">
+              Sub-ablative fractional Thulium laser targeting the dermo-epidermal junction. Refines enlarged pores, evens out refractory melasma, smooths fine lines, and delivers a "Glass Skin" effect paired with sterile infusion of exosomes and PDRN.
+            </p>
+            <div class="grid grid-cols-3 gap-3 p-4 rounded-2xl bg-alabaster border editorial-border mb-6 text-center">
+              <div>
+                <span class="block text-[10px] uppercase tracking-wider text-sage">Wavelength</span>
+                <span class="font-serif text-base font-semibold text-onyx">1927 nm</span>
+              </div>
+              <div class="border-x editorial-border">
+                <span class="block text-[10px] uppercase tracking-wider text-sage">Recovery</span>
+                <span class="font-serif text-base font-semibold text-onyx">48 to 72 hours</span>
+              </div>
+              <div>
+                <span class="block text-[10px] uppercase tracking-wider text-sage">Actives</span>
+                <span class="font-serif text-base font-semibold text-onyx">+PDRN / Exosomes</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t editorial-border">
+            <span class="text-xs text-onyx/70 font-medium">Porous texture, sun spots & skin radiance</span>
+            <button onclick="openVipDrawer('Lavieen Laser + Exosomes')" class="text-xs uppercase tracking-widest font-bold text-onyx group-hover:text-champagneDark flex items-center gap-2 transition-colors">
+              <span>Reserve Protocol</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </article>
+
+        <!-- Card 4: Medical Trichology & MMP Capilar -->
+        <article data-category="tricologia" class="protocol-card group bg-white rounded-3xl p-8 border editorial-border shadow-luxury flex flex-col justify-between hover:border-champagne transition-all duration-300">
+          <div>
+            <div class="flex items-center justify-between gap-4 mb-6">
+              <span class="px-3.5 py-1 rounded-full bg-champagneLight text-onyx text-[11px] font-semibold uppercase tracking-wider">Regenerative Hair Therapy</span>
+              <span class="text-xs text-sage font-mono">Duration: 50 min • Painless</span>
+            </div>
+            <h3 class="font-serif text-2xl sm:text-3xl text-onyx mb-3">Precision Trichology & Scalp MMP®</h3>
+            <p class="text-sage text-sm leading-relaxed mb-6">
+              Robotic digital trichoscopy diagnostics (FotoFinder®) combined with Microinfusion of Medications into the Skin (MMP®), injectable androgen blockers, growth factors, and low-level LED photobiomodulation.
+            </p>
+            <div class="grid grid-cols-3 gap-3 p-4 rounded-2xl bg-alabaster border editorial-border mb-6 text-center">
+              <div>
+                <span class="block text-[10px] uppercase tracking-wider text-sage">Diagnostics</span>
+                <span class="font-serif text-base font-semibold text-onyx">FotoFinder HD</span>
+              </div>
+              <div class="border-x editorial-border">
+                <span class="block text-[10px] uppercase tracking-wider text-sage">Indication</span>
+                <span class="font-serif text-base font-semibold text-onyx">Alopecia / Effluvium</span>
+              </div>
+              <div>
+                <span class="block text-[10px] uppercase tracking-wider text-sage">Frequency</span>
+                <span class="font-serif text-base font-semibold text-onyx">Monthly Cycles</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t editorial-border">
+            <span class="text-xs text-onyx/70 font-medium">Follicular redensification and shedding control</span>
+            <button onclick="openVipDrawer('Trichology & Scalp MMP Assessment')" class="text-xs uppercase tracking-widest font-bold text-onyx group-hover:text-champagneDark flex items-center gap-2 transition-colors">
+              <span>Reserve Protocol</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. INTERACTIVE BEFORE & AFTER COMPARATOR -->
+  <section id="comparador" class="py-24 bg-pearl border-b editorial-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Info & Case Selector -->
+        <div class="lg:col-span-5 space-y-6">
+          <span class="text-xs uppercase tracking-[0.24em] text-champagneDark font-semibold block">Documented Clinical Evidence</span>
+          <h2 class="font-serif text-3xl sm:text-5xl text-onyx leading-tight">
+            Dermal Progression Under Standardized Lighting
+          </h2>
+          <p class="text-sage text-sm sm:text-base leading-relaxed">
+            Drag the handle across the clinical photograph to inspect epidermal quality restoration, attenuation of actinic spots, and ligament repositioning after 90 days of a combined protocol.
+          </p>
+
+          <!-- Case Switcher -->
+          <div class="space-y-3 pt-2">
+            <button onclick="switchClinicalCase(0)" id="case-btn-0" class="w-full text-left p-4 rounded-2xl bg-onyx text-alabaster transition-all flex items-center justify-between">
+              <div>
+                <span class="text-[10px] uppercase tracking-widest text-champagne block">Clinical Case #01 • 90 Days</span>
+                <span class="font-serif text-base">Lavieen® + Radiesse® Biostimulator</span>
+              </div>
+              <span class="text-xs font-mono px-2.5 py-1 rounded bg-white/10">Active</span>
+            </button>
+
+            <button onclick="switchClinicalCase(1)" id="case-btn-1" class="w-full text-left p-4 rounded-2xl bg-alabaster text-onyx border editorial-border hover:border-champagne transition-all flex items-center justify-between">
+              <div>
+                <span class="text-[10px] uppercase tracking-widest text-sage block">Clinical Case #02 • 120 Days</span>
+                <span class="font-serif text-base">Ultraformer MPT® + Sculptra® Face & Neck</span>
+              </div>
+              <span class="text-xs font-mono px-2.5 py-1 rounded bg-onyx/5">View case</span>
+            </button>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-alabaster/80 border editorial-border text-[11px] text-sage leading-relaxed">
+            <strong class="text-onyx">CFM/SBD Ethics Note:</strong> Photographs captured with a Vectra 3D system under cross-polarized lighting with zero digital retouching. Results vary according to individual biological response.
+          </div>
+        </div>
+
+        <!-- Right Interactive Drag Slider -->
+        <div class="lg:col-span-7">
+          <div class="bg-alabaster p-3 sm:p-5 rounded-[32px] shadow-luxury border editorial-border">
+            <div 
+              id="ba-slider" 
+              class="ba-container relative w-full h-[420px] sm:h-[520px] rounded-2xl overflow-hidden cursor-ew-resize"
+            >
+              <!-- AFTER IMAGE (Full Background) -->
+              <img 
+                id="ba-after-img"
+                src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=1200&q=85" 
+                alt="After dermatological protocol" 
+                class="w-full h-full object-cover object-center select-none pointer-events-none"
+              />
+              <span class="absolute top-4 right-4 z-20 px-3.5 py-1.5 rounded-full bg-onyx/85 text-champagne text-[11px] uppercase tracking-widest font-semibold backdrop-blur-md">
+                After (90 Days)
+              </span>
+
+              <!-- BEFORE IMAGE (Clipped Overlay) -->
+              <div id="ba-before-overlay" class="ba-Overlay" style="width: 50%;">
+                <img 
+                  id="ba-before-img"
+                  src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=1200&q=85" 
+                  alt="Before dermatological protocol" 
+                  class="h-full max-w-none object-cover object-center select-none pointer-events-none"
+                  style="filter: contrast(1.16) sepia(0.28) saturate(0.82) brightness(0.92);"
+                />
+                <span class="absolute top-4 left-4 z-20 px-3.5 py-1.5 rounded-full bg-alabaster/90 text-onyx text-[11px] uppercase tracking-widest font-semibold backdrop-blur-md">
+                  Before (Pre-Protocol)
+                </span>
+              </div>
+
+              <!-- DRAG HANDLE -->
+              <div id="ba-handle" class="ba-handle" style="left: 50%;">
+                <div class="ba-button">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l-4 3 4 3m8-6l4 3-4 3"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Metrics Footer below slider -->
+            <div class="grid grid-cols-3 gap-4 pt-4 px-2 text-center">
+              <div>
+                <span class="text-[11px] uppercase tracking-wider text-sage block">Tone Evenness</span>
+                <span id="metric-1" class="font-serif text-lg sm:text-xl text-onyx font-semibold">+64% Homogeneity</span>
+              </div>
+              <div class="border-x editorial-border">
+                <span class="text-[11px] uppercase tracking-wider text-sage block">Pore Visibility</span>
+                <span id="metric-2" class="font-serif text-lg sm:text-xl text-onyx font-semibold">-48% Mean Diameter</span>
+              </div>
+              <div>
+                <span class="text-[11px] uppercase tracking-wider text-sage block">Dermal Density</span>
+                <span id="metric-3" class="font-serif text-lg sm:text-xl text-onyx font-semibold">+39% Neocollagenesis</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. INTERACTIVE 3-STEP CLINICAL DIAGNOSIS QUIZ -->
+  <section id="diagnostico" class="py-24 bg-alabaster border-b editorial-border">
+    <div class="max-w-5xl mx-auto px-4 sm:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <span class="text-xs uppercase tracking-[0.24em] text-champagneDark font-semibold block mb-3">Personalized Algorithmic Screening</span>
+        <h2 class="font-serif text-3xl sm:text-5xl text-onyx mb-4">3-Step Clinical Diagnosis</h2>
+        <p class="text-sage text-sm sm:text-base">
+          Answer 3 biometric parameters so our system can suggest the ideal treatment architecture prior to your in-person consultation.
+        </p>
+      </div>
+
+      <!-- Quiz Container Card -->
+      <div class="bg-white rounded-[32px] p-6 sm:p-12 border editorial-border shadow-luxury">
+        
+        <!-- Progress Header -->
+        <div class="mb-10">
+          <div class="flex items-center justify-between text-xs uppercase tracking-widest font-semibold text-sage mb-3">
+            <span id="quiz-step-label">Step 01 of 03 • Primary Concern</span>
+            <span id="quiz-progress-text" class="text-onyx">33%</span>
+          </div>
+          <div class="w-full h-1.5 bg-pearl rounded-full overflow-hidden">
+            <div id="quiz-progress-bar" class="h-full bg-onyx transition-all duration-500" style="width: 33.33%;"></div>
+          </div>
+        </div>
+
+        <!-- STEP 1: Primary Concern -->
+        <div id="quiz-step-1" class="quiz-step space-y-6">
+          <h3 class="font-serif text-2xl sm:text-3xl text-onyx">1. What is your current clinical priority?</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <button onclick="selectQuizOption(1, 'flacidez', 'Facial Laxity, Contour & Lifting Effect')" class="quiz-opt text-left p-5 rounded-2xl border editorial-border hover:border-onyx hover:bg-pearl/50 transition-all group">
+              <span class="text-xs uppercase tracking-widest text-champagneDark font-semibold block mb-1">Structure & Support</span>
+              <span class="font-serif text-xl text-onyx block mb-1">Laxity & Loss of Contour</span>
+              <span class="text-xs text-sage">Lower-third sagging, pronounced folds, or neck laxity.</span>
+            </button>
+
+            <button onclick="selectQuizOption(1, 'manchas', 'Texture, Enlarged Pores, Melasma & Glow')" class="quiz-opt text-left p-5 rounded-2xl border editorial-border hover:border-onyx hover:bg-pearl/50 transition-all group">
+              <span class="text-xs uppercase tracking-widest text-champagneDark font-semibold block mb-1">Epidermal Quality</span>
+              <span class="font-serif text-xl text-onyx block mb-1">Spots, Pores & Scars</span>
+              <span class="text-xs text-sage">Dull skin, melasma, visible pores, or superficial fine lines.</span>
+            </button>
+
+            <button onclick="selectQuizOption(1, 'capilar', 'Hair Thinning, Shedding & Density Loss')" class="quiz-opt text-left p-5 rounded-2xl border editorial-border hover:border-onyx hover:bg-pearl/50 transition-all group">
+              <span class="text-xs uppercase tracking-widest text-champagneDark font-semibold block mb-1">Medical Trichology</span>
+              <span class="font-serif text-xl text-onyx block mb-1">Hair Shedding or Thinning</span>
+              <span class="text-xs text-sage">Androgenetic alopecia, receding hairline, or post-stress effluvium.</span>
+            </button>
+
+            <button onclick="selectQuizOption(1, 'preventivo', 'Prevention, Collagen Banking & Quiet Beauty')" class="quiz-opt text-left p-5 rounded-2xl border editorial-border hover:border-onyx hover:bg-pearl/50 transition-all group">
+              <span class="text-xs uppercase tracking-widest text-champagneDark font-semibold block mb-1">Cellular Longevity</span>
+              <span class="font-serif text-xl text-onyx block mb-1">Collagen Banking & Prevention</span>
+              <span class="text-xs text-sage">Preventive maintenance of dermal density with absolute naturalness.</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 2: Biological Decade & Biotype -->
+        <div id="quiz-step-2" class="quiz-step space-y-6 hidden">
+          <h3 class="font-serif text-2xl sm:text-3xl text-onyx">2. What is your biological skin profile?</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <button onclick="selectQuizOption(2, '25-34', '25 to 34 years • Active Prevention')" class="quiz-opt text-left p-5 rounded-2xl border editorial-border hover:border-onyx hover:bg-pearl/50 transition-all">
+              <span class="font-mono text-xs text-champagneDark block mb-1">Tier I</span>
+              <span class="font-serif text-xl text-onyx block mb-1">25 to 34 years</span>
+              <span class="text-xs text-sage">Onset of the 1% annual decline in natural collagen synthesis.</span>
+            </button>
+
+            <button onclick="selectQuizOption(2, '35-48', '35 to 48 years • Restructuring')" class="quiz-opt text-left p-5 rounded-2xl border editorial-border hover:border-onyx hover:bg-pearl/50 transition-all">
+              <span class="font-mono text-xs text-champagneDark block mb-1">Tier II</span>
+              <span class="font-serif text-xl text-onyx block mb-1">35 to 48 years</span>
+              <span class="text-xs text-sage">Need for extracellular matrix replenishment and muscular anchoring.</span>
+            </button>
+
+            <button onclick="selectQuizOption(2, '49+', '49+ years • Deep Regeneration')" class="quiz-opt text-left p-5 rounded-2xl border editorial-border hover:border-onyx hover:bg-pearl/50 transition-all">
+              <span class="font-mono text-xs text-champagneDark block mb-1">Tier III</span>
+              <span class="font-serif text-xl text-onyx block mb-1">49+ years</span>
+              <span class="text-xs text-sage">Focus on intense redensification, structural bone support, and multi-layer stimulation.</span>
+            </button>
+          </div>
+          <div class="pt-2">
+            <button onclick="goToQuizStep(1)" class="text-xs uppercase tracking-widest text-sage hover:text-onyx font-semibold">← Back to previous step</button>
+          </div>
+        </div>
+
+        <!-- STEP 3: Downtime Availability -->
+        <div id="quiz-step-3" class="quiz-step space-y-6 hidden">
+          <h3 class="font-serif text-2xl sm:text-3xl text-onyx">3. What is your recovery availability (Downtime)?</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <button onclick="selectQuizOption(3, 'zero', 'Zero Downtime (Immediate social return)')" class="quiz-opt text-left p-5 rounded-2xl border editorial-border hover:border-onyx hover:bg-pearl/50 transition-all">
+              <span class="text-xs uppercase tracking-widest text-champagneDark font-semibold block mb-1">Executive Schedule</span>
+              <span class="font-serif text-xl text-onyx block mb-1">Immediate Social Return</span>
+              <span class="text-xs text-sage">I need to return to meetings and events the same day, with no peeling or redness.</span>
+            </button>
+
+            <button onclick="selectQuizOption(3, 'moderado', '48h to 72h mild recovery')" class="quiz-opt text-left p-5 rounded-2xl border editorial-border hover:border-onyx hover:bg-pearl/50 transition-all">
+              <span class="text-xs uppercase tracking-widest text-champagneDark font-semibold block mb-1">High Performance</span>
+              <span class="font-serif text-xl text-onyx block mb-1">I accept 48h to 72h of Mild Redness</span>
+              <span class="text-xs text-sage">I am comfortable with mild epidermal renewal to achieve faster results.</span>
+            </button>
+          </div>
+          <div class="pt-2">
+            <button onclick="goToQuizStep(2)" class="text-xs uppercase tracking-widest text-sage hover:text-onyx font-semibold">← Back to previous step</button>
+          </div>
+        </div>
+
+        <!-- QUIZ RESULT VIEW -->
+        <div id="quiz-result" class="hidden space-y-6">
+          <div class="p-6 sm:p-8 rounded-3xl bg-pearl border border-champagne">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <span class="px-3 py-1 rounded-full bg-onyx text-champagne text-[11px] uppercase tracking-widest font-semibold">
+                Recommended Personalized Protocol
+              </span>
+              <span id="quiz-summary-tags" class="text-xs text-sage font-mono"></span>
+            </div>
+
+            <h3 id="quiz-rec-title" class="font-serif text-2xl sm:text-4xl text-onyx mb-3"></h3>
+            <p id="quiz-rec-desc" class="text-sage text-sm sm:text-base leading-relaxed mb-6"></p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 rounded-2xl bg-alabaster border editorial-border mb-6">
+              <div>
+                <span class="text-[10px] uppercase tracking-widest text-sage block">Primary Technology</span>
+                <span id="quiz-rec-tech" class="font-serif text-base font-semibold text-onyx"></span>
+              </div>
+              <div>
+                <span class="text-[10px] uppercase tracking-widest text-sage block">Estimated Sessions</span>
+                <span id="quiz-rec-sessions" class="font-serif text-base font-semibold text-onyx"></span>
+              </div>
+              <div>
+                <span class="text-[10px] uppercase tracking-widest text-sage block">Recommended Specialist</span>
+                <span id="quiz-rec-doctor" class="font-serif text-base font-semibold text-onyx"></span>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <button id="quiz-book-btn" class="bg-onyx text-alabaster hover:bg-champagne hover:text-onyx transition-all px-7 py-4 rounded-full text-xs uppercase tracking-widest font-semibold shadow-sm">
+                Book This Protocol via VIP Concierge
+              </button>
+              <button onclick="resetQuiz()" class="text-xs uppercase tracking-widest text-sage hover:text-onyx font-semibold">
+                Retake Diagnosis
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. COLLAGEN STIMULATION CALCULATOR -->
+  <section id="calculadora" class="py-24 bg-onyx text-alabaster relative overflow-hidden">
+    <div class="absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-champagne/10 blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Controls -->
+        <div class="lg:col-span-6 space-y-8">
+          <div>
+            <span class="text-xs uppercase tracking-[0.24em] text-champagne font-semibold block mb-3">Biometrics & Dermal Reserve</span>
+            <h2 class="font-serif text-3xl sm:text-5xl leading-tight mb-4">
+              Collagen Depletion & Biostimulation Simulator
+            </h2>
+            <p class="text-alabaster/70 text-sm sm:text-base leading-relaxed">
+              Starting at age 25, human dermis loses roughly 1% to 1.5% of its collagen fibers per year, a process accelerated by photoaging and oxidative stress. Calculate your estimated deficit and structural replenishment plan.
+            </p>
+          </div>
+
+          <!-- Age Slider -->
+          <div class="space-y-3 bg-white/5 p-6 rounded-2xl border border-white/10">
+            <div class="flex justify-between items-center">
+              <label for="collagen-age" class="text-xs uppercase tracking-widest text-champagne font-semibold">Current Chronological Age</label>
+              <span class="font-serif text-3xl text-alabaster"><span id="age-value">38</span> yrs</span>
+            </div>
+            <input 
+              type="range" 
+              id="collagen-age" 
+              min="22" 
+              max="70" 
+              value="38" 
+              class="luxury-range"
+              oninput="calculateCollagen()"
+            />
+            <div class="flex justify-between text-[11px] text-alabaster/50 font-mono">
+              <span>22 yrs (100% Reserve)</span>
+              <span>45 yrs</span>
+              <span>70 yrs</span>
+            </div>
+          </div>
+
+          <!-- Lifestyle Exposure Factor -->
+          <div class="space-y-3">
+            <label class="text-xs uppercase tracking-widest text-champagne font-semibold block">Sun Exposure & Lifestyle Factor</label>
+            <div class="grid grid-cols-3 gap-3">
+              <button onclick="setCollagenFactor(1.0, this)" class="col-factor-btn active-factor p-3.5 rounded-xl border border-champagne bg-champagne/20 text-alabaster text-xs font-semibold transition-all">
+                Controlled / Daily Photoprotection
+              </button>
+              <button onclick="setCollagenFactor(1.25, this)" class="col-factor-btn p-3.5 rounded-xl border border-white/15 bg-white/5 text-alabaster/70 hover:text-alabaster text-xs font-semibold transition-all">
+                Sun Exposure / Outdoor Sports
+              </button>
+              <button onclick="setCollagenFactor(1.45, this)" class="col-factor-btn p-3.5 rounded-xl border border-white/15 bg-white/5 text-alabaster/70 hover:text-alabaster text-xs font-semibold transition-all">
+                High Stress / Irregular Sleep
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Output Dashboard -->
+        <div class="lg:col-span-6">
+          <div class="bg-graphite rounded-[32px] p-8 sm:p-10 border border-white/10 shadow-2xl space-y-8">
+            <div class="flex items-center justify-between border-b border-white/10 pb-6">
+              <div>
+                <span class="text-[11px] uppercase tracking-widest text-champagne block">Estimated Native Collagen Reserve</span>
+                <span id="col-reserve-pct" class="font-serif text-5xl sm:text-6xl text-alabaster mt-1 block">84%</span>
+              </div>
+              <div class="text-right">
+                <span class="text-[11px] uppercase tracking-widest text-alabaster/60 block">Cumulative Deficit</span>
+                <span id="col-loss-pct" class="font-mono text-2xl text-champagne">-16%</span>
+              </div>
+            </div>
+
+            <!-- Visual Comparison Bars -->
+            <div class="space-y-4">
+              <div>
+                <div class="flex justify-between text-xs mb-1.5">
+                  <span class="text-alabaster/75">Dermal Density Without Intervention</span>
+                  <span id="bar-native-label" class="font-mono text-alabaster">84%</span>
+                </div>
+                <div class="w-full h-2.5 bg-white/10 rounded-full overflow-hidden">
+                  <div id="bar-native" class="h-full bg-alabaster/50 transition-all duration-300" style="width: 84%;"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs mb-1.5">
+                  <span class="text-champagne font-semibold">Post-Aura Protocol Projection (90 days)</span>
+                  <span id="bar-boosted-label" class="font-mono text-champagne">96% (+ Neocollagenesis)</span>
+                </div>
+                <div class="w-full h-2.5 bg-white/10 rounded-full overflow-hidden">
+                  <div id="bar-boosted" class="h-full bg-champagne transition-all duration-300" style="width: 96%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recommended Protocol Prescription -->
+            <div class="p-5 rounded-2xl bg-onyx/80 border border-white/10 space-y-2">
+              <span class="text-[10px] uppercase tracking-[0.2em] text-champagne font-semibold block">Suggested Biostimulation Prescription</span>
+              <p id="col-prescription" class="font-serif text-lg text-alabaster">
+                2 vials of Radiesse® Duo + 1 annual Ultraformer MPT® Full Face session.
+              </p>
+              <p id="col-interval" class="text-xs text-alabaster/65">
+                Maintenance recommended every 14 months for continuous preservation of the extracellular matrix.
+              </p>
+            </div>
+
+            <button onclick="bookCollagenPlan()" class="w-full bg-champagne text-onyx hover:bg-alabaster transition-all py-4 rounded-full text-xs uppercase tracking-[0.18em] font-bold">
+              Request Personalized Biostimulation Plan
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. MEDICAL STAFF & CLINICAL DIRECTION -->
+  <section id="corpo-clinico" class="py-24 bg-alabaster border-b editorial-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs uppercase tracking-[0.24em] text-champagneDark font-semibold block mb-3">Scientific Rigor & Medical Ethics</span>
+        <h2 class="font-serif text-3xl sm:text-5xl text-onyx mb-4">Board-Certified Medical Staff</h2>
+        <p class="text-sage text-sm sm:text-base">
+          Every procedure at Aura Derm Clinic is diagnosed and performed exclusively by board-certified dermatologists holding Specialist Credentials (RQE) registered with the Regional Medical Council.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <!-- Doctor 1 -->
+        <div class="bg-white rounded-[32px] p-8 border editorial-border shadow-luxury flex flex-col sm:flex-row gap-7 items-center">
+          <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=600&q=80" alt="Dr. Helena Vasconcelos" class="w-40 h-48 rounded-2xl object-cover shrink-0 border border-champagne/40" />
+          <div class="space-y-3">
+            <span class="inline-block text-[10px] font-mono uppercase tracking-widest bg-champagneLight text-onyx px-2.5 py-1 rounded">
+              CRM-SP 168.420 • RQE 74.319
+            </span>
+            <h3 class="font-serif text-2xl text-onyx">Dr. Helena Vasconcelos</h3>
+            <p class="text-xs uppercase tracking-wider text-champagneDark font-semibold">Clinical Director • Cosmiatry & Technologies</p>
+            <p class="text-xs text-sage leading-relaxed">
+              Medical degree from FMUSP with a Dermatology residency at Hospital das Clínicas. Fellowships in Lasers and Biostimulators in Paris and Seoul. Full Member of the Brazilian Society of Dermatology (SBD).
+            </p>
+          </div>
+        </div>
+
+        <!-- Doctor 2 -->
+        <div class="bg-white rounded-[32px] p-8 border editorial-border shadow-luxury flex flex-col sm:flex-row gap-7 items-center">
+          <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&q=80" alt="Dr. Eduardo Alencar" class="w-40 h-48 rounded-2xl object-cover shrink-0 border border-champagne/40" />
+          <div class="space-y-3">
+            <span class="inline-block text-[10px] font-mono uppercase tracking-widest bg-champagneLight text-onyx px-2.5 py-1 rounded">
+              CRM-SP 154.890 • RQE 68.104
+            </span>
+            <h3 class="font-serif text-2xl text-onyx">Dr. Eduardo Alencar</h3>
+            <p class="text-xs uppercase tracking-wider text-champagneDark font-semibold">Head of the Trichology Center</p>
+            <p class="text-xs text-sage leading-relaxed">
+              Specialist in Medical Trichology, Microinfusion of Medications (MMP®), and Follicular Restoration. Visiting researcher in regenerative therapies with exosomes and hair growth factors.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. ACCORDION FAQ -->
+  <section id="faq" class="py-24 bg-pearl border-b editorial-border">
+    <div class="max-w-4xl mx-auto px-4 sm:px-8">
+      <div class="text-center mb-14">
+        <span class="text-xs uppercase tracking-[0.24em] text-champagneDark font-semibold block mb-3">Clinical Transparency</span>
+        <h2 class="font-serif text-3xl sm:text-5xl text-onyx">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="space-y-4" id="faq-accordion">
+        <!-- Item 1 -->
+        <div class="faq-item active bg-alabaster rounded-2xl border editorial-border overflow-hidden transition-all">
+          <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between gap-4">
+            <span class="font-serif text-lg sm:text-xl text-onyx">What is the difference between Radiesse® and Sculptra® biostimulators?</span>
+            <span class="faq-icon w-8 h-8 rounded-full border border-onyx/20 flex items-center justify-center shrink-0 transition-all duration-300">+</span>
+          </button>
+          <div class="faq-answer px-6" style="max-height: 240px;">
+            <p class="pb-6 text-sm text-sage leading-relaxed">
+              Both stimulate endogenous production of type I and III collagen, yet they feature distinct matrices. <strong>Sculptra®</strong> (poly-L-lactic acid) acts diffusely and gradually to restore overall dermal thickness. <strong>Radiesse®</strong> (calcium hydroxylapatite), meanwhile, also provides an immediate vectoring lift, making it ideal for jawline definition, hands, and neck. During your consultation, we evaluate which biomaterial best suits your facial biomechanics.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="faq-item bg-alabaster rounded-2xl border editorial-border overflow-hidden transition-all">
+          <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between gap-4">
+            <span class="font-serif text-lg sm:text-xl text-onyx">Is it possible to combine Ultraformer MPT® and Biostimulators in the same session?</span>
+            <span class="faq-icon w-8 h-8 rounded-full border border-onyx/20 flex items-center justify-center shrink-0 transition-all duration-300">+</span>
+          </button>
+          <div class="faq-answer px-6">
+            <p class="pb-6 text-sm text-sage leading-relaxed">
+              Yes — this is our maximum-synergy protocol (Collagen Banking). First we perform <strong>Ultraformer MPT®</strong> for deep thermal contraction of the muscular fascia (SMAS), and immediately afterward we deposit the biostimulator into the superficial subdermal layers, amplifying collagen stimulation across multiple anatomical planes in a single visit.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="faq-item bg-alabaster rounded-2xl border editorial-border overflow-hidden transition-all">
+          <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between gap-4">
+            <span class="font-serif text-lg sm:text-xl text-onyx">Does the Lavieen® Laser require downtime from work?</span>
+            <span class="faq-icon w-8 h-8 rounded-full border border-onyx/20 flex items-center justify-center shrink-0 transition-all duration-300">+</span>
+          </button>
+          <div class="faq-answer px-6">
+            <p class="pb-6 text-sm text-sage leading-relaxed">
+              When calibrated in "BB Laser" mode (gentle sub-ablative), Lavieen® causes only mild erythema for 24 to 48 hours, allowing tinted sunscreen as early as the next day. Ultra-fine, virtually imperceptible micro-crusts shed naturally between days 3 and 5, revealing luminous, even-toned skin.
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="faq-item bg-alabaster rounded-2xl border editorial-border overflow-hidden transition-all">
+          <button onclick="toggleFaq(this)" class="w-full p-6 text-left flex items-center justify-between gap-4">
+            <span class="font-serif text-lg sm:text-xl text-onyx">How do the initial medical consultation and 3D skin analysis work?</span>
+            <span class="faq-icon w-8 h-8 rounded-full border border-onyx/20 flex items-center justify-center shrink-0 transition-all duration-300">+</span>
+          </button>
+          <div class="faq-answer px-6">
+            <p class="pb-6 text-sm text-sage leading-relaxed">
+              The consultation lasts 60 minutes. We begin with polarized 3D facial scanning to quantify subdermal pigmentation, pores, vascularity, and volume loss — or robotic digital trichoscopy for hair concerns. If desired, procedures can be performed on the same day with bespoke anesthetic preparation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER LUXURY -->
+  <footer class="bg-onyx text-alabaster pt-20 pb-12 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pb-16 border-b border-white/10">
+        <div class="md:col-span-5 space-y-4">
+          <span class="font-serif text-2xl tracking-[0.2em] text-alabaster block">AURA DERM CLINIC</span>
+          <p class="text-alabaster/65 text-sm max-w-sm leading-relaxed">
+            Medical Dermatology, Advanced Trichology & Precision Cosmiatry. Skin architecture guided by medical ethics and quiet beauty.
+          </p>
+          <p class="text-xs font-mono text-champagne pt-2">
+            Medical Director: Dr. Helena Vasconcelos • CRM-SP 168.420 | RQE 74.319
+          </p>
+        </div>
+
+        <div class="md:col-span-4 space-y-3 text-sm">
+          <span class="text-xs uppercase tracking-widest text-champagne font-semibold block">Address & Private Parking</span>
+          <p class="text-alabaster/80">Rua Oscar Freire, 1840 — Penthouse Suite</p>
+          <p class="text-alabaster/60">Jardins, São Paulo — SP • ZIP 01426-001</p>
+          <p class="text-alabaster/60 text-xs pt-1">Private underground valet access.</p>
+        </div>
+
+        <div class="md:col-span-3 space-y-4">
+          <span class="text-xs uppercase tracking-widest text-champagne font-semibold block">Concierge Service</span>
+          <p class="text-sm text-alabaster/80">Mon–Fri: 9:00 AM – 8:00 PM<br/>Saturdays: 9:00 AM – 3:00 PM</p>
+          <button onclick="openVipDrawer('General Concierge Assistance')" class="w-full py-3 px-5 rounded-full border border-champagne text-champagne hover:bg-champagne hover:text-onyx transition-all text-xs uppercase tracking-widest font-semibold">
+            Book VIP Appointment
+          </button>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-alabaster/45 gap-4">
+        <span>© 2026 AURA DERM CLINIC LTDA. All rights reserved. Portfolio Site #9.</span>
+        <span>In compliance with CFM medical advertising standards (Resolution No. 2,336/2023).</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 8. SIDE VIP BOOKING DRAWER -->
+  <div id="vip-drawer-backdrop" onclick="closeVipDrawer()" class="fixed inset-0 bg-onyx/60 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300"></div>
+
+  <aside id="vip-drawer" class="fixed top-0 right-0 h-full w-full max-w-lg bg-alabaster z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-out flex flex-col justify-between overflow-y-auto border-l editorial-border">
+    <div class="p-6 sm:p-8">
+      <!-- Drawer Header -->
+      <div class="flex items-center justify-between pb-6 border-b editorial-border">
+        <div>
+          <span class="text-[10px] uppercase tracking-[0.24em] text-champagneDark font-semibold block">Individualized Care</span>
+          <h3 class="font-serif text-2xl text-onyx">Aura Derm VIP Concierge</h3>
+        </div>
+        <button onclick="closeVipDrawer()" aria-label="Close" class="w-10 h-10 rounded-full bg-pearl hover:bg-onyx hover:text-alabaster transition-colors flex items-center justify-center">
+          ✕
+        </button>
+      </div>
+
+      <!-- Booking Form -->
+      <form id="vip-booking-form" onsubmit="submitVipBooking(event)" class="space-y-5 pt-6" novalidate>
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-onyx font-semibold mb-2">Protocol or Consultation of Interest *</label>
+          <input 
+            type="text" 
+            id="vip-protocol-input" 
+            required
+            value="Precision Medical Consultation"
+            class="w-full px-4 py-3.5 rounded-xl bg-white border editorial-border text-sm text-onyx focus:outline-none focus:border-onyx"
+          />
+        </div>
+
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-onyx font-semibold mb-2">Patient Full Name *</label>
+          <input 
+            type="text" 
+            id="vip-name" 
+            required
+            placeholder="e.g., Carolina Albuquerque"
+            class="w-full px-4 py-3.5 rounded-xl bg-white border editorial-border text-sm text-onyx focus:outline-none focus:border-onyx"
+          />
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-onyx font-semibold mb-2">WhatsApp / Phone *</label>
+            <input 
+              type="tel" 
+              id="vip-phone" 
+              required
+              placeholder="(11) 99999-9999"
+              class="w-full px-4 py-3.5 rounded-xl bg-white border editorial-border text-sm text-onyx focus:outline-none focus:border-onyx"
+            />
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-onyx font-semibold mb-2">E-mail *</label>
+            <input 
+              type="email" 
+              id="vip-email" 
+              required
+              placeholder="name@domain.com"
+              class="w-full px-4 py-3.5 rounded-xl bg-white border editorial-border text-sm text-onyx focus:outline-none focus:border-onyx"
+            />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-onyx font-semibold mb-2">Preferred Specialist</label>
+            <select id="vip-doctor" class="w-full px-4 py-3.5 rounded-xl bg-white border editorial-border text-sm text-onyx focus:outline-none focus:border-onyx">
+              <option value="Dr. Helena Vasconcelos (CRM 168.420)">Dr. Helena Vasconcelos (Cosmiatry)</option>
+              <option value="Dr. Eduardo Alencar (CRM 154.890)">Dr. Eduardo Alencar (Trichology)</option>
+              <option value="First available slot">First available slot</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs uppercase tracking-wider text-onyx font-semibold mb-2">Preferred Time Slot *</label>
+            <select id="vip-period" required class="w-full px-4 py-3.5 rounded-xl bg-white border editorial-border text-sm text-onyx focus:outline-none focus:border-onyx">
+              <option value="Morning (9 AM - 12 PM)">Morning (9:00 AM – 12:00 PM)</option>
+              <option value="Afternoon (1 PM - 5 PM)">Afternoon (1:00 PM – 5:00 PM)</option>
+              <option value="Prime Time (6 PM - 8 PM)">Prime Time (6:00 PM – 8:00 PM)</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs uppercase tracking-wider text-onyx font-semibold mb-2">Experience Preferences</label>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <label class="flex items-center gap-2 px-3 py-2 rounded-lg bg-pearl cursor-pointer">
+              <input type="checkbox" checked class="accent-onyx" /> Discreet Underground Access
+            </label>
+            <label class="flex items-center gap-2 px-3 py-2 rounded-lg bg-pearl cursor-pointer">
+              <input type="checkbox" class="accent-onyx" /> Advance Topical Anesthesia
+            </label>
+          </div>
+        </div>
+
+        <p id="vip-error-msg" class="text-xs text-red-700 bg-red-50 p-3 rounded-xl hidden">
+          Please fill in all required fields with a valid phone number and email address.
+        </p>
+
+        <button type="submit" class="w-full bg-onyx text-alabaster hover:bg-champagne hover:text-onyx transition-all py-4 rounded-full text-xs uppercase tracking-[0.18em] font-bold shadow-luxury">
+          Confirm Priority Pre-Booking
+        </button>
+      </form>
+
+      <!-- Confirmation View (Hidden by Default) -->
+      <div id="vip-confirmation" class="hidden py-10 text-center space-y-5">
+        <div class="w-16 h-16 rounded-full bg-champagneLight text-onyx mx-auto flex items-center justify-center text-2xl font-serif">
+          ✓
+        </div>
+        <span class="text-xs uppercase tracking-[0.2em] text-champagneDark font-semibold block">Protocol Registered</span>
+        <h4 class="font-serif text-3xl text-onyx">VIP Request Confirmed</h4>
+        <p id="vip-confirm-details" class="text-sm text-sage leading-relaxed"></p>
+        <div class="p-4 rounded-2xl bg-pearl border editorial-border text-xs text-onyx font-mono" id="vip-protocol-code"></div>
+        <button onclick="resetAndCloseVipDrawer()" class="mt-4 px-8 py-3.5 rounded-full bg-onyx text-alabaster text-xs uppercase tracking-widest font-semibold">
+          Finish and Return to Site
+        </button>
+      </div>
+    </div>
+
+    <div class="p-6 bg-pearl border-t editorial-border text-[11px] text-sage flex items-center justify-between">
+      <span>Medical Confidentiality Guaranteed (LGPD)</span>
+      <span>Jardins • São Paulo</span>
+    </div>
+  </aside>
+
+  <!-- INTERACTIVE JAVASCRIPT ENGINE -->
+  <script>
+    /* ==========================================
+       1. PROCEDURE FILTER
+       ========================================== */
+    function filterProtocols(category) {
+      const cards = document.querySelectorAll('.protocol-card');
+      const tabs = document.querySelectorAll('.proto-tab');
+
+      tabs.forEach(tab => {
+        if (tab.dataset.filter === category) {
+          tab.className = 'proto-tab active bg-onyx text-alabaster px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-semibold transition-all';
+        } else {
+          tab.className = 'proto-tab bg-pearl text-onyx/80 hover:bg-champagneLight px-5 py-2.5 rounded-full text-xs uppercase tracking-widest font-semibold transition-all';
+        }
+      });
+
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    /* ==========================================
+       2. BEFORE & AFTER COMPARATOR (SLIDER DRAG)
+       ========================================== */
+    const baSlider = document.getElementById('ba-slider');
+    const baOverlay = document.getElementById('ba-before-overlay');
+    const baBeforeImg = document.getElementById('ba-before-img');
+    const baAfterImg = document.getElementById('ba-after-img');
+    const baHandle = document.getElementById('ba-handle');
+    let isDraggingBA = false;
+
+    function syncBeforeImageWidth() {
+      if (baSlider && baBeforeImg) {
+        baBeforeImg.style.width = baSlider.offsetWidth + 'px';
+      }
+    }
+
+    function updateSliderPosition(clientX) {
+      const rect = baSlider.getBoundingClientRect();
+      let offsetX = clientX - rect.left;
+      offsetX = Math.max(24, Math.min(offsetX, rect.width - 24));
+      const percentage = (offsetX / rect.width) * 100;
+      baOverlay.style.width = percentage + '%';
+      baHandle.style.left = percentage + '%';
+    }
+
+    baSlider.addEventListener('mousedown', (e) => {
+      isDraggingBA = true;
+      updateSliderPosition(e.clientX);
+    });
+    window.addEventListener('mousemove', (e) => {
+      if (!isDraggingBA) return;
+      updateSliderPosition(e.clientX);
+    });
+    window.addEventListener('mouseup', () => {
+      isDraggingBA = false;
+    });
+
+    baSlider.addEventListener('touchstart', (e) => {
+      isDraggingBA = true;
+      updateSliderPosition(e.touches[0].clientX);
+    }, { passive: true });
+    baSlider.addEventListener('touchmove', (e) => {
+      if (!isDraggingBA) return;
+      updateSliderPosition(e.touches[0].clientX);
+    }, { passive: true });
+    window.addEventListener('touchend', () => {
+      isDraggingBA = false;
+    });
+
+    window.addEventListener('resize', syncBeforeImageWidth);
+    window.addEventListener('DOMContentLoaded', syncBeforeImageWidth);
+
+    const clinicalCases = [
+      {
+        img: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=1200&q=85',
+        m1: '+64% Homogeneity',
+        m2: '-48% Mean Diameter',
+        m3: '+39% Neocollagenesis'
+      },
+      {
+        img: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=85',
+        m1: '+52% Jawline Definition',
+        m2: '-41% Submental Laxity',
+        m3: '+46% Dermal Thickness'
+      }
+    ];
+
+    function switchClinicalCase(index) {
+      const selected = clinicalCases[index];
+      baBeforeImg.src = selected.img;
+      baAfterImg.src = selected.img;
+      document.getElementById('metric-1').textContent = selected.m1;
+      document.getElementById('metric-2').textContent = selected.m2;
+      document.getElementById('metric-3').textContent = selected.m3;
+
+      const btn0 = document.getElementById('case-btn-0');
+      const btn1 = document.getElementById('case-btn-1');
+      if (index === 0) {
+        btn0.className = 'w-full text-left p-4 rounded-2xl bg-onyx text-alabaster transition-all flex items-center justify-between';
+        btn1.className = 'w-full text-left p-4 rounded-2xl bg-alabaster text-onyx border editorial-border hover:border-champagne transition-all flex items-center justify-between';
+      } else {
+        btn1.className = 'w-full text-left p-4 rounded-2xl bg-onyx text-alabaster transition-all flex items-center justify-between';
+        btn0.className = 'w-full text-left p-4 rounded-2xl bg-alabaster text-onyx border editorial-border hover:border-champagne transition-all flex items-center justify-between';
+      }
+    }
+
+    /* ==========================================
+       3. 3-STEP CLINICAL DIAGNOSIS QUIZ
+       ========================================== */
+    const quizState = {
+      step1Key: '',
+      step1Label: '',
+      step2Key: '',
+      step2Label: '',
+      step3Key: '',
+      step3Label: ''
+    };
+
+    function selectQuizOption(step, key, label) {
+      quizState['step' + step + 'Key'] = key;
+      quizState['step' + step + 'Label'] = label;
+
+      if (step < 3) {
+        goToQuizStep(step + 1);
+      } else {
+        renderQuizRecommendation();
+      }
+    }
+
+    function goToQuizStep(step) {
+      document.querySelectorAll('.quiz-step').forEach(el => el.classList.add('hidden'));
+      document.getElementById('quiz-result').classList.add('hidden');
+      document.getElementById('quiz-step-' + step).classList.remove('hidden');
+
+      const labels = {
+        1: 'Step 01 of 03 • Primary Concern',
+        2: 'Step 02 of 03 • Biological Profile',
+        3: 'Step 03 of 03 • Recovery Availability'
+      };
+      const pcts = { 1: 33, 2: 66, 3: 100 };
+
+      document.getElementById('quiz-step-label').textContent = labels[step];
+      document.getElementById('quiz-progress-text').textContent = pcts[step] + '%';
+      document.getElementById('quiz-progress-bar').style.width = pcts[step] + '%';
+    }
+
+    function renderQuizRecommendation() {
+      document.querySelectorAll('.quiz-step').forEach(el => el.classList.add('hidden'));
+      const resBox = document.getElementById('quiz-result');
+      resBox.classList.remove('hidden');
+
+      document.getElementById('quiz-step-label').textContent = 'Diagnosis Complete • Suggested Protocol';
+      document.getElementById('quiz-progress-text').textContent = '100%';
+      document.getElementById('quiz-progress-bar').style.width = '100%';
+
+      let title = '';
+      let desc = '';
+      let tech = '';
+      let sessions = '';
+      let doctor = 'Dr. Helena Vasconcelos (CRM 168.420)';
+
+      if (quizState.step1Key === 'flacidez') {
+        title = 'Aura Lift & Sculpt Protocol (SMAS + Matrix)';
+        desc = 'Synergistic combination of Ultraformer MPT® for deep muscular anchoring followed by vectored biostimulation with Radiesse® or Sculptra®, restoring jawline definition without artificial volume.';
+        tech = 'Ultraformer MPT® + Radiesse®';
+        sessions = '1 to 2 sessions per semester';
+      } else if (quizState.step1Key === 'manchas') {
+        title = 'Aura Glass Skin & Exosomes Protocol';
+        desc = 'Controlled dermo-epidermal renewal with 1927nm Lavieen® Thulium Laser paired with immediate sterile Drug Delivery of pure PDRN and Exosomes for pore refinement and even brightening.';
+        tech = 'Lavieen® Laser + Sterile PDRN';
+        sessions = '3 sessions (30-day intervals)';
+      } else if (quizState.step1Key === 'capilar') {
+        title = 'Follicular Regeneration & Scalp MMP® Protocol';
+        desc = 'Robotic digital trichoscopy mapping (FotoFinder®) followed by Microinfusion of Medications into the Skin (MMP®) with growth factors and selective androgen blockers.';
+        tech = 'FotoFinder® + Scalp MMP® + LED';
+        sessions = '4 initial monthly sessions';
+        doctor = 'Dr. Eduardo Alencar (CRM 154.890)';
+      } else {
+        title = 'Collagen Banking Protocol (Quiet Beauty)';
+        desc = 'Preventive strategy preserving annual dermal collagen reserves by combining gentle biostimulation and maintenance microfocused ultrasound, ensuring sustained firmness for decades.';
+        tech = 'Sculptra® + Ultraformer Booster';
+        sessions = 'Single Annual Protocol';
+      }
+
+      document.getElementById('quiz-summary-tags').textContent = `${quizState.step2Key} yrs • ${quizState.step3Key === 'zero' ? 'Zero Downtime' : 'High Performance'}`;
+      document.getElementById('quiz-rec-title').textContent = title;
+      document.getElementById('quiz-rec-desc').textContent = desc;
+      document.getElementById('quiz-rec-tech').textContent = tech;
+      document.getElementById('quiz-rec-sessions').textContent = sessions;
+      document.getElementById('quiz-rec-doctor').textContent = doctor;
+
+      const bookBtn = document.getElementById('quiz-book-btn');
+      bookBtn.onclick = () => openVipDrawer(title);
+    }
+
+    function resetQuiz() {
+      goToQuizStep(1);
+    }
+
+    /* ==========================================
+       4. COLLAGEN STIMULATION CALCULATOR
+       ========================================== */
+    let currentLifestyleFactor = 1.0;
+
+    function setCollagenFactor(factor, btnEl) {
+      currentLifestyleFactor = factor;
+      document.querySelectorAll('.col-factor-btn').forEach(btn => {
+        btn.className = 'col-factor-btn p-3.5 rounded-xl border border-white/15 bg-white/5 text-alabaster/70 hover:text-alabaster text-xs font-semibold transition-all';
+      });
+      btnEl.className = 'col-factor-btn active-factor p-3.5 rounded-xl border border-champagne bg-champagne/20 text-alabaster text-xs font-semibold transition-all';
+      calculateCollagen();
+    }
+
+    function calculateCollagen() {
+      const age = parseInt(document.getElementById('collagen-age').value, 10);
+      document.getElementById('age-value').textContent = age;
+
+      const yearsAfter22 = Math.max(0, age - 22);
+      const rawLoss = yearsAfter22 * 1.15 * currentLifestyleFactor;
+      const clampedLoss = Math.min(58, Math.round(rawLoss));
+      const nativeReserve = Math.max(42, 100 - clampedLoss);
+      const boostedReserve = Math.min(99, nativeReserve + Math.round(clampedLoss * 0.65));
+
+      document.getElementById('col-reserve-pct').textContent = nativeReserve + '%';
+      document.getElementById('col-loss-pct').textContent = '-' + clampedLoss + '%';
+
+      document.getElementById('bar-native-label').textContent = nativeReserve + '%';
+      document.getElementById('bar-native').style.width = nativeReserve + '%';
+
+      document.getElementById('bar-boosted-label').textContent = boostedReserve + '% (+ Neocollagenesis)';
+      document.getElementById('bar-boosted').style.width = boostedReserve + '%';
+
+      let prescription = '';
+      if (age < 32) {
+        prescription = '1 vial of Sculptra® (Collagen Banking) + 1 Lavieen® Laser session.';
+      } else if (age <= 45) {
+        prescription = '2 vials of Radiesse® Duo + 1 annual Ultraformer MPT® Full Face session.';
+      } else {
+        prescription = '3 vials of Sculptra®/Radiesse® (Face & Neck) + Ultraformer MPT® + Exosomes.';
+      }
+      document.getElementById('col-prescription').textContent = prescription;
+    }
+
+    function bookCollagenPlan() {
+      const age = document.getElementById('collagen-age').value;
+      const presc = document.getElementById('col-prescription').textContent;
+      openVipDrawer(`Collagen Plan (${age} yrs): ${presc}`);
+    }
+
+    /* ==========================================
+       5. FAQ ACCORDION
+       ========================================== */
+    function toggleFaq(buttonEl) {
+      const item = buttonEl.parentElement;
+      const answer = item.querySelector('.faq-answer');
+      const isOpen = item.classList.contains('active');
+
+      document.querySelectorAll('.faq-item').forEach(el => {
+        el.classList.remove('active');
+        el.querySelector('.faq-answer').style.maxHeight = null;
+      });
+
+      if (!isOpen) {
+        item.classList.add('active');
+        answer.style.maxHeight = answer.scrollHeight + 32 + 'px';
+      }
+    }
+
+    /* ==========================================
+       6. VIP BOOKING DRAWER
+       ========================================== */
+    const drawer = document.getElementById('vip-drawer');
+    const backdrop = document.getElementById('vip-drawer-backdrop');
+
+    function openVipDrawer(protocolName) {
+      if (protocolName) {
+        document.getElementById('vip-protocol-input').value = protocolName;
+      }
+      backdrop.classList.remove('hidden');
+      setTimeout(() => {
+        backdrop.classList.remove('opacity-0');
+        drawer.classList.remove('translate-x-full');
+      }, 15);
+    }
+
+    function closeVipDrawer() {
+      backdrop.classList.add('opacity-0');
+      drawer.classList.add('translate-x-full');
+      setTimeout(() => {
+        backdrop.classList.add('hidden');
+      }, 300);
+    }
+
+    function submitVipBooking(e) {
+      e.preventDefault();
+      const name = document.getElementById('vip-name').value.trim();
+      const phone = document.getElementById('vip-phone').value.trim();
+      const email = document.getElementById('vip-email').value.trim();
+      const protocol = document.getElementById('vip-protocol-input').value.trim();
+      const doctor = document.getElementById('vip-doctor').value;
+      const period = document.getElementById('vip-period').value;
+      const errorMsg = document.getElementById('vip-error-msg');
+
+      const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+      if (name.length < 3 || phone.length < 8 || !emailValid) {
+        errorMsg.classList.remove('hidden');
+        return;
+      }
+
+      errorMsg.classList.add('hidden');
+      document.getElementById('vip-booking-form').classList.add('hidden');
+      const confirmBox = document.getElementById('vip-confirmation');
+      confirmBox.classList.remove('hidden');
+
+      const randomCode = 'AURA-' + Math.floor(100000 + Math.random() * 900000);
+      document.getElementById('vip-confirm-details').textContent =
+        `Dear ${name}, our Medical Concierge will reach out via WhatsApp (${phone}) within 30 business minutes to confirm your appointment during the ${period} slot with ${doctor}.`;
+      document.getElementById('vip-protocol-code').textContent =
+        `Priority ID: ${randomCode} • ${protocol}`;
+    }
+
+    function resetAndCloseVipDrawer() {
+      closeVipDrawer();
+      setTimeout(() => {
+        document.getElementById('vip-booking-form').reset();
+        document.getElementById('vip-booking-form').classList.remove('hidden');
+        document.getElementById('vip-confirmation').classList.add('hidden');
+      }, 350);
+    }
+  </script>
+
+  <!-- Required Vercel Web Analytics & Speed Insights preserved -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script defer src="/assets/js/demo-i18n-bar.js"></script>
+</body>
+</html>

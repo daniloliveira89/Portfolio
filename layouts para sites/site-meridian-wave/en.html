@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- demo-i18n-autodetect --><script>(function(){var cur=location.pathname.endsWith('/en.html')?'en':(location.pathname.endsWith('/es.html')?'es':'pt');var q=(new URLSearchParams(location.search).get('lang')||'').toLowerCase();var target=null;if(q==='pt'||q==='en'||q==='es'){target=q;try{localStorage.setItem('portfolio_lang',q);localStorage.setItem('portfolio_lang_manual','1');}catch(e){}}else if(cur==='pt'){try{if(localStorage.getItem('portfolio_lang_manual')==='1'){var saved=localStorage.getItem('portfolio_lang');if(saved==='en'||saved==='es'||saved==='pt')target=saved;}}catch(e){}if(!target){var langs=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||navigator.userLanguage||'en'];for(var i=0;i<langs.length;i++){var c=(langs[i]||'').toLowerCase().split('-')[0];if(c==='pt'){target='pt';break;}if(c==='es'){target='es';break;}if(c==='en'){target='en';break;}}if(!target)target='en';}}if(target&&target!==cur){var file=target==='en'?'en.html':(target==='es'?'es.html':'index.html');var p=location.pathname;var np=p.slice(-5).toLowerCase()==='.html'?p.slice(0,p.lastIndexOf('/')+1)+file:(p.endsWith('/')?p+file:p+'/'+file);location.replace(np+location.search+location.hash);}})();</script>
+  <title>Meridian™ — Global Liquidity Infrastructure</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #06080d;
+      --surface: rgba(15, 20, 32, 0.72);
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --border: rgba(255, 255, 255, 0.1);
+      --accent: #10b981;
+      --accent-glow: rgba(16, 185, 129, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    #liquid-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page-wrapper {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 24px 32px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #06b6d4, #10b981);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: #041014;
+      box-shadow: 0 0 18px rgba(16, 185, 129, 0.35);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--text);
+    }
+
+    .btn-nav {
+      padding: 9px 18px;
+      border-radius: 999px;
+      background: #ffffff;
+      color: #06080d !important;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: transform 0.15s ease, background-color 0.2s ease;
+    }
+
+    .btn-nav:hover {
+      background: #e2e8f0;
+      transform: translateY(-1px);
+    }
+
+    /* Central Hero */
+    main.hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 28px 24px 100px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.28);
+      color: #34d399;
+      font-size: 0.78rem;
+      font-weight: 500;
+      margin-bottom: 22px;
+      backdrop-filter: blur(8px);
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.25); }
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 5vw, 3.8rem);
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      line-height: 1.08;
+      margin-bottom: 16px;
+      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p.subtitle {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 30px;
+    }
+
+    /* Glassmorphic Simulator Card */
+    .settlement-card {
+      width: 100%;
+      max-width: 500px;
+      padding: 22px 24px;
+      border-radius: 18px;
+      background: var(--surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45);
+      text-align: left;
+      margin-bottom: 26px;
+    }
+
+    .card-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: rgba(6, 8, 13, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .card-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .amount-input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #ffffff;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 1.35rem;
+      font-weight: 500;
+      width: 100%;
+    }
+
+    .currency-select {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 8px;
+      padding: 7px 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .currency-select option {
+      background: #0f1420;
+      color: #ffffff;
+    }
+
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 12px 4px;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.76rem;
+      color: var(--muted);
+    }
+
+    .card-meta span strong {
+      color: #34d399;
+      font-weight: 500;
+    }
+
+    .output-value {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: #34d399;
+    }
+
+    /* CTA Buttons */
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #06b6d4, #10b981);
+      color: #041014;
+      font-size: 0.92rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 6px 24px var(--accent-glow);
+      transition: transform 0.15s ease, filter 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      padding: 13px 24px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #e2e8f0;
+      font-size: 0.92rem;
+      font-weight: 500;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    /* Floating Controls */
+    .controls {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 10;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      padding: 12px 18px;
+      border-radius: 16px;
+      background: rgba(12, 16, 26, 0.85);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+      font-size: 0.76rem;
+      color: var(--muted);
+    }
+
+    .control-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .control-item input[type="range"] {
+      width: 70px;
+      accent-color: #10b981;
+      cursor: pointer;
+    }
+
+    @media (max-width: 640px) {
+      nav a:not(.btn-nav) {
+        display: none;
+      }
+      .controls {
+        left: 14px;
+        right: 14px;
+        bottom: 14px;
+        justify-content: space-between;
+      }
+    }
+  </style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+</head>
+<body>
+
+  <canvas id="liquid-canvas"></canvas>
+
+  <div class="page-wrapper">
+    <header>
+      <a href="#" class="brand">
+        <span class="brand-mark">M</span>
+        Meridian™
+      </a>
+
+      <nav>
+        <a href="#infra">Infrastructure</a>
+        <a href="#api">API Docs</a>
+        <a href="#taxas">Fees</a>
+        <a href="#sandbox" class="btn-nav">Open Sandbox</a>
+      </nav>
+    </header>
+
+    <main class="hero">
+      <div class="status-pill">
+        <span class="status-dot"></span>
+        <span>Instant settlement across 140+ currencies • 0.12s</span>
+      </div>
+
+      <h1>Global treasury at the speed of light.</h1>
+
+      <p class="subtitle">
+        Connect your business to international financial rails with real interbank FX rates and zero hidden fees.
+      </p>
+
+      <!-- Interactive Simulator -->
+      <div class="settlement-card">
+        <div class="card-row">
+          <div style="flex: 1;">
+            <div class="card-label">You send</div>
+            <input id="send-amount" type="number" class="amount-input" value="10000" min="1" />
+          </div>
+          <span style="font-size: 0.85rem; font-weight: 600; color: #94a3b8; padding: 6px 10px;">USD</span>
+        </div>
+
+        <div class="card-meta">
+          <span>Meridian Fee: <strong>0.18%</strong></span>
+          <span>Speed: <strong>120ms</strong></span>
+        </div>
+
+        <div class="card-row">
+          <div style="flex: 1;">
+            <div class="card-label">Recipient gets</div>
+            <div id="receive-amount" class="output-value">€ 9,183.44</div>
+          </div>
+          <select id="target-currency" class="currency-select">
+            <option value="BRL">BRL (R$)</option>
+            <option value="EUR" selected>EUR (€)</option>
+            <option value="GBP">GBP (£)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="cta-group">
+        <button class="btn-primary" id="copy-api-btn">
+          Copy Sandbox Key
+        </button>
+        <a href="#api" class="btn-secondary">Read Documentation</a>
+      </div>
+    </main>
+  </div>
+
+  <!-- Liquid Wave Effect Controls -->
+  <div class="controls">
+    <label class="control-item">
+      Spacing
+      <input id="ctrl-spacing" type="range" min="20" max="40" value="28" />
+    </label>
+    <label class="control-item">
+      Wave Force
+      <input id="ctrl-wave" type="range" min="0.4" max="2.2" step="0.1" value="1.15" />
+    </label>
+    <label class="control-item">
+      Wave Speed
+      <input id="ctrl-speed" type="range" min="0.15" max="0.9" step="0.05" value="0.36" />
+    </label>
+    <label class="control-item">
+      Radius
+      <input id="ctrl-radius" type="range" min="240" max="700" value="440" />
+    </label>
+  </div>
+
+  <script>
+    // ============================================================================
+    // 1. FX SIMULATOR LOGIC (FINTECH)
+    // ============================================================================
+    const rates = {
+      BRL: { rate: 5.15, symbol: "R$ " },
+      EUR: { rate: 0.92, symbol: "€ " },
+      GBP: { rate: 0.79, symbol: "£ " }
+    };
+
+    const sendInput = document.getElementById("send-amount");
+    const targetSelect = document.getElementById("target-currency");
+    const receiveEl = document.getElementById("receive-amount");
+    const copyBtn = document.getElementById("copy-api-btn");
+
+    function updateConversion() {
+      const val = Math.max(0, Number(sendInput.value) || 0);
+      const curr = rates[targetSelect.value];
+      const net = val * 0.9982 * curr.rate; // 0.18% fee deduction
+      receiveEl.textContent = curr.symbol + net.toLocaleString("en-US", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    }
+
+    sendInput.addEventListener("input", updateConversion);
+    targetSelect.addEventListener("change", updateConversion);
+
+    copyBtn.addEventListener("click", () => {
+      navigator.clipboard?.writeText("mrd_live_98f2a10c4b7e91d03f8a");
+      copyBtn.textContent = "✓ Key Copied!";
+      setTimeout(() => { copyBtn.textContent = "Copy Sandbox Key"; }, 2000);
+    });
+
+    // ============================================================================
+    // 2. LIQUID WAVE ENGINE (SIMPLEX 3D + GERSTNER WAVE)
+    // ============================================================================
+    const canvas = document.getElementById("liquid-canvas");
+    const ctx = canvas.getContext("2d");
+
+    const Simplex3D = (() => {
+      const F3 = 1 / 3;
+      const G3 = 1 / 6;
+      const grad3 = [
+        [1,1,0],[-1,1,0],[1,-1,0],[-1,-1,0],
+        [1,0,1],[-1,0,1],[1,0,-1],[-1,0,-1],
+        [0,1,1],[0,-1,1],[0,1,-1],[0,-1,-1]
+      ];
+      const p = new Uint8Array(256);
+      for (let i = 0; i < 256; i++) p[i] = i;
+      let seed = 1337;
+      for (let i = 255; i > 0; i--) {
+        seed = (seed * 16807) % 2147483647;
+        const j = seed % (i + 1);
+        const tmp = p[i];
+        p[i] = p[j];
+        p[j] = tmp;
+      }
+      const perm = new Uint8Array(512);
+      const permMod12 = new Uint8Array(512);
+      for (let i = 0; i < 512; i++) {
+        perm[i] = p[i & 255];
+        permMod12[i] = perm[i] % 12;
+      }
+
+      return function noise3D(xin, yin, zin) {
+        const s = (xin + yin + zin) * F3;
+        const i = Math.floor(xin + s);
+        const j = Math.floor(yin + s);
+        const k = Math.floor(zin + s);
+        const t = (i + j + k) * G3;
+        const X0 = i - t, Y0 = j - t, Z0 = k - t;
+        const x0 = xin - X0, y0 = yin - Y0, z0 = zin - Z0;
+
+        let i1, j1, k1, i2, j2, k2;
+        if (x0 >= y0) {
+          if (y0 >= z0) { i1=1; j1=0; k1=0; i2=1; j2=1; k2=0; }
+          else if (x0 >= z0) { i1=1; j1=0; k1=0; i2=1; j2=0; k2=1; }
+          else { i1=0; j1=0; k1=1; i2=1; j2=0; k2=1; }
+        } else {
+          if (y0 < z0) { i1=0; j1=0; k1=1; i2=0; j2=1; k2=1; }
+          else if (x0 < z0) { i1=0; j1=1; k1=0; i2=0; j2=1; k2=1; }
+          else { i1=0; j1=1; k1=0; i2=1; j2=1; k2=0; }
+        }
+
+        const x1 = x0 - i1 + G3, y1 = y0 - j1 + G3, z1 = z0 - k1 + G3;
+        const x2 = x0 - i2 + 2.0 * G3, y2 = y0 - j2 + 2.0 * G3, z2 = z0 - k2 + 2.0 * G3;
+        const x3 = x0 - 1.0 + 3.0 * G3, y3 = y0 - 1.0 + 3.0 * G3, z3 = z0 - 1.0 + 3.0 * G3;
+
+        const ii = i & 255, jj = j & 255, kk = k & 255;
+        const gi0 = permMod12[ii + perm[jj + perm[kk]]];
+        const gi1 = permMod12[ii + i1 + perm[jj + j1 + perm[kk + k1]]];
+        const gi2 = permMod12[ii + i2 + perm[jj + j2 + perm[kk + k2]]];
+        const gi3 = permMod12[ii + 1 + perm[jj + 1 + perm[kk + 1]]];
+
+        let n0 = 0, n1 = 0, n2 = 0, n3 = 0;
+        let t0 = 0.6 - x0*x0 - y0*y0 - z0*z0;
+        if (t0 > 0) { t0 *= t0; const g = grad3[gi0]; n0 = t0 * t0 * (g[0]*x0 + g[1]*y0 + g[2]*z0); }
+        let t1 = 0.6 - x1*x1 - y1*y1 - z1*z1;
+        if (t1 > 0) { t1 *= t1; const g = grad3[gi1]; n1 = t1 * t1 * (g[0]*x1 + g[1]*y1 + g[2]*z1); }
+        let t2 = 0.6 - x2*x2 - y2*y2 - z2*z2;
+        if (t2 > 0) { t2 *= t2; const g = grad3[gi2]; n2 = t2 * t2 * (g[0]*x2 + g[1]*y2 + g[2]*z2); }
+        let t3 = 0.6 - x3*x3 - y3*y3 - z3*z3;
+        if (t3 > 0) { t3 *= t3; const g = grad3[gi3]; n3 = t3 * t3 * (g[0]*x3 + g[1]*y3 + g[2]*z3); }
+
+        return 32.0 * (n0 + n1 + n2 + n3);
+      };
+    })();
+
+    const config = {
+      spacing: 28,
+      ringRadius: 440,
+      ringBandWidth: 320,
+      waveStrength: 1.15,
+      waveSpeed: 0.36,
+      colorSpeed: 0.02,
+    };
+
+    const ctrlSpacing = document.getElementById("ctrl-spacing");
+    const ctrlWave = document.getElementById("ctrl-wave");
+    const ctrlSpeed = document.getElementById("ctrl-speed");
+    const ctrlRadius = document.getElementById("ctrl-radius");
+
+    ctrlSpacing.addEventListener("input", (e) => { config.spacing = Number(e.target.value); buildGrid(); });
+    ctrlWave.addEventListener("input", (e) => { config.waveStrength = Number(e.target.value); });
+    ctrlSpeed.addEventListener("input", (e) => { config.waveSpeed = Number(e.target.value); });
+    ctrlRadius.addEventListener("input", (e) => { config.ringRadius = Number(e.target.value); });
+
+    let width = 0, height = 0;
+    let dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let particles = [];
+
+    const cursor = {
+      rawX: window.innerWidth * 0.65,
+      rawY: window.innerHeight * 0.35,
+      midX: window.innerWidth * 0.65,
+      midY: window.innerHeight * 0.35,
+      x: window.innerWidth * 0.65,
+      y: window.innerHeight * 0.35,
+      vx: 0, vy: 0,
+    };
+
+    // Bioluminescent Fintech Palette (Cyan, Emerald, Indigo & Amber)
+    const palette = [
+      [6, 182, 212],   // Cyan (#06b6d4)
+      [16, 185, 129],  // Emerald (#10b981)
+      [59, 130, 246],  // Electric Blue (#3b82f6)
+      [99, 102, 241],  // Indigo (#6366f1)
+      [245, 158, 11],  // Amber Gold (#f59e0b)
+      [20, 184, 166],  // Teal (#14b8a6)
+    ];
+
+    function getConicColor(t) {
+      const n = palette.length;
+      const wrapped = ((t % 1) + 1) % 1;
+      const scaled = wrapped * n;
+      const i = Math.floor(scaled);
+      const f = scaled - i;
+      const c1 = palette[i % n];
+      const c2 = palette[(i + 1) % n];
+
+      return [
+        (c1[0] + (c2[0] - c1[0]) * f) | 0,
+        (c1[1] + (c2[1] - c1[1]) * f) | 0,
+        (c1[2] + (c2[2] - c1[2]) * f) | 0,
+      ];
+    }
+
+    function buildGrid() {
+      particles = [];
+      const s = config.spacing;
+      const margin = s * 4;
+      const cols = Math.ceil((width + margin * 2) / s);
+      const rows = Math.ceil((height + margin * 2) / s);
+
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const hx = -margin + c * s;
+          const hy = -margin + r * s;
+          particles.push({ hx, hy, x: hx, y: hy });
+        }
+      }
+    }
+
+    function resize() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const diag = Math.hypot(width, height);
+      config.ringRadius = Math.round(Math.min(Math.max(diag * 0.21, 300), 560));
+      config.ringBandWidth = Math.round(Math.min(Math.max(diag * 0.16, 220), 420));
+      ctrlRadius.value = config.ringRadius;
+
+      buildGrid();
+    }
+
+    window.addEventListener("resize", resize);
+    window.addEventListener("mousemove", (e) => { cursor.rawX = e.clientX; cursor.rawY = e.clientY; });
+    window.addEventListener("touchmove", (e) => {
+      if (e.touches.length > 0) {
+        cursor.rawX = e.touches[0].clientX;
+        cursor.rawY = e.touches[0].clientY;
+      }
+    }, { passive: true });
+
+    const startTime = performance.now();
+
+    function animate(now) {
+      const elapsed = (now - startTime) * 0.001;
+      const t = elapsed * config.waveSpeed;
+
+      const tideX = Math.sin(t * 0.9) * 42 + Math.cos(t * 0.5) * 25;
+      const tideY = Math.cos(t * 0.75) * 36 + Math.sin(t * 0.42) * 22;
+
+      cursor.midX += (cursor.rawX + tideX - cursor.midX) * 0.045;
+      cursor.midY += (cursor.rawY + tideY - cursor.midY) * 0.045;
+
+      const prevX = cursor.x, prevY = cursor.y;
+      cursor.x += (cursor.midX - cursor.x) * 0.035;
+      cursor.y += (cursor.midY - cursor.y) * 0.035;
+
+      cursor.vx = cursor.x - prevX;
+      cursor.vy = cursor.y - prevY;
+
+      ctx.clearRect(0, 0, width, height);
+
+      // Subtle dots on the dark grid
+      ctx.fillStyle = "rgba(148, 163, 184, 0.16)";
+      ctx.beginPath();
+
+      const activeCapsules = [];
+      const ws = config.waveStrength;
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+
+        const swell1 = Simplex3D(p.hx * 0.0017 + t * 0.42, p.hy * 0.0017 + t * 0.28, t * 0.55);
+        const swell2 = Simplex3D(p.hx * 0.0034 - t * 0.31, p.hy * 0.0034 + t * 0.38, t * 0.75 + 12.5);
+
+        const dx = p.hx - cursor.x;
+        const dy = p.hy - cursor.y;
+        const dist = Math.hypot(dx, dy) || 0.001;
+        const dirX = dx / dist, dirY = dy / dist;
+        const angle = Math.atan2(dy, dx);
+
+        const warpedDist = dist + (swell1 * 78 + swell2 * 36) * ws;
+        const radialRipple = Math.sin(warpedDist * 0.014 - t * 3.2);
+
+        const rawHeight = 0.5 + 0.5 * (swell1 * 0.52 + swell2 * 0.26 + radialRipple * 0.22);
+        const waveHeight = rawHeight * rawHeight * (3 - 2 * rawHeight);
+
+        const distFromRing = warpedDist - config.ringRadius;
+        const normBand = distFromRing / config.ringBandWidth;
+        const ringEnvelope = Math.exp(-normBand * normBand * 1.45);
+
+        const radialPush = (radialRipple * 18 + swell1 * 24) * ringEnvelope * ws;
+        const orbitalX = swell2 * 16 * ws + dirX * radialPush;
+        const orbitalY = swell1 * 16 * ws + dirY * radialPush;
+
+        const wakeStrength = Math.exp(-dist / 500) * 4.5;
+        const targetX = p.hx + orbitalX + cursor.vx * wakeStrength;
+        const targetY = p.hy + orbitalY + cursor.vy * wakeStrength;
+
+        p.x += (targetX - p.x) * 0.08;
+        p.y += (targetY - p.y) * 0.08;
+
+        if (p.x < -20 || p.x > width + 20 || p.y < -20 || p.y > height + 20) continue;
+
+        const intensity = ringEnvelope * (0.12 + 0.88 * waveHeight);
+
+        if (intensity < 0.025) {
+          ctx.rect(p.x - 0.75, p.y - 0.75, 1.5, 1.5);
+        } else {
+          const waterTilt = (swell2 * 0.18 + swell1 * 0.10) * ws;
+          activeCapsules.push({
+            x: p.x,
+            y: p.y,
+            angle: angle + waterTilt,
+            intensity,
+            colorShift: swell1 * 0.04,
+          });
+        }
+      }
+
+      ctx.fill();
+
+      ctx.lineCap = "round";
+      for (let i = 0; i < activeCapsules.length; i++) {
+        const cap = activeCapsules[i];
+        const colorPos = cap.angle / (Math.PI * 2) + elapsed * config.colorSpeed + cap.colorShift;
+        const [r, g, b] = getConicColor(colorPos);
+
+        const s = cap.intensity;
+        const length = 0.8 + s * 7.5;
+        const thickness = 1.2 + s * 3.4;
+        const alpha = Math.min(0.18 + s * 0.85, 0.96);
+
+        const halfLen = length * 0.5;
+        const cosA = Math.cos(cap.angle);
+        const sinA = Math.sin(cap.angle);
+
+        ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${alpha.toFixed(3)})`;
+        ctx.lineWidth = thickness;
+        ctx.beginPath();
+        ctx.moveTo(cap.x - cosA * halfLen, cap.y - sinA * halfLen);
+        ctx.lineTo(cap.x + cosA * halfLen, cap.y + sinA * halfLen);
+        ctx.stroke();
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    resize();
+    requestAnimationFrame(animate);
+  </script>
+  <!-- Vercel Web Analytics & Speed Insights -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script defer src="/assets/js/demo-i18n-bar.js"></script>
+</body>
+</html>

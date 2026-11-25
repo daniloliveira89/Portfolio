@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- demo-i18n-autodetect --><script>(function(){var cur=location.pathname.endsWith('/en.html')?'en':(location.pathname.endsWith('/es.html')?'es':'pt');var q=(new URLSearchParams(location.search).get('lang')||'').toLowerCase();var target=null;if(q==='pt'||q==='en'||q==='es'){target=q;try{localStorage.setItem('portfolio_lang',q);localStorage.setItem('portfolio_lang_manual','1');}catch(e){}}else if(cur==='pt'){try{if(localStorage.getItem('portfolio_lang_manual')==='1'){var saved=localStorage.getItem('portfolio_lang');if(saved==='en'||saved==='es'||saved==='pt')target=saved;}}catch(e){}if(!target){var langs=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||navigator.userLanguage||'en'];for(var i=0;i<langs.length;i++){var c=(langs[i]||'').toLowerCase().split('-')[0];if(c==='pt'){target='pt';break;}if(c==='es'){target='es';break;}if(c==='en'){target='en';break;}}if(!target)target='en';}}if(target&&target!==cur){var file=target==='en'?'en.html':(target==='es'?'es.html':'index.html');var p=location.pathname;var np=p.slice(-5).toLowerCase()==='.html'?p.slice(0,p.lastIndexOf('/')+1)+file:(p.endsWith('/')?p+file:p+'/'+file);location.replace(np+location.search+location.hash);}})();</script>
+  <title>NOMAD LUXE — Private Jet Expeditions & Bespoke Travel Design</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <style>
+    body { background-color: #080F18; color: #F8FAFC; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+    .font-serif-travel { font-family: 'Playfair Display', serif; }
+  </style>
+</head>
+<body class="min-h-screen antialiased selection:bg-sky-400 selection:text-slate-950">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-[#080F18]/90 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full border border-sky-400/50 bg-sky-950/60 flex items-center justify-center font-serif-travel text-sky-300 text-lg">
+          N
+        </div>
+        <div>
+          <span class="font-serif-travel text-2xl tracking-wider text-white block leading-none">NOMAD LUXE</span>
+          <span class="text-[9px] uppercase tracking-[0.28em] text-sky-400 block mt-1">Virtuoso® Private Member</span>
+        </div>
+      </a>
+
+      <div class="flex items-center gap-4">
+        <div class="hidden sm:flex items-center gap-2 bg-slate-900 border border-white/15 rounded-xl px-3 py-1.5">
+          <span class="text-xs text-slate-400">Travelers:</span>
+          <select id="pax-count" onchange="renderTrips()" class="bg-transparent text-xs font-bold text-sky-300 focus:outline-none">
+            <option value="1" class="bg-slate-900">1 Passenger (Solo)</option>
+            <option value="2" selected class="bg-slate-900">2 Passengers (Couple)</option>
+            <option value="4" class="bg-slate-900">4 Passengers (Family)</option>
+          </select>
+        </div>
+
+        <div class="hidden md:flex items-center gap-2 bg-slate-900 border border-white/15 rounded-xl px-3 py-1.5">
+          <span class="text-xs text-slate-400">Cabin:</span>
+          <select id="cabin-tier" onchange="renderTrips()" class="bg-transparent text-xs font-bold text-amber-300 focus:outline-none">
+            <option value="1" class="bg-slate-900">Business Class</option>
+            <option value="1.45" class="bg-slate-900">First Class / Suites</option>
+            <option value="2.6" class="bg-slate-900">Private Jet Charter</option>
+          </select>
+        </div>
+
+        <button onclick="openTravelDrawer('Bespoke Itinerary')" class="px-5 py-2.5 rounded-xl bg-sky-400 hover:bg-sky-300 text-slate-950 text-xs font-bold uppercase tracking-wider transition">
+          Create Itinerary
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-14">
+    <!-- HERO -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end mb-14 pb-12 border-b border-white/10">
+      <div class="lg:col-span-8">
+        <span class="text-xs uppercase tracking-[0.28em] text-sky-400 font-bold">International Curation 2026 • 24/7 Satellite Concierge</span>
+        <h1 class="font-serif-travel text-5xl sm:text-7xl mt-3 leading-[1.02]">
+          Private access to the <em class="italic text-sky-300">most remote places on Earth.</em>
+        </h1>
+      </div>
+      <div class="lg:col-span-4 space-y-4">
+        <p class="text-sm text-slate-300 leading-relaxed">
+          From centuries-old ryokans reserved exclusively for your family in Kyoto to polar expeditions with an icebreaker and private helicopter. Change the number of passengers and cabin class above to recalculate everything in real time.
+        </p>
+        <div class="flex flex-wrap gap-2">
+          <button onclick="filterTrips('all', this)" class="trip-filter px-4 py-2 rounded-full text-xs font-bold bg-sky-400 text-slate-950">All (06)</button>
+          <button onclick="filterTrips('asia', this)" class="trip-filter px-4 py-2 rounded-full text-xs font-bold bg-white/10 text-white">Asia & Himalayas</button>
+          <button onclick="filterTrips('artico', this)" class="trip-filter px-4 py-2 rounded-full text-xs font-bold bg-white/10 text-white">Arctic & Aurora</button>
+          <button onclick="filterTrips('europa', this)" class="trip-filter px-4 py-2 rounded-full text-xs font-bold bg-white/10 text-white">Mediterranean & Alps</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- EXPEDITIONS GRID -->
+    <div id="trips-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7"></div>
+  </main>
+
+  <!-- ITINERARY MODAL -->
+  <div id="itinerary-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 backdrop-blur-md p-4">
+    <div class="bg-[#101B2B] border border-sky-400/30 rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl">
+      <div class="relative h-60">
+        <img id="it-img" src="" class="w-full h-full object-cover" alt="">
+        <button onclick="closeItineraryModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/70 text-white">✕</button>
+      </div>
+      <div class="p-8 space-y-4">
+        <span id="it-days" class="text-xs font-bold uppercase tracking-widest text-sky-400"></span>
+        <h3 id="it-title" class="font-serif-travel text-3xl text-white"></h3>
+        <div id="it-schedule" class="space-y-2.5 text-xs text-slate-300 border-y border-white/10 py-4"></div>
+        <div class="flex justify-between items-center pt-2">
+          <strong id="it-price" class="text-2xl text-sky-300 font-serif-travel"></strong>
+          <button onclick="closeItineraryModal(); openTravelDrawer(document.getElementById('it-title').textContent)" class="px-6 py-3 rounded-xl bg-sky-400 text-slate-950 font-bold text-xs uppercase tracking-wider">
+            Customize This Expedition →
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONCIERGE DRAWER -->
+  <div id="travel-overlay" onclick="closeTravelDrawer()" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden"></div>
+  <aside id="travel-drawer" class="fixed top-0 right-0 z-50 h-full w-full sm:w-[450px] bg-[#0D1724] border-l border-white/10 p-8 transform translate-x-full transition-transform duration-300 flex flex-col justify-between">
+    <div>
+      <div class="flex justify-between items-center pb-4 border-b border-white/10">
+        <h3 class="font-serif-travel text-2xl">Private Travel Designer</h3>
+        <button onclick="closeTravelDrawer()" class="text-slate-400 hover:text-white">✕</button>
+      </div>
+      <form onsubmit="submitTravel(event)" class="mt-6 space-y-4 text-xs">
+        <div>
+          <label class="block text-slate-400 uppercase mb-1">Selected Expedition</label>
+          <input type="text" id="travel-dest-input" readonly class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-sky-400/40 text-sky-300 font-bold">
+        </div>
+        <div>
+          <label class="block text-slate-400 uppercase mb-1">Your Name *</label>
+          <input type="text" required placeholder="Full Name" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/15 text-white">
+        </div>
+        <div>
+          <label class="block text-slate-400 uppercase mb-1">VIP WhatsApp / Phone *</label>
+          <input type="tel" required placeholder="+1 (555) 234-5678" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/15 text-white">
+        </div>
+        <div>
+          <label class="block text-slate-400 uppercase mb-1">Preferred Departure Month</label>
+          <input type="month" value="2026-09" class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/15 text-white">
+        </div>
+        <button type="submit" class="w-full py-4 rounded-xl bg-sky-400 hover:bg-sky-300 text-slate-950 font-bold uppercase tracking-widest">
+          Receive Travel Dossier →
+        </button>
+      </form>
+      <div id="travel-msg" class="hidden mt-5 p-4 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs">
+        ✓ Request sent to our Virtuoso® Expeditions Director.
+      </div>
+    </div>
+    <div class="text-[11px] text-slate-500 border-t border-white/10 pt-4">
+      NOMAD LUXE BESPOKE TRAVEL © 2026 • IATA & VIRTUOSO MEMBER
+    </div>
+  </aside>
+
+  <script>
+    const TRIPS = [
+      { id: 1, title: "Imperial Japan & Secret Ryokans", reg: "asia", days: "12 Days • Tokyo, Kyoto, Naoshima & Hakone", baseUSD: 8400, img: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=900&q=80", schedule: ["Days 1–4: Aman Tokyo + Private Closed-Door Omakase Dinner", "Days 5–8: Private ceremony at a Kyoto Zen temple + Shinkansen Gran Class", "Days 9–12: Private volcanic onsen in Hakone overlooking Mount Fuji"] },
+      { id: 2, title: "Iceland & Northern Lights Glass Domes", reg: "artico", days: "8 Days • Reykjavik, Glaciers & Highlands", baseUSD: 6900, img: "https://images.unsplash.com/photo-1531366936337-7c912a4589a7?auto=format&fit=crop&w=900&q=80", schedule: ["Days 1–3: The Retreat at Blue Lagoon Private Suite", "Days 4–6: Helicopter landing inside a natural blue ice cave", "Days 7–8: Private Northern Lights expedition in a modified Super Jeep"] },
+      { id: 3, title: "Bhutan & Himalayas by Helicopter", reg: "asia", days: "10 Days • Paro, Thimphu & Punakha (Amankora)", baseUSD: 11200, img: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=900&q=80", schedule: ["Days 1–4: Exclusive circuit across all 5 Amankora lodges", "Days 5–7: Panoramic helicopter flight over Jomolhari (7,326m)", "Days 8–10: Private blessing with a Buddhist monk at Tiger's Nest"] },
+      { id: 4, title: "Amalfi Coast & Capri by Riva Yacht", reg: "europa", days: "9 Days • Ravello, Positano & Isle of Capri", baseUSD: 9800, img: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=900&q=80", schedule: ["Days 1–3: Belmond Hotel Caruso in Ravello with suspended gardens", "Days 4–6: Private crossing aboard a Riva Aquarama speedboat to Capri", "Days 7–9: Private tasting at historic Campania vineyards"] },
+      { id: 5, title: "Svalbard & Polar Icebreaker Expedition", reg: "artico", days: "7 Days • Norwegian Arctic Archipelago (78° North)", baseUSD: 13500, img: "https://images.unsplash.com/photo-1517783999520-f068d7431a60?auto=format&fit=crop&w=900&q=80", schedule: ["Days 1–3: Embarkation on a 12-guest polar expedition icebreaker", "Days 4–5: Safe wildlife observation of polar bears and frozen fjords", "Days 6–7: Dining under the midnight sun or Arctic polar night"] },
+      { id: 6, title: "Swiss Alps: St. Moritz & Glacier Express", reg: "europa", days: "8 Days • Zurich, Zermatt & St. Moritz", baseUSD: 9100, img: "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?auto=format&fit=crop&w=900&q=80", schedule: ["Days 1–3: Badrutt's Palace St. Moritz with private ski-in/ski-out", "Days 4–6: Excellence Class cabin on the panoramic Glacier Express", "Days 7–8: Helicopter flight around the Matterhorn in Zermatt"] }
+    ];
+
+    let curReg = 'all';
+
+    window.renderTrips = function() {
+      const pax = Number(document.getElementById('pax-count').value);
+      const cabinMult = Number(document.getElementById('cabin-tier').value);
+      const list = curReg === 'all' ? TRIPS : TRIPS.filter(t => t.reg === curReg);
+
+      document.getElementById('trips-grid').innerHTML = list.map(t => {
+        const total = Math.round(t.baseUSD * pax * cabinMult);
+        return `
+          <div class="rounded-3xl overflow-hidden bg-[#101C2C] border border-white/10 hover:border-sky-400/50 transition flex flex-col justify-between group">
+            <div class="relative h-60 overflow-hidden">
+              <img src="${t.img}" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="${t.title}">
+              <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/75 backdrop-blur-md text-[10px] font-bold uppercase tracking-wider text-sky-300">${t.days}</span>
+            </div>
+            <div class="p-6">
+              <h3 class="font-serif-travel text-2xl text-white">${t.title}</h3>
+              <div class="mt-4 pt-4 border-t border-white/10 flex justify-between items-baseline">
+                <span class="text-xs text-slate-400">Estimate (${pax} pax incl. airfare)</span>
+                <strong class="text-2xl text-sky-300 font-serif-travel">US$ ${total.toLocaleString('en-US')}</strong>
+              </div>
+              <div class="grid grid-cols-2 gap-2 mt-5">
+                <button onclick="openItineraryModal(${t.id}, ${total})" class="py-2.5 rounded-xl border border-white/15 hover:border-sky-400 text-xs font-bold uppercase">View Itinerary</button>
+                <button onclick="openTravelDrawer('${t.title} — US$ ${total.toLocaleString('en-US')}')" class="py-2.5 rounded-xl bg-sky-400 hover:bg-sky-300 text-slate-950 font-bold text-xs uppercase">Reserve</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    };
+
+    window.filterTrips = function(r, btn) {
+      curReg = r;
+      document.querySelectorAll('.trip-filter').forEach(b => b.className = 'trip-filter px-4 py-2 rounded-full text-xs font-bold bg-white/10 text-white');
+      btn.className = 'trip-filter px-4 py-2 rounded-full text-xs font-bold bg-sky-400 text-slate-950';
+      renderTrips();
+    };
+
+    function openItineraryModal(id, calcTotal) {
+      const t = TRIPS.find(x => x.id === id);
+      document.getElementById('it-img').src = t.img;
+      document.getElementById('it-days').textContent = t.days;
+      document.getElementById('it-title').textContent = t.title;
+      document.getElementById('it-price').textContent = 'US$ ' + calcTotal.toLocaleString('en-US');
+      document.getElementById('it-schedule').innerHTML = t.schedule.map(s => `<p>✦ ${s}</p>`).join('');
+      const m = document.getElementById('itinerary-modal');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    }
+
+    function closeItineraryModal() {
+      const m = document.getElementById('itinerary-modal');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    }
+
+    function openTravelDrawer(dest) {
+      document.getElementById('travel-dest-input').value = dest;
+      document.getElementById('travel-msg').classList.add('hidden');
+      document.getElementById('travel-overlay').classList.remove('hidden');
+      document.getElementById('travel-drawer').classList.remove('translate-x-full');
+    }
+
+    function closeTravelDrawer() {
+      document.getElementById('travel-overlay').classList.add('hidden');
+      document.getElementById('travel-drawer').classList.add('translate-x-full');
+    }
+
+    function submitTravel(e) {
+      e.preventDefault();
+      document.getElementById('travel-msg').classList.remove('hidden');
+      e.target.reset();
+    }
+
+    renderTrips();
+  </script>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script defer src="/assets/js/demo-i18n-bar.js"></script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- demo-i18n-autodetect --><script>(function(){var cur=location.pathname.endsWith('/en.html')?'en':(location.pathname.endsWith('/es.html')?'es':'pt');var q=(new URLSearchParams(location.search).get('lang')||'').toLowerCase();var target=null;if(q==='pt'||q==='en'||q==='es'){target=q;try{localStorage.setItem('portfolio_lang',q);localStorage.setItem('portfolio_lang_manual','1');}catch(e){}}else if(cur==='pt'){try{if(localStorage.getItem('portfolio_lang_manual')==='1'){var saved=localStorage.getItem('portfolio_lang');if(saved==='en'||saved==='es'||saved==='pt')target=saved;}}catch(e){}if(!target){var langs=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||navigator.userLanguage||'en'];for(var i=0;i<langs.length;i++){var c=(langs[i]||'').toLowerCase().split('-')[0];if(c==='pt'){target='pt';break;}if(c==='es'){target='es';break;}if(c==='en'){target='en';break;}}if(!target)target='en';}}if(target&&target!==cur){var file=target==='en'?'en.html':(target==='es'?'es.html':'index.html');var p=location.pathname;var np=p.slice(-5).toLowerCase()==='.html'?p.slice(0,p.lastIndexOf('/')+1)+file:(p.endsWith('/')?p+file:p+'/'+file);location.replace(np+location.search+location.hash);}})();</script>
+  <title>TITAN METALWORKS — 5-Axis CNC Machining, Tooling & ASME Fabrication</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <style>
+    body { background-color: #0B0E13; color: #F1F5F9; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+    .font-tech { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="min-h-screen antialiased selection:bg-amber-500 selection:text-black">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 border-b border-amber-500/20 bg-[#0B0E13]/95 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-amber-500 text-black font-black flex items-center justify-center rounded-md text-lg">T</div>
+        <div>
+          <span class="font-extrabold tracking-tight text-lg block leading-none">TITAN <span class="text-amber-500">CNC METALWORKS</span></span>
+          <span class="font-tech text-[10px] text-slate-400 block mt-1">ISO 9001:2015 • IATF 16949 AUTOMOTIVE • ASME FABRICATION</span>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8 text-xs font-tech uppercase text-slate-300">
+        <a href="#cotacao" class="hover:text-amber-400">CAD/CAM Configurator</a>
+        <a href="#maquinas" class="hover:text-amber-400">Machine Park</a>
+        <a href="#metrologia" class="hover:text-amber-400">Zeiss CMM Quality</a>
+      </nav>
+
+      <button onclick="openTitanDrawer('Technical File Upload .STEP / .DWG')" class="px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-black font-extrabold text-xs uppercase tracking-wider transition">
+        Quote Technical Drawing
+      </button>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-14">
+    <!-- HERO & B2B CNC QUOTATION CONFIGURATOR -->
+    <section id="cotacao" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pb-20 border-b border-white/10">
+      <div class="lg:col-span-6 space-y-6">
+        <span class="font-tech text-xs uppercase px-3 py-1 rounded bg-amber-500/15 text-amber-400 border border-amber-500/30">
+          Micron-Level Tolerance (±0.004mm) & AWS / ASME IX Certified Welding
+        </span>
+        <h1 class="text-4xl sm:text-6xl font-extrabold leading-[1.05]">
+          5-Axis CNC Machining, Tooling & <span class="text-amber-500">Heavy Fabrication.</span>
+        </h1>
+        <p class="text-slate-400 text-base leading-relaxed">
+          We supply precision CNC machined parts, injection/stamping dies, sanitary stainless steel pressure vessels, and industrial skids with full mill-heat traceability and 3D CMM inspection reports.
+        </p>
+
+        <div class="grid grid-cols-3 gap-3 pt-4 border-t border-white/10 font-tech">
+          <div class="p-4 rounded-xl bg-[#141A23] border border-white/10">
+            <div class="text-2xl font-bold text-amber-400">18 Centers</div>
+            <div class="text-[11px] text-slate-400">Mazak 5-Axis & Romi</div>
+          </div>
+          <div class="p-4 rounded-xl bg-[#141A23] border border-white/10">
+            <div class="text-2xl font-bold text-white">25 Tons</div>
+            <div class="text-[11px] text-slate-400">Overhead Crane Capacity</div>
+          </div>
+          <div class="p-4 rounded-xl bg-[#141A23] border border-white/10">
+            <div class="text-2xl font-bold text-emerald-400">100%</div>
+            <div class="text-[11px] text-slate-400">Zeiss CMM Inspection</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Technical Engineering Configurator -->
+      <div class="lg:col-span-6 bg-[#141A23] border border-amber-500/35 rounded-3xl p-8 shadow-2xl space-y-5">
+        <div>
+          <h2 class="text-xl font-extrabold">Engineering & Lead-Time Configurator</h2>
+          <p class="text-xs text-slate-400">Configure the manufacturing process, metal alloy, and batch size:</p>
+        </div>
+
+        <div>
+          <label class="text-xs font-bold uppercase text-slate-400 block mb-1.5">1. Primary Manufacturing Process</label>
+          <select id="ind-proc" onchange="updateInd()" class="w-full px-4 py-3 bg-black border border-white/15 rounded-xl text-xs sm:text-sm font-semibold text-white">
+            <option value="Simultaneous 5-Axis CNC Machining + Wire EDM" data-lead="7 to 10 business days">Precision Machining — 5-Axis CNC / Wire EDM</option>
+            <option value="Tool & Die: Injection Mold or Progressive Stamping Die Build" data-lead="25 to 35 business days">Tool & Die — Injection Molds / Stamping Dies</option>
+            <option value="Heavy Fabrication: 12kW Fiber Laser Cutting, CNC Bending & TIG/MIG Welding" data-lead="12 to 18 business days">Fabrication & Laser Cutting — Stainless Tanks, Skids & Structures</option>
+          </select>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="text-xs font-bold uppercase text-slate-400 block mb-1.5">2. Certified Metal Alloy</label>
+            <select id="ind-mat" onchange="updateInd()" class="w-full px-3.5 py-3 bg-black border border-white/15 rounded-xl text-xs font-semibold text-white">
+              <option value="Hardened Tool Steel (H13 / D2 / P20)">Tool Steel (H13 / D2 / P20)</option>
+              <option value="Sanitary Stainless Steel (AISI 316L / 304)">Stainless Steel (AISI 316L / 304)</option>
+              <option value="Aerospace Aluminum (7075-T6 / 6061)">Marine/Aero Aluminum (7075-T6)</option>
+              <option value="Structural Carbon Steel (SAE 4140 / 1045)">Alloy Steel (SAE 4140 / 1045)</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-xs font-bold uppercase text-slate-400 block mb-1.5">3. Batch Size</label>
+            <select id="ind-batch" onchange="updateInd()" class="w-full px-3.5 py-3 bg-black border border-white/15 rounded-xl text-xs font-semibold text-white">
+              <option value="Prototype / Single Maintenance Part">Prototype / Single Part</option>
+              <option value="Pilot Batch (10 to 100 parts)">Pilot Batch (10 to 100 pcs)</option>
+              <option value="Continuous Serial Production (500+ parts/month)">Serial Production (500+ pcs/mo)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-black/70 border border-white/10 font-tech text-xs space-y-1.5">
+          <div class="flex justify-between text-amber-400">
+            <span>● QUOTATION SPECIFICATION:</span>
+            <span id="ind-lead">Lead-Time: 7 to 10 business days</span>
+          </div>
+          <p id="ind-summary" class="text-slate-300 leading-relaxed"></p>
+        </div>
+
+        <button onclick="openTitanDrawer(document.getElementById('ind-summary').textContent)" class="w-full py-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-black font-extrabold text-xs uppercase tracking-widest transition">
+          Attach 3D File (.STEP / .PDF) for Quote →
+        </button>
+      </div>
+    </section>
+
+    <!-- MACHINE PARK -->
+    <section id="maquinas" class="py-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="p-7 rounded-2xl bg-[#141A23] border border-white/10">
+        <span class="font-tech text-xs text-amber-400">01 // 5-AXIS CENTERS</span>
+        <h3 class="text-xl font-bold mt-2">Mazak Integrex & DMG Mori</h3>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Complex machining of impellers, hydraulic manifolds, and mold cavities in a single setup using HyperMill CAM programming.</p>
+      </div>
+      <div class="p-7 rounded-2xl bg-[#141A23] border border-white/10">
+        <span class="font-tech text-xs text-amber-400">02 // 12KW FIBER LASER CUTTING</span>
+        <h3 class="text-xl font-bold mt-2">Bystronic Laser & CNC Bending</h3>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Precision cutting of carbon and stainless steel plates up to 32mm thick with 320-ton robotic press brake bending.</p>
+      </div>
+      <div id="metrologia" class="p-7 rounded-2xl bg-[#141A23] border border-white/10">
+        <span class="font-tech text-xs text-amber-400">03 // ZEISS METROLOGY</span>
+        <h3 class="text-xl font-bold mt-2">3D CMM & NDT Testing</h3>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">20°C climate-controlled metrology lab equipped with Zeiss Contura coordinate measuring machine, weld ultrasonic testing, and dye penetrant inspection.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- CAD UPLOAD DRAWER -->
+  <div id="titan-overlay" onclick="closeTitanDrawer()" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden"></div>
+  <aside id="titan-drawer" class="fixed top-0 right-0 z-50 h-full w-full sm:w-[450px] bg-[#141A23] border-l border-amber-500/30 p-8 transform translate-x-full transition-transform duration-300 flex flex-col justify-between">
+    <div>
+      <div class="flex justify-between items-center pb-4 border-b border-white/10">
+        <h3 class="font-extrabold text-xl">Quotation Engineering</h3>
+        <button onclick="closeTitanDrawer()" class="text-slate-400 hover:text-white">✕</button>
+      </div>
+      <form onsubmit="submitTitan(event)" class="mt-6 space-y-4 text-xs font-tech">
+        <div>
+          <label class="block text-slate-400 uppercase mb-1">Selected Parameters</label>
+          <textarea id="titan-spec" rows="3" readonly class="w-full p-3 rounded-xl bg-black border border-amber-500/40 text-amber-300"></textarea>
+        </div>
+        <div>
+          <label class="block text-slate-400 uppercase mb-1">Engineer / Buyer *</label>
+          <input type="text" required placeholder="Name and Company" class="w-full px-3.5 py-3 rounded-xl bg-black border border-white/15 text-white">
+        </div>
+        <div>
+          <label class="block text-slate-400 uppercase mb-1">Corporate Email *</label>
+          <input type="email" required placeholder="purchasing@industry.com" class="w-full px-3.5 py-3 rounded-xl bg-black border border-white/15 text-white">
+        </div>
+        <button type="submit" class="w-full py-4 rounded-xl bg-amber-500 text-black font-extrabold uppercase tracking-widest">
+          Request Technical Quote (24h) →
+        </button>
+      </form>
+      <div id="titan-msg" class="hidden mt-5 p-4 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs font-tech">
+        ✓ Ticket #TITAN-849 created! Our estimating engineer will respond within 24 business hours.
+      </div>
+    </div>
+    <div class="text-[11px] font-tech text-slate-500 border-t border-white/10 pt-4">
+      TITAN METALWORKS LTD • INDUSTRIAL DISTRICT SP
+    </div>
+  </aside>
+
+  <script>
+    function updateInd() {
+      const pSel = document.getElementById('ind-proc');
+      const mSel = document.getElementById('ind-mat');
+      const bSel = document.getElementById('ind-batch');
+      const lead = pSel.options[pSel.selectedIndex].getAttribute('data-lead');
+      document.getElementById('ind-lead').textContent = 'Lead-Time: ' + lead;
+      document.getElementById('ind-summary').textContent = `${pSel.value} | Alloy: ${mSel.value} | Batch: ${bSel.value} (w/ Mill Certificate & CMM Report).`;
+    }
+
+    function openTitanDrawer(spec) {
+      document.getElementById('titan-spec').value = spec;
+      document.getElementById('titan-msg').classList.add('hidden');
+      document.getElementById('titan-overlay').classList.remove('hidden');
+      document.getElementById('titan-drawer').classList.remove('translate-x-full');
+    }
+
+    function closeTitanDrawer() {
+      document.getElementById('titan-overlay').classList.add('hidden');
+      document.getElementById('titan-drawer').classList.add('translate-x-full');
+    }
+
+    function submitTitan(e) {
+      e.preventDefault();
+      document.getElementById('titan-msg').classList.remove('hidden');
+      e.target.reset();
+    }
+
+    updateInd();
+  </script>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script defer src="/assets/js/demo-i18n-bar.js"></script>
+</body>
+</html>

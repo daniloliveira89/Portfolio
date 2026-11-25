@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- demo-i18n-autodetect --><script>(function(){var cur=location.pathname.endsWith('/en.html')?'en':(location.pathname.endsWith('/es.html')?'es':'pt');var q=(new URLSearchParams(location.search).get('lang')||'').toLowerCase();var target=null;if(q==='pt'||q==='en'||q==='es'){target=q;try{localStorage.setItem('portfolio_lang',q);localStorage.setItem('portfolio_lang_manual','1');}catch(e){}}else if(cur==='pt'){try{if(localStorage.getItem('portfolio_lang_manual')==='1'){var saved=localStorage.getItem('portfolio_lang');if(saved==='en'||saved==='es'||saved==='pt')target=saved;}}catch(e){}if(!target){var langs=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||navigator.userLanguage||'en'];for(var i=0;i<langs.length;i++){var c=(langs[i]||'').toLowerCase().split('-')[0];if(c==='pt'){target='pt';break;}if(c==='es'){target='es';break;}if(c==='en'){target='en';break;}}if(!target)target='en';}}if(target&&target!==cur){var file=target==='en'?'en.html':(target==='es'?'es.html':'index.html');var p=location.pathname;var np=p.slice(-5).toLowerCase()==='.html'?p.slice(0,p.lastIndexOf('/')+1)+file:(p.endsWith('/')?p+file:p+'/'+file);location.replace(np+location.search+location.hash);}})();</script>
+  <title>SCUDERIA IMPERIAL — Supercars, Hypercars & Level III-A Armoring</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@500,700,800,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <style>
+    :root {
+      --obsidian: #070709;
+      --carbon-dark: #0E0F13;
+      --carbon-panel: #15171E;
+      --rosso-corsa: #E10600;
+      --titanium: #9CA3AF;
+    }
+    body {
+      background-color: var(--obsidian);
+      color: #F3F4F6;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    .font-syne {
+      font-family: 'Syne', 'Cabinet Grotesk', sans-serif;
+    }
+    .font-cabinet {
+      font-family: 'Cabinet Grotesk', sans-serif;
+    }
+    .font-telemetry {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .text-rosso {
+      color: var(--rosso-corsa);
+    }
+    .bg-rosso {
+      background-color: var(--rosso-corsa);
+    }
+    .border-rosso {
+      border-color: rgba(225, 6, 0, 0.45);
+    }
+    .carbon-weave {
+      background-color: #070709;
+      background-image:
+        radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0),
+        radial-gradient(rgba(225, 6, 0, 0.025) 1px, transparent 0);
+      background-size: 32px 32px;
+      background-position: 0 0, 16px 16px;
+    }
+    .studio-spotlight {
+      background: radial-gradient(circle at 50% 0%, rgba(225, 6, 0, 0.14) 0%, rgba(21, 23, 30, 0.35) 45%, rgba(7, 7, 9, 0) 75%);
+    }
+    .car-card {
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .car-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(225, 6, 0, 0.65);
+      box-shadow: 0 28px 60px -15px rgba(0, 0, 0, 0.95), 0 0 35px -5px rgba(225, 6, 0, 0.18);
+    }
+    /* Custom Range Slider Rosso Corsa */
+    input[type="range"].rosso-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      background: #222530;
+      border-radius: 999px;
+      outline: none;
+    }
+    input[type="range"].rosso-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #E10600;
+      cursor: pointer;
+      border: 3px solid #F3F4F6;
+      box-shadow: 0 0 16px rgba(225, 6, 0, 0.9);
+      transition: transform 0.15s ease;
+    }
+    input[type="range"].rosso-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+    input[type="range"].rosso-slider::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #E10600;
+      cursor: pointer;
+      border: 3px solid #F3F4F6;
+      box-shadow: 0 0 16px rgba(225, 6, 0, 0.9);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #070709;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(225, 6, 0, 0.45);
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: rgba(225, 6, 0, 0.85);
+    }
+  </style>
+</head>
+<body class="min-h-screen selection:bg-[#E10600] selection:text-white antialiased carbon-weave">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-[#070709]/90 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3.5 group">
+        <div class="w-10 h-10 rounded bg-gradient-to-br from-[#E10600] to-[#8A0300] flex items-center justify-center font-syne font-extrabold text-white text-base tracking-tighter shadow-[0_0_20px_rgba(225,6,0,0.4)] group-hover:scale-105 transition-transform">
+          SI
+        </div>
+        <div class="border-l border-white/15 pl-3.5">
+          <span class="font-syne tracking-[0.2em] text-base sm:text-lg font-extrabold text-white block leading-none">
+            SCUDERIA IMPERIAL
+          </span>
+          <span class="block text-[9px] font-telemetry uppercase tracking-[0.28em] text-zinc-400 mt-1">
+            Hypercars • Bespoke Armor III-A
+          </span>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8 text-xs font-telemetry uppercase tracking-[0.18em] text-zinc-400">
+        <a href="#hero" class="hover:text-white transition-colors">Showroom</a>
+        <a href="#acervo" class="hover:text-white transition-colors">Exclusive Inventory</a>
+        <a href="#configurador" class="hover:text-white transition-colors">Private Banking & Armoring</a>
+        <a href="#engenharia" class="hover:text-white transition-colors">Ultralight Level III-A</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <span class="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded bg-white/[0.03] border border-white/10 text-[10px] font-telemetry uppercase tracking-widest text-zinc-300">
+          <span class="w-2 h-2 rounded-full bg-[#E10600] animate-ping"></span>
+          Jardins / Faria Lima
+        </span>
+        <button onclick="openVipDrawer()" class="px-5 py-2.5 rounded-sm bg-[#E10600] hover:bg-[#ff1a14] text-white font-cabinet font-extrabold text-xs uppercase tracking-[0.2em] transition-all duration-200 shadow-[0_0_25px_rgba(225,6,0,0.35)]">
+          Private Viewing
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="hero" class="relative overflow-hidden pt-12 pb-24 studio-spotlight">
+    <div class="max-w-7xl mx-auto px-6">
+      <!-- Top Credentials Bar -->
+      <div class="flex flex-wrap items-center justify-between gap-4 pb-8 border-b border-white/10">
+        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded bg-[#15171E] border border-[#E10600]/40">
+          <span class="w-2 h-2 rounded-full bg-[#E10600]"></span>
+          <span class="text-[11px] font-telemetry uppercase tracking-[0.18em] text-zinc-200">
+            FLAGSHIP SHOWROOM: <strong class="text-white">AV. BRIG. FARIA LIMA & JARDINS — SP</strong>
+          </span>
+        </div>
+
+        <div class="inline-flex items-center gap-3 px-3.5 py-1.5 rounded bg-white/[0.03] border border-white/10 text-[11px] font-telemetry uppercase tracking-[0.16em] text-zinc-300">
+          <span>✦ CERTIFIED OFFICIAL PROVENANCE: MARANELLO • STUTTGART • WOKING • SANT'AGATA</span>
+        </div>
+      </div>
+
+      <!-- Main Hero Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mt-12">
+        <div class="lg:col-span-6 text-left">
+          <span class="text-xs font-telemetry uppercase tracking-[0.3em] text-[#E10600] block mb-3">
+            // TRACK ENGINEERING & BALLISTIC PROTECTION
+          </span>
+
+          <h1 class="font-syne text-4xl sm:text-6xl font-extrabold text-white leading-[1.06] tracking-tight uppercase">
+            The Vanguard of <span class="text-[#E10600]">Hypercars</span> in Brazil.
+          </h1>
+
+          <p class="mt-6 text-zinc-300 text-sm sm:text-base leading-relaxed font-light max-w-xl">
+            Curated limited-production collector specimens featuring our <strong class="text-white font-medium">Lightweight Level III-A Armoring package (DuPont Kevlar® + 17mm AGP B33 Glass)</strong> engineered to preserve the dynamic center of gravity and factory power-to-weight ratio.
+          </p>
+
+          <div class="mt-9 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <a href="#acervo" class="px-8 py-4 rounded-sm bg-[#E10600] hover:bg-[#ff1a14] text-white font-cabinet font-extrabold text-xs uppercase tracking-[0.22em] text-center transition-all shadow-[0_12px_35px_rgba(225,6,0,0.35)]">
+              Explore Showroom (6)
+            </a>
+            <a href="#configurador" class="px-8 py-4 rounded-sm border border-white/20 bg-[#15171E]/80 hover:border-[#E10600] text-zinc-200 hover:text-white font-cabinet font-bold text-xs uppercase tracking-[0.22em] text-center transition-all">
+              Private Banking Simulator
+            </a>
+          </div>
+
+          <!-- Telemetry Metrics Grid -->
+          <div class="mt-12 pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div class="p-3.5 rounded-lg bg-[#15171E]/90 border border-white/10">
+              <span class="font-telemetry text-2xl sm:text-3xl font-bold text-[#E10600] block">2.3s</span>
+              <span class="text-[11px] text-white font-semibold mt-1 block">0–100 km/h</span>
+              <span class="text-[10px] font-telemetry text-zinc-400 block">Active Launch Control</span>
+            </div>
+
+            <div class="p-3.5 rounded-lg bg-[#15171E]/90 border border-white/10">
+              <span class="font-telemetry text-2xl sm:text-3xl font-bold text-white block">1,015 hp</span>
+              <span class="text-[11px] text-white font-semibold mt-1 block">V8 / V12 Bi-Turbo</span>
+              <span class="text-[10px] font-telemetry text-zinc-400 block">& PHEV Hybrid Propulsion</span>
+            </div>
+
+            <div class="p-3.5 rounded-lg bg-[#15171E]/90 border border-white/10">
+              <span class="font-telemetry text-2xl sm:text-3xl font-bold text-[#E10600] block">148 kg</span>
+              <span class="text-[11px] text-white font-semibold mt-1 block">Level III-A Armor</span>
+              <span class="text-[10px] font-telemetry text-zinc-400 block">Acrylate & Carbon-Aramid</span>
+            </div>
+
+            <div class="p-3.5 rounded-lg bg-[#15171E]/90 border border-white/10">
+              <span class="font-telemetry text-2xl sm:text-3xl font-bold text-white block">100%</span>
+              <span class="text-[11px] text-white font-semibold mt-1 block">Immediate Delivery</span>
+              <span class="text-[10px] font-telemetry text-zinc-400 block">Enclosed Carrier Logistics</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Studio Hypercar Showcase -->
+        <div class="lg:col-span-6">
+          <div class="relative rounded-2xl overflow-hidden border border-white/15 bg-[#0E0F13] shadow-[0_30px_90px_rgba(0,0,0,0.95)] group">
+            <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=1600&q=85"
+                 alt="Ferrari SF90 Spider Rosso Corsa in Studio"
+                 class="w-full h-[420px] sm:h-[520px] object-cover object-center group-hover:scale-105 transition-transform duration-1000">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#070709] via-[#070709]/25 to-black/30"></div>
+
+            <!-- Telemetry Overlay Top -->
+            <div class="absolute top-5 left-5 right-5 flex items-center justify-between">
+              <span class="px-3 py-1.5 rounded bg-[#070709]/85 backdrop-blur-md border border-[#E10600]/50 text-[10px] font-telemetry uppercase tracking-widest text-[#E10600] font-semibold">
+                COLLECTION HIGHLIGHT // IMMEDIATE DELIVERY
+              </span>
+              <span class="px-3 py-1.5 rounded bg-[#070709]/85 backdrop-blur-md border border-white/15 text-[10px] font-telemetry text-zinc-300">
+                CHASSIS #ZFF96NMA • ASSETTO FIORANO
+              </span>
+            </div>
+
+            <!-- Telemetry Overlay Bottom -->
+            <div class="absolute bottom-5 left-5 right-5 p-5 rounded-xl bg-[#0E0F13]/95 backdrop-blur-md border border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="text-[10px] font-telemetry uppercase tracking-widest text-[#E10600]">FERRARI</span>
+                  <span class="text-zinc-600">•</span>
+                  <span class="text-[10px] font-telemetry uppercase tracking-widest text-zinc-400">4.0L V8 TWIN-TURBO + 3 ELECTRIC MOTORS</span>
+                </div>
+                <h2 class="font-syne text-xl sm:text-2xl text-white font-bold mt-1">
+                  Ferrari SF90 Spider — 1,000 hp
+                </h2>
+                <p class="text-xs font-telemetry text-zinc-400 mt-0.5">
+                  Rosso Corsa • Cuoio & Carbon Fiber Interior • 1,150 km
+                </p>
+              </div>
+              <div class="text-left sm:text-right shrink-0">
+                <span class="text-[10px] font-telemetry uppercase text-zinc-400 block">Acquisition Price</span>
+                <span class="font-telemetry text-xl font-bold text-white block">$7,490,000</span>
+                <button onclick="loadVehicleIntoConfigurator('sf90')" class="mt-1.5 text-[11px] font-telemetry uppercase tracking-wider text-[#E10600] hover:underline font-semibold">
+                  Configure Financing →
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOWROOM INTERATIVO — CATÁLOGO DE VEHICLES -->
+  <section id="acervo" class="py-24 border-t border-white/10 bg-[#0B0C10]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-10 gap-6">
+        <div>
+          <span class="text-xs font-telemetry uppercase tracking-[0.28em] text-[#E10600] block">
+            // HIGH-COLLECTION INVENTORY
+          </span>
+          <h2 class="font-syne text-3xl sm:text-5xl font-extrabold text-white uppercase mt-2">
+            Interactive Showroom
+          </h2>
+          <p class="text-xs sm:text-sm text-zinc-400 mt-2 max-w-2xl">
+            Filter our collection by manufacturer, powertrain architecture, or physical availability. Every vehicle includes a 100% certified Dekra inspection report and complete authorized dealership service history.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3 self-start lg:self-end">
+          <span id="results-counter" class="px-3.5 py-2 rounded bg-[#15171E] border border-white/10 text-xs font-telemetry text-zinc-300">
+            Showing 6 vehicles
+          </span>
+          <button onclick="resetShowroomFilters()" class="px-3.5 py-2 rounded border border-white/15 hover:border-[#E10600] text-xs font-telemetry uppercase tracking-wider text-zinc-400 hover:text-white transition">
+            Reset Filters
+          </button>
+        </div>
+      </div>
+
+      <!-- Painel de Filtros Combinados -->
+      <div class="p-5 rounded-2xl bg-[#15171E] border border-white/10 mb-10 space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <!-- Filtro Marca -->
+          <div>
+            <label class="block text-[10px] font-telemetry uppercase tracking-widest text-zinc-400 mb-2">
+              Filter by Make
+            </label>
+            <div class="flex flex-wrap gap-1.5" id="filter-brand">
+              <button data-brand="all" onclick="setFilter('brand', 'all')" class="brand-pill px-3 py-1.5 rounded text-[11px] font-telemetry uppercase bg-[#E10600] text-white font-semibold transition">All</button>
+              <button data-brand="Ferrari" onclick="setFilter('brand', 'Ferrari')" class="brand-pill px-3 py-1.5 rounded text-[11px] font-telemetry uppercase bg-[#0E0F13] text-zinc-400 hover:text-white border border-white/10 transition">Ferrari</button>
+              <button data-brand="Porsche" onclick="setFilter('brand', 'Porsche')" class="brand-pill px-3 py-1.5 rounded text-[11px] font-telemetry uppercase bg-[#0E0F13] text-zinc-400 hover:text-white border border-white/10 transition">Porsche</button>
+              <button data-brand="McLaren" onclick="setFilter('brand', 'McLaren')" class="brand-pill px-3 py-1.5 rounded text-[11px] font-telemetry uppercase bg-[#0E0F13] text-zinc-400 hover:text-white border border-white/10 transition">McLaren</button>
+              <button data-brand="Lamborghini" onclick="setFilter('brand', 'Lamborghini')" class="brand-pill px-3 py-1.5 rounded text-[11px] font-telemetry uppercase bg-[#0E0F13] text-zinc-400 hover:text-white border border-white/10 transition">Lamborghini</button>
+              <button data-brand="Rolls-Royce" onclick="setFilter('brand', 'Rolls-Royce')" class="brand-pill px-3 py-1.5 rounded text-[11px] font-telemetry uppercase bg-[#0E0F13] text-zinc-400 hover:text-white border border-white/10 transition">Rolls-Royce</button>
+            </div>
+          </div>
+
+          <!-- Filtro Propulsão -->
+          <div>
+            <label class="block text-[10px] font-telemetry uppercase tracking-widest text-zinc-400 mb-2">
+              Powertrain Architecture
+            </label>
+            <div class="flex flex-wrap gap-1.5" id="filter-propulsion">
+              <button data-prop="all" onclick="setFilter('propulsion', 'all')" class="prop-pill px-3 py-1.5 rounded text-[11px] font-telemetry uppercase bg-[#E10600] text-white font-semibold transition">All</button>
+              <button data-prop="V8" onclick="setFilter('propulsion', 'V8')" class="prop-pill px-3 py-1.5 rounded text-[11px] font-telemetry uppercase bg-[#0E0F13] text-zinc-400 hover:text-white border border-white/10 transition">V8</button>
+              <button data-prop="V12" onclick="setFilter('propulsion', 'V12')" class="prop-pill px-3 py-1.5 rounded text-[11px] font-telemetry uppercase bg-[#0E0F13] text-zinc-400 hover:text-white border border-white/10 transition">V12</button>
+              <button data-prop="Hybrid" onclick="setFilter('propulsion', 'Hybrid')" class="prop-pill px-3 py-1.5 rounded text-[11px] font-telemetry uppercase bg-[#0E0F13] text-zinc-400 hover:text-white border border-white/10 transition">Hybrid</button>
+              <button data-prop="Electric" onclick="setFilter('propulsion', 'Electric')" class="prop-pill px-3 py-1.5 rounded text-[11px] font-telemetry uppercase bg-[#0E0F13] text-zinc-400 hover:text-white border border-white/10 transition">Electric</button>
+            </div>
+          </div>
+
+          <!-- Filtro Status -->
+          <div>
+            <label class="block text-[10px] font-telemetry uppercase tracking-widest text-zinc-400 mb-2">
+              Availability Status
+            </label>
+            <div class="flex flex-wrap gap-1.5" id="filter-status">
+              <button data-status="all" onclick="setFilter('status', 'all')" class="status-pill px-3 py-1.5 rounded text-[11px] font-telemetry uppercase bg-[#E10600] text-white font-semibold transition">All</button>
+              <button data-status="Available" onclick="setFilter('status', 'Available')" class="status-pill px-3 py-1.5 rounded text-[11px] font-telemetry uppercase bg-[#0E0F13] text-zinc-400 hover:text-white border border-white/10 transition">Available</button>
+              <button data-status="In Transit" onclick="setFilter('status', 'In Transit')" class="status-pill px-3 py-1.5 rounded text-[11px] font-telemetry uppercase bg-[#0E0F13] text-zinc-400 hover:text-white border border-white/10 transition">In Transit</button>
+              <button data-status="Sold" onclick="setFilter('status', 'Sold')" class="status-pill px-3 py-1.5 rounded text-[11px] font-telemetry uppercase bg-[#0E0F13] text-zinc-400 hover:text-white border border-white/10 transition">Sold</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid de Veículos -->
+      <div id="showroom-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+        <!-- Injetado via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- CONFIGURADOR / SIMULADOR FINANCEIRO & CUSTOMIZATION EM TEMPO REAL -->
+  <section id="configurador" class="py-24 border-t border-white/10 bg-[#070709]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+        <div>
+          <span class="text-xs font-telemetry uppercase tracking-[0.28em] text-[#E10600] block">
+            // BESPOKE ARMOR & PRIVATE WEALTH DESK
+          </span>
+          <h2 class="font-syne text-3xl sm:text-5xl font-extrabold text-white uppercase mt-2">
+            VIP Configurator & Financial Simulator
+          </h2>
+          <p class="text-xs sm:text-sm text-zinc-400 mt-2 max-w-2xl">
+            Structure your acquisition through our Private Banking credit lines (preferential rate of 0.89%/mo), add certified ultralight Level III-A armoring, and insured nationwide enclosed flatbed transport.
+          </p>
+        </div>
+
+        <div class="px-4 py-2 rounded bg-[#15171E] border border-[#E10600]/40 text-xs font-telemetry text-zinc-300">
+          Credit Approval within <strong class="text-white">2 business hours</strong>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <!-- Coluna Esquerda: Controles do Configurador (7 Colunas) -->
+        <div class="lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-[#15171E] border border-white/10 space-y-8">
+
+          <!-- 1. Seletor de Veículo -->
+          <div>
+            <label for="cfg-vehicle" class="block text-xs font-telemetry uppercase tracking-widest text-zinc-300 mb-2.5">
+              01. Select Vehicle from Collection
+            </label>
+            <select id="cfg-vehicle" onchange="updateConfigurator()" class="w-full px-4 py-3.5 rounded-xl bg-[#070709] border border-white/15 text-white font-cabinet text-base font-bold focus:outline-none focus:border-[#E10600]">
+              <!-- Populado pelo JS -->
+            </select>
+          </div>
+
+          <!-- 2. Slider de Entrada (%) -->
+          <div>
+            <div class="flex items-end justify-between mb-2.5">
+              <div>
+                <label for="cfg-downpayment" class="text-xs font-telemetry uppercase tracking-widest text-zinc-300 block">
+                  02. Down Payment Percentage (Initial Equity)
+                </label>
+                <span class="text-xs text-zinc-400">We accept your current supercar as a Trade-In at market valuation</span>
+              </div>
+              <div class="text-right">
+                <span id="cfg-down-pct-label" class="font-telemetry text-2xl sm:text-3xl font-bold text-[#E10600]">40%</span>
+                <span id="cfg-down-val-label" class="block text-xs font-telemetry text-zinc-300">$2,996,000</span>
+              </div>
+            </div>
+
+            <input type="range" id="cfg-downpayment" min="30" max="80" step="5" value="40" oninput="updateConfigurator()" class="rosso-slider my-2">
+
+            <div class="flex justify-between text-[10px] font-telemetry text-zinc-500 mt-1">
+              <span>30% MIN.</span>
+              <span>40%</span>
+              <span>50%</span>
+              <span>60%</span>
+              <span>70%</span>
+              <span>80% MAX.</span>
+            </div>
+          </div>
+
+          <!-- 3. Prazo de Amortização (Parcelas Private Banking) -->
+          <div>
+            <div class="flex items-center justify-between mb-2.5">
+              <label class="text-xs font-telemetry uppercase tracking-widest text-zinc-300">
+                03. Private Banking Installment Plan
+              </label>
+              <span class="text-[11px] font-telemetry text-emerald-400">VIP Rate: 0.89% / mo.</span>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="cfg-months-group">
+              <button type="button" data-months="12" onclick="selectInstallments(12)" class="month-btn py-3 px-4 rounded-xl border border-white/10 bg-[#070709] text-center transition">
+                <span class="font-telemetry text-base font-bold text-white block">12x</span>
+                <span class="text-[10px] font-telemetry text-zinc-400">Short Term</span>
+              </button>
+              <button type="button" data-months="24" onclick="selectInstallments(24)" class="month-btn py-3 px-4 rounded-xl border border-[#E10600] bg-[#E10600]/15 text-center transition">
+                <span class="font-telemetry text-base font-bold text-white block">24x</span>
+                <span class="text-[10px] font-telemetry text-[#E10600]">Most Popular</span>
+              </button>
+              <button type="button" data-months="36" onclick="selectInstallments(36)" class="month-btn py-3 px-4 rounded-xl border border-white/10 bg-[#070709] text-center transition">
+                <span class="font-telemetry text-base font-bold text-white block">36x</span>
+                <span class="text-[10px] font-telemetry text-zinc-400">Optimized Cashflow</span>
+              </button>
+              <button type="button" data-months="48" onclick="selectInstallments(48)" class="month-btn py-3 px-4 rounded-xl border border-white/10 bg-[#070709] text-center transition">
+                <span class="font-telemetry text-base font-bold text-white block">48x</span>
+                <span class="text-[10px] font-telemetry text-zinc-400">Operating Lease</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 4. Opcionais de Level III-A Armor, Proteção e Logística -->
+          <div id="engenharia" class="pt-4 border-t border-white/10 space-y-3">
+            <label class="block text-xs font-telemetry uppercase tracking-widest text-zinc-300 mb-2">
+              04. Certified Armoring & Door-to-Door Logistics
+            </label>
+
+            <!-- Opcional 1: Blindagem Nível III-A -->
+            <label class="flex items-start justify-between gap-4 p-4 rounded-xl bg-[#070709] border border-white/15 hover:border-[#E10600]/50 cursor-pointer transition">
+              <div class="flex items-start gap-3.5">
+                <input type="checkbox" id="opt-armor" onchange="updateConfigurator()" class="mt-1 w-5 h-5 accent-[#E10600] rounded cursor-pointer">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="font-cabinet text-sm sm:text-base font-bold text-white">Ultralight Level III-A Armoring (Military Certified)</span>
+                    <span class="px-2 py-0.5 rounded bg-[#E10600]/20 text-[#E10600] font-telemetry text-[10px] font-bold">148 kg</span>
+                  </div>
+                  <p class="text-xs text-zinc-400 mt-1">
+                    Twaron® Aramid weave + curved AGP B33 (17mm) glass with anti-spall polycarbonate and full preservation of ADAS sensors.
+                  </p>
+                </div>
+              </div>
+              <span class="font-telemetry text-xs sm:text-sm font-bold text-white shrink-0">+ $265,000</span>
+            </label>
+
+            <!-- Opcional 2: PPF Full Body -->
+            <label class="flex items-start justify-between gap-4 p-4 rounded-xl bg-[#070709] border border-white/15 hover:border-[#E10600]/50 cursor-pointer transition">
+              <div class="flex items-start gap-3.5">
+                <input type="checkbox" id="opt-ppf" checked onchange="updateConfigurator()" class="mt-1 w-5 h-5 accent-[#E10600] rounded cursor-pointer">
+                <div>
+                  <span class="font-cabinet text-sm sm:text-base font-bold text-white block">Full Body XPEL Ultimate Plus PPF (10 Mil) + Ceramic Coating</span>
+                  <p class="text-xs text-zinc-400 mt-1">
+                    Self-healing track-grade protection film across full bodywork, carbon wheels, and brake calipers.
+                  </p>
+                </div>
+              </div>
+              <span class="font-telemetry text-xs sm:text-sm font-bold text-white shrink-0">+ $42,000</span>
+            </label>
+
+            <!-- Opcional 3: Entrega em Caminhão Prancha Fechada -->
+            <label class="flex items-start justify-between gap-4 p-4 rounded-xl bg-[#070709] border border-white/15 hover:border-[#E10600]/50 cursor-pointer transition">
+              <div class="flex items-start gap-3.5">
+                <input type="checkbox" id="opt-truck" checked onchange="updateConfigurator()" class="mt-1 w-5 h-5 accent-[#E10600] rounded cursor-pointer">
+                <div>
+                  <span class="font-cabinet text-sm sm:text-base font-bold text-white block">Nationwide Enclosed Climate-Controlled Carrier Delivery</span>
+                  <p class="text-xs text-zinc-400 mt-1">
+                    Confidential insured transport (Allianz 100% Declared Value) with zero-angle hydraulic ramp to any state in Brazil.
+                  </p>
+                </div>
+              </div>
+              <span class="font-telemetry text-xs sm:text-sm font-bold text-white shrink-0">+ $19,500</span>
+            </label>
+          </div>
+
+        </div>
+
+        <!-- Coluna Direita: Painel Resumo Financeiro em Tempo Real (5 Colunas) -->
+        <div class="lg:col-span-5 lg:sticky lg:top-28">
+          <div class="rounded-2xl bg-[#0E0F13] border-2 border-[#E10600]/50 shadow-[0_25px_80px_rgba(0,0,0,0.95)] overflow-hidden">
+            <!-- Mini Preview do Carro Selecionado -->
+            <div class="relative h-44 bg-black overflow-hidden">
+              <img id="cfg-car-img" src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=1000&q=80" alt="Selected Vehicle" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0E0F13] via-[#0E0F13]/40 to-transparent"></div>
+              <div class="absolute bottom-3 left-5 right-5 flex items-end justify-between">
+                <div>
+                  <span id="cfg-car-specs" class="text-[10px] font-telemetry uppercase tracking-widest text-[#E10600] block">V8 HYBRID • 1,000 HP</span>
+                  <h3 id="cfg-car-title" class="font-syne text-xl text-white font-bold">Ferrari SF90 Spider</h3>
+                </div>
+                <span id="cfg-car-status" class="px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 font-telemetry text-[10px] uppercase">
+                  Available
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6 space-y-4">
+              <div class="space-y-2.5 text-xs font-telemetry border-b border-white/10 pb-4">
+                <div class="flex justify-between">
+                  <span class="text-zinc-400">Vehicle Base Price</span>
+                  <span id="sum-base-price" class="text-white font-semibold">$7,490,000</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-zinc-400">Customization & Logistics Package</span>
+                  <span id="sum-addons-price" class="text-[#E10600] font-semibold">+ $61,500</span>
+                </div>
+                <div class="flex justify-between pt-2 border-t border-white/5 text-sm">
+                  <span class="text-zinc-200 font-bold">Total Configured Price</span>
+                  <span id="sum-total-price" class="text-white font-bold">$7,551,500</span>
+                </div>
+              </div>
+
+              <!-- Destaque de Entrada e Parcelas -->
+              <div class="grid grid-cols-1 gap-3">
+                <div class="p-3.5 rounded-xl bg-[#15171E] border border-white/10 flex items-center justify-between">
+                  <div>
+                    <span class="text-[10px] font-telemetry uppercase text-zinc-400 block">Down Payment (<span id="sum-down-pct">40%</span>)</span>
+                    <span class="text-[11px] text-zinc-500">Wire Transfer / Supercar Trade-In</span>
+                  </div>
+                  <span id="sum-down-value" class="font-telemetry text-lg font-bold text-white">$3,020,600</span>
+                </div>
+
+                <div class="p-4 rounded-xl bg-gradient-to-r from-[#1A0505] via-[#15171E] to-[#15171E] border border-[#E10600]/40 flex items-center justify-between">
+                  <div>
+                    <span class="text-[10px] font-telemetry uppercase tracking-wider text-[#E10600] block">Balance in <span id="sum-months-count">24</span> Monthly Installments</span>
+                    <span class="text-[11px] text-zinc-400 font-telemetry">Private Wealth (0.89% / mo.)</span>
+                  </div>
+                  <span id="sum-monthly-value" class="font-telemetry text-xl sm:text-2xl font-bold text-[#E10600]">$209,840</span>
+                </div>
+              </div>
+
+              <button onclick="sendConfigToVipDrawer()" class="w-full py-4 rounded-sm bg-[#E10600] hover:bg-[#ff1a14] text-white font-cabinet font-extrabold text-xs uppercase tracking-[0.22em] transition shadow-[0_12px_30px_rgba(225,6,0,0.35)]">
+                Request VIP Proposal or Test-Drive →
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL DE TELEMETRIA E FICHA TÉCNICA DO VEÍCULO -->
+  <div id="spec-modal-overlay" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
+    <div id="spec-modal-box" class="w-full max-w-3xl rounded-2xl bg-[#15171E] border border-[#E10600]/50 shadow-[0_25px_90px_rgba(0,0,0,0.95)] overflow-hidden transform scale-95 transition-transform duration-300 max-h-[90vh] flex flex-col">
+      <!-- Preenchido via JS -->
+    </div>
+  </div>
+
+  <!-- DRAWER LATERAL: SOLICITAÇÃO DE TEST-DRIVE PRIVADO OU PROPOSTA VIP -->
+  <div id="drawer-overlay" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <aside id="vip-drawer" class="fixed top-0 right-0 z-50 h-full w-full sm:w-[520px] bg-[#15171E] border-l border-[#E10600]/40 p-6 sm:p-8 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between overflow-y-auto custom-scrollbar">
+    <div>
+      <div class="flex items-center justify-between pb-5 border-b border-white/10">
+        <div>
+          <span class="text-[10px] font-telemetry uppercase tracking-[0.25em] text-[#E10600]">SCUDERIA IMPERIAL CONCIERGE</span>
+          <h3 class="font-syne text-2xl text-white font-bold">Private Test-Drive & VIP Proposal</h3>
+        </div>
+        <button onclick="closeVipDrawer()" class="w-9 h-9 rounded-lg border border-white/15 text-zinc-400 hover:text-white hover:border-[#E10600] flex items-center justify-center transition">
+          ✕
+        </button>
+      </div>
+
+      <!-- Resumo da Configuração Atual -->
+      <div class="mt-5 p-4 rounded-xl bg-[#070709] border border-[#E10600]/35 space-y-2">
+        <div class="flex items-center justify-between">
+          <span id="drawer-car-name" class="font-syne text-base font-bold text-white">Ferrari SF90 Spider</span>
+          <span id="drawer-car-total" class="font-telemetry text-sm font-bold text-[#E10600]">$7,551,500</span>
+        </div>
+        <p id="drawer-fin-summary" class="text-xs font-telemetry text-zinc-400">
+          $3,020,600 down (40%) + 24x of $209,840
+        </p>
+        <div id="drawer-addons-badges" class="flex flex-wrap gap-1.5 pt-1">
+          <!-- Badges injetadas via JS -->
+        </div>
+      </div>
+
+      <form id="vip-form" class="mt-5 space-y-4">
+        <!-- Modalidade de Atendimento -->
+        <div>
+          <label class="block text-[11px] font-telemetry uppercase tracking-wider text-zinc-300 mb-2">
+            1. Exclusive Concierge Service Mode
+          </label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <button type="button" data-mode="Private Test-Drive & Faria Lima Viewing" onclick="setVipMode('Private Test-Drive & Faria Lima Viewing')" class="vip-mode-btn p-3 rounded-xl border border-[#E10600] bg-[#E10600]/15 text-left transition">
+              <span class="text-xs font-bold text-white block">Private Viewing & Test-Drive</span>
+              <span class="text-[10px] font-telemetry text-zinc-300">Jardins / Faria Lima Vault Lounge</span>
+            </button>
+            <button type="button" data-mode="Formal Proposal & Trade-In Appraisal" onclick="setVipMode('Formal Proposal & Trade-In Appraisal')" class="vip-mode-btn p-3 rounded-xl border border-white/10 bg-[#070709] text-left transition">
+              <span class="text-xs font-bold text-white block">Financial Dossier & Trade-In</span>
+              <span class="text-[10px] font-telemetry text-zinc-400">Chassis Reservation / Armoring</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[11px] font-telemetry uppercase tracking-wider text-zinc-300 mb-1.5">Preferred Date</label>
+            <input type="date" id="vip-date" required class="w-full px-3.5 py-2.5 rounded-lg bg-[#070709] border border-white/15 text-white text-xs sm:text-sm focus:outline-none focus:border-[#E10600]">
+          </div>
+          <div>
+            <label class="block text-[11px] font-telemetry uppercase tracking-wider text-zinc-300 mb-1.5">Private Time Slot</label>
+            <select id="vip-time" class="w-full px-3.5 py-2.5 rounded-lg bg-[#070709] border border-white/15 text-white text-xs sm:text-sm focus:outline-none focus:border-[#E10600]">
+              <option value="10:00 AM (Private Morning)">10:00 AM (Private Morning)</option>
+              <option value="2:30 PM (Executive Afternoon)" selected>2:30 PM (Executive Afternoon)</option>
+              <option value="5:00 PM (Sunset Viewing)">5:00 PM (Sunset Viewing)</option>
+              <option value="7:30 PM (After-Hours Closed Showroom)">7:30 PM (After-Hours Private)</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-telemetry uppercase tracking-wider text-zinc-300 mb-1.5">Full Name / Family Office Principal</label>
+          <input type="text" id="vip-name" required placeholder="e.g. Alexander Sterling" class="w-full px-3.5 py-2.5 rounded-lg bg-[#070709] border border-white/15 text-white text-sm focus:outline-none focus:border-[#E10600]">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[11px] font-telemetry uppercase tracking-wider text-zinc-300 mb-1.5">Direct WhatsApp / Concierge</label>
+            <input type="tel" id="vip-phone" required placeholder="+1 (305) 555-0198" class="w-full px-3.5 py-2.5 rounded-lg bg-[#070709] border border-white/15 text-white text-sm focus:outline-none focus:border-[#E10600]">
+          </div>
+          <div>
+            <label class="block text-[11px] font-telemetry uppercase tracking-wider text-zinc-300 mb-1.5">Corporate E-mail</label>
+            <input type="email" id="vip-email" required placeholder="alexander@sterlingholding.com" class="w-full px-3.5 py-2.5 rounded-lg bg-[#070709] border border-white/15 text-white text-sm focus:outline-none focus:border-[#E10600]">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-telemetry uppercase tracking-wider text-zinc-300 mb-1.5">Trade-In Vehicle or Delivery City</label>
+          <textarea id="vip-notes" rows="2" placeholder="e.g. 2024 Porsche 911 Turbo S trade-in with 3,000 km; enclosed delivery to Miami/FL..." class="w-full px-3.5 py-2 rounded-lg bg-[#070709] border border-white/15 text-white text-xs sm:text-sm focus:outline-none focus:border-[#E10600] resize-none"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-4 rounded-sm bg-[#E10600] hover:bg-[#ff1a14] text-white font-cabinet font-extrabold uppercase tracking-[0.22em] text-xs transition shadow-[0_12px_30px_rgba(225,6,0,0.35)]">
+          Confirm Confidential Request →
+        </button>
+      </form>
+    </div>
+
+    <div class="pt-5 mt-6 border-t border-white/10 text-[11px] font-telemetry text-zinc-500 flex items-center justify-between">
+      <span>Certified Helipad 400m Away</span>
+      <span>Strict NDA Confidentiality</span>
+    </div>
+  </aside>
+
+  <!-- MODAL DE CONFIRMAÇÃO DE SOLICITAÇÃO VIP -->
+  <div id="vip-success-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
+    <div class="w-full max-w-lg rounded-2xl bg-[#15171E] border-2 border-[#E10600] p-6 sm:p-8 text-center shadow-[0_25px_90px_rgba(225,6,0,0.28)]">
+      <div class="w-14 h-14 rounded-lg bg-[#E10600] text-white flex items-center justify-center mx-auto mb-5 font-syne font-extrabold text-xl">
+        SI
+      </div>
+      <span class="text-[10px] font-telemetry uppercase tracking-[0.3em] text-[#E10600]">EXECUTIVE DOSSIER REGISTERED</span>
+      <h3 class="font-syne text-2xl sm:text-3xl font-bold text-white mt-1">
+        Private Appointment Confirmed
+      </h3>
+      <p class="text-xs sm:text-sm text-zinc-300 mt-2 leading-relaxed">
+        A Scuderia Imperial Relationship Director has received your configuration and will contact you via direct line to confirm your reception at the Vault Lounge.
+      </p>
+
+      <div id="vip-receipt-box" class="mt-6 p-4 rounded-xl bg-[#070709] border border-white/10 text-left space-y-2 text-xs font-telemetry">
+        <!-- Preenchido via JS -->
+      </div>
+
+      <button onclick="closeVipSuccessModal()" class="mt-6 w-full py-3.5 rounded-sm bg-[#E10600] hover:bg-[#ff1a14] text-white font-cabinet font-extrabold text-xs uppercase tracking-[0.2em] transition">
+        Done & Return to Showroom
+      </button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/10 bg-[#050507] py-16">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3.5">
+        <div class="w-9 h-9 rounded bg-[#E10600] flex items-center justify-center font-syne font-extrabold text-white text-xs">
+          SI
+        </div>
+        <div>
+          <span class="font-syne tracking-[0.2em] text-sm font-bold text-white block">SCUDERIA IMPERIAL MOTORS</span>
+          <p class="text-[11px] text-zinc-500 font-telemetry">Av. Brigadeiro Faria Lima & Jardins, Sao Paulo — SP</p>
+        </div>
+      </div>
+      <div class="text-center sm:text-right text-xs text-zinc-500 font-telemetry">
+        <p>Scuderia Imperial © 2026 • Supercars, Hypercars & Certified Armoring</p>
+        <p class="text-[10px] text-zinc-600 mt-1">By appointment only • 24/7 Armed Security</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT PURO EMBUTIDO -->
+  <script>
+    // 1. SCUDERIA IMPERIAL SUPERCAR CATALOG
+    const supercarsCatalog = [
+      {
+        id: 'sf90',
+        brand: 'Ferrari',
+        name: 'Ferrari SF90 Spider',
+        year: '2025/2026',
+        km: '1,150 km',
+        propulsion: ['V8', 'Hybrid'],
+        propulsionLabel: '4.0L V8 Twin-Turbo + 3 PHEV Motors',
+        power: '1,000 hp',
+        zeroToHundred: '2.5s',
+        topSpeed: '340 km/h',
+        status: 'Available',
+        price: 7490000,
+        color: 'Rosso Corsa / Retractable Hardtop RHT',
+        interior: 'Cuoio Leather & Carbon Daytona Seats',
+        highlights: 'Assetto Fiorano package, factory Akrapovič titanium exhaust, carbon fiber wheels, and front axle lift.',
+        image: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=1200&q=85'
+      },
+      {
+        id: 'gt3rs',
+        brand: 'Porsche',
+        name: 'Porsche 911 GT3 RS (992)',
+        year: '2025/2025',
+        km: '480 km',
+        propulsion: ['V8'], // Grouped under pure combustion / track + specific tag
+        propulsionLabel: '4.0L Naturally Aspirated Flat-6 (9,000 RPM) / Track',
+        power: '525 hp',
+        zeroToHundred: '3.2s',
+        topSpeed: '296 km/h',
+        status: 'Available',
+        price: 3690000,
+        color: 'Ice Grey Metallic / Pyro Red',
+        interior: 'Weissach Package in Alcantara & Carbon Roll Cage',
+        highlights: 'Active DRS aerodynamics (860 kg downforce), PCCB ceramic brakes, forged magnesium wheels, and front-axle lift.',
+        image: 'https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?auto=format&fit=crop&w=1200&q=85'
+      },
+      {
+        id: '765lt',
+        brand: 'McLaren',
+        name: 'McLaren 765LT Spider',
+        year: '2024/2024',
+        km: '1,890 km',
+        propulsion: ['V8'],
+        propulsionLabel: '4.0L V8 Twin-Turbo Longtail',
+        power: '765 hp',
+        zeroToHundred: '2.8s',
+        topSpeed: '330 km/h',
+        status: 'Available',
+        price: 5850000,
+        color: 'Chicane Effect Grey (MSO)',
+        interior: 'McLaren Senna Exposed Carbon Bucket Seats',
+        highlights: 'Limited to 765 units worldwide. Full quad-exit titanium exhaust, Monocage II-S chassis, and track telemetry.',
+        image: 'https://images.unsplash.com/photo-1621135802920-133df287f89c?auto=format&fit=crop&w=1200&q=85'
+      },
+      {
+        id: 'revuelto',
+        brand: 'Lamborghini',
+        name: 'Lamborghini Revuelto Opera Unica',
+        year: '2026/2026',
+        km: '0 km',
+        propulsion: ['V12', 'Hybrid'],
+        propulsionLabel: '6.5L Naturally Aspirated V12 + 3 HPEV Electric Motors',
+        power: '1,015 hp',
+        zeroToHundred: '2.5s',
+        topSpeed: '350 km/h',
+        status: 'In Transit',
+        price: 8950000,
+        color: 'Nero Nemesis Matte (Ad Personam)',
+        interior: 'Nero Cosmus & Rosso Alala with Carbon Skin',
+        highlights: '100% forged carbon fiber monofuselage, transverse 8-speed dual-clutch gearbox, arriving in 15 days.',
+        image: 'https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=1200&q=85'
+      },
+      {
+        id: 'spectre',
+        brand: 'Rolls-Royce',
+        name: 'Rolls-Royce Spectre Ultra-Luxury',
+        year: '2025/2026',
+        km: '320 km',
+        propulsion: ['Electric'],
+        propulsionLabel: '100% Electric Dual-Motor Silence-Drive',
+        power: '585 hp (900 Nm)',
+        zeroToHundred: '4.5s',
+        topSpeed: '250 km/h',
+        status: 'Available',
+        price: 7290000,
+        color: 'Tempest Grey / Jubilee Silver Hood',
+        interior: 'Starlight Doors & Starlight Headliner with 5,500 Fiber Optics',
+        highlights: 'Planar suspension with satellite road-scanning, effortless power-assisted coach doors, and optional invisible Level III-A armor.',
+        image: 'https://images.unsplash.com/photo-1631295868223-63265b40d9e4?auto=format&fit=crop&w=1200&q=85'
+      },
+      {
+        id: '812comp',
+        brand: 'Ferrari',
+        name: 'Ferrari 812 Competizione',
+        year: '2024/2024',
+        km: '690 km',
+        propulsion: ['V12'],
+        propulsionLabel: '6.5L Naturally Aspirated V12 (9,500 RPM)',
+        power: '830 hp',
+        zeroToHundred: '2.85s',
+        topSpeed: '340 km/h',
+        status: 'Sold',
+        price: 11800000,
+        color: 'Giallo Tristrato / Nero DS Livery Stripe',
+        interior: 'Charcoal Alcantara & Giallo Stitching',
+        highlights: 'Worldwide limited series for Ferrari VIP collectors. Independent four-wheel steering (PCV 3.0).',
+        image: 'https://images.unsplash.com/photo-1592198084033-aade902d1aae?auto=format&fit=crop&w=1200&q=85'
+      }
+    ];
+
+    // Showroom Filter State
+    let activeFilters = {
+      brand: 'all',
+      propulsion: 'all',
+      status: 'all'
+    };
+
+    // Financial Configurator State
+    let selectedInstallments = 24;
+    let selectedVipMode = 'Private Test-Drive & Faria Lima Viewing';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const dateInput = document.getElementById('vip-date');
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      dateInput.value = tomorrow.toISOString().split('T')[0];
+      dateInput.min = new Date().toISOString().split('T')[0];
+
+      populateConfiguratorDropdown();
+      renderShowroom();
+      updateConfigurator();
+    });
+
+    // 2. SHOWROOM FILTER AND RENDER FUNCTIONS
+    function setFilter(type, value) {
+      activeFilters[type] = value;
+
+      const groupMap = {
+        brand: { selector: '.brand-pill', attr: 'brand' },
+        propulsion: { selector: '.prop-pill', attr: 'prop' },
+        status: { selector: '.status-pill', attr: 'status' }
+      };
+
+      const group = groupMap[type];
+      document.querySelectorAll(group.selector).forEach(btn => {
+        if (btn.dataset[group.attr] === value) {
+          btn.className = `${group.selector.slice(1)} px-3 py-1.5 rounded text-[11px] font-telemetry uppercase bg-[#E10600] text-white font-semibold transition`;
+        } else {
+          btn.className = `${group.selector.slice(1)} px-3 py-1.5 rounded text-[11px] font-telemetry uppercase bg-[#0E0F13] text-zinc-400 hover:text-white border border-white/10 transition`;
+        }
+      });
+
+      renderShowroom();
+    }
+
+    function resetShowroomFilters() {
+      setFilter('brand', 'all');
+      setFilter('propulsion', 'all');
+      setFilter('status', 'all');
+    }
+
+    function getStatusBadgeClass(status) {
+      if (status === 'Available') {
+        return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40';
+      }
+      if (status === 'In Transit') {
+        return 'bg-amber-500/20 text-amber-300 border-amber-500/40';
+      }
+      return 'bg-zinc-700/60 text-zinc-300 border-zinc-500/40';
+    }
+
+    function renderShowroom() {
+      const grid = document.getElementById('showroom-grid');
+      const filtered = supercarsCatalog.filter(car => {
+        const matchBrand = activeFilters.brand === 'all' || car.brand === activeFilters.brand;
+        const matchProp = activeFilters.propulsion === 'all' || car.propulsion.includes(activeFilters.propulsion);
+        const matchStatus = activeFilters.status === 'all' || car.status === activeFilters.status;
+        return matchBrand && matchProp && matchStatus;
+      });
+
+      document.getElementById('results-counter').textContent = `Showing ${filtered.length} ${filtered.length === 1 ? 'vehicle' : 'vehicles'}`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full p-12 rounded-2xl bg-[#15171E] border border-white/10 text-center">
+            <p class="font-syne text-xl text-white">No supercar matches the exact combination of filters.</p>
+            <p class="text-xs text-zinc-400 mt-2">Our bespoke import desk locates any specification across Europe or the US within 72 hours.</p>
+            <button onclick="resetShowroomFilters()" class="mt-5 px-6 py-2.5 rounded bg-[#E10600] text-white font-telemetry text-xs uppercase tracking-widest">
+              Show Full Collection
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(car => `
+        <article class="car-card rounded-2xl overflow-hidden border border-white/10 bg-[#15171E] flex flex-col justify-between group">
+          <div>
+            <div class="relative h-56 bg-black overflow-hidden">
+              <img src="${car.image}" alt="${car.name}" loading="lazy" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#15171E] via-transparent to-black/40"></div>
+
+              <div class="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between">
+                <span class="px-2.5 py-1 rounded bg-[#070709]/85 backdrop-blur-md border border-white/15 text-[10px] font-telemetry uppercase tracking-widest text-white">
+                  ${car.brand} • ${car.year}
+                </span>
+                <span class="px-2.5 py-1 rounded backdrop-blur-md border text-[10px] font-telemetry uppercase tracking-wider font-semibold ${getStatusBadgeClass(car.status)}">
+                  ${car.status}
+                </span>
+              </div>
+
+              <div class="absolute bottom-3 left-3.5 right-3.5 flex items-center justify-between text-[11px] font-telemetry text-zinc-300">
+                <span class="px-2 py-0.5 rounded bg-black/75 border border-white/10">${car.propulsion.join(' + ')}</span>
+                <span class="px-2 py-0.5 rounded bg-black/75 border border-white/10">${car.km}</span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <h3 class="font-syne text-xl text-white font-bold group-hover:text-[#E10600] transition-colors">${car.name}</h3>
+              <p class="text-xs font-telemetry text-zinc-400 mt-1">${car.propulsionLabel}</p>
+
+              <!-- Mini Telemetry Bar -->
+              <div class="mt-4 grid grid-cols-3 gap-2 p-2.5 rounded-xl bg-[#070709] border border-white/5 text-center font-telemetry">
+                <div>
+                  <span class="text-[10px] text-zinc-500 block">POWER</span>
+                  <span class="text-xs text-white font-bold">${car.power}</span>
+                </div>
+                <div class="border-x border-white/10">
+                  <span class="text-[10px] text-zinc-500 block">0-100 KM/H</span>
+                  <span class="text-xs text-[#E10600] font-bold">${car.zeroToHundred}</span>
+                </div>
+                <div>
+                  <span class="text-[10px] text-zinc-500 block">TOP SPEED</span>
+                  <span class="text-xs text-white font-bold">${car.topSpeed}</span>
+                </div>
+              </div>
+
+              <p class="text-xs text-zinc-300 mt-4 line-clamp-2 leading-relaxed">${car.highlights}</p>
+            </div>
+          </div>
+
+          <div class="px-6 pb-6 pt-3 border-t border-white/10">
+            <div class="flex items-baseline justify-between mb-4">
+              <span class="text-[10px] font-telemetry uppercase text-zinc-400">Cash Price</span>
+              <span class="font-telemetry text-xl font-bold text-white">$${car.price.toLocaleString('en-US')}</span>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2.5">
+              <button onclick="openSpecModal('${car.id}')" class="py-2.5 px-3 rounded border border-white/15 bg-[#070709] hover:border-white/40 text-[11px] font-telemetry uppercase tracking-wider text-zinc-200 transition">
+                Spec Sheet
+              </button>
+              <button onclick="loadVehicleIntoConfigurator('${car.id}')" class="py-2.5 px-3 rounded bg-[#E10600] hover:bg-[#ff1a14] text-[11px] font-telemetry uppercase tracking-wider text-white font-semibold transition">
+                Simulate / Reserve
+              </button>
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    // 3. TELEMETRY / SPEC SHEET MODAL
+    function openSpecModal(carId) {
+      const car = supercarsCatalog.find(c => c.id === carId);
+      if (!car) return;
+
+      const overlay = document.getElementById('spec-modal-overlay');
+      const box = document.getElementById('spec-modal-box');
+
+      box.innerHTML = `
+        <div class="relative h-64 sm:h-72 bg-black shrink-0">
+          <img src="${car.image}" alt="${car.name}" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#15171E] via-[#15171E]/35 to-black/50"></div>
+          <button onclick="closeSpecModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/80 border border-white/20 text-white hover:border-[#E10600] flex items-center justify-center">✕</button>
+          <div class="absolute bottom-4 left-6 right-6 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+            <div>
+              <span class="px-2.5 py-1 rounded text-[10px] font-telemetry uppercase ${getStatusBadgeClass(car.status)} border">${car.status}</span>
+              <h3 class="font-syne text-2xl sm:text-3xl text-white font-bold mt-2">${car.name}</h3>
+            </div>
+            <span class="font-telemetry text-2xl font-bold text-[#E10600]">$${car.price.toLocaleString('en-US')}</span>
+          </div>
+        </div>
+
+        <div class="p-6 sm:p-8 overflow-y-auto custom-scrollbar space-y-5">
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 rounded-xl bg-[#070709] border border-white/10 font-telemetry text-center">
+            <div>
+              <span class="text-[10px] text-zinc-500 block">POWERTRAIN</span>
+              <span class="text-xs text-white font-bold">${car.propulsion.join(' / ')}</span>
+            </div>
+            <div>
+              <span class="text-[10px] text-zinc-500 block">POWER</span>
+              <span class="text-xs text-[#E10600] font-bold">${car.power}</span>
+            </div>
+            <div>
+              <span class="text-[10px] text-zinc-500 block">0–100 KM/H</span>
+              <span class="text-xs text-white font-bold">${car.zeroToHundred}</span>
+            </div>
+            <div>
+              <span class="text-[10px] text-zinc-500 block">ODOMETER</span>
+              <span class="text-xs text-white font-bold">${car.km}</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+            <div class="p-4 rounded-xl bg-[#070709]/70 border border-white/10">
+              <span class="text-[10px] font-telemetry uppercase text-zinc-400 block">Exterior Specification</span>
+              <p class="text-white font-semibold mt-1">${car.color}</p>
+            </div>
+            <div class="p-4 rounded-xl bg-[#070709]/70 border border-white/10">
+              <span class="text-[10px] font-telemetry uppercase text-zinc-400 block">Interior Trim</span>
+              <p class="text-white font-semibold mt-1">${car.interior}</p>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-telemetry uppercase tracking-widest text-[#E10600] mb-1">Options & Engineering Dossier</h4>
+            <p class="text-sm text-zinc-300 leading-relaxed">${car.highlights}</p>
+          </div>
+
+          <div class="pt-4 border-t border-white/10 flex flex-col sm:flex-row gap-3">
+            <button onclick="closeSpecModal(); loadVehicleIntoConfigurator('${car.id}');" class="w-full py-3.5 rounded bg-[#E10600] hover:bg-[#ff1a14] text-white font-cabinet font-extrabold text-xs uppercase tracking-[0.2em] transition">
+              Load into Private Banking Simulator →
+            </button>
+          </div>
+        </div>
+      `;
+
+      overlay.classList.remove('opacity-0', 'pointer-events-none');
+      box.classList.remove('scale-95');
+      box.classList.add('scale-100');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSpecModal() {
+      const overlay = document.getElementById('spec-modal-overlay');
+      const box = document.getElementById('spec-modal-box');
+      overlay.classList.add('opacity-0', 'pointer-events-none');
+      box.classList.remove('scale-100');
+      box.classList.add('scale-95');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('spec-modal-overlay').addEventListener('click', (e) => {
+      if (e.target.id === 'spec-modal-overlay') closeSpecModal();
+    });
+
+    // 4. REAL-TIME FINANCIAL CONFIGURATOR AND SIMULATOR
+    function populateConfiguratorDropdown() {
+      const select = document.getElementById('cfg-vehicle');
+      select.innerHTML = supercarsCatalog.map(car => `
+        <option value="${car.id}">
+          ${car.name} (${car.year}) — $${car.price.toLocaleString('en-US')} [${car.status}]
+        </option>
+      `).join('');
+    }
+
+    function loadVehicleIntoConfigurator(carId) {
+      const select = document.getElementById('cfg-vehicle');
+      select.value = carId;
+      updateConfigurator();
+      document.getElementById('configurador').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function selectInstallments(months) {
+      selectedInstallments = months;
+      document.querySelectorAll('.month-btn').forEach(btn => {
+        const m = parseInt(btn.dataset.months, 10);
+        if (m === months) {
+          btn.className = 'month-btn py-3 px-4 rounded-xl border border-[#E10600] bg-[#E10600]/15 text-center transition';
+        } else {
+          btn.className = 'month-btn py-3 px-4 rounded-xl border border-white/10 bg-[#070709] text-center transition';
+        }
+      });
+      updateConfigurator();
+    }
+
+    function updateConfigurator() {
+      const carId = document.getElementById('cfg-vehicle').value || 'sf90';
+      const car = supercarsCatalog.find(c => c.id === carId) || supercarsCatalog[0];
+
+      const downPct = parseInt(document.getElementById('cfg-downpayment').value, 10) || 40;
+      const includeArmor = document.getElementById('opt-armor').checked;
+      const includePpf = document.getElementById('opt-ppf').checked;
+      const includeTruck = document.getElementById('opt-truck').checked;
+
+      const armorCost = includeArmor ? 265000 : 0;
+      const ppfCost = includePpf ? 42000 : 0;
+      const truckCost = includeTruck ? 19500 : 0;
+      const addonsTotal = armorCost + ppfCost + truckCost;
+
+      const grandTotal = car.price + addonsTotal;
+      const downPaymentValue = Math.round(grandTotal * (downPct / 100));
+      const financedPrincipal = grandTotal - downPaymentValue;
+
+      // Price-table calculation at 0.89%/mo Private Banking rate (0.0089)
+      const rate = 0.0089;
+      const n = selectedInstallments;
+      const monthlyPayment = Math.round(
+        financedPrincipal * ((rate * Math.pow(1 + rate, n)) / (Math.pow(1 + rate, n) - 1))
+      );
+
+      // Update Slider Labels
+      document.getElementById('cfg-down-pct-label').textContent = `${downPct}%`;
+      document.getElementById('cfg-down-val-label').textContent = `$${downPaymentValue.toLocaleString('en-US')}`;
+
+      // Update Right Summary Card
+      document.getElementById('cfg-car-img').src = car.image;
+      document.getElementById('cfg-car-specs').textContent = `${car.propulsion.join(' • ')} • ${car.power}`;
+      document.getElementById('cfg-car-title').textContent = car.name;
+      const statusEl = document.getElementById('cfg-car-status');
+      statusEl.textContent = car.status;
+      statusEl.className = `px-2.5 py-0.5 rounded border font-telemetry text-[10px] uppercase ${getStatusBadgeClass(car.status)}`;
+
+      document.getElementById('sum-base-price').textContent = `$${car.price.toLocaleString('en-US')}`;
+      document.getElementById('sum-addons-price').textContent = `+ $${addonsTotal.toLocaleString('en-US')}`;
+      document.getElementById('sum-total-price').textContent = `$${grandTotal.toLocaleString('en-US')}`;
+      document.getElementById('sum-down-pct').textContent = `${downPct}%`;
+      document.getElementById('sum-down-value').textContent = `$${downPaymentValue.toLocaleString('en-US')}`;
+      document.getElementById('sum-months-count').textContent = n;
+      document.getElementById('sum-monthly-value').textContent = `$${monthlyPayment.toLocaleString('en-US')}`;
+
+      // Sync with VIP Drawer
+      document.getElementById('drawer-car-name').textContent = car.name;
+      document.getElementById('drawer-car-total').textContent = `$${grandTotal.toLocaleString('en-US')}`;
+      document.getElementById('drawer-fin-summary').textContent = `$${downPaymentValue.toLocaleString('en-US')} down (${downPct}%) + ${n}x of $${monthlyPayment.toLocaleString('en-US')}`;
+
+      const badges = [];
+      if (includeArmor) badges.push('Ultralight Level III-A Armor');
+      if (includePpf) badges.push('Full Body XPEL PPF');
+      if (includeTruck) badges.push('Enclosed Carrier Nationwide');
+
+      const badgesEl = document.getElementById('drawer-addons-badges');
+      badgesEl.innerHTML = badges.length > 0
+        ? badges.map(b => `<span class="px-2 py-0.5 rounded bg-[#15171E] border border-white/15 text-[10px] font-telemetry text-zinc-300">${b}</span>`).join('')
+        : '<span class="text-[10px] font-telemetry text-zinc-500">Original Factory Specification</span>';
+
+      return { car, grandTotal, downPct, downPaymentValue, n, monthlyPayment, badges };
+    }
+
+    function sendConfigToVipDrawer() {
+      updateConfigurator();
+      openVipDrawer();
+    }
+
+    // 5. VIP DRAWER AND CONFIRMATION MODAL
+    function setVipMode(mode) {
+      selectedVipMode = mode;
+      document.querySelectorAll('.vip-mode-btn').forEach(btn => {
+        if (btn.dataset.mode === mode) {
+          btn.className = 'vip-mode-btn p-3 rounded-xl border border-[#E10600] bg-[#E10600]/15 text-left transition';
+        } else {
+          btn.className = 'vip-mode-btn p-3 rounded-xl border border-white/10 bg-[#070709] text-left transition';
+        }
+      });
+    }
+
+    function openVipDrawer() {
+      updateConfigurator();
+      document.getElementById('drawer-overlay').classList.remove('opacity-0', 'pointer-events-none');
+      document.getElementById('vip-drawer').classList.remove('translate-x-full');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeVipDrawer() {
+      document.getElementById('drawer-overlay').classList.add('opacity-0', 'pointer-events-none');
+      document.getElementById('vip-drawer').classList.add('translate-x-full');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('drawer-overlay').addEventListener('click', closeVipDrawer);
+
+    document.getElementById('vip-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const { car, grandTotal, downPct, downPaymentValue, n, monthlyPayment, badges } = updateConfigurator();
+      const clientName = document.getElementById('vip-name').value;
+      const clientPhone = document.getElementById('vip-phone').value;
+      const dateRaw = document.getElementById('vip-date').value;
+      const timeSlot = document.getElementById('vip-time').value;
+      const formattedDate = dateRaw.split('-').reverse().join('/');
+      const protocol = 'SI-VIP-' + Math.floor(100000 + Math.random() * 900000);
+
+      const receiptEl = document.getElementById('vip-receipt-box');
+      receiptEl.innerHTML = `
+        <div class="flex justify-between pb-2 border-b border-white/10">
+          <span class="text-zinc-500">DOSSIER PROTOCOL</span>
+          <span class="text-[#E10600] font-bold">${protocol}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-zinc-500">PRINCIPAL</span>
+          <span class="text-white font-semibold">${clientName} (${clientPhone})</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-zinc-500">SERVICE MODE</span>
+          <span class="text-zinc-200 text-right max-w-[60%] truncate">${selectedVipMode}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-zinc-500">APPOINTMENT</span>
+          <span class="text-[#E10600]">${formattedDate} • ${timeSlot}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-zinc-500">VEHICLE</span>
+          <span class="text-white font-bold">${car.name}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-zinc-500">CUSTOMIZATION</span>
+          <span class="text-zinc-300 text-right max-w-[60%] truncate">${badges.length ? badges.join(', ') : 'Factory Original'}</span>
+        </div>
+        <div class="flex justify-between pt-2 border-t border-white/10">
+          <span class="text-zinc-400">SIMULATED STRUCTURE</span>
+          <span class="text-white font-bold">$${grandTotal.toLocaleString('en-US')} (${downPct}% + ${n}x)</span>
+        </div>
+      `;
+
+      closeVipDrawer();
+      const modal = document.getElementById('vip-success-modal');
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('vip-form').reset();
+    });
+
+    function closeVipSuccessModal() {
+      const modal = document.getElementById('vip-success-modal');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeSpecModal();
+        closeVipDrawer();
+        closeVipSuccessModal();
+      }
+    });
+  </script>
+
+  <!-- SCRIPTS VERCEL WEB ANALYTICS & SPEED INSIGHTS PRESERVADOS -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script defer src="/assets/js/demo-i18n-bar.js"></script>
+</body>
+</html>

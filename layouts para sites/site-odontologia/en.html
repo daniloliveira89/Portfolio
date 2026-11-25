@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- demo-i18n-autodetect --><script>(function(){var cur=location.pathname.endsWith('/en.html')?'en':(location.pathname.endsWith('/es.html')?'es':'pt');var q=(new URLSearchParams(location.search).get('lang')||'').toLowerCase();var target=null;if(q==='pt'||q==='en'||q==='es'){target=q;try{localStorage.setItem('portfolio_lang',q);localStorage.setItem('portfolio_lang_manual','1');}catch(e){}}else if(cur==='pt'){try{if(localStorage.getItem('portfolio_lang_manual')==='1'){var saved=localStorage.getItem('portfolio_lang');if(saved==='en'||saved==='es'||saved==='pt')target=saved;}}catch(e){}if(!target){var langs=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||navigator.userLanguage||'en'];for(var i=0;i<langs.length;i++){var c=(langs[i]||'').toLowerCase().split('-')[0];if(c==='pt'){target='pt';break;}if(c==='es'){target='es';break;}if(c==='en'){target='en';break;}}if(!target)target='en';}}if(target&&target!==cur){var file=target==='en'?'en.html':(target==='es'?'es.html':'index.html');var p=location.pathname;var np=p.slice(-5).toLowerCase()==='.html'?p.slice(0,p.lastIndexOf('/')+1)+file:(p.endsWith('/')?p+file:p+'/'+file);location.replace(np+location.search+location.hash);}})();</script>
+  <title>Lumina Dental Studio — Digital Dentistry & 3D Rehabilitation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cabinet+Grotesk:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #F8FAFC;
+      color: #0F172A;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    .font-display { font-family: 'Cabinet Grotesk', 'Plus Jakarta Sans', sans-serif; }
+    
+    /* Before/After Slider */
+    .compare-wrap {
+      position: relative;
+      overflow: hidden;
+      user-select: none;
+      border-radius: 1.25rem;
+      box-shadow: 0 20px 40px -15px rgba(14, 165, 233, 0.2);
+    }
+    .compare-after {
+      position: absolute;
+      inset: 0;
+      width: 50%;
+      overflow: hidden;
+    }
+    .compare-handle {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 4px;
+      background: #0284C7;
+      cursor: ew-resize;
+      box-shadow: 0 0 15px rgba(2, 132, 199, 0.7);
+    }
+    .compare-knob {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      background: #0284C7;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      box-shadow: 0 4px 16px rgba(2, 132, 199, 0.5);
+      border: 3px solid white;
+      transition: transform 0.2s;
+    }
+    .compare-wrap:hover .compare-knob {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+
+    /* Ambient lighting */
+    .glow-cyan {
+      background: radial-gradient(circle 600px at 80% 20%, rgba(14, 165, 233, 0.12), transparent 70%);
+    }
+
+    /* Range slider custom */
+    input[type=range] {
+      -webkit-appearance: none;
+      background: transparent;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      background: #0284C7;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(2, 132, 199, 0.4);
+      margin-top: -6px;
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 8px;
+      background: #E2E8F0;
+      border-radius: 4px;
+    }
+  </style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+</head>
+<body class="min-h-screen antialiased relative selection:bg-sky-500 selection:text-white">
+
+  <!-- Ambient Light -->
+  <div class="fixed inset-0 glow-cyan pointer-events-none z-0"></div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-xl border-b border-slate-200/80 transition-all">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-600 via-sky-500 to-cyan-400 p-[1.5px] shadow-md shadow-sky-500/20 group-hover:shadow-sky-500/40 transition">
+          <div class="w-full h-full bg-white rounded-[10px] flex items-center justify-center font-display font-extrabold text-sky-600 text-lg">
+            L
+          </div>
+        </div>
+        <div>
+          <span class="font-display font-bold text-slate-900 text-lg tracking-tight block leading-none">
+            LUMINA<span class="text-sky-500">.</span>DENTAL
+          </span>
+          <span class="text-[9px] uppercase tracking-widest text-slate-500 font-semibold mt-0.5 block">
+            3D Digital Dentistry • Jardins, São Paulo
+          </span>
+        </div>
+      </a>
+
+      <!-- Navigation -->
+      <nav class="hidden lg:flex items-center gap-8 text-xs font-bold uppercase tracking-wider text-slate-600">
+        <a href="#simulador" class="hover:text-sky-600 transition">3D Before & After</a>
+        <a href="#tonalidades" class="hover:text-sky-600 transition">BL Shade Guide</a>
+        <a href="#protocolos" class="hover:text-sky-600 transition">Specialties</a>
+        <a href="#calculadora" class="hover:text-sky-600 transition">Financing Simulator</a>
+        <a href="#doutor" class="hover:text-sky-600 transition">Clinical Team</a>
+      </nav>
+
+      <!-- CTA Action -->
+      <div class="flex items-center gap-3">
+        <div class="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          Consultations Open
+        </div>
+        <button onclick="openAgendamento('3D Evaluation')" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-sky-600 to-cyan-600 hover:from-sky-700 hover:to-cyan-700 text-white text-xs font-bold uppercase tracking-wider shadow-lg shadow-sky-500/25 transition hover:scale-105 active:scale-95">
+          Book 3D Consultation
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section with Live Before/After Interactive Slider -->
+  <section class="max-w-7xl mx-auto px-6 pt-12 pb-16 relative z-10" id="simulador">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      
+      <!-- Left Column: Copy & Value Props -->
+      <div class="lg:col-span-6 flex flex-col items-start">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-100/80 border border-sky-300 text-sky-800 text-xs font-bold uppercase tracking-wider mb-5">
+          <span class="w-2 h-2 rounded-full bg-sky-500"></span>
+          iTero® 5D Plus Intraoral Scanning
+        </div>
+
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight text-slate-900 leading-[1.05]">
+          The fine jewelry of <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-600 to-cyan-500">digital aesthetic dentistry.</span>
+        </h1>
+
+        <p class="mt-5 text-slate-600 text-base leading-relaxed max-w-xl">
+          Ultra-thin lithium disilicate veneers and pure zirconia restorations custom-crafted under surgical microscopy. Pain-free, minimal-prep, and previewed in 3D digital smile design.
+        </p>
+
+        <!-- Proof Badges -->
+        <div class="mt-8 grid grid-cols-3 gap-3 w-full max-w-lg pt-6 border-t border-slate-200">
+          <div class="bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-xs">
+            <div class="text-2xl font-extrabold text-sky-600 font-display">2,800+</div>
+            <div class="text-[11px] font-semibold text-slate-500 uppercase mt-0.5">Smiles Crafted</div>
+          </div>
+          <div class="bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-xs">
+            <div class="text-2xl font-extrabold text-slate-900 font-display">0.2 mm</div>
+            <div class="text-[11px] font-semibold text-slate-500 uppercase mt-0.5">Ultra-Thin No-Prep</div>
+          </div>
+          <div class="bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-xs">
+            <div class="text-2xl font-extrabold text-slate-900 font-display">10 Years</div>
+            <div class="text-[11px] font-semibold text-slate-500 uppercase mt-0.5">Certified Warranty</div>
+          </div>
+        </div>
+
+        <!-- Case Selector Buttons -->
+        <div class="mt-8 flex flex-wrap items-center gap-2">
+          <span class="text-xs font-bold uppercase tracking-wider text-slate-400 mr-1">Clinical Cases:</span>
+          <button onclick="setCase(0)" id="btn-case-0" class="case-btn active px-3.5 py-1.5 rounded-full text-xs font-bold bg-sky-600 text-white shadow-sm transition">
+            01. Hollywood Veneers BL1
+          </button>
+          <button onclick="setCase(1)" id="btn-case-1" class="case-btn px-3.5 py-1.5 rounded-full text-xs font-bold bg-white text-slate-700 border border-slate-300 hover:border-sky-400 transition">
+            02. Zirconia Rehabilitation
+          </button>
+          <button onclick="setCase(2)" id="btn-case-2" class="case-btn px-3.5 py-1.5 rounded-full text-xs font-bold bg-white text-slate-700 border border-slate-300 hover:border-sky-400 transition">
+            03. Diastema Closure
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Before/After Stage -->
+      <div class="lg:col-span-6 w-full">
+        <div class="bg-white p-5 rounded-3xl shadow-xl border border-slate-200">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-100 text-xs font-bold uppercase tracking-wider">
+            <span class="text-slate-500 flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-sky-500"></span>
+              Drag the slider to compare
+            </span>
+            <span id="case-title-tag" class="text-sky-700 font-bold bg-sky-50 px-2.5 py-1 rounded-md border border-sky-200">
+              Case 01 • 10-Unit Ceramic Veneers
+            </span>
+          </div>
+
+          <!-- Interactive Compare Box -->
+          <div class="mt-4 compare-wrap h-80 sm:h-[420px]" id="compare-box">
+            <!-- After Image (Base) -->
+            <img id="img-after" src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover" alt="Final Result - After">
+            
+            <div class="absolute bottom-4 right-4 z-10 px-3 py-1 rounded-md bg-black/70 backdrop-blur-md text-white text-[11px] font-bold uppercase tracking-wider">
+              After (Lumina 3D)
+            </div>
+
+            <!-- Before Overlay (Clipped) -->
+            <div class="compare-after" id="compare-overlay">
+              <img id="img-before" src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1200&q=80" class="w-full h-full object-cover filter sepia-[55%] brightness-[0.88] contrast-[0.92]" alt="Before">
+              <div class="absolute bottom-4 left-4 z-10 px-3 py-1 rounded-md bg-black/70 backdrop-blur-md text-white text-[11px] font-bold uppercase tracking-wider">
+                Before Treatment
+              </div>
+            </div>
+
+            <!-- Slider Handle & Knob -->
+            <div class="compare-handle" id="compare-line">
+              <div class="compare-knob">⇄</div>
+            </div>
+          </div>
+
+          <!-- Case Specs Bar -->
+          <div class="mt-4 grid grid-cols-3 gap-2 text-center text-xs pt-3 border-t border-slate-100">
+            <div>
+              <span class="text-slate-400 block text-[10px] uppercase font-bold">Material</span>
+              <span id="case-mat" class="font-bold text-slate-800">E.max CAD Ivoclar</span>
+            </div>
+            <div>
+              <span class="text-slate-400 block text-[10px] uppercase font-bold">Clinical Time</span>
+              <span id="case-time" class="font-bold text-sky-600">3 Sessions (7 Days)</span>
+            </div>
+            <div>
+              <span class="text-slate-400 block text-[10px] uppercase font-bold">Selected Shade</span>
+              <span id="case-shade" class="font-bold text-slate-800">Bleach BL1</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Shade Guide (Guia de Cores de Lentes) -->
+  <section class="max-w-7xl mx-auto px-6 py-14 border-t border-slate-200" id="tonalidades">
+    <div class="text-center max-w-2xl mx-auto mb-10">
+      <span class="text-xs font-bold uppercase tracking-widest text-sky-600">Chromatic Personalization</span>
+      <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">Choose the Shade of Your New Smile</h2>
+      <p class="text-sm text-slate-600 mt-2">Translucency and luster are individually calibrated to harmonize with your skin tone and facial proportions.</p>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+      <!-- Shade BL1 -->
+      <button onclick="selectShade('BL1', 'Hollywood White — The brightest, most luminous celebrity white.')" class="shade-card p-5 rounded-2xl bg-white border-2 border-sky-500 shadow-sm text-center hover:scale-105 transition">
+        <div class="w-16 h-16 rounded-full mx-auto bg-gradient-to-b from-white to-sky-50 border border-slate-200 shadow-inner flex items-center justify-center font-display font-bold text-sky-800 text-lg">BL1</div>
+        <div class="font-bold text-slate-900 mt-3 text-sm">Bleach 1</div>
+        <div class="text-[11px] text-sky-600 font-semibold mt-0.5">Hollywood White</div>
+      </button>
+
+      <!-- Shade BL2 -->
+      <button onclick="selectShade('BL2', 'Natural Bright — Sophisticated high-impact white with natural incisal translucency.')" class="shade-card p-5 rounded-2xl bg-white border border-slate-200 hover:border-sky-400 shadow-sm text-center hover:scale-105 transition">
+        <div class="w-16 h-16 rounded-full mx-auto bg-gradient-to-b from-slate-50 to-amber-50/50 border border-slate-200 shadow-inner flex items-center justify-center font-display font-bold text-slate-700 text-lg">BL2</div>
+        <div class="font-bold text-slate-900 mt-3 text-sm">Bleach 2</div>
+        <div class="text-[11px] text-slate-500 font-semibold mt-0.5">Natural Bright</div>
+      </button>
+
+      <!-- Shade A1 -->
+      <button onclick="selectShade('A1', 'Bio-Balance — Organic shade identical to natural youthful tooth enamel.')" class="shade-card p-5 rounded-2xl bg-white border border-slate-200 hover:border-sky-400 shadow-sm text-center hover:scale-105 transition">
+        <div class="w-16 h-16 rounded-full mx-auto bg-gradient-to-b from-amber-50/70 to-amber-100/50 border border-slate-200 shadow-inner flex items-center justify-center font-display font-bold text-slate-700 text-lg">A1</div>
+        <div class="font-bold text-slate-900 mt-3 text-sm">Natural A1</div>
+        <div class="text-[11px] text-slate-500 font-semibold mt-0.5">Bio-Balance</div>
+      </button>
+
+      <!-- Shade B1 -->
+      <button onclick="selectShade('B1', 'Pearl Ivory — Classic shade with warm pearlescent reflections.')" class="shade-card p-5 rounded-2xl bg-white border border-slate-200 hover:border-sky-400 shadow-sm text-center hover:scale-105 transition">
+        <div class="w-16 h-16 rounded-full mx-auto bg-gradient-to-b from-yellow-50/60 to-orange-50/40 border border-slate-200 shadow-inner flex items-center justify-center font-display font-bold text-slate-700 text-lg">B1</div>
+        <div class="font-bold text-slate-900 mt-3 text-sm">Ivory B1</div>
+        <div class="text-[11px] text-slate-500 font-semibold mt-0.5">Pearl Ivory</div>
+      </button>
+    </div>
+
+    <!-- Active Shade Info Box -->
+    <div id="shade-info" class="mt-6 max-w-xl mx-auto p-4 rounded-xl bg-sky-50 border border-sky-200 text-center text-xs text-sky-900 font-medium">
+      <span class="font-bold">Selected: BL1 (Hollywood White)</span> — The brightest, most luminous celebrity white.
+    </div>
+  </section>
+
+  <!-- Protocols & Specialities Grid (6 Cards) -->
+  <section class="max-w-7xl mx-auto px-6 py-16 border-t border-slate-200" id="protocolos">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+      <div>
+        <span class="text-xs font-bold uppercase tracking-widest text-sky-600">Specialized Treatments</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">Comprehensive Rehabilitation Protocols</h2>
+      </div>
+      <p class="text-xs sm:text-sm text-slate-500 mt-2 md:mt-0 font-medium">Swiss and German CAD/CAM technology with an in-house lab</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- Protocol 1 -->
+      <div class="bg-white p-7 rounded-3xl border border-slate-200 hover:border-sky-400 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-sky-100 text-sky-700">Ceramic Aesthetics</span>
+            <span class="text-xs text-slate-400 font-mono">01</span>
+          </div>
+          <h3 class="font-display text-xl font-bold text-slate-900 group-hover:text-sky-600 transition">E.max Porcelain Veneers</h3>
+          <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">Ultra-thin 0.2mm to 0.4mm ceramic laminates bonded with high-strength resin cement. Corrects shape, alignment, and brightens permanently.</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-500">
+          <span>⏱️ 2 to 3 Visits</span>
+          <span class="text-sky-600 font-bold">10-Year Warranty</span>
+        </div>
+      </div>
+
+      <!-- Protocol 2 -->
+      <div class="bg-white p-7 rounded-3xl border border-slate-200 hover:border-sky-400 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-indigo-100 text-indigo-700">3D Implantology</span>
+            <span class="text-xs text-slate-400 font-mono">02</span>
+          </div>
+          <h3 class="font-display text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition">Straumann® Guided Implants</h3>
+          <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">3D CT-guided surgery without scalpel incisions or conventional stitches. Fixed provisional tooth placed within 24 hours.</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-500">
+          <span>⏱️ Immediate Load</span>
+          <span class="text-indigo-600 font-bold">Roxolid® Titanium</span>
+        </div>
+      </div>
+
+      <!-- Protocol 3 -->
+      <div class="bg-white p-7 rounded-3xl border border-slate-200 hover:border-sky-400 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-teal-100 text-teal-700">Digital Orthodontics</span>
+            <span class="text-xs text-slate-400 font-mono">03</span>
+          </div>
+          <h3 class="font-display text-xl font-bold text-slate-900 group-hover:text-teal-600 transition">Invisalign® Diamond Doctor</h3>
+          <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">Removable clear aligners with ClinCheck® planning that simulates the movement of every tooth before treatment begins.</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-500">
+          <span>⏱️ 5 to 12 Months</span>
+          <span class="text-teal-600 font-bold">100% Invisible</span>
+        </div>
+      </div>
+
+      <!-- Protocol 4 -->
+      <div class="bg-white p-7 rounded-3xl border border-slate-200 hover:border-sky-400 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-rose-100 text-rose-700">Facial Harmonization</span>
+            <span class="text-xs text-slate-400 font-mono">04</span>
+          </div>
+          <h3 class="font-display text-xl font-bold text-slate-900 group-hover:text-rose-600 transition">Dual-Laser Gingivoplasty</h3>
+          <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">Gummy smile correction using a millimeter-precision diode laser. Instant healing without bleeding or painful recovery.</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-500">
+          <span>⏱️ Single Session</span>
+          <span class="text-rose-600 font-bold">No Sutures</span>
+        </div>
+      </div>
+
+      <!-- Protocol 5 -->
+      <div class="bg-white p-7 rounded-3xl border border-slate-200 hover:border-sky-400 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-100 text-amber-700">Premium Whitening</span>
+            <span class="text-xs text-slate-400 font-mono">05</span>
+          </div>
+          <h3 class="font-display text-xl font-bold text-slate-900 group-hover:text-amber-600 transition">LED Photo-Activated Whitening</h3>
+          <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">Combination of neutral-pH gel and cold violet light that lifts up to 8 shades with zero post-treatment tooth sensitivity.</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-500">
+          <span>⏱️ 2 × 45min Sessions</span>
+          <span class="text-amber-600 font-bold">Zero Sensitivity</span>
+        </div>
+      </div>
+
+      <!-- Protocol 6 -->
+      <div class="bg-white p-7 rounded-3xl border border-slate-200 hover:border-sky-400 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-purple-100 text-purple-700">Oral Rehabilitation</span>
+            <span class="text-xs text-slate-400 font-mono">06</span>
+          </div>
+          <h3 class="font-display text-xl font-bold text-slate-900 group-hover:text-purple-600 transition">All-on-4® Zirconia Protocol</h3>
+          <p class="mt-2 text-xs sm:text-sm text-slate-600 leading-relaxed">Full-arch dental restoration using just 4 strategically anchored implants supporting a full translucent zirconia bridge.</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-500">
+          <span>⏱️ Teeth in 72h</span>
+          <span class="text-purple-600 font-bold">Optimized Bone Support</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Financial Simulator (Calculadora de Investimento) -->
+  <section class="max-w-4xl mx-auto px-6 py-14" id="calculadora">
+    <div class="bg-gradient-to-br from-slate-900 via-slate-800 to-sky-950 rounded-3xl p-8 sm:p-10 text-white shadow-2xl border border-slate-700">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 pb-6 border-b border-white/10">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-sky-400">Transparent Planning</span>
+          <h2 class="font-display text-2xl sm:text-3xl font-extrabold mt-1">Veneer Investment Simulator</h2>
+        </div>
+        <div class="text-xs text-slate-400 font-mono">
+          0% interest up to 12 months
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <!-- Controls -->
+        <div class="space-y-6">
+          <div>
+            <div class="flex justify-between text-sm font-semibold mb-2">
+              <span>Number of Teeth:</span>
+              <span id="teeth-count-label" class="text-sky-400 font-bold text-base">10 Veneers (Upper Arch)</span>
+            </div>
+            <input type="range" id="teeth-slider" min="4" max="20" step="2" value="10" oninput="calcBudget()" class="w-full">
+            <div class="flex justify-between text-[10px] text-slate-400 font-mono mt-1">
+              <span>4 Teeth</span>
+              <span>10 Teeth</span>
+              <span>20 Teeth (Full Smile)</span>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between text-sm font-semibold mb-2">
+              <span>Number of Installments:</span>
+              <span id="installments-label" class="text-sky-400 font-bold text-base">12 Monthly</span>
+            </div>
+            <input type="range" id="installments-slider" min="1" max="24" step="1" value="12" oninput="calcBudget()" class="w-full">
+            <div class="flex justify-between text-[10px] text-slate-400 font-mono mt-1">
+              <span>Upfront (5% off)</span>
+              <span>12x 0% APR</span>
+              <span>24x extended</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Calculated Summary Card -->
+        <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/15 text-center flex flex-col justify-center">
+          <span class="text-xs uppercase font-mono tracking-wider text-slate-300">Estimated Monthly Payment</span>
+          <div id="monthly-val" class="font-display text-3xl sm:text-4xl font-extrabold text-sky-400 mt-2">
+            12x of $1,625
+          </div>
+          <div id="total-val" class="text-xs text-slate-300 mt-2">
+            Total Investment: $19,500 (E.max CAD/CAM)
+          </div>
+          <button onclick="openAgendamento('Simulation ' + document.getElementById('teeth-count-label').textContent)" class="mt-6 w-full py-3 rounded-full bg-sky-500 hover:bg-sky-400 text-white font-bold text-xs uppercase tracking-wider transition shadow-lg shadow-sky-500/30">
+            Lock In Plan at Consultation
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Doctor & Credibility Section -->
+  <section class="max-w-7xl mx-auto px-6 py-16 border-t border-slate-200" id="doutor">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-5">
+        <div class="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200">
+          <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=900&q=80" alt="Dr. Lucas Fontes" class="w-full h-[440px] object-cover">
+          <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-slate-200">
+            <div class="font-display font-bold text-slate-900 text-lg">Dr. Lucas Fontes, PhD</div>
+            <div class="text-xs text-sky-600 font-semibold">CRO-SP 108.924 • Prosthodontics & Oral Rehabilitation Specialist</div>
+          </div>
+        </div>
+      </div>
+      <div class="lg:col-span-7">
+        <span class="text-xs font-bold uppercase tracking-widest text-sky-600">Clinical Team & Technology</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">
+          Rigorous science and artistic sensibility in every detail.
+        </h2>
+        <p class="mt-4 text-slate-600 text-sm sm:text-base leading-relaxed">
+          Trained at USP with postgraduate studies at the Geneva Dental Institute, Dr. Lucas Fontes leads a multidisciplinary team combining robotic CAD/CAM milling with artisanal hand-finishing on every veneer.
+        </p>
+
+        <div class="mt-6 space-y-3">
+          <div class="flex items-center gap-3 text-sm text-slate-700 font-medium">
+            <div class="w-5 h-5 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center text-xs font-bold">✓</div>
+            <span>Low-radiation cone-beam 3D CT scanning performed in-house</span>
+          </div>
+          <div class="flex items-center gap-3 text-sm text-slate-700 font-medium">
+            <div class="w-5 h-5 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center text-xs font-bold">✓</div>
+            <span>Inhalation and IV conscious sedation with an anesthesiologist for anxious patients</span>
+          </div>
+          <div class="flex items-center gap-3 text-sm text-slate-700 font-medium">
+            <div class="w-5 h-5 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center text-xs font-bold">✓</div>
+            <span>10-year contractual warranty with an authenticity certificate</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Appointment Drawer / Slide-Over Modal -->
+  <div id="drawer-overlay" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300" onclick="closeAgendamento()"></div>
+  <aside id="agendamento-drawer" class="fixed top-0 right-0 z-50 h-full w-full sm:w-[480px] bg-white border-l border-slate-200 p-8 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between overflow-y-auto">
+    <div>
+      <div class="flex items-center justify-between pb-6 border-b border-slate-100">
+        <div>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-sky-600">First 3D Consultation</span>
+          <h3 class="font-display text-2xl font-bold text-slate-900">Book Evaluation</h3>
+        </div>
+        <button onclick="closeAgendamento()" class="text-slate-400 hover:text-slate-700 p-2 text-lg">✕</button>
+      </div>
+
+      <form id="form-agendar" class="mt-6 space-y-4" onsubmit="handleAgendar(event)">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Full Name</label>
+          <input type="text" required placeholder="e.g. Patricia Miller" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-sky-500 focus:bg-white transition">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">WhatsApp</label>
+          <input type="tel" required placeholder="+55 (11) 98765-4321" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-sky-500 focus:bg-white transition">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Treatment of Interest</label>
+          <select id="select-servico" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-sky-500 focus:bg-white transition">
+            <option value="Ceramic Porcelain Veneers">E.max Ceramic Porcelain Veneers</option>
+            <option value="Straumann Dental Implants">Straumann® 3D Guided Implant</option>
+            <option value="Invisalign Clear Aligners">Invisalign® Clear Aligners</option>
+            <option value="All-on-4 Rehabilitation">All-on-4® Zirconia Rehabilitation</option>
+            <option value="LED Dental Whitening">Premium Photo-Activated Whitening</option>
+          </select>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Preferred Date</label>
+            <input type="date" required class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-sky-500 focus:bg-white transition">
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Time Window</label>
+            <select class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-sky-500 focus:bg-white transition">
+              <option value="Morning (8 AM – 12 PM)">Morning (8 AM – 12 PM)</option>
+              <option value="Afternoon (1 PM – 6 PM)">Afternoon (1 PM – 6 PM)</option>
+              <option value="Executive Evening (6 PM – 9 PM)">Executive Evening</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full py-4 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold uppercase tracking-wider text-xs transition duration-200 shadow-lg shadow-sky-600/30 mt-3">
+          Confirm Consultation Request
+        </button>
+      </form>
+
+      <div id="agendamento-success" class="hidden mt-6 p-4 rounded-xl bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs font-semibold">
+        ✓ Request received! Our concierge will reach out via WhatsApp to confirm your time and prepare your welcome kit.
+      </div>
+    </div>
+
+    <div class="pt-6 border-t border-slate-100 text-xs text-slate-400 font-medium">
+      📍 Alameda Gabriel Monteiro da Silva, Jardins • São Paulo<br>
+      Complimentary valet parking
+    </div>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200 bg-white py-12 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="font-display font-bold text-slate-800 text-sm">
+        LUMINA DENTAL STUDIO © 2026
+      </div>
+      <div>
+        Clinical Director: Dr. Lucas Fontes • CRO-SP 108.924 • EPAO 9812
+      </div>
+      <div class="font-mono text-[11px] text-slate-400">
+        Jardins, São Paulo • Brazil
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Before/After Interactive Slider Logic
+    const box = document.getElementById('compare-box');
+    const overlay = document.getElementById('compare-overlay');
+    const line = document.getElementById('compare-line');
+    const imgBefore = document.getElementById('img-before');
+
+    function syncWidth() {
+      if (box && imgBefore) {
+        imgBefore.style.width = box.offsetWidth + 'px';
+      }
+    }
+    window.addEventListener('resize', syncWidth);
+    window.addEventListener('load', syncWidth);
+    setTimeout(syncWidth, 100);
+
+    function moveSlider(clientX) {
+      if (!box || !overlay || !line) return;
+      const rect = box.getBoundingClientRect();
+      let pos = ((clientX - rect.left) / rect.width) * 100;
+      pos = Math.max(5, Math.min(95, pos));
+      overlay.style.width = pos + '%';
+      line.style.left = pos + '%';
+    }
+
+    if (box) {
+      box.addEventListener('mousemove', e => moveSlider(e.clientX));
+      box.addEventListener('touchmove', e => {
+        if (e.touches[0]) moveSlider(e.touches[0].clientX);
+      }, { passive: true });
+    }
+
+    // Case Selector
+    const CASES = [
+      {
+        title: "Case 01 • 10-Unit Ceramic Veneers",
+        mat: "E.max CAD Ivoclar",
+        time: "3 Sessions (7 Days)",
+        shade: "Bleach BL1",
+        after: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1200&q=80",
+        beforeFilter: "sepia(55%) brightness(0.88) contrast(0.92)"
+      },
+      {
+        title: "Case 02 • Full 3D Zirconia Rehabilitation",
+        mat: "Katana Zirconia ML",
+        time: "4 Sessions (12 Days)",
+        shade: "Bleach BL2 Natural",
+        after: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&w=1200&q=80",
+        beforeFilter: "sepia(70%) brightness(0.82) contrast(0.88)"
+      },
+      {
+        title: "Case 03 • No-Prep Diastema Closure",
+        mat: "0.2mm Ceramic Laminates",
+        time: "2 Sessions (4 Days)",
+        shade: "Natural A1",
+        after: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=1200&q=80",
+        beforeFilter: "sepia(40%) brightness(0.85) contrast(0.95)"
+      }
+    ];
+
+    function setCase(idx) {
+      const c = CASES[idx];
+      if (!c) return;
+      document.querySelectorAll('.case-btn').forEach((b, i) => {
+        if (i === idx) {
+          b.className = "case-btn active px-3.5 py-1.5 rounded-full text-xs font-bold bg-sky-600 text-white shadow-sm transition";
+        } else {
+          b.className = "case-btn px-3.5 py-1.5 rounded-full text-xs font-bold bg-white text-slate-700 border border-slate-300 hover:border-sky-400 transition";
+        }
+      });
+      document.getElementById('case-title-tag').textContent = c.title;
+      document.getElementById('case-mat').textContent = c.mat;
+      document.getElementById('case-time').textContent = c.time;
+      document.getElementById('case-shade').textContent = c.shade;
+      
+      const imgA = document.getElementById('img-after');
+      const imgB = document.getElementById('img-before');
+      imgA.src = c.after;
+      imgB.src = c.after;
+      imgB.style.filter = c.beforeFilter;
+      syncWidth();
+    }
+
+    // Shade Guide Selector
+    function selectShade(shade, desc) {
+      document.getElementById('shade-info').innerHTML = `<span class="font-bold">Selected: ${shade}</span> — ${desc}`;
+      document.querySelectorAll('.shade-card').forEach(card => {
+        if (card.textContent.includes(shade)) {
+          card.classList.add('border-2', 'border-sky-500');
+          card.classList.remove('border-slate-200');
+        } else {
+          card.classList.remove('border-2', 'border-sky-500');
+          card.classList.add('border-slate-200');
+        }
+      });
+    }
+
+    // Financial Simulator
+    function calcBudget() {
+      const teeth = parseInt(document.getElementById('teeth-slider').value);
+      const inst = parseInt(document.getElementById('installments-slider').value);
+      
+      const unitPrice = 1950; // $ per E.max tooth
+      let total = teeth * unitPrice;
+      
+      let labelTeeth = `${teeth} Veneers`;
+      if (teeth === 10) labelTeeth += " (Upper Arch)";
+      if (teeth === 20) labelTeeth += " (Both Arches)";
+      document.getElementById('teeth-count-label').textContent = labelTeeth;
+
+      if (inst === 1) {
+        total = total * 0.95; // 5% upfront discount
+        document.getElementById('installments-label').textContent = "Upfront w/ 5% Off";
+        document.getElementById('monthly-val').textContent = `$${Math.round(total).toLocaleString('en-US')}`;
+      } else {
+        document.getElementById('installments-label').textContent = `${inst} Monthly`;
+        const monthly = Math.round(total / inst);
+        document.getElementById('monthly-val').textContent = `${inst}x of $${monthly.toLocaleString('en-US')}`;
+      }
+      document.getElementById('total-val').textContent = `Total Investment: $${Math.round(total).toLocaleString('en-US')} (E.max CAD/CAM)`;
+    }
+
+    // Drawer Agendamento
+    const drawer = document.getElementById('agendamento-drawer');
+    const drawerOverlay = document.getElementById('drawer-overlay');
+
+    function openAgendamento(servico) {
+      if (servico && document.getElementById('select-servico')) {
+        const sel = document.getElementById('select-servico');
+        for (let i = 0; i < sel.options.length; i++) {
+          if (sel.options[i].text.includes(servico) || servico.includes(sel.options[i].value)) {
+            sel.selectedIndex = i;
+            break;
+          }
+        }
+      }
+      drawerOverlay.classList.remove('opacity-0', 'pointer-events-none');
+      drawer.classList.remove('translate-x-full');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeAgendamento() {
+      drawerOverlay.classList.add('opacity-0', 'pointer-events-none');
+      drawer.classList.add('translate-x-full');
+      document.body.style.overflow = '';
+    }
+
+    function handleAgendar(e) {
+      e.preventDefault();
+      const succ = document.getElementById('agendamento-success');
+      succ.classList.remove('hidden');
+      setTimeout(() => {
+        closeAgendamento();
+        succ.classList.add('hidden');
+        document.getElementById('form-agendar').reset();
+      }, 3000);
+    }
+  </script>
+
+  <!-- Vercel Web Analytics & Speed Insights -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script defer src="/assets/js/demo-i18n-bar.js"></script>
+</body>
+</html>

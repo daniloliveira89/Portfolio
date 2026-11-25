@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- demo-i18n-autodetect --><script>(function(){var cur=location.pathname.endsWith('/en.html')?'en':(location.pathname.endsWith('/es.html')?'es':'pt');var q=(new URLSearchParams(location.search).get('lang')||'').toLowerCase();var target=null;if(q==='pt'||q==='en'||q==='es'){target=q;try{localStorage.setItem('portfolio_lang',q);localStorage.setItem('portfolio_lang_manual','1');}catch(e){}}else if(cur==='pt'){try{if(localStorage.getItem('portfolio_lang_manual')==='1'){var saved=localStorage.getItem('portfolio_lang');if(saved==='en'||saved==='es'||saved==='pt')target=saved;}}catch(e){}if(!target){var langs=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||navigator.userLanguage||'en'];for(var i=0;i<langs.length;i++){var c=(langs[i]||'').toLowerCase().split('-')[0];if(c==='pt'){target='pt';break;}if(c==='es'){target='es';break;}if(c==='en'){target='en';break;}}if(!target)target='en';}}if(target&&target!==cur){var file=target==='en'?'en.html':(target==='es'?'es.html':'index.html');var p=location.pathname;var np=p.slice(-5).toLowerCase()==='.html'?p.slice(0,p.lastIndexOf('/')+1)+file:(p.endsWith('/')?p+file:p+'/'+file);location.replace(np+location.search+location.hash);}})();</script>
+  <title>TORRA 04 — Scientific Micro-Roastery, 88+ SCA Microlots & Bakery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <style>
+    :root {
+      --cream: #F5EFE6;
+      --espresso: #1E140F;
+      --roast: #8C4A27;
+      --terracotta: #C86D3B;
+    }
+    body {
+      background-color: var(--cream);
+      color: var(--espresso);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    .font-coffee { font-family: 'Fraunces', serif; }
+    .font-mono-lab { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="min-h-screen antialiased selection:bg-[#8C4A27] selection:text-white">
+
+  <!-- TOP ROAST TICKER -->
+  <div class="bg-[#1E140F] text-[#F5EFE6] text-[11px] font-mono-lab py-2 px-6">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span> WEEKLY BATCH ROASTED TUESDAY AT 07:00 AM • PROBAT UG22</span>
+      <span class="hidden md:inline text-amber-300/90">Direct Traceability: Serra da Mantiqueira, Caparaó & Cerrado Mineiro</span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 border-b border-stone-900/10 bg-[#F5EFE6]/90 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-[#1E140F] text-[#F5EFE6] flex items-center justify-center font-coffee text-lg font-bold">
+          T4
+        </div>
+        <div>
+          <span class="font-coffee text-2xl tracking-tight block leading-none">TORRA 04</span>
+          <span class="text-[10px] font-mono-lab uppercase tracking-widest text-amber-900 block mt-0.5">Specialty Coffee Roasters</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-wider text-stone-700">
+        <a href="#cardapio" class="hover:text-[#8C4A27] transition">Brew Bar & Viennoiserie</a>
+        <a href="#microlotes" class="hover:text-[#8C4A27] transition">Whole Bean Bags</a>
+        <a href="#clube" class="hover:text-[#8C4A27] transition">Roast Subscription</a>
+      </nav>
+
+      <button onclick="openCoffeeDrawer()" class="px-5 py-2.5 rounded-full bg-[#1E140F] hover:bg-[#8C4A27] text-white text-xs font-bold uppercase tracking-wider transition flex items-center gap-2">
+        <span>Roast Bag</span>
+        <span id="coffee-cart-count" class="px-2 py-0.5 rounded-full bg-amber-400 text-black font-mono-lab text-[10px]">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="max-w-7xl mx-auto px-6 pt-12 pb-20 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-7 space-y-6">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-900/10 border border-amber-900/20 text-amber-900 text-xs font-mono-lab uppercase">
+        <span>88 to 92 SCA Point Microlots • Natural Fermentation</span>
+      </div>
+
+      <h1 class="font-coffee text-5xl sm:text-7xl leading-[0.96] text-[#1E140F]">
+        From the raised drying beds of Mantiqueira to <em class="italic font-normal text-[#8C4A27]">your cup.</em>
+      </h1>
+
+      <p class="text-stone-600 text-base sm:text-lg leading-relaxed max-w-xl">
+        We roast small batches weekly using Cropster® telemetry-controlled heat curves, highlighting the bright citrus acidity, natural sweetness, and floral complexity of each Brazilian terroir.
+      </p>
+
+      <div class="flex flex-wrap gap-4 pt-2">
+        <a href="#clube" class="px-7 py-4 rounded-full bg-[#8C4A27] hover:bg-[#1E140F] text-white text-xs font-bold uppercase tracking-widest transition shadow-lg">
+          Configure Bean Club →
+        </a>
+        <a href="#cardapio" class="px-7 py-4 rounded-full border border-stone-900/20 hover:border-stone-900 text-xs font-bold uppercase tracking-widest transition">
+          View Café Menu
+        </a>
+      </div>
+
+      <div class="grid grid-cols-3 gap-4 pt-6 border-t border-stone-900/10 max-w-lg">
+        <div>
+          <span class="font-coffee text-3xl text-[#8C4A27] block">91.5 pts</span>
+          <span class="text-[11px] font-mono-lab uppercase text-stone-500">Highest Harvest Score</span>
+        </div>
+        <div>
+          <span class="font-coffee text-3xl text-[#1E140F] block">1,350m</span>
+          <span class="text-[11px] font-mono-lab uppercase text-stone-500">Average Altitude</span>
+        </div>
+        <div>
+          <span class="font-coffee text-3xl text-[#1E140F] block">72 Hours</span>
+          <span class="text-[11px] font-mono-lab uppercase text-stone-500">Levain Croissant</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="lg:col-span-5">
+      <div class="relative rounded-3xl overflow-hidden border border-stone-900/15 shadow-2xl bg-[#1E140F]">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=85" class="w-full h-[460px] object-cover opacity-90" alt="Torra 04 V60 Pour-Over Extraction">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#1E140F] via-transparent to-transparent"></div>
+        <div class="absolute bottom-6 left-6 right-6 p-5 rounded-2xl bg-[#F5EFE6]/95 backdrop-blur-md text-[#1E140F]">
+          <div class="flex items-center justify-between text-[10px] font-mono-lab uppercase text-[#8C4A27] font-bold">
+            <span>Reserve Batch #042</span>
+            <span>SCA 90.5 PTS</span>
+          </div>
+          <h3 class="font-coffee text-2xl mt-1">Washed Geisha — Fazenda Sertão</h3>
+          <p class="text-xs text-stone-600 mt-1">Tasting notes: Jasmine, fresh bergamot, orange blossom honey, and a silky finish.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BREW BAR & BAKERY MENU -->
+  <section id="cardapio" class="max-w-7xl mx-auto px-6 py-16 border-t border-stone-900/10">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+      <div>
+        <span class="text-xs font-mono-lab uppercase tracking-widest text-[#8C4A27]">01 // Pinheiros & Jardins Flagship</span>
+        <h2 class="font-coffee text-4xl sm:text-5xl mt-1">Brew Bar & Viennoiserie</h2>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <button onclick="renderCoffee('filtrados', this)" class="coffee-tab px-5 py-2.5 rounded-full text-xs font-bold bg-[#1E140F] text-white">Hario V60 / Chemex Pour-Over</button>
+        <button onclick="renderCoffee('espresso', this)" class="coffee-tab px-5 py-2.5 rounded-full text-xs font-bold bg-white text-[#1E140F] border border-stone-300">La Marzocco Espresso Bar</button>
+        <button onclick="renderCoffee('brunch', this)" class="coffee-tab px-5 py-2.5 rounded-full text-xs font-bold bg-white text-[#1E140F] border border-stone-300">Sourdough & Brunch</button>
+      </div>
+    </div>
+
+    <div id="coffee-menu" class="grid grid-cols-1 md:grid-cols-2 gap-5"></div>
+  </section>
+
+  <!-- ROASTED BEANS CATALOG -->
+  <section id="microlotes" class="max-w-7xl mx-auto px-6 py-16 border-t border-stone-900/10">
+    <div class="mb-10">
+      <span class="text-xs font-mono-lab uppercase tracking-widest text-[#8C4A27]">02 // Freshly Roasted to Order</span>
+      <h2 class="font-coffee text-4xl sm:text-5xl mt-1">Whole Bean or Freshly Ground Microlots</h2>
+    </div>
+
+    <div id="beans-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+  </section>
+
+  <!-- SUBSCRIPTION SIMULATOR -->
+  <section id="clube" class="max-w-7xl mx-auto px-6 py-16 border-t border-stone-900/10">
+    <div class="rounded-3xl bg-[#1E140F] text-[#F5EFE6] p-8 sm:p-12 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center shadow-2xl">
+      <div class="lg:col-span-7 space-y-6">
+        <span class="px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 font-mono-lab text-xs uppercase">Torra 04 Subscription Club</span>
+        <h2 class="font-coffee text-3xl sm:text-5xl leading-tight">Receive freshly roasted coffees at home every month.</h2>
+        <p class="text-stone-300 text-sm leading-relaxed">
+          Choose the grind size for your favorite brewing method and the number of bags (250g with one-way degassing valve).
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+          <div>
+            <label class="text-xs font-mono-lab uppercase text-amber-300 block mb-2">1. Brewing Method (Grind Size)</label>
+            <select id="sub-grind" onchange="calcCoffeeSub()" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/15 text-sm text-white">
+              <option value="Whole Bean (100% Uncut)">Whole Bean (Grind at Home)</option>
+              <option value="Medium Grind (V60 / Melitta / Chemex)">Medium Grind (V60 / Chemex)</option>
+              <option value="Coarse Grind (French Press)">Coarse Grind (French Press)</option>
+              <option value="Fine Grind (Espresso / Moka Pot)">Fine Grind (Espresso / Moka Pot)</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-xs font-mono-lab uppercase text-amber-300 block mb-2">2. Monthly Coffee Volume</label>
+            <select id="sub-bags" onchange="calcCoffeeSub()" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/15 text-sm text-white">
+              <option value="2">2 Bags of 250g (500g /mo)</option>
+              <option value="3" selected>3 Bags of 250g (750g /mo — Best Value)</option>
+              <option value="4">4 Bags of 250g (1kg /mo + Free Shipping)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 bg-[#2B1D16] p-8 rounded-2xl border border-amber-400/30 space-y-5">
+        <div class="flex justify-between items-center border-b border-white/10 pb-4">
+          <span class="text-xs font-mono-lab uppercase text-amber-300">Subscription Summary</span>
+          <span class="px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] font-mono-lab">15% OFF Club</span>
+        </div>
+        <div>
+          <div id="sub-price" class="font-coffee text-4xl text-white">$168 /mo</div>
+          <p id="sub-desc" class="text-xs text-stone-300 mt-1">3 exclusive microlots (88+ pts SCA) • Whole Bean</p>
+        </div>
+        <button onclick="subscribeCoffeeClub()" class="w-full py-4 rounded-xl bg-amber-400 hover:bg-amber-300 text-[#1E140F] font-bold text-xs uppercase tracking-widest transition">
+          Activate Monthly Subscription →
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE-OVER CART DRAWER -->
+  <div id="coffee-overlay" onclick="closeCoffeeDrawer()" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden"></div>
+  <aside id="coffee-drawer" class="fixed top-0 right-0 z-50 h-full w-full sm:w-[440px] bg-[#F5EFE6] border-l border-stone-900/15 p-7 transform translate-x-full transition-transform duration-300 flex flex-col justify-between">
+    <div>
+      <div class="flex items-center justify-between pb-4 border-b border-stone-900/15">
+        <h3 class="font-coffee text-2xl">Your Torra 04 Bag</h3>
+        <button onclick="closeCoffeeDrawer()" class="text-stone-500 hover:text-black">✕</button>
+      </div>
+      <div id="coffee-cart-list" class="mt-4 space-y-3 max-h-[55vh] overflow-y-auto"></div>
+    </div>
+
+    <div class="pt-4 border-t border-stone-900/15 space-y-4">
+      <div class="flex justify-between items-baseline">
+        <span class="text-xs font-mono-lab uppercase text-stone-500">Order Total</span>
+        <strong id="coffee-cart-total" class="font-coffee text-3xl text-[#8C4A27]">$0</strong>
+      </div>
+      <button onclick="finishCoffeeOrder()" class="w-full py-4 rounded-xl bg-[#1E140F] hover:bg-[#8C4A27] text-white font-bold text-xs uppercase tracking-widest transition">
+        Complete Order (Pickup or Delivery)
+      </button>
+      <div id="coffee-order-msg" class="hidden p-3.5 rounded-xl bg-emerald-800 text-white text-xs text-center">
+        ✓ Order sent to the roastery! Your coffee is being prepared.
+      </div>
+    </div>
+  </aside>
+
+  <footer class="border-t border-stone-900/10 py-10 px-6 text-xs text-stone-500 mt-12">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between gap-4">
+      <span>© 2026 TORRA 04 MICRO-ROASTERY LTD.</span>
+      <span>Rua dos Pinheiros, 840 — São Paulo, SP • Tue to Sun, 8 AM to 7 PM</span>
+    </div>
+  </footer>
+
+  <script>
+    const COFFEE_MENU = {
+      filtrados: [
+        { id: 101, name: "Washed Geisha (Serra da Mantiqueira)", notes: "Notes of jasmine, bergamot, and honey • 90.5 pts SCA", price: 26 },
+        { id: 102, name: "Red Catuaí 96h Anaerobic Fermentation", notes: "Ripe yellow stone fruits, mango, and cacao liqueur • 89 pts", price: 22 },
+        { id: 103, name: "Natural Yellow Bourbon (Alta Mogiana)", notes: "Salted caramel, toasted hazelnut, and panela • 88 pts", price: 19 },
+        { id: 104, name: "Cold Brew Nitro Infused (300ml)", notes: "Cold-steeped for 18 hours with a creamy nitrogen texture", price: 24 }
+      ],
+      espresso: [
+        { id: 201, name: "Double Ristretto Flat White", notes: "Fazenda Bela Vista milk steamed to 62°C microfoam", price: 18 },
+        { id: 202, name: "Botanical Espresso Tonic", notes: "Fruity double espresso, craft tonic water, and Bahia orange oil", price: 24 },
+        { id: 203, name: "Barista Oat Milk Cortado", notes: "1:1 ratio with the natural sweetness of creamy oat milk", price: 21 },
+        { id: 204, name: "Tasting Flight (Espresso + Pour-Over same bean)", notes: "Compare the exact same microlot across two distinct extractions", price: 32 }
+      ],
+      brunch: [
+        { id: 301, name: "Isigny French Butter Croissant", notes: "72-hour slow fermentation with open honeycomb crumb", price: 21 },
+        { id: 302, name: "Sourdough Toast & Poached Pasture Eggs", notes: "Charred avocado, goat cheese, and roasted nut dukkah", price: 44 },
+        { id: 303, name: "70% Callebaut Belgian Pain au Chocolat", notes: "Crisp laminated pastry filled with two dark chocolate batons", price: 24 },
+        { id: 304, name: "Freshly Ground Cardamom Cinnamon Roll", notes: "Topped with cream cheese glaze and Madagascar vanilla bean", price: 23 }
+      ]
+    };
+
+    const BEANS_PACKS = [
+      { id: 401, name: "Microlot #01 — Floral Geisha (250g)", region: "Carmo de Minas, MG • 1,420m", score: "90.5 SCA", roast: "Light Roast for Filter", price: 78 },
+      { id: 402, name: "Microlot #02 — Caparaó Biome (250g)", region: "Alto Caparaó, ES • 1,380m", score: "89.0 SCA", roast: "Medium-Light Omni Roast", price: 64 },
+      { id: 403, name: "Microlot #03 — Velvet Espresso (250g)", region: "Cerrado Mineiro • 1,150m", score: "88.0 SCA", roast: "Medium Roast Full Body", price: 56 }
+    ];
+
+    let coffeeCart = [];
+
+    window.renderCoffee = function(cat, btnEl) {
+      if (btnEl) {
+        document.querySelectorAll('.coffee-tab').forEach(b => {
+          b.className = 'coffee-tab px-5 py-2.5 rounded-full text-xs font-bold bg-white text-[#1E140F] border border-stone-300';
+        });
+        btnEl.className = 'coffee-tab px-5 py-2.5 rounded-full text-xs font-bold bg-[#1E140F] text-white';
+      }
+      document.getElementById('coffee-menu').innerHTML = COFFEE_MENU[cat].map(i => `
+        <div class="bg-white p-6 rounded-2xl border border-stone-900/10 flex justify-between items-center gap-4 hover:border-[#8C4A27] transition">
+          <div>
+            <h3 class="font-coffee text-xl text-[#1E140F]">${i.name}</h3>
+            <p class="text-xs text-stone-500 mt-1">${i.notes}</p>
+          </div>
+          <div class="text-right shrink-0">
+            <strong class="text-base font-bold text-[#8C4A27] block">$${i.price}</strong>
+            <button onclick="addCoffeeItem('${i.name}', ${i.price})" class="mt-1.5 px-3 py-1 rounded-full bg-[#F5EFE6] hover:bg-[#1E140F] hover:text-white text-[11px] font-bold transition">+ Order</button>
+          </div>
+        </div>
+      `).join('');
+    };
+
+    function renderBeans() {
+      document.getElementById('beans-grid').innerHTML = BEANS_PACKS.map(b => `
+        <div class="bg-white p-7 rounded-3xl border border-stone-900/10 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-center text-[11px] font-mono-lab uppercase text-[#8C4A27]">
+              <span>${b.roast}</span>
+              <span class="px-2 py-0.5 rounded bg-amber-100 font-bold">${b.score}</span>
+            </div>
+            <h3 class="font-coffee text-2xl mt-3">${b.name}</h3>
+            <p class="text-xs text-stone-500 mt-1">📍 ${b.region}</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-200 flex items-center justify-between">
+            <strong class="font-coffee text-2xl text-[#1E140F]">$${b.price}</strong>
+            <button onclick="addCoffeeItem('${b.name}', ${b.price})" class="px-4 py-2 rounded-full bg-[#1E140F] hover:bg-[#8C4A27] text-white text-xs font-bold uppercase transition">
+              + Add 250g
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function addCoffeeItem(name, price) {
+      coffeeCart.push({ name, price });
+      updateCoffeeCartUI();
+      openCoffeeDrawer();
+    }
+
+    function removeCoffeeItem(idx) {
+      coffeeCart.splice(idx, 1);
+      updateCoffeeCartUI();
+    }
+
+    function updateCoffeeCartUI() {
+      document.getElementById('coffee-cart-count').textContent = coffeeCart.length;
+      const total = coffeeCart.reduce((acc, item) => acc + item.price, 0);
+      document.getElementById('coffee-cart-total').textContent = '$' + total.toLocaleString('en-US');
+      const list = document.getElementById('coffee-cart-list');
+      if (coffeeCart.length === 0) {
+        list.innerHTML = `<p class="text-xs text-stone-500 py-8 text-center">Your bag is empty. Pick a coffee or microlot.</p>`;
+        return;
+      }
+      list.innerHTML = coffeeCart.map((item, idx) => `
+        <div class="p-3.5 rounded-xl bg-white border border-stone-200 flex justify-between items-center text-xs">
+          <div>
+            <strong class="text-stone-900 block">${item.name}</strong>
+            <span class="text-[#8C4A27] font-bold">$${item.price}</span>
+          </div>
+          <button onclick="removeCoffeeItem(${idx})" class="text-stone-400 hover:text-red-600">✕</button>
+        </div>
+      `).join('');
+    }
+
+    function calcCoffeeSub() {
+      const bags = Number(document.getElementById('sub-bags').value);
+      const grind = document.getElementById('sub-grind').value;
+      const price = bags * 56;
+      document.getElementById('sub-price').textContent = `$${price} /mo`;
+      document.getElementById('sub-desc').textContent = `${bags} exclusive microlots (88+ pts SCA) • ${grind}`;
+    }
+
+    function subscribeCoffeeClub() {
+      const bags = document.getElementById('sub-bags').value;
+      const price = Number(bags) * 56;
+      addCoffeeItem(`Torra 04 Club Subscription (${bags}x 250g)`, price);
+    }
+
+    function openCoffeeDrawer() {
+      document.getElementById('coffee-order-msg').classList.add('hidden');
+      document.getElementById('coffee-overlay').classList.remove('hidden');
+      document.getElementById('coffee-drawer').classList.remove('translate-x-full');
+    }
+
+    function closeCoffeeDrawer() {
+      document.getElementById('coffee-overlay').classList.add('hidden');
+      document.getElementById('coffee-drawer').classList.add('translate-x-full');
+    }
+
+    function finishCoffeeOrder() {
+      if (coffeeCart.length === 0) return;
+      document.getElementById('coffee-order-msg').classList.remove('hidden');
+      coffeeCart = [];
+      updateCoffeeCartUI();
+    }
+
+    renderCoffee('filtrados');
+    renderBeans();
+    calcCoffeeSub();
+    updateCoffeeCartUI();
+  </script>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script defer src="/assets/js/demo-i18n-bar.js"></script>
+</body>
+</html>

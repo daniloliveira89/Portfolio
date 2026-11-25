@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- demo-i18n-autodetect --><script>(function(){var cur=location.pathname.endsWith('/en.html')?'en':(location.pathname.endsWith('/es.html')?'es':'pt');var q=(new URLSearchParams(location.search).get('lang')||'').toLowerCase();var target=null;if(q==='pt'||q==='en'||q==='es'){target=q;try{localStorage.setItem('portfolio_lang',q);localStorage.setItem('portfolio_lang_manual','1');}catch(e){}}else if(cur==='pt'){try{if(localStorage.getItem('portfolio_lang_manual')==='1'){var saved=localStorage.getItem('portfolio_lang');if(saved==='en'||saved==='es'||saved==='pt')target=saved;}}catch(e){}if(!target){var langs=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||navigator.userLanguage||'en'];for(var i=0;i<langs.length;i++){var c=(langs[i]||'').toLowerCase().split('-')[0];if(c==='pt'){target='pt';break;}if(c==='es'){target='es';break;}if(c==='en'){target='en';break;}}if(!target)target='en';}}if(target&&target!==cur){var file=target==='en'?'en.html':(target==='es'?'es.html':'index.html');var p=location.pathname;var np=p.slice(-5).toLowerCase()==='.html'?p.slice(0,p.lastIndexOf('/')+1)+file:(p.endsWith('/')?p+file:p+'/'+file);location.replace(np+location.search+location.hash);}})();</script>
+  <title>Vanguard & Sterling — Corporate Advisory & Law</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { background-color: #0A0F1A; color: #F5F3EF; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .font-serif-corp { font-family: 'Instrument Serif', serif; }
+    .gold-accent { color: #C9A96E; }
+    .border-gold { border-color: rgba(201, 169, 110, 0.28); }
+    .bg-gold { background-color: #C9A96E; color: #0A0F1A; }
+  </style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased">
+  <header class="border-b border-white/10 bg-[#0A0F1A]/90 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-9 h-9 border border-[#C9A96E] flex items-center justify-center font-serif-corp text-xl gold-accent">V&S</div>
+        <div>
+          <span class="font-semibold tracking-tight text-white block leading-none">VANGUARD & STERLING</span>
+          <span class="text-[10px] uppercase tracking-[0.25em] text-slate-400">Global Corporate Advisory</span>
+        </div>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-xs uppercase tracking-[0.15em] text-slate-300">
+        <a href="#atuacao" class="hover:text-[#C9A96E] transition">Practice Areas</a>
+        <a href="#indicadores" class="hover:text-[#C9A96E] transition">Governance</a>
+        <a href="#escritorios" class="hover:text-[#C9A96E] transition">Offices</a>
+      </nav>
+      <button onclick="document.getElementById('modal-consulta').classList.remove('hidden')" class="px-5 py-2.5 text-xs font-semibold uppercase tracking-wider bg-gold hover:brightness-110 transition">
+        Confidential Meeting
+      </button>
+    </div>
+  </header>
+
+  <section class="relative max-w-7xl mx-auto px-6 pt-16 pb-20 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <div class="lg:col-span-7">
+      <div class="inline-flex items-center gap-2 px-3 py-1 border border-gold text-[11px] uppercase tracking-[0.2em] gold-accent mb-6">
+        <span>São Paulo • New York • Zurich • London</span>
+      </div>
+      <h1 class="font-serif-corp text-5xl sm:text-7xl leading-[1.02] font-normal text-white">
+        Legal and financial strategy for <em class="italic gold-accent">decisive transactions.</em>
+      </h1>
+      <p class="mt-6 text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl">
+        We advise boards of directors, institutional funds, and family groups on cross-border mergers, corporate restructurings, and international arbitration.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a href="#atuacao" class="px-7 py-3.5 bg-gold font-semibold text-xs uppercase tracking-widest hover:brightness-110 transition">Explore Practices</a>
+        <a href="#indicadores" class="px-7 py-3.5 border border-white/20 text-white text-xs uppercase tracking-widest hover:border-[#C9A96E] transition">2026 Annual Report</a>
+      </div>
+    </div>
+    <div class="lg:col-span-5">
+      <div class="relative border border-white/15 bg-[#101726] p-3">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1000&q=80" alt="Corporate" class="w-full h-80 object-cover grayscale contrast-125">
+        <div class="p-5 bg-[#0A0F1A] border-t border-white/10 flex justify-between items-center">
+          <div>
+            <p class="text-[11px] uppercase tracking-widest text-slate-400">Audited Transactions</p>
+            <p class="font-serif-corp text-3xl gold-accent mt-0.5">$18.4 Billion</p>
+          </div>
+          <span class="text-xs px-3 py-1 bg-white/5 border border-white/10 text-slate-300">Tier 1 Chambers</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="indicadores" class="border-y border-white/10 bg-[#0D1422]">
+    <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div><div class="font-serif-corp text-4xl sm:text-5xl gold-accent">34+</div><div class="text-xs uppercase tracking-widest text-slate-400 mt-1">Years of Track Record</div></div>
+      <div><div class="font-serif-corp text-4xl sm:text-5xl text-white">99.2%</div><div class="text-xs uppercase tracking-widest text-slate-400 mt-1">Arbitration Success</div></div>
+      <div><div class="font-serif-corp text-4xl sm:text-5xl text-white">140+</div><div class="text-xs uppercase tracking-widest text-slate-400 mt-1">Partners & Specialists</div></div>
+      <div><div class="font-serif-corp text-4xl sm:text-5xl gold-accent">4</div><div class="text-xs uppercase tracking-widest text-slate-400 mt-1">Global Jurisdictions</div></div>
+    </div>
+  </section>
+
+  <section id="atuacao" class="max-w-7xl mx-auto px-6 py-20 w-full">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12">
+      <div>
+        <p class="text-xs uppercase tracking-[0.2em] gold-accent mb-2">Corporate Specialties</p>
+        <h2 class="font-serif-corp text-4xl sm:text-5xl text-white">Practice Areas</h2>
+      </div>
+      <div class="flex flex-wrap gap-2 mt-4 md:mt-0">
+        <button data-tab="ma" class="tab-btn px-4 py-2 text-xs uppercase tracking-wider bg-gold font-semibold">01. Mergers & Acquisitions</button>
+        <button data-tab="wealth" class="tab-btn px-4 py-2 text-xs uppercase tracking-wider border border-white/15 text-slate-300">02. Wealth Protection</button>
+        <button data-tab="arb" class="tab-btn px-4 py-2 text-xs uppercase tracking-wider border border-white/15 text-slate-300">03. International Arbitration</button>
+      </div>
+    </div>
+    <div class="border border-white/15 bg-[#101726] p-8 sm:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div class="lg:col-span-8">
+        <span id="p-tag" class="text-xs uppercase tracking-widest gold-accent">M&A & Private Equity</span>
+        <h3 id="p-title" class="font-serif-corp text-3xl sm:text-4xl text-white mt-2">Structuring of Mergers, Acquisitions & Joint Ventures</h3>
+        <p id="p-desc" class="text-slate-300 text-sm sm:text-base leading-relaxed mt-4">We conduct comprehensive due diligence, contract structuring, and antitrust clearance for strategic control acquisitions and institutional rounds.</p>
+      </div>
+      <div class="lg:col-span-4 border-t lg:border-t-0 lg:border-l border-white/10 pt-6 lg:pt-0 lg:pl-8">
+        <div class="text-xs uppercase tracking-widest text-slate-400">Recent Volume</div>
+        <div id="p-stat" class="font-serif-corp text-4xl gold-accent mt-1">$6.2B</div>
+        <p id="p-sub" class="text-xs text-slate-400 mt-2">42 transactions closed in the last 24 months.</p>
+      </div>
+    </div>
+  </section>
+
+  <div id="modal-consulta" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-[#101726] border border-gold max-w-md w-full p-8 relative">
+      <button onclick="document.getElementById('modal-consulta').classList.add('hidden')" class="absolute top-4 right-4 text-slate-400 hover:text-white">✕</button>
+      <h3 class="font-serif-corp text-3xl text-white mb-2">Request Executive Meeting</h3>
+      <p class="text-xs text-slate-400 mb-6">Service under strict non-disclosure protocol (NDA).</p>
+      <form onsubmit="event.preventDefault(); alert('Request forwarded to the Partners Committee.'); document.getElementById('modal-consulta').classList.add('hidden');" class="space-y-4">
+        <input type="text" required placeholder="Full Name / Title" class="w-full px-4 py-2.5 bg-[#0A0F1A] border border-white/15 text-sm text-white">
+        <input type="email" required placeholder="Corporate Email" class="w-full px-4 py-2.5 bg-[#0A0F1A] border border-white/15 text-sm text-white">
+        <button type="submit" class="w-full py-3 bg-gold text-xs font-semibold uppercase tracking-widest">Confirm Appointment</button>
+      </form>
+    </div>
+  </div>
+
+  <footer id="escritorios" class="border-t border-white/10 py-8 px-6 text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between gap-4">
+      <span>© 2026 Vanguard & Sterling LLP.</span>
+      <span>Av. Brigadeiro Faria Lima, São Paulo • Wall Street, NY</span>
+    </div>
+  </footer>
+
+  <script>
+    const practices = {
+      ma: { tag: "M&A & Private Equity", title: "Structuring of Mergers, Acquisitions & Joint Ventures", desc: "We conduct comprehensive due diligence, contract structuring, and antitrust clearance for strategic control acquisitions and institutional rounds.", stat: "$6.2B", sub: "42 transactions closed in the last 24 months." },
+      wealth: { tag: "Wealth & Trust Structuring", title: "Wealth Protection, Holdings & International Succession", desc: "Architecture of offshore trusts, exclusive funds, and multigenerational family governance with tax efficiency.", stat: "$8.9B", sub: "Net assets under legal structuring." },
+      arb: { tag: "Dispute Resolution", title: "International Commercial Arbitration & Strategic Litigation", desc: "High-complexity representation before ICC (Paris), LCIA (London), and CAM-CCBC chambers in corporate disputes.", stat: "99.2%", sub: "Favorable ruling rate for our clients." }
+    };
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.className = "tab-btn px-4 py-2 text-xs uppercase tracking-wider border border-white/15 text-slate-300");
+        btn.className = "tab-btn px-4 py-2 text-xs uppercase tracking-wider bg-gold font-semibold";
+        const d = practices[btn.dataset.tab];
+        document.getElementById('p-tag').textContent = d.tag;
+        document.getElementById('p-title').textContent = d.title;
+        document.getElementById('p-desc').textContent = d.desc;
+        document.getElementById('p-stat').textContent = d.stat;
+        document.getElementById('p-sub').textContent = d.sub;
+      });
+    });
+  </script>
+  <!-- Vercel Web Analytics & Speed Insights -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script defer src="/assets/js/demo-i18n-bar.js"></script>
+</body>
+</html>

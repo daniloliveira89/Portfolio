@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- demo-i18n-autodetect --><script>(function(){var cur=location.pathname.endsWith('/en.html')?'en':(location.pathname.endsWith('/es.html')?'es':'pt');var q=(new URLSearchParams(location.search).get('lang')||'').toLowerCase();var target=null;if(q==='pt'||q==='en'||q==='es'){target=q;try{localStorage.setItem('portfolio_lang',q);localStorage.setItem('portfolio_lang_manual','1');}catch(e){}}else if(cur==='pt'){try{if(localStorage.getItem('portfolio_lang_manual')==='1'){var saved=localStorage.getItem('portfolio_lang');if(saved==='en'||saved==='es'||saved==='pt')target=saved;}}catch(e){}if(!target){var langs=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||navigator.userLanguage||'en'];for(var i=0;i<langs.length;i++){var c=(langs[i]||'').toLowerCase().split('-')[0];if(c==='pt'){target='pt';break;}if(c==='es'){target='es';break;}if(c==='en'){target='en';break;}}if(!target)target='en';}}if(target&&target!==cur){var file=target==='en'?'en.html':(target==='es'?'es.html':'index.html');var p=location.pathname;var np=p.slice(-5).toLowerCase()==='.html'?p.slice(0,p.lastIndexOf('/')+1)+file:(p.endsWith('/')?p+file:p+'/'+file);location.replace(np+location.search+location.hash);}})();</script>
+  <title>APEX PERFORMANCE — Estudio de Entrenamiento de Alto Rendimiento, Recuperación y Biohacking</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <style>
+    :root {
+      --bg-obsidian: #090A0C;
+      --bg-panel: #111318;
+      --volt: #CCFF00;
+      --volt-dim: rgba(204, 255, 0, 0.15);
+    }
+    body {
+      background-color: var(--bg-obsidian);
+      color: #F3F4F6;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    .font-cabinet {
+      font-family: 'Cabinet Grotesk', 'Plus Jakarta Sans', sans-serif;
+    }
+    .font-mono-tech {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .text-volt {
+      color: var(--volt);
+    }
+    .bg-volt {
+      background-color: var(--volt);
+    }
+    .border-volt {
+      border-color: rgba(204, 255, 0, 0.35);
+    }
+    .tech-grid-bg {
+      background-size: 40px 40px;
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    }
+    .volt-glow {
+      background: radial-gradient(circle at 50% 0%, rgba(204, 255, 0, 0.11) 0%, rgba(9, 10, 12, 0) 70%);
+    }
+    .zone-card {
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .zone-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(204, 255, 0, 0.65);
+      box-shadow: 0 24px 48px -15px rgba(0, 0, 0, 0.9), 0 0 30px -5px rgba(204, 255, 0, 0.14);
+    }
+    /* Custom Range Slider (#CCFF00) */
+    input[type="range"].volt-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 8px;
+      background: #1B1E26;
+      border-radius: 999px;
+      outline: none;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    input[type="range"].volt-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #CCFF00;
+      cursor: pointer;
+      border: 3px solid #090A0C;
+      box-shadow: 0 0 18px rgba(204, 255, 0, 0.8);
+      transition: transform 0.15s ease;
+    }
+    input[type="range"].volt-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.12);
+    }
+    input[type="range"].volt-slider::-moz-range-thumb {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #CCFF00;
+      cursor: pointer;
+      border: 3px solid #090A0C;
+      box-shadow: 0 0 18px rgba(204, 255, 0, 0.8);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #090A0C;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(204, 255, 0, 0.35);
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: rgba(204, 255, 0, 0.7);
+    }
+  </style>
+</head>
+<body class="min-h-screen selection:bg-[#CCFF00] selection:text-black antialiased tech-grid-bg">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-[#090A0C]/90 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3.5 group">
+        <div class="w-10 h-10 rounded-lg bg-[#CCFF00] text-black flex items-center justify-center font-cabinet font-black text-xl tracking-tighter shadow-[0_0_20px_rgba(204,255,0,0.35)] group-hover:scale-105 transition-transform">
+          AX
+        </div>
+        <div>
+          <span class="font-cabinet tracking-wider text-lg sm:text-xl font-black text-white block leading-none">
+            APEX <span class="text-[#CCFF00]">PERFORMANCE</span>
+          </span>
+          <span class="block text-[9px] font-mono-tech uppercase tracking-[0.28em] text-zinc-400 mt-1">
+            Entrenamiento • Recuperación • Lab de Biohacking
+          </span>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8 text-xs font-mono-tech uppercase tracking-[0.18em] text-zinc-400">
+        <a href="#engenharia" class="hover:text-[#CCFF00] transition-colors">Rendimiento</a>
+        <a href="#simulador" class="hover:text-[#CCFF00] transition-colors">Simulador Metabólico</a>
+        <a href="#zonas" class="hover:text-[#CCFF00] transition-colors">Zonas & Biohacking</a>
+        <a href="#telemetria" class="hover:text-[#CCFF00] transition-colors">Lab VO2 & 3°C</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <span class="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/10 text-[10px] font-mono-tech uppercase tracking-widest text-zinc-300">
+          <span class="w-2 h-2 rounded-full bg-[#CCFF00] animate-ping"></span>
+          Vila Olímpia • SP
+        </span>
+        <button id="btn-open-daypass" onclick="openDayPassDrawer()" class="px-5 py-2.5 rounded-md bg-[#CCFF00] hover:bg-[#b8e600] text-black font-cabinet font-extrabold text-xs uppercase tracking-[0.18em] transition-all duration-200 shadow-[0_0_25px_rgba(204,255,0,0.28)]">
+          Day Pass VIP
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="engenharia" class="relative overflow-hidden pt-14 pb-24 volt-glow">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+        <!-- Coluna Esquerda: Copy, Selo Eleiko® & Keiser e Métricas -->
+        <div class="lg:col-span-7 text-left">
+          <!-- Selo Oficial Eleiko® e Keiser -->
+          <div class="inline-flex flex-wrap items-center gap-2.5 px-4 py-1.5 rounded-full border border-[#CCFF00]/40 bg-[#111318]/90 mb-7 shadow-[0_0_25px_rgba(204,255,0,0.08)]">
+            <span class="px-2 py-0.5 rounded bg-[#CCFF00] text-black font-mono-tech text-[10px] font-bold uppercase tracking-wider">
+              CERTIFIED LAB
+            </span>
+            <span class="text-[11px] font-mono-tech uppercase tracking-[0.16em] text-zinc-200">
+              Equipamiento Oficial <strong class="text-[#CCFF00]">Eleiko® Sweden</strong> & <strong class="text-[#CCFF00]">Keiser® Pneumatic</strong>
+            </span>
+          </div>
+
+          <h1 class="font-cabinet text-4xl sm:text-6xl lg:text-[68px] font-black text-white leading-[1.03] tracking-tight uppercase">
+            Ingeniería Corporal & <span class="text-[#CCFF00] italic">Biohacking</span> de Élite.
+          </h1>
+
+          <p class="mt-6 text-zinc-400 text-sm sm:text-base leading-relaxed max-w-2xl">
+            El primer ecosistema sudamericano que integra plataformas olímpicas <strong class="text-white">Eleiko® IWF</strong>, resistencia neumática computarizada <strong class="text-white">Keiser®</strong>, pista oficial <strong class="text-white">HYROX</strong>, crioterapia de inmersión a <strong class="text-[#CCFF00]">3°C</strong> y análisis metabólico de gases por telemetría.
+          </p>
+
+          <!-- CTAs do Hero -->
+          <div class="mt-9 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <button onclick="openDayPassDrawer()" class="px-8 py-4 rounded-md bg-[#CCFF00] hover:bg-[#b8e600] text-black font-cabinet font-black text-xs sm:text-sm uppercase tracking-[0.2em] transition-all shadow-[0_12px_35px_rgba(204,255,0,0.28)]">
+              Solicitar Day Pass VIP →
+            </button>
+            <a href="#simulador" class="px-8 py-4 rounded-md border border-white/15 bg-[#111318]/90 hover:border-[#CCFF00]/60 hover:text-[#CCFF00] text-white font-cabinet font-bold text-xs sm:text-sm uppercase tracking-[0.2em] text-center transition-all">
+              Simular Gasto Calórico
+            </a>
+          </div>
+
+          <!-- Métricas de Desempenho -->
+          <div class="mt-12 pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div class="p-4 rounded-xl bg-[#111318]/90 border border-white/10">
+              <span class="font-cabinet text-2xl sm:text-3xl font-black text-[#CCFF00] block">+21.4%</span>
+              <span class="text-xs text-white font-semibold mt-1 block">Mejora de VO2 Máx</span>
+              <span class="text-[10px] font-mono-tech text-zinc-500 block mt-0.5">Promedio en 12 semanas</span>
+            </div>
+
+            <div class="p-4 rounded-xl bg-[#111318]/90 border border-white/10">
+              <span class="font-cabinet text-2xl sm:text-3xl font-black text-white block">3.0°C</span>
+              <span class="text-xs text-white font-semibold mt-1 block">Cold Plunge Crio</span>
+              <span class="text-[10px] font-mono-tech text-zinc-500 block mt-0.5">Contraste c/ Sauna 85°C</span>
+            </div>
+
+            <div class="p-4 rounded-xl bg-[#111318]/90 border border-white/10">
+              <span class="font-cabinet text-2xl sm:text-3xl font-black text-[#CCFF00] block">1000 Hz</span>
+              <span class="text-xs text-white font-semibold mt-1 block">Telemetría VBT</span>
+              <span class="text-[10px] font-mono-tech text-zinc-500 block mt-0.5">Sensores en cada rack</span>
+            </div>
+
+            <div class="p-4 rounded-xl bg-[#111318]/90 border border-white/10">
+              <span class="font-cabinet text-2xl sm:text-3xl font-black text-white block">99.2%</span>
+              <span class="text-xs text-white font-semibold mt-1 block">Precisión DEXA & PNOĒ</span>
+              <span class="text-[10px] font-mono-tech text-zinc-500 block mt-0.5">Mapeo celular</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coluna Direita: Foto de Alta Resolução de Academia de Alto Padrão + HUD -->
+        <div class="lg:col-span-5">
+          <div class="relative rounded-2xl overflow-hidden border border-[#CCFF00]/35 bg-[#111318] shadow-[0_30px_80px_rgba(0,0,0,0.95)] group">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1500&q=85"
+                 alt="APEX Performance Studio — Racks Eleiko e Iluminación de Rendimiento"
+                 class="w-full h-[460px] sm:h-[550px] object-cover object-center group-hover:scale-105 transition-transform duration-1000">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#090A0C] via-[#090A0C]/30 to-black/30"></div>
+
+            <!-- HUD Superior -->
+            <div class="absolute top-5 left-5 right-5 flex items-center justify-between">
+              <div class="px-3 py-1.5 rounded bg-[#090A0C]/85 backdrop-blur-md border border-[#CCFF00]/40 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-[#CCFF00]"></span>
+                <span class="text-[10px] font-mono-tech uppercase tracking-widest text-[#CCFF00]">LIVE TELEMETRY // FLOOR 01</span>
+              </div>
+              <span class="px-3 py-1.5 rounded bg-[#090A0C]/85 backdrop-blur-md border border-white/15 text-[10px] font-mono-tech text-zinc-300">
+                O₂ SATURATION: 99%
+              </span>
+            </div>
+
+            <!-- HUD Inferior com Especificações -->
+            <div class="absolute bottom-5 left-5 right-5 p-5 rounded-xl bg-[#090A0C]/90 backdrop-blur-md border border-white/15">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[10px] font-mono-tech uppercase tracking-[0.2em] text-[#CCFF00]">
+                  ELEIKO® PRESTIGE RACKS & KEISER AIR300
+                </span>
+                <span class="text-[11px] font-mono-tech text-zinc-400">CAPACIDAD: 14 ATLETAS/HORA</span>
+              </div>
+              <p class="text-xs text-zinc-300 leading-relaxed">
+                Acceso controlado por biometría facial. Aire hospitalario filtrado con enriquecimiento de oxígeno e iluminación circadiana adaptativa.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SIMULADOR INTERATIVO DE TREINO & GASTO CALÓRICO EM TEMPO REAL -->
+  <section id="simulador" class="py-24 border-t border-white/10 bg-[#0D0F13]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+        <div>
+          <span class="text-xs font-mono-tech uppercase tracking-[0.28em] text-[#CCFF00] block">
+            // BIOMETRIC OUTPUT ENGINE
+          </span>
+          <h2 class="font-cabinet text-3xl sm:text-5xl font-black text-white uppercase mt-2">
+            Simulador de Entrenamiento & Gasto Calórico
+          </h2>
+          <p class="text-xs sm:text-sm text-zinc-400 mt-2 max-w-2xl">
+            Selecciona tu objetivo fisiológico primario y desliza la frecuencia semanal para calcular en tiempo real el gasto energético activo, el efecto EPOC (afterburn de 36h) y la distribución de zonas en APEX.
+          </p>
+        </div>
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#111318] border border-[#CCFF00]/30 text-xs font-mono-tech text-zinc-300">
+          <span>Algoritmo basado en telemetría PNOĒ Metabolic</span>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+        <!-- Controles do Simulador (7 Colunas) -->
+        <div class="lg:col-span-7 p-6 sm:p-8 rounded-2xl bg-[#111318] border border-white/10 flex flex-col justify-between space-y-8">
+
+          <!-- 1. Seletor de Objetivo -->
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <label class="text-xs font-mono-tech uppercase tracking-widest text-zinc-300">
+                01. Selecciona el Objetivo Fisiológico
+              </label>
+              <span id="sim-goal-tag" class="text-[11px] font-mono-tech text-[#CCFF00]">Enfoque: Tensión Mecánica & VBT</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5" id="goal-buttons-container">
+              <button type="button" data-goal="hipertrofia" onclick="setSimGoal('hipertrofia')" class="goal-btn p-4 rounded-xl border border-[#CCFF00] bg-[#CCFF00]/10 text-left transition-all">
+                <div class="flex items-center justify-between">
+                  <span class="font-cabinet text-lg font-black text-white uppercase">Hipertrofia</span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-[#CCFF00]"></span>
+                </div>
+                <p class="text-[11px] font-mono-tech text-zinc-300 mt-1">Heavy Duty + Eleiko®</p>
+                <p class="text-[11px] text-zinc-400 mt-2">Máxima densidad miofibrilar con control de velocidad en barra.</p>
+              </button>
+
+              <button type="button" data-goal="secagem" onclick="setSimGoal('secagem')" class="goal-btn p-4 rounded-xl border border-white/10 bg-[#090A0C]/60 hover:border-white/30 text-left transition-all">
+                <div class="flex items-center justify-between">
+                  <span class="font-cabinet text-lg font-black text-white uppercase">Definición</span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-zinc-600"></span>
+                </div>
+                <p class="text-[11px] font-mono-tech text-zinc-300 mt-1">HYROX + Cold Plunge 3°C</p>
+                <p class="text-[11px] text-zinc-400 mt-2">Oxidación lipídica acelerada y activación de grasa parda.</p>
+              </button>
+
+              <button type="button" data-goal="potencia" onclick="setSimGoal('potencia')" class="goal-btn p-4 rounded-xl border border-white/10 bg-[#090A0C]/60 hover:border-white/30 text-left transition-all">
+                <div class="flex items-center justify-between">
+                  <span class="font-cabinet text-lg font-black text-white uppercase">Potencia</span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-zinc-600"></span>
+                </div>
+                <p class="text-[11px] font-mono-tech text-zinc-300 mt-1">Keiser® Air + VO2 Max</p>
+                <p class="text-[11px] text-zinc-400 mt-2">Explosión neuromuscular sin inercia y pico anaeróbico.</p>
+              </button>
+            </div>
+          </div>
+
+          <!-- 2. Slider de Frequência Semanal -->
+          <div>
+            <div class="flex items-end justify-between mb-3">
+              <div>
+                <label for="freq-slider" class="text-xs font-mono-tech uppercase tracking-widest text-zinc-300 block">
+                  02. Frecuencia Semanal en el Estudio
+                </label>
+                <span class="text-xs text-zinc-400">Sesiones de 60 minutos guiadas por fisiólogo</span>
+              </div>
+              <div class="text-right">
+                <span id="freq-display" class="font-cabinet text-3xl sm:text-4xl font-black text-[#CCFF00]">4x</span>
+                <span class="text-xs font-mono-tech text-zinc-400 uppercase block">por semana</span>
+              </div>
+            </div>
+
+            <input type="range" id="freq-slider" min="2" max="7" value="4" step="1" oninput="updateSimulator()" class="volt-slider my-2">
+
+            <div class="flex justify-between text-[10px] font-mono-tech text-zinc-500 mt-1">
+              <span>2x / SEM (MÍN)</span>
+              <span>3x / SEM</span>
+              <span>4x / SEM (IDEAL)</span>
+              <span>5x / SEM</span>
+              <span>6x / SEM</span>
+              <span>7x / SEM (PRO)</span>
+            </div>
+          </div>
+
+          <!-- 3. Seletor de Massa Corporal / Intensidade e Crioterapia -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-white/10">
+            <div>
+              <label for="weight-slider" class="flex justify-between text-[11px] font-mono-tech uppercase tracking-wider text-zinc-400 mb-2">
+                <span>Peso Corporal de Referencia</span>
+                <strong id="weight-display" class="text-white">78 kg</strong>
+              </label>
+              <input type="range" id="weight-slider" min="50" max="120" value="78" step="1" oninput="updateSimulator()" class="volt-slider">
+            </div>
+
+            <div class="flex items-center justify-between p-3.5 rounded-xl bg-[#090A0C] border border-white/10">
+              <div>
+                <span class="text-xs font-semibold text-white block">Incluir Contraste Térmico (3°C)</span>
+                <span class="text-[10px] font-mono-tech text-[#CCFF00]">+140 kcal/sesión (Termogénesis)</span>
+              </div>
+              <input type="checkbox" id="cryo-toggle" checked onchange="updateSimulator()" class="w-5 h-5 accent-[#CCFF00] rounded cursor-pointer">
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Painel de Resultados Biométricos em Tempo Real (5 Colunas) -->
+        <div class="lg:col-span-5 p-6 sm:p-8 rounded-2xl bg-[#090A0C] border-2 border-[#CCFF00]/50 shadow-[0_20px_70px_rgba(0,0,0,0.95)] flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute -top-24 -right-24 w-48 h-48 bg-[#CCFF00]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div>
+            <div class="flex items-center justify-between pb-4 border-b border-white/10">
+              <div>
+                <span class="text-[10px] font-mono-tech uppercase tracking-[0.25em] text-[#CCFF00] block">TELEMETRÍA ESTIMADA</span>
+                <h3 id="sim-protocol-title" class="font-cabinet text-2xl font-black text-white uppercase mt-0.5">
+                  Protocolo Hyper-Strength
+                </h3>
+              </div>
+              <span id="sim-zone-badge" class="px-2.5 py-1 rounded bg-[#CCFF00]/15 border border-[#CCFF00]/40 text-[10px] font-mono-tech text-[#CCFF00] font-bold">
+                VBT 0.65 m/s
+              </span>
+            </div>
+
+            <!-- Gasto Calórico Principal -->
+            <div class="my-6 grid grid-cols-2 gap-4">
+              <div class="p-4 rounded-xl bg-[#111318] border border-white/10">
+                <span class="text-[10px] font-mono-tech uppercase tracking-wider text-zinc-400 block">Gasto Semanal Total</span>
+                <div class="mt-1 flex items-baseline gap-1.5">
+                  <span id="sim-weekly-kcal" class="font-cabinet text-3xl sm:text-4xl font-black text-[#CCFF00]">3.280</span>
+                  <span class="text-xs font-mono-tech text-zinc-400">kcal</span>
+                </div>
+                <span id="sim-per-session-kcal" class="text-[11px] font-mono-tech text-zinc-500 mt-1 block">~820 kcal por sesión</span>
+              </div>
+
+              <div class="p-4 rounded-xl bg-[#111318] border border-white/10">
+                <span class="text-[10px] font-mono-tech uppercase tracking-wider text-zinc-400 block">Proyección Mensual (4 Sem)</span>
+                <div class="mt-1 flex items-baseline gap-1.5">
+                  <span id="sim-monthly-kcal" class="font-cabinet text-3xl sm:text-4xl font-black text-white">13.120</span>
+                  <span class="text-xs font-mono-tech text-zinc-400">kcal</span>
+                </div>
+                <span id="sim-epoc-kcal" class="text-[11px] font-mono-tech text-[#CCFF00] mt-1 block">Incluye +480 kcal EPOC/sem</span>
+              </div>
+            </div>
+
+            <!-- Barras de Distribuição do Protocolo -->
+            <div class="space-y-3 bg-[#111318] p-4 rounded-xl border border-white/10">
+              <div class="flex justify-between text-[11px] font-mono-tech uppercase">
+                <span class="text-zinc-300">Distribución de Carga Recomendada</span>
+                <span id="sim-split-label" class="text-[#CCFF00]">70% Fuerza / 15% Cond / 15% Crio</span>
+              </div>
+              <div class="w-full h-3 rounded-full bg-[#090A0C] overflow-hidden flex p-0.5 gap-0.5 border border-white/10">
+                <div id="bar-strength" class="h-full bg-[#CCFF00] rounded-l-full transition-all duration-500" style="width: 70%"></div>
+                <div id="bar-cond" class="h-full bg-emerald-400 transition-all duration-500" style="width: 15%"></div>
+                <div id="bar-rec" class="h-full bg-cyan-400 rounded-r-full transition-all duration-500" style="width: 15%"></div>
+              </div>
+              <div class="flex items-center justify-between text-[10px] font-mono-tech text-zinc-400 pt-1">
+                <span class="flex items-center gap-1.5"><i class="w-2 h-2 rounded-full bg-[#CCFF00] inline-block"></i>Eleiko/Keiser</span>
+                <span class="flex items-center gap-1.5"><i class="w-2 h-2 rounded-full bg-emerald-400 inline-block"></i>HYROX Turf</span>
+                <span class="flex items-center gap-1.5"><i class="w-2 h-2 rounded-full bg-cyan-400 inline-block"></i>Crio 3°C & Sauna</span>
+              </div>
+            </div>
+
+            <!-- Exame Laboratorial Recomendado -->
+            <div class="mt-4 p-3.5 rounded-xl bg-white/[0.02] border border-white/10 flex items-center justify-between text-xs">
+              <div>
+                <span class="text-[10px] font-mono-tech uppercase text-zinc-400 block">Diagnóstico Inicial Incluido en el Pass</span>
+                <strong id="sim-lab-test" class="text-white">DEXA Scan 3D + Perfil de Fuerza Keiser®</strong>
+              </div>
+              <span class="text-[#CCFF00] font-mono-tech text-xs">100% Incluido</span>
+            </div>
+          </div>
+
+          <button onclick="applySimToDayPass()" class="mt-6 w-full py-4 rounded-md bg-[#CCFF00] hover:bg-[#b8e600] text-black font-cabinet font-black text-xs uppercase tracking-[0.2em] transition shadow-[0_10px_30px_rgba(204,255,0,0.25)]">
+            Probar Este Protocolo en el Day Pass VIP →
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CARDS DETALHADOS DAS 4 ÁREAS DE TREINO & BIOHACKING -->
+  <section id="zonas" class="py-24 border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+        <div>
+          <span class="text-xs font-mono-tech uppercase tracking-[0.28em] text-[#CCFF00] block">
+            // INFRAESTRUCTURA DE CLASE OLÍMPICA
+          </span>
+          <h2 class="font-cabinet text-3xl sm:text-5xl font-black text-white uppercase mt-2">
+            Cuatro Zonas de Rendimiento Absoluto
+          </h2>
+        </div>
+        <p class="text-xs sm:text-sm text-zinc-400 max-w-md">
+          Cada estación fue diseñada con ingeniería acústica, suelo de absorción de impacto vulcanizado e integración directa con tu perfil biométrico.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <!-- CARD 1: HEAVY DUTY STRENGTH -->
+        <article class="zone-card rounded-2xl overflow-hidden border border-white/10 bg-[#111318] flex flex-col justify-between group">
+          <div>
+            <div class="relative h-64 overflow-hidden bg-black">
+              <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=85"
+                   alt="Heavy Duty Strength — Eleiko y Keiser"
+                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#111318] via-[#111318]/30 to-transparent"></div>
+              <div class="absolute top-4 left-4 right-4 flex items-center justify-between">
+                <span class="px-3 py-1 rounded bg-black/80 backdrop-blur-md border border-[#CCFF00]/50 text-[10px] font-mono-tech uppercase tracking-widest text-[#CCFF00]">
+                  ZONA 01 // BIOMECHANICS
+                </span>
+                <span class="px-3 py-1 rounded bg-black/80 backdrop-blur-md text-[10px] font-mono-tech text-white border border-white/10">
+                  ELEIKO® IWF & KEISER®
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6 sm:p-8">
+              <h3 class="font-cabinet text-2xl sm:text-3xl font-black text-white uppercase group-hover:text-[#CCFF00] transition-colors">
+                Heavy Duty Strength
+              </h3>
+              <p class="text-xs font-mono-tech text-[#CCFF00] mt-1">
+                Plataformas Olímpicas Eleiko® Prestera, Barras Calibradas IWF & Poleas Neumáticas Keiser® Functional Trainer
+              </p>
+              <p class="text-sm text-zinc-300 mt-4 leading-relaxed">
+                Entrenamiento de fuerza pura monitoreado por cámaras 3D de <strong class="text-white">Velocity-Based Training (VBT)</strong>. La resistencia neumática por aire comprimido de Keiser® elimina el impacto articular a altas velocidades y permite ajustes de carga de 100g directamente desde los botones del agarre.
+              </p>
+
+              <div class="mt-6 grid grid-cols-3 gap-2 pt-4 border-t border-white/10 text-center font-mono-tech">
+                <div class="p-2.5 rounded-lg bg-[#090A0C]">
+                  <span class="text-xs text-[#CCFF00] font-bold block">8 Racks</span>
+                  <span class="text-[10px] text-zinc-400">Eleiko® Prestera</span>
+                </div>
+                <div class="p-2.5 rounded-lg bg-[#090A0C]">
+                  <span class="text-xs text-white font-bold block">Cero Inercia</span>
+                  <span class="text-[10px] text-zinc-400">Keiser® Air 300</span>
+                </div>
+                <div class="p-2.5 rounded-lg bg-[#090A0C]">
+                  <span class="text-xs text-[#CCFF00] font-bold block">VBT Live</span>
+                  <span class="text-[10px] text-zinc-400">Métrica en m/s</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-6 sm:px-8 pb-6 flex items-center justify-between">
+            <span class="text-xs font-mono-tech text-zinc-400">Protocolo: Tensión Mecánica & Potencia</span>
+            <button onclick="selectZoneAndOpenDrawer('Fuerza Heavy Duty (Eleiko & Keiser)')" class="text-xs font-mono-tech uppercase tracking-wider text-[#CCFF00] hover:underline font-semibold">
+              Reservar Sesión en Esta Zona →
+            </button>
+          </div>
+        </article>
+
+        <!-- CARD 2: HYROX & CONDITIONING -->
+        <article class="zone-card rounded-2xl overflow-hidden border border-white/10 bg-[#111318] flex flex-col justify-between group">
+          <div>
+            <div class="relative h-64 overflow-hidden bg-black">
+              <img src="https://images.unsplash.com/photo-1599058917212-d750089bc07e?auto=format&fit=crop&w=1200&q=85"
+                   alt="HYROX & Conditioning Zone"
+                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#111318] via-[#111318]/30 to-transparent"></div>
+              <div class="absolute top-4 left-4 right-4 flex items-center justify-between">
+                <span class="px-3 py-1 rounded bg-black/80 backdrop-blur-md border border-[#CCFF00]/50 text-[10px] font-mono-tech uppercase tracking-widest text-[#CCFF00]">
+                  ZONA 02 // METABOLIC ENGINE
+                </span>
+                <span class="px-3 py-1 rounded bg-black/80 backdrop-blur-md text-[10px] font-mono-tech text-white border border-white/10">
+                  OFFICIAL HYROX TURF
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6 sm:p-8">
+              <h3 class="font-cabinet text-2xl sm:text-3xl font-black text-white uppercase group-hover:text-[#CCFF00] transition-colors">
+                HYROX & Conditioning
+              </h3>
+              <p class="text-xs font-mono-tech text-[#CCFF00] mt-1">
+                Pista Oficial de 40m de Sled Push/Pull, Concept2 SkiErg & RowErg, Cintas Curvas No Motorizadas & Wall Balls
+              </p>
+              <p class="text-sm text-zinc-300 mt-4 leading-relaxed">
+                Diseñada para atletas de resistencia híbrida y quema calórica extrema. Monitorea tu frecuencia cardíaca y zona de umbral de lactato en pantallas LED mientras ejecutas bloques oficiales de <strong class="text-white">HYROX Pro</strong> bajo supervisión de coaches de nivel internacional.
+              </p>
+
+              <div class="mt-6 grid grid-cols-3 gap-2 pt-4 border-t border-white/10 text-center font-mono-tech">
+                <div class="p-2.5 rounded-lg bg-[#090A0C]">
+                  <span class="text-xs text-[#CCFF00] font-bold block">40 Metros</span>
+                  <span class="text-[10px] text-zinc-400">Sprint & Sled Track</span>
+                </div>
+                <div class="p-2.5 rounded-lg bg-[#090A0C]">
+                  <span class="text-xs text-white font-bold block">Concept2®</span>
+                  <span class="text-[10px] text-zinc-400">Ski, Row & BikeErg</span>
+                </div>
+                <div class="p-2.5 rounded-lg bg-[#090A0C]">
+                  <span class="text-xs text-[#CCFF00] font-bold block">950+ kcal</span>
+                  <span class="text-[10px] text-zinc-400">Quema por Hora</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-6 sm:px-8 pb-6 flex items-center justify-between">
+            <span class="text-xs font-mono-tech text-zinc-400">Protocolo: Capacidad de Trabajo & Lactato</span>
+            <button onclick="selectZoneAndOpenDrawer('Pista HYROX & Acondicionamiento')" class="text-xs font-mono-tech uppercase tracking-wider text-[#CCFF00] hover:underline font-semibold">
+              Reservar Sesión en Esta Zona →
+            </button>
+          </div>
+        </article>
+
+        <!-- CARD 3: COLD PLUNGE & SAUNA A 3°C -->
+        <article id="telemetria" class="zone-card rounded-2xl overflow-hidden border border-white/10 bg-[#111318] flex flex-col justify-between group">
+          <div>
+            <div class="relative h-64 overflow-hidden bg-black">
+              <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=85"
+                   alt="Cold Plunge a 3°C y Sauna Infrarroja"
+                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#111318] via-[#111318]/30 to-transparent"></div>
+              <div class="absolute top-4 left-4 right-4 flex items-center justify-between">
+                <span class="px-3 py-1 rounded bg-black/80 backdrop-blur-md border border-[#CCFF00]/50 text-[10px] font-mono-tech uppercase tracking-widest text-[#CCFF00]">
+                  ZONA 03 // THERMAL BIOHACKING
+                </span>
+                <span class="px-3 py-1 rounded bg-cyan-500/20 backdrop-blur-md text-[10px] font-mono-tech text-cyan-300 border border-cyan-400/40">
+                  CRIO 3.0°C • SAUNA 85°C
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6 sm:p-8">
+              <h3 class="font-cabinet text-2xl sm:text-3xl font-black text-white uppercase group-hover:text-[#CCFF00] transition-colors">
+                Cold Plunge & Sauna a 3°C
+              </h3>
+              <p class="text-xs font-mono-tech text-[#CCFF00] mt-1">
+                Tanques de Crioterapia con Filtrado por Ozono a 3°C & Sauna Finlandesa + Infrarrojo Full-Spectrum
+              </p>
+              <p class="text-sm text-zinc-300 mt-4 leading-relaxed">
+                El protocolo nórdico de contraste térmico eleva la dopamina plasmática hasta en un <strong class="text-white">250%</strong>, reduce marcadores inflamatorios post-entrenamiento y activa proteínas de choque térmico (HSP) y de choque frío (RBM3) para una regeneración neural acelerada.
+              </p>
+
+              <div class="mt-6 grid grid-cols-3 gap-2 pt-4 border-t border-white/10 text-center font-mono-tech">
+                <div class="p-2.5 rounded-lg bg-[#090A0C]">
+                  <span class="text-xs text-cyan-400 font-bold block">3.0°C Fijos</span>
+                  <span class="text-[10px] text-zinc-400">Flujo Continuo</span>
+                </div>
+                <div class="p-2.5 rounded-lg bg-[#090A0C]">
+                  <span class="text-xs text-amber-400 font-bold block">85°C Infra</span>
+                  <span class="text-[10px] text-zinc-400">Red Light Therapy</span>
+                </div>
+                <div class="p-2.5 rounded-lg bg-[#090A0C]">
+                  <span class="text-xs text-[#CCFF00] font-bold block">+250%</span>
+                  <span class="text-[10px] text-zinc-400">Pico de Dopamina</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-6 sm:px-8 pb-6 flex items-center justify-between">
+            <span class="text-xs font-mono-tech text-zinc-400">Protocolo: Principio Søeberg (11 min Frío / 57 min Calor)</span>
+            <button onclick="selectZoneAndOpenDrawer('Cold Plunge 3°C & Recuperación por Contraste')" class="text-xs font-mono-tech uppercase tracking-wider text-[#CCFF00] hover:underline font-semibold">
+              Reservar Sesión en Esta Zona →
+            </button>
+          </div>
+        </article>
+
+        <!-- CARD 4: METABOLIC TESTING -->
+        <article class="zone-card rounded-2xl overflow-hidden border border-white/10 bg-[#111318] flex flex-col justify-between group">
+          <div>
+            <div class="relative h-64 overflow-hidden bg-black">
+              <img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?auto=format&fit=crop&w=1200&q=85"
+                   alt="Laboratorio de Pruebas Metabólicas — VO2 Max y DEXA"
+                   class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#111318] via-[#111318]/30 to-transparent"></div>
+              <div class="absolute top-4 left-4 right-4 flex items-center justify-between">
+                <span class="px-3 py-1 rounded bg-black/80 backdrop-blur-md border border-[#CCFF00]/50 text-[10px] font-mono-tech uppercase tracking-widest text-[#CCFF00]">
+                  ZONA 04 // PHYSIOLOGY LAB
+                </span>
+                <span class="px-3 py-1 rounded bg-black/80 backdrop-blur-md text-[10px] font-mono-tech text-white border border-white/10">
+                  VO2 MAX • DEXA • LACTATO
+                </span>
+              </div>
+            </div>
+
+            <div class="p-6 sm:p-8">
+              <h3 class="font-cabinet text-2xl sm:text-3xl font-black text-white uppercase group-hover:text-[#CCFF00] transition-colors">
+                Metabolic Testing
+              </h3>
+              <p class="text-xs font-mono-tech text-[#CCFF00] mt-1">
+                Ergoespirometría Breath-by-Breath PNOĒ®, Escaneo Corporal DEXA 3D & Curva de Lactato en Sangre
+              </p>
+              <p class="text-sm text-zinc-300 mt-4 leading-relaxed">
+                Reemplaza las suposiciones por datos clínicos. Medimos tu tasa exacta de oxidación de grasas vs. carbohidratos (FatMax), edad biológica celular, densidad mineral ósea, asimetrías musculares por extremidad y umbrales ventilatorios VT1 y VT2.
+              </p>
+
+              <div class="mt-6 grid grid-cols-3 gap-2 pt-4 border-t border-white/10 text-center font-mono-tech">
+                <div class="p-2.5 rounded-lg bg-[#090A0C]">
+                  <span class="text-xs text-[#CCFF00] font-bold block">VO2 Max</span>
+                  <span class="text-[10px] text-zinc-400">Análisis de Gases</span>
+                </div>
+                <div class="p-2.5 rounded-lg bg-[#090A0C]">
+                  <span class="text-xs text-white font-bold block">FatMax</span>
+                  <span class="text-[10px] text-zinc-400">Zona Exacta de Quema</span>
+                </div>
+                <div class="p-2.5 rounded-lg bg-[#090A0C]">
+                  <span class="text-xs text-[#CCFF00] font-bold block">mmol/L</span>
+                  <span class="text-[10px] text-zinc-400">Biomarcador Lactato</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-6 sm:px-8 pb-6 flex items-center justify-between">
+            <span class="text-xs font-mono-tech text-zinc-400">Protocolo: Mapeo Fisiológico 360°</span>
+            <button onclick="selectZoneAndOpenDrawer('Laboratorio Metabólico (VO2 Max & DEXA)')" class="text-xs font-mono-tech uppercase tracking-wider text-[#CCFF00] hover:underline font-semibold">
+              Reservar Sesión en Esta Zona →
+            </button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- DRAWER LATERAL PARA SOLICITAÇÃO DE DAY PASS VIP -->
+  <div id="drawer-overlay" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <aside id="daypass-drawer" class="fixed top-0 right-0 z-50 h-full w-full sm:w-[500px] bg-[#111318] border-l border-[#CCFF00]/40 p-6 sm:p-8 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between overflow-y-auto custom-scrollbar">
+    <div>
+      <div class="flex items-center justify-between pb-5 border-b border-white/10">
+        <div>
+          <span class="text-[10px] font-mono-tech uppercase tracking-[0.25em] text-[#CCFF00]">ACCESO CREDENCIADO</span>
+          <h3 class="font-cabinet text-2xl sm:text-3xl font-black text-white uppercase">Solicitar Day Pass VIP</h3>
+        </div>
+        <button onclick="closeDayPassDrawer()" class="w-9 h-9 rounded-lg border border-white/15 text-zinc-400 hover:text-[#CCFF00] hover:border-[#CCFF00] flex items-center justify-center transition">
+          ✕
+        </button>
+      </div>
+
+      <!-- Resumo do Protocolo Sincronizado com o Simulador -->
+      <div class="mt-5 p-4 rounded-xl bg-[#090A0C] border border-[#CCFF00]/35">
+        <div class="flex items-center justify-between">
+          <span class="text-[10px] font-mono-tech uppercase tracking-widest text-[#CCFF00]">PASS ALL-ACCESS // 1 DÍA</span>
+          <span class="px-2 py-0.5 rounded bg-[#CCFF00] text-black font-mono-tech text-[10px] font-bold">$58 USD (100% Canjeable)</span>
+        </div>
+        <p class="text-xs text-zinc-300 mt-2">
+          Incluye 1 sesión guiada en las plataformas <strong class="text-white">Eleiko® & Keiser®</strong>, acceso libre al <strong class="text-white">Cold Plunge a 3°C + Sauna</strong> y evaluación inicial de bioimpedancia/lactato.
+        </p>
+        <div class="mt-2.5 pt-2.5 border-t border-white/10 flex items-center justify-between text-[11px] font-mono-tech">
+          <span class="text-zinc-400">Meta Simulada: <strong id="drawer-sim-goal" class="text-white">Hipertrofia (4x/sem)</strong></span>
+          <span id="drawer-sim-burn" class="text-[#CCFF00]">3.280 kcal/sem</span>
+        </div>
+      </div>
+
+      <form id="daypass-form" class="mt-6 space-y-4">
+        <div>
+          <label class="block text-[11px] font-mono-tech uppercase tracking-wider text-zinc-300 mb-1.5">
+            1. Zona Principal de Interés
+          </label>
+          <select id="pass-zone" class="w-full px-3.5 py-3 rounded-lg bg-[#090A0C] border border-white/15 text-white text-xs sm:text-sm focus:outline-none focus:border-[#CCFF00]">
+            <option value="Experiencia Completa (Fuerza + HYROX + Cold Plunge 3°C)">Experiencia Completa (Fuerza + HYROX + Cold Plunge 3°C)</option>
+            <option value="Fuerza Heavy Duty (Eleiko & Keiser)">Fuerza Heavy Duty (Eleiko® & Keiser®)</option>
+            <option value="Pista HYROX & Acondicionamiento">Pista HYROX & Acondicionamiento</option>
+            <option value="Cold Plunge 3°C & Recuperación por Contraste">Cold Plunge 3°C & Recuperación por Contraste</option>
+            <option value="Laboratorio Metabólico (VO2 Max & DEXA)">Laboratorio Metabólico (VO2 Max & DEXA)</option>
+          </select>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[11px] font-mono-tech uppercase tracking-wider text-zinc-300 mb-1.5">
+              2. Fecha del Day Pass
+            </label>
+            <input type="date" id="pass-date" required class="w-full px-3.5 py-2.5 rounded-lg bg-[#090A0C] border border-white/15 text-white text-xs sm:text-sm focus:outline-none focus:border-[#CCFF00]">
+          </div>
+          <div>
+            <label class="block text-[11px] font-mono-tech uppercase tracking-wider text-zinc-300 mb-1.5">
+              3. Franja Horaria
+            </label>
+            <select id="pass-time" class="w-full px-3.5 py-2.5 rounded-lg bg-[#090A0C] border border-white/15 text-white text-xs sm:text-sm focus:outline-none focus:border-[#CCFF00]">
+              <option value="06:30 (Pico Matutino)">06:30 (Pico Matutino)</option>
+              <option value="08:00 (Horario Ejecutivo)">08:00 (Horario Ejecutivo)</option>
+              <option value="12:30 (Quema del Mediodía)">12:30 (Quema del Mediodía)</option>
+              <option value="18:00 (Máximo Rendimiento)" selected>18:00 (Máximo Rendimiento)</option>
+              <option value="20:00 (Recuperación Nocturna)">20:00 (Recuperación Nocturna)</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-mono-tech uppercase tracking-wider text-zinc-300 mb-1.5">Nombre Completo del Atleta</label>
+          <input type="text" id="pass-name" required placeholder="Ej: Lucas Andrade" class="w-full px-3.5 py-2.5 rounded-lg bg-[#090A0C] border border-white/15 text-white text-sm focus:outline-none focus:border-[#CCFF00]">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[11px] font-mono-tech uppercase tracking-wider text-zinc-300 mb-1.5">WhatsApp</label>
+            <input type="tel" id="pass-phone" required placeholder="+55 (11) 99888-7766" class="w-full px-3.5 py-2.5 rounded-lg bg-[#090A0C] border border-white/15 text-white text-sm focus:outline-none focus:border-[#CCFF00]">
+          </div>
+          <div>
+            <label class="block text-[11px] font-mono-tech uppercase tracking-wider text-zinc-300 mb-1.5">Correo Corporativo / Personal</label>
+            <input type="email" id="pass-email" required placeholder="atleta@dominio.com" class="w-full px-3.5 py-2.5 rounded-lg bg-[#090A0C] border border-white/15 text-white text-sm focus:outline-none focus:border-[#CCFF00]">
+          </div>
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-[#090A0C] border border-white/10 flex items-center justify-between">
+          <div>
+            <span class="text-xs text-white font-medium block">Reservar Tanque Cold Plunge a 3°C Post-Entreno</span>
+            <span class="text-[10px] font-mono-tech text-zinc-400">Kit con toalla térmica y albornoz incluido</span>
+          </div>
+          <input type="checkbox" id="pass-cryo-check" checked class="w-5 h-5 accent-[#CCFF00] rounded cursor-pointer">
+        </div>
+
+        <button type="submit" class="w-full py-4 rounded-md bg-[#CCFF00] hover:bg-[#b8e600] text-black font-cabinet font-black uppercase tracking-[0.2em] text-xs transition shadow-[0_10px_30px_rgba(204,255,0,0.3)]">
+          Emitir Credencial Day Pass VIP →
+        </button>
+      </form>
+    </div>
+
+    <div class="pt-5 mt-6 border-t border-white/10 text-[11px] font-mono-tech text-zinc-500 flex items-center justify-between">
+      <span>Vila Olímpia • São Paulo</span>
+      <span>Estacionamiento c/ Valet & Shake Bar</span>
+    </div>
+  </aside>
+
+  <!-- MODAL DE CONFIRMAÇÃO DO DAY PASS VIP -->
+  <div id="pass-success-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
+    <div class="w-full max-w-lg rounded-2xl bg-[#111318] border-2 border-[#CCFF00] p-6 sm:p-8 text-center shadow-[0_25px_90px_rgba(204,255,0,0.22)]">
+      <div class="w-14 h-14 rounded-xl bg-[#CCFF00] text-black flex items-center justify-center mx-auto mb-5 font-cabinet font-black text-2xl">
+        AX
+      </div>
+      <span class="text-[10px] font-mono-tech uppercase tracking-[0.3em] text-[#CCFF00]">BIOMETRIC CREDENTIAL ACTIVE</span>
+      <h3 class="font-cabinet text-2xl sm:text-3xl font-black text-white uppercase mt-1">
+        Day Pass VIP Confirmado
+      </h3>
+      <p class="text-xs sm:text-sm text-zinc-400 mt-2 leading-relaxed">
+        Tu código QR de acceso biométrico y la confirmación de nuestro Fisiólogo Jefe fueron enviados a tu WhatsApp.
+      </p>
+
+      <div id="pass-receipt-details" class="mt-6 p-4 rounded-xl bg-[#090A0C] border border-white/10 text-left space-y-2 text-xs font-mono-tech">
+        <!-- Preenchido via JS -->
+      </div>
+
+      <button onclick="closePassSuccessModal()" class="mt-6 w-full py-3.5 rounded-md bg-[#CCFF00] hover:bg-[#b8e600] text-black font-cabinet font-black text-xs uppercase tracking-[0.2em] transition">
+        Finalizar y Volver al Estudio
+      </button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/10 bg-[#060708] py-14">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded bg-[#CCFF00] text-black flex items-center justify-center font-cabinet font-black text-sm">
+          AX
+        </div>
+        <div>
+          <span class="font-cabinet tracking-wider text-sm font-black text-white uppercase block">APEX PERFORMANCE STUDIO</span>
+          <p class="text-[11px] text-zinc-500 font-mono-tech">Centro Oficial de Entrenamiento Eleiko® & Keiser® • São Paulo</p>
+        </div>
+      </div>
+      <div class="text-center sm:text-right text-xs text-zinc-500 font-mono-tech">
+        <p>APEX Performance © 2026 • Alto Rendimiento, Recuperación y Biohacking</p>
+        <p class="text-[10px] text-zinc-600 mt-1">Lun a Vie: 05:30 a 22:30 • Sáb y Dom: 07:00 a 18:00</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT PURO EMBUTIDO -->
+  <script>
+    // CONFIGURAÇÃO CIENTÍFICA DOS OBJETIVOS DO SIMULADOR
+    const goalProfiles = {
+      hipertrofia: {
+        name: 'Hipertrofia',
+        protocolTitle: 'Protocolo Hyper-Strength',
+        tag: 'Enfoque: Tensión Mecánica & VBT',
+        zoneBadge: 'VBT 0.65 m/s',
+        baseKcalPerKg: 7.4, // ~577 kcal para 78kg
+        epocMultiplier: 0.15, // +15% pós-treino
+        split: { strength: 70, cond: 15, rec: 15 },
+        splitLabel: '70% Fuerza / 15% Cond / 15% Crio',
+        labTest: 'DEXA Scan 3D + Perfil de Fuerza Keiser®',
+        defaultZone: 'Fuerza Heavy Duty (Eleiko & Keiser)'
+      },
+      secagem: {
+        name: 'Definición',
+        protocolTitle: 'Protocolo Metabolic Shred',
+        tag: 'Enfoque: Oxidación Lipídica & EPOC Máximo',
+        zoneBadge: 'ZONA 4 • 88% FCMax',
+        baseKcalPerKg: 9.8, // ~764 kcal para 78kg
+        epocMultiplier: 0.24, // +24% pós-treino
+        split: { strength: 30, cond: 50, rec: 20 },
+        splitLabel: '30% Fuerza / 50% HYROX / 20% Crio 3°C',
+        labTest: 'Calorimetría PNOĒ (FatMax) + Bioimpedancia',
+        defaultZone: 'Pista HYROX & Acondicionamiento'
+      },
+      potencia: {
+        name: 'Potencia',
+        protocolTitle: 'Protocolo Explosive Output',
+        tag: 'Enfoque: Explosión Neumática & VO2 Máx',
+        zoneBadge: 'KEISER PEAK > 1.1 m/s',
+        baseKcalPerKg: 8.8, // ~686 kcal para 78kg
+        epocMultiplier: 0.20, // +20% pós-treino
+        split: { strength: 45, cond: 35, rec: 20 },
+        splitLabel: '45% Keiser Air / 35% Sprint / 20% Crio',
+        labTest: 'VO2 Max PNOĒ + Curva de Lactato en Sangre',
+        defaultZone: 'Experiencia Completa (Fuerza + HYROX + Cold Plunge 3°C)'
+      }
+    };
+
+    let currentGoal = 'hipertrofia';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const dateInput = document.getElementById('pass-date');
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      dateInput.value = tomorrow.toISOString().split('T')[0];
+      dateInput.min = new Date().toISOString().split('T')[0];
+
+      updateSimulator();
+    });
+
+    function setSimGoal(goalKey) {
+      currentGoal = goalKey;
+      document.querySelectorAll('.goal-btn').forEach(btn => {
+        const dot = btn.querySelector('span.rounded-full');
+        if (btn.dataset.goal === goalKey) {
+          btn.className = 'goal-btn p-4 rounded-xl border border-[#CCFF00] bg-[#CCFF00]/10 text-left transition-all';
+          if (dot) dot.className = 'w-2.5 h-2.5 rounded-full bg-[#CCFF00]';
+        } else {
+          btn.className = 'goal-btn p-4 rounded-xl border border-white/10 bg-[#090A0C]/60 hover:border-white/30 text-left transition-all';
+          if (dot) dot.className = 'w-2.5 h-2.5 rounded-full bg-zinc-600';
+        }
+      });
+      updateSimulator();
+    }
+
+    function updateSimulator() {
+      const profile = goalProfiles[currentGoal];
+      const freq = parseInt(document.getElementById('freq-slider').value, 10) || 4;
+      const weight = parseInt(document.getElementById('weight-slider').value, 10) || 78;
+      const includeCryo = document.getElementById('cryo-toggle').checked;
+
+      // Cálculos fisiológicos em tempo real
+      const activePerSession = Math.round(weight * profile.baseKcalPerKg);
+      const epocPerSession = Math.round(activePerSession * profile.epocMultiplier);
+      const cryoBonusPerSession = includeCryo ? 140 : 0;
+      const totalPerSession = activePerSession + epocPerSession + cryoBonusPerSession;
+
+      const weeklyTotal = totalPerSession * freq;
+      const weeklyEpoc = epocPerSession * freq;
+      const monthlyTotal = weeklyTotal * 4;
+
+      // Atualizar labels de controle
+      document.getElementById('freq-display').textContent = `${freq}x`;
+      document.getElementById('weight-display').textContent = `${weight} kg`;
+      document.getElementById('sim-goal-tag').textContent = profile.tag;
+
+      // Atualizar painel de telemetria
+      document.getElementById('sim-protocol-title').textContent = profile.protocolTitle;
+      document.getElementById('sim-zone-badge').textContent = profile.zoneBadge;
+      document.getElementById('sim-weekly-kcal').textContent = weeklyTotal.toLocaleString('es-ES');
+      document.getElementById('sim-per-session-kcal').textContent = `~${totalPerSession} kcal por sesión (${includeCryo ? 'c/ Crio 3°C' : 's/ Crio'})`;
+      document.getElementById('sim-monthly-kcal').textContent = monthlyTotal.toLocaleString('es-ES');
+      document.getElementById('sim-epoc-kcal').textContent = `Incluye +${weeklyEpoc.toLocaleString('es-ES')} kcal EPOC/sem`;
+
+      // Atualizar barras de divisão
+      document.getElementById('sim-split-label').textContent = profile.splitLabel;
+      document.getElementById('bar-strength').style.width = `${profile.split.strength}%`;
+      document.getElementById('bar-cond').style.width = `${profile.split.cond}%`;
+      document.getElementById('bar-rec').style.width = `${profile.split.rec}%`;
+      document.getElementById('sim-lab-test').textContent = profile.labTest;
+
+      // Sincronizar com o Drawer do Day Pass VIP
+      document.getElementById('drawer-sim-goal').textContent = `${profile.name} (${freq}x/sem)`;
+      document.getElementById('drawer-sim-burn').textContent = `${weeklyTotal.toLocaleString('es-ES')} kcal/sem`;
+
+      return { profile, freq, weight, weeklyTotal, totalPerSession };
+    }
+
+    function applySimToDayPass() {
+      const { profile } = updateSimulator();
+      const zoneSelect = document.getElementById('pass-zone');
+      zoneSelect.value = profile.defaultZone;
+      openDayPassDrawer();
+    }
+
+    function selectZoneAndOpenDrawer(zoneName) {
+      const zoneSelect = document.getElementById('pass-zone');
+      zoneSelect.value = zoneName;
+      openDayPassDrawer();
+    }
+
+    // CONTROLE DO DRAWER LATERAL E MODAL
+    function openDayPassDrawer() {
+      updateSimulator();
+      document.getElementById('drawer-overlay').classList.remove('opacity-0', 'pointer-events-none');
+      document.getElementById('daypass-drawer').classList.remove('translate-x-full');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDayPassDrawer() {
+      document.getElementById('drawer-overlay').classList.add('opacity-0', 'pointer-events-none');
+      document.getElementById('daypass-drawer').classList.add('translate-x-full');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('drawer-overlay').addEventListener('click', closeDayPassDrawer);
+
+    document.getElementById('daypass-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const { profile, freq, weeklyTotal } = updateSimulator();
+      const name = document.getElementById('pass-name').value;
+      const phone = document.getElementById('pass-phone').value;
+      const zone = document.getElementById('pass-zone').value;
+      const dateRaw = document.getElementById('pass-date').value;
+      const timeSlot = document.getElementById('pass-time').value;
+      const cryoIncluded = document.getElementById('pass-cryo-check').checked;
+
+      const formattedDate = dateRaw.split('-').reverse().join('/');
+      const passCode = 'APEX-VIP-' + Math.floor(100000 + Math.random() * 900000);
+
+      const receiptEl = document.getElementById('pass-receipt-details');
+      receiptEl.innerHTML = `
+        <div class="flex justify-between pb-2 border-b border-white/10">
+          <span class="text-zinc-500">CREDENCIAL ID</span>
+          <span class="text-[#CCFF00] font-bold">${passCode}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-zinc-500">ATLETA</span>
+          <span class="text-white font-semibold">${name} (${phone})</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-zinc-500">FECHA & SESIÓN</span>
+          <span class="text-[#CCFF00]">${formattedDate} • ${timeSlot}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-zinc-500">ZONA PRIMARIA</span>
+          <span class="text-white text-right max-w-[60%] truncate">${zone}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-zinc-500">PROTOCOLO SIMULADO</span>
+          <span class="text-zinc-200">${profile.name} (${freq}x/sem • ${weeklyTotal.toLocaleString('es-ES')} kcal)</span>
+        </div>
+        <div class="flex justify-between pt-2 border-t border-white/10">
+          <span class="text-zinc-400">COLD PLUNGE 3°C</span>
+          <span class="text-[#CCFF00] font-bold">${cryoIncluded ? 'RESERVADO (POST-ENTRENO)' : 'OPCIONAL EN EL LUGAR'}</span>
+        </div>
+      `;
+
+      closeDayPassDrawer();
+      const modal = document.getElementById('pass-success-modal');
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('daypass-form').reset();
+    });
+
+    function closePassSuccessModal() {
+      const modal = document.getElementById('pass-success-modal');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeDayPassDrawer();
+        closePassSuccessModal();
+      }
+    });
+  </script>
+
+  <!-- SCRIPTS VERCEL ANALYTICS & SPEED INSIGHTS PRESERVADOS -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script defer src="/assets/js/demo-i18n-bar.js"></script>
+</body>
+</html>

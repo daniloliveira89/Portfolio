@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- demo-i18n-autodetect --><script>(function(){var cur=location.pathname.endsWith('/en.html')?'en':(location.pathname.endsWith('/es.html')?'es':'pt');var q=(new URLSearchParams(location.search).get('lang')||'').toLowerCase();var target=null;if(q==='pt'||q==='en'||q==='es'){target=q;try{localStorage.setItem('portfolio_lang',q);localStorage.setItem('portfolio_lang_manual','1');}catch(e){}}else if(cur==='pt'){try{if(localStorage.getItem('portfolio_lang_manual')==='1'){var saved=localStorage.getItem('portfolio_lang');if(saved==='en'||saved==='es'||saved==='pt')target=saved;}}catch(e){}if(!target){var langs=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||navigator.userLanguage||'en'];for(var i=0;i<langs.length;i++){var c=(langs[i]||'').toLowerCase().split('-')[0];if(c==='pt'){target='pt';break;}if(c==='es'){target='es';break;}if(c==='en'){target='en';break;}}if(!target)target='en';}}if(target&&target!==cur){var file=target==='en'?'en.html':(target==='es'?'es.html':'index.html');var p=location.pathname;var np=p.slice(-5).toLowerCase()==='.html'?p.slice(0,p.lastIndexOf('/')+1)+file:(p.endsWith('/')?p+file:p+'/'+file);location.replace(np+location.search+location.hash);}})();</script>
+  <title>VitaePrime — Diagnostic Medical Center & Executive Check-up</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cabinet+Grotesk:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #F8FAFC;
+      color: #0F172A;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    .font-display { font-family: 'Cabinet Grotesk', 'Plus Jakarta Sans', sans-serif; }
+    
+    /* Ambient teal glow */
+    .glow-teal {
+      background: radial-gradient(circle 700px at 75% 15%, rgba(13, 148, 136, 0.12), transparent 70%),
+                  radial-gradient(circle 500px at 20% 40%, rgba(20, 184, 166, 0.08), transparent 60%);
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #F1F5F9; }
+    ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #0D9488; }
+  </style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+</head>
+<body class="min-h-screen antialiased relative selection:bg-teal-600 selection:text-white">
+
+  <!-- Ambient Light -->
+  <div class="fixed inset-0 glow-teal pointer-events-none z-0"></div>
+
+  <!-- Top Emergency & Concierge Bar -->
+  <div class="bg-teal-950 text-teal-200 text-xs py-2 px-6 border-b border-teal-900/50">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <span>24-Hour Urgent Care & Day Hospital • JCI & ONA Level 3 Accredited</span>
+      </div>
+      <div class="flex items-center gap-4 text-[11px] font-mono">
+        <span>Executive Concierge: <strong>(11) 3090-4800</strong></span>
+        <span class="hidden md:inline text-teal-400">|</span>
+        <span class="hidden md:inline">Alameda Santos, 2200 • Cerqueira César, SP</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Header -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-xl border-b border-slate-200/80 transition-all">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-teal-800 via-teal-600 to-emerald-400 p-[1.5px] shadow-md shadow-teal-700/20 group-hover:shadow-teal-700/40 transition">
+          <div class="w-full h-full bg-white rounded-[10px] flex items-center justify-center font-display font-extrabold text-teal-700 text-xl">
+            +
+          </div>
+        </div>
+        <div>
+          <span class="font-display font-bold text-slate-900 text-xl tracking-tight block leading-none">
+            Vitae<span class="text-teal-600">Prime</span>
+          </span>
+          <span class="text-[9px] uppercase tracking-widest text-slate-500 font-semibold mt-0.5 block">
+            Diagnostic Medicine & Longevity
+          </span>
+        </div>
+      </a>
+
+      <!-- Navigation -->
+      <nav class="hidden lg:flex items-center gap-8 text-xs font-bold uppercase tracking-wider text-slate-600">
+        <a href="#especialidades" class="hover:text-teal-700 transition">Medical Staff</a>
+        <a href="#checkup" class="hover:text-teal-700 transition">Executive Check-up</a>
+        <a href="#diagnostico" class="hover:text-teal-700 transition">Diagnostics & Imaging</a>
+        <a href="#portal" class="hover:text-teal-700 transition">Reports Portal</a>
+      </nav>
+
+      <!-- Right CTAs -->
+      <div class="flex items-center gap-3">
+        <button onclick="openAgendamento()" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-teal-700 to-emerald-600 hover:from-teal-800 hover:to-emerald-700 text-white text-xs font-bold uppercase tracking-wider shadow-lg shadow-teal-700/25 transition hover:scale-105 active:scale-95">
+          Book Appointment
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="max-w-7xl mx-auto px-6 pt-10 pb-16 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      
+      <!-- Left Column: Value Proposition -->
+      <div class="lg:col-span-7 flex flex-col items-start">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-teal-50 border border-teal-200 text-teal-800 text-xs font-bold uppercase tracking-wider mb-5">
+          <span class="w-2 h-2 rounded-full bg-teal-500"></span>
+          3.0 Tesla MRI • Dual Source CT
+        </div>
+
+        <h1 class="font-display text-4xl sm:text-5xl lg:text-[54px] font-extrabold tracking-tight text-slate-900 leading-[1.08]">
+          Precision medicine and <span class="text-transparent bg-clip-text bg-gradient-to-r from-teal-700 via-teal-600 to-emerald-500">comprehensive care for life.</span>
+        </h1>
+
+        <p class="mt-5 text-slate-600 text-base leading-relaxed max-w-xl">
+          Board-certified physicians with fellowships at the world’s leading medical centers. Ultra-high-resolution diagnostic imaging, personalized check-ups, and same-day lab results.
+        </p>
+
+        <!-- Stats Bar -->
+        <div class="mt-8 grid grid-cols-3 gap-3 w-full max-w-lg pt-6 border-t border-slate-200">
+          <div class="bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-xs">
+            <div class="text-2xl font-extrabold text-teal-700 font-display">45+</div>
+            <div class="text-[11px] font-semibold text-slate-500 uppercase mt-0.5">PhD Specialists</div>
+          </div>
+          <div class="bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-xs">
+            <div class="text-2xl font-extrabold text-slate-900 font-display">Zero Wait</div>
+            <div class="text-[11px] font-semibold text-slate-500 uppercase mt-0.5">On-Time Care</div>
+          </div>
+          <div class="bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-xs">
+            <div class="text-2xl font-extrabold text-slate-900 font-display">4 Hours</div>
+            <div class="text-[11px] font-semibold text-slate-500 uppercase mt-0.5">Full Check-up</div>
+          </div>
+        </div>
+
+        <!-- Filter Buttons for Specialty Showcase -->
+        <div class="mt-8 flex flex-wrap items-center gap-2" id="spec-filters">
+          <span class="text-xs font-bold uppercase tracking-wider text-slate-400 mr-1">Specialties:</span>
+          <button onclick="filterSpec('all')" data-spec="all" class="spec-btn active px-3.5 py-1.5 rounded-full text-xs font-bold bg-teal-700 text-white shadow-sm transition">
+            All (06)
+          </button>
+          <button onclick="filterSpec('cardio')" data-spec="cardio" class="spec-btn px-3.5 py-1.5 rounded-full text-xs font-bold bg-white text-slate-700 border border-slate-300 hover:border-teal-500 transition">
+            Cardiology
+          </button>
+          <button onclick="filterSpec('neuro')" data-spec="neuro" class="spec-btn px-3.5 py-1.5 rounded-full text-xs font-bold bg-white text-slate-700 border border-slate-300 hover:border-teal-500 transition">
+            Neurology
+          </button>
+          <button onclick="filterSpec('longevidade')" data-spec="longevidade" class="spec-btn px-3.5 py-1.5 rounded-full text-xs font-bold bg-white text-slate-700 border border-slate-300 hover:border-teal-500 transition">
+            Longevity
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Column: Visual Stage with Doctor & Modern Facility Showcase -->
+      <div class="lg:col-span-5 w-full">
+        <div class="bg-white p-5 rounded-3xl shadow-xl border border-slate-200 relative">
+          <div class="relative h-80 sm:h-[400px] rounded-2xl overflow-hidden shadow-inner">
+            <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1000&q=80" alt="VitaePrime Medical Center" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-teal-950/80 via-transparent to-transparent"></div>
+            
+            <div class="absolute bottom-4 left-4 right-4 text-white">
+              <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase bg-teal-500 text-teal-950">
+                Day-Hospital Infrastructure
+              </span>
+              <h3 class="font-display text-xl font-bold mt-1">High-Complexity Diagnostic Wing</h3>
+              <p class="text-xs text-teal-100 mt-0.5">Private post-exam recovery suites with bespoke breakfast service.</p>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-600">
+            <span class="font-semibold flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              Digitally Signed Medical Reports (ICP-Brasil)
+            </span>
+            <a href="#portal" class="text-teal-700 font-bold hover:underline">Open Portal →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Doctors & Clinical Staff Grid (6 Specialists) -->
+  <section class="max-w-7xl mx-auto px-6 py-14 border-t border-slate-200" id="especialidades">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+      <div>
+        <span class="text-xs font-bold uppercase tracking-widest text-teal-700">Integrated Clinical Staff</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Specialists Focused on Your Story</h2>
+      </div>
+      <p class="text-xs sm:text-sm text-slate-500 mt-2 md:mt-0 font-medium">Minimum 50-minute consultations for thorough medical history review</p>
+    </div>
+
+    <div id="doctors-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Rendered dynamically via JS with slots & booking button -->
+    </div>
+  </section>
+
+  <!-- Executive Check-up Packages Matrix -->
+  <section class="max-w-7xl mx-auto px-6 py-16 border-t border-slate-200" id="checkup">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="text-xs font-bold uppercase tracking-widest text-teal-700">Precision Preventive Medicine</span>
+      <h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 mt-1">Executive Check-up Programs</h2>
+      <p class="text-sm text-slate-600 mt-2">Structured protocols designed for leaders, athletes, and individuals who value active longevity.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- Package 1 -->
+      <div class="bg-white p-8 rounded-3xl border border-slate-200 hover:border-teal-500 shadow-sm hover:shadow-xl transition flex flex-col justify-between">
+        <div>
+          <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 text-slate-700 px-3 py-1 rounded-full">Essential Protocol</span>
+          <h3 class="font-display text-2xl font-bold text-slate-900 mt-4">Cardio & Metabolic Check-up</h3>
+          <p class="text-xs text-slate-500 mt-2 leading-relaxed">Focused on cardiovascular health, advanced lipid profiling, and early detection of metabolic changes.</p>
+          
+          <div class="mt-6 space-y-2.5 text-xs text-slate-700 font-medium">
+            <div class="flex items-center gap-2">✓ Computerized Stress ECG</div>
+            <div class="flex items-center gap-2">✓ Color Doppler Echocardiogram</div>
+            <div class="flex items-center gap-2">✓ Complete Abdominal Ultrasound</div>
+            <div class="flex items-center gap-2">✓ 38-Biomarker Blood Panel</div>
+          </div>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-slate-100">
+          <div class="text-xs text-slate-400 font-mono">Duration: 3h30 • Private Suite</div>
+          <button onclick="openAgendamento('Cardio & Metabolic Check-up')" class="mt-4 w-full py-3 rounded-xl bg-slate-900 hover:bg-teal-700 text-white font-bold text-xs uppercase tracking-wider transition">
+            Request Proposal
+          </button>
+        </div>
+      </div>
+
+      <!-- Package 2 (Featured) -->
+      <div class="bg-gradient-to-b from-teal-900 to-teal-950 text-white p-8 rounded-3xl border-2 border-teal-500 shadow-2xl flex flex-col justify-between relative transform lg:-translate-y-2">
+        <div class="absolute -top-3.5 right-6 bg-teal-500 text-teal-950 text-[10px] font-extrabold uppercase px-3 py-1 rounded-full shadow-md">
+          Most Requested
+        </div>
+
+        <div>
+          <span class="text-[10px] font-bold uppercase tracking-wider bg-teal-800 text-teal-200 px-3 py-1 rounded-full">Active Longevity</span>
+          <h3 class="font-display text-2xl font-bold text-white mt-4">Signature Longevity Check-up</h3>
+          <p class="text-xs text-teal-200 mt-2 leading-relaxed">Genetic, immunological, cardiovascular, and functional assessment for healthy longevity planning.</p>
+          
+          <div class="mt-6 space-y-2.5 text-xs text-teal-100 font-medium">
+            <div class="flex items-center gap-2">✓ Coronary CT Angiography (Calcium Score)</div>
+            <div class="flex items-center gap-2">✓ 3T Brain MRI</div>
+            <div class="flex items-center gap-2">✓ Genomic Cardiovascular Risk Mapping</div>
+            <div class="flex items-center gap-2">✓ Telomere Biological Age Assessment</div>
+            <div class="flex items-center gap-2">✓ Consultation with Longevity Specialist</div>
+          </div>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-teal-800">
+          <div class="text-xs text-teal-300 font-mono">Duration: 5 Hours • VIP Suite with Gourmet Breakfast</div>
+          <button onclick="openAgendamento('Signature Longevity Check-up')" class="mt-4 w-full py-3.5 rounded-xl bg-teal-500 hover:bg-emerald-400 text-teal-950 font-extrabold text-xs uppercase tracking-wider transition shadow-lg shadow-teal-500/30">
+            Book Signature Day
+          </button>
+        </div>
+      </div>
+
+      <!-- Package 3 -->
+      <div class="bg-white p-8 rounded-3xl border border-slate-200 hover:border-teal-500 shadow-sm hover:shadow-xl transition flex flex-col justify-between">
+        <div>
+          <span class="text-[10px] font-bold uppercase tracking-wider bg-slate-100 text-slate-700 px-3 py-1 rounded-full">Corporate & Executive Board</span>
+          <h3 class="font-display text-2xl font-bold text-slate-900 mt-4">Corporate Executive Tier</h3>
+          <p class="text-xs text-slate-500 mt-2 leading-relaxed">Designed for board members, C-suite leaders, and directors with express logistics and a dedicated corporate concierge.</p>
+          
+          <div class="mt-6 space-y-2.5 text-xs text-slate-700 font-medium">
+            <div class="flex items-center gap-2">✓ Full Oncological Screening with PET-CT</div>
+            <div class="flex items-center gap-2">✓ Overnight Polysomnography in Acoustic Suite</div>
+            <div class="flex items-center gap-2">✓ Ergonomic & Physiotherapy Assessment</div>
+            <div class="flex items-center gap-2">✓ Consolidated Executive Report in 48h</div>
+          </div>
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-slate-100">
+          <div class="text-xs text-slate-400 font-mono">Duration: 6 Hours • Optional Chauffeur</div>
+          <button onclick="openAgendamento('Corporate Executive Tier')" class="mt-4 w-full py-3 rounded-xl bg-slate-900 hover:bg-teal-700 text-white font-bold text-xs uppercase tracking-wider transition">
+            Inquire for Executives
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Lab Exam Simulator -->
+  <section class="max-w-4xl mx-auto px-6 py-14" id="portal">
+    <div class="bg-white rounded-3xl p-8 sm:p-10 shadow-xl border border-slate-200">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-100">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-widest text-teal-700">Secure Patient Access</span>
+          <h3 class="font-display text-2xl font-bold text-slate-900 mt-1">Digital Reports & Imaging Portal</h3>
+        </div>
+        <span class="text-xs font-mono text-slate-400">End-to-End Encryption</span>
+      </div>
+
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-12 gap-4 items-end">
+        <div class="sm:col-span-8">
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Protocol Code or Tax ID</label>
+          <input type="text" id="input-protocol" placeholder="Enter DEMO-2026 to test" value="DEMO-2026" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-teal-600 font-mono">
+        </div>
+        <div class="sm:col-span-4">
+          <button onclick="consultarLaudo()" class="w-full py-3.5 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-bold text-xs uppercase tracking-wider transition">
+            Access Results
+          </button>
+        </div>
+      </div>
+
+      <!-- Result Box -->
+      <div id="laudo-box" class="mt-6 p-5 rounded-2xl bg-teal-50/70 border border-teal-200 text-xs">
+        <div class="flex items-center justify-between font-bold text-teal-950 pb-3 border-b border-teal-200/60">
+          <span>Protocol: DEMO-2026 (Patient: Roberto S. Menezes)</span>
+          <span class="text-emerald-700">● 3 Reports Ready</span>
+        </div>
+        <div class="mt-3 space-y-2 text-slate-700 font-medium">
+          <div class="flex justify-between items-center p-2 rounded-lg bg-white border border-teal-100">
+            <span>3T Brain MRI w/ Contrast</span>
+            <span class="text-teal-700 font-bold cursor-pointer hover:underline">Download PDF (2.4 MB) ↓</span>
+          </div>
+          <div class="flex justify-between items-center p-2 rounded-lg bg-white border border-teal-100">
+            <span>Cardiovascular Genomic Risk & Pharmacogenetics Panel</span>
+            <span class="text-teal-700 font-bold cursor-pointer hover:underline">Download PDF (1.1 MB) ↓</span>
+          </div>
+          <div class="flex justify-between items-center p-2 rounded-lg bg-white border border-teal-100">
+            <span>Transthoracic Echocardiogram with Myocardial Strain</span>
+            <span class="text-teal-700 font-bold cursor-pointer hover:underline">Download PDF (3.8 MB) ↓</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Appointment Drawer -->
+  <div id="drawer-overlay" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300" onclick="closeAgendamento()"></div>
+  <aside id="agendamento-drawer" class="fixed top-0 right-0 z-50 h-full w-full sm:w-[480px] bg-white border-l border-slate-200 p-8 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between overflow-y-auto">
+    <div>
+      <div class="flex items-center justify-between pb-6 border-b border-slate-100">
+        <div>
+          <span class="text-[10px] font-bold uppercase tracking-widest text-teal-700">Private Care</span>
+          <h3 class="font-display text-2xl font-bold text-slate-900">Book Appointment</h3>
+        </div>
+        <button onclick="closeAgendamento()" class="text-slate-400 hover:text-slate-700 p-2 text-lg">✕</button>
+      </div>
+
+      <form id="form-agendar" class="mt-6 space-y-4" onsubmit="handleAgendar(event)">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Full Name</label>
+          <input type="text" required placeholder="e.g. Carlos Eduardo Silveira" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-teal-600">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">WhatsApp / Phone</label>
+          <input type="tel" required placeholder="(11) 98765-4321" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-teal-600">
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Specialty / Program</label>
+          <select id="select-programa" class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-teal-600">
+            <option value="Interventional Cardiology">Cardiology — Dr. Henrique Vasconcelos</option>
+            <option value="Neurology & Sleep">Neurology — Dr. Helena Albuquerque</option>
+            <option value="Orthopedics & Sports Medicine">Orthopedics — Dr. Marcelo K. Tanaka</option>
+            <option value="Longevity Medicine">Longevity — Dr. Camila Prado, PhD</option>
+            <option value="Diagnostic Oncology">Oncology — Dr. Renato Silveira</option>
+            <option value="Signature Longevity Check-up">Signature Longevity Check-up (Complete)</option>
+          </select>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Date</label>
+            <input type="date" required class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-teal-600">
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1">Preferred Time</label>
+            <select class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-sm focus:outline-none focus:border-teal-600">
+              <option value="Morning (7:00 AM – 12:00 PM)">Morning (7:00 AM – 12:00 PM)</option>
+              <option value="Afternoon (1:00 PM – 6:00 PM)">Afternoon (1:00 PM – 6:00 PM)</option>
+              <option value="Executive Evening (6:00 PM – 9:00 PM)">Executive Evening</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full py-4 rounded-xl bg-teal-700 hover:bg-teal-800 text-white font-bold uppercase tracking-wider text-xs transition duration-200 shadow-lg shadow-teal-700/30 mt-3">
+          Confirm Appointment Request
+        </button>
+      </form>
+
+      <div id="agendamento-success" class="hidden mt-6 p-4 rounded-xl bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs font-semibold">
+        ✓ Request received! The VitaePrime Concierge will contact you via WhatsApp with preparation details and check-in.
+      </div>
+    </div>
+
+    <div class="pt-6 border-t border-slate-100 text-xs text-slate-400 font-medium">
+      📍 Alameda Santos, 2200 • Cerqueira César, SP<br>
+      Exclusive complimentary valet parking
+    </div>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200 bg-white py-12 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="font-display font-bold text-slate-800 text-sm">
+        VITAEPRIME DIAGNOSTIC MEDICINE © 2026
+      </div>
+      <div>
+        Medical Technical Director: Dr. Henrique Vasconcelos • CRM-SP 142.890 • RQE 87.214
+      </div>
+      <div class="font-mono text-[11px] text-slate-400">
+        JCI & ONA Level 3 Accredited
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    const DOCTORS = [
+      {
+        name: "Dr. Henrique Vasconcelos",
+        crm: "CRM-SP 142.890 • RQE 87.214",
+        spec: "cardio",
+        specLabel: "Interventional Cardiology",
+        bio: "PhD in Cardiology from InCor-USP with a fellowship at Cleveland Clinic. Specialist in hemodynamics and 3D echocardiography.",
+        slots: ["Today 15:30", "Tomorrow 09:00", "Tomorrow 11:30"],
+        img: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        name: "Dr. Helena Albuquerque",
+        crm: "CRM-SP 168.410 • RQE 92.540",
+        spec: "neuro",
+        specLabel: "Neurology & Sleep Medicine",
+        bio: "Postdoctoral Fellow in Neuroscience at Johns Hopkins Medicine. Focus on refractory headaches, cognitive disorders, and polysomnography.",
+        slots: ["Today 16:15", "Tomorrow 10:30", "Tomorrow 14:00"],
+        img: "https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        name: "Dr. Marcelo K. Tanaka",
+        crm: "CRM-SP 155.201 • RQE 79.110",
+        spec: "orto",
+        specLabel: "Orthopedics & Regenerative Medicine",
+        bio: "Member of the Brazilian Society of Orthopedics specializing in arthroscopic surgery and cellular joint therapies.",
+        slots: ["Today 17:00", "Tomorrow 08:30", "Tomorrow 15:00"],
+        img: "https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        name: "Dr. Camila Prado, PhD",
+        crm: "CRM-SP 179.330 • RQE 95.820",
+        spec: "longevidade",
+        specLabel: "Longevity Medicine & Genomics",
+        bio: "Pioneer in precision medicine and cellular biological age testing. Leads VitaePrime’s Signature Longevity program.",
+        slots: ["Tomorrow 10:00", "Tomorrow 16:30", "Thu 14:00"],
+        img: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        name: "Dr. Renato Silveira",
+        crm: "CRM-SP 134.720 • RQE 64.910",
+        spec: "onco",
+        specLabel: "Clinical Oncology & Check-up",
+        bio: "Graduated from Escola Paulista de Medicina, specializing in modern immunotherapy and early cancer screening.",
+        slots: ["Today 18:00", "Tomorrow 13:30", "Thu 09:30"],
+        img: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        name: "Dr. Beatriz Fontana",
+        crm: "CRM-SP 188.502 • RQE 99.410",
+        spec: "cardio",
+        specLabel: "Electrophysiology & Arrhythmias",
+        bio: "Specialist in 3D electroanatomic mapping and catheter ablation. Coordinator of the coronary care unit.",
+        slots: ["Today 14:00", "Tomorrow 11:00", "Wed 08:00"],
+        img: "https://images.unsplash.com/photo-1527613426441-4da17471b66d?auto=format&fit=crop&w=600&q=80"
+      }
+    ];
+
+    let currentSpec = "all";
+
+    function filterSpec(spec) {
+      currentSpec = spec;
+      document.querySelectorAll('.spec-btn').forEach(btn => {
+        if (btn.getAttribute('data-spec') === spec) {
+          btn.className = "spec-btn active px-3.5 py-1.5 rounded-full text-xs font-bold bg-teal-700 text-white shadow-sm transition";
+        } else {
+          btn.className = "spec-btn px-3.5 py-1.5 rounded-full text-xs font-bold bg-white text-slate-700 border border-slate-300 hover:border-teal-500 transition";
+        }
+      });
+      renderDoctors();
+    }
+
+    function renderDoctors() {
+      const list = currentSpec === "all" ? DOCTORS : DOCTORS.filter(d => d.spec === currentSpec);
+      const grid = document.getElementById('doctors-grid');
+      grid.innerHTML = list.map(d => `
+        <div class="bg-white rounded-3xl p-6 border border-slate-200/90 hover:border-teal-500 shadow-sm hover:shadow-xl transition flex flex-col justify-between group">
+          <div>
+            <div class="flex items-center gap-4">
+              <img src="${d.img}" alt="${d.name}" class="w-16 h-16 rounded-2xl object-cover border border-slate-200 shadow-xs">
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-teal-700 block">${d.specLabel}</span>
+                <h3 class="font-display font-bold text-slate-900 text-lg leading-tight group-hover:text-teal-700 transition mt-0.5">${d.name}</h3>
+                <span class="text-[11px] font-mono text-slate-400 block mt-0.5">${d.crm}</span>
+              </div>
+            </div>
+            <p class="mt-4 text-xs text-slate-600 leading-relaxed">${d.bio}</p>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-slate-100">
+            <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-2">Next Available Times:</span>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              ${d.slots.map(s => `<button type="button" onclick="openAgendamento('${d.name} - ${s}')" class="px-2.5 py-1 rounded-lg text-[10px] font-bold bg-teal-50 text-teal-800 hover:bg-teal-700 hover:text-white transition border border-teal-200">${s}</button>`).join('')}
+            </div>
+            <button onclick="openAgendamento('${d.name}')" class="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-teal-700 text-white font-bold text-xs uppercase tracking-wider transition">
+              Book with Specialist
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Reports Portal
+    function consultarLaudo() {
+      const val = document.getElementById('input-protocol').value.trim();
+      const box = document.getElementById('laudo-box');
+      if (val) {
+        box.classList.remove('hidden');
+      }
+    }
+
+    // Appointment Drawer
+    const drawer = document.getElementById('agendamento-drawer');
+    const drawerOverlay = document.getElementById('drawer-overlay');
+
+    function openAgendamento(servico) {
+      if (servico && document.getElementById('select-programa')) {
+        const sel = document.getElementById('select-programa');
+        for (let i = 0; i < sel.options.length; i++) {
+          if (sel.options[i].text.includes(servico) || servico.includes(sel.options[i].value)) {
+            sel.selectedIndex = i;
+            break;
+          }
+        }
+      }
+      drawerOverlay.classList.remove('opacity-0', 'pointer-events-none');
+      drawer.classList.remove('translate-x-full');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeAgendamento() {
+      drawerOverlay.classList.add('opacity-0', 'pointer-events-none');
+      drawer.classList.add('translate-x-full');
+      document.body.style.overflow = '';
+    }
+
+    function handleAgendar(e) {
+      e.preventDefault();
+      const succ = document.getElementById('agendamento-success');
+      succ.classList.remove('hidden');
+      setTimeout(() => {
+        closeAgendamento();
+        succ.classList.add('hidden');
+        document.getElementById('form-agendar').reset();
+      }, 3000);
+    }
+
+    // Initial render
+    renderDoctors();
+  </script>
+
+  <!-- Vercel Web Analytics & Speed Insights -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script defer src="/assets/js/demo-i18n-bar.js"></script>
+</body>
+</html>

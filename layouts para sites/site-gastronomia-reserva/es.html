@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- demo-i18n-autodetect --><script>(function(){var cur=location.pathname.endsWith('/en.html')?'en':(location.pathname.endsWith('/es.html')?'es':'pt');var q=(new URLSearchParams(location.search).get('lang')||'').toLowerCase();var target=null;if(q==='pt'||q==='en'||q==='es'){target=q;try{localStorage.setItem('portfolio_lang',q);localStorage.setItem('portfolio_lang_manual','1');}catch(e){}}else if(cur==='pt'){try{if(localStorage.getItem('portfolio_lang_manual')==='1'){var saved=localStorage.getItem('portfolio_lang');if(saved==='en'||saved==='es'||saved==='pt')target=saved;}}catch(e){}if(!target){var langs=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||navigator.userLanguage||'en'];for(var i=0;i<langs.length;i++){var c=(langs[i]||'').toLowerCase().split('-')[0];if(c==='pt'){target='pt';break;}if(c==='es'){target='es';break;}if(c==='en'){target='en';break;}}if(!target)target='en';}}if(target&&target!==cur){var file=target==='en'?'en.html':(target==='es'?'es.html':'index.html');var p=location.pathname;var np=p.slice(-5).toLowerCase()==='.html'?p.slice(0,p.lastIndexOf('/')+1)+file:(p.endsWith('/')?p+file:p+'/'+file);location.replace(np+location.search+location.hash);}})();</script>
+  <title>KURO 黒 — Omakase & Alta Gastronomía</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <style>
+    :root {
+      --obsidian: #08080A;
+      --obsidian-elevated: #0E0E12;
+      --gold-imperial: #D4AF37;
+      --amber-accent: #F59E0B;
+    }
+    body {
+      background-color: var(--obsidian);
+      color: #E5E5E7;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    .font-cinzel { font-family: 'Cinzel', serif; }
+    .font-jp { font-family: 'Noto Serif JP', serif; }
+    .gold-accent { color: var(--gold-imperial); }
+    .border-gold { border-color: rgba(212, 175, 55, 0.28); }
+    .bg-gold-gradient {
+      background: linear-gradient(135deg, #D4AF37 0%, #F59E0B 50%, #AA820A 100%);
+    }
+    .text-gold-gradient {
+      background: linear-gradient(135deg, #FFF3D1 0%, #D4AF37 45%, #F59E0B 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .menu-card {
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .menu-card:hover {
+      border-color: rgba(212, 175, 55, 0.55);
+      background: rgba(20, 20, 26, 0.92);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.85), 0 0 25px -5px rgba(212, 175, 55, 0.12);
+    }
+    .sake-card {
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .sake-card:hover {
+      border-color: rgba(212, 175, 55, 0.5);
+      box-shadow: 0 18px 36px -12px rgba(0, 0, 0, 0.8);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 5px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #08080A;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(212, 175, 55, 0.3);
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: rgba(212, 175, 55, 0.6);
+    }
+    .ambient-glow {
+      background: radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.09) 0%, rgba(8, 8, 10, 0) 70%);
+    }
+  </style>
+</head>
+<body class="min-h-screen selection:bg-amber-700 selection:text-white antialiased">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-[#08080A]/90 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3.5 group">
+        <span class="font-jp text-3xl gold-accent transition-transform duration-500 group-hover:scale-105">黒</span>
+        <div class="border-l border-white/15 pl-3.5">
+          <span class="font-cinzel tracking-[0.28em] text-lg font-bold text-white block leading-none">KURO</span>
+          <span class="block text-[9px] uppercase tracking-[0.32em] text-zinc-400 mt-1">Omakase Experience</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-9 text-xs uppercase tracking-[0.22em] text-zinc-400">
+        <a href="#experiencia" class="hover:text-[#D4AF37] transition-colors">Experiencia</a>
+        <a href="#menu" class="hover:text-[#D4AF37] transition-colors">16 Tiempos</a>
+        <a href="#sake" class="hover:text-[#D4AF37] transition-colors">Maridaje</a>
+        <a href="#arquitetura" class="hover:text-[#D4AF37] transition-colors">La Barra Hinoki</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <span class="hidden lg:inline-flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-zinc-400 border border-white/10 px-3 py-1.5 rounded-full bg-white/[0.02]">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#D4AF37] animate-pulse"></span>
+          Jardins • SP
+        </span>
+        <button id="btn-open-reserva" class="px-5 py-2.5 rounded-sm border border-[#D4AF37]/70 text-xs uppercase tracking-[0.22em] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black font-semibold transition-all duration-300 shadow-[0_0_20px_rgba(212,175,55,0.12)]">
+          Reservar Mesa
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="experiencia" class="relative overflow-hidden pt-16 pb-28 ambient-glow">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center max-w-4xl mx-auto">
+        <!-- Selo de Autenticidade -->
+        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 border border-[#D4AF37]/30 bg-[#D4AF37]/[0.05] rounded-full text-[11px] font-mono uppercase tracking-[0.2em] text-[#D4AF37] mb-8 shadow-inner">
+          <span class="w-2 h-2 rounded-full bg-[#F59E0B] animate-ping"></span>
+          12 Plazas Exclusivas • Barra Hinoki de 300 años
+        </div>
+
+        <p class="font-jp text-xs sm:text-sm tracking-[0.5em] text-zinc-500 uppercase mb-3">
+          一期一会 • El Arte del Encuentro Único
+        </p>
+
+        <h1 class="font-cinzel text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.12]">
+          La Danza Estacional del <span class="text-gold-gradient italic font-normal">Mar Japonés.</span>
+        </h1>
+
+        <p class="mt-6 text-zinc-400 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed font-light">
+          Un riguroso recorrido gastronómico de 16 tiempos dirigido por el Maestro Itamae <span class="text-white font-medium">Kenzo Takahashi</span>. Pescados salvajes adquiridos en subasta e importados semanalmente desde el <span class="text-zinc-200">Toyosu Market en Tokio</span>, servidos sobre una pieza única de ciprés japonés ancestral.
+        </p>
+
+        <!-- Botões de Ação Refinados -->
+        <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <button onclick="openDrawer()" class="w-full sm:w-auto px-8 py-4 rounded-sm bg-gold-gradient text-black font-semibold text-xs uppercase tracking-[0.25em] hover:brightness-110 transition-all duration-300 shadow-[0_10px_30px_rgba(212,175,55,0.25)]">
+            Solicitar Asiento Omakase
+          </button>
+          <a href="#menu" class="w-full sm:w-auto px-8 py-4 rounded-sm border border-white/15 bg-white/[0.02] hover:border-[#D4AF37]/50 hover:text-[#D4AF37] text-white text-xs uppercase tracking-[0.25em] transition-all duration-300">
+            Explorar los 16 Tiempos
+          </a>
+        </div>
+
+        <!-- Credenciais de Prestígio -->
+        <div class="mt-14 pt-8 border-t border-white/10 grid grid-cols-1 sm:grid-cols-3 gap-6 text-left max-w-3xl mx-auto">
+          <div class="flex items-start gap-3.5 p-3 rounded-lg bg-white/[0.015] border border-white/5">
+            <span class="text-[#D4AF37] text-lg font-cinzel mt-0.5">✦✦</span>
+            <div>
+              <span class="block text-[10px] font-mono uppercase tracking-widest text-[#D4AF37]">Guía Michelin 2026</span>
+              <p class="text-xs text-zinc-300 font-medium mt-0.5">2 Estrellas • Cocina Excepcional</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3.5 p-3 rounded-lg bg-white/[0.015] border border-white/5">
+            <span class="font-jp text-[#D4AF37] text-lg mt-0.5">豊洲</span>
+            <div>
+              <span class="block text-[10px] font-mono uppercase tracking-widest text-[#D4AF37]">Toyosu Market Tokio</span>
+              <p class="text-xs text-zinc-300 font-medium mt-0.5">Vuelo dedicado semanal a -4°C</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3.5 p-3 rounded-lg bg-white/[0.015] border border-white/5">
+            <span class="font-jp text-[#D4AF37] text-lg mt-0.5">檜</span>
+            <div>
+              <span class="block text-[10px] font-mono uppercase tracking-widest text-[#D4AF37]">Barra Kiso Hinoki</span>
+              <p class="text-xs text-zinc-300 font-medium mt-0.5">Madera maciza de 300 años</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vitrine Cinematográfica Hero -->
+      <div class="mt-14 relative rounded-2xl overflow-hidden border border-[#D4AF37]/25 shadow-[0_25px_70px_-15px_rgba(0,0,0,0.95)] h-[360px] sm:h-[540px] group">
+        <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=1800&q=85" 
+             alt="Kuro Omakase Nigiri Imperial" 
+             class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-1000 ease-out">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#08080A] via-[#08080A]/30 to-black/40"></div>
+        
+        <div class="absolute top-6 left-6 right-6 flex items-center justify-between">
+          <span class="px-3.5 py-1.5 text-[10px] font-mono uppercase tracking-[0.2em] border border-[#D4AF37]/40 bg-black/70 backdrop-blur-md text-[#D4AF37] rounded-sm">
+            Omakase Otoño / Invierno 2026
+          </span>
+          <span class="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 text-[11px] font-jp border border-white/15 bg-black/70 backdrop-blur-md text-zinc-300 rounded-sm">
+            大トロ • Hon-Maguro de Oma
+          </span>
+        </div>
+
+        <div class="absolute bottom-6 left-6 right-6 sm:bottom-10 sm:left-10 sm:right-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div class="text-left max-w-xl">
+            <span class="text-[11px] uppercase font-mono tracking-[0.25em] gold-accent block mb-1">
+              Destacado de Temporada • Tiempo 11 / Nigiri Imperial
+            </span>
+            <h2 class="font-cinzel text-2xl sm:text-3xl lg:text-4xl text-white font-semibold">
+              Otoro Madurado 14 Días en Shoyu Imperial & Caviar Oscietra
+            </h2>
+            <p class="text-xs sm:text-sm text-zinc-300 mt-2 line-clamp-2">
+              Ventresca de atún rojo salvaje de Aomori con arroz Koshihikari aderezado con vinagre rojo Akazu añejado en barricas de cedro.
+            </p>
+          </div>
+          <button onclick="openDishModal(11)" class="self-start sm:self-end px-5 py-2.5 rounded-sm bg-black/80 hover:bg-[#D4AF37] text-[#D4AF37] hover:text-black border border-[#D4AF37]/50 text-xs font-mono uppercase tracking-widest transition-all duration-300 shrink-0">
+            Inspeccionar Tiempo →
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO ARQUITETURA & FILOSOFIA BREVE -->
+  <section id="arquitetura" class="max-w-7xl mx-auto px-6 py-12 border-t border-white/10">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+      <div class="lg:col-span-1">
+        <span class="text-[10px] font-mono uppercase tracking-[0.3em] gold-accent">Arquitectura del Silencio</span>
+        <h3 class="font-cinzel text-2xl sm:text-3xl text-white mt-2">Tradición Edomae bajo Luz Dramática</h3>
+        <p class="text-xs sm:text-sm text-zinc-400 mt-3 leading-relaxed">
+          Cada detalle de KURO ha sido diseñado para eliminar distracciones sensoriales. La temperatura del arroz (Shari) se ajusta a la temperatura corporal de 36,5°C en cada tiempo, entregado directamente de las manos del Chef en menos de 4 segundos.
+        </p>
+      </div>
+      <div class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="p-6 rounded-xl border border-white/10 bg-[#0E0E12]/90 flex flex-col justify-between">
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-jp text-2xl gold-accent">檜カウンター</span>
+            <span class="text-[10px] font-mono uppercase tracking-widest px-2.5 py-1 rounded bg-[#D4AF37]/10 text-[#D4AF37]">8 Plazas</span>
+          </div>
+          <h4 class="font-cinzel text-lg text-white">Barra Principal de Hinoki</h4>
+          <p class="text-xs text-zinc-400 mt-2 leading-relaxed">
+            Interacción directa con el Maestro Kenzo Takahashi. Contempla el corte milimétrico con cuchillos Yanagiba forjados en Sakai.
+          </p>
+        </div>
+        <div class="p-6 rounded-xl border border-white/10 bg-[#0E0E12]/90 flex flex-col justify-between">
+          <div class="flex items-center justify-between mb-4">
+            <span class="font-jp text-2xl gold-accent">個室畳</span>
+            <span class="text-[10px] font-mono uppercase tracking-widest px-2.5 py-1 rounded bg-amber-500/10 text-amber-400">4 Plazas</span>
+          </div>
+          <h4 class="font-cinzel text-lg text-white">Sala Tatami Privada (Koshitsu)</h4>
+          <p class="text-xs text-zinc-400 mt-2 leading-relaxed">
+            Aislamiento acústico absoluto con jardín seco Zen (Karesansui) privado y Sommelier exclusivo durante toda la velada.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU DEGUSTAÇÃO — 16 ETAPAS COMPLETAS -->
+  <section id="menu" class="max-w-7xl mx-auto px-6 py-24 border-t border-white/10">
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-10 gap-6">
+      <div>
+        <div class="flex items-center gap-3">
+          <span class="font-jp text-lg gold-accent">おまかせ</span>
+          <span class="text-xs uppercase tracking-[0.28em] gold-accent font-mono">Menú Estacional Completo</span>
+        </div>
+        <h2 class="font-cinzel text-3xl sm:text-5xl text-white mt-2">Sinfonía en 16 Tiempos</h2>
+        <p class="text-xs sm:text-sm text-zinc-400 mt-2 max-w-xl">
+          Haz clic en cualquier tiempo para explorar las notas sensoriales completas, la técnica de maduración y el maridaje de sake recomendado por nuestro Sommelier.
+        </p>
+      </div>
+      <div class="flex flex-col sm:items-end justify-end">
+        <div class="inline-flex items-center gap-3 px-4 py-2 rounded-lg border border-[#D4AF37]/30 bg-[#0E0E12]">
+          <span class="text-xs text-zinc-400 font-mono">Duración: <strong class="text-white">2h30</strong></span>
+          <span class="text-zinc-600">•</span>
+          <span class="text-xs text-zinc-400 font-mono">Menú Omakase: <strong class="text-[#D4AF37]">$680 / invitado</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Barra de Filtros por Tempo -->
+    <div id="menu-filters" class="flex items-center gap-2 overflow-x-auto pb-4 mb-10 border-b border-white/10 custom-scrollbar">
+      <button data-filter="all" class="filter-btn active shrink-0 px-4 py-2 rounded-sm text-xs font-mono uppercase tracking-widest transition-all bg-[#D4AF37] text-black font-semibold">
+        Todos (16)
+      </button>
+      <button data-filter="sakizuke" class="filter-btn shrink-0 px-4 py-2 rounded-sm text-xs font-mono uppercase tracking-widest transition-all border border-white/10 bg-white/[0.02] text-zinc-400 hover:text-white hover:border-[#D4AF37]/40">
+        Sakizuke & Zensai (01–03)
+      </button>
+      <button data-filter="otsukuri" class="filter-btn shrink-0 px-4 py-2 rounded-sm text-xs font-mono uppercase tracking-widest transition-all border border-white/10 bg-white/[0.02] text-zinc-400 hover:text-white hover:border-[#D4AF37]/40">
+        Otsukuri & Sashimi (04–06)
+      </button>
+      <button data-filter="yakimono" class="filter-btn shrink-0 px-4 py-2 rounded-sm text-xs font-mono uppercase tracking-widest transition-all border border-white/10 bg-white/[0.02] text-zinc-400 hover:text-white hover:border-[#D4AF37]/40">
+        Yakimono & Brasas (07–08)
+      </button>
+      <button data-filter="nigiri" class="filter-btn shrink-0 px-4 py-2 rounded-sm text-xs font-mono uppercase tracking-widest transition-all border border-white/10 bg-white/[0.02] text-zinc-400 hover:text-white hover:border-[#D4AF37]/40">
+        Nigiri Imperial (09–13)
+      </button>
+      <button data-filter="shirumono" class="filter-btn shrink-0 px-4 py-2 rounded-sm text-xs font-mono uppercase tracking-widest transition-all border border-white/10 bg-white/[0.02] text-zinc-400 hover:text-white hover:border-[#D4AF37]/40">
+        Shirumono & Postres (14–16)
+      </button>
+    </div>
+
+    <!-- Grid das 16 Etapas (Renderizado dinamicamente pelo JS) -->
+    <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+  </section>
+
+  <!-- SEÇÃO INTERATIVA: HARMONIZAÇÃO DE SAKÊS RAROS & VINHOS -->
+  <section id="sake" class="relative py-24 border-t border-white/10 bg-[#0B0B0F]">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+        <div>
+          <div class="flex items-center gap-3">
+            <span class="font-jp text-lg gold-accent">銘酒とワイン</span>
+            <span class="text-xs uppercase tracking-[0.28em] gold-accent font-mono">Cava Climatizada a -5°C</span>
+          </div>
+          <h2 class="font-cinzel text-3xl sm:text-5xl text-white mt-2">Maridaje de Sakes Raros & Vinos</h2>
+          <p class="text-xs sm:text-sm text-zinc-400 mt-2 max-w-2xl">
+            Etiquetas de tirada ultralimitada seleccionadas por nuestro Head Sommelier. Alterna entre servicio en <strong class="text-white">Copa Riedel Daiginjo (90ml)</strong> o <strong class="text-white">Botella Completa (720ml)</strong> para simular tu experiencia.
+          </p>
+        </div>
+
+        <!-- Seletor Global Interativo: Taça vs Garrafa -->
+        <div class="flex flex-col sm:items-end gap-2">
+          <span class="text-[10px] font-mono uppercase tracking-widest text-zinc-400">Modo de Servicio & Cálculo</span>
+          <div class="inline-flex p-1 rounded-lg bg-[#08080A] border border-[#D4AF37]/30">
+            <button id="btn-mode-glass" onclick="setServingMode('glass')" class="px-5 py-2.5 rounded-md text-xs font-mono uppercase tracking-wider transition-all bg-[#D4AF37] text-black font-semibold">
+              Copa 90ml
+            </button>
+            <button id="btn-mode-bottle" onclick="setServingMode('bottle')" class="px-5 py-2.5 rounded-md text-xs font-mono uppercase tracking-wider transition-all text-zinc-400 hover:text-white">
+              Botella 720ml
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cards dos Rótulos Raros (Renderizados via JS) -->
+      <div id="sake-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+
+      <!-- Barra Calculadora Interativa da Cave -->
+      <div class="mt-10 p-6 sm:p-8 rounded-2xl border border-[#D4AF37]/35 bg-gradient-to-r from-[#0E0E12] via-[#13131A] to-[#0E0E12] flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 shadow-2xl">
+        <div>
+          <span class="text-[10px] font-mono uppercase tracking-[0.25em] gold-accent block">Simulador del Sommelier</span>
+          <h3 class="font-cinzel text-xl sm:text-2xl text-white mt-1">Tu Selección de Maridaje Personalizada</h3>
+          <p id="sake-calculator-summary" class="text-xs sm:text-sm text-zinc-400 mt-1">
+            Selecciona copas o botellas arriba para calcular tu degustación líquida o incluye el Flight Sommelier en la reserva.
+          </p>
+        </div>
+        <div class="flex flex-wrap items-center gap-6 w-full lg:w-auto justify-between lg:justify-end border-t lg:border-t-0 pt-4 lg:pt-0 border-white/10">
+          <div class="text-left lg:text-right">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-zinc-400 block">Total de la Selección Líquida</span>
+            <span id="sake-calculator-total" class="font-cinzel text-2xl sm:text-3xl text-[#D4AF37] font-bold">$0</span>
+          </div>
+          <div class="flex items-center gap-3">
+            <button onclick="resetSakeSelection()" class="px-4 py-3 rounded-sm border border-white/15 text-xs font-mono uppercase tracking-wider text-zinc-400 hover:text-white hover:border-white/30 transition">
+              Limpiar
+            </button>
+            <button onclick="applySakeToReservation()" class="px-6 py-3 rounded-sm bg-[#D4AF37] hover:bg-amber-400 text-black font-semibold text-xs uppercase tracking-[0.2em] transition">
+              Vincular a la Reserva
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL DE DETALHES DO PRATO (16 ETAPAS) -->
+  <div id="dish-modal-overlay" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4 sm:p-6">
+    <div id="dish-modal-content" class="relative w-full max-w-3xl rounded-2xl bg-[#0E0E12] border border-[#D4AF37]/40 shadow-[0_25px_80px_rgba(0,0,0,0.95)] overflow-hidden transform scale-95 transition-transform duration-300 max-h-[90vh] flex flex-col">
+      <!-- Conteúdo injetado via JS -->
+    </div>
+  </div>
+
+  <!-- DRAWER DE RESERVA ELEVADO -->
+  <div id="drawer-overlay" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300"></div>
+  <aside id="reserva-drawer" class="fixed top-0 right-0 z-50 h-full w-full sm:w-[500px] bg-[#0E0E12] border-l border-[#D4AF37]/25 p-6 sm:p-8 transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between overflow-y-auto custom-scrollbar">
+    <div>
+      <div class="flex items-center justify-between pb-5 border-b border-white/10">
+        <div>
+          <span class="text-[10px] font-mono uppercase tracking-[0.25em] gold-accent">Concierge Exclusivo</span>
+          <h3 class="font-cinzel text-2xl text-white">Reservar Experiencia</h3>
+        </div>
+        <button id="btn-close-reserva" class="text-zinc-400 hover:text-white p-2 rounded-lg border border-white/10 hover:border-[#D4AF37]/40 transition">✕</button>
+      </div>
+
+      <form id="form-reserva" class="mt-6 space-y-5">
+        <!-- 1. Seletor Visual de Ambiente -->
+        <div>
+          <label class="block text-[11px] font-mono uppercase tracking-widest text-zinc-300 mb-2.5">
+            1. Elige el Ambiente
+          </label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <button type="button" data-seating="hinoki" onclick="selectSeating('hinoki')" class="seating-btn text-left p-3.5 rounded-xl border border-[#D4AF37] bg-[#D4AF37]/10 transition-all">
+              <div class="flex items-center justify-between">
+                <span class="font-jp text-sm gold-accent">檜 Barra Hinoki</span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-[#D4AF37] text-black font-bold">8 Plazas</span>
+              </div>
+              <p class="text-xs text-white font-medium mt-1.5">Frente al Maestro Itamae</p>
+              <p class="text-[11px] text-zinc-400 mt-0.5">Incluido en el Menú ($680/persona)</p>
+            </button>
+
+            <button type="button" data-seating="tatami" onclick="selectSeating('tatami')" class="seating-btn text-left p-3.5 rounded-xl border border-white/15 bg-white/[0.02] hover:border-white/30 transition-all">
+              <div class="flex items-center justify-between">
+                <span class="font-jp text-sm text-zinc-300">畳 Sala Tatami</span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-zinc-300">4 Plazas</span>
+              </div>
+              <p class="text-xs text-white font-medium mt-1.5">Sala Privada Koshitsu</p>
+              <p class="text-[11px] text-[#D4AF37] mt-0.5">+ $220 / persona (Exclusividad)</p>
+            </button>
+          </div>
+        </div>
+
+        <!-- 2. Data e Número de Convidados -->
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[11px] font-mono uppercase tracking-widest text-zinc-300 mb-1.5">Fecha Deseada</label>
+            <input type="date" id="reserva-date" required class="w-full px-3.5 py-2.5 rounded-lg bg-white/5 border border-white/15 text-white text-xs sm:text-sm focus:outline-none focus:border-[#D4AF37]">
+          </div>
+          <div>
+            <label class="block text-[11px] font-mono uppercase tracking-widest text-zinc-300 mb-1.5">
+              Invitados <span id="guest-limit-label" class="text-[#D4AF37]">(Máx 8)</span>
+            </label>
+            <select id="reserva-guests" onchange="updateReservationSummary()" class="w-full px-3.5 py-2.5 rounded-lg bg-[#14141A] border border-white/15 text-white text-xs sm:text-sm focus:outline-none focus:border-[#D4AF37]">
+              <option value="1">1 Invitado</option>
+              <option value="2" selected>2 Invitados</option>
+              <option value="3">3 Invitados</option>
+              <option value="4">4 Invitados</option>
+              <option value="5">5 Invitados</option>
+              <option value="6">6 Invitados</option>
+              <option value="7">7 Invitados</option>
+              <option value="8">8 Invitados</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 3. Escolha de Turno Interativa -->
+        <div>
+          <label class="block text-[11px] font-mono uppercase tracking-widest text-zinc-300 mb-2">
+            2. Turno de la Ceremonia
+          </label>
+          <div class="grid grid-cols-2 gap-3">
+            <button type="button" data-shift="19:00" onclick="selectShift('19:00')" class="shift-btn p-3 rounded-xl border border-[#D4AF37] bg-[#D4AF37]/10 text-left transition-all">
+              <div class="flex items-center justify-between">
+                <span class="font-cinzel text-base text-white font-bold">19:00</span>
+                <span class="text-[10px] font-mono text-[#D4AF37] uppercase">1.º Turno</span>
+              </div>
+              <span class="text-[11px] text-zinc-400 block mt-0.5">Recepción a las 18:45</span>
+            </button>
+
+            <button type="button" data-shift="21:30" onclick="selectShift('21:30')" class="shift-btn p-3 rounded-xl border border-white/15 bg-white/[0.02] hover:border-white/30 text-left transition-all">
+              <div class="flex items-center justify-between">
+                <span class="font-cinzel text-base text-white font-bold">21:30</span>
+                <span class="text-[10px] font-mono text-zinc-400 uppercase">2.º Turno</span>
+              </div>
+              <span class="text-[11px] text-zinc-400 block mt-0.5">Recepción a las 21:15</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 4. Seleção de Harmonização Opcional -->
+        <div>
+          <label class="block text-[11px] font-mono uppercase tracking-widest text-zinc-300 mb-2">
+            3. Maridaje de Sakes & Vinos (Opcional)
+          </label>
+          <select id="reserva-pairing" onchange="updateReservationSummary()" class="w-full px-3.5 py-3 rounded-lg bg-[#14141A] border border-white/15 text-white text-xs sm:text-sm focus:outline-none focus:border-[#D4AF37]">
+            <option value="none">Solo Menú Omakase 16 Tiempos (Té Verde Uji incluido)</option>
+            <option value="sommelier">Flight Maridado Sommelier — 5 Copas (+ $490 / persona)</option>
+            <option value="imperial">Maridaje Imperial IWA 5 & Dassai 23 (+ $820 / persona)</option>
+            <option value="custom" id="custom-sake-option" class="hidden">Selección Personalizada de la Cava</option>
+          </select>
+        </div>
+
+        <!-- 5. Dados do Titular -->
+        <div class="space-y-3 pt-2 border-t border-white/10">
+          <div>
+            <label class="block text-[10px] font-mono uppercase tracking-wider text-zinc-400 mb-1">Nombre Completo del Titular</label>
+            <input type="text" id="reserva-name" required placeholder="Ej: Roberto Takahashi" class="w-full px-3.5 py-2.5 rounded-lg bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-[#D4AF37]">
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[10px] font-mono uppercase tracking-wider text-zinc-400 mb-1">Correo electrónico</label>
+              <input type="email" id="reserva-email" required placeholder="cliente@dominio.com" class="w-full px-3.5 py-2.5 rounded-lg bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-[#D4AF37]">
+            </div>
+            <div>
+              <label class="block text-[10px] font-mono uppercase tracking-wider text-zinc-400 mb-1">WhatsApp / Teléfono</label>
+              <input type="tel" id="reserva-phone" required placeholder="+34 612 345 678" class="w-full px-3.5 py-2.5 rounded-lg bg-white/5 border border-white/15 text-white text-sm focus:outline-none focus:border-[#D4AF37]">
+            </div>
+          </div>
+          <div>
+            <label class="block text-[10px] font-mono uppercase tracking-wider text-zinc-400 mb-1">Restricciones Alimentarias u Ocasión Especial</label>
+            <textarea id="reserva-notes" rows="2" placeholder="Alergia a mariscos, celebración de aniversario, preferencia por sake seco..." class="w-full px-3.5 py-2 rounded-lg bg-white/5 border border-white/15 text-white text-xs sm:text-sm focus:outline-none focus:border-[#D4AF37] resize-none"></textarea>
+          </div>
+        </div>
+
+        <!-- 6. Resumo Dinâmico do Valor -->
+        <div class="p-4 rounded-xl bg-[#08080A] border border-[#D4AF37]/30 space-y-2">
+          <div class="flex items-center justify-between text-xs text-zinc-400">
+            <span id="summary-base-label">Menú Omakase (2x $680)</span>
+            <span id="summary-base-value" class="font-mono text-white">$1.360</span>
+          </div>
+          <div id="summary-seating-row" class="hidden flex items-center justify-between text-xs text-zinc-400">
+            <span>Exclusividad Sala Tatami Privada</span>
+            <span id="summary-seating-value" class="font-mono text-[#D4AF37]">+ $440</span>
+          </div>
+          <div id="summary-pairing-row" class="hidden flex items-center justify-between text-xs text-zinc-400">
+            <span id="summary-pairing-label">Maridaje seleccionado</span>
+            <span id="summary-pairing-value" class="font-mono text-[#D4AF37]">+ $980</span>
+          </div>
+          <div class="pt-2 border-t border-white/10 flex items-baseline justify-between">
+            <span class="text-xs uppercase font-mono tracking-widest text-zinc-300">Valor Estimado</span>
+            <span id="summary-total-value" class="font-cinzel text-2xl font-bold text-[#D4AF37]">$1.360</span>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full py-4 rounded-sm bg-gold-gradient hover:brightness-110 text-black font-bold uppercase tracking-[0.22em] text-xs transition duration-200 shadow-[0_10px_25px_rgba(212,175,55,0.25)]">
+          Confirmar Solicitud de Reserva
+        </button>
+      </form>
+    </div>
+
+    <div class="pt-6 mt-6 border-t border-white/10 text-[11px] text-zinc-500 flex items-center justify-between">
+      <span>Rua Haddock Lobo, Jardins — San Pablo</span>
+      <span>Mar–Sáb • 19:00 & 21:30</span>
+    </div>
+  </aside>
+
+  <!-- MODAL DE SUCESSO DA RESERVA -->
+  <div id="booking-success-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300 flex items-center justify-center p-4">
+    <div class="w-full max-w-lg rounded-2xl bg-[#0E0E12] border border-[#D4AF37]/50 p-6 sm:p-8 text-center shadow-[0_25px_90px_rgba(212,175,55,0.18)]">
+      <div class="w-14 h-14 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37] flex items-center justify-center mx-auto mb-5 text-[#D4AF37] text-2xl font-jp">
+        黒
+      </div>
+      <span class="text-[10px] font-mono uppercase tracking-[0.3em] gold-accent">Protocolo de Concierge Emitido</span>
+      <h3 class="font-cinzel text-2xl sm:text-3xl text-white mt-1">Solicitud Confirmada</h3>
+      <p class="text-xs sm:text-sm text-zinc-400 mt-2 leading-relaxed">
+        Nuestra Maître y equipo de Concierge han recibido los detalles de tu experiencia y se pondrán en contacto por WhatsApp en un plazo de 30 minutos para la validación final del asiento.
+      </p>
+
+      <div id="booking-receipt-box" class="mt-6 p-4 rounded-xl bg-[#08080A] border border-white/10 text-left space-y-2 text-xs">
+        <!-- Preenchido via JS -->
+      </div>
+
+      <div class="mt-6 flex flex-col sm:flex-row gap-3">
+        <button onclick="closeBookingSuccessModal()" class="w-full py-3.5 rounded-sm bg-[#D4AF37] hover:bg-amber-400 text-black font-semibold text-xs uppercase tracking-[0.2em] transition">
+          Finalizar y Volver a KURO
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-white/10 bg-[#060608] py-16">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <span class="font-jp text-2xl gold-accent">黒</span>
+        <div>
+          <span class="font-cinzel tracking-[0.25em] text-sm font-bold text-white">KURO OMAKASE</span>
+          <p class="text-[11px] text-zinc-500 font-mono">Jardins, San Pablo • 2 Estrellas Guía Michelin 2026</p>
+        </div>
+      </div>
+      <div class="text-center sm:text-right text-xs text-zinc-500 font-mono">
+        <p>KURO Omakase © 2026 • Todos los derechos reservados</p>
+        <p class="text-[10px] text-zinc-600 mt-1">Dress Code: Etiqueta Elegante • No recomendamos el uso de perfumes intensos en la Barra Hinoki</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT PURO EMBUTIDO -->
+  <script>
+    // 1. DATOS DE LOS 16 TIEMPOS DEL MENÚ DEGUSTACIÓN
+    const omakaseDishes = [
+      {
+        step: 1,
+        category: 'sakizuke',
+        categoryLabel: 'Sakizuke',
+        title: 'Ichiban Dashi de Algas Sagradas',
+        kanji: '一番出汁',
+        romaji: 'Ichiban Dashi',
+        origin: 'Rishiri, Hokkaido & Makurazaki, Kagoshima',
+        shortDesc: 'Infusión límpida de Kombu de Hokkaido madurado 3 años en cava con escamas de bonito Honkarebushi recién ralladas.',
+        sensoryNotes: 'Umami puro, cristalino y reconfortante. Despierta el paladar con sutiles notas marinas, ligero ahumado de roble y un final mineral prolongado.',
+        pairingSake: 'Dassai 23 Junmai Daiginjo',
+        pairingNote: 'La delicadeza floral del pulido al 23% preserva la sutileza del Kombu de Rishiri.',
+        image: 'https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=900&q=80'
+      },
+      {
+        step: 2,
+        category: 'sakizuke',
+        categoryLabel: 'Zensai',
+        title: 'Ankimo Escalfado en Sake & Ponzu de Yuzu',
+        kanji: 'あん肝ポン酢',
+        romaji: 'Ankimo Ponzu',
+        origin: 'Yoichi, Hokkaido',
+        shortDesc: 'Hígado de rape salvaje cocido lentamente al vapor en sake Junmai, servido con rábano Daikon rallado picante y cebollino Asatsuki.',
+        sensoryNotes: 'Conocido como el foie gras del océano: textura mantecosa que se funde al instante, equilibrada por la acidez eléctrica del Yuzu fresco.',
+        pairingSake: 'IWA 5 Assemblage',
+        pairingNote: 'La estructura compleja de 5 cepas corta con precisión la untuosidad del Ankimo.',
+        image: 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=900&q=80'
+      },
+      {
+        step: 3,
+        category: 'sakizuke',
+        categoryLabel: 'Hassun Estacional',
+        title: 'Chawanmushi Imperial de Kegani & Trufa Negra',
+        kanji: '毛蟹の茶碗蒸し',
+        romaji: 'Kegani Chawanmushi',
+        origin: 'Mar de Ojotsk, Hokkaido & Périgord',
+        shortDesc: 'Flan salado de huevos orgánicos de corral y caldo Dashi, coronado con carne desmenuzada de cangrejo real Kegani y láminas de trufa negra.',
+        sensoryNotes: 'Textura sedosa como seda líquida. El dulzor natural del cangrejo de aguas glaciales se une al aroma terroso de la trufa negra.',
+        pairingSake: 'Born Gold Muroka Junmai Daiginjo',
+        pairingNote: 'Notas de durazno blanco y arroz tostado realzan el perfume de la trufa.',
+        image: 'https://images.unsplash.com/photo-1617196034796-73dfa7b1fd56?auto=format&fit=crop&w=900&q=80'
+      },
+      {
+        step: 4,
+        category: 'otsukuri',
+        categoryLabel: 'Otsukuri',
+        title: 'Hirame Kobujime & Flor de Sal de Noto',
+        kanji: '平目の昆布締め',
+        romaji: 'Hirame Kobujime',
+        origin: 'Aomori & Península de Noto',
+        shortDesc: 'Lenguado salvaje curado entre hojas de alga Kombu durante 18 horas, servido con gotas de Sudachi y sal marina secada al sol.',
+        sensoryNotes: 'Mordida firme y translúcida; el curado en Kombu concentra los aminoácidos naturales del pescado blanco, revelando una dulzura refinada.',
+        pairingSake: 'Dassai 23 Junmai Daiginjo',
+        pairingNote: 'Frescor cristalino que realza la mineralidad de la flor de sal de Noto.',
+        image: 'https://images.unsplash.com/photo-1534604973900-c43ab4c2e0ab?auto=format&fit=crop&w=900&q=80'
+      },
+      {
+        step: 5,
+        category: 'otsukuri',
+        categoryLabel: 'Otsukuri',
+        title: 'Hotate Gigante de Notsuke al Soplete',
+        kanji: '野付産帆立の炙り',
+        romaji: 'Hotate Aburi',
+        origin: 'Península de Notsuke, Hokkaido',
+        shortDesc: 'Vieira salvaje viva caramelizada ligeramente en la superficie, terminada con ralladura de lima Kabosu y pincelada de Nikki Shoyu.',
+        sensoryNotes: 'Fibras densas y dulces con exterior ligeramente tostado y centro crudo jugoso.',
+        pairingSake: 'Born Gold Muroka Junmai Daiginjo',
+        pairingNote: 'Armonía perfecta por afinidad entre el dulzor de la vieira y la fruta madura del sake.',
+        image: 'https://images.unsplash.com/photo-1553621042-f6e147245754?auto=format&fit=crop&w=900&q=80'
+      },
+      {
+        step: 6,
+        category: 'otsukuri',
+        categoryLabel: 'Sashimi Ahumado',
+        title: 'Katsuo Tataki en Paja de Arroz Wara',
+        kanji: '鰹の藁焼き',
+        romaji: 'Katsuo Warayaki',
+        origin: 'Kochi, Shikoku',
+        shortDesc: 'Bonito salvaje sellado en llamas de paja de arroz orgánico a 800°C durante segundos, servido con ajo negro fermentado y jengibre.',
+        sensoryNotes: 'Contraste dramático entre la corteza intensamente ahumada en paja Wara y el interior rubí rico en hierro y frescor oceánico.',
+        pairingSake: 'IWA 5 Assemblage',
+        pairingNote: 'Servido a 14°C, sostiene el ahumado intenso de la paja de arroz.',
+        image: 'https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?auto=format&fit=crop&w=900&q=80'
+      },
+      {
+        step: 7,
+        category: 'yakimono',
+        categoryLabel: 'Yakimono',
+        title: 'Nodoguro a la Brasa Binchotan',
+        kanji: 'のどぐろ備長炭焼き',
+        romaji: 'Nodoguro Shioyaki',
+        origin: 'Kanazawa, Ishikawa',
+        shortDesc: 'Pargo de garganta negra (el "Toro de los pescados blancos") asado sobre carbón blanco Kishu Binchotan hasta lograr una piel crujiente como el cristal.',
+        sensoryNotes: 'Grasa subcutánea noble que burbujea bajo la piel crujiente, equilibrada con rábano rallado y zumo de Sudachi.',
+        pairingSake: 'IWA 5 Assemblage',
+        pairingNote: 'Acidez vibrante y final persistente que limpia el paladar tras la riqueza del Nodoguro.',
+        image: 'https://images.unsplash.com/photo-1580822184713-fc5400e7fe10?auto=format&fit=crop&w=900&q=80'
+      },
+      {
+        step: 8,
+        category: 'yakimono',
+        categoryLabel: 'Yakimono Imperial',
+        title: 'Wagyu A5 Kuroge al Carbón Binchotan',
+        kanji: '黒毛和牛A5炭火焼き',
+        romaji: 'Kagoshima Wagyu A5',
+        origin: 'Kagoshima, Kyushu (BMS 12)',
+        shortDesc: 'Lomo de Wagyu A5 con grado máximo de marmolado sellado en brasa pura, servido con raíz de Wasabi de Shizuoka rallada en piel de tiburón.',
+        sensoryNotes: 'La grasa oleica se funde a 25°C en el paladar con notas mantecosas de avellana, cortadas por el frescor aromático y suave del Wasabi fresco.',
+        pairingSake: 'Daruma Masamune Koshu 10 Años',
+        pairingNote: 'El sake añejado 10 años aporta notas de nueces, caramelo salado y especias que abrazan al Wagyu A5.',
+        image: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80'
+      },
+      {
+        step: 9,
+        category: 'nigiri',
+        categoryLabel: 'Nigiri Edomae',
+        title: 'Shima Aji con Yuzu Kosho Artesanal',
+        kanji: '縞鰺の握り',
+        romaji: 'Shima Aji Nigiri',
+        origin: 'Ehime, Mar Interior de Seto',
+        shortDesc: 'Jurel blanco listado madurado 5 días, pincelado con shoyu Nikki y un toque de pasta fermentada de Yuzu y chile verde.',
+        sensoryNotes: 'Equilibrio exacto entre textura firme, grasa elegante y el perfume cítrico-picante sobre arroz aderezado con vinagre Akazu.',
+        pairingSake: 'Dassai 23 Junmai Daiginjo',
+        pairingNote: 'Eleva los aceites esenciales del Yuzu Kosho sin opacar el pescado.',
+        image: 'https://images.unsplash.com/photo-1611143669185-af224c5e3252?auto=format&fit=crop&w=900&q=80'
+      },
+      {
+        step: 10,
+        category: 'nigiri',
+        categoryLabel: 'Nigiri Edomae',
+        title: 'Akami Zuke de Hon-Maguro',
+        kanji: '本鮪赤身漬け',
+        romaji: 'Akami Zuke Nigiri',
+        origin: 'Oma, Aomori (Toyosu Market)',
+        shortDesc: 'Corte magro central de atún rojo marinado 12 minutos en salsa shoyu Kioke cocida con mirin Mikawa y dashi.',
+        sensoryNotes: 'Textura aterciopelada de rubí profundo, acidez clásica de Tokio y un sutil toque de mostaza japonesa Karashi.',
+        pairingSake: 'Born Gold Muroka Junmai Daiginjo',
+        pairingNote: 'El cuerpo sedoso del Muroka envuelve las notas férricas y el umami del shoyu.',
+        image: 'https://images.unsplash.com/photo-1563612116625-3012372fccce?auto=format&fit=crop&w=900&q=80'
+      },
+      {
+        step: 11,
+        category: 'nigiri',
+        categoryLabel: 'Nigiri Imperial',
+        title: 'Otoro Madurado 14 Días & Caviar Oscietra',
+        kanji: '熟成大トロとキャビア',
+        romaji: 'Jukusei Otoro Nigiri',
+        origin: 'Oma, Aomori & Mar Caspio',
+        shortDesc: 'Ventresca noble de Hon-Maguro madurada en seco en cámara de hielo durante 14 días, coronada con Caviar Royal Oscietra y lámina de oro 24k.',
+        sensoryNotes: 'La cúspide de la untuosidad: el colágeno transformado en puro umami se disuelve junto a la explosión salina de las huevas de esturión.',
+        pairingSake: 'IWA 5 Assemblage',
+        pairingNote: 'Creado por el ex-Chef de Cave de Dom Pérignon, armoniza con caviar y Otoro con maestría.',
+        image: 'https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&w=900&q=80'
+      },
+      {
+        step: 12,
+        category: 'nigiri',
+        categoryLabel: 'Nigiri Especial',
+        title: 'Uni Bafun Salvaje de Nemuro',
+        kanji: '根室産馬糞雲丹',
+        romaji: 'Bafun Uni Gunkan',
+        origin: 'Nemuro, Hokkaido',
+        shortDesc: 'Erizo de mar de aguas glaciales alimentado exclusivamente con algas Kombu, servido sobre arroz tibio y alga Nori de Ariake tostada al carbón.',
+        sensoryNotes: 'Cremosidad oceánica intensa, color anaranjado vibrante y dulzura profunda con el contraste crujiente del alga recién tostada.',
+        pairingSake: 'Dassai 23 Junmai Daiginjo',
+        pairingNote: 'Final limpio que exalta el dulzor yodado del Uni de Hokkaido.',
+        image: 'https://images.unsplash.com/photo-1559410545-0bdcd187e0a6?auto=format&fit=crop&w=900&q=80'
+      },
+      {
+        step: 13,
+        category: 'nigiri',
+        categoryLabel: 'Nigiri Final',
+        title: 'Anago de la Bahía de Tokio & Tsume de 20 Años',
+        kanji: '江戸前穴子',
+        romaji: 'Edomae Anago Nigiri',
+        origin: 'Futtsu, Bahía de Tokio',
+        shortDesc: 'Anguila marina cocida en caldo ligero hasta quedar suave como una nube, glaseada con reducción Tsume de la casa y ralladura de Yuzu.',
+        sensoryNotes: 'Se deshace al instante al contacto con el paladar, combinando notas caramelizadas profundas y aroma cítrico fresco.',
+        pairingSake: 'Daruma Masamune Koshu 10 Años',
+        pairingNote: 'La salsa Tsume encuentra un eco perfecto en las notas de miel oscura del Koshu añejado.',
+        image: 'https://images.unsplash.com/photo-1583623025817-d180a2221d0a?auto=format&fit=crop&w=900&q=80'
+      },
+      {
+        step: 14,
+        category: 'shirumono',
+        categoryLabel: 'Shirumono',
+        title: 'Aka-Dashi de Cangrejo Real Tarabagani',
+        kanji: 'たらば蟹の赤出汁',
+        romaji: 'Tarabagani Akadashi',
+        origin: 'Hokkaido & Okazaki, Aichi',
+        shortDesc: 'Consomé aterciopelado de cangrejo real preparado con pasta de Miso rojo Hatcho madurada durante 3 inviernos en barricas de madera.',
+        sensoryNotes: 'Cálido, profundo y reconfortante; cierra la secuencia salada con notas de cacao tostado del Hatcho Miso y pimienta Sansho.',
+        pairingSake: 'Born Gold Muroka Junmai Daiginjo',
+        pairingNote: 'Calma el paladar y realza la riqueza fermentada del Miso de Aichi.',
+        image: 'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80'
+      },
+      {
+        step: 15,
+        category: 'shirumono',
+        categoryLabel: 'Tamagoyaki',
+        title: 'Kasutera Tamago de Langostino Kuruma & Ñame',
+        kanji: '車海老の玉子焼き',
+        romaji: 'Edomae Tamagoyaki',
+        origin: 'Amakusa, Kumamoto',
+        shortDesc: 'Tortilla tradicional estilo bizcocho horneada lentamente durante 75 minutos con pasta de langostino imperial Kuruma, ñame de montaña Yamaimo y mirin.',
+        sensoryNotes: 'Textura aireada de suflé húmedo y corteza dorada caramelizada, marcando la transición clásica hacia la repostería japonesa.',
+        pairingSake: 'Daruma Masamune Koshu 10 Años',
+        pairingNote: 'Funciona como un vino licoroso noble junto al Kasutera Tamago.',
+        image: 'https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=900&q=80'
+      },
+      {
+        step: 16,
+        category: 'shirumono',
+        categoryLabel: 'Mizumono',
+        title: 'Matcha Ceremonial de Uji & Gelato Kurogoma',
+        kanji: '宇治抹茶と黒胡麻氷菓',
+        romaji: 'Uji Matcha & Kurogoma',
+        origin: 'Uji, Kyoto & Okinawa',
+        shortDesc: 'Gelato artesanal de sésamo negro tostado sobre reducción de azúcar de caña Kokuto de Okinawa, acompañado de Matcha batido con Chasen.',
+        sensoryNotes: 'El amargor vegetal elegante y la espuma cremosa jade del Matcha contrastan con el tostado intenso y mineral del sésamo negro.',
+        pairingSake: 'Té Verde Ceremonial Gokujo Uji (Incluido)',
+        pairingNote: 'Cosecha única sombreada durante 30 días en Kioto para un cierre meditativo.',
+        image: 'https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&w=900&q=80'
+      }
+    ];
+
+    // 2. DATOS DE SAKES RAROS & VINOS
+    const rareSakes = [
+      {
+        id: 'dassai23',
+        name: 'Dassai 23 Junmai Daiginjo',
+        kanji: '獺祭 二割三分',
+        brewery: 'Asahi Shuzo • Yamaguchi, Japón',
+        polishing: 'Pulido 23% (Arroz Yamada Nishiki)',
+        temp: '8°C (Copa Riedel Daiginjo)',
+        glassPrice: 145,
+        bottlePrice: 1080,
+        tastingNotes: 'Aromas embriagadores de melón blanco Yubari, durazno de montaña y flor de azahar. Entrada satinada, pureza cristalina y final largo que se desvanece como nieve.',
+        pairedSteps: 'Tiempos 01 (Dashi), 04 (Hirame), 09 (Shima Aji) y 12 (Uni Bafun)',
+        badge: 'Ícono de Pureza'
+      },
+      {
+        id: 'iwa5',
+        name: 'IWA 5 Assemblage 4',
+        kanji: '白岩 IWA 5',
+        brewery: 'Shiraiwa • Toyama (Por Richard Geoffroy, ex-Dom Pérignon)',
+        polishing: 'Assemblage Secreto • 3 Cepas de Arroz & 5 Levaduras',
+        temp: '12°C a 14°C (Evolución en Copa)',
+        glassPrice: 230,
+        bottlePrice: 1750,
+        tastingNotes: 'Arquitectura de Champagne aplicada al sake: capas de almendra blanca, pera madura, pimienta blanca y mineralidad calcárea con gravedad y tensión.',
+        pairedSteps: 'Tiempos 02 (Ankimo), 06 (Katsuo), 07 (Nodoguro) y 11 (Otoro & Caviar)',
+        badge: 'Rareza Mundial'
+      },
+      {
+        id: 'borngold',
+        name: 'Born Gold Muroka Junmai Daiginjo',
+        kanji: '梵・ゴールド 無濾過',
+        brewery: 'Katokichibee Shouten • Fukui (Proveedor de la Casa Imperial)',
+        polishing: 'Pulido 50% • Madurado 1 Año a -10°C sin filtrado de carbón',
+        temp: '10°C',
+        glassPrice: 115,
+        bottlePrice: 840,
+        tastingNotes: 'Color dorado natural preservado por la ausencia de filtrado. Notas exuberantes de fruta tropical fresca, umami redondo y acidez jugosa.',
+        pairedSteps: 'Tiempos 03 (Chawanmushi), 05 (Hotate), 10 (Akami Zuke) y 14 (Aka-Dashi)',
+        badge: 'Tributo Imperial'
+      },
+      {
+        id: 'koshu10',
+        name: 'Daruma Masamune Koshu 10 Años',
+        kanji: '達磨正宗 十年古酒',
+        brewery: 'Shiraki Tsunesuke • Gifu, Japón',
+        polishing: 'Sake Añejado 10 Años en Tanques Esmaltados',
+        temp: '16°C a 18°C (Copa Tulip)',
+        glassPrice: 165,
+        bottlePrice: 1240,
+        tastingNotes: 'Complejidad oxidativa noble: notas de higo seco, nuez pecana tostada, salsa de soja dulce añeja, especias orientales y un final aterciopelado interminable.',
+        pairedSteps: 'Tiempos 08 (Wagyu A5), 13 (Anago Tsume) y 15 (Kasutera Tamago)',
+        badge: 'Sake de Guarda'
+      }
+    ];
+
+    // Estado de la Aplicación
+    let currentFilter = 'all';
+    let servingMode = 'glass'; // 'glass' o 'bottle'
+    let sakeQuantities = { dassai23: 0, iwa5: 0, borngold: 0, koshu10: 0 };
+    let selectedSeating = 'hinoki'; // 'hinoki' (máx 8) o 'tatami' (máx 4)
+    let selectedShift = '19:00';
+
+    // Inicialización de la fecha predeterminada para mañana
+    document.addEventListener('DOMContentLoaded', () => {
+      const dateInput = document.getElementById('reserva-date');
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      dateInput.value = tomorrow.toISOString().split('T')[0];
+      dateInput.min = new Date().toISOString().split('T')[0];
+
+      renderMenuGrid();
+      renderSakeGrid();
+      updateReservationSummary();
+    });
+
+    // RENDERIZADO DEL MENÚ DE 16 TIEMPOS
+    function renderMenuGrid() {
+      const grid = document.getElementById('menu-grid');
+      const filtered = currentFilter === 'all'
+        ? omakaseDishes
+        : omakaseDishes.filter(d => d.category === currentFilter);
+
+      grid.innerHTML = filtered.map(dish => `
+        <article onclick="openDishModal(${dish.step})" class="menu-card cursor-pointer rounded-xl overflow-hidden border border-white/10 bg-[#0E0E12]/70 flex flex-col justify-between group">
+          <div>
+            <div class="relative h-48 overflow-hidden bg-black">
+              <img src="${dish.image}" alt="${dish.title}" loading="lazy" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0E0E12] via-transparent to-black/40"></div>
+              <div class="absolute top-3 left-3 right-3 flex items-center justify-between">
+                <span class="px-2.5 py-1 rounded bg-black/80 backdrop-blur-md border border-[#D4AF37]/40 text-[10px] font-mono uppercase tracking-widest text-[#D4AF37]">
+                  Tiempo ${String(dish.step).padStart(2, '0')} • ${dish.categoryLabel}
+                </span>
+                <span class="px-2.5 py-1 rounded bg-black/75 backdrop-blur-md text-xs font-jp text-zinc-200 border border-white/10">
+                  ${dish.kanji}
+                </span>
+              </div>
+            </div>
+
+            <div class="p-5">
+              <p class="text-[10px] font-mono uppercase tracking-widest text-zinc-500">${dish.romaji} • ${dish.origin}</p>
+              <h3 class="font-cinzel text-lg text-white mt-1 group-hover:text-[#D4AF37] transition-colors leading-snug">${dish.title}</h3>
+              <p class="text-xs text-zinc-400 mt-2.5 leading-relaxed line-clamp-3">${dish.shortDesc}</p>
+            </div>
+          </div>
+
+          <div class="px-5 pb-4 pt-3 border-t border-white/5 flex items-center justify-between text-[11px] font-mono">
+            <span class="text-zinc-500 truncate max-w-[70%]">🍶 ${dish.pairingSake}</span>
+            <span class="text-[#D4AF37] group-hover:translate-x-1 transition-transform">Detalles →</span>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    // Listeners de los Filtros del Menú
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        currentFilter = btn.dataset.filter;
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.className = 'filter-btn shrink-0 px-4 py-2 rounded-sm text-xs font-mono uppercase tracking-widest transition-all border border-white/10 bg-white/[0.02] text-zinc-400 hover:text-white hover:border-[#D4AF37]/40';
+        });
+        btn.className = 'filter-btn active shrink-0 px-4 py-2 rounded-sm text-xs font-mono uppercase tracking-widest transition-all bg-[#D4AF37] text-black font-semibold';
+        renderMenuGrid();
+      });
+    });
+
+    // MODAL DE DETALLES DE CADA PLATO
+    function openDishModal(stepNumber) {
+      const dish = omakaseDishes.find(d => d.step === stepNumber);
+      if (!dish) return;
+
+      const overlay = document.getElementById('dish-modal-overlay');
+      const content = document.getElementById('dish-modal-content');
+
+      content.innerHTML = `
+        <div class="relative h-64 sm:h-72 shrink-0">
+          <img src="${dish.image}" alt="${dish.title}" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0E0E12] via-[#0E0E12]/40 to-black/50"></div>
+          <button onclick="closeDishModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/80 border border-white/20 text-white hover:border-[#D4AF37] hover:text-[#D4AF37] flex items-center justify-center transition">✕</button>
+          <div class="absolute bottom-4 left-6 right-6 flex items-end justify-between gap-4">
+            <div>
+              <span class="px-2.5 py-1 rounded bg-[#D4AF37] text-black font-mono text-[10px] font-bold uppercase tracking-widest">
+                Tiempo ${String(dish.step).padStart(2, '0')} de 16 • ${dish.categoryLabel}
+              </span>
+              <h3 class="font-cinzel text-2xl sm:text-3xl text-white mt-2">${dish.title}</h3>
+            </div>
+            <div class="text-right hidden sm:block">
+              <span class="font-jp text-2xl gold-accent block">${dish.kanji}</span>
+              <span class="text-xs font-mono text-zinc-400">${dish.romaji}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-6 sm:p-8 overflow-y-auto custom-scrollbar space-y-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 rounded-xl bg-[#08080A] border border-white/10">
+            <div>
+              <span class="text-[10px] font-mono uppercase tracking-widest text-zinc-500 block">Procedencia & Terroir</span>
+              <span class="text-xs sm:text-sm text-white font-medium mt-0.5 block">📍 ${dish.origin}</span>
+            </div>
+            <div>
+              <span class="text-[10px] font-mono uppercase tracking-widest text-zinc-500 block">Nomenclatura Original</span>
+              <span class="text-xs sm:text-sm text-[#D4AF37] font-jp mt-0.5 block">${dish.kanji} (${dish.romaji})</span>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-mono uppercase tracking-widest gold-accent mb-1.5">Composición & Técnica Edomae</h4>
+            <p class="text-sm text-zinc-300 leading-relaxed">${dish.shortDesc}</p>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-mono uppercase tracking-widest gold-accent mb-1.5">Arquitectura Sensorial en Paladar</h4>
+            <p class="text-sm text-zinc-300 leading-relaxed">${dish.sensoryNotes}</p>
+          </div>
+
+          <div class="p-5 rounded-xl border border-[#D4AF37]/35 bg-[#D4AF37]/[0.05] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <span class="text-[10px] font-mono uppercase tracking-[0.25em] gold-accent block">🍶 Maridaje Recomendado por el Sommelier</span>
+              <h5 class="font-cinzel text-lg text-white mt-1">${dish.pairingSake}</h5>
+              <p class="text-xs text-zinc-300 mt-1">${dish.pairingNote}</p>
+            </div>
+            <button onclick="closeDishModal(); openDrawer();" class="shrink-0 px-4 py-2.5 rounded-sm bg-[#D4AF37] hover:bg-amber-400 text-black font-semibold text-xs uppercase tracking-widest transition">
+              Reservar Menú
+            </button>
+          </div>
+        </div>
+      `;
+
+      overlay.classList.remove('opacity-0', 'pointer-events-none');
+      content.classList.remove('scale-95');
+      content.classList.add('scale-100');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDishModal() {
+      const overlay = document.getElementById('dish-modal-overlay');
+      const content = document.getElementById('dish-modal-content');
+      overlay.classList.add('opacity-0', 'pointer-events-none');
+      content.classList.remove('scale-100');
+      content.classList.add('scale-95');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('dish-modal-overlay').addEventListener('click', (e) => {
+      if (e.target.id === 'dish-modal-overlay') closeDishModal();
+    });
+
+    // 3. RENDERIZADO Y LÓGICA DE SAKES RAROS (COPA VS BOTELLA)
+    function setServingMode(mode) {
+      servingMode = mode;
+      const btnGlass = document.getElementById('btn-mode-glass');
+      const btnBottle = document.getElementById('btn-mode-bottle');
+
+      if (mode === 'glass') {
+        btnGlass.className = 'px-5 py-2.5 rounded-md text-xs font-mono uppercase tracking-wider transition-all bg-[#D4AF37] text-black font-semibold';
+        btnBottle.className = 'px-5 py-2.5 rounded-md text-xs font-mono uppercase tracking-wider transition-all text-zinc-400 hover:text-white';
+      } else {
+        btnBottle.className = 'px-5 py-2.5 rounded-md text-xs font-mono uppercase tracking-wider transition-all bg-[#D4AF37] text-black font-semibold';
+        btnGlass.className = 'px-5 py-2.5 rounded-md text-xs font-mono uppercase tracking-wider transition-all text-zinc-400 hover:text-white';
+      }
+
+      renderSakeGrid();
+      updateSakeCalculator();
+    }
+
+    function changeSakeQty(id, delta) {
+      sakeQuantities[id] = Math.max(0, (sakeQuantities[id] || 0) + delta);
+      renderSakeGrid();
+      updateSakeCalculator();
+    }
+
+    function renderSakeGrid() {
+      const grid = document.getElementById('sake-grid');
+      grid.innerHTML = rareSakes.map(sake => {
+        const unitPrice = servingMode === 'glass' ? sake.glassPrice : sake.bottlePrice;
+        const unitLabel = servingMode === 'glass' ? 'Copa 90ml' : 'Botella 720ml';
+        const qty = sakeQuantities[sake.id] || 0;
+
+        return `
+          <div class="sake-card rounded-2xl p-6 sm:p-7 border ${qty > 0 ? 'border-[#D4AF37] bg-[#14141C]' : 'border-white/10 bg-[#0E0E12]'} flex flex-col justify-between">
+            <div>
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <span class="inline-block px-2.5 py-0.5 rounded bg-[#D4AF37]/15 border border-[#D4AF37]/40 text-[10px] font-mono uppercase tracking-widest text-[#D4AF37]">
+                    ${sake.badge}
+                  </span>
+                  <h3 class="font-cinzel text-xl sm:text-2xl text-white mt-2">${sake.name}</h3>
+                  <p class="text-xs font-mono text-zinc-400 mt-0.5">${sake.brewery}</p>
+                </div>
+                <span class="font-jp text-xl sm:text-2xl gold-accent shrink-0">${sake.kanji}</span>
+              </div>
+
+              <div class="mt-4 grid grid-cols-2 gap-2 p-3 rounded-lg bg-[#08080A] border border-white/5 text-[11px] font-mono">
+                <div>
+                  <span class="text-zinc-500 block">Especificación</span>
+                  <span class="text-zinc-200">${sake.polishing}</span>
+                </div>
+                <div>
+                  <span class="text-zinc-500 block">Temperatura Ideal</span>
+                  <span class="text-[#D4AF37]">${sake.temp}</span>
+                </div>
+              </div>
+
+              <div class="mt-4">
+                <span class="text-[10px] font-mono uppercase tracking-widest text-zinc-500 block">Notas de Cata del Sommelier</span>
+                <p class="text-xs sm:text-sm text-zinc-300 mt-1 leading-relaxed">${sake.tastingNotes}</p>
+              </div>
+
+              <p class="mt-3 text-[11px] font-mono text-zinc-400">
+                <strong class="text-[#D4AF37]">Tiempos en Armonía:</strong> ${sake.pairedSteps}
+              </p>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] font-mono uppercase tracking-widest text-zinc-400 block">${unitLabel}</span>
+                <span class="font-cinzel text-2xl text-white font-bold">$${unitPrice.toLocaleString('es-ES')}</span>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <button onclick="changeSakeQty('${sake.id}', -1)" class="w-9 h-9 rounded-lg border border-white/15 bg-white/5 hover:border-[#D4AF37] text-white font-mono text-sm transition">−</button>
+                <span class="w-6 text-center font-mono text-sm text-white font-bold">${qty}</span>
+                <button onclick="changeSakeQty('${sake.id}', 1)" class="w-9 h-9 rounded-lg border border-[#D4AF37]/60 bg-[#D4AF37]/15 hover:bg-[#D4AF37] hover:text-black text-[#D4AF37] font-mono text-sm font-bold transition">+</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function updateSakeCalculator() {
+      let total = 0;
+      let itemsDesc = [];
+
+      rareSakes.forEach(sake => {
+        const qty = sakeQuantities[sake.id] || 0;
+        if (qty > 0) {
+          const price = servingMode === 'glass' ? sake.glassPrice : sake.bottlePrice;
+          total += qty * price;
+          itemsDesc.push(`${qty}x ${sake.name} (${servingMode === 'glass' ? 'Copa' : 'Botella'})`);
+        }
+      });
+
+      const summaryEl = document.getElementById('sake-calculator-summary');
+      const totalEl = document.getElementById('sake-calculator-total');
+
+      totalEl.textContent = `$${total.toLocaleString('es-ES')}`;
+      if (itemsDesc.length > 0) {
+        summaryEl.innerHTML = `<span class="text-[#D4AF37] font-medium">Seleccionado:</span> ${itemsDesc.join(' • ')}`;
+      } else {
+        summaryEl.textContent = 'Selecciona copas o botellas arriba para calcular tu degustación líquida o incluye el Flight Sommelier en la reserva.';
+      }
+      return { total, itemsDesc };
+    }
+
+    function resetSakeSelection() {
+      Object.keys(sakeQuantities).forEach(k => sakeQuantities[k] = 0);
+      renderSakeGrid();
+      updateSakeCalculator();
+    }
+
+    function applySakeToReservation() {
+      const { total, itemsDesc } = updateSakeCalculator();
+      const pairingSelect = document.getElementById('reserva-pairing');
+      const customOption = document.getElementById('custom-sake-option');
+
+      if (total > 0) {
+        customOption.classList.remove('hidden');
+        customOption.textContent = `Cava Personalizada (${itemsDesc.join(', ')}) — + $${total.toLocaleString('es-ES')}`;
+        customOption.dataset.customTotal = total;
+        pairingSelect.value = 'custom';
+      } else {
+        pairingSelect.value = 'sommelier';
+      }
+      updateReservationSummary();
+      openDrawer();
+    }
+
+    // 4. LÓGICA DEL PANEL DE RESERVA
+    const drawer = document.getElementById('reserva-drawer');
+    const overlay = document.getElementById('drawer-overlay');
+    const btnOpen = document.getElementById('btn-open-reserva');
+    const btnClose = document.getElementById('btn-close-reserva');
+    const form = document.getElementById('form-reserva');
+
+    function openDrawer() {
+      overlay.classList.remove('opacity-0', 'pointer-events-none');
+      drawer.classList.remove('translate-x-full');
+      document.body.style.overflow = 'hidden';
+      updateReservationSummary();
+    }
+
+    function closeDrawer() {
+      overlay.classList.add('opacity-0', 'pointer-events-none');
+      drawer.classList.add('translate-x-full');
+      document.body.style.overflow = '';
+    }
+
+    btnOpen.addEventListener('click', openDrawer);
+    btnClose.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+
+    function selectSeating(type) {
+      selectedSeating = type;
+      document.querySelectorAll('.seating-btn').forEach(btn => {
+        if (btn.dataset.seating === type) {
+          btn.className = 'seating-btn text-left p-3.5 rounded-xl border border-[#D4AF37] bg-[#D4AF37]/10 transition-all';
+        } else {
+          btn.className = 'seating-btn text-left p-3.5 rounded-xl border border-white/15 bg-white/[0.02] hover:border-white/30 transition-all';
+        }
+      });
+
+      const guestSelect = document.getElementById('reserva-guests');
+      const limitLabel = document.getElementById('guest-limit-label');
+      const currentGuests = parseInt(guestSelect.value, 10);
+
+      if (type === 'tatami') {
+        limitLabel.textContent = '(Máx 4 Plazas)';
+        Array.from(guestSelect.options).forEach(opt => {
+          opt.disabled = parseInt(opt.value, 10) > 4;
+        });
+        if (currentGuests > 4) guestSelect.value = '4';
+      } else {
+        limitLabel.textContent = '(Máx 8 Plazas)';
+        Array.from(guestSelect.options).forEach(opt => {
+          opt.disabled = false;
+        });
+      }
+
+      updateReservationSummary();
+    }
+
+    function selectShift(shift) {
+      selectedShift = shift;
+      document.querySelectorAll('.shift-btn').forEach(btn => {
+        if (btn.dataset.shift === shift) {
+          btn.className = 'shift-btn p-3 rounded-xl border border-[#D4AF37] bg-[#D4AF37]/10 text-left transition-all';
+        } else {
+          btn.className = 'shift-btn p-3 rounded-xl border border-white/15 bg-white/[0.02] hover:border-white/30 text-left transition-all';
+        }
+      });
+    }
+
+    function updateReservationSummary() {
+      const guests = parseInt(document.getElementById('reserva-guests').value, 10) || 2;
+      const pairing = document.getElementById('reserva-pairing').value;
+      const basePerPerson = 680;
+      const baseTotal = guests * basePerPerson;
+
+      let seatingFee = 0;
+      const seatingRow = document.getElementById('summary-seating-row');
+      if (selectedSeating === 'tatami') {
+        seatingFee = guests * 220;
+        seatingRow.classList.remove('hidden');
+        document.getElementById('summary-seating-value').textContent = `+ $${seatingFee.toLocaleString('es-ES')}`;
+      } else {
+        seatingRow.classList.add('hidden');
+      }
+
+      let pairingFee = 0;
+      const pairingRow = document.getElementById('summary-pairing-row');
+      const pairingLabel = document.getElementById('summary-pairing-label');
+      const pairingValue = document.getElementById('summary-pairing-value');
+
+      if (pairing === 'sommelier') {
+        pairingFee = guests * 490;
+        pairingRow.classList.remove('hidden');
+        pairingLabel.textContent = `Flight Sommelier (${guests}x $490)`;
+        pairingValue.textContent = `+ $${pairingFee.toLocaleString('es-ES')}`;
+      } else if (pairing === 'imperial') {
+        pairingFee = guests * 820;
+        pairingRow.classList.remove('hidden');
+        pairingLabel.textContent = `Maridaje Imperial (${guests}x $820)`;
+        pairingValue.textContent = `+ $${pairingFee.toLocaleString('es-ES')}`;
+      } else if (pairing === 'custom') {
+        const customOpt = document.getElementById('custom-sake-option');
+        pairingFee = parseInt(customOpt.dataset.customTotal || '0', 10);
+        pairingRow.classList.remove('hidden');
+        pairingLabel.textContent = 'Selección Personalizada de la Cava';
+        pairingValue.textContent = `+ $${pairingFee.toLocaleString('es-ES')}`;
+      } else {
+        pairingRow.classList.add('hidden');
+      }
+
+      const grandTotal = baseTotal + seatingFee + pairingFee;
+
+      document.getElementById('summary-base-label').textContent = `Menú Omakase 16 Tiempos (${guests}x $680)`;
+      document.getElementById('summary-base-value').textContent = `$${baseTotal.toLocaleString('es-ES')}`;
+      document.getElementById('summary-total-value').textContent = `$${grandTotal.toLocaleString('es-ES')}`;
+
+      return { guests, grandTotal, pairing };
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('reserva-name').value;
+      const email = document.getElementById('reserva-email').value;
+      const phone = document.getElementById('reserva-phone').value;
+      const dateVal = document.getElementById('reserva-date').value;
+      const notes = document.getElementById('reserva-notes').value;
+      const { guests, grandTotal } = updateReservationSummary();
+
+      const protocol = 'KURO-' + Math.floor(100000 + Math.random() * 900000);
+      const seatingName = selectedSeating === 'hinoki' ? 'Barra Kiso Hinoki (Frente al Itamae)' : 'Sala Tatami Privada (Koshitsu)';
+      const pairingText = document.getElementById('reserva-pairing').selectedOptions[0].text;
+
+      const receiptBox = document.getElementById('booking-receipt-box');
+      receiptBox.innerHTML = `
+        <div class="flex justify-between pb-2 border-b border-white/10">
+          <span class="text-zinc-500 font-mono">Protocolo</span>
+          <span class="text-[#D4AF37] font-mono font-bold">${protocol}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-zinc-500">Titular</span>
+          <span class="text-white font-medium">${name}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-zinc-500">Fecha & Turno</span>
+          <span class="text-white font-mono">${dateVal.split('-').reverse().join('/')} a las ${selectedShift}</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-zinc-500">Ambiente</span>
+          <span class="text-white">${seatingName} (${guests} ${guests === 1 ? 'plaza' : 'plazas'})</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-zinc-500">Maridaje</span>
+          <span class="text-zinc-300 text-right max-w-[60%] truncate">${pairingText}</span>
+        </div>
+        ${notes ? `<div class="flex justify-between"><span class="text-zinc-500">Observaciones</span><span class="text-zinc-300 text-right max-w-[60%] truncate">${notes}</span></div>` : ''}
+        <div class="flex justify-between pt-2 border-t border-white/10">
+          <span class="text-zinc-400 font-mono uppercase">Total Estimado</span>
+          <span class="text-[#D4AF37] font-cinzel font-bold text-base">$${grandTotal.toLocaleString('es-ES')}</span>
+        </div>
+      `;
+
+      closeDrawer();
+      const successModal = document.getElementById('booking-success-modal');
+      successModal.classList.remove('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = 'hidden';
+      form.reset();
+    });
+
+    function closeBookingSuccessModal() {
+      const successModal = document.getElementById('booking-success-modal');
+      successModal.classList.add('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = '';
+    }
+
+    // Cerrar modales y panel con la tecla ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeDishModal();
+        closeDrawer();
+        closeBookingSuccessModal();
+      }
+    });
+  </script>
+
+  <!-- SCRIPTS VERCEL PRESERVADOS -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script defer src="/assets/js/demo-i18n-bar.js"></script>
+</body>
+</html>

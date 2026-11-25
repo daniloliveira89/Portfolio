@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- demo-i18n-autodetect --><script>(function(){var cur=location.pathname.endsWith('/en.html')?'en':(location.pathname.endsWith('/es.html')?'es':'pt');var q=(new URLSearchParams(location.search).get('lang')||'').toLowerCase();var target=null;if(q==='pt'||q==='en'||q==='es'){target=q;try{localStorage.setItem('portfolio_lang',q);localStorage.setItem('portfolio_lang_manual','1');}catch(e){}}else if(cur==='pt'){try{if(localStorage.getItem('portfolio_lang_manual')==='1'){var saved=localStorage.getItem('portfolio_lang');if(saved==='en'||saved==='es'||saved==='pt')target=saved;}}catch(e){}if(!target){var langs=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||navigator.userLanguage||'en'];for(var i=0;i<langs.length;i++){var c=(langs[i]||'').toLowerCase().split('-')[0];if(c==='pt'){target='pt';break;}if(c==='es'){target='es';break;}if(c==='en'){target='en';break;}}if(!target)target='en';}}if(target&&target!==cur){var file=target==='en'?'en.html':(target==='es'?'es.html':'index.html');var p=location.pathname;var np=p.slice(-5).toLowerCase()==='.html'?p.slice(0,p.lastIndexOf('/')+1)+file:(p.endsWith('/')?p+file:p+'/'+file);location.replace(np+location.search+location.hash);}})();</script>
+  <title>SUBSONIC COLLECTIVE — Synthwave Band, Analog Studio & Vinyl Record Label</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <style>
+    body {
+      background-color: #06060B;
+      color: #FFFFFF;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    .font-syne { font-family: 'Syne', sans-serif; }
+    .font-mono-synth { font-family: 'JetBrains Mono', monospace; }
+
+    .synth-grid {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(236, 72, 153, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(6, 182, 212, 0.05) 1px, transparent 1px);
+    }
+
+    @keyframes eq { 0%, 100% { height: 6px; } 50% { height: 28px; } }
+    .bar { width: 4px; background: linear-gradient(to top, #EC4899, #22D3EE); border-radius: 2px; display: inline-block; }
+    .playing .bar { animation: eq 0.55s infinite ease-in-out; }
+    .playing .bar:nth-child(2) { animation-delay: 0.15s; }
+    .playing .bar:nth-child(3) { animation-delay: 0.3s; }
+    .playing .bar:nth-child(4) { animation-delay: 0.1s; }
+    .playing .bar:nth-child(5) { animation-delay: 0.25s; }
+
+    @keyframes spinSlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .vinyl-spin {
+      animation: spinSlow 8s linear infinite;
+      animation-play-state: paused;
+    }
+    .playing-vinyl .vinyl-spin {
+      animation-play-state: running;
+    }
+  </style>
+</head>
+<body class="min-h-screen antialiased synth-grid selection:bg-pink-500 selection:text-white">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-[#06060B]/90 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <span class="w-3 h-3 rounded-full bg-pink-500 animate-ping"></span>
+        <span class="font-syne text-xl sm:text-2xl font-extrabold tracking-tighter text-white">
+          SUBSONIC <span class="text-pink-500">// REC</span>
+        </span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-xs font-mono-synth uppercase tracking-widest text-zinc-400">
+        <a href="#deck" class="hover:text-pink-400 transition">Analog Deck</a>
+        <a href="#tour" class="hover:text-pink-400 transition">World Tour '26</a>
+        <a href="#vinyl" class="hover:text-pink-400 transition">Vinyl 180g & Merch</a>
+      </nav>
+
+      <button onclick="openTicketDrawer('VIP Pass + Soundcheck — São Paulo')" class="px-4 py-2 rounded-lg bg-gradient-to-r from-pink-600 to-purple-600 hover:brightness-110 text-xs font-mono-synth uppercase font-bold">
+        VIP Backstage Pass
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO & MASTER TAPE PLAYER -->
+  <main class="max-w-7xl mx-auto px-6 py-14">
+    <section id="deck" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pb-20 border-b border-white/10">
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-3 px-3.5 py-1.5 rounded-full bg-pink-500/10 border border-pink-500/30 text-pink-400 text-xs font-mono-synth">
+          <span>NEW LP "NEON HORIZON" • RECORDED ON ROLAND JUNO-106 & PROPHET-5 SYNTHS</span>
+        </div>
+
+        <h1 class="font-syne text-5xl sm:text-7xl font-extrabold leading-[0.95] tracking-tight">
+          NEON HORIZON <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-400 to-cyan-400">WORLD TOUR.</span>
+        </h1>
+
+        <p class="text-zinc-400 text-sm sm:text-base max-w-xl leading-relaxed">
+          Analog soundscapes, gated-reverb drum machines, and live cyberpunk aesthetics with laser projections synchronized via SMPTE Timecode.
+        </p>
+
+        <!-- Interactive Master Tape Tracklist -->
+        <div class="space-y-2.5 font-mono-synth text-xs pt-2" id="tracklist">
+          <div onclick="playTrack(0)" class="track-row p-4 rounded-xl bg-zinc-900/90 border border-pink-500 cursor-pointer flex items-center justify-between transition">
+            <div class="flex items-center gap-3">
+              <span class="text-pink-400 font-bold">▶ 01</span>
+              <span class="text-white font-semibold">Midnight Overdrive (1984 Extended Mix)</span>
+            </div>
+            <div class="flex items-center gap-4">
+              <span class="hidden sm:inline text-zinc-500">118 BPM • Analog Master</span>
+              <span class="text-pink-400">03:48</span>
+            </div>
+          </div>
+
+          <div onclick="playTrack(1)" class="track-row p-4 rounded-xl bg-zinc-900/60 border border-white/10 hover:border-pink-500/60 cursor-pointer flex items-center justify-between transition">
+            <div class="flex items-center gap-3">
+              <span class="text-zinc-400 font-bold">▶ 02</span>
+              <span class="text-white font-semibold">Analog Dreams in Shinjuku</span>
+            </div>
+            <div class="flex items-center gap-4">
+              <span class="hidden sm:inline text-zinc-500">105 BPM • Roland TB-303</span>
+              <span class="text-cyan-400">04:12</span>
+            </div>
+          </div>
+
+          <div onclick="playTrack(2)" class="track-row p-4 rounded-xl bg-zinc-900/60 border border-white/10 hover:border-pink-500/60 cursor-pointer flex items-center justify-between transition">
+            <div class="flex items-center gap-3">
+              <span class="text-zinc-400 font-bold">▶ 03</span>
+              <span class="text-white font-semibold">Cybernetic Heartbeat (feat. Nova)</span>
+            </div>
+            <div class="flex items-center gap-4">
+              <span class="hidden sm:inline text-zinc-500">124 BPM • Vocoder Lead</span>
+              <span class="text-pink-400">05:04</span>
+            </div>
+          </div>
+
+          <div onclick="playTrack(3)" class="track-row p-4 rounded-xl bg-zinc-900/60 border border-white/10 hover:border-pink-500/60 cursor-pointer flex items-center justify-between transition">
+            <div class="flex items-center gap-3">
+              <span class="text-zinc-400 font-bold">▶ 04</span>
+              <span class="text-white font-semibold">Tears in Neon Rain (Outro)</span>
+            </div>
+            <div class="flex items-center gap-4">
+              <span class="hidden sm:inline text-zinc-500">92 BPM • CS-80 Brass</span>
+              <span class="text-cyan-400">06:19</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vinyl Turntable & Live Synth Telemetry -->
+      <div class="lg:col-span-5">
+        <div id="vinyl-box" class="p-8 rounded-3xl bg-zinc-900/90 border border-pink-500/30 shadow-[0_0_50px_rgba(236,72,153,0.15)] text-center relative">
+          <div class="flex items-center justify-between mb-6 font-mono-synth text-xs">
+            <div id="eq-bars" class="flex items-end gap-1 h-7">
+              <span class="bar h-2"></span><span class="bar h-4"></span><span class="bar h-2"></span><span class="bar h-5"></span><span class="bar h-3"></span>
+            </div>
+            <span id="now-playing" class="text-pink-400 truncate max-w-[230px]">STANDBY — CLICK A TRACK</span>
+          </div>
+
+          <!-- Spinning Vinyl Disc -->
+          <div class="w-60 h-60 mx-auto rounded-full bg-gradient-to-tr from-zinc-950 via-zinc-800 to-zinc-950 border-4 border-zinc-700 flex items-center justify-center shadow-2xl vinyl-spin relative">
+            <div class="w-24 h-24 rounded-full bg-gradient-to-tr from-pink-500 to-cyan-400 flex items-center justify-center">
+              <div class="w-5 h-5 rounded-full bg-[#06060B]"></div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-5 border-t border-white/10 flex items-center justify-between font-mono-synth text-xs text-zinc-400">
+            <span id="track-bpm">118 BPM • 24-BIT MASTER</span>
+            <button onclick="togglePlayPause()" id="btn-master-play" class="px-4 py-1.5 rounded-full bg-pink-600 text-white font-bold">
+              ▶ PLAY / PAUSE
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORLD TOUR DATES -->
+    <section id="tour" class="py-20 border-b border-white/10">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+        <div>
+          <span class="text-xs font-mono-synth uppercase tracking-widest text-cyan-400">// LIVE AUDIOVISUAL EXPERIENCE</span>
+          <h2 class="font-syne text-3xl sm:text-5xl font-extrabold mt-1">2026 Tour Dates</h2>
+        </div>
+        <span class="text-xs font-mono-synth text-zinc-400">Official Tier with Zero Convenience Fees</span>
+      </div>
+
+      <div class="space-y-4 font-mono-synth text-xs">
+        <div class="p-6 rounded-2xl bg-zinc-900/80 border border-white/10 hover:border-pink-500/50 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition">
+          <div>
+            <span class="text-pink-400 font-bold">NOV 24, 2026 • SÃO PAULO, BRAZIL</span>
+            <h3 class="font-syne text-xl text-white mt-0.5">Audio Club — South American Release Night</h3>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="text-zinc-400">Floor: $35 • VIP: $65</span>
+            <button onclick="openTicketDrawer('NOV 24 • SÃO PAULO (Audio Club)')" class="px-5 py-2.5 rounded-xl bg-pink-600 hover:bg-pink-500 text-white font-bold uppercase">
+              Reserve Tickets
+            </button>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-zinc-900/80 border border-white/10 hover:border-pink-500/50 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition">
+          <div>
+            <span class="text-cyan-400 font-bold">DEC 02, 2026 • BUENOS AIRES, ARGENTINA</span>
+            <h3 class="font-syne text-xl text-white mt-0.5">Niceto Club — Palermo</h3>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="text-zinc-400">Last 40 Tickets</span>
+            <button onclick="openTicketDrawer('DEC 02 • BUENOS AIRES (Niceto Club)')" class="px-5 py-2.5 rounded-xl bg-pink-600 hover:bg-pink-500 text-white font-bold uppercase">
+              Reserve Tickets
+            </button>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-zinc-900/80 border border-white/10 hover:border-pink-500/50 flex flex-col sm:flex-row sm:items-center justify-between gap-4 transition">
+          <div>
+            <span class="text-pink-400 font-bold">DEC 11, 2026 • LONDON, UK</span>
+            <h3 class="font-syne text-xl text-white mt-0.5"> Outernet London — Immersive 8K Screens</h3>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="text-zinc-400">VIP Meet & Greet Available</span>
+            <button onclick="openTicketDrawer('DEC 11 • LONDON (Outernet)')" class="px-5 py-2.5 rounded-xl bg-pink-600 hover:bg-pink-500 text-white font-bold uppercase">
+              Reserve Tickets
+            </button>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-zinc-900/40 border border-white/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 opacity-70">
+          <div>
+            <span class="text-zinc-500 font-bold">DEC 18, 2026 • BERLIN, GERMANY</span>
+            <h3 class="font-syne text-xl text-zinc-400 mt-0.5">Kraftwerk Berlin Arena</h3>
+          </div>
+          <span class="px-4 py-2 rounded-lg bg-zinc-800 text-zinc-500 font-bold">SOLD OUT</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- VINYL 180G & MERCH STORE -->
+    <section id="vinyl" class="py-20">
+      <div class="mb-10">
+        <span class="text-xs font-mono-synth uppercase tracking-widest text-pink-400">// LIMITED COLLECTOR'S EDITION</span>
+        <h2 class="font-syne text-3xl sm:text-5xl font-extrabold mt-1">180g Vinyl & Official Merch</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-3xl bg-zinc-900/90 border border-white/10 flex flex-col justify-between">
+          <div>
+            <span class="px-2.5 py-1 rounded bg-pink-500/20 text-pink-300 text-[10px] font-mono-synth uppercase">300 Numbered Copies</span>
+            <h3 class="font-syne text-2xl mt-3">Double LP "Neon Horizon" Translucent Magenta 180g</h3>
+            <p class="text-xs text-zinc-400 mt-2">Gatefold sleeve with UV spot gloss, 16-page booklet, and 24-bit WAV download code.</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+            <strong class="font-mono-synth text-xl text-white">$48</strong>
+            <button onclick="openTicketDrawer('Neon Horizon 180g Double Vinyl LP ($48)')" class="px-4 py-2 rounded-xl bg-white text-black hover:bg-pink-400 text-xs font-bold uppercase transition">
+              Order LP
+            </button>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-zinc-900/90 border border-white/10 flex flex-col justify-between">
+          <div>
+            <span class="px-2.5 py-1 rounded bg-cyan-500/20 text-cyan-300 text-[10px] font-mono-synth uppercase">Heavyweight 460 GSM</span>
+            <h3 class="font-syne text-2xl mt-3">Embroidered Tour '26 Bomber Jacket</h3>
+            <p class="text-xs text-zinc-400 mt-2">Waterproof ballistic nylon with neon satin lining and modular Subsonic Records patch.</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+            <strong class="font-mono-synth text-xl text-white">$98</strong>
+            <button onclick="openTicketDrawer('Tour 2026 Bomber Jacket ($98)')" class="px-4 py-2 rounded-xl bg-white text-black hover:bg-cyan-400 text-xs font-bold uppercase transition">
+              Buy Merch
+            </button>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-zinc-900/90 border border-white/10 flex flex-col justify-between">
+          <div>
+            <span class="px-2.5 py-1 rounded bg-purple-500/20 text-purple-300 text-[10px] font-mono-synth uppercase">Producers & Musicians</span>
+            <h3 class="font-syne text-2xl mt-3">Subsonic Analog Synth Sample Pack (WAV)</h3>
+            <p class="text-xs text-zinc-400 mt-2">480 original loops and presets recorded directly from our Prophet-5, Juno-106, and LinnDrum.</p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+            <strong class="font-mono-synth text-xl text-white">$29</strong>
+            <button onclick="openTicketDrawer('Subsonic Analog Sample Pack WAV ($29)')" class="px-4 py-2 rounded-xl bg-white text-black hover:bg-purple-400 text-xs font-bold uppercase transition">
+              Download Pack
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- TICKET & MERCH DRAWER -->
+  <div id="synth-overlay" onclick="closeTicketDrawer()" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden"></div>
+  <aside id="synth-drawer" class="fixed top-0 right-0 z-50 h-full w-full sm:w-[440px] bg-zinc-950 border-l border-pink-500/30 p-7 transform translate-x-full transition-transform duration-300 flex flex-col justify-between">
+    <div>
+      <div class="flex items-center justify-between pb-4 border-b border-white/10">
+        <div>
+          <span class="text-[10px] font-mono-synth uppercase text-pink-400">Subsonic Box Office</span>
+          <h3 class="font-syne text-2xl">Issue Ticket / Merch</h3>
+        </div>
+        <button onclick="closeTicketDrawer()" class="text-zinc-400 hover:text-white">✕</button>
+      </div>
+
+      <form onsubmit="confirmTicketOrder(event)" class="mt-6 space-y-4 font-mono-synth text-xs">
+        <div>
+          <label class="block text-zinc-400 uppercase mb-1">Selected Item / Show</label>
+          <input type="text" id="ticket-item-input" readonly class="w-full px-3.5 py-3 rounded-xl bg-zinc-900 border border-pink-500/40 text-pink-300 font-bold">
+        </div>
+        <div>
+          <label class="block text-zinc-400 uppercase mb-1">Access Tier</label>
+          <select class="w-full px-3.5 py-3 rounded-xl bg-zinc-900 border border-white/15 text-white">
+            <option>Premium Floor (Tier 1)</option>
+            <option>VIP Backstage + Soundcheck + Signed Vinyl</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-zinc-400 uppercase mb-1">Your Full Name *</label>
+          <input type="text" required placeholder="Name on QR Code" class="w-full px-3.5 py-3 rounded-xl bg-zinc-900 border border-white/15 text-white">
+        </div>
+        <div>
+          <label class="block text-zinc-400 uppercase mb-1">Email for QR Code Delivery *</label>
+          <input type="email" required placeholder="you@email.com" class="w-full px-3.5 py-3 rounded-xl bg-zinc-900 border border-white/15 text-white">
+        </div>
+        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 hover:brightness-110 text-white font-bold uppercase tracking-widest">
+          Generate Access QR Code →
+        </button>
+      </form>
+
+      <div id="ticket-confirmed" class="hidden mt-5 p-4 rounded-xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 text-xs font-mono-synth">
+        ✓ Reservation #SUB-2026 issued! Your Apple Wallet / Google Pay pass has been sent to your email.
+      </div>
+    </div>
+
+    <div class="pt-4 border-t border-white/10 text-[11px] font-mono-synth text-zinc-500">
+      SUBSONIC RECORDS INDEPENDENT LABEL © 2026
+    </div>
+  </aside>
+
+  <script>
+    const TRACKS = [
+      { title: "01. Midnight Overdrive (1984 Extended Mix)", bpm: "118 BPM • Juno-106 Arpeggio" },
+      { title: "02. Analog Dreams in Shinjuku", bpm: "105 BPM • Roland TB-303 Acid Lead" },
+      { title: "03. Cybernetic Heartbeat (feat. Nova)", bpm: "124 BPM • Vocoder Stereo" },
+      { title: "04. Tears in Neon Rain (Outro)", bpm: "92 BPM • Yamaha CS-80 Brass" }
+    ];
+    let isPlaying = false;
+
+    window.playTrack = function(idx) {
+      isPlaying = true;
+      const t = TRACKS[idx];
+      document.getElementById('eq-bars').classList.add('playing');
+      document.getElementById('vinyl-box').classList.add('playing-vinyl');
+      document.getElementById('now-playing').textContent = 'PLAYING: ' + t.title;
+      document.getElementById('track-bpm').textContent = t.bpm;
+    };
+
+    window.togglePlayPause = function() {
+      if (!isPlaying) {
+        playTrack(0);
+      } else {
+        isPlaying = false;
+        document.getElementById('eq-bars').classList.remove('playing');
+        document.getElementById('vinyl-box').classList.remove('playing-vinyl');
+        document.getElementById('now-playing').textContent = 'PAUSED';
+      }
+    };
+
+    function openTicketDrawer(itemText) {
+      document.getElementById('ticket-item-input').value = itemText;
+      document.getElementById('ticket-confirmed').classList.add('hidden');
+      document.getElementById('synth-overlay').classList.remove('hidden');
+      document.getElementById('synth-drawer').classList.remove('translate-x-full');
+    }
+
+    function closeTicketDrawer() {
+      document.getElementById('synth-overlay').classList.add('hidden');
+      document.getElementById('synth-drawer').classList.add('translate-x-full');
+    }
+
+    function confirmTicketOrder(e) {
+      e.preventDefault();
+      document.getElementById('ticket-confirmed').classList.remove('hidden');
+      e.target.reset();
+    }
+  </script>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script defer src="/assets/js/demo-i18n-bar.js"></script>
+</body>
+</html>

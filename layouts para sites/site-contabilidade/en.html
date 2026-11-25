@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- demo-i18n-autodetect --><script>(function(){var cur=location.pathname.endsWith('/en.html')?'en':(location.pathname.endsWith('/es.html')?'es':'pt');var q=(new URLSearchParams(location.search).get('lang')||'').toLowerCase();var target=null;if(q==='pt'||q==='en'||q==='es'){target=q;try{localStorage.setItem('portfolio_lang',q);localStorage.setItem('portfolio_lang_manual','1');}catch(e){}}else if(cur==='pt'){try{if(localStorage.getItem('portfolio_lang_manual')==='1'){var saved=localStorage.getItem('portfolio_lang');if(saved==='en'||saved==='es'||saved==='pt')target=saved;}}catch(e){}if(!target){var langs=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||navigator.userLanguage||'en'];for(var i=0;i<langs.length;i++){var c=(langs[i]||'').toLowerCase().split('-')[0];if(c==='pt'){target='pt';break;}if(c==='es'){target='es';break;}if(c==='en'){target='en';break;}}if(!target)target='en';}}if(target&&target!==cur){var file=target==='en'?'en.html':(target==='es'?'es.html':'index.html');var p=location.pathname;var np=p.slice(-5).toLowerCase()==='.html'?p.slice(0,p.lastIndexOf('/')+1)+file:(p.endsWith('/')?p+file:p+'/'+file);location.replace(np+location.search+location.hash);}})();</script>
+  <title>LEDGER PRIME — Tax Engineering, Advisory Accounting & Financial BPO</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <style>
+    body { background-color: #061018; color: #F8FAFC; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+    .font-mono-tax { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="min-h-screen antialiased selection:bg-emerald-400 selection:text-slate-950">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-[#061018]/90 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-emerald-500 text-slate-950 font-black flex items-center justify-center">LP</div>
+        <div>
+          <span class="font-extrabold text-xl tracking-tight block leading-none">LEDGER <span class="text-emerald-400">PRIME</span></span>
+          <span class="text-[10px] font-mono-tax text-slate-400 uppercase tracking-widest block mt-0.5">CRC-SP 2SP039481 • Tax Advisory</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-wider text-slate-300">
+        <a href="#simulador" class="hover:text-emerald-400">Factor R Calculator</a>
+        <a href="#especialidades" class="hover:text-emerald-400">Specialized Niches</a>
+        <a href="#planos" class="hover:text-emerald-400">Monthly Plans</a>
+      </nav>
+
+      <button onclick="openTaxDrawer('Free Company Formation / Migration')" class="px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs uppercase tracking-wider transition">
+        Open Company Free
+      </button>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-14">
+    <!-- HERO & TAX SIMULATOR -->
+    <section id="simulador" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pb-20 border-b border-white/10">
+      <div class="lg:col-span-6 space-y-6">
+        <span class="px-3.5 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase">
+          Legal Tax Optimization • Factor R & Service Exports
+        </span>
+        <h1 class="text-4xl sm:text-6xl font-extrabold leading-[1.05]">
+          Legally cut your taxes from <span class="text-red-400 line-through">27.5%</span> down to <span class="text-emerald-400">as low as 3.05%.</span>
+        </h1>
+        <p class="text-slate-400 text-base leading-relaxed">
+          Advisory accounting specialized in Physicians (Hospital Tax Equivalence), Remote Developers Exporting Services (PIS/COFINS/ISS Exemption), Digital Agencies, and Family Holding Companies.
+        </p>
+
+        <div class="grid grid-cols-3 gap-3 pt-2 font-mono-tax">
+          <div class="p-4 rounded-2xl bg-[#0C1B27] border border-white/10">
+            <strong class="text-2xl text-emerald-400 block">48h</strong>
+            <span class="text-[10px] text-slate-400 uppercase">Active Entity w/ Digital Cert</span>
+          </div>
+          <div class="p-4 rounded-2xl bg-[#0C1B27] border border-white/10">
+            <strong class="text-2xl text-white block">3.05%</strong>
+            <span class="text-[10px] text-slate-400 uppercase">Remote Devs Exporting</span>
+          </div>
+          <div class="p-4 rounded-2xl bg-[#0C1B27] border border-white/10">
+            <strong class="text-2xl text-white block">6.00%</strong>
+            <span class="text-[10px] text-slate-400 uppercase">Annex III Factor R</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tax Savings Engine -->
+      <div class="lg:col-span-6 bg-[#0C1B27] border border-emerald-500/35 rounded-3xl p-8 shadow-2xl">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <h2 class="text-xl font-bold text-white">Tax Savings Simulator</h2>
+            <p class="text-xs text-slate-400">Choose your sector and drag the monthly revenue slider:</p>
+          </div>
+          <select id="tax-sector" onchange="calcTax()" class="px-3 py-2 rounded-xl bg-black border border-emerald-500/40 text-xs font-bold text-emerald-300">
+            <option value="0.06">Medical / Healthcare / Consulting (6%)</option>
+            <option value="0.0305">Dev / Tech USD/EUR Export (3.05%)</option>
+            <option value="0.078">Agency / Digital Products / SaaS (7.8%)</option>
+          </select>
+        </div>
+
+        <div>
+          <div class="flex justify-between items-baseline mb-2">
+            <span class="text-xs text-slate-400">Gross Monthly Revenue</span>
+            <strong id="fat-label" class="text-3xl font-extrabold text-white font-mono-tax">$35,000</strong>
+          </div>
+          <input id="fat-slider" type="range" min="10000" max="200000" step="5000" value="35000" oninput="calcTax()" class="w-full accent-emerald-400">
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mt-6 font-mono-tax">
+          <div class="p-4 rounded-xl bg-red-500/10 border border-red-500/25">
+            <span class="text-[10px] uppercase text-red-300 block">Individual / No Tax Planning (27.5%)</span>
+            <strong id="tax-pf" class="text-lg font-bold text-red-400">$9,625 /mo</strong>
+          </div>
+          <div class="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30">
+            <span id="tax-rate-lbl" class="text-[10px] uppercase text-emerald-300 block">Corporate Ledger Prime (6.0%)</span>
+            <strong id="tax-pj" class="text-lg font-bold text-emerald-400">$2,100 /mo</strong>
+          </div>
+        </div>
+
+        <div class="mt-5 p-4 rounded-xl bg-black/60 border border-white/10 flex justify-between items-center">
+          <span class="text-xs text-slate-300">Net Annual Savings in Your Pocket:</span>
+          <strong id="tax-save" class="text-2xl font-extrabold text-emerald-400 font-mono-tax">+$90,300 /yr</strong>
+        </div>
+
+        <button onclick="openTaxDrawer('Tax Assessment — Savings of ' + document.getElementById('tax-save').textContent)" class="mt-6 w-full py-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-xs uppercase tracking-widest transition">
+          Get Free Tax Study →
+        </button>
+      </div>
+    </section>
+
+    <!-- SPECIALIZED NICHES -->
+    <section id="especialidades" class="py-16 border-b border-white/10 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="p-7 rounded-3xl bg-[#0C1B27] border border-white/10">
+        <span class="text-xs font-mono-tax text-emerald-400">01 // TECH & EXPORTS</span>
+        <h3 class="text-xl font-bold mt-2">Remote Devs & Engineers</h3>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Leverage constitutional exemptions on ISS, PIS, and COFINS when exporting technology services to the US and Europe, with effective rates starting at 3.05%.</p>
+      </div>
+      <div class="p-7 rounded-3xl bg-[#0C1B27] border border-white/10">
+        <span class="text-xs font-mono-tax text-emerald-400">02 // HEALTHCARE & CLINICS</span>
+        <h3 class="text-xl font-bold mt-2">Physicians & Hospital Equivalence</h3>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Reduce corporate income and social contribution tax bases from 32% down to 8% and 12% for medical and dental clinics performing surgical procedures.</p>
+      </div>
+      <div class="p-7 rounded-3xl bg-[#0C1B27] border border-white/10">
+        <span class="text-xs font-mono-tax text-emerald-400">03 // FINANCIAL BPO</span>
+        <h3 class="text-xl font-bold mt-2">Outsourced Payables & Payroll</h3>
+        <p class="text-xs text-slate-400 mt-2 leading-relaxed">Daily bank reconciliation via Open Finance, automated invoice issuance, and 100% tax-exempt profit distributions.</p>
+      </div>
+    </section>
+
+    <!-- PLANS -->
+    <section id="planos" class="py-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="p-7 rounded-3xl bg-[#0C1B27] border border-white/10 flex flex-col justify-between">
+        <div>
+          <span class="text-xs font-mono-tax text-slate-400 uppercase">Solo Entity / Dev</span>
+          <h3 class="text-2xl font-bold mt-1">Smart Entity Plan</h3>
+          <div class="text-3xl font-extrabold text-white my-3 font-mono-tax">$289 <span class="text-xs font-normal text-slate-400">/mo</span></div>
+          <p class="text-xs text-slate-400">Revenue up to $40k/mo • Factor R executive payroll optimization and Digital Certificate included.</p>
+        </div>
+        <button onclick="openTaxDrawer('Smart Entity Plan ($289/mo)')" class="mt-6 py-3 rounded-xl border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500 hover:text-black font-bold text-xs uppercase transition">Select Plan</button>
+      </div>
+
+      <div class="p-7 rounded-3xl bg-[#102536] border-2 border-emerald-500 flex flex-col justify-between">
+        <div>
+          <span class="text-xs font-mono-tax text-emerald-400 uppercase font-bold">Most Popular</span>
+          <h3 class="text-2xl font-bold mt-1">Corporate & Clinics</h3>
+          <div class="text-3xl font-extrabold text-emerald-400 my-3 font-mono-tax">$540 <span class="text-xs font-normal text-slate-300">/mo</span></div>
+          <p class="text-xs text-slate-300">Revenue up to $150k/mo • Dedicated accountant on WhatsApp, payroll for up to 5 employees, and quarterly tax planning.</p>
+        </div>
+        <button onclick="openTaxDrawer('Corporate & Clinics Plan ($540/mo)')" class="mt-6 py-3 rounded-xl bg-emerald-500 text-slate-950 font-bold text-xs uppercase transition">Select Plan</button>
+      </div>
+
+      <div class="p-7 rounded-3xl bg-[#0C1B27] border border-white/10 flex flex-col justify-between">
+        <div>
+          <span class="text-xs font-mono-tax text-slate-400 uppercase">Full BPO + CFO</span>
+          <h3 class="text-2xl font-bold mt-1">Holding & Real Profit</h3>
+          <div class="text-3xl font-extrabold text-white my-3 font-mono-tax">$1,290 <span class="text-xs font-normal text-slate-400">/mo</span></div>
+          <p class="text-xs text-slate-400">Full accounting + Financial BPO, monthly management P&L statement, and asset protection structuring.</p>
+        </div>
+        <button onclick="openTaxDrawer('Holding & BPO Plan ($1,290/mo)')" class="mt-6 py-3 rounded-xl border border-emerald-500/40 text-emerald-400 hover:bg-emerald-500 hover:text-black font-bold text-xs uppercase transition">Select Plan</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- TAX DRAWER -->
+  <div id="tax-overlay" onclick="closeTaxDrawer()" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden"></div>
+  <aside id="tax-drawer" class="fixed top-0 right-0 z-50 h-full w-full sm:w-[440px] bg-[#0C1B27] border-l border-emerald-500/30 p-8 transform translate-x-full transition-transform duration-300 flex flex-col justify-between">
+    <div>
+      <div class="flex justify-between items-center pb-4 border-b border-white/10">
+        <h3 class="font-extrabold text-2xl">Tax Advisory</h3>
+        <button onclick="closeTaxDrawer()" class="text-slate-400 hover:text-white">✕</button>
+      </div>
+      <form onsubmit="submitTax(event)" class="mt-6 space-y-4 text-xs">
+        <div>
+          <label class="block text-slate-400 uppercase mb-1">Selected Assessment</label>
+          <input type="text" id="tax-plan-input" readonly class="w-full px-3.5 py-3 rounded-xl bg-black border border-emerald-500/40 text-emerald-400 font-bold">
+        </div>
+        <div>
+          <label class="block text-slate-400 uppercase mb-1">Your Name *</label>
+          <input type="text" required placeholder="Full Name" class="w-full px-3.5 py-3 rounded-xl bg-black border border-white/15 text-white">
+        </div>
+        <div>
+          <label class="block text-slate-400 uppercase mb-1">WhatsApp *</label>
+          <input type="tel" required placeholder="+1 (555) 019-9999" class="w-full px-3.5 py-3 rounded-xl bg-black border border-white/15 text-white">
+        </div>
+        <button type="submit" class="w-full py-4 rounded-xl bg-emerald-500 text-slate-950 font-extrabold uppercase tracking-widest">
+          Speak with a Senior Accountant →
+        </button>
+      </form>
+      <div id="tax-msg" class="hidden mt-5 p-4 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs">
+        ✓ Request confirmed! A specialist accountant will send your comparative tax spreadsheet.
+      </div>
+    </div>
+    <div class="text-[11px] font-mono-tax text-slate-500 border-t border-white/10 pt-4">
+      LEDGER PRIME TAX ADVISORY • ACTIVE LICENSE
+    </div>
+  </aside>
+
+  <script>
+    function calcTax() {
+      const fat = Number(document.getElementById('fat-slider').value);
+      const rate = Number(document.getElementById('tax-sector').value);
+      const pf = fat * 0.275;
+      const pj = fat * rate;
+      const saveYear = (pf - pj) * 12;
+
+      document.getElementById('fat-label').textContent = '$' + fat.toLocaleString('en-US');
+      document.getElementById('tax-rate-lbl').textContent = `Corporate Ledger Prime (${(rate * 100).toFixed(2)}%)`;
+      document.getElementById('tax-pf').textContent = '$' + Math.round(pf).toLocaleString('en-US') + ' /mo';
+      document.getElementById('tax-pj').textContent = '$' + Math.round(pj).toLocaleString('en-US') + ' /mo';
+      document.getElementById('tax-save').textContent = '+$' + Math.round(saveYear).toLocaleString('en-US') + ' /yr';
+    }
+
+    function openTaxDrawer(plan) {
+      document.getElementById('tax-plan-input').value = plan;
+      document.getElementById('tax-msg').classList.add('hidden');
+      document.getElementById('tax-overlay').classList.remove('hidden');
+      document.getElementById('tax-drawer').classList.remove('translate-x-full');
+    }
+
+    function closeTaxDrawer() {
+      document.getElementById('tax-overlay').classList.add('hidden');
+      document.getElementById('tax-drawer').classList.add('translate-x-full');
+    }
+
+    function submitTax(e) {
+      e.preventDefault();
+      document.getElementById('tax-msg').classList.remove('hidden');
+      e.target.reset();
+    }
+
+    calcTax();
+  </script>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script defer src="/assets/js/demo-i18n-bar.js"></script>
+</body>
+</html>

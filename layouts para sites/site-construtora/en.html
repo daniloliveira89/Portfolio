@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- demo-i18n-autodetect --><script>(function(){var cur=location.pathname.endsWith('/en.html')?'en':(location.pathname.endsWith('/es.html')?'es':'pt');var q=(new URLSearchParams(location.search).get('lang')||'').toLowerCase();var target=null;if(q==='pt'||q==='en'||q==='es'){target=q;try{localStorage.setItem('portfolio_lang',q);localStorage.setItem('portfolio_lang_manual','1');}catch(e){}}else if(cur==='pt'){try{if(localStorage.getItem('portfolio_lang_manual')==='1'){var saved=localStorage.getItem('portfolio_lang');if(saved==='en'||saved==='es'||saved==='pt')target=saved;}}catch(e){}if(!target){var langs=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||navigator.userLanguage||'en'];for(var i=0;i<langs.length;i++){var c=(langs[i]||'').toLowerCase().split('-')[0];if(c==='pt'){target='pt';break;}if(c==='es'){target='es';break;}if(c==='en'){target='en';break;}}if(!target)target='en';}}if(target&&target!==cur){var file=target==='en'?'en.html':(target==='es'?'es.html':'index.html');var p=location.pathname;var np=p.slice(-5).toLowerCase()==='.html'?p.slice(0,p.lastIndexOf('/')+1)+file:(p.endsWith('/')?p+file:p+'/'+file);location.replace(np+location.search+location.hash);}})();</script>
+  <title>MONOLITH ENGINEERING &amp; DEVELOPMENT — Triple-A Infrastructure &amp; Logistics Parks</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <style>
+    body { background-color: #0B0E14; color: #F8FAFC; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+    .font-display { font-family: 'Syne', sans-serif; }
+    .font-mono-eng { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="min-h-screen antialiased selection:bg-amber-500 selection:text-black">
+
+  <!-- TOP COMPLIANCE BAR -->
+  <div class="bg-[#07090D] border-b border-white/10 py-2 px-6 text-[11px] font-mono-eng text-slate-400">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <span>ISO 9001:2015 • PBQP-H LEVEL A • LEED PLATINUM GREEN BUILDING CERTIFIED</span>
+      <span class="text-amber-400">1,450,000 m² Delivered with Zero Contractual Delays</span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-[#0B0E14]/90 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-amber-500 text-black font-black flex items-center justify-center rounded-sm text-lg">M</div>
+        <div>
+          <span class="font-extrabold tracking-tight text-lg block leading-none">MONOLITH <span class="text-amber-500">ENGINEERING</span></span>
+          <span class="text-[10px] font-mono-eng uppercase tracking-widest text-slate-400 block mt-1">Development &amp; Turnkey B2B</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-xs font-mono-eng uppercase tracking-wider text-slate-300">
+        <a href="#telemetria" class="hover:text-amber-400">Site Telemetry</a>
+        <a href="#empreendimentos" class="hover:text-amber-400">Active Portfolio</a>
+        <a href="#viabilidade" class="hover:text-amber-400">Built-to-Suit Simulator</a>
+      </nav>
+
+      <button onclick="openMonoDrawer('Turnkey / Development Quote')" class="px-5 py-2.5 rounded-sm bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs uppercase tracking-widest transition">
+        Investor Portal
+      </button>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-14">
+    <!-- HERO & LIVE CONSTRUCTION TELEMETRY -->
+    <section id="telemetria" class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pb-20 border-b border-white/10">
+      <div class="lg:col-span-6 space-y-6">
+        <span class="px-3 py-1 rounded bg-amber-500/15 border border-amber-500/30 text-amber-400 text-xs font-mono-eng uppercase font-bold">
+          Heavy Civil Engineering &amp; High-End Development
+        </span>
+        <h1 class="font-display text-4xl sm:text-6xl font-extrabold leading-[1.03]">
+          Structural solidity and delivery <span class="text-amber-500">strictly on schedule.</span>
+        </h1>
+        <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+          We execute Triple-A corporate towers, Cross-Docking logistics parks, and signature residential buildings with daily physical-financial monitoring via drones and BIM laser scanning.
+        </p>
+
+        <div>
+          <span class="text-xs font-mono-eng uppercase text-slate-400 block mb-2.5">Inspect Live Construction Schedule:</span>
+          <div class="flex flex-wrap gap-2">
+            <button onclick="setObra(0, this)" class="obra-btn px-4 py-2.5 rounded-lg bg-amber-500 text-black font-bold text-xs">01. Horizon Jardins Tower</button>
+            <button onclick="setObra(1, this)" class="obra-btn px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white font-bold text-xs">02. Anhanguera Logistics Hub</button>
+            <button onclick="setObra(2, this)" class="obra-btn px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white font-bold text-xs">03. Ibirapuera Park Reserve</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Telemetry Dashboard Card -->
+      <div class="lg:col-span-6 bg-[#131822] border border-amber-500/30 rounded-2xl p-7 sm:p-9 shadow-2xl">
+        <div class="flex justify-between items-start pb-5 border-b border-white/10">
+          <div>
+            <span id="obra-status" class="text-xs font-mono-eng uppercase text-amber-400 block">UNDER CONSTRUCTION • DELIVERY OCT/2026</span>
+            <h2 id="obra-nome" class="text-2xl sm:text-3xl font-extrabold mt-1">Horizon Jardins Tower</h2>
+            <span id="obra-vgv" class="text-xs text-slate-400 font-mono-eng mt-0.5 block">GDV: $84 Million • 28 Floors</span>
+          </div>
+          <div class="text-right">
+            <span class="text-[10px] font-mono-eng uppercase text-slate-400 block">Overall Progress</span>
+            <span id="obra-geral" class="text-4xl font-black text-amber-400 font-mono-eng">84%</span>
+          </div>
+        </div>
+
+        <div class="space-y-4 mt-6 font-mono-eng text-xs">
+          <div>
+            <div class="flex justify-between mb-1"><span>1. Earthworks &amp; Continuous Flight Auger Piles</span><strong id="bar1-txt" class="text-emerald-400">100%</strong></div>
+            <div class="w-full h-2 bg-black rounded-full overflow-hidden"><div id="bar1" class="h-full bg-emerald-500 transition-all duration-500" style="width:100%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-1"><span>2. Post-Tensioned Concrete Superstructure (45 MPa)</span><strong id="bar2-txt" class="text-amber-400">95%</strong></div>
+            <div class="w-full h-2 bg-black rounded-full overflow-hidden"><div id="bar2" class="h-full bg-amber-500 transition-all duration-500" style="width:95%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-1"><span>3. Plumbing, Electrical &amp; HVAC Systems</span><strong id="bar3-txt" class="text-amber-400">78%</strong></div>
+            <div class="w-full h-2 bg-black rounded-full overflow-hidden"><div id="bar3" class="h-full bg-amber-500 transition-all duration-500" style="width:78%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-1"><span>4. Double Low-E Glass Curtain Wall &amp; Ventilated Facade</span><strong id="bar4-txt" class="text-amber-400">62%</strong></div>
+            <div class="w-full h-2 bg-black rounded-full overflow-hidden"><div id="bar4" class="h-full bg-amber-500 transition-all duration-500" style="width:62%"></div></div>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-5 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+          <span class="text-xs text-slate-400">Ring-Fenced Assets Audited by PwC</span>
+          <button onclick="openMonoDrawer('Engineering Report: ' + document.getElementById('obra-nome').textContent)" class="text-xs font-mono-eng uppercase text-amber-400 hover:underline font-bold">
+            Download Monthly Report PDF →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- BUILT-TO-SUIT & CAP-RATE SIMULATOR -->
+    <section id="viabilidade" class="py-20 border-b border-white/10">
+      <div class="mb-10">
+        <span class="text-xs font-mono-eng uppercase tracking-widest text-amber-400">// FINANCIAL ENGINEERING &amp; TURNKEY</span>
+        <h2 class="font-display text-3xl sm:text-5xl font-extrabold mt-1">Built-to-Suit &amp; Construction Cost Simulator</h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 bg-[#131822] border border-white/10 rounded-3xl p-8 sm:p-10">
+        <div class="lg:col-span-7 space-y-6">
+          <div>
+            <label class="text-xs font-mono-eng uppercase text-slate-400 block mb-2">1. Asset Typology</label>
+            <select id="bts-type" onchange="calcBts()" class="w-full px-4 py-3.5 rounded-xl bg-black border border-white/15 text-sm font-semibold text-white">
+              <option value="640">Triple-A Logistics Warehouse (Post-Tensioned Slab 6 Ton/m² — $640/m²)</option>
+              <option value="1360" selected>Corporate Building / B2B HQ LEED Platinum ($1,360/m²)</option>
+              <option value="1900">High-End Residential Development ($1,900/m²)</option>
+            </select>
+          </div>
+
+          <div>
+            <div class="flex justify-between text-xs font-mono-eng mb-2">
+              <span>2. Gross Leasable / Built Area (m²)</span>
+              <strong id="bts-area-lbl" class="text-amber-400 text-base">5,000 m²</strong>
+            </div>
+            <input type="range" id="bts-area" min="1500" max="30000" step="500" value="5000" oninput="calcBts()" class="w-full accent-amber-500">
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 bg-black/70 p-7 rounded-2xl border border-amber-500/30 flex flex-col justify-between space-y-4">
+          <div>
+            <span class="text-[10px] font-mono-eng uppercase text-amber-400">Estimated Construction CAPEX (GMP Fixed Price)</span>
+            <div id="bts-capex" class="font-mono-eng text-3xl sm:text-4xl font-extrabold text-white mt-1">$6,800,000</div>
+            <p id="bts-yield" class="text-xs text-emerald-400 font-mono-eng mt-2">Projected Yield / Cap-Rate: 11.4% p.a. (15-Year Lease)</p>
+          </div>
+          <button onclick="openMonoDrawer('Built-to-Suit Study ' + document.getElementById('bts-area-lbl').textContent)" class="w-full py-3.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-black font-extrabold text-xs uppercase tracking-widest">
+            Request Feasibility Study →
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- INVESTOR DRAWER -->
+  <div id="mono-overlay" onclick="closeMonoDrawer()" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm hidden"></div>
+  <aside id="mono-drawer" class="fixed top-0 right-0 z-50 h-full w-full sm:w-[440px] bg-[#131822] border-l border-amber-500/30 p-8 transform translate-x-full transition-transform duration-300 flex flex-col justify-between">
+    <div>
+      <div class="flex justify-between items-center pb-4 border-b border-white/10">
+        <h3 class="font-display text-2xl">Development Board</h3>
+        <button onclick="closeMonoDrawer()" class="text-slate-400 hover:text-white">✕</button>
+      </div>
+      <form onsubmit="submitMono(event)" class="mt-6 space-y-4 text-xs font-mono-eng">
+        <div>
+          <label class="block text-slate-400 uppercase mb-1">Subject</label>
+          <input type="text" id="mono-subject" readonly class="w-full px-3.5 py-3 rounded-xl bg-black border border-amber-500/40 text-amber-400">
+        </div>
+        <div>
+          <label class="block text-slate-400 uppercase mb-1">Name / Fund / Company *</label>
+          <input type="text" required placeholder="Corporate Name" class="w-full px-3.5 py-3 rounded-xl bg-black border border-white/15 text-white">
+        </div>
+        <div>
+          <label class="block text-slate-400 uppercase mb-1">Corporate Email *</label>
+          <input type="email" required placeholder="board@company.com" class="w-full px-3.5 py-3 rounded-xl bg-black border border-white/15 text-white">
+        </div>
+        <button type="submit" class="w-full py-4 rounded-xl bg-amber-500 text-black font-extrabold uppercase tracking-widest">
+          Receive Technical Dossier →
+        </button>
+      </form>
+      <div id="mono-msg" class="hidden mt-5 p-4 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 text-xs">
+        ✓ Request registered! Our Director of Engineering will send the technical specification.
+      </div>
+    </div>
+    <div class="text-[11px] font-mono-eng text-slate-500 border-t border-white/10 pt-4">
+      MONOLITH ENGINEERING S.A. • CREA-SP 094821
+    </div>
+  </aside>
+
+  <script>
+    const OBRAS = [
+      { nome: "Horizon Jardins Tower", status: "FINAL PHASE • DELIVERY OCT/2026", vgv: "GDV: $84 Million • 28 Floors", geral: "84%", b1: 100, b2: 95, b3: 78, b4: 62 },
+      { nome: "Anhanguera Logistics Center (Triple-A)", status: "100% COMPLETED • OCCUPANCY PERMIT ISSUED", vgv: "GLA: 85,000 m² • 12m Clear Height", geral: "100%", b1: 100, b2: 100, b3: 100, b4: 100 },
+      { nome: "Ibirapuera Park Reserve Residential", status: "SUPERSTRUCTURE IN PROGRESS", vgv: "GDV: $62 Million • 1 Unit per Floor", geral: "56%", b1: 100, b2: 64, b3: 38, b4: 22 }
+    ];
+
+    window.setObra = function(idx, btn) {
+      const o = OBRAS[idx];
+      if (btn) {
+        document.querySelectorAll('.obra-btn').forEach(b => b.className = 'obra-btn px-4 py-2.5 rounded-lg bg-white/5 border border-white/10 text-white font-bold text-xs');
+        btn.className = 'obra-btn px-4 py-2.5 rounded-lg bg-amber-500 text-black font-bold text-xs';
+      }
+      document.getElementById('obra-nome').textContent = o.nome;
+      document.getElementById('obra-status').textContent = o.status;
+      document.getElementById('obra-vgv').textContent = o.vgv;
+      document.getElementById('obra-geral').textContent = o.geral;
+      ['1','2','3','4'].forEach(n => {
+        document.getElementById('bar'+n).style.width = o['b'+n] + '%';
+        document.getElementById('bar'+n+'-txt').textContent = o['b'+n] + '%';
+      });
+    };
+
+    function calcBts() {
+      const rate = Number(document.getElementById('bts-type').value);
+      const area = Number(document.getElementById('bts-area').value);
+      const total = rate * area;
+      document.getElementById('bts-area-lbl').textContent = area.toLocaleString('en-US') + ' m²';
+      document.getElementById('bts-capex').textContent = '$' + total.toLocaleString('en-US');
+    }
+
+    function openMonoDrawer(subj) {
+      document.getElementById('mono-subject').value = subj;
+      document.getElementById('mono-msg').classList.add('hidden');
+      document.getElementById('mono-overlay').classList.remove('hidden');
+      document.getElementById('mono-drawer').classList.remove('translate-x-full');
+    }
+
+    function closeMonoDrawer() {
+      document.getElementById('mono-overlay').classList.add('hidden');
+      document.getElementById('mono-drawer').classList.add('translate-x-full');
+    }
+
+    function submitMono(e) {
+      e.preventDefault();
+      document.getElementById('mono-msg').classList.remove('hidden');
+      e.target.reset();
+    }
+  </script>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script defer src="/assets/js/demo-i18n-bar.js"></script>
+</body>
+</html>

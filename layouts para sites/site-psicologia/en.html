@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- demo-i18n-autodetect --><script>(function(){var cur=location.pathname.endsWith('/en.html')?'en':(location.pathname.endsWith('/es.html')?'es':'pt');var q=(new URLSearchParams(location.search).get('lang')||'').toLowerCase();var target=null;if(q==='pt'||q==='en'||q==='es'){target=q;try{localStorage.setItem('portfolio_lang',q);localStorage.setItem('portfolio_lang_manual','1');}catch(e){}}else if(cur==='pt'){try{if(localStorage.getItem('portfolio_lang_manual')==='1'){var saved=localStorage.getItem('portfolio_lang');if(saved==='en'||saved==='es'||saved==='pt')target=saved;}}catch(e){}if(!target){var langs=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||navigator.userLanguage||'en'];for(var i=0;i<langs.length;i++){var c=(langs[i]||'').toLowerCase().split('-')[0];if(c==='pt'){target='pt';break;}if(c==='es'){target='es';break;}if(c==='en'){target='en';break;}}if(!target)target='en';}}if(target&&target!==cur){var file=target==='en'?'en.html':(target==='es'?'es.html':'index.html');var p=location.pathname;var np=p.slice(-5).toLowerCase()==='.html'?p.slice(0,p.lastIndexOf('/')+1)+file:(p.endsWith('/')?p+file:p+'/'+file);location.replace(np+location.search+location.hash);}})();</script>
+  <title>Dr. Clarice Mendes • CRP 06/148920 — Clinical Psychology & Cognitive Behavioral Therapy</title>
+  <meta name="description" content="A safe and confidential space to rediscover your emotional balance and mental clarity. Evidence-based psychotherapy (CBT) for Anxiety, Burnout, Adult ADHD, and Global Online Care." />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Cormorant Garamond, Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            eucalyptus: '#2d4a43',
+            eucalyptusDark: '#1f3530',
+            eucalyptusLight: '#3f645b',
+            eucalyptusTint: '#eef3f1',
+            mistBlue: '#e8f0fe',
+            mistBorder: '#c6dafc',
+            warmSand: '#fbf9f5',
+            sandStone: '#f3efe6',
+            graphite: '#1f2937',
+            slateSoft: '#4b5563'
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', '"Inter"', 'sans-serif'],
+            inter: ['"Inter"', 'sans-serif']
+          },
+          boxShadow: {
+            'serene': '0 20px 45px -15px rgba(45, 74, 67, 0.08)',
+            'serene-hover': '0 25px 50px -12px rgba(45, 74, 67, 0.15)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #fbf9f5;
+      color: #1f2937;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+    .font-serif-psy {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    /* Gentle Microinteractions & Breathing Aura */
+    .clinical-card {
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .clinical-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 25px 50px -12px rgba(45, 74, 67, 0.13);
+      border-color: rgba(45, 74, 67, 0.35);
+    }
+
+    @keyframes breatheSlow {
+      0%, 100% { transform: scale(1); opacity: 0.55; }
+      50% { transform: scale(1.06); opacity: 0.85; }
+    }
+    .animate-breathe {
+      animation: breatheSlow 9s ease-in-out infinite;
+    }
+
+    /* Custom Subtle Scrollbar */
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #fbf9f5;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5d1;
+      border-radius: 999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #2d4a43;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen antialiased selection:bg-eucalyptus selection:text-white">
+
+  <!-- TOPBAR DE ÉTICA, SIGILO E ACOLHIMENTO -->
+  <div class="bg-eucalyptus text-warmSand/95 text-xs border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/10 text-mistBlue font-medium text-[11px]">
+          <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+          Absolute Ethical Confidentiality • CFP / e-Psi Active
+        </span>
+        <span class="hidden md:inline text-warmSand/80">
+          Evidence-Based Cognitive Behavioral Therapy • Jardins/SP Clinic &amp; Global Online
+        </span>
+      </div>
+      <div class="flex items-center gap-4 ml-auto text-[11px]">
+        <span class="hidden sm:inline text-mistBlue">✓ Official Receipts for Insurance Reimbursement</span>
+        <span class="text-white/30 hidden sm:inline">|</span>
+        <a href="#autoavaliacao" class="underline underline-offset-4 hover:text-mistBlue font-medium">
+          Anxiety &amp; Burnout Self-Assessment
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. HEADER FIXO DELICADO -->
+  <header class="sticky top-0 z-40 bg-[#fbf9f5]/92 backdrop-blur-md border-b border-stone-900/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Brand Identity -->
+      <a href="#" class="flex items-center gap-3.5 group">
+        <div class="w-10 h-10 rounded-2xl bg-eucalyptusTint border border-eucalyptus/20 flex items-center justify-center text-eucalyptus group-hover:bg-eucalyptus group-hover:text-white transition-colors duration-300">
+          <i data-lucide="heart-handshake" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <div class="flex flex-wrap items-baseline gap-2">
+            <span class="font-serif-psy text-2xl sm:text-3xl font-semibold tracking-tight text-graphite">
+              Dr. Clarice Mendes
+            </span>
+            <span class="text-[11px] font-sans font-semibold uppercase tracking-widest px-2 py-0.5 rounded-md bg-eucalyptusTint text-eucalyptus border border-eucalyptus/15">
+              CRP 06/148920
+            </span>
+          </div>
+          <span class="block text-[11px] text-slateSoft tracking-wide">
+            PhD in Clinical Psychology (USP) • Cognitive Behavioral Therapy
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden xl:flex items-center gap-7 text-sm font-medium text-slateSoft">
+        <a href="#sobre" class="hover:text-eucalyptus transition-colors">About</a>
+        <a href="#areas-atuacao" class="hover:text-eucalyptus transition-colors">Specialties</a>
+        <a href="#autoavaliacao" class="hover:text-eucalyptus transition-colors text-eucalyptus font-semibold flex items-center gap-1">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+          Self-Assessment
+        </a>
+        <a href="#como-funciona" class="hover:text-eucalyptus transition-colors">How It Works</a>
+        <a href="#terapia-online" class="hover:text-eucalyptus transition-colors">Online Therapy</a>
+        <a href="#depoimentos" class="hover:text-eucalyptus transition-colors">Testimonials</a>
+        <a href="#duvidas" class="hover:text-eucalyptus transition-colors">FAQ</a>
+      </nav>
+
+      <!-- Header CTA & Mobile Menu Button -->
+      <div class="flex items-center gap-3">
+        <a 
+          href="#agendamento" 
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-eucalyptus hover:bg-eucalyptusDark text-white text-xs sm:text-sm font-semibold tracking-wide shadow-serene transition-all duration-300"
+        >
+          <span>Schedule Initial Call</span>
+          <i data-lucide="calendar" class="w-4 h-4"></i>
+        </a>
+
+        <button 
+          type="button" 
+          onclick="toggleMobileMenu()" 
+          class="xl:hidden p-2.5 rounded-xl border border-stone-300 text-graphite hover:bg-sandStone"
+          aria-label="Open Menu"
+        >
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Menu -->
+    <div id="mobile-menu" class="hidden xl:hidden bg-warmSand border-t border-stone-200 px-6 py-6 space-y-3.5 text-sm font-medium text-graphite shadow-xl">
+      <a href="#sobre" onclick="toggleMobileMenu()" class="block py-1.5 border-b border-stone-200/70 hover:text-eucalyptus">About Dr. Clarice &amp; USP Credentials</a>
+      <a href="#areas-atuacao" onclick="toggleMobileMenu()" class="block py-1.5 border-b border-stone-200/70 hover:text-eucalyptus">Clinical Specialty Areas (CBT)</a>
+      <a href="#autoavaliacao" onclick="toggleMobileMenu()" class="block py-1.5 border-b border-stone-200/70 text-eucalyptus font-bold">✦ Emotional Self-Assessment Quiz</a>
+      <a href="#como-funciona" onclick="toggleMobileMenu()" class="block py-1.5 border-b border-stone-200/70 hover:text-eucalyptus">How the Therapeutic Process Works</a>
+      <a href="#terapia-online" onclick="toggleMobileMenu()" class="block py-1.5 border-b border-stone-200/70 hover:text-eucalyptus">Online Care &amp; Brazilians Abroad</a>
+      <a href="#depoimentos" onclick="toggleMobileMenu()" class="block py-1.5 border-b border-stone-200/70 hover:text-eucalyptus">Patient Stories</a>
+      <a href="#duvidas" onclick="toggleMobileMenu()" class="block py-1.5 border-b border-stone-200/70 hover:text-eucalyptus">FAQ &amp; Insurance Reimbursement</a>
+      <a href="#agendamento" onclick="toggleMobileMenu()" class="block py-3 text-center rounded-full bg-eucalyptus text-white font-semibold mt-2">Schedule Initial Call</a>
+    </div>
+  </header>
+
+  <!-- 2. HERO SECTION ACOLHEDORA COM CONSULTÓRIO ILUMINADO & TRIAGEM RÁPIDA -->
+  <section class="relative pt-12 pb-20 lg:pt-16 lg:pb-28 overflow-hidden border-b border-stone-200/80">
+    <!-- Subtle Calming Aura Orbs -->
+    <div class="pointer-events-none absolute -top-24 -right-24 w-96 h-96 rounded-full bg-mistBlue/80 blur-3xl animate-breathe"></div>
+    <div class="pointer-events-none absolute bottom-0 left-10 w-80 h-80 rounded-full bg-eucalyptusTint blur-3xl"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+        
+        <!-- Left 7 Cols: Empathetic Headline, Subcopy, Dual CTA & Triage Box -->
+        <div class="lg:col-span-7 space-y-7">
+          <div class="inline-flex flex-wrap items-center gap-2 px-4 py-1.5 rounded-full bg-mistBlue border border-mistBorder text-eucalyptus text-xs font-semibold">
+            <i data-lucide="sun" class="w-4 h-4 text-eucalyptus"></i>
+            <span>Compassionate Clinical Listening • Cognitive Science &amp; Neuropsychology</span>
+          </div>
+
+          <h1 class="font-serif-psy text-4xl sm:text-5xl lg:text-[62px] font-medium text-graphite tracking-tight leading-[1.08]">
+            A safe and confidential space for you to rediscover your <em class="italic font-normal text-eucalyptus">emotional balance and mental clarity.</em>
+          </h1>
+
+          <p class="text-base sm:text-lg text-slateSoft leading-relaxed max-w-2xl">
+            Psychotherapy is not just a place to vent, but a structured and gentle process of transformation. Through <strong class="text-graphite font-semibold">Cognitive Behavioral Therapy (CBT)</strong>, we build practical tools to slow down intrusive thoughts, overcome exhaustion, and reclaim your autonomy.
+          </p>
+
+          <!-- Dual CTA -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-1">
+            <a 
+              href="#agendamento" 
+              class="inline-flex items-center justify-center gap-3 px-7 py-4 rounded-full bg-eucalyptus hover:bg-eucalyptusDark text-white font-semibold text-sm sm:text-base shadow-serene hover:scale-[1.01] transition-all"
+            >
+              <span>Book First Session</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+            <a 
+              href="#autoavaliacao" 
+              class="inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-full bg-white hover:bg-mistBlue/50 text-eucalyptus border border-stone-300 font-semibold text-sm transition-all"
+            >
+              <i data-lucide="clipboard-check" class="w-4 h-4 text-eucalyptus"></i>
+              <span>Take Brief Self-Assessment (2 min)</span>
+            </a>
+          </div>
+
+          <!-- Interactive Quick Triage Box (Preserved & Expanded from index_12.html) -->
+          <div class="bg-white/95 p-6 rounded-3xl border border-stone-200/90 shadow-serene space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="text-xs font-bold uppercase tracking-wider text-eucalyptus flex items-center gap-1.5">
+                <i data-lucide="message-Square-heart" class="w-4 h-4"></i>
+                How can I support your needs today?
+              </span>
+              <span class="text-[11px] text-slateSoft">Select a topic to view the approach</span>
+            </div>
+
+            <div class="flex flex-wrap gap-2" id="triage-buttons">
+              <button type="button" onclick="setPsy('burnout', this)" class="psy-pill px-4 py-2 rounded-full text-xs font-semibold bg-eucalyptus text-white transition-all">
+                Anxiety &amp; Burnout
+              </button>
+              <button type="button" onclick="setPsy('tdah', this)" class="psy-pill px-4 py-2 rounded-full text-xs font-semibold bg-sandStone text-graphite hover:bg-mistBlue transition-all">
+                Adult ADHD &amp; Focus
+              </button>
+              <button type="button" onclick="setPsy('carreira', this)" class="psy-pill px-4 py-2 rounded-full text-xs font-semibold bg-sandStone text-graphite hover:bg-mistBlue transition-all">
+                Transitions &amp; Brazilians Abroad
+              </button>
+              <button type="button" onclick="setPsy('relacoes', this)" class="psy-pill px-4 py-2 rounded-full text-xs font-semibold bg-sandStone text-graphite hover:bg-mistBlue transition-all">
+                Relationships &amp; Healthy Boundaries
+              </button>
+            </div>
+
+            <div id="psy-box" class="p-4 rounded-2xl bg-warmSand border border-stone-200/80 text-xs sm:text-sm text-graphite leading-relaxed">
+              <!-- Populated by JS -->
+            </div>
+
+            <div class="flex flex-wrap items-center justify-between gap-2 pt-1 text-xs text-slateSoft">
+              <span>✓ Tax Receipts for Insurance Reimbursement (Bradesco, SulAmérica, Amil, Omint, Allianz)</span>
+              <a href="#agendamento" class="text-eucalyptus font-bold hover:underline">View available times →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 5 Cols: Sunlit Consulting Room & Therapist Empathy Card -->
+        <div class="lg:col-span-5 space-y-5">
+          <div class="relative rounded-3xl p-3 bg-white border border-stone-200/90 shadow-serene">
+            <div class="relative rounded-2xl overflow-hidden aspect-[4/4.6] bg-sandStone">
+              <img 
+                src="https://images.unsplash.com/photo-1573497620053-ea5300f94f21?auto=format&fit=crop&w=1000&q=85" 
+                alt="Dr. Clarice Mendes in her naturally lit clinic surrounded by plants" 
+                class="w-full h-full object-cover object-center"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#1f3530]/85 via-transparent to-transparent"></div>
+
+              <!-- Top Floating Badge -->
+              <div class="absolute top-4 left-4 right-4 flex items-center justify-between gap-2">
+                <span class="px-3.5 py-1.5 rounded-full bg-warmSand/95 backdrop-blur-md text-eucalyptus text-xs font-semibold shadow-sm flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                  Booking Open • In-Person &amp; Online
+                </span>
+              </div>
+
+              <!-- Bottom Overlay Credentials inside Photo -->
+              <div class="absolute bottom-4 left-4 right-4 p-5 rounded-2xl bg-warmSand/95 backdrop-blur-md border border-stone-200 text-graphite space-y-2">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <h2 class="font-serif-psy text-2xl font-bold text-graphite leading-none">Dr. Clarice Mendes</h2>
+                    <span class="text-xs text-eucalyptus font-semibold">Clinical Psychologist • CRP 06/148920</span>
+                  </div>
+                  <span class="px-2.5 py-1 rounded-lg bg-mistBlue text-eucalyptus font-semibold text-[11px]">
+                    14 Years in Practice
+                  </span>
+                </div>
+                <p class="text-xs text-slateSoft leading-relaxed">
+                  “My commitment is to offer judgment-free listening paired with scientific protocols that restore ease and clarity to your life.”
+                </p>
+              </div>
+            </div>
+
+            <!-- Sunlit Consulting Room Secondary Thumbnail Bar -->
+            <div class="mt-3 p-3.5 rounded-2xl bg-warmSand border border-stone-200/70 flex items-center gap-3.5">
+              <img 
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=300&q=80" 
+                alt="Jardins clinic interior with comfortable armchair and natural plants" 
+                class="w-16 h-14 rounded-xl object-cover shrink-0 border border-stone-200"
+              />
+              <div class="text-xs">
+                <strong class="text-graphite block font-semibold">In-Person Clinic — Jardins, São Paulo</strong>
+                <span class="text-slateSoft">Soundproofed environment with natural light, ergonomic armchairs, and a private waiting room (zero overlap between patients).</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. ÁREAS DE ESPECIALIDADE CLÍNICA (5 CARDS DETALHADOS COM SINTOMA, ABORDAGEM TCC E DURAÇÃO) -->
+  <section id="areas-atuacao" class="py-24 lg:py-32 bg-white border-b border-stone-200/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="max-w-3xl mb-16">
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-eucalyptus block mb-2">
+          01 // Clinical Specialties &amp; Gold-Standard Protocols
+        </span>
+        <h2 class="font-serif-psy text-4xl sm:text-5xl lg:text-6xl font-normal text-graphite leading-tight">
+          Specialized care for the demands of contemporary adult life.
+        </h2>
+        <p class="text-slateSoft text-base mt-3 leading-relaxed">
+          Each therapeutic plan is tailored from the most up-to-date scientific literature, respecting the uniqueness of your life story, routine, and personal values.
+        </p>
+      </div>
+
+      <!-- 5 Clinical Specialty Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Especialidade 1: Ansiedade e Pânico -->
+        <article class="clinical-card bg-warmSand rounded-3xl p-7 sm:p-8 border border-stone-200/90 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="w-12 h-12 rounded-2xl bg-mistBlue border border-mistBorder flex items-center justify-center text-eucalyptus">
+                <i data-lucide="wind" class="w-6 h-6"></i>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-eucalyptusTint text-eucalyptus text-xs font-semibold">
+                Gold-Standard CBT Protocol
+              </span>
+            </div>
+
+            <h3 class="font-serif-psy text-3xl font-semibold text-graphite leading-snug">
+              Anxiety Disorders & Panic Disorder
+            </h3>
+
+            <div class="space-y-3 pt-2 text-xs sm:text-sm">
+              <div class="p-3.5 rounded-2xl bg-white border border-stone-200/70">
+                <strong class="text-eucalyptus block text-xs uppercase tracking-wider mb-1">How symptoms show up:</strong>
+                <p class="text-slateSoft leading-relaxed">
+                  Excessive, uncontrollable worry about the future, racing thoughts at night, chest tightness, rapid heartbeat, fear of losing control, and avoiding places or situations.
+                </p>
+              </div>
+
+              <div class="p-3.5 rounded-2xl bg-white border border-stone-200/70">
+                <strong class="text-eucalyptus block text-xs uppercase tracking-wider mb-1">Practical CBT approach:</strong>
+                <p class="text-slateSoft leading-relaxed">
+                  Cognitive restructuring of catastrophic thoughts, autonomic and breathing regulation techniques, gradual interoceptive exposure, and reduction of safety behaviors.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-stone-200/80 flex items-center justify-between text-xs">
+            <div>
+              <span class="text-slateSoft block">Typical process duration:</span>
+              <strong class="text-graphite font-semibold">12 to 24 structured sessions</strong>
+            </div>
+            <button type="button" onclick="prefillBookingSpecialty('Anxiety Disorders & Panic Disorder')" class="text-eucalyptus font-bold hover:underline">
+              Schedule →
+            </button>
+          </div>
+        </article>
+
+        <!-- Especialidade 2: Burnout e Estresse Corporativo -->
+        <article class="clinical-card bg-warmSand rounded-3xl p-7 sm:p-8 border border-stone-200/90 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="w-12 h-12 rounded-2xl bg-mistBlue border border-mistBorder flex items-center justify-center text-eucalyptus">
+                <i data-lucide="battery-low" class="w-6 h-6"></i>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-eucalyptusTint text-eucalyptus text-xs font-semibold">
+                Executive Health &amp; Career
+              </span>
+            </div>
+
+            <h3 class="font-serif-psy text-3xl font-semibold text-graphite leading-snug">
+              Burnout, Corporate Stress & Overwork
+            </h3>
+
+            <div class="space-y-3 pt-2 text-xs sm:text-sm">
+              <div class="p-3.5 rounded-2xl bg-white border border-stone-200/70">
+                <strong class="text-eucalyptus block text-xs uppercase tracking-wider mb-1">How symptoms show up:</strong>
+                <p class="text-slateSoft leading-relaxed">
+                  Physical and mental exhaustion that does not improve over the weekend, cynicism or emotional detachment from work, guilt when resting, rigid perfectionism, and imposter feelings.
+                </p>
+              </div>
+
+              <div class="p-3.5 rounded-2xl bg-white border border-stone-200/70">
+                <strong class="text-eucalyptus block text-xs uppercase tracking-wider mb-1">Practical CBT approach:</strong>
+                <p class="text-slateSoft leading-relaxed">
+                  Reframing hyper-demanding beliefs, assertiveness training to set workplace boundaries without guilt, sleep hygiene, and reclaiming everyday sources of fulfillment.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-stone-200/80 flex items-center justify-between text-xs">
+            <div>
+              <span class="text-slateSoft block">Typical process duration:</span>
+              <strong class="text-graphite font-semibold">16 to 28 sessions + prevention</strong>
+            </div>
+            <button type="button" onclick="prefillBookingSpecialty('Burnout, Corporate Stress & Emotional Overload')" class="text-eucalyptus font-bold hover:underline">
+              Schedule →
+            </button>
+          </div>
+        </article>
+
+        <!-- Especialidade 3: TDAH no Adulto -->
+        <article class="clinical-card bg-warmSand rounded-3xl p-7 sm:p-8 border border-stone-200/90 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="w-12 h-12 rounded-2xl bg-mistBlue border border-mistBorder flex items-center justify-center text-eucalyptus">
+                <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-eucalyptusTint text-eucalyptus text-xs font-semibold">
+                Executive Functions
+              </span>
+            </div>
+
+            <h3 class="font-serif-psy text-3xl font-semibold text-graphite leading-snug">
+              Adult ADHD & Attention Regulation
+            </h3>
+
+            <div class="space-y-3 pt-2 text-xs sm:text-sm">
+              <div class="p-3.5 rounded-2xl bg-white border border-stone-200/70">
+                <strong class="text-eucalyptus block text-xs uppercase tracking-wider mb-1">How symptoms show up:</strong>
+                <p class="text-slateSoft leading-relaxed">
+                  Chronic procrastination on important tasks, paralysis from overstimulation, trouble managing deadlines, verbal or financial impulsivity, and eroded self-esteem.
+                </p>
+              </div>
+
+              <div class="p-3.5 rounded-2xl bg-white border border-stone-200/70">
+                <strong class="text-eucalyptus block text-xs uppercase tracking-wider mb-1">Practical CBT approach:</strong>
+                <p class="text-slateSoft leading-relaxed">
+                  Safren's (Harvard) CBT protocol for adult ADHD: external organization systems, goal chunking, distractibility management, and healing lifelong self-criticism.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-stone-200/80 flex items-center justify-between text-xs">
+            <div>
+              <span class="text-slateSoft block">Typical process duration:</span>
+              <strong class="text-graphite font-semibold">16 to 24 training sessions</strong>
+            </div>
+            <button type="button" onclick="prefillBookingSpecialty('Adult ADHD & Attention Regulation')" class="text-eucalyptus font-bold hover:underline">
+              Schedule →
+            </button>
+          </div>
+        </article>
+
+        <!-- Especialidade 4: Depressão, Luto e Transições -->
+        <article class="clinical-card bg-warmSand rounded-3xl p-7 sm:p-8 border border-stone-200/90 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="w-12 h-12 rounded-2xl bg-mistBlue border border-mistBorder flex items-center justify-center text-eucalyptus">
+                <i data-lucide="compass" class="w-6 h-6"></i>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-eucalyptusTint text-eucalyptus text-xs font-semibold">
+                Activation &amp; Meaning
+              </span>
+            </div>
+
+            <h3 class="font-serif-psy text-3xl font-semibold text-graphite leading-snug">
+              Depression, Grief & Major Life Transitions
+            </h3>
+
+            <div class="space-y-3 pt-2 text-xs sm:text-sm">
+              <div class="p-3.5 rounded-2xl bg-white border border-stone-200/70">
+                <strong class="text-eucalyptus block text-xs uppercase tracking-wider mb-1">How symptoms show up:</strong>
+                <p class="text-slateSoft leading-relaxed">
+                  Loss of interest or pleasure (anhedonia), morning apathy, appetite or sleep shifts, emptiness after bereavement, divorce, or relocating abroad (migratory grief).
+                </p>
+              </div>
+
+              <div class="p-3.5 rounded-2xl bg-white border border-stone-200/70">
+                <strong class="text-eucalyptus block text-xs uppercase tracking-wider mb-1">Practical CBT approach:</strong>
+                <p class="text-slateSoft leading-relaxed">
+                  Gradual Behavioral Activation, compassionate grief processing, reframing the negative cognitive triad, and rebuilding a routine aligned with your core values.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-stone-200/80 flex items-center justify-between text-xs">
+            <div>
+              <span class="text-slateSoft block">Typical process duration:</span>
+              <strong class="text-graphite font-semibold">20 to 36 ongoing sessions</strong>
+            </div>
+            <button type="button" onclick="prefillBookingSpecialty('Depression, Grief & Life Transitions')" class="text-eucalyptus font-bold hover:underline">
+              Schedule →
+            </button>
+          </div>
+        </article>
+
+        <!-- Especialidade 5: Relacionamentos e Autocuidado -->
+        <article class="clinical-card bg-warmSand rounded-3xl p-7 sm:p-8 border border-stone-200/90 flex flex-col justify-between">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <div class="w-12 h-12 rounded-2xl bg-mistBlue border border-mistBorder flex items-center justify-center text-eucalyptus">
+                <i data-lucide="heart" class="w-6 h-6"></i>
+              </div>
+              <span class="px-3 py-1 rounded-full bg-eucalyptusTint text-eucalyptus text-xs font-semibold">
+                Schema Therapy &amp; CBT
+              </span>
+            </div>
+
+            <h3 class="font-serif-psy text-3xl font-semibold text-graphite leading-snug">
+              Relationships, Attachment & Self-Care
+            </h3>
+
+            <div class="space-y-3 pt-2 text-xs sm:text-sm">
+              <div class="p-3.5 rounded-2xl bg-white border border-stone-200/70">
+                <strong class="text-eucalyptus block text-xs uppercase tracking-wider mb-1">How symptoms show up:</strong>
+                <p class="text-slateSoft leading-relaxed">
+                  Chronic difficulty saying "no", fear of rejection or abandonment, emotional dependency, repeatedly choosing unavailable partners, and suppressing your own needs.
+                </p>
+              </div>
+
+              <div class="p-3.5 rounded-2xl bg-white border border-stone-200/70">
+                <strong class="text-eucalyptus block text-xs uppercase tracking-wider mb-1">Practical CBT approach:</strong>
+                <p class="text-slateSoft leading-relaxed">
+                  Mapping early maladaptive schemas, nonviolent assertive communication, strengthening grounded self-esteem, and building secure, reciprocal relationships.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-stone-200/80 flex items-center justify-between text-xs">
+            <div>
+              <span class="text-slateSoft block">Typical process duration:</span>
+              <strong class="text-graphite font-semibold">16 to 30 sessions</strong>
+            </div>
+            <button type="button" onclick="prefillBookingSpecialty('Relationships, Attachment & Self-Care')" class="text-eucalyptus font-bold hover:underline">
+              Schedule →
+            </button>
+          </div>
+        </article>
+
+        <!-- Card 6: CTA Personalizado de Acolhimento -->
+        <article class="bg-eucalyptus text-white rounded-3xl p-7 sm:p-8 flex flex-col justify-between shadow-serene">
+          <div class="space-y-4">
+            <span class="inline-block px-3 py-1 rounded-full bg-white/10 text-mistBlue text-xs font-semibold">
+              Unsure how to name what you are feeling?
+            </span>
+            <h3 class="font-serif-psy text-3xl sm:text-4xl font-normal leading-snug">
+              You don't need a formal diagnosis to seek support.
+            </h3>
+            <p class="text-sm text-warmSand/85 leading-relaxed">
+              Emotional distress often shows up as quiet exhaustion or feeling disconnected from yourself. In our first session, we map out what is happening together, at your pace.
+            </p>
+          </div>
+
+          <div class="mt-8 space-y-3">
+            <a href="#autoavaliacao" class="block w-full py-3.5 px-5 rounded-full bg-mistBlue text-eucalyptus text-center text-xs font-bold uppercase tracking-wider hover:bg-white transition-colors">
+              Take Self-Assessment Quiz →
+            </a>
+            <a href="#agendamento" class="block w-full py-3.5 px-5 rounded-full border border-white/25 hover:bg-white/10 text-white text-center text-xs font-semibold uppercase tracking-wider transition-colors">
+              Book Introductory Session
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. AUTOAVALIAÇÃO / QUIZ INTERATIVO DE SAÚDE MENTAL (4 PERGUNTAS EM JS) -->
+  <section id="autoavaliacao" class="py-24 lg:py-32 bg-gradient-to-b from-mistBlue/50 via-warmSand to-warmSand border-b border-stone-200/80">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-12">
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-mistBorder text-eucalyptus text-xs font-bold uppercase tracking-widest shadow-sm">
+          <i data-lucide="heart-pulse" class="w-4 h-4"></i>
+          Brief Emotional Reflection Tool
+        </span>
+        <h2 class="font-serif-psy text-4xl sm:text-5xl font-normal text-graphite mt-3">
+          Anxiety, Focus &amp; Overload Self-Assessment
+        </h2>
+        <p class="text-slateSoft text-sm sm:text-base mt-2 max-w-2xl mx-auto">
+          Answer 4 quick questions about how you have been feeling over the <strong class="text-graphite">past 2 weeks</strong>. This exercise is 100% private (processed only in your browser) and is educational, not diagnostic.
+        </p>
+      </div>
+
+      <!-- Interactive Quiz Container -->
+      <div class="bg-white rounded-3xl p-6 sm:p-10 border border-stone-200/90 shadow-serene">
+        
+        <!-- Progress Header -->
+        <div class="mb-8">
+          <div class="flex items-center justify-between text-xs font-semibold text-slateSoft mb-2.5">
+            <span id="quiz-step-indicator">QUESTION 1 OF 4</span>
+            <span id="quiz-pct-indicator" class="text-eucalyptus">25% Complete</span>
+          </div>
+          <div class="w-full h-2 bg-sandStone rounded-full overflow-hidden">
+            <div id="quiz-progress-bar" class="h-full bg-eucalyptus transition-all duration-500 rounded-full" style="width: 25%"></div>
+          </div>
+        </div>
+
+        <!-- Question Body -->
+        <div id="quiz-question-panel" class="space-y-6">
+          <!-- Populated dynamically via JS -->
+        </div>
+
+        <!-- Result Panel (Hidden until completion) -->
+        <div id="quiz-result-panel" class="hidden space-y-6">
+          <div class="p-6 sm:p-8 rounded-3xl bg-warmSand border border-eucalyptus/25 space-y-4">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span id="quiz-result-badge" class="px-3.5 py-1 rounded-full bg-eucalyptus text-white text-xs font-bold uppercase tracking-wider">
+                Reflection Summary
+              </span>
+              <span class="text-xs text-slateSoft">Informational only • Does not replace clinical evaluation</span>
+            </div>
+
+            <h3 id="quiz-result-title" class="font-serif-psy text-3xl sm:text-4xl text-graphite font-semibold">
+              —
+            </h3>
+
+            <p id="quiz-result-text" class="text-sm sm:text-base text-slateSoft leading-relaxed">
+              —
+            </p>
+
+            <div class="p-4 rounded-2xl bg-white border border-stone-200/80 text-xs sm:text-sm text-graphite space-y-1.5">
+              <strong class="text-eucalyptus block font-semibold">Dr. Clarice's Clinical Recommendation:</strong>
+              <p id="quiz-result-recommendation" class="text-slateSoft leading-relaxed">—</p>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+            <button 
+              type="button" 
+              onclick="resetMentalQuiz()" 
+              class="px-6 py-3.5 rounded-full border border-stone-300 text-slateSoft hover:text-graphite text-xs font-semibold uppercase tracking-wider transition-colors"
+            >
+              ↺ Retake Self-Assessment
+            </button>
+            <button 
+              type="button" 
+              onclick="sendQuizToBooking()" 
+              class="px-8 py-4 rounded-full bg-eucalyptus hover:bg-eucalyptusDark text-white text-xs sm:text-sm font-semibold uppercase tracking-wider shadow-serene transition-all flex items-center justify-center gap-2"
+            >
+              <span>Share This Summary &amp; Book Session</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. COMO FUNCIONA A TERAPIA (PASSO A PASSO TRANSPARENTE) -->
+  <section id="como-funciona" class="py-24 lg:py-32 bg-white border-b border-stone-200/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-eucalyptus block mb-2">
+          02 // Transparent Therapeutic Journey
+        </span>
+        <h2 class="font-serif-psy text-4xl sm:text-5xl lg:text-6xl font-normal text-graphite">
+          How the Process Works in Practice
+        </h2>
+        <p class="text-slateSoft text-base mt-3">
+          In Cognitive Behavioral Therapy, you are never left wondering where treatment is heading. We work in collaborative partnership, with clear goals from intake to discharge.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
+        
+        <!-- Passo 1 -->
+        <div class="clinical-card bg-warmSand p-7 rounded-3xl border border-stone-200/90 relative flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="font-serif-psy text-5xl font-bold text-eucalyptus/30">01</span>
+              <span class="px-3 py-1 rounded-full bg-mistBlue text-eucalyptus text-xs font-semibold">Sessions 1–2</span>
+            </div>
+            <h3 class="font-serif-psy text-2xl sm:text-3xl font-semibold text-graphite">
+              Initial Intake Session
+            </h3>
+            <p class="text-xs sm:text-sm text-slateSoft mt-3 leading-relaxed">
+              An unhurried 50-minute conversation to listen to your current story, understand what brought you here, ease immediate distress, and answer questions about the method.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-200/70 text-xs text-eucalyptus font-semibold">
+            ✓ Empathetic rapport and strict confidentiality
+          </div>
+        </div>
+
+        <!-- Passo 2 -->
+        <div class="clinical-card bg-warmSand p-7 rounded-3xl border border-stone-200/90 relative flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="font-serif-psy text-5xl font-bold text-eucalyptus/30">02</span>
+              <span class="px-3 py-1 rounded-full bg-mistBlue text-eucalyptus text-xs font-semibold">Formulation</span>
+            </div>
+            <h3 class="font-serif-psy text-2xl sm:text-3xl font-semibold text-graphite">
+              Personalized Treatment Plan
+            </h3>
+            <p class="text-xs sm:text-sm text-slateSoft mt-3 leading-relaxed">
+              Together we map your emotional patterns (triggers, automatic thoughts, and core cycles) and define concrete objectives you want to achieve.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-200/70 text-xs text-eucalyptus font-semibold">
+            ✓ Clear, measurable goals
+          </div>
+        </div>
+
+        <!-- Passo 3 -->
+        <div class="clinical-card bg-warmSand p-7 rounded-3xl border border-stone-200/90 relative flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="font-serif-psy text-5xl font-bold text-eucalyptus/30">03</span>
+              <span class="px-3 py-1 rounded-full bg-mistBlue text-eucalyptus text-xs font-semibold">Intervention</span>
+            </div>
+            <h3 class="font-serif-psy text-2xl sm:text-3xl font-semibold text-graphite">
+              Weekly Practical Tools
+            </h3>
+            <p class="text-xs sm:text-sm text-slateSoft mt-3 leading-relaxed">
+              Therapy continues between sessions too. You receive manageable practical exercises, readings, and emotional regulation strategies applicable to your work and relationships.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-200/70 text-xs text-eucalyptus font-semibold">
+            ✓ Exclusive digital support materials
+          </div>
+        </div>
+
+        <!-- Passo 4 -->
+        <div class="clinical-card bg-warmSand p-7 rounded-3xl border border-stone-200/90 relative flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="font-serif-psy text-5xl font-bold text-eucalyptus/30">04</span>
+              <span class="px-3 py-1 rounded-full bg-eucalyptusTint text-eucalyptus text-xs font-semibold">Consolidation</span>
+            </div>
+            <h3 class="font-serif-psy text-2xl sm:text-3xl font-semibold text-graphite">
+              Clinical Discharge & Autonomy
+            </h3>
+            <p class="text-xs sm:text-sm text-slateSoft mt-3 leading-relaxed">
+              CBT aims to help you become your own therapist. Once goals are met, we gradually space out sessions (biweekly/monthly) toward a confident discharge.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-stone-200/70 text-xs text-eucalyptus font-semibold">
+            ✓ Long-term relapse prevention
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. ATENDIMENTO ONLINE SEM FRONTEIRAS (CRIPTOGRAFIA & FUSO HORÁRIO INTERATIVO) -->
+  <section id="terapia-online" class="py-24 lg:py-32 bg-eucalyptus text-warmSand border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left 6 Cols: Online Therapy Standards & Expat Support -->
+        <div class="lg:col-span-6 space-y-6">
+          <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 text-mistBlue text-xs font-semibold uppercase tracking-widest">
+            <i data-lucide="globe-2" class="w-4 h-4"></i>
+            Online Psychotherapy Without Borders • CFP Resolution 09/2024
+          </span>
+
+          <h2 class="font-serif-psy text-4xl sm:text-5xl lg:text-6xl font-normal text-white leading-tight">
+            The same clinical depth in your native language, wherever you live.
+          </h2>
+
+          <p class="text-warmSand/85 text-sm sm:text-base leading-relaxed">
+            Over 45% of my patients are Brazilians living in the United States, Europe, Canada, Australia, and Asia, or executives constantly traveling. Expressing deep emotional nuances in Portuguese is essential for therapeutic effectiveness.
+          </p>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div class="p-5 rounded-2xl bg-white/5 border border-white/15 space-y-1.5">
+              <div class="flex items-center gap-2 text-mistBlue font-semibold text-sm">
+                <i data-lucide="lock" class="w-4 h-4"></i>
+                <span>End-to-End Encryption</span>
+              </div>
+              <p class="text-xs text-warmSand/75 leading-relaxed">
+                HIPAA and LGPD compliant virtual clinic room with no audio or video recording, ensuring absolute confidentiality.
+              </p>
+            </div>
+
+            <div class="p-5 rounded-2xl bg-white/5 border border-white/15 space-y-1.5">
+              <div class="flex items-center gap-2 text-mistBlue font-semibold text-sm">
+                <i data-lucide="clock" class="w-4 h-4"></i>
+                <span>Flexible International Schedule</span>
+              </div>
+              <p class="text-xs text-warmSand/75 leading-relaxed">
+                Extended early-morning and evening hours to seamlessly fit time zones across Europe, North America, and Asia.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 6 Cols: Interactive Timezone Converter for Brazilians Abroad -->
+        <div class="lg:col-span-6">
+          <div class="bg-eucalyptusDark p-7 sm:p-9 rounded-3xl border border-white/15 shadow-2xl space-y-6">
+            <div class="flex items-center justify-between pb-4 border-b border-white/10">
+              <div>
+                <span class="text-[11px] uppercase tracking-widest text-mistBlue font-semibold block">
+                  TIME ZONE CONVERTER FOR CLIENTS ABROAD
+                </span>
+                <h3 class="font-serif-psy text-2xl sm:text-3xl text-white mt-0.5">
+                  Session Schedule Planner
+                </h3>
+              </div>
+              <i data-lucide="plane" class="w-6 h-6 text-mistBlue"></i>
+            </div>
+
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-warmSand/70 font-semibold mb-2.5">
+                Select your current region or time zone:
+              </label>
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs" id="tz-buttons">
+                <button type="button" onclick="selectTimezone('br')" data-tz="br" class="tz-btn py-2.5 px-3 rounded-xl bg-mistBlue text-eucalyptus font-bold text-left">
+                  🇧🇷 Brazil (BRT)
+                </button>
+                <button type="button" onclick="selectTimezone('uk')" data-tz="uk" class="tz-btn py-2.5 px-3 rounded-xl bg-white/5 border border-white/10 text-warmSand hover:bg-white/10 text-left">
+                  🇵🇹🇬🇧 Lisbon / London
+                </button>
+                <button type="button" onclick="selectTimezone('eu')" data-tz="eu" class="tz-btn py-2.5 px-3 rounded-xl bg-white/5 border border-white/10 text-warmSand hover:bg-white/10 text-left">
+                  🇩🇪🇫🇷 Berlin / Paris / Madrid
+                </button>
+                <button type="button" onclick="selectTimezone('ny')" data-tz="ny" class="tz-btn py-2.5 px-3 rounded-xl bg-white/5 border border-white/10 text-warmSand hover:bg-white/10 text-left">
+                  🇺🇸🇨🇦 NY / Miami / Toronto
+                </button>
+                <button type="button" onclick="selectTimezone('ca')" data-tz="ca" class="tz-btn py-2.5 px-3 rounded-xl bg-white/5 border border-white/10 text-warmSand hover:bg-white/10 text-left">
+                  🇺🇸 California / Vancouver
+                </button>
+                <button type="button" onclick="selectTimezone('au')" data-tz="au" class="tz-btn py-2.5 px-3 rounded-xl bg-white/5 border border-white/10 text-warmSand hover:bg-white/10 text-left">
+                  🇦🇺🇯🇵 Sydney / Tokyo
+                </button>
+              </div>
+            </div>
+
+            <!-- Dynamic Time Slots Display -->
+            <div class="p-5 rounded-2xl bg-eucalyptus/70 border border-white/15 space-y-3">
+              <div class="flex items-center justify-between text-xs">
+                <span id="tz-region-title" class="font-bold text-mistBlue">Suggested Times (Brasília Time — GMT-3)</span>
+                <span class="text-emerald-300 font-semibold">● 50 min / session</span>
+              </div>
+              <div id="tz-slots-grid" class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-center">
+                <!-- Populated by JS -->
+              </div>
+              <p id="tz-payment-note" class="text-[11px] text-warmSand/75 pt-2 border-t border-white/10">
+                Convenient payments via Pix, Bank Transfer, or Wise (EUR / USD / GBP / CAD).
+              </p>
+            </div>
+
+            <a href="#agendamento" class="block w-full py-3.5 rounded-full bg-mistBlue hover:bg-white text-eucalyptus text-center text-xs font-bold uppercase tracking-wider transition-colors">
+              Reserve a Slot in My Time Zone →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. FORMAÇÃO ACADÊMICA & CREDENCIAIS CIENTÍFICAS -->
+  <section id="sobre" class="py-24 lg:py-32 bg-warmSand border-b border-stone-200/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Left 5 Cols: Academic Bio & Ethical Stance -->
+        <div class="lg:col-span-5 space-y-6">
+          <span class="text-xs font-bold uppercase tracking-[0.2em] text-eucalyptus block">
+            03 // Scientific Rigor &amp; Academic Background
+          </span>
+          <h2 class="font-serif-psy text-4xl sm:text-5xl font-normal text-graphite leading-tight">
+            Excellence in psychological science applied with human warmth.
+          </h2>
+          <p class="text-slateSoft text-sm sm:text-base leading-relaxed">
+            B.S. and PhD from the Institute of Psychology at the <strong class="text-graphite">University of São Paulo (IP-USP)</strong>, I dedicate my clinical career to studying emotional regulation, anxiety disorders, and the neuropsychology of adult executive functions.
+          </p>
+          <p class="text-slateSoft text-sm sm:text-base leading-relaxed">
+            I believe in an ethical, transparent clinical practice continuously updated through international supervision and active participation in research groups.
+          </p>
+
+          <div class="p-5 rounded-2xl bg-white border border-stone-200/90 flex items-center gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-eucalyptusTint text-eucalyptus flex items-center justify-center shrink-0 font-serif-psy text-2xl font-bold">
+              USP
+            </div>
+            <div class="text-xs">
+              <strong class="text-graphite block text-sm">Active e-Psi National Registry &amp; CRP-06 License</strong>
+              <span class="text-slateSoft">Registered with the Regional Council of Psychology of São Paulo (#06/148920) and certified for technology-mediated psychotherapy.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 7 Cols: 4 Academic & Institutional Credential Cards -->
+        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+          
+          <div class="bg-white p-7 rounded-3xl border border-stone-200/90 shadow-serene space-y-3">
+            <div class="flex items-center justify-between text-xs font-bold text-eucalyptus">
+              <span>PHD &amp; BACHELOR'S</span>
+              <span>IP-USP</span>
+            </div>
+            <h3 class="font-serif-psy text-2xl font-semibold text-graphite">
+              PhD in Clinical Psychology from USP
+            </h3>
+            <p class="text-xs sm:text-sm text-slateSoft leading-relaxed">
+              Dissertation defended with distinction on cognitive-behavioral interventions in occupational burnout and generalized anxiety disorder.
+            </p>
+          </div>
+
+          <div class="bg-white p-7 rounded-3xl border border-stone-200/90 shadow-serene space-y-3">
+            <div class="flex items-center justify-between text-xs font-bold text-eucalyptus">
+              <span>SPECIALIZATION</span>
+              <span>HOSPITAL ALBERT EINSTEIN</span>
+            </div>
+            <h3 class="font-serif-psy text-2xl font-semibold text-graphite">
+              Postgraduate Degree in Neuroscience & Behavior
+            </h3>
+            <p class="text-xs sm:text-sm text-slateSoft leading-relaxed">
+              Advanced focus on the neurobiological circuits of stress, working memory, adult ADHD, and neuroplasticity applied to psychotherapy.
+            </p>
+          </div>
+
+          <div class="bg-white p-7 rounded-3xl border border-stone-200/90 shadow-serene space-y-3">
+            <div class="flex items-center justify-between text-xs font-bold text-eucalyptus">
+              <span>SCIENTIFIC AFFILIATION</span>
+              <span>FBTC &amp; BECK INSTITUTE</span>
+            </div>
+            <h3 class="font-serif-psy text-2xl font-semibold text-graphite">
+              Full Member of FBTC &amp; International Training
+            </h3>
+            <p class="text-xs sm:text-sm text-slateSoft leading-relaxed">
+              Active member of the Brazilian Federation of Cognitive Therapies (FBTC) with clinical training in CBT for Anxiety at the Beck Institute (Philadelphia, USA).
+            </p>
+          </div>
+
+          <div class="bg-white p-7 rounded-3xl border border-stone-200/90 shadow-serene space-y-3">
+            <div class="flex items-center justify-between text-xs font-bold text-eucalyptus">
+              <span>SCIENTIFIC PUBLICATIONS</span>
+              <span>PEER-REVIEWED</span>
+            </div>
+            <h3 class="font-serif-psy text-2xl font-semibold text-graphite">
+              Publications &amp; Clinical Supervision
+            </h3>
+            <p class="text-xs sm:text-sm text-slateSoft leading-relaxed">
+              Author of book chapters and peer-reviewed journal articles on adult emotional regulation, clinical perfectionism, and cross-cultural adaptation.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. DEPOIMENTOS ANONIMIZADOS DE PACIENTES -->
+  <section id="depoimentos" class="py-24 lg:py-32 bg-white border-b border-stone-200/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-eucalyptus block mb-2">
+          04 // Recovery Stories (Initials Preserved for Ethical Confidentiality)
+        </span>
+        <h2 class="font-serif-psy text-4xl sm:text-5xl font-normal text-graphite">
+          Real Stories of Rebuilding and Autonomy
+        </h2>
+        <p class="text-slateSoft text-sm mt-2">
+          In accordance with the Psychologist's Code of Professional Ethics (CFP), all testimonials below were authorized and use anonymized initials only.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Relato 1 -->
+        <div class="clinical-card bg-warmSand p-8 rounded-3xl border border-stone-200/90 flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-mistBlue text-eucalyptus text-xs font-semibold">
+                Overcoming Burnout &amp; Panic
+              </span>
+              <i data-lucide="quote" class="w-5 h-5 text-eucalyptus/40"></i>
+            </div>
+            <p class="text-sm text-graphite leading-relaxed italic font-serif-psy text-xl">
+              “I came to Dr. Clarice’s clinic after two panic attacks at work. I thought I would never be able to lead my team again without feeling short of breath. With practical CBT tools, I learned to recognize my triggers and today I live with a serenity I hadn’t felt in years.”
+            </p>
+          </div>
+          <div class="pt-4 border-t border-stone-200/80 text-xs">
+            <strong class="text-graphite block font-semibold">M. R., 38 — Chief Technology Officer</strong>
+            <span class="text-slateSoft">In-Person Care (Jardins, SP) • 8-month process</span>
+          </div>
+        </div>
+
+        <!-- Relato 2 -->
+        <div class="clinical-card bg-warmSand p-8 rounded-3xl border border-stone-200/90 flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-mistBlue text-eucalyptus text-xs font-semibold">
+                Expat Life &amp; Cultural Adaptation
+              </span>
+              <i data-lucide="quote" class="w-5 h-5 text-eucalyptus/40"></i>
+            </div>
+            <p class="text-sm text-graphite leading-relaxed italic font-serif-psy text-xl">
+              “Living in Amsterdam brought incredible opportunities, along with paralyzing loneliness and imposter syndrome. Doing online therapy in Portuguese with someone so scientifically grounded and warm was my emotional anchor throughout the transition.”
+            </p>
+          </div>
+          <div class="pt-4 border-t border-stone-200/80 text-xs">
+            <strong class="text-graphite block font-semibold">L. F., 32 — Senior Architect</strong>
+            <span class="text-slateSoft">International Online Care (Netherlands)</span>
+          </div>
+        </div>
+
+        <!-- Relato 3 -->
+        <div class="clinical-card bg-warmSand p-8 rounded-3xl border border-stone-200/90 flex flex-col justify-between space-y-6">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="px-3 py-1 rounded-full bg-mistBlue text-eucalyptus text-xs font-semibold">
+                Adult ADHD &amp; Self-Compassion
+              </span>
+              <i data-lucide="quote" class="w-5 h-5 text-eucalyptus/40"></i>
+            </div>
+            <p class="text-sm text-graphite leading-relaxed italic font-serif-psy text-xl">
+              “I was diagnosed with ADHD at 41 after carrying a lifetime of guilt over procrastination. Dr. Clarice helped me build real executive organization systems that actually work for my brain—no magic formulas, just deep empathy.”
+            </p>
+          </div>
+          <div class="pt-4 border-t border-stone-200/80 text-xs">
+            <strong class="text-graphite block font-semibold">G. S., 41 — Physician-Researcher</strong>
+            <span class="text-slateSoft">Hybrid Care • Clinical Discharge with monthly follow-up</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. FAQ COMPLETO (CONVÊNIOS/REEMBOLSO, SESSÕES DE 50 MIN, FREQUÊNCIA) -->
+  <section id="duvidas" class="py-24 lg:py-32 bg-warmSand border-b border-stone-200/80">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-14">
+        <span class="text-xs font-bold uppercase tracking-[0.2em] text-eucalyptus block mb-2">
+          05 // Transparency &amp; Practical Information
+        </span>
+        <h2 class="font-serif-psy text-4xl sm:text-5xl font-normal text-graphite">
+          Frequently Asked Questions (FAQ)
+        </h2>
+      </div>
+
+      <div id="faq-accordion" class="space-y-4">
+        <!-- Populated dynamically via JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 10. FORMULÁRIO DE CONTATO / AGENDAMENTO DIRETO VIA WHATSAPP -->
+  <section id="agendamento" class="py-24 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="bg-warmSand rounded-3xl p-7 sm:p-14 border border-stone-200/90 shadow-serene">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          
+          <!-- Left 5 Cols: Warm Invitation & Office Info -->
+          <div class="lg:col-span-5 space-y-6">
+            <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-eucalyptusTint text-eucalyptus text-xs font-semibold uppercase tracking-wider">
+              <i data-lucide="calendar-heart" class="w-4 h-4"></i>
+              Take the First Step
+            </span>
+
+            <h2 class="font-serif-psy text-4xl sm:text-5xl font-normal text-graphite leading-tight">
+              Book your first session or ask a question directly.
+            </h2>
+
+            <p class="text-slateSoft text-sm sm:text-base leading-relaxed">
+              Fill out the fields alongside to check available times this week. If you prefer, the form also generates a ready, discreet message for my professional WhatsApp.
+            </p>
+
+            <div class="space-y-4 pt-4 border-t border-stone-200 text-xs sm:text-sm text-graphite">
+              <div class="flex items-start gap-3">
+                <i data-lucide="map-pin" class="w-5 h-5 text-eucalyptus shrink-0 mt-0.5"></i>
+                <div>
+                  <strong class="block font-semibold">In-Person Clinic — Jardins, SP</strong>
+                  <span class="text-slateSoft">Alameda Santos, 2150 — Suite 1408 (Near Consolação Subway • Valet parking available)</span>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <i data-lucide="video" class="w-5 h-5 text-eucalyptus shrink-0 mt-0.5"></i>
+                <div>
+                  <strong class="block font-semibold">Encrypted Virtual Clinic</strong>
+                  <span class="text-slateSoft">Online care across Brazil and worldwide with an exclusive link sent 15 minutes before each session.</span>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3">
+                <i data-lucide="file-check" class="w-5 h-5 text-eucalyptus shrink-0 mt-0.5"></i>
+                <div>
+                  <strong class="block font-semibold">Full Reimbursement Support</strong>
+                  <span class="text-slateSoft">We issue the clinical documentation and official tax receipts (Nota Fiscal) required by your health insurance.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right 7 Cols: Interactive Booking Form -->
+          <div class="lg:col-span-7 bg-white p-6 sm:p-10 rounded-3xl border border-stone-200/90 shadow-sm">
+            <form id="clinical-booking-form" onsubmit="handleClinicalBooking(event)" class="space-y-5">
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold uppercase tracking-wider text-slateSoft mb-1.5">How would you like to be addressed? *</label>
+                  <input id="c-name" type="text" required placeholder="Your name" class="w-full px-4 py-3.5 rounded-2xl bg-warmSand border border-stone-200 text-sm text-graphite focus:border-eucalyptus focus:outline-none" />
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold uppercase tracking-wider text-slateSoft mb-1.5">WhatsApp (with country/area code) *</label>
+                  <input id="c-phone" type="tel" required placeholder="e.g., +1 (555) 234-5678" class="w-full px-4 py-3.5 rounded-2xl bg-warmSand border border-stone-200 text-sm text-graphite focus:border-eucalyptus focus:outline-none" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold uppercase tracking-wider text-slateSoft mb-1.5">Care Format *</label>
+                  <select id="c-modality" class="w-full px-4 py-3.5 rounded-2xl bg-warmSand border border-stone-200 text-sm font-medium text-graphite focus:border-eucalyptus focus:outline-none">
+                    <option value="Online Therapy (Encrypted Video)">Online Therapy (Encrypted Video)</option>
+                    <option value="In-Person at Clinic (Jardins - SP)">In-Person at Clinic (Jardins - SP)</option>
+                    <option value="Hybrid Format (In-Person + Online)">Hybrid Format (In-Person + Online)</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-xs font-semibold uppercase tracking-wider text-slateSoft mb-1.5">Preferred Time of Day</label>
+                  <select id="c-shift" class="w-full px-4 py-3.5 rounded-2xl bg-warmSand border border-stone-200 text-sm font-medium text-graphite focus:border-eucalyptus focus:outline-none">
+                    <option value="Morning (08:00–12:00 BRT)">Morning (08:00–12:00 — Brasília Time)</option>
+                    <option value="Afternoon (13:00–17:00 BRT)" selected>Afternoon (13:00–17:00 — Brasília Time)</option>
+                    <option value="Evening (18:00–21:00 BRT)">Evening (18:00–21:00 — Brasília Time)</option>
+                    <option value="International Time Zone (Abroad)">International Time Zone (Living Abroad)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-slateSoft mb-1.5">Primary Focus or Current Situation</label>
+                <input id="c-demand" type="text" value="Anxiety, Burnout & Emotional Balance" class="w-full px-4 py-3.5 rounded-2xl bg-mistBlue/40 border border-mistBorder text-sm text-eucalyptus font-semibold focus:border-eucalyptus focus:outline-none" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold uppercase tracking-wider text-slateSoft mb-1.5">Would you like to share anything briefly before we meet? (Optional & Confidential)</label>
+                <textarea id="c-notes" rows="2" placeholder="Feel free to write here or leave blank..." class="w-full px-4 py-3 rounded-2xl bg-warmSand border border-stone-200 text-sm text-graphite focus:border-eucalyptus focus:outline-none"></textarea>
+              </div>
+
+              <button 
+                type="submit" 
+                class="w-full py-4 rounded-full bg-eucalyptus hover:bg-eucalyptusDark text-white font-semibold text-xs sm:text-sm uppercase tracking-widest shadow-serene transition-all flex items-center justify-center gap-2.5"
+              >
+                <span>Request Available Times &amp; Message on WhatsApp</span>
+                <i data-lucide="send" class="w-4 h-4"></i>
+              </button>
+            </form>
+
+            <!-- Instant Empathetic Confirmation Box -->
+            <div id="booking-confirm-box" class="hidden mt-5 p-5 rounded-2xl bg-eucalyptusTint border border-eucalyptus/30 text-xs sm:text-sm text-eucalyptusDark space-y-2">
+              <div class="flex items-center justify-between font-bold">
+                <span>✓ Your message has been received confidentially!</span>
+                <span id="booking-protocol" class="font-mono text-xs">#CM-2026</span>
+              </div>
+              <p id="booking-confirm-text" class="leading-relaxed text-slateSoft"></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. RODAPÉ COM LINKS DE ACOLHIMENTO, ÉTICA CFP E CANAIS DE EMERGÊNCIA (CVV 188) -->
+  <footer class="bg-eucalyptusDark text-warmSand/80 pt-16 pb-12 border-t border-white/10 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Mandatory Ethical Notice & Crisis Support Banner (CVV 188) -->
+      <div class="mb-12 p-5 sm:p-6 rounded-2xl bg-white/5 border border-white/15 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div class="flex items-start gap-3.5">
+          <div class="w-10 h-10 rounded-xl bg-amber-400/20 text-amber-300 flex items-center justify-center shrink-0 mt-0.5">
+            <i data-lucide="phone-call" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <strong class="text-white text-sm block">Immediate Emotional Support & Crisis Hotline (CVV — Call 188 in Brazil)</strong>
+            <p class="text-warmSand/75 text-xs mt-0.5 leading-relaxed">
+              This website does not provide 24/7 urgent or psychiatric emergency care. If you or someone close to you is experiencing an acute crisis or immediate risk to life, call <strong class="text-white">188 (Centro de Valorização da Vida — CVV)</strong> toll-free in Brazil (or 988 in the US/Canada), visit <a href="https://www.cvv.org.br" target="_blank" rel="noopener noreferrer" class="underline text-mistBlue">www.cvv.org.br</a>, or go to your nearest emergency room (SAMU 192).
+            </p>
+          </div>
+        </div>
+        <a href="tel:188" class="px-5 py-2.5 rounded-full bg-amber-400/20 hover:bg-amber-400/30 border border-amber-300/40 text-amber-200 font-bold text-xs whitespace-nowrap shrink-0">
+          Call 188 (24/7 Free)
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-white/10">
+        
+        <!-- Therapist Column (5 cols) -->
+        <div class="lg:col-span-5 space-y-3">
+          <div class="flex items-baseline gap-2.5">
+            <span class="font-serif-psy text-2xl text-white font-semibold">Dr. Clarice Mendes</span>
+            <span class="text-[11px] uppercase tracking-widest text-mistBlue font-semibold">CRP 06/148920</span>
+          </div>
+          <p class="text-warmSand/70 leading-relaxed max-w-sm">
+            Clinical Psychologist with a PhD from USP. Individual Cognitive Behavioral Therapy (CBT) for adults, treating anxiety, burnout syndrome, and ADHD.
+          </p>
+          <p class="text-[11px] text-warmSand/50 pt-1">
+            Practice conducted in strict compliance with the Psychologist's Code of Professional Ethics and CFP Resolution No. 09/2024.
+          </p>
+        </div>
+
+        <!-- Áreas Clínicas (3 cols) -->
+        <div class="lg:col-span-3 space-y-2">
+          <h4 class="text-white font-semibold uppercase tracking-wider text-xs mb-3">Specialties</h4>
+          <ul class="space-y-2 text-warmSand/75">
+            <li><a href="#areas-atuacao" class="hover:text-mistBlue transition-colors">Anxiety &amp; Panic Disorders</a></li>
+            <li><a href="#areas-atuacao" class="hover:text-mistBlue transition-colors">Burnout &amp; Career Stress</a></li>
+            <li><a href="#areas-atuacao" class="hover:text-mistBlue transition-colors">Adult ADHD &amp; Executive Function</a></li>
+            <li><a href="#areas-atuacao" class="hover:text-mistBlue transition-colors">Depression, Grief &amp; Transitions</a></li>
+            <li><a href="#terapia-online" class="hover:text-mistBlue transition-colors">Brazilians Abroad (Expats)</a></li>
+          </ul>
+        </div>
+
+        <!-- Informações & Ferramentas (2 cols) -->
+        <div class="lg:col-span-2 space-y-2">
+          <h4 class="text-white font-semibold uppercase tracking-wider text-xs mb-3">Care &amp; Info</h4>
+          <ul class="space-y-2 text-warmSand/75">
+            <li><a href="#autoavaliacao" class="hover:text-mistBlue transition-colors">Online Self-Assessment</a></li>
+            <li><a href="#como-funciona" class="hover:text-mistBlue transition-colors">Stages of CBT</a></li>
+            <li><a href="#sobre" class="hover:text-mistBlue transition-colors">USP Credentials</a></li>
+            <li><a href="#duvidas" class="hover:text-mistBlue transition-colors">Reimbursement Guide</a></li>
+          </ul>
+        </div>
+
+        <!-- Consultório (2 cols) -->
+        <div class="lg:col-span-2 space-y-2 text-warmSand/75">
+          <h4 class="text-white font-semibold uppercase tracking-wider text-xs mb-3">Clinic</h4>
+          <p>Alameda Santos, 2150 — Suite 1408, Jardins</p>
+          <p>São Paulo — SP</p>
+          <p class="text-mistBlue pt-1">contato@claricemendes.psi.br</p>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-warmSand/50">
+        <p>© 2026 Dr. Clarice Mendes — Clinical Psychology (CRP 06/148920). All rights reserved.</p>
+        <div class="flex items-center gap-6">
+          <span>Legally Protected Professional Confidentiality</span>
+          <span>•</span>
+          <span>HIPAA / LGPD Encrypted Platform</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ======================================================================= -->
+  <!-- VANILLA JAVASCRIPT: TRIAGEM, QUIZ DE SAÚDE MENTAL, FUSOS, FAQ & AGENDA   -->
+  <!-- ======================================================================= -->
+  <script>
+    // 1. TRIAGEM ACOLHEDORA NO HERO (Preservando e expandindo a função setPsy do index_12.html)
+    const PSY_TEXT = {
+      burnout: "We work with structured CBT protocols to identify exhaustion triggers, dysfunctional perfectionism, and insomnia, building healthy, sustainable boundaries into your daily routine.",
+      tdah: "We apply the Harvard cognitive-behavioral protocol (Safren) for adult ADHD: organizing executive functions, reducing decision paralysis, and gently managing procrastination.",
+      carreira: "Specialized emotional support for cultural adaptation of Brazilians abroad (migratory grief), imposter syndrome, and confident decision-making during career transitions.",
+      relacoes: "Exploring recurring relational patterns, assertive communication without guilt, and strengthening self-esteem and emotional autonomy."
+    };
+
+    window.setPsy = function(k, btnEl) {
+      const box = document.getElementById('psy-box');
+      if (box && PSY_TEXT[k]) {
+        box.textContent = PSY_TEXT[k];
+      }
+      if (btnEl) {
+        document.querySelectorAll('.psy-pill').forEach(b => {
+          b.className = 'psy-pill px-4 py-2 rounded-full text-xs font-semibold bg-sandStone text-graphite hover:bg-mistBlue transition-all';
+        });
+        btnEl.className = 'psy-pill px-4 py-2 rounded-full text-xs font-semibold bg-eucalyptus text-white transition-all';
+      }
+    };
+
+    // 2. AUTOAVALIAÇÃO / QUIZ INTERATIVO DE SAÚDE MENTAL (4 PERGUNTAS NÃO-DIAGNÓSTICAS)
+    const QUIZ_QUESTIONS = [
+      {
+        title: "1. Over the past two weeks, how often have you noticed a racing mind, struggling to “switch off” worries about the future or work?",
+        options: [
+          { label: "Rarely or not at all", score: 0 },
+          { label: "On several days, though I can unwind afterward", score: 1 },
+          { label: "More than half the days, affecting my rest or sleep", score: 2 },
+          { label: "Nearly every day, with a constant feeling of being on edge", score: 3 }
+        ]
+      },
+      {
+        title: "2. How would you describe your physical and emotional energy levels when starting your daily activities recently?",
+        options: [
+          { label: "I feel energized and balanced most of the time", score: 0 },
+          { label: "I feel moderately tired by the end of the day, but recover on weekends", score: 1 },
+          { label: "I wake up already tired and everything feels like a much heavier effort", score: 2 },
+          { label: "I feel deep physical and mental exhaustion even after trying to rest", score: 3 }
+        ]
+      },
+      {
+        title: "3. How often have you struggled to stay focused, procrastinated with guilt, or felt overwhelmed by simple tasks?",
+        options: [
+          { label: "I can organize my priorities calmly and steadily", score: 0 },
+          { label: "I occasionally lose focus when juggling too many simultaneous demands", score: 1 },
+          { label: "I frequently put off important tasks due to anxiety or mental block", score: 2 },
+          { label: "I experience constant paralysis, harsh self-criticism, and daily overwhelm", score: 3 }
+        ]
+      },
+      {
+        title: "4. When you think about your relationships and the time you dedicate to yourself, how have you been feeling?",
+        options: [
+          { label: "I can set healthy boundaries and protect moments for self-care", score: 0 },
+          { label: "Sometimes it is hard to say “no”, though I manage to reset", score: 1 },
+          { label: "I feel I am always meeting others’ expectations while neglecting myself", score: 2 },
+          { label: "I feel irritable, inclined to withdraw, or disconnected from who I am", score: 3 }
+        ]
+      }
+    ];
+
+    let currentQuizStep = 0;
+    let quizAnswers = [null, null, null, null];
+    let lastQuizSummary = "";
+
+    function renderQuizStep() {
+      const q = QUIZ_QUESTIONS[currentQuizStep];
+      const stepNum = currentQuizStep + 1;
+      const pct = stepNum * 25;
+
+      document.getElementById('quiz-step-indicator').textContent = `QUESTION ${stepNum} OF 4`;
+      document.getElementById('quiz-pct-indicator').textContent = `${pct}% Complete`;
+      document.getElementById('quiz-progress-bar').style.width = `${pct}%`;
+
+      const panel = document.getElementById('quiz-question-panel');
+      panel.innerHTML = `
+        <h3 class="font-serif-psy text-2xl sm:text-3xl text-graphite font-medium leading-snug">
+          ${q.title}
+        </h3>
+        <div class="grid grid-cols-1 gap-3 pt-2">
+          ${q.options.map((opt, idx) => `
+            <button
+              type="button"
+              onclick="selectQuizAnswer(${opt.score})"
+              class="w-full p-4 rounded-2xl border border-stone-200 bg-warmSand hover:bg-mistBlue/60 hover:border-eucalyptus text-left flex items-center justify-between gap-4 transition-all group"
+            >
+              <span class="text-xs sm:text-sm font-medium text-graphite group-hover:text-eucalyptusDark">${opt.label}</span>
+              <span class="w-6 h-6 rounded-full border border-stone-300 group-hover:border-eucalyptus group-hover:bg-eucalyptus group-hover:text-white flex items-center justify-center text-xs shrink-0 transition-colors">
+                →
+              </span>
+            </button>
+          `).join('')}
+        </div>
+        ${currentQuizStep > 0 ? `
+          <div class="pt-2">
+            <button type="button" onclick="prevQuizStep()" class="text-xs text-slateSoft hover:text-eucalyptus font-semibold">
+              ← Back to previous question
+            </button>
+          </div>
+        ` : ''}
+      `;
+    }
+
+    window.selectQuizAnswer = function(score) {
+      quizAnswers[currentQuizStep] = score;
+      if (currentQuizStep < QUIZ_QUESTIONS.length - 1) {
+        currentQuizStep++;
+        renderQuizStep();
+      } else {
+        showQuizResults();
+      }
+    };
+
+    window.prevQuizStep = function() {
+      if (currentQuizStep > 0) {
+        currentQuizStep--;
+        renderQuizStep();
+      }
+    };
+
+    function showQuizResults() {
+      const totalScore = quizAnswers.reduce((acc, v) => acc + (v || 0), 0);
+      document.getElementById('quiz-question-panel').classList.add('hidden');
+      document.getElementById('quiz-result-panel').classList.remove('hidden');
+      document.getElementById('quiz-step-indicator').textContent = 'REFLECTION COMPLETE';
+      document.getElementById('quiz-pct-indicator').textContent = '100%';
+      document.getElementById('quiz-progress-bar').style.width = '100%';
+
+      let badge = '';
+      let title = '';
+      let text = '';
+      let rec = '';
+
+      if (totalScore <= 3) {
+        badge = 'Mild Level • Preserved Balance';
+        title = 'Your emotional resources show steady balance right now.';
+        text = 'Your answers suggest that despite everyday challenges, you have been able to preserve space for recovery and emotional regulation.';
+        rec = 'At this stage, psychotherapy serves as a valuable space for preventive self-awareness, nurturing life goals, and refining relational skills.';
+        lastQuizSummary = 'Self-Assessment: Balanced / Seeking Self-Awareness';
+      } else if (totalScore <= 7) {
+        badge = 'Moderate Alert • Building Overload';
+        title = 'You have been carrying mental overload that deserves care and attention.';
+        text = 'Your responses point to frequent racing thoughts, energy depletion, or difficulty maintaining boundaries. Left unaddressed over months, this state can progress into clinical anxiety or burnout.';
+        rec = 'Starting Cognitive Behavioral Therapy now will help you spot perfectionist beliefs, reorganize your executive routine, and restore genuine rest.';
+        lastQuizSummary = 'Self-Assessment: Emotional Overload & Moderate Anxiety';
+      } else {
+        badge = 'Priority Attention • Exhaustion & Hyperarousal';
+        title = 'Your body and mind are asking for a safe pause and specialized support.';
+        text = 'Your responses reflect high emotional wear, anxious hypervigilance, or chronic exhaustion. You do not have to—and should not—keep carrying this weight alone.';
+        rec = 'I strongly recommend scheduling an initial intake session. Together we will build a structured, gentle plan to ease acute anxiety or burnout symptoms and restore emotional safety.';
+        lastQuizSummary = 'Self-Assessment: High Overload / Anxiety & Exhaustion';
+      }
+
+      document.getElementById('quiz-result-badge').textContent = badge;
+      document.getElementById('quiz-result-title').textContent = title;
+      document.getElementById('quiz-result-text').textContent = text;
+      document.getElementById('quiz-result-recommendation').textContent = rec;
+    }
+
+    window.resetMentalQuiz = function() {
+      currentQuizStep = 0;
+      quizAnswers = [null, null, null, null];
+      document.getElementById('quiz-result-panel').classList.add('hidden');
+      document.getElementById('quiz-question-panel').classList.remove('hidden');
+      renderQuizStep();
+    };
+
+    window.sendQuizToBooking = function() {
+      const demandInput = document.getElementById('c-demand');
+      if (demandInput && lastQuizSummary) {
+        demandInput.value = lastQuizSummary;
+      }
+      document.getElementById('agendamento').scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        document.getElementById('c-name').focus();
+      }, 600);
+    };
+
+    // 3. CONVERSOR DE FUSO HORÁRIO PARA BRASILEIROS NO EXTERIOR
+    const TIMEZONES = {
+      br: {
+        title: 'Reference Hours in Brazil (Brasília — GMT-3)',
+        slots: [
+          { period: 'Morning', local: '08:00 to 12:00 (BRT)', brt: 'In-Person or Online' },
+          { period: 'Afternoon', local: '14:00 to 18:00 (BRT)', brt: 'In-Person or Online' },
+          { period: 'Evening', local: '18:30 to 20:30 (BRT)', brt: 'Online Only' }
+        ]
+      },
+      uk: {
+        title: 'Lisbon / London / Dublin Time (+3h to +4h ahead of Brazil)',
+        slots: [
+          { period: 'Europe Morning', local: '11:00 to 15:00 (WEST/BST)', brt: 'Equals 08:00–12:00 in Brazil' },
+          { period: 'Europe Late Afternoon', local: '17:00 to 20:00 (WEST/BST)', brt: 'Equals 14:00–17:00 in Brazil' },
+          { period: 'Europe Evening', local: '20:30 to 22:30 (WEST/BST)', brt: 'Equals 17:30–19:30 BRT' }
+        ]
+      },
+      eu: {
+        title: 'Berlin / Paris / Amsterdam / Madrid / Zurich Time (CET/CEST)',
+        slots: [
+          { period: 'Europe Midday', local: '12:00 to 16:00 (CET)', brt: 'Equals 08:00–12:00 in Brazil' },
+          { period: 'After-Work EU', local: '18:00 to 21:00 (CET)', brt: 'Equals 14:00–17:00 in Brazil' },
+          { period: 'Quiet Evening EU', local: '21:00 to 23:00 (CET)', brt: 'Equals 17:00–19:00 in Brazil' }
+        ]
+      },
+      ny: {
+        title: 'US & Canada East Coast (New York / Miami / Toronto — EST/EDT)',
+        slots: [
+          { period: 'Early Morning US', local: '07:00 to 11:00 (EST)', brt: 'Equals 08:00–12:00 in Brazil' },
+          { period: 'Afternoon US/Canada', local: '13:00 to 17:00 (EST)', brt: 'Equals 14:00–18:00 in Brazil' },
+          { period: 'Evening US/Canada', local: '18:00 to 20:00 (EST)', brt: 'Equals 19:00–21:00 in Brazil' }
+        ]
+      },
+      ca: {
+        title: 'US & Canada West Coast (California / Seattle / Vancouver — PST)',
+        slots: [
+          { period: 'West Coast Morning', local: '07:00 to 10:00 (PST)', brt: 'Equals 11:00–14:00 in Brazil' },
+          { period: 'Midday / Afternoon PST', local: '11:00 to 15:00 (PST)', brt: 'Equals 15:00–19:00 in Brazil' },
+          { period: 'Late Afternoon PST', local: '16:00 to 17:30 (PST)', brt: 'Equals 20:00–21:30 in Brazil' }
+        ]
+      },
+      au: {
+        title: 'Asia & Oceania Time (Tokyo / Sydney / Melbourne)',
+        slots: [
+          { period: 'Morning (Next Day)', local: '07:00 to 10:00 (AEST/JST)', brt: 'Equals 18:00–21:00 BRT' },
+          { period: 'Evening Asia/Oceania', local: '19:30 to 22:30 (AEST/JST)', brt: 'Equals 07:30–10:30 BRT' },
+          { period: 'Flexible Saturdays', local: 'Special Slots', brt: 'By prior arrangement' }
+        ]
+      }
+    };
+
+    window.selectTimezone = function(tzKey) {
+      document.querySelectorAll('.tz-btn').forEach(btn => {
+        if (btn.getAttribute('data-tz') === tzKey) {
+          btn.className = 'tz-btn py-2.5 px-3 rounded-xl bg-mistBlue text-eucalyptus font-bold text-left';
+        } else {
+          btn.className = 'tz-btn py-2.5 px-3 rounded-xl bg-white/5 border border-white/10 text-warmSand hover:bg-white/10 text-left';
+        }
+      });
+
+      const data = TIMEZONES[tzKey];
+      document.getElementById('tz-region-title').textContent = data.title;
+      document.getElementById('tz-slots-grid').innerHTML = data.slots.map(s => `
+        <div class="p-3 rounded-xl bg-eucalyptusDark/80 border border-white/10">
+          <span class="text-[10px] uppercase tracking-wider text-mistBlue block">${s.period}</span>
+          <strong class="text-white text-xs sm:text-sm block mt-0.5">${s.local}</strong>
+          <span class="text-[10px] text-warmSand/60 block mt-0.5">${s.brt}</span>
+        </div>
+      `).join('');
+    };
+
+    // 4. FAQ INTERATIVO EM ACCORDION
+    const FAQS = [
+      {
+        q: "How does health insurance reimbursement work?",
+        a: "I operate as a private-pay practice to guarantee full 50-minute sessions, strict punctuality, and a treatment plan free from insurer restrictions. However, if your health plan (such as Bradesco Saúde, SulAmérica, Amil, Omint, Porto Seguro, Care Plus, or Allianz) offers out-of-network reimbursement, I issue a monthly official tax receipt (Nota Fiscal) and standardized clinical report so you can claim reimbursement directly."
+      },
+      {
+        q: "What is the recommended session duration and frequency?",
+        a: "Each individual session lasts 50 minutes and initially takes place once a week on a fixed day and time reserved exclusively for you. During periods of acute crisis, we may hold twice-weekly sessions; in the final consolidation and discharge phase, we space meetings to biweekly and monthly."
+      },
+      {
+        q: "Does online therapy have the same scientific efficacy as in-person sessions?",
+        a: "Yes. Numerous international meta-analyses show that Cognitive Behavioral Therapy delivered via video conferencing achieves clinical efficacy equivalent to in-person care for anxiety, depression, burnout, and ADHD, while offering greater comfort, zero commuting time, and continuity even when traveling."
+      },
+      {
+        q: "How is confidentiality ensured in both online and in-person sessions?",
+        a: "Confidentiality is the cornerstone of psychology (Art. 9 of the CFP Code of Ethics). For online care, we use an end-to-end encrypted platform (HIPAA/LGPD standard) where no session is ever recorded or stored. At our in-person clinic in Jardins, rooms feature certified acoustic insulation and staggered intervals so you never cross paths with other patients in the waiting area."
+      }
+    ];
+
+    let activeFaqIndex = 0;
+
+    function renderFaq() {
+      const container = document.getElementById('faq-accordion');
+      container.innerHTML = FAQS.map((item, idx) => {
+        const isOpen = idx === activeFaqIndex;
+        return `
+          <div class="bg-white rounded-3xl border ${isOpen ? 'border-eucalyptus/50 shadow-serene' : 'border-stone-200'} overflow-hidden transition-all">
+            <button
+              type="button"
+              onclick="toggleFaq(${idx})"
+              class="w-full p-6 text-left flex items-center justify-between gap-4 hover:bg-mistBlue/25 transition-colors"
+            >
+              <span class="font-serif-psy text-xl sm:text-2xl font-semibold text-graphite">${item.q}</span>
+              <span class="w-8 h-8 rounded-full bg-eucalyptusTint text-eucalyptus flex items-center justify-center font-bold shrink-0">
+                ${isOpen ? '−' : '+'}
+              </span>
+            </button>
+            <div class="${isOpen ? 'block' : 'hidden'} px-6 pb-6 pt-1 text-xs sm:text-sm text-slateSoft leading-relaxed border-t border-stone-100">
+              ${item.a}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    window.toggleFaq = function(idx) {
+      activeFaqIndex = activeFaqIndex === idx ? -1 : idx;
+      renderFaq();
+    };
+
+    // 5. AGENDAMENTO E PREENCHIMENTO AUTOMÁTICO DE DEMANDA
+    window.prefillBookingSpecialty = function(specialtyTitle) {
+      const demandInput = document.getElementById('c-demand');
+      if (demandInput) demandInput.value = specialtyTitle;
+      document.getElementById('agendamento').scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        document.getElementById('c-name').focus();
+      }, 600);
+    };
+
+    window.handleClinicalBooking = function(e) {
+      e.preventDefault();
+      const name = document.getElementById('c-name').value.trim();
+      const modality = document.getElementById('c-modality').value;
+      const shift = document.getElementById('c-shift').value;
+      const demand = document.getElementById('c-demand').value.trim();
+
+      const protocol = '#CM-' + Math.floor(1000 + Math.random() * 9000);
+      document.getElementById('booking-protocol').textContent = protocol;
+      document.getElementById('booking-confirm-text').textContent =
+        `Hello, ${name}. I have received your scheduling request for [${modality} • ${shift}] focused on "${demand}". I will reach out personally on WhatsApp with available times for this week.`;
+      document.getElementById('booking-confirm-box').classList.remove('hidden');
+    };
+
+    window.toggleMobileMenu = function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    };
+
+    // Inicialização Completa
+    document.addEventListener('DOMContentLoaded', () => {
+      setPsy('burnout');
+      renderQuizStep();
+      selectTimezone('br');
+      renderFaq();
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+  </script>
+
+  <!-- Vercel Web Analytics & Speed Insights -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script defer src="/assets/js/demo-i18n-bar.js"></script>
+</body>
+</html>

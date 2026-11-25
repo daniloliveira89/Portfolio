@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- demo-i18n-autodetect --><script>(function(){var cur=location.pathname.endsWith('/en.html')?'en':(location.pathname.endsWith('/es.html')?'es':'pt');var q=(new URLSearchParams(location.search).get('lang')||'').toLowerCase();var target=null;if(q==='pt'||q==='en'||q==='es'){target=q;try{localStorage.setItem('portfolio_lang',q);localStorage.setItem('portfolio_lang_manual','1');}catch(e){}}else if(cur==='pt'){try{if(localStorage.getItem('portfolio_lang_manual')==='1'){var saved=localStorage.getItem('portfolio_lang');if(saved==='en'||saved==='es'||saved==='pt')target=saved;}}catch(e){}if(!target){var langs=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||navigator.userLanguage||'en'];for(var i=0;i<langs.length;i++){var c=(langs[i]||'').toLowerCase().split('-')[0];if(c==='pt'){target='pt';break;}if(c==='es'){target='es';break;}if(c==='en'){target='en';break;}}if(!target)target='en';}}if(target&&target!==cur){var file=target==='en'?'en.html':(target==='es'?'es.html':'index.html');var p=location.pathname;var np=p.slice(-5).toLowerCase()==='.html'?p.slice(0,p.lastIndexOf('/')+1)+file:(p.endsWith('/')?p+file:p+'/'+file);location.replace(np+location.search+location.hash);}})();</script>
+  <title>NexusAI — Autonomous Agent Infrastructure</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body { background-color: #05050A; color: #F9FAFB; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+    /* Spotlight effect that follows the cursor on Bento Grid cards */
+    .bento-card {
+      position: relative;
+      background: rgba(17, 19, 31, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+    .bento-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(99, 102, 241, 0.16), transparent 40%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+    .bento-card:hover::before { opacity: 1; }
+    .bento-card:hover { border-color: rgba(99, 102, 241, 0.4); transform: translateY(-2px); }
+    .hero-glow {
+      background: radial-gradient(ellipse 60% 50% at 50% -10%, rgba(99, 102, 241, 0.28), rgba(168, 85, 247, 0.08), transparent);
+    }
+  </style>
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+</head>
+<body class="hero-glow min-h-screen antialiased selection:bg-indigo-500 selection:text-white">
+
+  <!-- Navbar -->
+  <header class="sticky top-0 z-50 border-b border-white/10 bg-[#05050A]/80 backdrop-blur-xl">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center font-bold text-sm">N</div>
+        <span class="font-bold tracking-tight text-white">Nexus<span class="text-indigo-400">AI</span></span>
+        <span class="ml-2 px-2 py-0.5 text-[10px] font-mono bg-indigo-500/10 text-indigo-300 border border-indigo-500/30 rounded-full">v2.4 Live</span>
+      </div>
+      <nav class="hidden md:flex items-center gap-8 text-sm text-zinc-400">
+        <a href="#bento" class="hover:text-white transition">Architecture</a>
+        <a href="#latency" class="hover:text-white transition">Benchmarks</a>
+        <a href="#pricing" class="hover:text-white transition">Pricing</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a href="#pricing" class="px-4 py-2 rounded-lg text-xs font-semibold bg-white text-black hover:bg-zinc-200 transition">Get Started →</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="max-w-6xl mx-auto px-6 pt-20 pb-16 text-center">
+    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-zinc-300 mb-6">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span>Multi-LLM routing with 99.99% SLA at the Edge</span>
+    </div>
+    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05] max-w-4xl mx-auto">
+      Orchestrate AI Agents at <span class="bg-gradient-to-r from-indigo-400 via-purple-300 to-sky-400 bg-clip-text text-transparent">Global Scale.</span>
+    </h1>
+    <p class="mt-6 text-zinc-400 max-w-2xl mx-auto text-base sm:text-lg">
+      Unify OpenAI, Claude, and Gemini behind a single endpoint. Automatic 12ms failover, semantic caching, and real-time financial observability.
+    </p>
+
+    <!-- Interactive Code Preview -->
+    <div class="mt-10 max-w-2xl mx-auto rounded-2xl border border-white/10 bg-[#0B0D17] p-4 text-left shadow-2xl">
+      <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
+        <div class="flex gap-1.5">
+          <span class="w-2.5 h-2.5 rounded-full bg-red-500/70"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-amber-500/70"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/70"></span>
+        </div>
+        <span class="text-[11px] font-mono text-zinc-500">deploy-agent.ts</span>
+        <button id="copy-code" class="text-[11px] font-mono text-indigo-400 hover:text-indigo-300">Copy</button>
+      </div>
+      <pre class="font-mono text-xs sm:text-sm text-zinc-300 overflow-x-auto leading-relaxed"><code><span class="text-purple-400">import</span> { NexusGateway } <span class="text-purple-400">from</span> <span class="text-emerald-400">'@nexus-ai/sdk'</span>;
+
+<span class="text-purple-400">const</span> ai = <span class="text-purple-400">new</span> NexusGateway({ strategy: <span class="text-amber-300">'lowest-latency'</span> });
+<span class="text-purple-400">const</span> res = <span class="text-purple-400">await</span> ai.Complete({
+  models: [<span class="text-emerald-400">'claude-4-sonnet'</span>, <span class="text-emerald-400">'gemini-2.5-pro'</span>],
+  cache: <span class="text-indigo-400">true</span>
+});</code></pre>
+    </div>
+  </section>
+
+  <!-- Interactive Bento Grid -->
+  <section id="bento" class="max-w-6xl mx-auto px-6 py-16">
+    <div class="text-center mb-12">
+      <h2 class="text-2xl sm:text-4xl font-bold">Invisible Engineering. Total Control.</h2>
+      <p class="text-zinc-400 text-sm mt-2">Hover over the modules to inspect live telemetry.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5" id="bento-grid">
+      <!-- Card 1 -->
+      <div class="bento-card md:col-span-2 rounded-2xl p-7">
+        <span class="text-xs font-mono uppercase tracking-wider text-indigo-400">01 / Intelligent Routing</span>
+        <h3 class="text-xl font-bold mt-2">Automatic Multi-Provider Failover</h3>
+        <p class="text-zinc-400 text-sm mt-2 max-w-md">If a provider experiences an API outage or rate limit, traffic is rerouted in under 15 milliseconds without breaking the user session.</p>
+        <div class="mt-6 grid grid-cols-3 gap-3 pt-4 border-t border-white/10 font-mono text-xs">
+          <div class="p-3 rounded-lg bg-white/5"><span class="text-emerald-400">●</span> Anthropic <strong class="block text-white mt-1">42ms</strong></div>
+          <div class="p-3 rounded-lg bg-white/5"><span class="text-emerald-400">●</span> Google AI <strong class="block text-white mt-1">38ms</strong></div>
+          <div class="p-3 rounded-lg bg-white/5"><span class="text-amber-400">●</span> OpenAI <strong class="block text-white mt-1">Fallback</strong></div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bento-card rounded-2xl p-7 flex flex-col justify-between">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-wider text-purple-400">02 / FinOps</span>
+          <h3 class="text-xl font-bold mt-2">Semantic Caching</h3>
+          <p class="text-zinc-400 text-sm mt-2">Similar queries are served straight from the Edge, cutting your token bill by up to 48%.</p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-white/10">
+          <div class="text-3xl font-extrabold text-emerald-400">-48.4%</div>
+          <div class="text-xs text-zinc-500">Average monthly savings</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing with Interactive Toggle -->
+  <section id="pricing" class="max-w-5xl mx-auto px-6 py-16 border-t border-white/10">
+    <div class="text-center mb-10">
+      <h2 class="text-3xl font-bold">Transparent Pricing</h2>
+      <div class="mt-5 inline-flex items-center gap-3 p-1 rounded-full bg-white/5 border border-white/10">
+        <button id="btn-monthly" class="px-4 py-1.5 rounded-full text-xs font-semibold bg-indigo-500 text-white transition">Monthly</button>
+        <button id="btn-yearly" class="px-4 py-1.5 rounded-full text-xs font-semibold text-zinc-400 hover:text-white transition">Annual (-20%)</button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bento-card rounded-2xl p-8">
+        <h3 class="text-lg font-bold">Developer</h3>
+        <div class="mt-4 flex items-baseline gap-1">
+          <span class="text-4xl font-extrabold" id="price-dev">$29</span>
+          <span class="text-zinc-400 text-xs">/mo</span>
+        </div>
+        <ul class="mt-6 space-y-2.5 text-sm text-zinc-300">
+          <li>✓ 100,000 requests / month</li>
+          <li>✓ Edge Semantic Caching</li>
+          <li>✓ 7-day log retention</li>
+        </ul>
+      </div>
+
+      <div class="bento-card rounded-2xl p-8 border-indigo-500/40">
+        <div class="flex justify-between items-center">
+          <h3 class="text-lg font-bold text-indigo-300">Scale Enterprise</h3>
+          <span class="px-2.5 py-0.5 text-[10px] font-semibold bg-indigo-500/20 text-indigo-300 rounded-full">Most Popular</span>
+        </div>
+        <div class="mt-4 flex items-baseline gap-1">
+          <span class="text-4xl font-extrabold" id="price-pro">$99</span>
+          <span class="text-zinc-400 text-xs">/mo</span>
+        </div>
+        <ul class="mt-6 space-y-2.5 text-sm text-zinc-300">
+          <li>✓ Unlimited requests (Zero markup)</li>
+          <li>✓ 12ms Multi-Region Failover</li>
+          <li>✓ SOC2 & HIPAA Compliance</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Spotlight Mouse Effect
+    document.querySelectorAll('.bento-card').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+        card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+      });
+    });
+
+    // Pricing Toggle
+    const btnMonthly = document.getElementById('btn-monthly');
+    const btnYearly = document.getElementById('btn-yearly');
+    const priceDev = document.getElementById('price-dev');
+    const pricePro = document.getElementById('price-pro');
+
+    btnYearly.addEventListener('click', () => {
+      btnYearly.className = 'px-4 py-1.5 rounded-full text-xs font-semibold bg-indigo-500 text-white transition';
+      btnMonthly.className = 'px-4 py-1.5 rounded-full text-xs font-semibold text-zinc-400 hover:text-white transition';
+      priceDev.textContent = '$23';
+      pricePro.textContent = '$79';
+    });
+
+    btnMonthly.addEventListener('click', () => {
+      btnMonthly.className = 'px-4 py-1.5 rounded-full text-xs font-semibold bg-indigo-500 text-white transition';
+      btnYearly.className = 'px-4 py-1.5 rounded-full text-xs font-semibold text-zinc-400 hover:text-white transition';
+      priceDev.textContent = '$29';
+      pricePro.textContent = '$99';
+    });
+
+    document.getElementById('copy-code').addEventListener('click', function() {
+      this.textContent = 'Copied!';
+      setTimeout(() => this.textContent = 'Copy', 1500);
+    });
+  </script>
+  <!-- Vercel Web Analytics & Speed Insights -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script defer src="/assets/js/demo-i18n-bar.js"></script>
+</body>
+</html>

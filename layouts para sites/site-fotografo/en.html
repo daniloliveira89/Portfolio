@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- demo-i18n-autodetect --><script>(function(){var cur=location.pathname.endsWith('/en.html')?'en':(location.pathname.endsWith('/es.html')?'es':'pt');var q=(new URLSearchParams(location.search).get('lang')||'').toLowerCase();var target=null;if(q==='pt'||q==='en'||q==='es'){target=q;try{localStorage.setItem('portfolio_lang',q);localStorage.setItem('portfolio_lang_manual','1');}catch(e){}}else if(cur==='pt'){try{if(localStorage.getItem('portfolio_lang_manual')==='1'){var saved=localStorage.getItem('portfolio_lang');if(saved==='en'||saved==='es'||saved==='pt')target=saved;}}catch(e){}if(!target){var langs=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||navigator.userLanguage||'en'];for(var i=0;i<langs.length;i++){var c=(langs[i]||'').toLowerCase().split('-')[0];if(c==='pt'){target='pt';break;}if(c==='es'){target='es';break;}if(c==='en'){target='en';break;}}if(!target)target='en';}}if(target&&target!==cur){var file=target==='en'?'en.html':(target==='es'?'es.html':'index.html');var p=location.pathname;var np=p.slice(-5).toLowerCase()==='.html'?p.slice(0,p.lastIndexOf('/')+1)+file:(p.endsWith('/')?p+file:p+'/'+file);location.replace(np+location.search+location.hash);}})();</script>
+  <title>LUCAS VIANNA — Visual Artist | Fine Art, Fashion & Editorial Photography</title>
+  <meta name="description" content="Capturing the silent intensity of human form and light. Official portfolio of Lucas Vianna — Fashion Photography, Editorial Portraits, Brutalist Architecture & Numbered Fine Art Prints." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Cormorant Garamond, Italianno, Syne, Space Grotesk & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Italianno&family=JetBrains+Mono:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            galleryBlack: '#080808',
+            galleryDark: '#111111',
+            galleryCharcoal: '#181818',
+            alabaster: '#F5F5F4',
+            platinum: '#A3A3A3',
+            warmGold: '#D6C5B3',
+            silverFilm: '#D4D4D8'
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            signature: ['"Italianno"', 'cursive'],
+            syne: ['"Syne"', 'sans-serif'],
+            sans: ['"Space Grotesk"', 'sans-serif'],
+            exif: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #080808;
+      color: #F5F5F4;
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+    }
+    .font-serif-photo {
+      font-family: 'Cormorant Garamond', serif;
+    }
+    .font-signature {
+      font-family: 'Italianno', cursive;
+    }
+    .font-exif {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Custom Magnetic Dot & Ring Cursor (Desktop Only) */
+    @media (hover: hover) and (pointer: fine) {
+      .custom-cursor-enabled,
+      .custom-cursor-enabled a,
+      .custom-cursor-enabled button,
+      .custom-cursor-enabled select,
+      .custom-cursor-enabled input,
+      .custom-cursor-enabled textarea {
+        cursor: none !important;
+      }
+    }
+    #cursor-dot {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 7px;
+      height: 7px;
+      background-color: #F5F5F4;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.25s ease, height 0.25s ease, background-color 0.25s ease;
+      mix-blend-mode: difference;
+    }
+    #cursor-ring {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(245, 245, 244, 0.45);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                  height 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 0.3s ease,
+                  background-color 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8px;
+      letter-spacing: 0.12em;
+      color: transparent;
+      text-transform: uppercase;
+    }
+    body.cursor-hover #cursor-dot {
+      width: 10px;
+      height: 10px;
+      background-color: #D6C5B3;
+    }
+    body.cursor-hover #cursor-ring {
+      width: 68px;
+      height: 68px;
+      border-color: rgba(214, 197, 179, 0.85);
+      background-color: rgba(214, 197, 179, 0.08);
+      backdrop-filter: blur(2px);
+    }
+    body.cursor-view #cursor-ring {
+      width: 82px;
+      height: 82px;
+      background-color: rgba(245, 245, 244, 0.95);
+      color: #080808;
+      font-weight: 600;
+      border-color: #F5F5F4;
+    }
+
+    /* Subtle Film Grain Texture Overlay */
+    .film-grain {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+
+    /* Photo Hover Transitions */
+    .gallery-item img {
+      transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+    }
+    .gallery-item:hover img {
+      transform: scale(1.045);
+    }
+
+    /* Lightbox Zoom State */
+    .lightbox-zoomed {
+      transform: scale(1.65);
+      cursor: zoom-out !important;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #080808;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #262626;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #D6C5B3;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { transform: translateY(0); opacity: 0.4; }
+      50% { transform: translateY(8px); opacity: 1; }
+    }
+    .animate-scroll-line {
+      animation: scrollPulse 2.4s ease-in-out infinite;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen antialiased bg-galleryBlack text-alabaster film-grain custom-cursor-enabled selection:bg-warmGold selection:text-galleryBlack">
+
+  <!-- CUSTOM MAGNETIC CURSOR ELEMENTS -->
+  <div id="cursor-dot" class="hidden lg:block"></div>
+  <div id="cursor-ring" class="hidden lg:flex"><span id="cursor-label">VIEW</span></div>
+
+  <!-- 1. HEADER FIXO TRANSLÚCIDO COM ASSINATURA E ALTERNÂNCIA DE GRID -->
+  <header class="fixed top-0 left-0 right-0 z-40 bg-[#080808]/80 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-8 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Brand Typographic Signature -->
+      <a href="#" class="group flex items-baseline gap-3" data-magnetic>
+        <span class="font-serif-photo text-2xl sm:text-3xl tracking-[0.22em] text-alabaster font-medium">
+          LUCAS VIANNA
+        </span>
+        <span class="hidden sm:inline-block font-exif text-[10px] uppercase tracking-[0.25em] text-warmGold border-l border-white/20 pl-3">
+          Visual Artist
+        </span>
+      </a>
+
+      <!-- Center Navigation Links -->
+      <nav class="hidden xl:flex items-center gap-7 font-exif text-[11px] uppercase tracking-[0.2em] text-neutral-400">
+        <a href="#galeria" class="hover:text-alabaster transition-colors" data-magnetic>Projects</a>
+        <a href="#galeria" onclick="filterPhotos('editorial')" class="hover:text-alabaster transition-colors" data-magnetic>Editorial</a>
+        <a href="#ensaios" class="hover:text-alabaster transition-colors" data-magnetic>Fine Art</a>
+        <a href="#publicacoes" class="hover:text-alabaster transition-colors" data-magnetic>Publications</a>
+        <a href="#sobre" class="hover:text-alabaster transition-colors" data-magnetic>About</a>
+        <a href="#prints" class="hover:text-warmGold text-alabaster transition-colors" data-magnetic>Prints</a>
+        <a href="#contato" class="hover:text-alabaster transition-colors" data-magnetic>Contact</a>
+      </nav>
+
+      <!-- Right Controls: Grid / Lista / Fullscreen Switcher + Mobile Menu -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <div class="hidden sm:flex items-center bg-[#111111] p-1 rounded-full border border-white/10 font-exif text-[10px] uppercase tracking-widest">
+          <button 
+            type="button" 
+            onclick="setGalleryLayout('grid')" 
+            id="view-btn-grid"
+            class="px-3 py-1.5 rounded-full bg-alabaster text-galleryBlack font-medium transition-all flex items-center gap-1.5"
+            title="Masonry Grid View"
+            data-magnetic
+          >
+            <i data-lucide="layout-grid" class="w-3 h-3"></i>
+            <span>Grid</span>
+          </button>
+          <button 
+            type="button" 
+            onclick="setGalleryLayout('list')" 
+            id="view-btn-list"
+            class="px-3 py-1.5 rounded-full text-neutral-400 hover:text-white transition-all flex items-center gap-1.5"
+            title="Editorial List Index"
+            data-magnetic
+          >
+            <i data-lucide="list" class="w-3 h-3"></i>
+            <span>List</span>
+          </button>
+          <button 
+            type="button" 
+            onclick="setGalleryLayout('fullscreen')" 
+            id="view-btn-fullscreen"
+            class="px-3 py-1.5 rounded-full text-neutral-400 hover:text-white transition-all flex items-center gap-1.5"
+            title="Immersive Fullscreen Mode"
+            data-magnetic
+          >
+            <i data-lucide="maximize-2" class="w-3 h-3"></i>
+            <span>Fullscreen</span>
+          </button>
+        </div>
+
+        <a href="#contato" class="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 hover:border-warmGold hover:text-warmGold font-exif text-[10px] uppercase tracking-[0.2em] transition-all" data-magnetic>
+          <span>Bookings</span>
+        </a>
+
+        <button type="button" onclick="toggleMobileMenu()" class="xl:hidden p-2.5 rounded-full border border-white/15 text-alabaster" aria-label="Menu">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobile-menu" class="hidden xl:hidden bg-[#0c0c0c] border-t border-white/10 px-6 py-6 space-y-4 font-exif text-xs uppercase tracking-[0.2em]">
+      <div class="flex items-center justify-between pb-3 border-b border-white/10">
+        <span class="text-neutral-500 text-[10px]">DISPLAY MODE:</span>
+        <div class="flex gap-2">
+          <button onclick="setGalleryLayout('grid'); toggleMobileMenu();" class="px-2.5 py-1 rounded bg-white/10 text-white text-[10px]">Grid</button>
+          <button onclick="setGalleryLayout('list'); toggleMobileMenu();" class="px-2.5 py-1 rounded bg-white/10 text-white text-[10px]">List</button>
+          <button onclick="setGalleryLayout('fullscreen'); toggleMobileMenu();" class="px-2.5 py-1 rounded bg-white/10 text-white text-[10px]">Fullscreen</button>
+        </div>
+      </div>
+      <a href="#galeria" onclick="toggleMobileMenu()" class="block py-1.5 hover:text-warmGold">01. Projects & Archive</a>
+      <a href="#galeria" onclick="filterPhotos('editorial'); toggleMobileMenu();" class="block py-1.5 hover:text-warmGold">02. Editorial & Fashion</a>
+      <a href="#ensaios" onclick="toggleMobileMenu()" class="block py-1.5 hover:text-warmGold">03. Author Series (Spreads)</a>
+      <a href="#publicacoes" onclick="toggleMobileMenu()" class="block py-1.5 hover:text-warmGold">04. Clients & Publications</a>
+      <a href="#sobre" onclick="toggleMobileMenu()" class="block py-1.5 hover:text-warmGold">05. Biography & Awards</a>
+      <a href="#prints" onclick="toggleMobileMenu()" class="block py-1.5 text-warmGold">06. Fine Art Collector Prints</a>
+      <a href="#contato" onclick="toggleMobileMenu()" class="block py-2.5 text-center border border-warmGold/50 text-warmGold mt-2">Book Campaign / Contact</a>
+    </div>
+  </header>
+
+  <!-- 2. HERO SECTION COM IMPACTO VISUAL ARREBATADOR -->
+  <section class="relative min-h-screen pt-20 flex flex-col justify-between overflow-hidden border-b border-white/10">
+    <!-- Background High-Contrast Monochromatic Editorial Image -->
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=2000&q=90" 
+        alt="Lucas Vianna Monochromatic Fashion Study" 
+        class="w-full h-full object-cover object-center grayscale contrast-125 brightness-75 scale-105 transition-transform duration-1000"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-[#080808] via-[#080808]/45 to-[#080808]/70"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-[#080808]/85 via-transparent to-[#080808]/60"></div>
+    </div>
+
+    <!-- Top EXIF Camera Bar -->
+    <div class="relative z-10 max-w-[1440px] w-full mx-auto px-4 sm:px-8 pt-8 flex flex-wrap items-center justify-between gap-4 font-exif text-[11px] text-neutral-400 uppercase tracking-[0.2em]">
+      <div class="flex items-center gap-3">
+        <span class="w-2 h-2 rounded-full bg-warmGold"></span>
+        <span>LEICA M11 MONOCHROM • HASSELBLAD X2D 100C • KODAK TRI-X 400</span>
+      </div>
+      <div class="hidden md:block">
+        <span>REPRESENTATION: SÃO PAULO • LONDON • NEW YORK</span>
+      </div>
+    </div>
+
+    <!-- Center / Bottom Overlaid Typography -->
+    <div class="relative z-10 max-w-[1440px] w-full mx-auto px-4 sm:px-8 my-auto py-16">
+      <div class="max-w-5xl space-y-6">
+        <p class="font-exif text-xs uppercase tracking-[0.35em] text-warmGold">
+          MONOGRAPH & ARCHIVE 2018—2026
+        </p>
+
+        <h1 class="font-serif-photo text-4xl sm:text-6xl md:text-7xl lg:text-[86px] font-light tracking-tight leading-[0.98] text-alabaster">
+          Capturing the <em class="italic font-normal text-warmGold">silent intensity</em> of human form and light.
+        </h1>
+
+        <div class="pt-4 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
+          <p class="font-serif-photo italic text-2xl sm:text-3xl text-neutral-300">
+            “Light as <span class="text-amber-200/90">tangible memory.</span>”
+          </p>
+          <span class="hidden sm:inline-block w-12 h-[1px] bg-white/25"></span>
+          <span class="font-signature text-4xl text-warmGold/90">Lucas Vianna</span>
+        </div>
+
+        <div class="pt-6 flex flex-wrap items-center gap-4">
+          <a href="#galeria" class="px-7 py-3.5 rounded-full bg-alabaster text-galleryBlack font-exif text-xs uppercase tracking-[0.2em] font-medium hover:bg-warmGold transition-all" data-magnetic>
+            Explore Curated Archive
+          </a>
+          <a href="#prints" class="px-7 py-3.5 rounded-full bg-white/5 backdrop-blur-md border border-white/20 text-alabaster font-exif text-xs uppercase tracking-[0.2em] hover:border-warmGold hover:text-warmGold transition-all" data-magnetic>
+            Fine Art Prints (Limited Edition)
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Scroll Indicator & Featured Plate Metadata -->
+    <div class="relative z-10 max-w-[1440px] w-full mx-auto px-4 sm:px-8 pb-8 flex items-end justify-between gap-4">
+      <div class="font-exif text-[10px] text-neutral-400 space-y-0.5">
+        <div class="text-alabaster">PLATE 01 — NOCTURNE IN MILAN (VOGUE ITALIA)</div>
+        <div>50mm APO-Summicron-M f/2 ASPH • 1/500s • ISO 125</div>
+      </div>
+
+      <a href="#galeria" class="flex flex-col items-center gap-2 font-exif text-[10px] uppercase tracking-[0.25em] text-neutral-400 hover:text-warmGold transition-colors" data-magnetic>
+        <span>Scroll</span>
+        <span class="w-[1px] h-10 bg-gradient-to-b from-warmGold to-transparent animate-scroll-line"></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 3. GALERIA FOTOGRÁFICA CURADA (MASONRY / LISTA / FULLSCREEN + LIGHTBOX) -->
+  <section id="galeria" class="py-24 lg:py-32 border-b border-white/10">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-8">
+      
+      <!-- Gallery Header & Category Filter Bar -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-14 gap-8 pb-8 border-b border-white/10">
+        <div>
+          <span class="font-exif text-[11px] uppercase tracking-[0.28em] text-warmGold block mb-2">
+            [ 01 // SELECTED WORKS & EXHIBITION PLATES ]
+          </span>
+          <h2 class="font-serif-photo text-4xl sm:text-6xl font-normal text-alabaster leading-none">
+            Curated Photography Gallery
+          </h2>
+        </div>
+
+        <!-- Interactive Category Filters -->
+        <div class="flex flex-wrap items-center gap-2" id="gallery-filter-bar">
+          <button type="button" onclick="filterPhotos('all')" data-cat="all" class="filter-pill px-4 py-2 rounded-full font-exif text-[11px] uppercase tracking-widest bg-alabaster text-galleryBlack font-medium transition-all" data-magnetic>
+            All (9)
+          </button>
+          <button type="button" onclick="filterPhotos('editorial')" data-cat="editorial" class="filter-pill px-4 py-2 rounded-full font-exif text-[11px] uppercase tracking-widest border border-white/15 text-neutral-300 hover:border-white/40 transition-all" data-magnetic>
+            Editorial
+          </button>
+          <button type="button" onclick="filterPhotos('portraits')" data-cat="portraits" class="filter-pill px-4 py-2 rounded-full font-exif text-[11px] uppercase tracking-widest border border-white/15 text-neutral-300 hover:border-white/40 transition-all" data-magnetic>
+            Portraits
+          </button>
+          <button type="button" onclick="filterPhotos('architecture')" data-cat="architecture" class="filter-pill px-4 py-2 rounded-full font-exif text-[11px] uppercase tracking-widest border border-white/15 text-neutral-300 hover:border-white/40 transition-all" data-magnetic>
+            Architecture
+          </button>
+          <button type="button" onclick="filterPhotos('fashion')" data-cat="fashion" class="filter-pill px-4 py-2 rounded-full font-exif text-[11px] uppercase tracking-widest border border-white/15 text-neutral-300 hover:border-white/40 transition-all" data-magnetic>
+            Fashion
+          </button>
+          <button type="button" onclick="filterPhotos('film35mm')" data-cat="film35mm" class="filter-pill px-4 py-2 rounded-full font-exif text-[11px] uppercase tracking-widest border border-white/15 text-neutral-300 hover:border-white/40 transition-all" data-magnetic>
+            Film 35mm
+          </button>
+        </div>
+      </div>
+
+      <!-- Status Bar: Active Filter & View Switcher -->
+      <div class="flex flex-wrap items-center justify-between gap-4 mb-8 font-exif text-[11px] text-neutral-400">
+        <span id="gallery-count-label">SHOWING 9 SELECTED WORKS • CLICK ANY IMAGE TO OPEN THE EXIF LIGHTBOX</span>
+        <span class="text-warmGold">KEYBOARD NAVIGATION (← / → / ESC) ACTIVE</span>
+      </div>
+
+      <!-- Dynamic Photo Container (Masonry Grid / Editorial List / Fullscreen Stack) -->
+      <div id="photo-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 items-start">
+        <!-- Populated dynamically via JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4. SÉRIES AUTORAIS / ENSAIOS ESPECIAIS (DOUBLE-PAGE BOOK SPREADS) -->
+  <section id="ensaios" class="py-24 lg:py-32 bg-[#0b0b0b] border-b border-white/10">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-8">
+      
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-14 gap-6">
+        <div>
+          <span class="font-exif text-[11px] uppercase tracking-[0.28em] text-warmGold block mb-2">
+            [ 02 // MONOGRAPH SPREADS & VISUAL ESSAYS ]
+          </span>
+          <h2 class="font-serif-photo text-4xl sm:text-6xl font-normal text-alabaster leading-none">
+            Author Series & Monograph Essays
+          </h2>
+        </div>
+
+        <!-- Spread Volume Selector -->
+        <div class="flex flex-wrap gap-2" id="spread-tabs">
+          <button type="button" onclick="selectSpread(0)" data-spread="0" class="spread-btn px-4 py-2 rounded-full font-exif text-xs uppercase tracking-widest bg-warmGold text-galleryBlack font-semibold transition-all" data-magnetic>
+            Vol. I — Silence in Milan
+          </button>
+          <button type="button" onclick="selectSpread(1)" data-spread="1" class="spread-btn px-4 py-2 rounded-full font-exif text-xs uppercase tracking-widest bg-[#141414] border border-white/15 text-neutral-300 hover:border-warmGold transition-all" data-magnetic>
+            Vol. II — Brutalism & Shadow
+          </button>
+          <button type="button" onclick="selectSpread(2)" data-spread="2" class="spread-btn px-4 py-2 rounded-full font-exif text-xs uppercase tracking-widest bg-[#141414] border border-white/15 text-neutral-300 hover:border-warmGold transition-all" data-magnetic>
+            Vol. III — 35mm Silver Grain
+          </button>
+        </div>
+      </div>
+
+      <!-- Double-Page Magazine Spread Container (Kinfolk / Cereal / Vogue Style) -->
+      <div id="spread-viewer" class="bg-[#111111] border border-white/15 rounded-2xl overflow-hidden shadow-2xl">
+        <!-- Populated via JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5. BIOGRAFIA & FILOSOFIA DO ARTISTA + PRÊMIOS E EXPOSIÇÕES -->
+  <section id="sobre" class="py-24 lg:py-32 border-b border-white/10">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        
+        <!-- Left 5 Cols: Studio Portrait of the Photographer & Technical Signature -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="relative rounded-2xl overflow-hidden border border-white/15 bg-galleryDark aspect-[4/5]">
+            <img 
+              src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1000&q=85" 
+              alt="Studio Portrait — Lucas Vianna" 
+              class="w-full h-full object-cover grayscale contrast-125"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-galleryBlack via-transparent to-transparent"></div>
+            <div class="absolute bottom-5 left-5 right-5 flex items-end justify-between">
+              <div>
+                <span class="font-exif text-[10px] uppercase tracking-widest text-warmGold block">SELF-PORTRAIT // SP STUDIO</span>
+                <span class="font-serif-photo text-2xl text-white">Lucas Vianna (b. 1989)</span>
+              </div>
+              <span class="font-signature text-4xl text-warmGold">Lucas Vianna</span>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-galleryDark border border-white/10 grid grid-cols-3 gap-4 text-center font-exif">
+            <div>
+              <div class="text-2xl font-serif-photo text-warmGold">14+</div>
+              <span class="text-[10px] text-neutral-400 uppercase tracking-wider block mt-1">Years of Career</span>
+            </div>
+            <div class="border-x border-white/10">
+              <div class="text-2xl font-serif-photo text-alabaster">22</div>
+              <span class="text-[10px] text-neutral-400 uppercase tracking-wider block mt-1">International Covers</span>
+            </div>
+            <div>
+              <div class="text-2xl font-serif-photo text-warmGold">9</div>
+              <span class="text-[10px] text-neutral-400 uppercase tracking-wider block mt-1">Solo Exhibitions</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 7 Cols: Philosophy, Awards & Solo Exhibitions -->
+        <div class="lg:col-span-7 space-y-10">
+          <div class="space-y-5">
+            <span class="font-exif text-[11px] uppercase tracking-[0.28em] text-warmGold block">
+              [ 03 // BIOGRAPHY & ARTIST STATEMENT ]
+            </span>
+            <h2 class="font-serif-photo text-4xl sm:text-6xl font-normal text-alabaster leading-[1.08]">
+              Between brutalist geometry and the vulnerability of the human portrait.
+            </h2>
+            <p class="text-neutral-300 text-base leading-relaxed">
+              Born in São Paulo and moving constantly between Paris, London, and New York, <strong class="text-white">Lucas Vianna</strong> began his visual research in modernist architecture before transitioning into fashion photography and conceptual portraiture.
+            </p>
+            <p class="text-neutral-400 text-sm sm:text-base leading-relaxed">
+              Working almost exclusively with directional natural light, digital medium format (Hasselblad X2D 100C), monochromatic rangefinder (Leica M11 Monochrom), and 35mm/120mm silver gelatin negatives, his work rejects artificial post-production excess in favor of the organic texture of skin, concrete, and linen.
+            </p>
+          </div>
+
+          <!-- International Awards & Exhibitions Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 border-t border-white/10">
+            
+            <!-- Awards -->
+            <div class="space-y-4">
+              <h3 class="font-exif text-xs uppercase tracking-[0.22em] text-warmGold flex items-center gap-2">
+                <i data-lucide="award" class="w-4 h-4"></i>
+                <span>Awards & Honors</span>
+              </h3>
+              <ul class="space-y-3.5 text-xs">
+                <li class="pb-3 border-b border-white/10 flex justify-between gap-4">
+                  <div>
+                    <strong class="text-alabaster block font-medium">Hasselblad Masters Award</strong>
+                    <span class="text-neutral-400">Finalist — Fashion & Portrait Category</span>
+                  </div>
+                  <span class="font-exif text-warmGold shrink-0">2025</span>
+                </li>
+                <li class="pb-3 border-b border-white/10 flex justify-between gap-4">
+                  <div>
+                    <strong class="text-alabaster block font-medium">Sony World Photography Awards</strong>
+                    <span class="text-neutral-400">1st Place — Professional Editorial & Monochrome</span>
+                  </div>
+                  <span class="font-exif text-warmGold shrink-0">2024</span>
+                </li>
+                <li class="pb-3 border-b border-white/10 flex justify-between gap-4">
+                  <div>
+                    <strong class="text-alabaster block font-medium">PX3 — Prix de la Photographie Paris</strong>
+                    <span class="text-neutral-400">Gold Medal — Fine Art Architecture</span>
+                  </div>
+                  <span class="font-exif text-warmGold shrink-0">2023</span>
+                </li>
+                <li class="flex justify-between gap-4">
+                  <div>
+                    <strong class="text-alabaster block font-medium">Leica Oskar Barnack Award</strong>
+                    <span class="text-neutral-400">Shortlisted — "Monoliths" Series</span>
+                  </div>
+                  <span class="font-exif text-warmGold shrink-0">2022</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Solo & Group Exhibitions -->
+            <div class="space-y-4">
+              <h3 class="font-exif text-xs uppercase tracking-[0.22em] text-warmGold flex items-center gap-2">
+                <i data-lucide="landmark" class="w-4 h-4"></i>
+                <span>Gallery & Museum Exhibitions</span>
+              </h3>
+              <ul class="space-y-3.5 text-xs">
+                <li class="pb-3 border-b border-white/10 flex justify-between gap-4">
+                  <div>
+                    <strong class="text-alabaster block font-medium">Aperture Gallery — Chelsea, NY</strong>
+                    <span class="text-neutral-400">Solo Show: "Forms of Silence"</span>
+                  </div>
+                  <span class="font-exif text-neutral-400 shrink-0">NY • 2026</span>
+                </li>
+                <li class="pb-3 border-b border-white/10 flex justify-between gap-4">
+                  <div>
+                    <strong class="text-alabaster block font-medium">Maison Européenne de la Photographie</strong>
+                    <span class="text-neutral-400">Collective: "New Latin Gaze"</span>
+                  </div>
+                  <span class="font-exif text-neutral-400 shrink-0">PARIS • 2025</span>
+                </li>
+                <li class="pb-3 border-b border-white/10 flex justify-between gap-4">
+                  <div>
+                    <strong class="text-alabaster block font-medium">MIS — Museum of Image and Sound</strong>
+                    <span class="text-neutral-400">35mm Monochromatic Retrospective</span>
+                  </div>
+                  <span class="font-exif text-neutral-400 shrink-0">SP • 2024</span>
+                </li>
+                <li class="flex justify-between gap-4">
+                  <div>
+                    <strong class="text-alabaster block font-medium">Tate Modern Off-Site Print Fair</strong>
+                    <span class="text-neutral-400">Curated Photobook & Silver Gelatin Edition</span>
+                  </div>
+                  <span class="font-exif text-neutral-400 shrink-0">LDN • 2023</span>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. CLIENTES, CAPAS DE REVISTAS E CAMPANHAS GLOBAIS -->
+  <section id="publicacoes" class="py-20 lg:py-28 bg-[#0b0b0b] border-b border-white/10">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="font-exif text-[11px] uppercase tracking-[0.28em] text-warmGold block mb-2">
+          [ 04 // SELECTED CLIENTS, COVERS & COMMISSIONS ]
+        </span>
+        <h2 class="font-serif-photo text-4xl sm:text-5xl font-normal text-alabaster">
+          Publications & Commissioned Maisons
+        </h2>
+      </div>
+
+      <!-- Luxury Houses & Editorial Logos Grid -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-px bg-white/10 border border-white/10 mb-14">
+        <div class="bg-galleryBlack p-8 text-center flex flex-col items-center justify-center group hover:bg-[#121212] transition-colors">
+          <span class="font-serif-photo text-2xl sm:text-3xl tracking-[0.2em] text-alabaster group-hover:text-warmGold transition-colors">VOGUE ITALIA</span>
+          <span class="font-exif text-[10px] text-neutral-500 mt-1 uppercase">3 Covers & 8 Editorials</span>
+        </div>
+        <div class="bg-galleryBlack p-8 text-center flex flex-col items-center justify-center group hover:bg-[#121212] transition-colors">
+          <span class="font-syne font-bold text-xl sm:text-2xl tracking-[0.22em] text-alabaster group-hover:text-warmGold transition-colors">SAINT LAURENT</span>
+          <span class="font-exif text-[10px] text-neutral-500 mt-1 uppercase">Paris Fashion Week Backstage</span>
+        </div>
+        <div class="bg-galleryBlack p-8 text-center flex flex-col items-center justify-center group hover:bg-[#121212] transition-colors">
+          <span class="font-serif-photo text-2xl sm:text-3xl tracking-[0.25em] text-alabaster group-hover:text-warmGold transition-colors">CEREAL</span>
+          <span class="font-exif text-[10px] text-neutral-500 mt-1 uppercase">Architectural Monograph Vol. 24</span>
+        </div>
+        <div class="bg-galleryBlack p-8 text-center flex flex-col items-center justify-center group hover:bg-[#121212] transition-colors">
+          <span class="font-syne font-bold text-lg sm:text-xl tracking-[0.2em] text-alabaster group-hover:text-warmGold transition-colors">BOTTEGA VENETA</span>
+          <span class="font-exif text-[10px] text-neutral-500 mt-1 uppercase">Milan Craftsmanship Campaign</span>
+        </div>
+        <div class="bg-galleryBlack p-8 text-center flex flex-col items-center justify-center group hover:bg-[#121212] transition-colors">
+          <span class="font-serif-photo text-2xl sm:text-3xl tracking-[0.22em] text-alabaster group-hover:text-warmGold transition-colors">KINFOLK</span>
+          <span class="font-exif text-[10px] text-neutral-500 mt-1 uppercase">Issue 48 — Brutalist Homes</span>
+        </div>
+        <div class="bg-galleryBlack p-8 text-center flex flex-col items-center justify-center group hover:bg-[#121212] transition-colors">
+          <span class="font-syne font-bold text-xl sm:text-2xl tracking-[0.25em] text-alabaster group-hover:text-warmGold transition-colors">RIMOWA</span>
+          <span class="font-exif text-[10px] text-neutral-500 mt-1 uppercase">Global Travel Series 35mm</span>
+        </div>
+        <div class="bg-galleryBlack p-8 text-center flex flex-col items-center justify-center group hover:bg-[#121212] transition-colors">
+          <span class="font-serif-photo text-2xl sm:text-3xl tracking-[0.18em] text-alabaster group-hover:text-warmGold transition-colors">ARCH DIGEST</span>
+          <span class="font-exif text-[10px] text-neutral-500 mt-1 uppercase">AD100 Latin America Special</span>
+        </div>
+        <div class="bg-galleryBlack p-8 text-center flex flex-col items-center justify-center group hover:bg-[#121212] transition-colors">
+          <span class="font-syne font-bold text-xl sm:text-2xl tracking-[0.22em] text-alabaster group-hover:text-warmGold transition-colors">LEICA CAMERA</span>
+          <span class="font-exif text-[10px] text-neutral-500 mt-1 uppercase">Global Ambassador M-System</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 7. LOJA DE PRINTS FINE ART (EDIÇÕES NUMERADAS EM PAPEL ALGODÃO) -->
+  <section id="prints" class="py-24 lg:py-32 border-b border-white/10">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-8">
+      
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-14 gap-8">
+        <div>
+          <span class="font-exif text-[11px] uppercase tracking-[0.28em] text-warmGold block mb-2">
+            [ 05 // ARCHIVAL PIGMENT PRINTS • HAHNEMÜHLE 308G ]
+          </span>
+          <h2 class="font-serif-photo text-4xl sm:text-6xl font-normal text-alabaster leading-none">
+            Fine Art Collector Prints
+          </h2>
+        </div>
+
+        <div class="max-w-md text-xs text-neutral-400 space-y-1 font-exif">
+          <p class="text-alabaster">✓ 100% Cotton Paper Hahnemühle Photo Rag® Baryta 315g</p>
+          <p>✓ Edition strictly limited to 15 signed prints + 2 A.P.</p>
+          <p>✓ Numbered holographic seal of museum authenticity</p>
+        </div>
+      </div>
+
+      <!-- Fine Art Print Dimension Selector -->
+      <div class="mb-10 p-5 rounded-2xl bg-galleryDark border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div class="font-exif text-xs">
+          <span class="text-neutral-400 uppercase">SELECT PRINT FORMAT / GALLERY FRAMING:</span>
+        </div>
+        <div class="flex flex-wrap gap-2" id="print-size-buttons">
+          <button type="button" onclick="selectPrintFormat('small', 1.0, '40 × 60 cm (Unframed — Armored Tube)')" data-pformat="small" class="pformat-btn px-4 py-2 rounded-full font-exif text-xs bg-warmGold text-galleryBlack font-semibold">
+            40 × 60 cm (Standard Edition)
+          </button>
+          <button type="button" onclick="selectPrintFormat('medium', 1.65, '70 × 105 cm (With Neutral Passe-partout)')" data-pformat="medium" class="pformat-btn px-4 py-2 rounded-full font-exif text-xs bg-galleryBlack border border-white/15 text-neutral-300 hover:border-warmGold">
+            70 × 105 cm (Gallery)
+          </button>
+          <button type="button" onclick="selectPrintFormat('large', 2.4, '100 × 150 cm (Walnut Frame + Tru Vue® Anti-Reflective Glass)')" data-pformat="large" class="pformat-btn px-4 py-2 rounded-full font-exif text-xs bg-galleryBlack border border-white/15 text-neutral-300 hover:border-warmGold">
+            100 × 150 cm (Museum Frame)
+          </button>
+        </div>
+      </div>
+
+      <!-- 3 Collector Print Editions -->
+      <div id="prints-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Populated dynamically via JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 8. FORMULÁRIO DE AGENDAMENTO DE CAMPANHAS / CONTATO PRIVADO -->
+  <section id="contato" class="py-24 lg:py-32 bg-[#0b0b0b] border-b border-white/10">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        
+        <!-- Left 5 Cols: Booking Info & Representation -->
+        <div class="lg:col-span-5 space-y-6">
+          <span class="font-exif text-[11px] uppercase tracking-[0.28em] text-warmGold block">
+            [ 06 // COMMISSIONS, LICENSING & PRIVATE INQUIRIES ]
+          </span>
+          <h2 class="font-serif-photo text-4xl sm:text-6xl font-normal text-alabaster leading-tight">
+            Start a conversation or book a campaign.
+          </h2>
+          <p class="text-sm sm:text-base text-neutral-400 leading-relaxed">
+            Available worldwide for photography direction and fashion editorial campaigns, executive/artistic portraits, architectural essays, exclusive destination weddings, and Fine Art print acquisitions.
+          </p>
+
+          <div class="space-y-4 pt-4 border-t border-white/10 font-exif text-xs">
+            <div>
+              <span class="text-neutral-500 block uppercase">DIRECT STUDIO CONTACT</span>
+              <a href="mailto:studio@lucasvianna.art" class="text-alabaster hover:text-warmGold text-sm">studio@lucasvianna.art</a>
+            </div>
+            <div>
+              <span class="text-neutral-500 block uppercase">BOOKING AVAILABILITY Q4 2026 / Q1 2027</span>
+              <span class="text-warmGold">São Paulo (Nov–Dec) • Paris & Milan (Jan–Feb) • New York (Mar)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 7 Cols: Booking Form -->
+        <div class="lg:col-span-7 bg-galleryDark p-7 sm:p-10 rounded-2xl border border-white/15">
+          <form id="booking-form" onsubmit="handleBookingSubmit(event)" class="space-y-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block font-exif text-[10px] uppercase tracking-widest text-neutral-400 mb-2">Your Name / Creative Director *</label>
+                <input id="b-name" type="text" required placeholder="e.g., Camille Laurent" class="w-full px-4 py-3.5 rounded-xl bg-galleryBlack border border-white/15 text-sm text-alabaster focus:border-warmGold focus:outline-none" />
+              </div>
+              <div>
+                <label class="block font-exif text-[10px] uppercase tracking-widest text-neutral-400 mb-2">Corporate / Gallery Email *</label>
+                <input id="b-email" type="email" required placeholder="camille@agency.com" class="w-full px-4 py-3.5 rounded-xl bg-galleryBlack border border-white/15 text-sm text-alabaster focus:border-warmGold focus:outline-none" />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block font-exif text-[10px] uppercase tracking-widest text-neutral-400 mb-2">Project Type *</label>
+                <select id="b-type" class="w-full px-4 py-3.5 rounded-xl bg-galleryBlack border border-white/15 text-sm text-alabaster focus:border-warmGold focus:outline-none">
+                  <option value="Fashion Campaign / International Editorial">Fashion Campaign / International Editorial</option>
+                  <option value="Editorial / Private Artistic Portrait">Editorial / Private Artistic Portrait</option>
+                  <option value="Architecture & Design Monograph Photography">Architecture & Design Monograph Photography</option>
+                  <option value="Exclusive Destination Wedding (Leica Film & Digital)">Exclusive Destination Wedding (Lake Como / Trancoso)</option>
+                  <option value="Signed Fine Art Print Acquisition">Signed Fine Art Print Acquisition</option>
+                </select>
+              </div>
+              <div>
+                <label class="block font-exif text-[10px] uppercase tracking-widest text-neutral-400 mb-2">City / Location & Estimated Date</label>
+                <input id="b-location" type="text" placeholder="e.g., Milan / São Paulo — October 2026" class="w-full px-4 py-3.5 rounded-xl bg-galleryBlack border border-white/15 text-sm text-alabaster focus:border-warmGold focus:outline-none" />
+              </div>
+            </div>
+
+            <div>
+              <label class="block font-exif text-[10px] uppercase tracking-widest text-neutral-400 mb-2">Reference Work or Creative Brief *</label>
+              <textarea id="b-brief" rows="3" required placeholder="Describe the visual concept, lighting references, or the Fine Art print you wish to acquire..." class="w-full px-4 py-3.5 rounded-xl bg-galleryBlack border border-white/15 text-sm text-alabaster focus:border-warmGold focus:outline-none"></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-4 rounded-xl bg-alabaster hover:bg-warmGold text-galleryBlack font-exif text-xs font-semibold uppercase tracking-[0.25em] transition-all flex items-center justify-center gap-3" data-magnetic>
+              <span>Send Inquiry to Studio</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </form>
+
+          <!-- Instant Confirmation Message -->
+          <div id="booking-confirm" class="hidden mt-6 p-5 rounded-xl bg-galleryBlack border border-warmGold/50 font-exif text-xs space-y-2">
+            <div class="flex items-center justify-between text-warmGold font-bold">
+              <span>✓ INQUIRY SUCCESSFULLY REGISTERED</span>
+              <span id="booking-protocol">#LV-2026</span>
+            </div>
+            <p id="booking-confirm-text" class="text-neutral-300 leading-relaxed"></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. RODAPÉ COM REPRESENTAÇÃO DE AGÊNCIAS EM SÃO PAULO, LONDRES E NOVA YORK -->
+  <footer class="bg-[#050505] pt-20 pb-14 text-xs text-neutral-400">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-8">
+      
+      <!-- International Agency Representation Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-14 border-b border-white/10">
+        
+        <div class="space-y-3">
+          <span class="font-serif-photo text-2xl tracking-[0.22em] text-alabaster block">LUCAS VIANNA</span>
+          <p class="text-neutral-500 text-xs leading-relaxed">
+            Visual Artist & Director of Photography. All photographs and silver gelatin monographs are protected under international copyright law.
+          </p>
+          <span class="font-signature text-3xl text-warmGold block pt-1">Lucas Vianna</span>
+        </div>
+
+        <!-- São Paulo -->
+        <div class="space-y-2 font-exif text-[11px]">
+          <span class="text-warmGold uppercase tracking-widest block font-semibold">01 // SÃO PAULO (STUDIO & LAB)</span>
+          <p class="text-alabaster">Vianna Atelier & Darkroom</p>
+          <p class="text-neutral-500">Rua Estados Unidos, 1420 — Jardim América</p>
+          <p class="text-neutral-500">São Paulo, SP — Brazil</p>
+          <p class="text-neutral-300 pt-1">+55 (11) 3082-9410</p>
+          <p class="text-neutral-400">sp@lucasvianna.art</p>
+        </div>
+
+        <!-- London -->
+        <div class="space-y-2 font-exif text-[11px]">
+          <span class="text-warmGold uppercase tracking-widest block font-semibold">02 // LONDON REPRESENTATION</span>
+          <p class="text-alabaster">Vanguard Artists Management UK</p>
+          <p class="text-neutral-500">42 Redchurch Street, Shoreditch</p>
+          <p class="text-neutral-500">London E2 7DP — United Kingdom</p>
+          <p class="text-neutral-300 pt-1">+44 20 7946 0821</p>
+          <p class="text-neutral-400">london@lucasvianna.art</p>
+        </div>
+
+        <!-- New York -->
+        <div class="space-y-2 font-exif text-[11px]">
+          <span class="text-warmGold uppercase tracking-widest block font-semibold">03 // NEW YORK REPRESENTATION</span>
+          <p class="text-alabaster">Lumière Syndicate NYC (Editorial & Fine Art)</p>
+          <p class="text-neutral-500">526 West 26th Street, Suite 810, Chelsea</p>
+          <p class="text-neutral-500">New York, NY 10001 — USA</p>
+          <p class="text-neutral-300 pt-1">+1 (212) 555-0194</p>
+          <p class="text-neutral-400">ny@lucasvianna.art</p>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-exif text-[10px] uppercase tracking-[0.2em] text-neutral-500">
+        <p>© 2026 LUCAS VIANNA STUDIO. ALL RIGHTS RESERVED.</p>
+        <div class="flex items-center gap-6">
+          <a href="#galeria" class="hover:text-warmGold transition-colors">Archive</a>
+          <a href="#prints" class="hover:text-warmGold transition-colors">Collector Prints</a>
+          <a href="#contato" class="hover:text-warmGold transition-colors">Press Kit</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ======================================================================= -->
+  <!-- 10. LIGHTBOX / MODAL FULLSCREEN INTERATIVO COM EXIF, SETAS E ZOOM       -->
+  <!-- ======================================================================= -->
+  <div id="lightbox-modal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl hidden flex-col justify-between p-4 sm:p-8 select-none">
+    
+    <!-- Top Bar: Counter, EXIF Pill & Controls -->
+    <div class="flex items-center justify-between gap-4 z-20">
+      <div class="flex items-center gap-4 font-exif text-xs">
+        <span id="lb-counter" class="text-warmGold font-bold">01 / 09</span>
+        <span class="text-neutral-500">|</span>
+        <span id="lb-category" class="uppercase tracking-widest text-neutral-300">EDITORIAL</span>
+      </div>
+
+      <div class="flex items-center gap-2.5">
+        <button 
+          type="button" 
+          onclick="toggleLightboxZoom()" 
+          id="lb-zoom-btn"
+          class="px-3.5 py-2 rounded-full bg-white/10 hover:bg-white/20 text-alabaster font-exif text-[11px] uppercase tracking-widest flex items-center gap-1.5 transition-colors"
+        >
+          <i data-lucide="zoom-in" class="w-3.5 h-3.5"></i>
+          <span id="lb-zoom-label">Zoom 1.6x</span>
+        </button>
+
+        <button 
+          type="button" 
+          onclick="inquireCurrentLightboxPhoto()" 
+          class="hidden sm:inline-flex px-4 py-2 rounded-full bg-warmGold text-galleryBlack font-exif text-[11px] font-semibold uppercase tracking-widest hover:bg-white transition-colors"
+        >
+          Acquire Print / License
+        </button>
+
+        <button 
+          type="button" 
+          onclick="closeLightbox()" 
+          class="p-2.5 rounded-full bg-white/10 hover:bg-white/25 text-white transition-colors"
+          aria-label="Close Lightbox"
+        >
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Center Stage: Prev Arrow + Image + Next Arrow -->
+    <div class="relative flex-1 flex items-center justify-center my-4 overflow-hidden">
+      <button 
+        type="button" 
+        onclick="navigateLightbox(-1)" 
+        class="absolute left-2 sm:left-6 z-20 p-3.5 rounded-full bg-black/70 hover:bg-warmGold hover:text-black border border-white/15 text-white transition-all"
+        aria-label="Previous Photo"
+      >
+        <i data-lucide="chevron-left" class="w-6 h-6"></i>
+      </button>
+
+      <div class="max-h-[72vh] max-w-[85vw] overflow-hidden flex items-center justify-center">
+        <img 
+          id="lb-image" 
+          src="" 
+          alt="" 
+          onclick="toggleLightboxZoom()"
+          class="max-h-[70vh] w-auto object-contain transition-transform duration-500 cursor-zoom-in"
+        />
+      </div>
+
+      <button 
+        type="button" 
+        onclick="navigateLightbox(1)" 
+        class="absolute right-2 sm:right-6 z-20 p-3.5 rounded-full bg-black/70 hover:bg-warmGold hover:text-black border border-white/15 text-white transition-all"
+        aria-label="Next Photo"
+      >
+        <i data-lucide="chevron-right" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Bottom Bar: Title + Technical Camera EXIF Data -->
+    <div class="z-20 bg-[#111111]/90 border border-white/10 rounded-2xl p-4 sm:p-5 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+      <div>
+        <h3 id="lb-title" class="font-serif-photo text-2xl sm:text-3xl text-alabaster">—</h3>
+        <p id="lb-story" class="text-xs text-neutral-400 mt-0.5">—</p>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-3 lg:pt-0 border-t lg:border-t-0 border-white/10 font-exif text-[11px]">
+        <div>
+          <span class="text-neutral-500 block text-[9px] uppercase">CAMERA</span>
+          <strong id="lb-camera" class="text-alabaster font-normal">—</strong>
+        </div>
+        <div>
+          <span class="text-neutral-500 block text-[9px] uppercase">LENS</span>
+          <strong id="lb-lens" class="text-warmGold font-normal">—</strong>
+        </div>
+        <div>
+          <span class="text-neutral-500 block text-[9px] uppercase">EXPOSURE / ISO</span>
+          <strong id="lb-exposure" class="text-alabaster font-normal">—</strong>
+        </div>
+        <div>
+          <span class="text-neutral-500 block text-[9px] uppercase">LOCATION</span>
+          <strong id="lb-location" class="text-alabaster font-normal">—</strong>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- VANILLA JAVASCRIPT: GALERIA, LIGHTBOX, SPREADS, PRINTS E CURSOR         -->
+  <!-- ======================================================================= -->
+  <script>
+    // 1. ACERVO FOTOGRÁFICO CURADO (Preservando obras originais de index_6.html + expansão completa)
+    const PHOTOS = [
+      {
+        id: 'lv-01',
+        title: "Vogue Italia — Autumn in Milan",
+        cat: "editorial",
+        catLabel: "Editorial",
+        camera: "Leica M11 Monochrom",
+        lens: "50mm Summilux-M",
+        exposure: "f/1.4 • 1/1000s • ISO 160",
+        exif: "50mm Summilux • f/1.4 • 1/1000s • ISO 160",
+        location: "Milan, Italy",
+        aspect: "aspect-[3/4]",
+        story: "Editorial portrait under diffused natural light in the neoclassical arcades of Brera during Milan Fashion Week.",
+        img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1400&q=85"
+      },
+      {
+        id: 'lv-02',
+        title: "Villa d'Este — Lago di Como",
+        cat: "editorial",
+        catLabel: "Editorial / Destination",
+        camera: "Leica M11",
+        lens: "35mm Summicron-M",
+        exposure: "f/2.0 • 1/500s • ISO 400",
+        exif: "35mm Summicron • f/2.0 • 1/500s • ISO 400",
+        location: "Cernobbio, Lake Como",
+        aspect: "aspect-[4/3]",
+        story: "Poetic documentary study in the Renaissance gardens on the shores of Lake Como at dusk.",
+        img: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=85"
+      },
+      {
+        id: 'lv-03',
+        title: "Monochrome Portrait — SP Studio",
+        cat: "portraits",
+        catLabel: "Portraits",
+        camera: "Leica SL2-S",
+        lens: "85mm Noctilux",
+        exposure: "f/1.2 • 1/250s • ISO 100",
+        exif: "85mm Noctilux • f/1.2 • 1/250s • ISO 100",
+        location: "São Paulo, Brazil",
+        aspect: "aspect-[3/4]",
+        story: "Study of extreme shallow depth of field with a Noctilux f/1.2 lens and single overhead light.",
+        img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1400&q=85"
+      },
+      {
+        id: 'lv-04',
+        title: "Concrete Monolith — Naoshima Study",
+        cat: "architecture",
+        catLabel: "Architecture",
+        camera: "Hasselblad X2D 100C",
+        lens: "XCD 28mm P",
+        exposure: "f/8.0 • 1/125s • ISO 64",
+        exif: "XCD 28mm • f/8.0 • 1/125s • ISO 64",
+        location: "Naoshima, Japan",
+        aspect: "aspect-[4/5]",
+        story: "Minimalist geometry and a shaft of overhead light falling across brushed architectural concrete.",
+        img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1400&q=85"
+      },
+      {
+        id: 'lv-05',
+        title: "Saint Laurent Silhouette — Rue de l'Université",
+        cat: "fashion",
+        catLabel: "Fashion",
+        camera: "Hasselblad X2D 100C",
+        lens: "XCD 90mm V",
+        exposure: "f/2.5 • 1/800s • ISO 100",
+        exif: "XCD 90mm V • f/2.5 • 1/800s • ISO 100",
+        location: "Paris, France",
+        aspect: "aspect-[3/4]",
+        story: "Sculptural tailoring in dramatic backlighting following the winter runway show in Paris.",
+        img: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1400&q=85"
+      },
+      {
+        id: 'lv-06',
+        title: "Nocturne in Silver Gelatin (Kodak Tri-X)",
+        cat: "film35mm",
+        catLabel: "Film 35mm",
+        camera: "Leica MP (35mm Analog)",
+        lens: "35mm Summilux Fleet",
+        exposure: "f/1.4 • 1/60s • Kodak Tri-X 400",
+        exif: "35mm Summilux • f/1.4 • 1/60s • Tri-X 400",
+        location: "Berlin, Germany",
+        aspect: "aspect-[4/3]",
+        story: "Hand-developed in D-76 at the artist’s own darkroom, preserving the original film border.",
+        img: "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1400&q=85"
+      },
+      {
+        id: 'lv-07',
+        title: "The Sculptor's Hands — Atelier Kyoto",
+        cat: "portraits",
+        catLabel: "Portraits",
+        camera: "Leica M11 Monochrom",
+        lens: "50mm APO-Summicron",
+        exposure: "f/2.0 • 1/250s • ISO 250",
+        exif: "50mm APO • f/2.0 • 1/250s • ISO 250",
+        location: "Kyoto, Japan",
+        aspect: "aspect-[4/5]",
+        story: "Intimate portrait exploring the texture of time and quiet concentration in handcraft.",
+        img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=1400&q=85"
+      },
+      {
+        id: 'lv-08',
+        title: "Ibirapuera Brutalist Pavilion",
+        cat: "architecture",
+        catLabel: "Architecture",
+        camera: "Hasselblad X2D 100C",
+        lens: "XCD 38mm V",
+        exposure: "f/5.6 • 1/400s • ISO 64",
+        exif: "XCD 38mm V • f/5.6 • 1/400s • ISO 64",
+        location: "São Paulo, Brazil",
+        aspect: "aspect-[16/10]",
+        story: "Dialogue between Brazilian modernist curves and crisp midday cast shadows.",
+        img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=85"
+      },
+      {
+        id: 'lv-09',
+        title: "Velvet & Shadow — Autumn Couture",
+        cat: "fashion",
+        catLabel: "Fashion / Film 35mm",
+        camera: "Contax G2 (35mm Film)",
+        lens: "Carl Zeiss Planar 45mm",
+        exposure: "f/2.0 • 1/500s • Ilford HP5 Plus",
+        exif: "Zeiss 45mm • f/2.0 • 1/500s • Ilford HP5",
+        location: "London, United Kingdom",
+        aspect: "aspect-[3/4]",
+        story: "B&W film essay captured on the streets of Mayfair for a collector’s edition.",
+        img: "https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=1400&q=85"
+      }
+    ];
+
+    let currentCategory = 'all';
+    let currentLayout = 'grid'; // 'grid' | 'list' | 'fullscreen'
+    let filteredPhotos = [...PHOTOS];
+    let currentLightboxIndex = 0;
+    let isLightboxZoomed = false;
+
+    window.filterPhotos = function(cat) {
+      currentCategory = cat;
+
+      // Update Filter Buttons UI
+      document.querySelectorAll('.filter-pill').forEach(btn => {
+        if (btn.getAttribute('data-cat') === cat) {
+          btn.className = 'filter-pill px-4 py-2 rounded-full font-exif text-[11px] uppercase tracking-widest bg-alabaster text-galleryBlack font-medium transition-all';
+        } else {
+          btn.className = 'filter-pill px-4 py-2 rounded-full font-exif text-[11px] uppercase tracking-widest border border-white/15 text-neutral-300 hover:border-white/40 transition-all';
+        }
+      });
+
+      if (cat === 'all') {
+        filteredPhotos = [...PHOTOS];
+      } else if (cat === 'casamento') {
+        // Compatibilidade direta com chamada legada
+        filteredPhotos = PHOTOS.filter(p => p.cat === 'editorial');
+      } else {
+        filteredPhotos = PHOTOS.filter(p => p.cat === cat || (cat === 'film35mm' && p.exif.includes('HP5')));
+      }
+
+      document.getElementById('gallery-count-label').textContent =
+        `SHOWING ${filteredPhotos.length} CURATED WORK(S) • CLICK ANY IMAGE TO INSPECT EXIF FULLSCREEN`;
+
+      renderGallery();
+    };
+
+    window.setGalleryLayout = function(mode) {
+      currentLayout = mode;
+      ['grid', 'list', 'fullscreen'].forEach(m => {
+        const btn = document.getElementById(`view-btn-${m}`);
+        if (!btn) return;
+        if (m === mode) {
+          btn.className = 'px-3 py-1.5 rounded-full bg-alabaster text-galleryBlack font-medium transition-all flex items-center gap-1.5';
+        } else {
+          btn.className = 'px-3 py-1.5 rounded-full text-neutral-400 hover:text-white transition-all flex items-center gap-1.5';
+        }
+      });
+
+      renderGallery();
+    };
+
+    function renderGallery() {
+      const container = document.getElementById('photo-grid');
+
+      if (currentLayout === 'grid') {
+        container.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 items-start';
+        container.innerHTML = filteredPhotos.map((p, idx) => `
+          <article 
+            onclick="openLightbox(${idx})" 
+            onmouseenter="setCursorView(true)" 
+            onmouseleave="setCursorView(false)"
+            class="gallery-item group relative overflow-hidden rounded-xl border border-white/10 bg-galleryDark cursor-pointer"
+          >
+            <div class="relative overflow-hidden ${p.aspect} bg-neutral-950">
+              <img src="${p.img}" alt="${p.title}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80 group-hover:opacity-95 transition-opacity"></div>
+              <div class="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between font-exif text-[10px] uppercase tracking-widest">
+                <span class="px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md text-alabaster border border-white/10">
+                  0${idx + 1} // ${p.catLabel}
+                </span>
+                <span class="px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md text-warmGold border border-warmGold/30">
+                  ${p.location}
+                </span>
+              </div>
+            </div>
+            <div class="p-5 bg-[#0b0b0b] border-t border-white/10">
+              <div class="flex items-baseline justify-between gap-2">
+                <h3 class="font-serif-photo text-2xl text-alabaster group-hover:text-warmGold transition-colors">${p.title}</h3>
+                <span class="font-exif text-[10px] text-neutral-500">↗ EXIF</span>
+              </div>
+              <p class="font-exif text-[11px] text-amber-200/80 mt-1.5">📷 ${p.exif}</p>
+            </div>
+          </article>
+        `).join('');
+      } else if (currentLayout === 'list') {
+        container.className = 'divide-y divide-white/10 border-y border-white/10';
+        container.innerHTML = filteredPhotos.map((p, idx) => `
+          <div 
+            onclick="openLightbox(${idx})"
+            onmouseenter="setCursorView(true)" 
+            onmouseleave="setCursorView(false)"
+            class="py-6 px-4 hover:bg-white/[0.03] transition-colors flex flex-col md:flex-row md:items-center justify-between gap-6 cursor-pointer group"
+          >
+            <div class="flex items-center gap-6">
+              <span class="font-exif text-xs text-neutral-500">0${idx + 1}</span>
+              <img src="${p.img}" alt="${p.title}" class="w-24 h-16 object-cover rounded border border-white/15 grayscale group-hover:grayscale-0 transition-all" />
+              <div>
+                <h3 class="font-serif-photo text-2xl sm:text-3xl text-alabaster group-hover:text-warmGold transition-colors">${p.title}</h3>
+                <span class="font-exif text-[11px] text-neutral-400">${p.catLabel} • ${p.location}</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-6 font-exif text-xs">
+              <span class="text-amber-200/80">📷 ${p.exif}</span>
+              <span class="px-3 py-1.5 rounded-full border border-white/15 text-[10px] uppercase group-hover:bg-alabaster group-hover:text-black transition-all">Inspect →</span>
+            </div>
+          </div>
+        `).join('');
+      } else {
+        // Modo Fullscreen Editorial Stack
+        container.className = 'space-y-16';
+        container.innerHTML = filteredPhotos.map((p, idx) => `
+          <article 
+            onclick="openLightbox(${idx})"
+            onmouseenter="setCursorView(true)" 
+            onmouseleave="setCursorView(false)"
+            class="group relative rounded-2xl overflow-hidden border border-white/15 bg-galleryDark cursor-pointer"
+          >
+            <div class="aspect-[16/9] max-h-[78vh] w-full overflow-hidden bg-black">
+              <img src="${p.img}" alt="${p.title}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" />
+            </div>
+            <div class="p-6 sm:p-8 bg-[#0b0b0b] border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <span class="font-exif text-[10px] uppercase tracking-widest text-warmGold">PLATE 0${idx + 1} // ${p.location}</span>
+                <h3 class="font-serif-photo text-3xl sm:text-4xl text-alabaster mt-1">${p.title}</h3>
+                <p class="text-xs text-neutral-400 mt-1">${p.story}</p>
+              </div>
+              <div class="font-exif text-xs text-amber-200/80 shrink-0">
+                <div>${p.camera}</div>
+                <div class="mt-1">📷 ${p.exif}</div>
+              </div>
+            </div>
+          </article>
+        `).join('');
+      }
+    }
+
+    // 2. LIGHTBOX INTERATIVO EM JS (SETAS, TECLADO, ZOOM E DADOS EXIF)
+    window.openLightbox = function(idx) {
+      currentLightboxIndex = idx;
+      isLightboxZoomed = false;
+      updateLightboxView();
+      const modal = document.getElementById('lightbox-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      if (window.lucide) window.lucide.createIcons();
+    };
+
+    window.closeLightbox = function() {
+      const modal = document.getElementById('lightbox-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    };
+
+    window.navigateLightbox = function(direction) {
+      isLightboxZoomed = false;
+      currentLightboxIndex = (currentLightboxIndex + direction + filteredPhotos.length) % filteredPhotos.length;
+      updateLightboxView();
+    };
+
+    window.toggleLightboxZoom = function() {
+      isLightboxZoomed = !isLightboxZoomed;
+      const img = document.getElementById('lb-image');
+      const label = document.getElementById('lb-zoom-label');
+      if (isLightboxZoomed) {
+        img.classList.add('lightbox-zoomed');
+        label.textContent = 'Reset 1.0x';
+      } else {
+        img.classList.remove('lightbox-zoomed');
+        label.textContent = 'Zoom 1.6x';
+      }
+    };
+
+    function updateLightboxView() {
+      const item = filteredPhotos[currentLightboxIndex];
+      if (!item) return;
+
+      const img = document.getElementById('lb-image');
+      img.classList.remove('lightbox-zoomed');
+      document.getElementById('lb-zoom-label').textContent = 'Zoom 1.6x';
+
+      img.src = item.img;
+      img.alt = item.title;
+
+      document.getElementById('lb-counter').textContent =
+        `${String(currentLightboxIndex + 1).padStart(2, '0')} / ${String(filteredPhotos.length).padStart(2, '0')}`;
+      document.getElementById('lb-category').textContent = item.catLabel;
+      document.getElementById('lb-title').textContent = item.title;
+      document.getElementById('lb-story').textContent = item.story;
+      document.getElementById('lb-camera').textContent = item.camera;
+      document.getElementById('lb-lens').textContent = item.lens;
+      document.getElementById('lb-exposure').textContent = item.exposure;
+      document.getElementById('lb-location').textContent = item.location;
+    }
+
+    window.inquireCurrentLightboxPhoto = function() {
+      const item = filteredPhotos[currentLightboxIndex];
+      closeLightbox();
+      prefillBooking(`Print Acquisition / Licensing: "${item.title}" (${item.camera} • ${item.exif})`);
+    };
+
+    // Suporte a Teclado para o Lightbox
+    document.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('lightbox-modal');
+      if (modal.classList.contains('hidden')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') navigateLightbox(1);
+      if (e.key === 'ArrowLeft') navigateLightbox(-1);
+    });
+
+    // 3. SÉRIES AUTORAIS / DOUBLE-PAGE MAGAZINE SPREADS
+    const SPREADS = [
+      {
+        vol: "VOLUME I // VOGUE ITALIA ARCHIVE",
+        title: "Nocturne in Milan: The Geometry of Shadow",
+        essay: "Photographed across five foggy pre-dawn mornings in Milan’s historic fashion quadrangle. The essay explores the contrast between rigid Lombard stone facades and the fluidity of haute couture in motion.",
+        leftImg: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1000&q=85",
+        leftCaption: "FIG 1.1 — Corso Venezia, 05:40 AM • Leica M11 Monochrom • 50mm f/1.4",
+        rightImg: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1000&q=85",
+        rightCaption: "FIG 1.2 — Palazzo Serbelloni • 35mm APO-Summicron • ISO 400",
+        quote: "“When color is removed from the equation, emotion ceases to be an artifice and resides entirely in the architecture of light.”"
+      },
+      {
+        vol: "VOLUME II // CEREAL & KINFOLK MONOGRAPH",
+        title: "Concrete & Silence: Dialogues between São Paulo and Naoshima",
+        essay: "A comparative study on the poetic brutalism of Paulo Mendes da Rocha and Tadao Ando. Scenes captured in 100-megapixel digital medium format reveal the timber formwork marks immortalized in concrete.",
+        leftImg: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1000&q=85",
+        leftCaption: "FIG 2.1 — Chichu Art Museum Study • Hasselblad X2D 100C • XCD 28mm",
+        rightImg: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=85",
+        rightCaption: "FIG 2.2 — Casa Butantã, São Paulo • Overhead Light 12:15 PM",
+        quote: "“Empty space is not absence; it is the stage where light builds volume.”"
+      },
+      {
+        vol: "VOLUME III // DARKROOM SILVER GELATIN",
+        title: "Silver Alchemy: 35mm Film Portraits",
+        essay: "A series shot entirely on Kodak Tri-X 400 and Ilford Delta 3200 film with zero digital intervention. Hand-enlarged on fiber-based baryta paper in the São Paulo darkroom.",
+        leftImg: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=85",
+        leftCaption: "FIG 3.1 — Contact Sheet #19 • Leica MP • Kodak Tri-X 400 pushed to 1600",
+        rightImg: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1000&q=85",
+        rightCaption: "FIG 3.2 — Jardim América Studio • Silver Gelatin on Baryta",
+        quote: "“Analog film grain carries the same organic pulse as human memory.”"
+      }
+    ];
+
+    window.selectSpread = function(idx) {
+      document.querySelectorAll('.spread-btn').forEach((btn, i) => {
+        if (i === idx) {
+          btn.className = 'spread-btn px-4 py-2 rounded-full font-exif text-xs uppercase tracking-widest bg-warmGold text-galleryBlack font-semibold transition-all';
+        } else {
+          btn.className = 'spread-btn px-4 py-2 rounded-full font-exif text-xs uppercase tracking-widest bg-[#141414] border border-white/15 text-neutral-300 hover:border-warmGold transition-all';
+        }
+      });
+
+      const s = SPREADS[idx];
+      document.getElementById('spread-viewer').innerHTML = `
+        <div class="grid grid-cols-1 lg:grid-cols-12 relative">
+          <!-- Center Book Spine Shadow on Desktop -->
+          <div class="hidden lg:block absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-12 bg-gradient-to-r from-transparent via-black/70 to-transparent z-10 pointer-events-none"></div>
+
+          <!-- Left Page of Spread -->
+          <div class="lg:col-span-6 p-7 sm:p-12 border-b lg:border-b-0 lg:border-r border-white/10 flex flex-col justify-between space-y-8 bg-[#0e0e0e]">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between font-exif text-[10px] text-neutral-500 uppercase tracking-widest">
+                <span>${s.vol}</span>
+                <span>P. 0${idx * 2 + 12}</span>
+              </div>
+              <h3 class="font-serif-photo text-3xl sm:text-5xl text-alabaster leading-tight">${s.title}</h3>
+              <p class="text-sm text-neutral-300 leading-relaxed">${s.essay}</p>
+            </div>
+
+            <div class="space-y-3">
+              <div class="aspect-[4/3] overflow-hidden rounded-lg border border-white/10">
+                <img src="${s.leftImg}" alt="${s.title}" class="w-full h-full object-cover grayscale contrast-125" />
+              </div>
+              <p class="font-exif text-[10px] text-warmGold uppercase tracking-wider">${s.leftCaption}</p>
+            </div>
+          </div>
+
+          <!-- Right Page of Spread -->
+          <div class="lg:col-span-6 p-7 sm:p-12 flex flex-col justify-between space-y-8 bg-[#121212]">
+            <div class="flex items-center justify-between font-exif text-[10px] text-neutral-500 uppercase tracking-widest">
+              <span>MONOGRAPH EDITION — LUCAS VIANNA</span>
+              <span>P. 0${idx * 2 + 13}</span>
+            </div>
+
+            <div class="space-y-3">
+              <div class="aspect-[4/4.6] overflow-hidden rounded-lg border border-white/10">
+                <img src="${s.rightImg}" alt="${s.title}" class="w-full h-full object-cover grayscale contrast-125" />
+              </div>
+              <p class="font-exif text-[10px] text-neutral-400 uppercase tracking-wider">${s.rightCaption}</p>
+            </div>
+
+            <blockquote class="p-5 rounded-xl bg-black/50 border-l-2 border-warmGold font-serif-photo italic text-xl sm:text-2xl text-alabaster">
+              ${s.quote}
+            </blockquote>
+          </div>
+        </div>
+      `;
+    };
+
+    // 4. LOJA DE PRINTS FINE ART (EDIÇÕES LIMITADAS)
+    const FINE_ART_PRINTS = [
+      {
+        code: "EDITION #04 / 15",
+        title: "Silence in Brera — Milan Study I",
+        paper: "Hahnemühle Photo Rag® 308g (100% Cotton)",
+        basePrice: 850,
+        remaining: "3 copies left in this edition",
+        img: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=900&q=85"
+      },
+      {
+        code: "EDITION #09 / 15",
+        title: "Monolith Concrete — Naoshima",
+        paper: "Hahnemühle Museum Etching 350g",
+        basePrice: 950,
+        remaining: "2 copies left in this edition",
+        img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=85"
+      },
+      {
+        code: "EDITION #12 / 15",
+        title: "Noctilux Portrait — SP Studio",
+        paper: "Ilford Galerie Silver Gelatin Baryta",
+        basePrice: 1050,
+        remaining: "Last 2 signed prints",
+        img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=85"
+      }
+    ];
+
+    let printMultiplier = 1.0;
+    let printFormatDescription = '40 × 60 cm (Unframed — Armored Tube)';
+
+    window.selectPrintFormat = function(key, mult, desc) {
+      printMultiplier = mult;
+      printFormatDescription = desc;
+      document.querySelectorAll('.pformat-btn').forEach(btn => {
+        if (btn.getAttribute('data-pformat') === key) {
+          btn.className = 'pformat-btn px-4 py-2 rounded-full font-exif text-xs bg-warmGold text-galleryBlack font-semibold';
+        } else {
+          btn.className = 'pformat-btn px-4 py-2 rounded-full font-exif text-xs bg-galleryBlack border border-white/15 text-neutral-300 hover:border-warmGold';
+        }
+      });
+      renderPrints();
+    };
+
+    function renderPrints() {
+      const container = document.getElementById('prints-grid');
+      container.innerHTML = FINE_ART_PRINTS.map(item => {
+        const finalPrice = Math.round((item.basePrice * printMultiplier) / 50) * 50;
+        return `
+          <article class="bg-galleryDark rounded-2xl border border-white/10 overflow-hidden flex flex-col justify-between group">
+            <div>
+              <div class="p-6 bg-[#151515] border-b border-white/10">
+                <div class="aspect-[3/4] overflow-hidden border-8 border-[#F5F5F4] shadow-2xl bg-black">
+                  <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 transition-transform duration-700" />
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center justify-between font-exif text-[10px] uppercase tracking-widest text-warmGold">
+                  <span>${item.code}</span>
+                  <span>HAND-SIGNED</span>
+                </div>
+                <h3 class="font-serif-photo text-2xl sm:text-3xl text-alabaster mt-2">${item.title}</h3>
+                <p class="font-exif text-[11px] text-neutral-400 mt-1">${item.paper}</p>
+                <p class="font-exif text-[11px] text-neutral-500 mt-1">Format: ${printFormatDescription}</p>
+
+                <div class="mt-5 pt-4 border-t border-white/10 flex items-baseline justify-between">
+                  <span class="font-exif text-[10px] text-amber-200/80">${item.remaining}</span>
+                  <strong class="font-serif-photo text-3xl text-alabaster">$${finalPrice.toLocaleString('en-US')}</strong>
+                </div>
+              </div>
+            </div>
+            <div class="px-6 pb-6">
+              <button 
+                type="button" 
+                onclick="prefillBooking('Fine Art Print Reservation: ${item.title} (${item.code}) — Format: ${printFormatDescription} — $${finalPrice.toLocaleString('en-US')}')"
+                class="w-full py-3.5 rounded-xl bg-alabaster hover:bg-warmGold text-galleryBlack font-exif text-xs font-semibold uppercase tracking-[0.2em] transition-all"
+              >
+                Reserve Numbered Print →
+              </button>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+
+    // 5. FORMULÁRIO DE CONTATO & RESERVA
+    window.prefillBooking = function(text) {
+      const brief = document.getElementById('b-brief');
+      if (brief) brief.value = text;
+      document.getElementById('contato').scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+        document.getElementById('b-name').focus();
+      }, 600);
+    };
+
+    window.handleBookingSubmit = function(e) {
+      e.preventDefault();
+      const name = document.getElementById('b-name').value.trim();
+      const type = document.getElementById('b-type').value;
+      const protocol = '#LV-2026-' + Math.floor(1000 + Math.random() * 9000);
+
+      document.getElementById('booking-protocol').textContent = protocol;
+      document.getElementById('booking-confirm-text').textContent =
+        `Thank you, ${name}. Your inquiry for "${type}" has been received by the studio and forwarded to the representing agent. We will reply within 24 business hours with date availability and a production dossier.`;
+      document.getElementById('booking-confirm').classList.remove('hidden');
+    };
+
+    window.toggleMobileMenu = function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    };
+
+    // 6. CURSOR PERSONALIZADO COM EFEITO MAGNÉTICO EM JS
+    const cursorDot = document.getElementById('cursor-dot');
+    const cursorRing = document.getElementById('cursor-ring');
+    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+    let ringX = mouseX, ringY = mouseY;
+
+    window.setCursorView = function(active) {
+      if (active) {
+        document.body.classList.add('cursor-view');
+      } else {
+        document.body.classList.remove('cursor-view');
+      }
+    };
+
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        cursorDot.style.left = `${mouseX}px`;
+        cursorDot.style.top = `${mouseY}px`;
+      });
+
+      function animateCursorRing() {
+        ringX += (mouseX - ringX) * 0.18;
+        ringY += (mouseY - ringY) * 0.18;
+        cursorRing.style.left = `${ringX}px`;
+        cursorRing.style.top = `${ringY}px`;
+        requestAnimationFrame(animateCursorRing);
+      }
+      requestAnimationFrame(animateCursorRing);
+
+      document.addEventListener('mouseover', (e) => {
+        if (e.target.closest('a, button, select, input, textarea, [data-magnetic]')) {
+          document.body.classList.add('cursor-hover');
+        }
+      });
+      document.addEventListener('mouseout', (e) => {
+        if (e.target.closest('a, button, select, input, textarea, [data-magnetic]')) {
+          document.body.classList.remove('cursor-hover');
+        }
+      });
+    }
+
+    // Inicialização
+    document.addEventListener('DOMContentLoaded', () => {
+      filterPhotos('all');
+      selectSpread(0);
+      renderPrints();
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+  </script>
+
+  <!-- Vercel Web Analytics & Speed Insights -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script defer src="/assets/js/demo-i18n-bar.js"></script>
+</body>
+</html>

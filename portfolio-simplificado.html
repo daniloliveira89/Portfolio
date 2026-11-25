@@ -856,7 +856,7 @@
       pt: {
         nav_services: 'Serviços', nav_skills: 'Tecnologias', nav_projects: 'Projetos', nav_diff: 'Diferenciais', nav_contact: 'Contato',
         avail: 'Disponível para projetos & contratos', hero_hi: 'Olá, eu sou',
-        hero_bio: 'Desenvolvo aplicações modernas de alta performance — desde observatórios inteligentes e pipelines de I.A. Generativa até jogos táticos em WebGL e extensões ultrarrápidas de navegador.',
+        hero_bio: 'Desenvolvo websites comerciais modernos, landing pages de alta conversão e identidades visuais exclusivas com performance impecável e foco total em vendas.',
         cta_projects: 'Explorar Projetos', cta_contact: 'Entrar em Contato', find_me: 'Encontre-me em',
         sec_services_kicker: 'Especialidades & Domínios', sec_services_title: 'Serviços que Ofereço',
         sec_skills_kicker: 'Tecnologias & Ferramentas', sec_skills_title: 'Stack & Proficiência',
@@ -1002,7 +1002,9 @@
       'layout-hamburgueria': { pt: 'Hamburgueria Artesanal', es: 'Hamburguesería Artesanal', en: 'Artisan Burger Bar' },
       'layout-pizzaria': { pt: 'Pizzaria Napolitana', es: 'Pizzería Napolitana', en: 'Neapolitan Pizzeria' },
       'layout-confeitaria': { pt: 'Confeitaria & Chocolateria', es: 'Pastelería & Chocolatería', en: 'Artisan Bakery' },
+      'layout-petshop': { pt: 'Pet Shop & Spa Pet', es: 'Pet Shop & Spa Canino', en: 'Pet Shop & Spa' },
       'layout-pet-shop': { pt: 'Pet Shop & Spa Pet', es: 'Pet Shop & Spa Canino', en: 'Pet Shop & Spa' },
+      'layout-clinica-veterinaria': { pt: 'Hospital Veterinário 24h', es: 'Hospital Veterinario 24h', en: 'Veterinary Hospital' },
       'layout-veterinaria': { pt: 'Hospital Veterinário 24h', es: 'Hospital Veterinario 24h', en: 'Veterinary Hospital' },
       'layout-advocacia': { pt: 'Escritório de Advocacia', es: 'Bufete de Abogados', en: 'Law Firm' },
       'layout-consultoria': { pt: 'Consultoria Empresarial', es: 'Consultoría Estratégica', en: 'Business Consulting' },
@@ -1017,9 +1019,19 @@
       'layout-logistica': { pt: 'Transportadora & Logística', es: 'Operador Logístico', en: 'Logistics & Freight' },
       'layout-energia-solar': { pt: 'Energia Solar & Fotovoltaica', es: 'Energía Solar Fotovoltaica', en: 'Solar Energy' },
       'layout-fotografo': { pt: 'Estúdio de Fotografia', es: 'Estudio de Fotografía', en: 'Photography Studio' },
+      'layout-produtora-eventos': { pt: 'Produtora de Eventos & Shows', es: 'Productora de Eventos', en: 'Events Production' },
       'layout-eventos': { pt: 'Produtora de Eventos & Shows', es: 'Productora de Eventos', en: 'Events Production' },
+      'layout-produtora-audiovisual': { pt: 'Produtora de Cinema & Vídeo', es: 'Productora Audiovisual', en: 'Film Production' },
       'layout-cinema': { pt: 'Produtora de Cinema & Vídeo', es: 'Productora Audiovisual', en: 'Film Production' },
+      'layout-marca-roupas': { pt: 'Marca Streetwear & Moda', es: 'Marca Streetwear & Moda', en: 'Streetwear Fashion Brand' },
+      'layout-spa-massagem': { pt: 'Spa Terapêutico & Bem-Estar', es: 'Spa Terapéutico & Bienestar', en: 'Wellness & Spa Sanctuary' },
+      'layout-motel': { pt: 'Motel Boutique & Suítes', es: 'Motel Boutique & Suites', en: 'Boutique Suites Hotel' },
+      'layout-moveis-decoracao': { pt: 'Mobiliário & Design Escandinavo', es: 'Mobiliario & Diseño Escandinavo', en: 'Bespoke Furniture & Decor' },
+      'layout-limpeza-manutencao': { pt: 'Limpeza Pós-Obra & Facilities', es: 'Limpieza & Mantenimiento', en: 'Facility & Cleaning Services' },
+      'layout-psicologia': { pt: 'Psicologia Clínica & TCC', es: 'Psicología Clínica & TCC', en: 'Clinical Psychology' },
+      'layout-ferramentaria-caldeiraria': { pt: 'Usinagem CNC & Metalurgia', es: 'Mecanizado CNC & Metalurgia', en: 'CNC Machining & Industry' },
       'layout-tattoo': { pt: 'Estúdio de Tatuagem', es: 'Estudio de Tatuajes', en: 'Tattoo Studio' },
+      'layout-banda-gravadora': { pt: 'Banda & Gravadora Musical', es: 'Banda & Sello Musical', en: 'Band & Record Label' },
       'layout-banda': { pt: 'Banda & Gravadora Musical', es: 'Banda & Sello Musical', en: 'Band & Record Label' },
       'layout-arte': { pt: 'Portfólio de Arte Editorial', es: 'Portafolio de Arte Editorial', en: 'Art Portfolio' }
     };
@@ -1105,9 +1117,35 @@
           })
       : DEFAULT_PROJECTS;
 
+    function detectInitialLanguage() {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const qLang = (params.get('lang') || '').toLowerCase();
+        if (qLang === 'pt' || qLang === 'en' || qLang === 'es') {
+          localStorage.setItem('portfolio_lang', qLang);
+          localStorage.setItem('portfolio_lang_manual', '1');
+          return qLang;
+        }
+      } catch (e) {}
+      try {
+        if (localStorage.getItem('portfolio_lang_manual') === '1') {
+          const saved = localStorage.getItem('portfolio_lang');
+          if (saved === 'pt' || saved === 'es' || saved === 'en') return saved;
+        }
+      } catch (e) {}
+      const langs = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || navigator.userLanguage || 'pt'];
+      for (let i = 0; i < langs.length; i++) {
+        const code = (langs[i] || '').toLowerCase().split('-')[0];
+        if (code === 'pt') return 'pt';
+        if (code === 'es') return 'es';
+        if (code === 'en') return 'en';
+      }
+      return 'en';
+    }
+
     const state = {
       theme: 'dark',
-      lang: 'pt',
+      lang: detectInitialLanguage(),
       skillCat: 'Todas',
       projectCat: 'Layouts & Sites',
       techFilter: null,
@@ -1525,11 +1563,23 @@
       }).join('');
     }
 
+    function localizeDemoUrl(rawUrl, lang) {
+      if (!rawUrl || rawUrl.indexOf('/layouts para sites/') !== 0) return rawUrl;
+      const targetFile = lang === 'en' ? 'en.html' : (lang === 'es' ? 'es.html' : 'index.html');
+      return rawUrl.replace(/index\.html$/, targetFile) + '?lang=' + lang;
+    }
+
     function renderProjects() {
       // Clean 2-tab system focused exclusively on Web Design deliverables
+      const curLang = state.lang || 'pt';
+      const tabLabels = {
+        pt: { l: 'Layouts & Sites', g: 'Logos', empty: 'Nenhum projeto encontrado com os filtros selecionados.' },
+        es: { l: 'Sitios & Diseños', g: 'Logos', empty: 'No se encontraron proyectos con los filtros seleccionados.' },
+        en: { l: 'Layouts & Sites', g: 'Logos', empty: 'No projects matched the selected filters.' }
+      }[curLang] || { l: 'Layouts & Sites', g: 'Logos', empty: 'Nenhum projeto encontrado com os filtros selecionados.' };
       const cats = [
-        { label: 'Layouts & Sites', key: 'Layouts & Sites', count: PROJECTS.length },
-        { label: 'Logos', key: 'Logos', count: LOGOS_DATA.length }
+        { label: tabLabels.l, key: 'Layouts & Sites', count: PROJECTS.length },
+        { label: tabLabels.g, key: 'Logos', count: LOGOS_DATA.length }
       ];
 
       // Normalize active tab
@@ -1553,13 +1603,12 @@
       }
 
       const grid = document.getElementById('projects-grid');
-      const curLang = state.lang || 'pt';
 
       // 1. RENDER LOGOS TAB (48 Logos)
       if (state.projectCat === 'Logos') {
         grid.innerHTML = LOGOS_DATA.map(l => {
           const siteType = l[curLang] || l.pt;
-          const openUrl = l.demoUrl || ('/assets/images/logos-ia/' + l.file);
+          const openUrl = localizeDemoUrl(l.demoUrl || ('/assets/images/logos-ia/' + l.file), curLang);
           return `
           <a href="${openUrl}" target="_blank" rel="noopener noreferrer" class="clean-proj-card spotlight-card rounded-2xl overflow-hidden block relative aspect-[16/10] bg-slate-950 border b-subtle group cursor-pointer shadow-md">
             <!-- Imagem de Alta Resolução da Logo -->
@@ -1591,12 +1640,13 @@
       }
 
       if (!list.length) {
-        grid.innerHTML = `<div class="col-span-full text-center py-12 rounded-2xl border b-subtle text-sm t-muted">Nenhum projeto encontrado com os filtros selecionados.</div>`;
+        grid.innerHTML = `<div class="col-span-full text-center py-12 rounded-2xl border b-subtle text-sm t-muted">${tabLabels.empty}</div>`;
         return;
       }
 
       grid.innerHTML = list.map(p => {
-        const openUrl = (p.links && p.links.demo) ? p.links.demo : ((p.links && p.links.github) ? p.links.github : '#');
+        const rawUrl = (p.links && p.links.demo) ? p.links.demo : ((p.links && p.links.github) ? p.links.github : '#');
+        const openUrl = localizeDemoUrl(rawUrl, curLang);
         const siteTypeInfo = SITE_TYPE_DICT[p.id];
         const siteType = (siteTypeInfo && siteTypeInfo[curLang]) ? siteTypeInfo[curLang] : (p.title.split('—')[0].trim());
 
@@ -1686,7 +1736,7 @@
     document.addEventListener('click', (e) => {
       const tabBtn = e.target.closest('[data-card-tab]'); if (tabBtn) { switchHeroTab(tabBtn.getAttribute('data-card-tab')); return; }
       const termBtn = e.target.closest('[data-cmd]'); if (termBtn) { runTerminalCmd(termBtn.getAttribute('data-cmd')); return; }
-      const langBtn = e.target.closest('[data-lang]'); if (langBtn) { state.lang = langBtn.getAttribute('data-lang'); applyTranslations(); return; }
+      const langBtn = e.target.closest('[data-lang]'); if (langBtn) { state.lang = langBtn.getAttribute('data-lang'); try { localStorage.setItem('portfolio_lang', state.lang); localStorage.setItem('portfolio_lang_manual', '1'); } catch(err) {} applyTranslations(); return; }
       const srvCard = e.target.closest('[data-toggle-service]'); if (srvCard) { const id = srvCard.getAttribute('data-toggle-service'); state.expandedService = state.expandedService === id ? null : id; renderServices(); return; }
       const skBtn = e.target.closest('[data-skill-cat]'); if (skBtn) { state.skillCat = skBtn.getAttribute('data-skill-cat'); renderSkills(); return; }
       const techBtn = e.target.closest('[data-select-tech]'); if (techBtn) {

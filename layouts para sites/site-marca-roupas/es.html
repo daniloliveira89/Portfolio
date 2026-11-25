@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- demo-i18n-autodetect --><script>(function(){var cur=location.pathname.endsWith('/en.html')?'en':(location.pathname.endsWith('/es.html')?'es':'pt');var q=(new URLSearchParams(location.search).get('lang')||'').toLowerCase();var target=null;if(q==='pt'||q==='en'||q==='es'){target=q;try{localStorage.setItem('portfolio_lang',q);localStorage.setItem('portfolio_lang_manual','1');}catch(e){}}else if(cur==='pt'){try{if(localStorage.getItem('portfolio_lang_manual')==='1'){var saved=localStorage.getItem('portfolio_lang');if(saved==='en'||saved==='es'||saved==='pt')target=saved;}}catch(e){}if(!target){var langs=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||navigator.userLanguage||'en'];for(var i=0;i<langs.length;i++){var c=(langs[i]||'').toLowerCase().split('-')[0];if(c==='pt'){target='pt';break;}if(c==='es'){target='es';break;}if(c==='en'){target='en';break;}}if(!target)target='en';}}if(target&&target!==cur){var file=target==='en'?'en.html':(target==='es'?'es.html':'index.html');var p=location.pathname;var np=p.slice(-5).toLowerCase()==='.html'?p.slice(0,p.lastIndexOf('/')+1)+file:(p.endsWith('/')?p+file:p+'/'+file);location.replace(np+location.search+location.hash);}})();</script>
+  <title>NOCTURNE ATELIER® — Heavyweight Streetwear y Techwear Minimalista | Drop 04</title>
+  <meta name="description" content="Firma de Streetwear Heavyweight 400-480 GSM y Techwear Minimalista. Ediciones limitadas y numeradas a mano. Drop 04 / 300 Piezas." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Bebas Neue, Syne, Space Grotesk & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#0a0a0a',
+            carbon: '#111111',
+            graphite: '#18181b',
+            titanium: '#8e8e93',
+            bone: '#F4F3EF',
+            acid: '#CCFF00',
+            crimson: '#FF2A4B'
+          },
+          fontFamily: {
+            display: ['"Bebas Neue"', 'sans-serif'],
+            syne: ['"Syne"', 'sans-serif'],
+            sans: ['"Space Grotesk"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #0a0a0a;
+      color: #F4F3EF;
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+      selection-background-color: #CCFF00;
+      selection-color: #0a0a0a;
+    }
+    ::selection {
+      background: #CCFF00;
+      color: #0a0a0a;
+    }
+
+    /* Subtle Film Noise & Brutalist Grid Overlay */
+    .bg-brutalist-grid {
+      background-size: 64px 64px;
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+
+    /* Hollow / Stroke Editorial Typography */
+    .text-outline {
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(244, 243, 239, 0.28);
+    }
+    .text-outline-acid {
+      color: transparent;
+      -webkit-text-stroke: 1.5px #CCFF00;
+    }
+
+    /* Product Card Front/Back Image Swap */
+    .product-card .img-back {
+      opacity: 0;
+      transform: scale(1.04);
+      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .product-card .img-front {
+      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .product-card:hover .img-back {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .product-card:hover .img-front {
+      opacity: 0;
+    }
+
+    /* Infinite Marquee Animation */
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      display: flex;
+      width: max-content;
+      animation: marquee 28s linear infinite;
+    }
+    .animate-marquee:hover {
+      animation-play-state: paused;
+    }
+
+    /* Brutalist Button Microinteraction */
+    .btn-brutal {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn-brutal:active {
+      transform: translateY(1px);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0a0a0a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #27272a;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #CCFF00;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen antialiased bg-obsidian text-bone bg-brutalist-grid relative">
+
+  <!-- TOP TELEMETRY BAR -->
+  <div class="border-b border-white/10 bg-[#050505] text-[11px] font-mono uppercase tracking-widest">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-9 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-2.5">
+        <span class="inline-block w-2 h-2 bg-acid animate-ping"></span>
+        <span class="text-acid font-bold">DROP 04 / 300 UDS</span>
+        <span class="hidden sm:inline text-titanium">• ALGODÓN PIMA Y EGIPCIO 400–480 GSM • TIRADA NUMERADA</span>
+      </div>
+      <div class="flex items-center gap-4 text-titanium">
+        <span class="hidden md:inline">23°33'01"S 46°38'02"W // SP — TYO</span>
+        <button onclick="openTrackingModal()" class="hover:text-acid transition-colors underline underline-offset-4">
+          Rastrear Pedido
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. HEADER MINIMALISTA EDITORIAL -->
+  <header class="sticky top-0 z-40 bg-obsidian/90 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Mobile Menu Trigger -->
+      <button onclick="toggleMobileNav()" class="lg:hidden p-2 border border-white/15 text-bone hover:border-acid hover:text-acid transition-colors" aria-label="Abrir Menú">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path stroke-linecap="square" d="M4 7h16M4 12h16M4 17h10"/>
+        </svg>
+      </button>
+
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 bg-bone text-obsidian flex items-center justify-center font-display text-2xl tracking-tighter group-hover:bg-acid transition-colors">
+          N°
+        </div>
+        <div>
+          <span class="font-syne font-extrabold text-lg sm:text-xl tracking-tighter block leading-none text-bone">
+            NOCTURNE ATELIER<span class="text-acid">®</span>
+          </span>
+          <span class="font-mono text-[9px] uppercase tracking-[0.28em] text-titanium block mt-0.5">
+            Heavyweight Garment Division
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Editorial Navigation -->
+      <nav class="hidden lg:flex items-center gap-8 font-mono text-xs uppercase tracking-[0.18em] text-neutral-300">
+        <a href="#drops" class="hover:text-acid transition-colors flex items-center gap-1.5">
+          <span class="text-acid">[01]</span> Drops
+        </a>
+        <a href="#lookbook" class="hover:text-acid transition-colors flex items-center gap-1.5">
+          <span class="text-titanium">[02]</span> Lookbook
+        </a>
+        <a href="#manifesto" class="hover:text-acid transition-colors flex items-center gap-1.5">
+          <span class="text-titanium">[03]</span> Ingeniería 480g
+        </a>
+        <a href="#arquivo" class="hover:text-acid transition-colors flex items-center gap-1.5">
+          <span class="text-titanium">[04]</span> Archivo
+        </a>
+        <button onclick="openSizeGuideModal()" class="hover:text-acid transition-colors flex items-center gap-1.5 uppercase">
+          <span class="text-acid">⊞</span> Guía de Tallas
+        </button>
+      </nav>
+
+      <!-- Header Right Actions -->
+      <div class="flex items-center gap-2.5 sm:gap-3">
+        <button onclick="openSizeGuideModal()" class="hidden sm:inline-flex items-center gap-2 px-3.5 py-2 border border-white/15 hover:border-acid text-[11px] font-mono uppercase tracking-wider text-neutral-300 hover:text-acid transition-all">
+          <span>Fit Finder</span>
+        </button>
+
+        <button onclick="toggleCartDrawer(true)" class="btn-brutal relative inline-flex items-center gap-3 px-4 py-2.5 bg-bone text-obsidian hover:bg-acid font-mono text-xs font-bold uppercase tracking-wider">
+          <span>Archive Bag</span>
+          <span id="cart-count-badge" class="px-1.5 py-0.5 bg-obsidian text-acid text-[11px] font-mono leading-none">
+            0
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-nav" class="hidden lg:hidden border-t border-white/10 bg-carbon px-6 py-6 space-y-4 font-mono text-sm uppercase tracking-widest">
+      <a href="#drops" onclick="toggleMobileNav()" class="block py-2 border-b border-white/10 hover:text-acid">[01] Drop 04 — Catálogo</a>
+      <a href="#lookbook" onclick="toggleMobileNav()" class="block py-2 border-b border-white/10 hover:text-acid">[02] Lookbook AW/26</a>
+      <a href="#manifesto" onclick="toggleMobileNav()" class="block py-2 border-b border-white/10 hover:text-acid">[03] Manifiesto y Gramaje</a>
+      <a href="#arquivo" onclick="toggleMobileNav()" class="block py-2 border-b border-white/10 hover:text-acid">[04] Archivo y Colecciones</a>
+      <button onclick="toggleMobileNav(); openSizeGuideModal();" class="w-full text-left py-2 text-acid font-bold">⊞ Tabla de Tallas y Fit Finder</button>
+    </div>
+  </header>
+
+  <!-- 2. HERO SECTION COM VISUAL EDITORIAL DRAMÁTICO & COUNTDOWN -->
+  <section class="relative border-b border-white/10 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-10 lg:py-16">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+        
+        <!-- Left Column: Editorial Typography & Countdown -->
+        <div class="lg:col-span-7 flex flex-col justify-between space-y-8">
+          <div class="space-y-5">
+            <!-- Limited Batch Badges -->
+            <div class="flex flex-wrap items-center gap-2.5">
+              <span class="px-3 py-1 bg-acid text-obsidian font-mono text-xs font-bold uppercase tracking-widest">
+                DROP 04 / 300 UDS
+              </span>
+              <span class="px-3 py-1 border border-white/20 bg-carbon font-mono text-xs text-neutral-300 uppercase tracking-widest">
+                LOTE NUMERADO #001–#300
+              </span>
+              <span class="px-3 py-1 border border-white/10 font-mono text-[11px] text-titanium uppercase">
+                SIN REPOSICIÓN (ZERO RESTOCK)
+              </span>
+            </div>
+
+            <!-- High-Impact Headline -->
+            <h1 class="font-display text-6xl sm:text-8xl lg:text-[104px] leading-[0.88] tracking-tight uppercase text-bone">
+              SILENCE IN <br/>
+              <span class="text-outline-acid">HEAVYWEIGHT</span> <br/>
+              ARCHITECTURE.
+            </h1>
+
+            <p class="text-neutral-300 text-base sm:text-lg max-w-xl leading-relaxed font-normal">
+              Sastrería brutalista confeccionada en <strong class="text-white">Algodón Egipcio y Pima de 400 a 480 GSM</strong>, nylon balístico impermeable y teñido mineral lavado a la piedra. Corte boxy diseñado para durar décadas.
+            </p>
+          </div>
+
+          <!-- Functional Countdown Timer Box -->
+          <div class="p-6 bg-carbon border border-white/15 relative">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4 pb-3 border-b border-white/10">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-acid"></span>
+                <span class="font-mono text-xs uppercase tracking-widest text-neutral-300">
+                  CIERRE DEL LOTE ACTUAL Y PRÓXIMO DROP #05:
+                </span>
+              </div>
+              <span class="font-mono text-[11px] text-acid">QUEDAN 38 UNIDADES GLOBALES</span>
+            </div>
+
+            <div class="grid grid-cols-4 gap-3 sm:gap-4 text-center">
+              <div class="bg-obsidian border border-white/10 p-3 sm:p-4">
+                <span id="cd-days" class="font-display text-4xl sm:text-5xl text-bone block leading-none">03</span>
+                <span class="font-mono text-[10px] uppercase tracking-widest text-titanium mt-1 block">Días</span>
+              </div>
+              <div class="bg-obsidian border border-white/10 p-3 sm:p-4">
+                <span id="cd-hours" class="font-display text-4xl sm:text-5xl text-bone block leading-none">14</span>
+                <span class="font-mono text-[10px] uppercase tracking-widest text-titanium mt-1 block">Horas</span>
+              </div>
+              <div class="bg-obsidian border border-white/10 p-3 sm:p-4">
+                <span id="cd-mins" class="font-display text-4xl sm:text-5xl text-bone block leading-none">49</span>
+                <span class="font-mono text-[10px] uppercase tracking-widest text-titanium mt-1 block">Minutos</span>
+              </div>
+              <div class="bg-obsidian border border-acid/40 p-3 sm:p-4">
+                <span id="cd-secs" class="font-display text-4xl sm:text-5xl text-acid block leading-none">22</span>
+                <span class="font-mono text-[10px] uppercase tracking-widest text-acid mt-1 block">Segundos</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero CTAs -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <a href="#newsletter-vip" class="btn-brutal inline-flex items-center justify-center gap-3 px-8 py-4 bg-acid text-obsidian font-mono text-xs sm:text-sm font-bold uppercase tracking-widest hover:bg-bone transition-colors">
+              <span>Asegurar Acceso Anticipado</span>
+              <span>→</span>
+            </a>
+            <a href="#drops" class="btn-brutal inline-flex items-center justify-center gap-3 px-8 py-4 bg-carbon border border-white/20 text-bone font-mono text-xs sm:text-sm font-bold uppercase tracking-widest hover:border-acid hover:text-acid transition-colors">
+              <span>Explorar Drop 04 (6 Piezas)</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: Dramatic Editorial Imagery + Heavyweight Fabric Macro -->
+        <div class="lg:col-span-5 grid grid-cols-12 gap-4 relative">
+          <!-- Main Streetwear Model Image -->
+          <div class="col-span-12 sm:col-span-8 lg:col-span-12 relative group overflow-hidden border border-white/15 bg-carbon min-h-[420px] sm:min-h-[540px]">
+            <img 
+              src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=85" 
+              alt="Editorial Nocturne Atelier Techwear y Heavyweight" 
+              class="w-full h-full object-cover object-center grayscale contrast-125 group-hover:scale-105 transition-transform duration-700"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/20 to-transparent"></div>
+
+            <!-- Technical Stamp Overlay -->
+            <div class="absolute top-4 left-4 right-4 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest">
+              <span class="px-2.5 py-1 bg-obsidian/90 border border-white/15 text-bone">FIG. 01 — ARCHIVE SHELL</span>
+              <span class="px-2.5 py-1 bg-obsidian/90 border border-acid/40 text-acid">480 GSM FLEECE</span>
+            </div>
+
+            <!-- Macro Texture Inset Card -->
+            <div class="absolute bottom-4 left-4 right-4 p-4 bg-obsidian/95 backdrop-blur-md border border-white/15 flex items-center gap-4">
+              <img 
+                src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=300&q=80" 
+                alt="Macro Tejido 480 GSM" 
+                class="w-16 h-16 object-cover border border-white/20 shrink-0 grayscale"
+              />
+              <div class="text-xs">
+                <div class="font-mono text-[10px] text-acid uppercase tracking-widest">ESPECIFICACIÓN TEXTIL AUDITADA</div>
+                <p class="font-syne font-bold text-white text-sm mt-0.5">Felpa 3 Cabos de Alto Cuerpo y Teñido Mineral</p>
+                <p class="font-mono text-[11px] text-titanium mt-0.5">Preencogido • Costura Doble Flatlock</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Brutalist Ticker Tape -->
+    <div class="border-t border-white/10 bg-acid text-obsidian py-2.5 overflow-hidden">
+      <div class="animate-marquee font-mono text-xs font-bold uppercase tracking-[0.22em] flex items-center gap-10">
+        <span>★ DROP 04 DISPONIBLE AHORA</span>
+        <span>•</span>
+        <span>ALGODÓN EGIPCIO 480 GSM</span>
+        <span>•</span>
+        <span>EDICIÓN LIMITADA A 300 PIEZAS NUMERADAS</span>
+        <span>•</span>
+        <span>ZERO RESTOCK POLICY</span>
+        <span>•</span>
+        <span>ENVÍO EXPRÉS ASEGURADO DESDE 500 €</span>
+        <span>•</span>
+        <span>★ DROP 04 DISPONIBLE AHORA</span>
+        <span>•</span>
+        <span>ALGODÓN EGIPCIO 480 GSM</span>
+        <span>•</span>
+        <span>EDICIÓN LIMITADA A 300 PIEZAS NUMERADAS</span>
+        <span>•</span>
+        <span>ZERO RESTOCK POLICY</span>
+        <span>•</span>
+        <span>ENVÍO EXPRÉS ASEGURADO DESDE 500 €</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. GRADE DE PRODUTOS / CATÁLOGO DO DROP ATUAL -->
+  <section id="drops" class="py-20 lg:py-28 border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      
+      <!-- Section Header & Category Filter -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-10 border-b border-white/10">
+        <div>
+          <div class="flex items-center gap-3 font-mono text-xs uppercase tracking-widest text-acid mb-2">
+            <span>[ CATÁLOGO OFICIAL // DROP 04 ]</span>
+            <span>•</span>
+            <span>OTOÑO / INVIERNO 2026</span>
+          </div>
+          <h2 class="font-display text-5xl sm:text-7xl tracking-tight uppercase text-bone leading-none">
+            ARCHIVE DROP 04 <span class="text-titanium text-3xl sm:text-4xl">/ 300 UDS</span>
+          </h2>
+        </div>
+
+        <!-- Category Filters + Size Guide Trigger -->
+        <div class="flex flex-wrap items-center gap-2">
+          <button onclick="filterProducts('all')" data-filter="all" class="filter-btn px-4 py-2 font-mono text-xs uppercase tracking-wider bg-acid text-obsidian font-bold border border-acid transition-all">
+            Todos (6)
+          </button>
+          <button onclick="filterProducts('heavyweight')" data-filter="heavyweight" class="filter-btn px-4 py-2 font-mono text-xs uppercase tracking-wider bg-carbon text-neutral-300 border border-white/15 hover:border-acid transition-all">
+            Heavyweight 400–480g
+          </button>
+          <button onclick="filterProducts('techwear')" data-filter="techwear" class="filter-btn px-4 py-2 font-mono text-xs uppercase tracking-wider bg-carbon text-neutral-300 border border-white/15 hover:border-acid transition-all">
+            Techwear Shell
+          </button>
+          <button onclick="openSizeGuideModal()" class="px-4 py-2 font-mono text-xs uppercase tracking-wider bg-obsidian text-acid border border-acid/40 hover:bg-acid hover:text-obsidian transition-all">
+            📏 Probador / Tallas
+          </button>
+        </div>
+      </div>
+
+      <!-- Helper instruction bar -->
+      <div class="py-3 px-4 bg-carbon/70 border-b border-white/10 flex flex-wrap items-center justify-between gap-2 font-mono text-[11px] text-titanium mb-8">
+        <span> Pasa el cursor (o toca) sobre la prenda para inspeccionar Frente / Espalda.</span>
+        <span>Selecciona la talla (S / M / L / XL) antes de añadir al Archive Bag.</span>
+      </div>
+
+      <!-- Product Grid (Rendered via JS) -->
+      <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Populated dynamically by JS -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4. LOOKBOOK IMERSIVO (LAYOUT ASSIMÉTRICO EDITORIAL) -->
+  <section id="lookbook" class="py-20 lg:py-28 border-b border-white/10 relative overflow-hidden">
+    <!-- Background Giant Hollow Text -->
+    <div class="pointer-events-none select-none absolute -top-8 left-0 right-0 text-center overflow-hidden">
+      <span class="font-display text-[130px] sm:text-[220px] leading-none text-outline uppercase tracking-tighter">
+        NOCTURNE AW26
+      </span>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+      <div class="max-w-3xl mb-14">
+        <span class="font-mono text-xs uppercase tracking-[0.25em] text-acid block mb-3">
+          [ EDITORIAL // LOOKBOOK 04 — SÃO PAULO / BERLIN ]
+        </span>
+        <h2 class="font-syne font-extrabold text-3xl sm:text-5xl uppercase tracking-tight text-bone leading-tight">
+          Monolitos Urbanos: La Armadura del Silencio.
+        </h2>
+        <p class="text-neutral-400 text-sm sm:text-base mt-4 leading-relaxed">
+          Fotografiado en película de formato medio Ilford HP5 400 en estructuras brutalistas de hormigón visto. Cada silueta del Drop 04 equilibra proporciones de hombro caído con tejidos de alta densidad que mantienen su propia escultura en el cuerpo.
+        </p>
+      </div>
+
+      <!-- Asymmetric Editorial Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Look 01 (Tall Left Column - 7 cols) -->
+        <div class="lg:col-span-7 group relative border border-white/15 bg-carbon overflow-hidden">
+          <div class="aspect-[4/5] sm:aspect-[16/13] overflow-hidden relative">
+            <img 
+              src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=85" 
+              alt="Look 01 Nocturne Atelier" 
+              class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 transition-transform duration-700"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent"></div>
+            <div class="absolute top-4 left-4 px-3 py-1 bg-obsidian/90 border border-white/15 font-mono text-xs text-acid">
+              LOOK 01 // ARCHIVE ANORAK + CARGO PARACHUTE
+            </div>
+          </div>
+          <div class="p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-t border-white/10">
+            <div>
+              <h3 class="font-syne font-bold text-lg text-bone uppercase">Silueta Modular Todo Clima</h3>
+              <p class="font-mono text-xs text-titanium mt-1">Nylon Ripstop 3 Capas + Algodón Egipcio 480g</p>
+            </div>
+            <a href="#drops" class="px-4 py-2.5 border border-white/20 hover:border-acid text-xs font-mono uppercase tracking-wider text-bone hover:text-acid transition-colors shrink-0">
+              Ver Piezas del Look →
+            </a>
+          </div>
+        </div>
+
+        <!-- Look 02 & Editorial Concept Box (Right Column - 5 cols) -->
+        <div class="lg:col-span-5 space-y-8">
+          <div class="group relative border border-white/15 bg-carbon overflow-hidden">
+            <div class="aspect-[4/4.5] overflow-hidden relative">
+              <img 
+                src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=900&q=85" 
+                alt="Look 02 Nocturne Atelier" 
+                class="w-full h-full object-cover grayscale contrast-125 group-hover:scale-105 transition-transform duration-700"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent"></div>
+              <div class="absolute top-4 left-4 px-3 py-1 bg-obsidian/90 border border-white/15 font-mono text-xs text-bone">
+                LOOK 02 // HOODIE BOXY HEAVY 480G
+              </div>
+            </div>
+            <div class="p-5 border-t border-white/10">
+              <p class="font-mono text-xs text-neutral-300">
+                Caída cuadrada (Boxy Fit) sin puños elásticos restrictivos en la cintura, permitiendo capas arquitectónicas sobre camisetas Pima de 400g.
+              </p>
+            </div>
+          </div>
+
+          <!-- Editorial Manifesto Quote Box -->
+          <div class="p-8 bg-carbon border-l-4 border-l-acid border border-white/10 space-y-4">
+            <span class="font-mono text-[11px] uppercase tracking-widest text-acid block">
+              NOTA DEL DIRECTOR CREATIVO
+            </span>
+            <p class="font-syne text-xl text-bone leading-snug">
+              “Rechazamos el ciclo desechable del fast-fashion. Cada prenda de Nocturne Atelier está numerada individualmente y construida como un artefacto industrial.”
+            </p>
+            <div class="font-mono text-xs text-titanium pt-2 border-t border-white/10 flex justify-between">
+              <span>ATELIER LAB // SÃO PAULO</span>
+              <span>SERIE 04/2026</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Look 03 Wide Editorial Banner (12 cols) -->
+        <div class="lg:col-span-12 grid grid-cols-1 lg:grid-cols-12 border border-white/15 bg-carbon overflow-hidden">
+          <div class="lg:col-span-5 p-8 sm:p-10 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/10">
+            <div class="space-y-4">
+              <span class="font-mono text-xs text-acid uppercase tracking-widest">LOOK 03 // MONOCHROME PATINA</span>
+              <h3 class="font-display text-5xl uppercase tracking-tight text-bone leading-none">
+                TEÑIDO MINERAL Y LAVADO ENZIMÁTICO.
+              </h3>
+              <p class="text-sm text-neutral-300 leading-relaxed">
+                Nuestro proceso de pigmentación en tambor industrial crea variaciones sutiles en las costuras dobles y en el cuello acanalado de 3.5cm. Ninguna unidad entre las 300 producidas es idéntica a otra.
+              </p>
+            </div>
+            <div class="pt-6 mt-6 border-t border-white/10 flex items-center justify-between font-mono text-xs">
+              <span class="text-titanium">RESISTENCIA A LA TORSIÓN: ISO 16322</span>
+              <button onclick="openSizeGuideModal()" class="text-acid hover:underline">Probar Mi Talla →</button>
+            </div>
+          </div>
+          <div class="lg:col-span-7 aspect-[16/9] overflow-hidden relative">
+            <img 
+              src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc?auto=format&fit=crop&w=1200&q=85" 
+              alt="Look 03 Textura Lavada a la Piedra Nocturne Atelier" 
+              class="w-full h-full object-cover grayscale contrast-125 hover:scale-105 transition-transform duration-700"
+            />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. MANIFESTO & DETALHES CONSTRUTIVOS + FIT FINDER INTELIGENTE -->
+  <section id="manifesto" class="py-20 lg:py-28 border-b border-white/10 bg-[#080808]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Left 7 Cols: 4 Pillars of Textile Engineering -->
+        <div class="lg:col-span-7 space-y-8">
+          <div>
+            <span class="font-mono text-xs uppercase tracking-[0.22em] text-acid block mb-2">
+              [ ESPECIFICACIONES DE INGENIERÍA TEXTIL ]
+            </span>
+            <h2 class="font-display text-5xl sm:text-6xl uppercase tracking-tight text-bone leading-none">
+              ANATOMÍA DE UNA PRENDA DE 480 GSM
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <!-- Spec 01 -->
+            <div class="p-6 bg-carbon border border-white/10 hover:border-acid/50 transition-colors">
+              <div class="flex items-center justify-between font-mono text-xs text-acid mb-3">
+                <span>SPEC // 01</span>
+                <span>DENSIDAD</span>
+              </div>
+              <h3 class="font-syne font-bold text-lg text-bone uppercase">Gramaje de 400 a 480 GSM</h3>
+              <p class="text-sm text-neutral-400 mt-2 leading-relaxed">
+                Mientras el mercado tradicional utiliza tejidos de 160g, tejemos nuestras camisetas en 400 GSM y sudaderas en 480 GSM de 3 cabos, creando una estructura arquitectónica que no se marca ni se deforma.
+              </p>
+            </div>
+
+            <!-- Spec 02 -->
+            <div class="p-6 bg-carbon border border-white/10 hover:border-acid/50 transition-colors">
+              <div class="flex items-center justify-between font-mono text-xs text-acid mb-3">
+                <span>SPEC // 02</span>
+                <span>MATERIA PRIMA</span>
+              </div>
+              <h3 class="font-syne font-bold text-lg text-bone uppercase">Algodón Pima y Egipcio</h3>
+              <p class="text-sm text-neutral-400 mt-2 leading-relaxed">
+                Fibras extralargas (ELS) peinadas en frío que evitan la formación de bolitas (zero pilling), ofrecen un tacto sedoso interior y una transpirabilidad térmica superior.
+              </p>
+            </div>
+
+            <!-- Spec 03 -->
+            <div class="p-6 bg-carbon border border-white/10 hover:border-acid/50 transition-colors">
+              <div class="flex items-center justify-between font-mono text-xs text-acid mb-3">
+                <span>SPEC // 03</span>
+                <span>CONSTRUCCIÓN</span>
+              </div>
+              <h3 class="font-syne font-bold text-lg text-bone uppercase">Costuras Flatlock y Cuello 3.5cm</h3>
+              <p class="text-sm text-neutral-400 mt-2 leading-relaxed">
+                Costuras industriales de 5 hilos reforzadas en hombros y sisas. Cuello en canalé 2x2 de alta memoria elástica que mantiene el ajuste firme tras cientos de usos.
+              </p>
+            </div>
+
+            <!-- Spec 04 -->
+            <div class="p-6 bg-carbon border border-white/10 hover:border-acid/50 transition-colors">
+              <div class="flex items-center justify-between font-mono text-xs text-acid mb-3">
+                <span>SPEC // 04</span>
+                <span>ACABADO</span>
+              </div>
+              <h3 class="font-syne font-bold text-lg text-bone uppercase">Teñido Lavado a la Piedra y Preencogido</h3>
+              <p class="text-sm text-neutral-400 mt-2 leading-relaxed">
+                Baño mineral en carbono mate seguido de lavado enzimático y secado controlado. Tasa de encogimiento residual del 0% tras lavado doméstico.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 5 Cols: Fit Finder Inteligente (Preserved & Upgraded from original index_2.html) -->
+        <div class="lg:col-span-5 bg-carbon border-2 border-white/15 p-8 relative">
+          <div class="flex items-center justify-between pb-4 mb-6 border-b border-white/10">
+            <div>
+              <span class="font-mono text-xs uppercase tracking-widest text-acid font-bold block">
+                ⊞ FIT FINDER INTELIGENTE v2.4
+              </span>
+              <h3 class="font-syne font-extrabold text-2xl text-bone mt-1">
+                Descubre tu Talla Ideal
+              </h3>
+            </div>
+            <button onclick="openSizeGuideModal()" class="font-mono text-[11px] text-neutral-300 underline hover:text-acid">
+              Ver Tabla (cm)
+            </button>
+          </div>
+
+          <div class="space-y-5">
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label for="fit-h" class="font-mono text-xs uppercase text-neutral-400 block mb-2">Tu Altura (cm)</label>
+                <input id="fit-h" type="number" min="145" max="215" value="178" class="w-full px-4 py-3 bg-obsidian border border-white/20 text-bone font-mono font-bold text-base focus:border-acid focus:outline-none" />
+              </div>
+              <div>
+                <label for="fit-w" class="font-mono text-xs uppercase text-neutral-400 block mb-2">Tu Peso (kg)</label>
+                <input id="fit-w" type="number" min="45" max="150" value="76" class="w-full px-4 py-3 bg-obsidian border border-white/20 text-bone font-mono font-bold text-base focus:border-acid focus:outline-none" />
+              </div>
+            </div>
+
+            <div>
+              <label class="font-mono text-xs uppercase text-neutral-400 block mb-2">Preferencia de Caída (Silueta)</label>
+              <div class="grid grid-cols-3 gap-2" id="fit-pref-group">
+                <button type="button" onclick="setFitPreference('structured')" data-pref="structured" class="fit-pref-btn py-2.5 px-2 font-mono text-[11px] uppercase border border-white/15 bg-obsidian text-neutral-400 hover:border-white/40">
+                  Estructurado
+                </button>
+                <button type="button" onclick="setFitPreference('boxy')" data-pref="boxy" class="fit-pref-btn py-2.5 px-2 font-mono text-[11px] uppercase border border-acid bg-acid/10 text-acid font-bold">
+                  Boxy Estándar
+                </button>
+                <button type="button" onclick="setFitPreference('oversized')" data-pref="oversized" class="fit-pref-btn py-2.5 px-2 font-mono text-[11px] uppercase border border-white/15 bg-obsidian text-neutral-400 hover:border-white/40">
+                  Caída Oversized
+                </button>
+              </div>
+            </div>
+
+            <div class="p-5 bg-obsidian border border-acid/40 text-center space-y-1">
+              <span class="font-mono text-[11px] uppercase tracking-widest text-neutral-400 block">
+                Recomendación de Patronaje Nocturne:
+              </span>
+              <strong id="fit-res" class="font-syne font-extrabold text-2xl sm:text-3xl text-acid block">
+                Talla L (Grande)
+              </strong>
+              <p id="fit-Spec-note" class="font-mono text-[11px] text-titanium pt-1">
+                Pecho: 64 cm • Largo: 74 cm • Hombro Caído: 60 cm
+              </p>
+            </div>
+
+            <button onclick="openSizeGuideModal()" class="w-full py-3.5 bg-bone text-obsidian hover:bg-acid font-mono text-xs font-bold uppercase tracking-widest transition-colors">
+              Abrir Tabla Completa de Tallas (S a XL)
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. ARQUIVO & COLEÇÕES ANTERIORES (ARCHIVE VAULT) -->
+  <section id="arquivo" class="py-16 lg:py-24 border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+        <div>
+          <span class="font-mono text-xs uppercase tracking-widest text-titanium block mb-1">[ HISTORIAL DE TIRADAS // ARCHIVE ]</span>
+          <h2 class="font-display text-4xl sm:text-5xl uppercase text-bone">COLECCIONES ARCHIVADAS</h2>
+        </div>
+        <span class="font-mono text-xs text-titanium">Las piezas de archivo no se reeditan.</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 bg-carbon/50 border border-white/10 flex flex-col justify-between opacity-75 hover:opacity-100 transition-opacity">
+          <div>
+            <div class="flex justify-between font-mono text-xs mb-3">
+              <span class="text-titanium">DROP 01 // 2025</span>
+              <span class="px-2 py-0.5 bg-white/10 text-neutral-300">AGOTADO (200/200)</span>
+            </div>
+            <h3 class="font-syne font-bold text-lg text-bone uppercase">01: Brutalist Concrete Series</h3>
+            <p class="text-xs text-titanium mt-2">Primera tirada en felpa cruda de 460 GSM y chaquetas enceradas.</p>
+          </div>
+          <span class="font-mono text-[11px] text-neutral-500 mt-6 block">AGOTADO EN 14 MINUTOS</span>
+        </div>
+
+        <div class="p-6 bg-carbon/50 border border-white/10 flex flex-col justify-between opacity-75 hover:opacity-100 transition-opacity">
+          <div>
+            <div class="flex justify-between font-mono text-xs mb-3">
+              <span class="text-titanium">DROP 02 // 2025</span>
+              <span class="px-2 py-0.5 bg-white/10 text-neutral-300">AGOTADO (250/250)</span>
+            </div>
+            <h3 class="font-syne font-bold text-lg text-bone uppercase">02: Carbon & Kevlar Utility</h3>
+            <p class="text-xs text-titanium mt-2">Introducción de cierres magnéticos Fidlock® y pantalones cargo articulados.</p>
+          </div>
+          <span class="font-mono text-[11px] text-neutral-500 mt-6 block">AGOTADO EN 09 MINUTOS</span>
+        </div>
+
+        <div class="p-6 bg-carbon/50 border border-white/10 flex flex-col justify-between opacity-75 hover:opacity-100 transition-opacity">
+          <div>
+            <div class="flex justify-between font-mono text-xs mb-3">
+              <span class="text-titanium">DROP 03 // 2026</span>
+              <span class="px-2 py-0.5 bg-white/10 text-neutral-300">AGOTADO (300/300)</span>
+            </div>
+            <h3 class="font-syne font-bold text-lg text-bone uppercase">03: Sub-Zero Acid Wash</h3>
+            <p class="text-xs text-titanium mt-2">Lavado ácido mineral sobre punto peruano Pima de 420 GSM.</p>
+          </div>
+          <span class="font-mono text-[11px] text-neutral-500 mt-6 block">AGOTADO EN 11 MINUTOS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. NEWSLETTER VIP (ACESSO PRIORITÁRIO AO DROP) -->
+  <section id="newsletter-vip" class="py-20 lg:py-28 border-b border-white/10 bg-gradient-to-b from-obsidian to-carbon">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6">
+      <span class="px-3 py-1 bg-acid/15 border border-acid text-acid font-mono text-xs uppercase tracking-widest inline-block">
+        PRIVATE SYNDICATE // EARLY ACCESS
+      </span>
+      <h2 class="font-display text-5xl sm:text-7xl uppercase tracking-tight text-bone leading-none">
+        ACCESO PRIVADO 1 HORA ANTES DEL LANZAMIENTO GENERAL.
+      </h2>
+      <p class="text-neutral-300 text-sm sm:text-base max-w-xl mx-auto">
+        Más del 80% de las piezas se agotan durante la ventana privada de miembros. Registra tu correo para recibir la clave cifrada del próximo Drop e invitaciones a Pop-ups en São Paulo.
+      </p>
+
+      <form id="vip-form" onsubmit="handleVipSignup(event)" class="max-w-xl mx-auto pt-4">
+        <div class="flex flex-col sm:flex-row gap-3">
+          <input 
+            type="email" 
+            id="vip-email" 
+            required 
+            placeholder="TU CORREO PRINCIPAL // EJ: NOMBRE@DOMINIO.COM" 
+            class="flex-1 px-5 py-4 bg-obsidian border border-white/25 text-bone font-mono text-xs uppercase tracking-wider focus:border-acid focus:outline-none"
+          />
+          <button type="submit" class="btn-brutal px-8 py-4 bg-acid text-obsidian font-mono text-xs font-bold uppercase tracking-widest hover:bg-bone transition-colors shrink-0">
+            Solicitar Clave VIP
+          </button>
+        </div>
+        <p id="vip-feedback" class="hidden mt-4 p-3 bg-obsidian border border-acid text-acid font-mono text-xs"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- 8. RODAPÉ COM GUIA DE CUIDADOS, POLÍTICA DE DROPS & TRACKING -->
+  <footer class="bg-[#060606] pt-16 pb-12 text-xs text-neutral-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-14 border-b border-white/10">
+        
+        <!-- Col 1: Brand Info (4 cols) -->
+        <div class="lg:col-span-4 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-7 h-7 bg-acid text-obsidian flex items-center justify-center font-display text-lg">N°</div>
+            <span class="font-syne font-extrabold text-lg text-bone tracking-tighter">NOCTURNE ATELIER®</span>
+          </div>
+          <p class="text-neutral-400 leading-relaxed max-w-sm">
+            Estudio independiente de ingeniería de indumentaria pesada. Prendas producidas en tiradas estrictamente limitadas con materia prima trazable.
+          </p>
+          <div class="font-mono text-[11px] text-titanium space-y-1 pt-2">
+            <div>CNPJ: 48.991.204/0001-88 // SÃO PAULO, BR</div>
+            <div>SHOWROOM PRIVADO: R. OSCAR FREIRE / JARDINS (CON CITA PREVIA)</div>
+          </div>
+        </div>
+
+        <!-- Col 2: Guia de Cuidados 480 GSM (3 cols) -->
+        <div class="lg:col-span-3 space-y-3">
+          <h4 class="font-mono text-xs font-bold uppercase tracking-widest text-bone">
+            [ GUÍA DE CUIDADO 480 GSM ]
+          </h4>
+          <ul class="space-y-2 font-mono text-[11px] text-neutral-400">
+            <li>• Lavar exclusivamente en agua fría (máx. 30°C) del revés.</li>
+            <li>• No utilizar nunca secadora de tambor térmico.</li>
+            <li>• Secar en horizontal a la sombra para preservar la estructura de los hombros.</li>
+            <li>• No planchar directamente sobre serigrafías puff/high-density.</li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Política de Drops & Garantia (3 cols) -->
+        <div class="lg:col-span-3 space-y-3">
+          <h4 class="font-mono text-xs font-bold uppercase tracking-widest text-bone">
+            [ POLÍTICA DE DROPS Y TIRADA ]
+          </h4>
+          <ul class="space-y-2 font-mono text-[11px] text-neutral-400">
+            <li>• Tirada única de 300 unidades por diseño con etiqueta seriada.</li>
+            <li>• La reserva de stock solo es válida tras completar el checkout.</li>
+            <li>• Primer cambio de talla gratuito en hasta 30 días mediante logística inversa exprés.</li>
+            <li>• Garantía de por vida frente a defectos de costura estructural.</li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Links & Ferramentas (2 cols) -->
+        <div class="lg:col-span-2 space-y-3">
+          <h4 class="font-mono text-xs font-bold uppercase tracking-widest text-bone">
+            [ UTILIDADES ]
+          </h4>
+          <ul class="space-y-2.5 font-mono text-xs">
+            <li><button onclick="openSizeGuideModal()" class="hover:text-acid transition-colors">Tabla de Tallas</button></li>
+            <li><button onclick="openTrackingModal()" class="hover:text-acid transition-colors">Seguimiento de Pedido</button></li>
+            <li><button onclick="toggleCartDrawer(true)" class="hover:text-acid transition-colors">Abrir Archive Bag</button></li>
+            <li><a href="#drops" class="hover:text-acid transition-colors">Catálogo Drop 04</a></li>
+            <li><a href="#lookbook" class="hover:text-acid transition-colors">Lookbook Editorial</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom Copyright -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[11px] text-titanium">
+        <p>© 2026 NOCTURNE ATELIER GARMENT CORP. TODOS LOS DERECHOS RESERVADOS.</p>
+        <div class="flex items-center gap-4">
+          <span>TARJETA HASTA 6X SIN INTERESES • APPLE PAY • PAYPAL</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================================= -->
+  <!-- 9. DRAWER DE CARRINHO (SLIDE-OVER ARCHIVE BAG FUNCIONAL EM JS)          -->
+  <!-- ======================================================================= -->
+  <div id="cart-backdrop" onclick="toggleCartDrawer(false)" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300"></div>
+
+  <aside id="cart-drawer" class="fixed top-0 right-0 z-50 h-full w-full max-w-md bg-obsidian border-l border-white/15 transform translate-x-full transition-transform duration-300 flex flex-col">
+    <!-- Cart Header -->
+    <div class="p-6 bg-carbon border-b border-white/10 flex items-center justify-between">
+      <div>
+        <span class="font-mono text-[10px] uppercase tracking-widest text-acid block">DROP 04 // RESERVA TEMPORAL</span>
+        <h3 class="font-syne font-extrabold text-xl text-bone uppercase">ARCHIVE BAG</h3>
+      </div>
+      <button onclick="toggleCartDrawer(false)" class="p-2 border border-white/15 text-neutral-400 hover:text-acid hover:border-acid transition-colors" aria-label="Cerrar Carrito">
+        ✕
+      </button>
+    </div>
+
+    <!-- Free Shipping Progress Bar -->
+    <div class="px-6 py-3 bg-[#0e0e0e] border-b border-white/10">
+      <div class="flex justify-between font-mono text-[11px] mb-1.5">
+        <span id="shipping-status-text" class="text-neutral-300">Añade artículos para Envío Exprés Asegurado Gratis</span>
+        <span id="shipping-pct-text" class="text-acid font-bold">0%</span>
+      </div>
+      <div class="w-full h-1.5 bg-white/10 overflow-hidden">
+        <div id="shipping-bar-fill" class="h-full bg-acid transition-all duration-300" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <!-- Cart Items Container -->
+    <div id="cart-items-list" class="flex-1 overflow-y-auto p-6 space-y-4">
+      <!-- Populated by JS -->
+    </div>
+
+    <!-- Cart Footer (Coupon + Totals + Checkout) -->
+    <div class="p-6 bg-carbon border-t border-white/15 space-y-4">
+      <!-- Coupon Code -->
+      <div class="flex gap-2">
+        <input id="coupon-input" type="text" placeholder="CUPÓN VIP (EJ: NOCTURNE10)" class="flex-1 px-3 py-2 bg-obsidian border border-white/15 font-mono text-xs text-bone uppercase focus:border-acid focus:outline-none" />
+        <button onclick="applyCoupon()" class="px-4 py-2 bg-white/10 hover:bg-acid hover:text-obsidian font-mono text-xs font-bold uppercase transition-colors">
+          Aplicar
+        </button>
+      </div>
+      <p id="coupon-feedback" class="hidden font-mono text-[11px] text-acid"></p>
+
+      <div class="space-y-1.5 font-mono text-xs pt-2 border-t border-white/10">
+        <div class="flex justify-between text-neutral-400">
+          <span>SUBTOTAL</span>
+          <span id="cart-subtotal">0,00 €</span>
+        </div>
+        <div id="cart-discount-row" class="hidden justify-between text-acid">
+          <span>DESCUENTO MIEMBRO VIP (10%)</span>
+          <span id="cart-discount-val">- 0,00 €</span>
+        </div>
+        <div class="flex justify-between text-bone font-bold text-base pt-2 border-t border-white/10">
+          <span>TOTAL ESTIMADO</span>
+          <span id="cart-total">0,00 €</span>
+        </div>
+      </div>
+
+      <button onclick="processCheckout()" class="btn-brutal w-full py-4 bg-acid text-obsidian font-mono text-xs font-bold uppercase tracking-widest hover:bg-bone transition-colors">
+        Finalizar Pedido Numerado →
+      </button>
+    </div>
+  </aside>
+
+  <!-- ======================================================================= -->
+  <!-- 10. MODAL DE TABELA DE MEDIDAS INTERATIVA (SIZE GUIDE MODAL)            -->
+  <!-- ======================================================================= -->
+  <div id="size-guide-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4 overflow-y-auto">
+    <div class="bg-obsidian border-2 border-white/20 max-w-3xl w-full p-6 sm:p-8 relative my-8">
+      <div class="flex items-start justify-between gap-4 pb-5 border-b border-white/10">
+        <div>
+          <span class="font-mono text-xs text-acid uppercase tracking-widest block">ESPECIFICACIÓN DE CORTE BOXY Y CARGO</span>
+          <h3 class="font-syne font-extrabold text-2xl sm:text-3xl text-bone uppercase mt-1">
+            Tabla de Tallas Interactiva
+          </h3>
+        </div>
+        <button onclick="closeSizeGuideModal()" class="p-2 border border-white/15 text-neutral-400 hover:text-acid hover:border-acid font-mono">
+          ✕
+        </button>
+      </div>
+
+      <!-- Controls: Category Switcher & Unit Toggle -->
+      <div class="flex flex-wrap items-center justify-between gap-4 my-6">
+        <div class="flex gap-2">
+          <button onclick="switchSizeTab('tops')" id="tab-size-tops" class="px-4 py-2 font-mono text-xs font-bold uppercase bg-acid text-obsidian">
+            Sudaderas y Camisetas (Boxy)
+          </button>
+          <button onclick="switchSizeTab('bottoms')" id="tab-size-bottoms" class="px-4 py-2 font-mono text-xs font-bold uppercase bg-carbon text-neutral-300 border border-white/15">
+            Pantalones Cargo y Techwear
+          </button>
+        </div>
+
+        <div class="flex items-center gap-2 font-mono text-xs">
+          <span class="text-titanium">UNIDAD:</span>
+          <button onclick="setMeasureUnit('cm')" id="unit-cm-btn" class="px-3 py-1 bg-bone text-obsidian font-bold">CM</button>
+          <button onclick="setMeasureUnit('in')" id="unit-in-btn" class="px-3 py-1 bg-carbon text-neutral-400 border border-white/15">PULG (IN)</button>
+        </div>
+      </div>
+
+      <!-- Dynamic Measurement Table -->
+      <div class="overflow-x-auto border border-white/15">
+        <table class="w-full text-left font-mono text-xs">
+          <thead class="bg-carbon text-acid uppercase border-b border-white/15">
+            <tr id="size-table-head">
+              <!-- Populated by JS -->
+            </tr>
+          </thead>
+          <tbody id="size-table-body" class="divide-y divide-white/10 text-neutral-200">
+            <!-- Populated by JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="mt-6 p-4 bg-carbon border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-mono text-xs">
+        <p class="text-neutral-300">
+          <strong class="text-acid">CONSEJO DE CORTE:</strong> Nuestro patronaje ya incluye hombro caído y corte amplio. Elige tu talla habitual para un corte Boxy auténtico.
+        </p>
+        <button onclick="closeSizeGuideModal()" class="px-5 py-2.5 bg-bone text-obsidian font-bold uppercase shrink-0 hover:bg-acid">
+          Entendido
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- 11. MODAL DE TRACKING DE PEDIDO                                         -->
+  <!-- ======================================================================= -->
+  <div id="tracking-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="bg-obsidian border-2 border-white/20 max-w-lg w-full p-6 sm:p-8">
+      <div class="flex items-center justify-between pb-4 border-b border-white/10">
+        <div>
+          <span class="font-mono text-[10px] text-acid uppercase tracking-widest">LOGÍSTICA EXPRÉS NOCTURNE</span>
+          <h3 class="font-syne font-bold text-xl text-bone uppercase mt-0.5">Rastrear Envío Numerado</h3>
+        </div>
+        <button onclick="closeTrackingModal()" class="p-2 border border-white/15 text-neutral-400 hover:text-acid">✕</button>
+      </div>
+      <form onsubmit="handleTrackOrder(event)" class="mt-5 space-y-4">
+        <div>
+          <label class="font-mono text-xs uppercase text-neutral-400 block mb-1.5">Código de Pedido o Serie de Prenda</label>
+          <input id="track-code-input" type="text" required placeholder="EJ: NCT-04-0189" value="NCT-04-0189" class="w-full px-4 py-3 bg-carbon border border-white/20 text-bone font-mono text-xs uppercase focus:border-acid focus:outline-none" />
+        </div>
+        <button type="submit" class="w-full py-3.5 bg-acid text-obsidian font-mono text-xs font-bold uppercase tracking-widest">
+          Consultar Telemetría de Envío
+        </button>
+      </form>
+      <div id="tracking-result" class="hidden mt-5 p-4 bg-carbon border border-acid/40 font-mono text-xs space-y-2">
+        <div class="flex justify-between text-acid font-bold">
+          <span>ESTADO: EN TRÁNSITO EXPRÉS</span>
+          <span>#NCT-04-0189</span>
+        </div>
+        <p class="text-neutral-300">Control de Calidad y Sello de Autenticidad aprobados en el Atelier São Paulo. Entrega estimada: Mañana antes de las 18:00.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast-notification" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 px-6 py-3.5 bg-acid text-obsidian font-mono text-xs font-bold uppercase tracking-widest shadow-2xl border-2 border-obsidian hidden items-center gap-3">
+    <span id="toast-message">✓ ARTÍCULO AÑADIDO AL ARCHIVE BAG</span>
+  </div>
+
+  <!-- ======================================================================= -->
+  <!-- VANILLA JAVASCRIPT COMPLETO                                             -->
+  <!-- ======================================================================= -->
+  <script>
+    // 1. CATÁLOGO DO DROP 04 (Incluindo produtos da base original + expansão Techwear/Heavyweight)
+    const PRODUCTS = [
+      {
+        id: 'nct-01',
+        serial: 'DROP 04 // #014 DE 300',
+        name: 'Hoodie Boxy Heavy 480g',
+        subtitle: 'Algodón Egipcio 3 Cabos • Bajo Recto sin Puño',
+        category: 'heavyweight',
+        price: 580.00,
+        gsm: '480 GSM',
+        stockLeft: 7,
+        frontImg: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=800&q=85',
+        backImg: 'https://images.unsplash.com/photo-1578681994506-b8f463449011?auto=format&fit=crop&w=800&q=85',
+        sizes: { S: 2, M: 3, L: 2, XL: 1 }
+      },
+      {
+        id: 'nct-02',
+        serial: 'DROP 04 // #048 DE 300',
+        name: 'T-Shirt Oversized Pima 400g',
+        subtitle: 'Algodón Pima Peruano • Cuello Acanalado 3.5cm',
+        category: 'heavyweight',
+        price: 290.00,
+        gsm: '400 GSM',
+        stockLeft: 12,
+        frontImg: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=85',
+        backImg: 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=800&q=85',
+        sizes: { S: 3, M: 4, L: 3, XL: 2 }
+      },
+      {
+        id: 'nct-03',
+        serial: 'DROP 04 // #009 DE 300',
+        name: 'Anorak Shell Ballistic 3L',
+        subtitle: 'Nylon Ripstop Impermeable • Cremalleras YKK Aquaguard®',
+        category: 'techwear',
+        price: 890.00,
+        gsm: '3-LAYER MEMBRANE',
+        stockLeft: 4,
+        frontImg: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=85',
+        backImg: 'https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=800&q=85',
+        sizes: { S: 1, M: 1, L: 2, XL: 0 }
+      },
+      {
+        id: 'nct-04',
+        serial: 'DROP 04 // #027 DE 300',
+        name: 'Cargo Parachute Articulated',
+        subtitle: '6 Bolsillos Expandibles • Rodilla Articulada y Ajuste en Bajo',
+        category: 'techwear',
+        price: 640.00,
+        gsm: '340 GSM RIPSTOP',
+        stockLeft: 6,
+        frontImg: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=800&q=85',
+        backImg: 'https://images.unsplash.com/photo-1517445312882-bc9910d016b7?auto=format&fit=crop&w=800&q=85',
+        sizes: { S: 1, M: 2, L: 2, XL: 1 }
+      },
+      {
+        id: 'nct-05',
+        serial: 'DROP 04 // #061 DE 300',
+        name: 'Crewneck Acid Mineral 440g',
+        subtitle: 'Lavado Enzimático a la Piedra • Costura Inversa Expuesta',
+        category: 'heavyweight',
+        price: 490.00,
+        gsm: '440 GSM',
+        stockLeft: 5,
+        frontImg: 'https://images.unsplash.com/photo-1618354691373-d851c5c3a990?auto=format&fit=crop&w=800&q=85',
+        backImg: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=85',
+        sizes: { S: 0, M: 2, L: 2, XL: 1 }
+      },
+      {
+        id: 'nct-06',
+        serial: 'DROP 04 // #019 DE 300',
+        name: 'Crossbody Modular Fidlock®',
+        subtitle: 'Cordura® 1000D Balístico • Cierre Magnético Rápido',
+        category: 'techwear',
+        price: 420.00,
+        gsm: '1000D CORDURA',
+        stockLeft: 4,
+        frontImg: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=85',
+        backImg: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=85',
+        sizes: { S: 0, M: 4, L: 4, XL: 0 }
+      }
+    ];
+
+    // Estado de tamanho selecionado por produto e estado do carrinho
+    const selectedSizes = {
+      'nct-01': 'L',
+      'nct-02': 'L',
+      'nct-03': 'L',
+      'nct-04': 'M',
+      'nct-05': 'L',
+      'nct-06': 'M'
+    };
+
+    let cart = [
+      {
+        id: 'nct-01',
+        name: 'Hoodie Boxy Heavy 480g',
+        size: 'L',
+        price: 580.00,
+        qty: 1,
+        img: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?auto=format&fit=crop&w=300&q=80'
+      }
+    ];
+    let activeDiscount = 0; // 0.10 se cupom aplicado
+
+    function formatBRL(val) {
+      return val.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' });
+    }
+
+    // 2. RENDERIZAÇÃO DOS PRODUTOS COM TROCA FRENTE/COSTAS E SELETOR DE TAMANHO
+    window.filterProducts = function(category) {
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        if (btn.getAttribute('data-filter') === category) {
+          btn.className = 'filter-btn px-4 py-2 font-mono text-xs uppercase tracking-wider bg-acid text-obsidian font-bold border border-acid transition-all';
+        } else {
+          btn.className = 'filter-btn px-4 py-2 font-mono text-xs uppercase tracking-wider bg-carbon text-neutral-300 border border-white/15 hover:border-acid transition-all';
+        }
+      });
+
+      const list = category === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.category === category);
+      const grid = document.getElementById('product-grid');
+
+      grid.innerHTML = list.map(prod => {
+        const currentSize = selectedSizes[prod.id] || 'L';
+        return `
+          <article class="product-card bg-carbon border border-white/15 flex flex-col justify-between group">
+            <div>
+              <!-- Image Container with Front/Back Hover Swap -->
+              <div class="relative aspect-[4/4.8] overflow-hidden bg-obsidian border-b border-white/10">
+                <img src="${prod.frontImg}" alt="${prod.name} Frente" class="img-front absolute inset-0 w-full h-full object-cover grayscale contrast-125" />
+                <img src="${prod.backImg}" alt="${prod.name} Espalda" class="img-back absolute inset-0 w-full h-full object-cover grayscale contrast-125" />
+                
+                <!-- Top Badges -->
+                <div class="absolute top-3 left-3 right-3 flex items-center justify-between gap-2 pointer-events-none">
+                  <span class="px-2.5 py-1 bg-obsidian/90 border border-white/15 font-mono text-[10px] text-bone uppercase">
+                    ${prod.serial}
+                  </span>
+                  <span class="px-2.5 py-1 bg-acid text-obsidian font-mono text-[10px] font-bold uppercase">
+                    ${prod.gsm}
+                  </span>
+                </div>
+
+                <!-- Low Stock Indicator & Front/Back Tag -->
+                <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none">
+                  <span class="px-2.5 py-1 bg-obsidian/90 border border-white/15 font-mono text-[10px] text-amber-300 uppercase">
+                    ● QUEDAN ${prod.stockLeft} UDS.
+                  </span>
+                  <span class="px-2 py-0.5 bg-obsidian/80 font-mono text-[10px] text-neutral-300 uppercase">
+                    HOVER: ESPALDA ↺
+                  </span>
+                </div>
+              </div>
+
+              <!-- Product Info -->
+              <div class="p-6">
+                <div class="flex items-start justify-between gap-2">
+                  <h3 class="font-syne font-bold text-xl text-bone uppercase leading-snug">${prod.name}</h3>
+                </div>
+                <p class="font-mono text-xs text-titanium mt-1">${prod.subtitle}</p>
+
+                <div class="mt-4 flex items-baseline justify-between border-t border-white/10 pt-4">
+                  <span class="font-display text-3xl text-bone tracking-wide">${formatBRL(prod.price)}</span>
+                  <span class="font-mono text-[11px] text-titanium">6 cuotas de ${formatBRL(prod.price / 6)} sin intereses</span>
+                </div>
+
+                <!-- Size Selector (S, M, L, XL) -->
+                <div class="mt-5">
+                  <div class="flex justify-between items-center font-mono text-[11px] mb-2">
+                    <span class="text-neutral-400 uppercase">SELECCIONA LA TALLA:</span>
+                    <button onclick="openSizeGuideModal()" class="text-acid hover:underline">Medidas</button>
+                  </div>
+                  <div class="grid grid-cols-4 gap-2">
+                    ${['S', 'M', 'L', 'XL'].map(sz => {
+                      const available = prod.sizes[sz] > 0;
+                      const isSelected = currentSize === sz;
+                      if (!available) {
+                        return `
+                          <button disabled class="py-2 font-mono text-xs border border-white/5 bg-obsidian/40 text-neutral-600 line-through cursor-not-allowed">
+                            ${sz}
+                          </button>
+                        `;
+                      }
+                      return `
+                        <button 
+                          type="button"
+                          onclick="selectProductSize('${prod.id}', '${sz}', '${category}')"
+                          class="py-2 font-mono text-xs uppercase transition-all border ${
+                            isSelected 
+                              ? 'bg-acid text-obsidian font-bold border-acid' 
+                              : 'bg-obsidian text-bone border-white/15 hover:border-acid'
+                          }"
+                        >
+                          ${sz}
+                        </button>
+                      `;
+                    }).join('')}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Add Button -->
+            <div class="px-6 pb-6">
+              <button 
+                id="add-btn-${prod.id}"
+                onclick="addToCart('${prod.id}')"
+                class="btn-brutal w-full py-3.5 bg-bone text-obsidian hover:bg-acid font-mono text-xs font-bold uppercase tracking-widest transition-colors flex items-center justify-center gap-2"
+              >
+                <span>+ Añadir (${currentSize}) al Archive Bag</span>
+              </button>
+            </div>
+          </article>
+        `;
+      }).join('');
+    };
+
+    window.selectProductSize = function(productId, size, currentFilter) {
+      selectedSizes[productId] = size;
+      filterProducts(currentFilter);
+    };
+
+    // 3. LÓGICA DO CARRINHO (SLIDE-OVER CART DRAWER)
+    window.addToCart = function(productId) {
+      const prod = PRODUCTS.find(p => p.id === productId);
+      if (!prod) return;
+      const chosenSize = selectedSizes[productId] || 'L';
+
+      const existing = cart.find(item => item.id === productId && item.size === chosenSize);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({
+          id: prod.id,
+          name: prod.name,
+          size: chosenSize,
+          price: prod.price,
+          qty: 1,
+          img: prod.frontImg
+        });
+      }
+
+      // Feedback Visual no Botão
+      const btn = document.getElementById(`add-btn-${productId}`);
+      if (btn) {
+        const originalText = btn.innerHTML;
+        btn.className = 'btn-brutal w-full py-3.5 bg-acid text-obsidian font-mono text-xs font-bold uppercase tracking-widest transition-colors flex items-center justify-center gap-2';
+        btn.innerHTML = '<span>✓ RESERVADO EN ARCHIVE BAG</span>';
+        setTimeout(() => {
+          btn.innerHTML = originalText;
+        }, 1400);
+      }
+
+      renderCart();
+      showToast(`✓ ${prod.name} (${chosenSize}) añadido al Archive Bag`);
+    };
+
+    window.updateCartQty = function(index, delta) {
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+      }
+      renderCart();
+    };
+
+    window.removeCartItem = function(index) {
+      cart.splice(index, 1);
+      renderCart();
+    };
+
+    window.applyCoupon = function() {
+      const input = document.getElementById('coupon-input').value.trim().toUpperCase();
+      const feedback = document.getElementById('coupon-feedback');
+      feedback.classList.remove('hidden');
+      if (input === 'NOCTURNE10' || input === 'DROP04') {
+        activeDiscount = 0.10;
+        feedback.textContent = '✓ CLAVE VIP APLICADA: 10% DTO. EN TU PEDIDO.';
+        feedback.className = 'font-mono text-[11px] text-acid';
+      } else {
+        activeDiscount = 0;
+        feedback.textContent = '✕ CUPÓN INVÁLIDO. PRUEBA: NOCTURNE10';
+        feedback.className = 'font-mono text-[11px] text-crimson';
+      }
+      renderCart();
+    };
+
+    function renderCart() {
+      const countBadge = document.getElementById('cart-count-badge');
+      const totalItems = cart.reduce((acc, item) => acc + item.qty, 0);
+      countBadge.textContent = totalItems;
+
+      const listEl = document.getElementById('cart-items-list');
+      if (cart.length === 0) {
+        listEl.innerHTML = `
+          <div class="py-16 text-center space-y-3 font-mono">
+            <p class="text-sm text-neutral-400 uppercase">TU ARCHIVE BAG ESTÁ VACÍO.</p>
+            <p class="text-xs text-titanium">Las piezas del Drop 04 tienen una tirada limitada a 300 unidades.</p>
+          </div>
+        `;
+      } else {
+        listEl.innerHTML = cart.map((item, idx) => `
+          <div class="p-4 bg-carbon border border-white/10 flex gap-4 items-center">
+            <img src="${item.img}" alt="${item.name}" class="w-16 h-20 object-cover grayscale border border-white/10 shrink-0" />
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2">
+                <h4 class="font-syne font-bold text-sm text-bone truncate">${item.name}</h4>
+                <button onclick="removeCartItem(${idx})" class="font-mono text-xs text-titanium hover:text-crimson">✕</button>
+              </div>
+              <span class="font-mono text-[11px] text-acid block mt-0.5">TALLA: ${item.size}</span>
+              <div class="flex items-center justify-between mt-3">
+                <div class="inline-flex items-center border border-white/15 bg-obsidian font-mono text-xs">
+                  <button onclick="updateCartQty(${idx}, -1)" class="px-2.5 py-1 hover:text-acid">-</button>
+                  <span class="px-2.5 py-1">${item.qty}</span>
+                  <button onclick="updateCartQty(${idx}, 1)" class="px-2.5 py-1 hover:text-acid">+</button>
+                </div>
+                <span class="font-mono text-xs font-bold text-bone">${formatBRL(item.price * item.qty)}</span>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      const subtotal = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
+      const discountVal = subtotal * activeDiscount;
+      const finalTotal = subtotal - discountVal;
+
+      // Barra de Frete Grátis (Meta R$ 500)
+      const freeShippingTarget = 500;
+      const pct = Math.min(Math.round((subtotal / freeShippingTarget) * 100), 100);
+      document.getElementById('shipping-bar-fill').style.width = `${pct}%`;
+      document.getElementById('shipping-pct-text').textContent = `${pct}%`;
+      document.getElementById('shipping-status-text').textContent = subtotal >= freeShippingTarget
+        ? '✓ ENVÍO EXPRÉS ASEGURADO + PACKAGING COLECCIONABLE DESBLOQUEADOS'
+        : `Faltan ${formatBRL(freeShippingTarget - subtotal)} para Envío Exprés Gratis`;
+
+      document.getElementById('cart-subtotal').textContent = formatBRL(subtotal);
+      const discRow = document.getElementById('cart-discount-row');
+      if (activeDiscount > 0 && subtotal > 0) {
+        discRow.classList.remove('hidden');
+        discRow.classList.add('flex');
+        document.getElementById('cart-discount-val').textContent = `- ${formatBRL(discountVal)}`;
+      } else {
+        discRow.classList.add('hidden');
+        discRow.classList.remove('flex');
+      }
+      document.getElementById('cart-total').textContent = formatBRL(finalTotal);
+    }
+
+    window.toggleCartDrawer = function(open) {
+      const backdrop = document.getElementById('cart-backdrop');
+      const drawer = document.getElementById('cart-drawer');
+      if (open) {
+        backdrop.classList.remove('hidden');
+        setTimeout(() => {
+          backdrop.classList.remove('opacity-0');
+          drawer.classList.remove('translate-x-full');
+        }, 10);
+      } else {
+        backdrop.classList.add('opacity-0');
+        drawer.classList.add('translate-x-full');
+        setTimeout(() => {
+          backdrop.classList.add('hidden');
+        }, 300);
+      }
+    };
+
+    window.processCheckout = function() {
+      if (cart.length === 0) {
+        showToast('TU ARCHIVE BAG ESTÁ VACÍO');
+        return;
+      }
+      const orderSerial = 'NCT-04-' + Math.floor(1000 + Math.random() * 9000);
+      showToast(`✓ ¡PEDIDO ${orderSerial} RESERVADO! REDIRIGIENDO A PASARELA...`);
+      setTimeout(() => {
+        toggleCartDrawer(false);
+      }, 1500);
+    };
+
+    // 4. CONTAGEM REGRESSIVA FUNCIONAL (COUNTDOWN TIMER)
+    const dropTargetTime = Date.now() + (3 * 86400000) + (14 * 3600000) + (49 * 60000) + 25000;
+    function updateCountdown() {
+      const diff = Math.max(0, dropTargetTime - Date.now());
+      const d = Math.floor(diff / 86400000);
+      const h = Math.floor((diff % 86400000) / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+
+      document.getElementById('cd-days').textContent = String(d).padStart(2, '0');
+      document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
+      document.getElementById('cd-mins').textContent = String(m).padStart(2, '0');
+      document.getElementById('cd-secs').textContent = String(s).padStart(2, '0');
+    }
+    setInterval(updateCountdown, 1000);
+
+    // 5. FIT FINDER INTELIGENTE & TABELA DE MEDIDAS INTERATIVA (SIZE GUIDE MODAL)
+    let fitPreference = 'boxy';
+    const fh = document.getElementById('fit-h');
+    const fw = document.getElementById('fit-w');
+
+    const SIZE_SPECS = {
+      S: 'Pecho: 60 cm • Largo: 70 cm • Hombro Caído: 57 cm',
+      M: 'Pecho: 62 cm • Largo: 72 cm • Hombro Caído: 58.5 cm',
+      L: 'Pecho: 64 cm • Largo: 74 cm • Hombro Caído: 60 cm',
+      XL: 'Pecho: 67 cm • Largo: 77 cm • Hombro Caído: 62 cm'
+    };
+
+    window.setFitPreference = function(pref) {
+      fitPreference = pref;
+      document.querySelectorAll('.fit-pref-btn').forEach(btn => {
+        if (btn.getAttribute('data-pref') === pref) {
+          btn.className = 'fit-pref-btn py-2.5 px-2 font-mono text-[11px] uppercase border border-acid bg-acid/10 text-acid font-bold';
+        } else {
+          btn.className = 'fit-pref-btn py-2.5 px-2 font-mono text-[11px] uppercase border border-white/15 bg-obsidian text-neutral-400 hover:border-white/40';
+        }
+      });
+      calcFit();
+    };
+
+    function calcFit() {
+      const h = Number(fh.value) || 175;
+      const w = Number(fw.value) || 75;
+      let idx = 1; // 0: S, 1: M, 2: L, 3: XL
+      if (w < 66 && h < 172) idx = 0;
+      else if (w > 88 || h > 186) idx = 3;
+      else if (w > 75 || h > 177) idx = 2;
+
+      if (fitPreference === 'structured') idx = Math.max(0, idx - 1);
+      if (fitPreference === 'oversized') idx = Math.min(3, idx + 1);
+
+      const labels = [
+        'Talla S (Pequeña)',
+        'Talla M (Mediana)',
+        'Talla L (Grande)',
+        'Talla XL (Extra Grande)'
+      ];
+      const keys = ['S', 'M', 'L', 'XL'];
+      document.getElementById('fit-res').textContent = labels[idx];
+      document.getElementById('fit-Spec-note').textContent = SIZE_SPECS[keys[idx]];
+    }
+    fh.addEventListener('input', calcFit);
+    fw.addEventListener('input', calcFit);
+
+    // Dados da Tabla de Tallas Modal
+    let currentSizeTab = 'tops';
+    let currentUnit = 'cm';
+
+    const MEASUREMENTS = {
+      tops: {
+        headers: ['Talla', 'Ancho de Pecho', 'Largo Total', 'Hombro a Hombro', 'Manga'],
+        rows: [
+          { size: 'S', vals: [60, 70, 57, 23] },
+          { size: 'M', vals: [62, 72, 58.5, 24] },
+          { size: 'L', vals: [64, 74, 60, 25] },
+          { size: 'XL', vals: [67, 77, 62, 26] }
+        ]
+      },
+      bottoms: {
+        headers: ['Talla', 'Cintura (Ajustable)', 'Cadera', 'Largo de Pierna', 'Abertura de Bajo'],
+        rows: [
+          { size: 'S (38-40)', vals: [78, 108, 103, 24] },
+          { size: 'M (40-42)', vals: [82, 112, 105, 25] },
+          { size: 'L (42-44)', vals: [86, 116, 107, 26] },
+          { size: 'XL (44-46)', vals: [92, 122, 109, 27] }
+        ]
+      }
+    };
+
+    function renderSizeTable() {
+      const data = MEASUREMENTS[currentSizeTab];
+      const factor = currentUnit === 'cm' ? 1 : 0.3937;
+      const suffix = currentUnit === 'cm' ? ' cm' : ' in';
+
+      document.getElementById('size-table-head').innerHTML = data.headers.map(h => `
+        <th class="p-4">${h}</th>
+      `).join('');
+
+      document.getElementById('size-table-body').innerHTML = data.rows.map(r => `
+        <tr class="hover:bg-white/5">
+          <td class="p-4 font-bold text-bone">${r.size}</td>
+          ${r.vals.map(v => `<td class="p-4">${(v * factor).toFixed(currentUnit === 'cm' ? 0 : 1)}${suffix}</td>`).join('')}
+        </tr>
+      `).join('');
+    }
+
+    window.switchSizeTab = function(tab) {
+      currentSizeTab = tab;
+      document.getElementById('tab-size-tops').className = tab === 'tops'
+        ? 'px-4 py-2 font-mono text-xs font-bold uppercase bg-acid text-obsidian'
+        : 'px-4 py-2 font-mono text-xs font-bold uppercase bg-carbon text-neutral-300 border border-white/15';
+      document.getElementById('tab-size-bottoms').className = tab === 'bottoms'
+        ? 'px-4 py-2 font-mono text-xs font-bold uppercase bg-acid text-obsidian'
+        : 'px-4 py-2 font-mono text-xs font-bold uppercase bg-carbon text-neutral-300 border border-white/15';
+      renderSizeTable();
+    };
+
+    window.setMeasureUnit = function(unit) {
+      currentUnit = unit;
+      document.getElementById('unit-cm-btn').className = unit === 'cm'
+        ? 'px-3 py-1 bg-bone text-obsidian font-bold'
+        : 'px-3 py-1 bg-carbon text-neutral-400 border border-white/15';
+      document.getElementById('unit-in-btn').className = unit === 'in'
+        ? 'px-3 py-1 bg-bone text-obsidian font-bold'
+        : 'px-3 py-1 bg-carbon text-neutral-400 border border-white/15';
+      renderSizeTable();
+    };
+
+    window.openSizeGuideModal = function() {
+      renderSizeTable();
+      const modal = document.getElementById('size-guide-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    };
+
+    window.closeSizeGuideModal = function() {
+      const modal = document.getElementById('size-guide-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    };
+
+    // 6. TRACKING MODAL, NEWSLETTER VIP E MOBILE NAV
+    window.openTrackingModal = function() {
+      const m = document.getElementById('tracking-modal');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    };
+    window.closeTrackingModal = function() {
+      const m = document.getElementById('tracking-modal');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    };
+    window.handleTrackOrder = function(e) {
+      e.preventDefault();
+      document.getElementById('tracking-result').classList.remove('hidden');
+    };
+
+    window.handleVipSignup = function(e) {
+      e.preventDefault();
+      const email = document.getElementById('vip-email').value.trim();
+      const fb = document.getElementById('vip-feedback');
+      const key = 'KEY-' + Math.floor(10000 + Math.random() * 90000);
+      fb.textContent = `✓ CREDENCIAL VIP EMITIDA PARA ${email.toUpperCase()} // PROTOCOLO ${key} (USA EL CUPÓN NOCTURNE10 EN EL BAG)`;
+      fb.classList.remove('hidden');
+      document.getElementById('vip-form').reset();
+    };
+
+    window.toggleMobileNav = function() {
+      document.getElementById('mobile-nav').classList.toggle('hidden');
+    };
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast-notification');
+      document.getElementById('toast-message').textContent = msg;
+      toast.classList.remove('hidden');
+      toast.classList.add('flex');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+        toast.classList.remove('flex');
+      }, 2600);
+    }
+
+    // Inicialização
+    document.addEventListener('DOMContentLoaded', () => {
+      filterProducts('all');
+      renderCart();
+      calcFit();
+      updateCountdown();
+    });
+  </script>
+
+  <!-- Vercel Web Analytics & Speed Insights -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script defer src="/assets/js/demo-i18n-bar.js"></script>
+</body>
+</html>

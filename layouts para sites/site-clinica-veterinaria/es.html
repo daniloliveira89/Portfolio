@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- demo-i18n-autodetect --><script>(function(){var cur=location.pathname.endsWith('/en.html')?'en':(location.pathname.endsWith('/es.html')?'es':'pt');var q=(new URLSearchParams(location.search).get('lang')||'').toLowerCase();var target=null;if(q==='pt'||q==='en'||q==='es'){target=q;try{localStorage.setItem('portfolio_lang',q);localStorage.setItem('portfolio_lang_manual','1');}catch(e){}}else if(cur==='pt'){try{if(localStorage.getItem('portfolio_lang_manual')==='1'){var saved=localStorage.getItem('portfolio_lang');if(saved==='en'||saved==='es'||saved==='pt')target=saved;}}catch(e){}if(!target){var langs=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||navigator.userLanguage||'en'];for(var i=0;i<langs.length;i++){var c=(langs[i]||'').toLowerCase().split('-')[0];if(c==='pt'){target='pt';break;}if(c==='es'){target='es';break;}if(c==='en'){target='en';break;}}if(!target)target='en';}}if(target&&target!==cur){var file=target==='en'?'en.html':(target==='es'?'es.html':'index.html');var p=location.pathname;var np=p.slice(-5).toLowerCase()==='.html'?p.slice(0,p.lastIndexOf('/')+1)+file:(p.endsWith('/')?p+file:p+'/'+file);location.replace(np+location.search+location.hash);}})();</script>
+  <title>VETCARE HOSPITAL 24H — UCI Veterinaria, Tomografía y Planes de Salud Pet</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <style>
+    body { background-color: #F2FBF6; color: #063729; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+  </style>
+</head>
+<body class="min-h-screen antialiased selection:bg-emerald-600 selection:text-white">
+
+  <!-- TOP EMERGENCY ALERT -->
+  <div class="bg-red-600 text-white text-xs py-2.5 px-6 font-bold">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <span class="flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-white animate-ping"></span> URGENCIAS Y UCI VETERINARIA ABIERTA LAS 24 HORAS (GUARDIA PRESENCIAL)</span>
+      <span>Ambulancia UCI Pet: 910 555 900 • Salamanca & Chamartín</span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="bg-white/95 backdrop-blur-md border-b border-emerald-900/10 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-700 text-white flex items-center justify-center font-extrabold text-xl">+</div>
+        <div>
+          <span class="font-extrabold text-xl text-emerald-950 block leading-none">VETCARE <span class="text-emerald-600">HOSPITAL 24H</span></span>
+          <span class="text-[10px] uppercase tracking-widest text-emerald-700 font-bold block mt-0.5">Col. Vet. 48.210 • Alta Complejidad</span>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-wider text-emerald-900">
+        <a href="#estrutura" class="hover:text-emerald-600">Quirófano y UCI</a>
+        <a href="#triagem" class="hover:text-emerald-600">Triaje Rápido</a>
+        <a href="#planos" class="hover:text-emerald-600">Planes VetCare</a>
+      </nav>
+
+      <button onclick="openVetDrawer('Consulta Clínica / Especialista')" class="px-5 py-2.5 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold uppercase tracking-wider shadow-md transition">
+        Agendar Consulta / Examen
+      </button>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 py-12">
+    <!-- HERO + PLAN SIMULATOR -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pb-16 border-b border-emerald-900/10">
+      <div class="lg:col-span-6 space-y-5">
+        <span class="px-3.5 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-extrabold uppercase tracking-wider">
+          Tomografía Computarizada, Hemodiálisis e Internación Aislada
+        </span>
+        <h1 class="text-4xl sm:text-6xl font-extrabold leading-[1.06] text-emerald-950">
+          Medicina veterinaria intensiva <span class="text-emerald-600">las 24 horas del día.</span>
+        </h1>
+        <p class="text-emerald-900/80 text-base leading-relaxed">
+          Equipo médico presencial las 24h con anestesista inhalatorio, cirujano ortopédico/oncológico, cardiólogo, ala exclusiva Cat-Friendly (ISFM Gold) y laboratorio con hemograma en 12 minutos.
+        </p>
+
+        <div class="grid grid-cols-3 gap-3 pt-4">
+          <div class="bg-white p-4 rounded-2xl border border-emerald-200">
+            <strong class="text-2xl font-extrabold text-emerald-700 block">12 min</strong>
+            <span class="text-[11px] font-bold text-emerald-900/70 uppercase">Informe de Laboratorio</span>
+          </div>
+          <div class="bg-white p-4 rounded-2xl border border-emerald-200">
+            <strong class="text-2xl font-extrabold text-emerald-700 block">100%</strong>
+            <span class="text-[11px] font-bold text-emerald-900/70 uppercase">Monitoreo UCI</span>
+          </div>
+          <div class="bg-white p-4 rounded-2xl border border-emerald-200">
+            <strong class="text-2xl font-extrabold text-emerald-700 block">Cat Gold</strong>
+            <span class="text-[11px] font-bold text-emerald-900/70 uppercase">Ala Felina Aislada</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Pet Health Plan Simulator -->
+      <div id="planos" class="lg:col-span-6 bg-white p-8 rounded-3xl border-2 border-emerald-500/40 shadow-xl">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <span class="text-[11px] font-extrabold uppercase tracking-wider text-emerald-600">Sin Carencia p/ Consultas</span>
+            <h2 class="text-2xl font-extrabold text-emerald-950">Simulador de Plan de Salud Pet</h2>
+          </div>
+          <select id="pet-qty" onchange="updateVetPlan()" class="px-3 py-2 rounded-xl bg-emerald-50 border border-emerald-200 text-xs font-bold text-emerald-900">
+            <option value="1">1 Mascota (Perro o Gato)</option>
+            <option value="2">2 Mascotas (10% Descuento)</option>
+            <option value="3">3 Mascotas (15% Descuento)</option>
+          </select>
+        </div>
+
+        <div class="grid grid-cols-3 gap-2 mb-6">
+          <button onclick="setPetPlan('essencial', this)" class="vet-plan-btn py-2.5 px-3 rounded-xl text-xs font-bold bg-emerald-700 text-white">Esencial</button>
+          <button onclick="setPetPlan('plus', this)" class="vet-plan-btn py-2.5 px-3 rounded-xl text-xs font-bold bg-emerald-50 text-emerald-900">Hospitalario Plus</button>
+          <button onclick="setPetPlan('platinum', this)" class="vet-plan-btn py-2.5 px-3 rounded-xl text-xs font-bold bg-emerald-50 text-emerald-900">Platinum UCI</button>
+        </div>
+
+        <div id="vet-plan-box" class="p-6 rounded-2xl bg-emerald-50/80 border border-emerald-200 space-y-3"></div>
+
+        <button onclick="openVetDrawer('Afiliación al Plan ' + ({essencial:'ESENCIAL',plus:'HOSPITALARIO PLUS',platinum:'PLATINUM UCI'}[currentPlanKey]))" class="mt-6 w-full py-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-extrabold text-xs uppercase tracking-widest transition shadow-lg">
+          Contratar Plan con Microchip Gratis →
+        </button>
+      </div>
+    </section>
+
+    <!-- EMERGENCY SYMPTOM TRIAGE -->
+    <section id="triagem" class="py-16 border-b border-emerald-900/10">
+      <div class="mb-8">
+        <span class="text-xs font-extrabold uppercase tracking-widest text-emerald-700">Protocolo de Urgencias</span>
+        <h2 class="text-3xl font-extrabold text-emerald-950 mt-1">Triaje Rápido de Síntomas</h2>
+        <p class="text-xs text-emerald-800 mt-1">Haga clic en el cuadro clínico abajo para ver la orientación inmediata de nuestro equipo de intensivistas:</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <button onclick="showTriage(0)" class="p-5 rounded-2xl bg-white border border-red-200 hover:border-red-500 text-left transition">
+          <span class="px-2.5 py-0.5 rounded bg-red-100 text-red-700 text-[10px] font-extrabold uppercase">Emergencia Roja</span>
+          <h3 class="font-bold text-lg text-emerald-950 mt-2">Dificultad Respiratoria, Convulsión o Trauma</h3>
+        </button>
+        <button onclick="showTriage(1)" class="p-5 rounded-2xl bg-white border border-amber-200 hover:border-amber-500 text-left transition">
+          <span class="px-2.5 py-0.5 rounded bg-amber-100 text-amber-800 text-[10px] font-extrabold uppercase">Urgencia Amarilla</span>
+          <h3 class="font-bold text-lg text-emerald-950 mt-2">Vómitos Repetidos, Apatía o Ingestión de Objeto</h3>
+        </button>
+        <button onclick="showTriage(2)" class="p-5 rounded-2xl bg-white border border-emerald-200 hover:border-emerald-500 text-left transition">
+          <span class="px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800 text-[10px] font-extrabold uppercase">Atención Programada</span>
+          <h3 class="font-bold text-lg text-emerald-950 mt-2">Chequeo Sénior, Vacunación o Dermatología</h3>
+        </button>
+      </div>
+
+      <div id="triage-advice" class="p-6 rounded-2xl bg-emerald-950 text-white text-sm leading-relaxed flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <span id="triage-text">🚨 <strong>ORIENTACIÓN:</strong> En casos de falta de aire (lengua azulada) o intoxicación, acuda de inmediato sin cita previa. Nuestro box de oxigenoterapia permanece listo las 24h.</span>
+        <button onclick="openVetDrawer('Aviso de Llegada a Urgencias 24h')" class="shrink-0 px-5 py-2.5 rounded-xl bg-red-500 hover:bg-red-600 text-white text-xs font-extrabold uppercase">
+          Avisar Llegada a UCI
+        </button>
+      </div>
+    </section>
+
+    <!-- HOSPITAL STRUCTURE -->
+    <section id="estrutura" class="py-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white p-7 rounded-3xl border border-emerald-200">
+        <h3 class="font-extrabold text-xl text-emerald-950">Quirófano Presurizado</h3>
+        <p class="text-xs text-emerald-800/80 mt-2 leading-relaxed">Anestesia inhalatoria con ventilación mecánica multiparamétrica, arco quirúrgico para ortopedia y neurocirugía espinal.</p>
+      </div>
+      <div class="bg-white p-7 rounded-3xl border border-emerald-200">
+        <h3 class="font-extrabold text-xl text-emerald-950">Tomografía y Endoscopia</h3>
+        <p class="text-xs text-emerald-800/80 mt-2 leading-relaxed">Extracción de cuerpos extraños por endoscopia sin cirugía abierta, ecografía Doppler color y ecocardiograma.</p>
+      </div>
+      <div class="bg-white p-7 rounded-3xl border border-emerald-200">
+        <h3 class="font-extrabold text-xl text-emerald-950">Internación Aislada por Especie</h3>
+        <p class="text-xs text-emerald-800/80 mt-2 leading-relaxed">Boxes individuales climatizados para perros, ala silenciosa con feromonas Feliway® para gatos y aislamiento infectocontagioso.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- APPOINTMENT DRAWER -->
+  <div id="vet-overlay" onclick="closeVetDrawer()" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden"></div>
+  <aside id="vet-drawer" class="fixed top-0 right-0 z-50 h-full w-full sm:w-[440px] bg-white border-l border-emerald-200 p-8 transform translate-x-full transition-transform duration-300 flex flex-col justify-between">
+    <div>
+      <div class="flex justify-between items-center pb-4 border-b border-emerald-100">
+        <h3 class="font-extrabold text-2xl text-emerald-950">Recepción VetCare 24h</h3>
+        <button onclick="closeVetDrawer()" class="text-stone-400 hover:text-black">✕</button>
+      </div>
+      <form onsubmit="submitVetForm(event)" class="mt-6 space-y-4 text-xs">
+        <div>
+          <label class="font-bold uppercase text-emerald-800 block mb-1">Motivo de la Atención</label>
+          <input type="text" id="vet-reason" readonly class="w-full px-3.5 py-3 rounded-xl bg-emerald-50 border border-emerald-200 font-bold text-emerald-950">
+        </div>
+        <div>
+          <label class="font-bold uppercase text-emerald-800 block mb-1">Nombre del Tutor y Nombre de la Mascota *</label>
+          <input type="text" required placeholder="Ej: Lucía (Tutora) — Thor (Golden)" class="w-full px-3.5 py-3 rounded-xl border border-emerald-200">
+        </div>
+        <div>
+          <label class="font-bold uppercase text-emerald-800 block mb-1">WhatsApp para Confirmación *</label>
+          <input type="tel" required placeholder="+34 600 000 000" class="w-full px-3.5 py-3 rounded-xl border border-emerald-200">
+        </div>
+        <button type="submit" class="w-full py-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-extrabold uppercase tracking-widest">
+          Confirmar Solicitud →
+        </button>
+      </form>
+      <div id="vet-msg" class="hidden mt-5 p-4 rounded-xl bg-emerald-100 text-emerald-900 text-xs font-bold">
+        ✓ ¡Recibido! Nuestra recepción 24h ya ha reservado su atención prioritaria.
+      </div>
+    </div>
+    <div class="text-[11px] text-emerald-700 border-t border-emerald-100 pt-4">
+      Av. de América, 290 — Madrid • Estacionamiento Propio
+    </div>
+  </aside>
+
+  <script>
+    const PLANS = {
+      essencial: { name: "VetCare Esencial (Preventivo y Consultas)", base: 89, items: ["✓ Consultas clínicas y guardia 24h ilimitadas", "✓ Todas las vacunas anuales incluidas", "✓ Análisis de sangre e imagenología básica"] },
+      plus: { name: "VetCare Hospitalario Plus (Especialistas + Cirugías)", base: 139, items: ["✓ Todo lo del Plan Esencial + 12 Especialidades", "✓ Cirugías generales, esterilización y limpieza dental", "✓ Ecografía Doppler y ecocardiograma"] },
+      platinum: { name: "VetCare Platinum UCI (Cobertura Total)", base: 189, items: ["✓ Cobertura integral de internación en UCI 24h", "✓ Tomografía computarizada y cirugías ortopédicas", "✓ Atención a domicilio y Ambulancia UCI incluidas"] }
+    };
+    const TRIAGE_MSGS = [
+      "🚨 <strong>EMERGENCIA ROJA:</strong> En casos de falta de aire (lengua azulada), convulsión activa o atropello, acuda de inmediato sin cita previa. Nuestro box de oxigenoterapia permanece listo las 24h.",
+      "⚠️ <strong>URGENCIA AMARILLA:</strong> Vómitos persistentes o sospecha de ingestión de cuerpo extraño requieren ecografía/endoscopia en las primeras 4 horas para evitar cirugía abierta.",
+      "🩺 <strong>ATENCIÓN PROGRAMADA:</strong> Agende chequeo geriátrico, cardiología, dermatología o vacunación con cita previa y sala de espera separada para perros y gatos."
+    ];
+    let currentPlanKey = 'essencial';
+
+    window.setPetPlan = function(k, btn) {
+      currentPlanKey = k;
+      if (btn) {
+        document.querySelectorAll('.vet-plan-btn').forEach(b => b.className = 'vet-plan-btn py-2.5 px-3 rounded-xl text-xs font-bold bg-emerald-50 text-emerald-900');
+        btn.className = 'vet-plan-btn py-2.5 px-3 rounded-xl text-xs font-bold bg-emerald-700 text-white';
+      }
+      updateVetPlan();
+    };
+
+    function updateVetPlan() {
+      const qty = Number(document.getElementById('pet-qty').value);
+      const disc = qty === 2 ? 0.90 : qty === 3 ? 0.85 : 1;
+      const p = PLANS[currentPlanKey];
+      const finalPrice = Math.round(p.base * qty * disc);
+      document.getElementById('vet-plan-box').innerHTML = `
+        <h3 class="font-extrabold text-lg text-emerald-950">${p.name}</h3>
+        <div class="text-3xl font-extrabold text-emerald-700">€${finalPrice} <span class="text-xs font-normal text-emerald-800">/mes (${qty} ${qty === 1 ? 'mascota' : 'mascotas'})</span></div>
+        <ul class="space-y-1.5 text-xs text-emerald-900 pt-2 border-t border-emerald-200/60">
+          ${p.items.map(i => `<li>${i}</li>`).join('')}
+        </ul>
+      `;
+    }
+
+    function showTriage(idx) {
+      document.getElementById('triage-text').innerHTML = TRIAGE_MSGS[idx];
+    }
+
+    function openVetDrawer(reason) {
+      document.getElementById('vet-reason').value = reason;
+      document.getElementById('vet-msg').classList.add('hidden');
+      document.getElementById('vet-overlay').classList.remove('hidden');
+      document.getElementById('vet-drawer').classList.remove('translate-x-full');
+    }
+
+    function closeVetDrawer() {
+      document.getElementById('vet-overlay').classList.add('hidden');
+      document.getElementById('vet-drawer').classList.add('translate-x-full');
+    }
+
+    function submitVetForm(e) {
+      e.preventDefault();
+      document.getElementById('vet-msg').classList.remove('hidden');
+      e.target.reset();
+    }
+
+    setPetPlan('essencial');
+  </script>
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+  <script defer src="/assets/js/demo-i18n-bar.js"></script>
+</body>
+</html>

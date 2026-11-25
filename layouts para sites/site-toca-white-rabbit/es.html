@@ -1,0 +1,2386 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- demo-i18n-autodetect --><script>(function(){var cur=location.pathname.endsWith('/en.html')?'en':(location.pathname.endsWith('/es.html')?'es':'pt');var q=(new URLSearchParams(location.search).get('lang')||'').toLowerCase();var target=null;if(q==='pt'||q==='en'||q==='es'){target=q;try{localStorage.setItem('portfolio_lang',q);localStorage.setItem('portfolio_lang_manual','1');}catch(e){}}else if(cur==='pt'){try{if(localStorage.getItem('portfolio_lang_manual')==='1'){var saved=localStorage.getItem('portfolio_lang');if(saved==='en'||saved==='es'||saved==='pt')target=saved;}}catch(e){}if(!target){var langs=(navigator.languages&&navigator.languages.length)?navigator.languages:[navigator.language||navigator.userLanguage||'en'];for(var i=0;i<langs.length;i++){var c=(langs[i]||'').toLowerCase().split('-')[0];if(c==='pt'){target='pt';break;}if(c==='es'){target='es';break;}if(c==='en'){target='en';break;}}if(!target)target='en';}}if(target&&target!==cur){var file=target==='en'?'en.html':(target==='es'?'es.html':'index.html');var p=location.pathname;var np=p.slice(-5).toLowerCase()==='.html'?p.slice(0,p.lastIndexOf('/')+1)+file:(p.endsWith('/')?p+file:p+'/'+file);location.replace(np+location.search+location.hash);}})();</script>
+  <title>TOCA // Portafolio Interactivo — White Rabbit's Hole</title>
+
+  <!-- Google Fonts: Cormorant Garamond, Space Grotesk e JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            void: '#060609',
+            obsidian: 'rgba(15, 15, 22, 0.72)',
+            ivory: '#f4f0e6',
+            brass: '#d4af37',
+            crimson: '#c81e3a',
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          boxShadow: {
+            brass: '0 0 30px rgba(212, 175, 55, 0.14)',
+            crimson: '0 0 28px rgba(200, 30, 58, 0.22)',
+            glass: '0 24px 60px rgba(0, 0, 0, 0.65)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* ==========================================================================
+       ESTILOS BASE, GLASSMORPHISM E MOTIVOS SURREALISTAS
+       ========================================================================== */
+    :root {
+      --bg-void: #060609;
+      --surface-glass: rgba(15, 15, 22, 0.72);
+      --ivory: #f4f0e6;
+      --brass: #d4af37;
+      --crimson: #c81e3a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      background-color: var(--bg-void);
+      color: var(--ivory);
+      font-family: 'Space Grotesk', sans-serif;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Barra de rolagem estilizada */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #060609;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(212, 175, 55, 0.35);
+      border-radius: 999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(212, 175, 55, 0.7);
+    }
+
+    /* Canvas fixo de fundo (Túnel 3D) */
+    #rabbit-hole-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      display: block;
+      touch-action: pan-y;
+    }
+
+    /* Vinheta atmosférica sobre o canvas para profundidade e legibilidade */
+    .void-vignette {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(6, 6, 9, 0.08) 0%, rgba(6, 6, 9, 0.52) 65%, rgba(6, 6, 9, 0.92) 100%);
+    }
+
+    /* Superfícies de vidro obsidiana */
+    .glass-panel {
+      background: rgba(15, 15, 22, 0.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(212, 175, 55, 0.18);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(244, 240, 230, 0.06);
+    }
+
+    .glass-panel-hover {
+      transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.2s ease-out;
+    }
+
+    .glass-panel-hover:hover {
+      border-color: rgba(212, 175, 55, 0.5);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), 0 0 32px rgba(212, 175, 55, 0.12);
+    }
+
+    /* Cartões com inclinação 3D suave */
+    .tilt-card {
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+
+    /* Arco/Portal estilo fechadura para projetos */
+    .portal-arch {
+      border-top-left-radius: 999px;
+      border-top-right-radius: 999px;
+      border-bottom-left-radius: 16px;
+      border-bottom-right-radius: 16px;
+    }
+
+    /* Linhas finas douradas */
+    .gold-hairline {
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.45), transparent);
+      height: 1px;
+    }
+
+    /* Aura do cursor customizado (somente desktop com ponteiro fino) */
+    #cursor-aura {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 34px;
+      height: 34px;
+      border-radius: 9999px;
+      border: 1px solid rgba(212, 175, 55, 0.55);
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.14) 0%, rgba(212, 175, 55, 0) 70%);
+      pointer-events: none;
+      z-index: 90;
+      transform: translate3d(-100px, -100px, 0);
+      transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, background 0.25s ease, opacity 0.3s ease;
+      opacity: 0;
+      mix-blend-mode: screen;
+    }
+
+    #cursor-dot {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 5px;
+      border-radius: 9999px;
+      background-color: #f4f0e6;
+      pointer-events: none;
+      z-index: 91;
+      transform: translate3d(-100px, -100px, 0);
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.1s ease;
+    }
+
+    #cursor-aura.is-hovering {
+      width: 56px;
+      height: 56px;
+      border-color: rgba(244, 240, 230, 0.85);
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.24) 0%, rgba(200, 30, 58, 0.08) 55%, transparent 75%);
+    }
+
+    #cursor-aura.is-warping {
+      width: 72px;
+      height: 72px;
+      border-color: rgba(200, 30, 58, 0.9);
+      background: radial-gradient(circle, rgba(200, 30, 58, 0.25) 0%, transparent 72%);
+    }
+
+    @media (hover: none), (pointer: coarse) {
+      #cursor-aura,
+      #cursor-dot {
+        display: none !important;
+      }
+    }
+
+    /* Animação de entrada por revelação na rolagem */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Pulso sutil de relógio/portal */
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+    }
+    .animate-float-slow {
+      animation: floatSlow 6s ease-in-out infinite;
+    }
+
+    @keyframes spinVerySlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .animate-spin-slow {
+      animation: spinVerySlow 42s linear infinite;
+    }
+
+    /* Destaque interativo para tags de habilidades */
+    .skill-pill {
+      transition: all 0.28s ease;
+    }
+    .skill-pill.is-dimmed {
+      opacity: 0.32;
+      filter: grayscale(0.5);
+    }
+    .skill-pill.is-highlighted {
+      border-color: rgba(212, 175, 55, 0.85);
+      background: rgba(212, 175, 55, 0.16);
+      color: #f4f0e6;
+      box-shadow: 0 0 18px rgba(212, 175, 55, 0.25);
+      transform: translateY(-2px);
+    }
+
+    /* Modal transição */
+    .modal-backdrop {
+      transition: opacity 0.3s ease;
+    }
+    .modal-card {
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
+    }
+  </style>
+</head>
+<body class="bg-void text-ivory selection:bg-brass/30 selection:text-ivory">
+
+  <!-- ========================================================================
+       CANVAS 3D INTERATIVO DO TÚNEL (FUNDO FIXO) + VINHETA
+       ======================================================================== -->
+  <canvas id="rabbit-hole-canvas" aria-hidden="true"></canvas>
+  <div class="void-vignette" aria-hidden="true"></div>
+
+  <!-- Aura do cursor customizado (Desktop) -->
+  <div id="cursor-aura" aria-hidden="true"></div>
+  <div id="cursor-dot" aria-hidden="true"></div>
+
+  <!-- ========================================================================
+       CABEÇALHO DE NAVEGAÇÃO FIXO + HUD INTERATIVO
+       ======================================================================== -->
+  <header class="fixed top-0 left-0 right-0 z-40 px-4 sm:px-6 lg:px-10 py-3.5 transition-all duration-300" id="main-header">
+    <div class="max-w-7xl mx-auto glass-panel rounded-2xl px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
+      <!-- Logo: Coelho Branco SVG -->
+      <a href="#superficie" class="flex items-center gap-3 group interactive-el focus:outline-none" aria-label="Volver a la Superficie">
+        <div class="w-9 h-9 rounded-xl border border-brass/35 bg-void/70 flex items-center justify-center group-hover:border-brass transition-colors relative overflow-hidden">
+          <!-- Silhueta Minimalista do Coelho Branco -->
+          <svg viewBox="0 0 40 40" class="w-6 h-6 text-ivory group-hover:text-brass transition-colors" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16.5 16.5C15.2 12.2 14.2 6.8 16.2 5.2C17.8 3.9 19.6 7.5 20.1 13.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M22.2 14.5C23.4 9.5 25.8 5.2 27.6 6.2C29.2 7.1 27.1 12.6 24.4 16.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M14.5 22.5C14.5 18.2 17.5 15.2 21.2 15.2C24.8 15.2 27.5 17.6 27.5 21.2C27.5 23.6 26.2 25.4 24.2 26.4L25.5 32.5H13.2C12.8 29.2 13.5 25.4 14.5 22.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <circle cx="23.4" cy="19.6" r="1.2" fill="#c81e3a"/>
+            <path d="M11 32.5H29" stroke="#d4af37" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="2 3"/>
+          </svg>
+        </div>
+        <div class="leading-tight">
+          <span class="font-mono text-xs sm:text-sm tracking-[0.22em] text-ivory font-medium block">
+            TOCA <span class="text-brass">//</span> PORTAFOLIO
+          </span>
+          <span class="font-mono text-[10px] tracking-[0.18em] text-ivory/50 uppercase hidden sm:block">
+            Alice.Dev &bull; Surrealismo Digital
+          </span>
+        </div>
+      </a>
+
+      <!-- Links de Navegação Desktop -->
+      <nav class="hidden lg:flex items-center gap-1" aria-label="Navegación Principal">
+        <a href="#superficie" data-nav="superficie" class="nav-link interactive-el px-3.5 py-2 rounded-xl text-xs font-mono tracking-wider uppercase text-ivory/75 hover:text-brass hover:bg-ivory/5 transition-all">Superficie</a>
+        <a href="#a-queda" data-nav="a-queda" class="nav-link interactive-el px-3.5 py-2 rounded-xl text-xs font-mono tracking-wider uppercase text-ivory/75 hover:text-brass hover:bg-ivory/5 transition-all">La Caída</a>
+        <a href="#portas" data-nav="portas" class="nav-link interactive-el px-3.5 py-2 rounded-xl text-xs font-mono tracking-wider uppercase text-ivory/75 hover:text-brass hover:bg-ivory/5 transition-all">Puertas</a>
+        <a href="#relogio" data-nav="relogio" class="nav-link interactive-el px-3.5 py-2 rounded-xl text-xs font-mono tracking-wider uppercase text-ivory/75 hover:text-brass hover:bg-ivory/5 transition-all">Habilidades</a>
+        <a href="#fundo" data-nav="fundo" class="nav-link interactive-el px-3.5 py-2 rounded-xl text-xs font-mono tracking-wider uppercase text-ivory/75 hover:text-brass hover:bg-ivory/5 transition-all">Fondo</a>
+      </nav>
+
+      <!-- Controles HUD: Medidor de Profundidade + Distorção Temporal -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Leitura de Profundidade ao Vivo -->
+        <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-void/65 border border-brass/20 font-mono text-xs" title="Profundidad actual en la madriguera">
+          <span class="w-1.5 h-1.5 rounded-full bg-brass animate-pulse"></span>
+          <span class="text-ivory/50 uppercase text-[10px] tracking-widest">Prof.</span>
+          <span id="hud-depth-value" class="text-ivory font-medium tabular-nums min-w-[54px] text-right">0m</span>
+        </div>
+
+        <!-- Botão Interativo: Distorção Temporal -->
+        <button
+          id="time-warp-btn"
+          type="button"
+          class="interactive-el flex items-center gap-2 px-3 sm:px-3.5 py-2 rounded-xl bg-brass/10 hover:bg-brass/20 border border-brass/35 text-xs font-mono tracking-wider text-ivory transition-all active:scale-95"
+          aria-label="Alternar velocidad de distorsión temporal"
+          title="Alternar velocidad del túnel (Normal / Cámara Lenta / Hipercaída)"
+        >
+          <svg class="w-3.5 h-3.5 text-brass shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="13" r="8"></circle>
+            <path d="M12 9v4l2.5 1.5"></path>
+            <path d="M10 2h4"></path>
+            <path d="M12 2v3"></path>
+          </svg>
+          <span class="hidden md:inline text-ivory/60">Tiempo:</span>
+          <span id="time-warp-label" class="text-brass font-medium">Normal</span>
+        </button>
+
+        <!-- Botão Menu Mobile -->
+        <button
+          id="mobile-menu-btn"
+          type="button"
+          class="lg:hidden interactive-el p-2.5 rounded-xl border border-brass/25 bg-void/60 text-ivory hover:border-brass transition-colors"
+          aria-label="Abrir menú de navegación"
+          aria-expanded="false"
+        >
+          <svg id="menu-icon-open" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M4 7h16M4 12h16M4 17h12" stroke-linecap="round"/>
+          </svg>
+          <svg id="menu-icon-close" class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu Mobile Desdobrável -->
+    <div id="mobile-menu" class="lg:hidden hidden max-w-7xl mx-auto mt-2 glass-panel rounded-2xl p-4 space-y-2">
+      <div class="flex items-center justify-between px-3 py-2 border-b border-brass/15 mb-2">
+        <span class="font-mono text-[11px] uppercase tracking-widest text-ivory/50">Profundidad Actual</span>
+        <span id="mobile-depth-value" class="font-mono text-xs text-brass font-semibold tabular-nums">0m</span>
+      </div>
+      <a href="#superficie" class="mobile-nav-link block px-3 py-2.5 rounded-xl font-mono text-xs uppercase tracking-widest text-ivory/85 hover:bg-brass/10 hover:text-brass">0m — Superficie</a>
+      <a href="#a-queda" class="mobile-nav-link block px-3 py-2.5 rounded-xl font-mono text-xs uppercase tracking-widest text-ivory/85 hover:bg-brass/10 hover:text-brass">1.000m — La Caída</a>
+      <a href="#portas" class="mobile-nav-link block px-3 py-2.5 rounded-xl font-mono text-xs uppercase tracking-widest text-ivory/85 hover:bg-brass/10 hover:text-brass">2.200m — Puertas</a>
+      <a href="#relogio" class="mobile-nav-link block px-3 py-2.5 rounded-xl font-mono text-xs uppercase tracking-widest text-ivory/85 hover:bg-brass/10 hover:text-brass">3.300m — Habilidades</a>
+      <a href="#fundo" class="mobile-nav-link block px-3 py-2.5 rounded-xl font-mono text-xs uppercase tracking-widest text-ivory/85 hover:bg-brass/10 hover:text-brass">4.200m — Fondo</a>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       MEDIDOR VERTICAL DE PROFUNDIDADE (LATERAL DIREITA FIXA)
+       ======================================================================== -->
+  <aside
+    class="fixed right-3 sm:right-5 top-1/2 -translate-y-1/2 z-30 hidden md:flex flex-col items-end gap-4 select-none"
+    aria-label="Medidor de Profundidad de la Madriguera"
+  >
+    <div class="glass-panel rounded-2xl px-2.5 py-4 flex flex-col items-center gap-3 relative">
+      <!-- Trilho de progresso vertical -->
+      <div class="absolute top-6 bottom-6 left-1/2 -translate-x-1/2 w-[2px] bg-ivory/10 rounded-full overflow-hidden pointer-events-none">
+        <div id="depth-rail-fill" class="w-full bg-gradient-to-b from-brass via-ivory to-crimson transition-all duration-150" style="height: 0%;"></div>
+      </div>
+
+      <!-- Marcadores interativos de profundidade -->
+      <button type="button" data-jump="#superficie" data-section="superficie" class="depth-dot interactive-el group relative flex items-center justify-center w-6 h-6 focus:outline-none" aria-label="Ir a 0m Superficie">
+        <span class="dot-core w-2.5 h-2.5 rounded-full bg-brass border border-void transition-all duration-300 group-hover:scale-125"></span>
+        <span class="absolute right-8 whitespace-nowrap px-2.5 py-1 rounded-lg bg-void/90 border border-brass/30 font-mono text-[10px] tracking-wider text-ivory opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+          0m &bull; Superficie
+        </span>
+      </button>
+
+      <button type="button" data-jump="#a-queda" data-section="a-queda" class="depth-dot interactive-el group relative flex items-center justify-center w-6 h-6 focus:outline-none" aria-label="Ir a 1.000m La Caída">
+        <span class="dot-core w-2 h-2 rounded-full bg-ivory/35 border border-void transition-all duration-300 group-hover:scale-125 group-hover:bg-brass"></span>
+        <span class="absolute right-8 whitespace-nowrap px-2.5 py-1 rounded-lg bg-void/90 border border-brass/30 font-mono text-[10px] tracking-wider text-ivory opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+          1.000m &bull; La Caída
+        </span>
+      </button>
+
+      <button type="button" data-jump="#portas" data-section="portas" class="depth-dot interactive-el group relative flex items-center justify-center w-6 h-6 focus:outline-none" aria-label="Ir a 2.200m Las Puertas">
+        <span class="dot-core w-2 h-2 rounded-full bg-ivory/35 border border-void transition-all duration-300 group-hover:scale-125 group-hover:bg-brass"></span>
+        <span class="absolute right-8 whitespace-nowrap px-2.5 py-1 rounded-lg bg-void/90 border border-brass/30 font-mono text-[10px] tracking-wider text-ivory opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+          2.200m &bull; Puertas
+        </span>
+      </button>
+
+      <button type="button" data-jump="#relogio" data-section="relogio" class="depth-dot interactive-el group relative flex items-center justify-center w-6 h-6 focus:outline-none" aria-label="Ir a 3.300m El Reloj">
+        <span class="dot-core w-2 h-2 rounded-full bg-ivory/35 border border-void transition-all duration-300 group-hover:scale-125 group-hover:bg-brass"></span>
+        <span class="absolute right-8 whitespace-nowrap px-2.5 py-1 rounded-lg bg-void/90 border border-brass/30 font-mono text-[10px] tracking-wider text-ivory opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+          3.300m &bull; El Reloj
+        </span>
+      </button>
+
+      <button type="button" data-jump="#fundo" data-section="fundo" class="depth-dot interactive-el group relative flex items-center justify-center w-6 h-6 focus:outline-none" aria-label="Ir a 4.200m El Fondo de la Madriguera">
+        <span class="dot-core w-2 h-2 rounded-full bg-ivory/35 border border-void transition-all duration-300 group-hover:scale-125 group-hover:bg-crimson"></span>
+        <span class="absolute right-8 whitespace-nowrap px-2.5 py-1 rounded-lg bg-void/90 border border-crimson/45 font-mono text-[10px] tracking-wider text-ivory opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+          4.200m &bull; Fondo
+        </span>
+      </button>
+    </div>
+
+    <!-- Dica sutil de interação com o túnel -->
+    <div class="font-mono text-[9px] tracking-[0.2em] uppercase text-ivory/40 writing-mode-vertical text-right pr-1 hidden xl:block">
+      Mantén el fondo p/ Warp
+    </div>
+  </aside>
+
+  <!-- ========================================================================
+       CONTEÚDO PRINCIPAL DO PORTFÓLIO (SOBREPOSTO AO TÚNEL 3D)
+       ======================================================================== -->
+  <main class="relative z-10 w-full">
+
+    <!-- ======================================================================
+         SEÇÃO 1: HERO — 0m — A SUPERFÍCIE
+         ====================================================================== -->
+    <section id="superficie" data-depth="0" class="min-h-screen flex items-center pt-28 pb-16 px-5 sm:px-8 lg:px-14">
+      <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+
+        <!-- Coluna Editorial Esquerda -->
+        <div class="lg:col-span-7 space-y-7">
+          <!-- Coordenada de Profundidade -->
+          <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full glass-panel border-brass/30">
+            <span class="w-2 h-2 rounded-full bg-crimson animate-pulse"></span>
+            <span class="font-mono text-[11px] sm:text-xs tracking-[0.22em] uppercase text-brass">
+              0m &mdash; La Superficie
+            </span>
+            <span class="text-ivory/30">|</span>
+            <span class="font-mono text-[11px] text-ivory/65 hidden sm:inline">LAT -23.55&deg; &bull; LON -46.63&deg;</span>
+          </div>
+
+          <!-- Manchete Principal Surrealista -->
+          <h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl xl:text-[5.25rem] font-medium leading-[0.98] tracking-tight text-ivory">
+            ¿Qué tan profunda es <br class="hidden sm:block" />
+            <span class="italic text-brass relative inline-block">
+              la madriguera?
+              <svg class="w-full h-3 -mt-1 text-brass/45" viewBox="0 0 220 12" fill="none" preserveAspectRatio="none">
+                <path d="M2 9.5C58 2.5 148 2 218 8.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </span>
+          </h1>
+
+          <!-- Subtítulo Refinado -->
+          <p class="text-base sm:text-lg text-ivory/75 max-w-2xl leading-relaxed font-light">
+            Soy <strong class="text-ivory font-medium">Helena Varella</strong>, ingeniera creativa y diseñadora de interfaces multidisciplinaria.
+            Diseño sistemas web interactivos, arquitecturas front-end de alta precisión y experiencias digitales donde la estética editorial se encuentra con el código vivo.
+          </p>
+
+          <!-- Botões de Ação (CTAs) -->
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <button
+              id="follow-rabbit-btn"
+              type="button"
+              class="interactive-el group relative inline-flex items-center gap-3 px-7 py-4 rounded-2xl bg-ivory text-void font-medium text-sm tracking-wide hover:bg-brass transition-all duration-300 shadow-brass active:scale-95"
+            >
+              <span>Seguir al Conejo Blanco</span>
+              <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-y-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+
+            <a
+              href="#portas"
+              class="interactive-el inline-flex items-center gap-3 px-7 py-4 rounded-2xl glass-panel border-brass/30 hover:border-brass text-ivory text-sm font-medium tracking-wide transition-all duration-300"
+            >
+              <!-- Ícone Fechadura -->
+              <svg class="w-4 h-4 text-brass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="12" cy="9" r="3.5"/>
+                <path d="M10.2 12L9 20h6l-1.2-8" stroke-linejoin="round"/>
+              </svg>
+              <span>Explorar Puertas</span>
+            </a>
+          </div>
+
+          <!-- Dica Interativa Discreta -->
+          <div class="pt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-mono text-ivory/45">
+            <span class="flex items-center gap-2">
+              <span class="inline-block w-1.5 h-1.5 rounded-full bg-brass/70"></span>
+              Mueve el puntero para inclinar el túnel
+            </span>
+            <span class="flex items-center gap-2">
+              <span class="inline-block w-1.5 h-1.5 rounded-full bg-crimson/80"></span>
+              Haz clic y mantén en el vacío para Distorsión Warp
+            </span>
+          </div>
+        </div>
+
+        <!-- Coluna Direita: Relógio de Bolso Antigo Funcional em SVG -->
+        <div class="lg:col-span-5 flex justify-center lg:justify-end">
+          <div class="relative w-full max-w-[340px] sm:max-w-[380px] aspect-square flex items-center justify-center animate-float-slow">
+            <!-- Anel orbital externo giratório -->
+            <svg class="absolute inset-0 w-full h-full animate-spin-slow opacity-50 pointer-events-none" viewBox="0 0 360 360" fill="none">
+              <circle cx="180" cy="180" r="168" stroke="#d4af37" stroke-width="0.7" stroke-dasharray="3 9"/>
+              <circle cx="180" cy="180" r="154" stroke="#f4f0e6" stroke-width="0.4" stroke-dasharray="1 14"/>
+              <path d="M180 6V20M180 340V354M6 180H20M340 180H354" stroke="#d4af37" stroke-width="1.2"/>
+            </svg>
+
+            <!-- Corpo do Relógio de Bolso Glass + Latão -->
+            <div class="relative w-[270px] h-[270px] sm:w-[300px] sm:h-[300px] rounded-full glass-panel border-brass/45 flex items-center justify-center shadow-glass p-4">
+              <!-- Coroa superior do relógio de bolso -->
+              <div class="absolute -top-7 left-1/2 -translate-x-1/2 flex flex-col items-center pointer-events-none">
+                <div class="w-8 h-5 rounded-t-full border-2 border-brass/70 border-b-0"></div>
+                <div class="w-5 h-3 bg-brass/40 border border-brass/80 rounded-sm"></div>
+              </div>
+
+              <!-- Mostrador SVG com Ponteiros em Tempo Real -->
+              <svg id="pocket-watch-svg" viewBox="0 0 240 240" class="w-full h-full" role="img" aria-label="Reloj de bolsillo mostrando la hora local actual">
+                <defs>
+                  <radialGradient id="watchFaceGrad" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#14141f" stop-opacity="0.95"/>
+                    <stop offset="75%" stop-color="#0a0a10" stop-opacity="0.98"/>
+                    <stop offset="100%" stop-color="#060609" stop-opacity="1"/>
+                  </radialGradient>
+                </defs>
+
+                <!-- Base do mostrador -->
+                <circle cx="120" cy="120" r="112" fill="url(#watchFaceGrad)" stroke="#d4af37" stroke-width="1.5"/>
+                <circle cx="120" cy="120" r="103" fill="none" stroke="rgba(212,175,55,0.28)" stroke-width="0.8" stroke-dasharray="2 4"/>
+                <circle cx="120" cy="120" r="68" fill="none" stroke="rgba(244,240,230,0.09)" stroke-width="0.8"/>
+
+                <!-- Marcações de minutos (geradas via JS para precisão) -->
+                <g id="watch-ticks"></g>
+
+                <!-- Algarismos Romanos -->
+                <g fill="#f4f0e6" font-family="'Cormorant Garamond', serif" font-size="14" text-anchor="middle" dominant-baseline="central" opacity="0.9">
+                  <text x="120" y="34">XII</text>
+                  <text x="163" y="46" font-size="11" opacity="0.65">I</text>
+                  <text x="194" y="77" font-size="11" opacity="0.65">II</text>
+                  <text x="206" y="120">III</text>
+                  <text x="194" y="163" font-size="11" opacity="0.65">IV</text>
+                  <text x="163" y="194" font-size="11" opacity="0.65">V</text>
+                  <text x="120" y="206">VI</text>
+                  <text x="77" y="194" font-size="11" opacity="0.65">VII</text>
+                  <text x="46" y="163" font-size="11" opacity="0.65">VIII</text>
+                  <text x="34" y="120">IX</text>
+                  <text x="46" y="77" font-size="11" opacity="0.65">X</text>
+                  <text x="77" y="46" font-size="11" opacity="0.65">XI</text>
+                </g>
+
+                <!-- Inscrição Editorial -->
+                <text x="120" y="84" text-anchor="middle" fill="#d4af37" font-family="'JetBrains Mono', monospace" font-size="6.8" letter-spacing="2.4" opacity="0.85">
+                  HORA LOCAL
+                </text>
+                <text id="watch-digital-readout" x="120" y="162" text-anchor="middle" fill="#f4f0e6" font-family="'JetBrains Mono', monospace" font-size="9.5" letter-spacing="1.5" opacity="0.85">
+                  00:00:00
+                </text>
+
+                <!-- Fechadura sutil no centro -->
+                <path d="M120 107a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm-1.5 8l-1.3 8h5.6l-1.3-8z" fill="rgba(212,175,55,0.16)"/>
+
+                <!-- Ponteiro das Horas -->
+                <g id="watch-hour-hand" transform="rotate(0 120 120)">
+                  <line x1="120" y1="126" x2="120" y2="70" stroke="#f4f0e6" stroke-width="3" stroke-linecap="round"/>
+                  <polygon points="120,64 116.5,73 123.5,73" fill="#f4f0e6"/>
+                </g>
+
+                <!-- Ponteiro dos Minutos -->
+                <g id="watch-minute-hand" transform="rotate(0 120 120)">
+                  <line x1="120" y1="130" x2="120" y2="48" stroke="#d4af37" stroke-width="2" stroke-linecap="round"/>
+                </g>
+
+                <!-- Ponteiro dos Segundos (Carmesim) -->
+                <g id="watch-second-hand" transform="rotate(0 120 120)">
+                  <line x1="120" y1="140" x2="120" y2="38" stroke="#c81e3a" stroke-width="1.2" stroke-linecap="round"/>
+                  <circle cx="120" cy="138" r="2.2" fill="#c81e3a"/>
+                </g>
+
+                <!-- Pino central -->
+                <circle cx="120" cy="120" r="4.5" fill="#d4af37" stroke="#060609" stroke-width="1.5"/>
+              </svg>
+
+              <!-- Legenda flutuante abaixo do relógio -->
+              <div class="absolute -bottom-5 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full bg-void/90 border border-brass/35 whitespace-nowrap">
+                <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-brass">
+                  &ldquo;¡Es tarde, es muy tarde!&rdquo;
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divisória Dourada -->
+    <div class="max-w-7xl mx-auto px-6"><div class="gold-hairline"></div></div>
+
+    <!-- ======================================================================
+         SEÇÃO 2: SOBRE / FILOSOFIA — 1.000m — A QUEDA
+         ====================================================================== -->
+    <section id="a-queda" data-depth="1000" class="py-24 sm:py-32 px-5 sm:px-8 lg:px-14">
+      <div class="max-w-7xl mx-auto">
+        <!-- Cabeçalho da Seção -->
+        <div class="reveal flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+          <div class="space-y-3">
+            <span class="font-mono text-xs tracking-[0.25em] uppercase text-brass block">
+              1.000m &mdash; La Caída
+            </span>
+            <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium text-ivory leading-tight">
+              Curiosidad como <span class="italic text-brass">método.</span>
+            </h2>
+          </div>
+          <p class="font-mono text-xs text-ivory/50 max-w-sm leading-relaxed">
+            // ZONA DE TRANSICIÓN: Donde la gravedad de las convenciones se debilita y la ingeniería se encuentra con la narrativa visual.
+          </p>
+        </div>
+
+        <!-- Layout Assimétrico Glassmórfico com Tilt 3D -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+
+          <!-- Card Principal de Bio / Manifesto -->
+          <div class="reveal lg:col-span-7 glass-panel glass-panel-hover tilt-card rounded-3xl p-7 sm:p-10 flex flex-col justify-between relative overflow-hidden">
+            <!-- Ornamento de fundo sutil -->
+            <svg class="absolute -right-10 -bottom-10 w-56 h-56 text-brass/10 pointer-events-none" viewBox="0 0 200 200" fill="none">
+              <circle cx="100" cy="100" r="88" stroke="currentColor" stroke-width="1" stroke-dasharray="4 6"/>
+              <path d="M100 30L116 84L170 100L116 116L100 170L84 116L30 100L84 84L100 30Z" stroke="currentColor" stroke-width="1"/>
+            </svg>
+
+            <div class="space-y-6 relative z-10">
+              <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-brass">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <circle cx="12" cy="12" r="9"/>
+                  <polygon points="12,6 14.2,12 12,18 9.8,12"/>
+                </svg>
+                <span>Manifiesto de Primer Principio</span>
+              </div>
+
+              <p class="font-serif text-2xl sm:text-3xl text-ivory leading-snug">
+                &ldquo;Construir interfaces memorables exige desmontar lo obvio hasta encontrar el engranaje invisible que mueve la emoción.&rdquo;
+              </p>
+
+              <div class="space-y-4 text-sm sm:text-base text-ivory/75 leading-relaxed">
+                <p>
+                  A lo largo de los últimos siete años, he navegado la intersección entre la ingeniería de software front-end, la dirección de arte interactiva y los sistemas de diseño escalables. Cada proyecto comienza con una pregunta radicalmente simple: <em>¿qué pasaría si ignoráramos el molde estándar?</em>
+                </p>
+                <p>
+                  Desde la arquitectura de aplicaciones complejas en tiempo real hasta microinteracciones que responden al tacto con física natural, mi enfoque es transformar productos digitales en lugares que las personas quieran explorar &mdash; no solo usar.
+                </p>
+              </div>
+            </div>
+
+            <div class="pt-8 mt-8 border-t border-brass/15 flex flex-wrap items-center justify-between gap-4 relative z-10">
+              <div class="flex items-center gap-3">
+                <div class="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.8)]"></div>
+                <span class="font-mono text-xs text-ivory/80">Disponible para proyectos selectos &bull; 2026</span>
+              </div>
+              <span class="font-mono text-[11px] uppercase tracking-widest text-brass">São Paulo &bull; Remoto Global</span>
+            </div>
+          </div>
+
+          <!-- Coluna Direita: Métricas + Card de Princípios -->
+          <div class="lg:col-span-5 flex flex-col gap-6">
+            <!-- Grade de 4 Métricas -->
+            <div class="grid grid-cols-2 gap-4 sm:gap-5">
+              <div class="reveal glass-panel glass-panel-hover tilt-card rounded-2xl p-5 sm:p-6">
+                <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ivory/45 block mb-2">Entregas</span>
+                <div class="font-serif text-4xl sm:text-5xl text-brass font-medium">48<span class="text-2xl text-ivory/60">+</span></div>
+                <p class="text-xs text-ivory/65 mt-2">Productos, apps y experiencias lanzadas</p>
+              </div>
+
+              <div class="reveal glass-panel glass-panel-hover tilt-card rounded-2xl p-5 sm:p-6">
+                <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ivory/45 block mb-2">Inmersión</span>
+                <div class="font-serif text-4xl sm:text-5xl text-ivory font-medium">07<span class="text-xl text-brass ml-1">años</span></div>
+                <p class="text-xs text-ivory/65 mt-2">Entre código creativo y diseño de sistemas</p>
+              </div>
+
+              <div class="reveal glass-panel glass-panel-hover tilt-card rounded-2xl p-5 sm:p-6">
+                <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ivory/45 block mb-2">Arsenal</span>
+                <div class="font-serif text-4xl sm:text-5xl text-ivory font-medium">24<span class="text-2xl text-brass">+</span></div>
+                <p class="text-xs text-ivory/65 mt-2">Tecnologías, shaders y herramientas UI</p>
+              </div>
+
+              <div class="reveal glass-panel glass-panel-hover tilt-card rounded-2xl p-5 sm:p-6 border-crimson/30">
+                <span class="font-mono text-[10px] tracking-[0.2em] uppercase text-ivory/45 block mb-2">Agenda</span>
+                <div class="font-serif text-3xl sm:text-4xl text-crimson font-semibold italic mt-1">Abierto</div>
+                <p class="text-xs text-ivory/65 mt-2">Nuevos desafíos Q4 / 2026</p>
+              </div>
+            </div>
+
+            <!-- Card de Pilares -->
+            <div class="reveal glass-panel glass-panel-hover tilt-card rounded-3xl p-6 sm:p-7 flex-1 flex flex-col justify-center space-y-4">
+              <h3 class="font-mono text-xs tracking-[0.2em] uppercase text-brass">Tres Claves del Trabajo</h3>
+              <ul class="space-y-3.5 text-sm text-ivory/80">
+                <li class="flex items-start gap-3">
+                  <span class="font-mono text-xs text-brass mt-0.5">I.</span>
+                  <span><strong class="text-ivory font-medium">Rendimiento Obsesivo:</strong> 60fps constantes incluso en experiencias visuales densas.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="font-mono text-xs text-brass mt-0.5">II.</span>
+                  <span><strong class="text-ivory font-medium">Dirección Editorial:</strong> Tipografía, ritmo y espacio negativo tratados como arquitectura.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="font-mono text-xs text-brass mt-0.5">III.</span>
+                  <span><strong class="text-ivory font-medium">Interacción Táctil:</strong> Cada clic, arrastre y desplazamiento responde con intención física.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="max-w-7xl mx-auto px-6"><div class="gold-hairline"></div></div>
+
+    <!-- ======================================================================
+         SEÇÃO 3: PROJETOS — 2.200m — AS PORTAS
+         ====================================================================== -->
+    <section id="portas" data-depth="2200" class="py-24 sm:py-32 px-5 sm:px-8 lg:px-14">
+      <div class="max-w-7xl mx-auto">
+        <!-- Cabeçalho + Filtros -->
+        <div class="reveal flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14">
+          <div class="space-y-3">
+            <span class="font-mono text-xs tracking-[0.25em] uppercase text-brass block">
+              2.200m &mdash; Las Puertas
+            </span>
+            <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium text-ivory leading-tight">
+              Elige qué cerradura <span class="italic text-brass">abrir.</span>
+            </h2>
+          </div>
+
+          <!-- Filtros Interativos por Categoria -->
+          <div class="flex flex-wrap items-center gap-2" role="tablist" aria-label="Filtrar proyectos por categoría">
+            <button type="button" data-filter="todos" class="filter-btn interactive-el px-4 py-2.5 rounded-xl font-mono text-xs uppercase tracking-wider bg-brass text-void font-semibold transition-all">
+              Todos
+            </button>
+            <button type="button" data-filter="web" class="filter-btn interactive-el px-4 py-2.5 rounded-xl font-mono text-xs uppercase tracking-wider glass-panel text-ivory/75 hover:text-brass border-brass/20 transition-all">
+              Web &amp; Apps
+            </button>
+            <button type="button" data-filter="design" class="filter-btn interactive-el px-4 py-2.5 rounded-xl font-mono text-xs uppercase tracking-wider glass-panel text-ivory/75 hover:text-brass border-brass/20 transition-all">
+              Diseño UI
+            </button>
+            <button type="button" data-filter="experimentos" class="filter-btn interactive-el px-4 py-2.5 rounded-xl font-mono text-xs uppercase tracking-wider glass-panel text-ivory/75 hover:text-brass border-brass/20 transition-all">
+              Experimentos
+            </button>
+          </div>
+        </div>
+
+        <!-- Grade de Cartões-Portal (Renderizada via JS com SVGs Procedurais Únicos) -->
+        <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+          <!-- Os 6 projetos são injetados dinamicamente no carregamento -->
+        </div>
+      </div>
+    </section>
+
+    <div class="max-w-7xl mx-auto px-6"><div class="gold-hairline"></div></div>
+
+    <!-- ======================================================================
+         SEÇÃO 4: HABILIDADES & LINHA DO TEMPO — 3.300m — O RELÓGIO
+         ====================================================================== -->
+    <section id="relogio" data-depth="3300" class="py-24 sm:py-32 px-5 sm:px-8 lg:px-14">
+      <div class="max-w-7xl mx-auto">
+        <div class="reveal flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+          <div class="space-y-3">
+            <span class="font-mono text-xs tracking-[0.25em] uppercase text-brass block">
+              3.300m &mdash; El Reloj
+            </span>
+            <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium text-ivory leading-tight">
+              Engranajes &amp; <span class="italic text-brass">trayectoria.</span>
+            </h2>
+          </div>
+          <p class="font-mono text-xs text-ivory/50 max-w-sm leading-relaxed">
+            // Pasa el cursor o toca un núcleo de habilidad para iluminar conexiones interdisciplinarias.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
+          <!-- Coluna Esquerda: Linha do Tempo Profissional -->
+          <div class="reveal lg:col-span-6 glass-panel rounded-3xl p-7 sm:p-9">
+            <div class="flex items-center justify-between mb-8">
+              <h3 class="font-mono text-xs tracking-[0.22em] uppercase text-brass">Cronología de Expediciones</h3>
+              <span class="font-mono text-[11px] text-ivory/45">2019 &mdash; 2026</span>
+            </div>
+
+            <div class="relative pl-7 space-y-9 before:content-[''] before:absolute before:left-[9px] before:top-2 before:bottom-2 before:w-[1px] before:bg-gradient-to-b before:from-brass before:via-brass/35 before:to-transparent">
+              <!-- Item 1 -->
+              <article class="relative group">
+                <span class="absolute -left-[25px] top-1.5 w-3.5 h-3.5 rounded-full bg-void border-2 border-brass group-hover:bg-brass transition-colors shadow-[0_0_12px_rgba(212,175,55,0.5)]"></span>
+                <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+                  <h4 class="font-serif text-2xl text-ivory group-hover:text-brass transition-colors">Principal Creative Technologist</h4>
+                  <span class="font-mono text-[11px] text-brass">2024 &mdash; Actual</span>
+                </div>
+                <p class="font-mono text-xs text-ivory/55 mb-2.5">Estudio Miragem &bull; São Paulo / Remoto</p>
+                <p class="text-sm text-ivory/75 leading-relaxed">
+                  Liderazgo técnico y creativo de plataformas interactivas en WebGL, design systems multimarca y lanzamientos globales para empresas de tecnología y cultura.
+                </p>
+              </article>
+
+              <!-- Item 2 -->
+              <article class="relative group">
+                <span class="absolute -left-[25px] top-1.5 w-3.5 h-3.5 rounded-full bg-void border-2 border-brass/70 group-hover:bg-brass transition-colors"></span>
+                <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+                  <h4 class="font-serif text-2xl text-ivory group-hover:text-brass transition-colors">Staff Front-End &amp; UI Engineer</h4>
+                  <span class="font-mono text-[11px] text-ivory/60">2022 &mdash; 2024</span>
+                </div>
+                <p class="font-mono text-xs text-ivory/55 mb-2.5">Chronos Labs &bull; Fintech &amp; Datos</p>
+                <p class="text-sm text-ivory/75 leading-relaxed">
+                  Arquitectura de paneles analíticos en tiempo real con visualización de datos personalizada, reduciendo el tiempo de interacción crítica en un 44%.
+                </p>
+              </article>
+
+              <!-- Item 3 -->
+              <article class="relative group">
+                <span class="absolute -left-[25px] top-1.5 w-3.5 h-3.5 rounded-full bg-void border-2 border-brass/50 group-hover:bg-brass transition-colors"></span>
+                <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+                  <h4 class="font-serif text-2xl text-ivory group-hover:text-brass transition-colors">Product Designer &amp; Dev Front-End</h4>
+                  <span class="font-mono text-[11px] text-ivory/60">2020 &mdash; 2022</span>
+                </div>
+                <p class="font-mono text-xs text-ivory/55 mb-2.5">Atelier Kroma &bull; Productos Digitales</p>
+                <p class="text-sm text-ivory/75 leading-relaxed">
+                  Concepción integral de interfaces editoriales, prototipado funcional en código y microinteracciones centradas en accesibilidad.
+                </p>
+              </article>
+
+              <!-- Item 4 -->
+              <article class="relative group">
+                <span class="absolute -left-[25px] top-1.5 w-3.5 h-3.5 rounded-full bg-void border-2 border-ivory/35 group-hover:border-brass transition-colors"></span>
+                <div class="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+                  <h4 class="font-serif text-2xl text-ivory group-hover:text-brass transition-colors">Desarrolladora Interactiva</h4>
+                  <span class="font-mono text-[11px] text-ivory/60">2019 &mdash; 2020</span>
+                </div>
+                <p class="font-mono text-xs text-ivory/55 mb-2.5">Colectivo Esfera &bull; Arte &amp; Web</p>
+                <p class="text-sm text-ivory/75 leading-relaxed">
+                  Instalaciones web generativas, experimentos en HTML5 Canvas y narrativas audiovisuales responsivas para exposiciones culturales.
+                </p>
+              </article>
+            </div>
+          </div>
+
+          <!-- Coluna Direita: Clusters Interativos de Habilidades -->
+          <div class="reveal lg:col-span-6 flex flex-col gap-5">
+            <!-- Status da Habilidade Selecionada / Hover -->
+            <div class="glass-panel rounded-2xl px-6 py-4 flex items-center justify-between gap-4 border-brass/30">
+              <div>
+                <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-ivory/45 block">Resonancia Activa</span>
+                <p id="skill-resonance-label" class="font-serif text-xl text-brass italic">
+                  Todos los engranajes sincronizados
+                </p>
+              </div>
+              <button id="skill-reset-btn" type="button" class="interactive-el hidden font-mono text-[11px] uppercase tracking-wider px-3 py-1.5 rounded-lg border border-brass/30 text-ivory/75 hover:text-brass">
+                Limpiar
+              </button>
+            </div>
+
+            <!-- Grid de Clusters -->
+            <div id="skill-clusters" class="grid grid-cols-1 sm:grid-cols-2 gap-5 flex-1">
+              <!-- Cluster 1 -->
+              <div class="skill-cluster glass-panel glass-panel-hover rounded-3xl p-6 cursor-pointer" data-cluster="arquitetura" data-related="motion,design">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="font-mono text-[11px] uppercase tracking-[0.2em] text-brass">01 // Ingeniería</span>
+                  <span class="font-mono text-[10px] text-ivory/45">98%</span>
+                </div>
+                <h4 class="font-serif text-2xl text-ivory mb-4">Arquitectura Front-End</h4>
+                <div class="flex flex-wrap gap-2">
+                  <span class="skill-pill px-3 py-1.5 rounded-lg bg-void/70 border border-ivory/15 font-mono text-[11px] text-ivory/80" data-tag="arquitetura">TypeScript</span>
+                  <span class="skill-pill px-3 py-1.5 rounded-lg bg-void/70 border border-ivory/15 font-mono text-[11px] text-ivory/80" data-tag="arquitetura">React / Next.js</span>
+                  <span class="skill-pill px-3 py-1.5 rounded-lg bg-void/70 border border-ivory/15 font-mono text-[11px] text-ivory/80" data-tag="arquitetura">Tailwind CSS</span>
+                  <span class="skill-pill px-3 py-1.5 rounded-lg bg-void/70 border border-ivory/15 font-mono text-[11px] text-ivory/80" data-tag="arquitetura">Rendimiento Web</span>
+                  <span class="skill-pill px-3 py-1.5 rounded-lg bg-void/70 border border-ivory/15 font-mono text-[11px] text-ivory/80" data-tag="arquitetura">Accesibilidad A11y</span>
+                </div>
+              </div>
+
+              <!-- Cluster 2 -->
+              <div class="skill-cluster glass-panel glass-panel-hover rounded-3xl p-6 cursor-pointer" data-cluster="motion" data-related="arquitetura,design">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="font-mono text-[11px] uppercase tracking-[0.2em] text-brass">02 // Cinética</span>
+                  <span class="font-mono text-[10px] text-ivory/45">95%</span>
+                </div>
+                <h4 class="font-serif text-2xl text-ivory mb-4">Motion &amp; WebGL</h4>
+                <div class="flex flex-wrap gap-2">
+                  <span class="skill-pill px-3 py-1.5 rounded-lg bg-void/70 border border-ivory/15 font-mono text-[11px] text-ivory/80" data-tag="motion">Canvas 2D / 3D</span>
+                  <span class="skill-pill px-3 py-1.5 rounded-lg bg-void/70 border border-ivory/15 font-mono text-[11px] text-ivory/80" data-tag="motion">Three.js &amp; GLSL</span>
+                  <span class="skill-pill px-3 py-1.5 rounded-lg bg-void/70 border border-ivory/15 font-mono text-[11px] text-ivory/80" data-tag="motion">SVG Procedural</span>
+                  <span class="skill-pill px-3 py-1.5 rounded-lg bg-void/70 border border-ivory/15 font-mono text-[11px] text-ivory/80" data-tag="motion">Física de UI</span>
+                  <span class="skill-pill px-3 py-1.5 rounded-lg bg-void/70 border border-ivory/15 font-mono text-[11px] text-ivory/80" data-tag="motion">GSAP / WAAPI</span>
+                </div>
+              </div>
+
+              <!-- Cluster 3 -->
+              <div class="skill-cluster glass-panel glass-panel-hover rounded-3xl p-6 cursor-pointer" data-cluster="design" data-related="arquitetura,motion">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="font-mono text-[11px] uppercase tracking-[0.2em] text-brass">03 // Forma</span>
+                  <span class="font-mono text-[10px] text-ivory/45">94%</span>
+                </div>
+                <h4 class="font-serif text-2xl text-ivory mb-4">Diseño de Sistemas</h4>
+                <div class="flex flex-wrap gap-2">
+                  <span class="skill-pill px-3 py-1.5 rounded-lg bg-void/70 border border-ivory/15 font-mono text-[11px] text-ivory/80" data-tag="design">Figma Tokens</span>
+                  <span class="skill-pill px-3 py-1.5 rounded-lg bg-void/70 border border-ivory/15 font-mono text-[11px] text-ivory/80" data-tag="design">Dirección Editorial</span>
+                  <span class="skill-pill px-3 py-1.5 rounded-lg bg-void/70 border border-ivory/15 font-mono text-[11px] text-ivory/80" data-tag="design">Microinteracciones</span>
+                  <span class="skill-pill px-3 py-1.5 rounded-lg bg-void/70 border border-ivory/15 font-mono text-[11px] text-ivory/80" data-tag="design">Tipografía Fluida</span>
+                </div>
+              </div>
+
+              <!-- Cluster 4 -->
+              <div class="skill-cluster glass-panel glass-panel-hover rounded-3xl p-6 cursor-pointer" data-cluster="escala" data-related="arquitetura">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="font-mono text-[11px] uppercase tracking-[0.2em] text-brass">04 // Estructura</span>
+                  <span class="font-mono text-[10px] text-ivory/45">88%</span>
+                </div>
+                <h4 class="font-serif text-2xl text-ivory mb-4">Back-End &amp; Datos</h4>
+                <div class="flex flex-wrap gap-2">
+                  <span class="skill-pill px-3 py-1.5 rounded-lg bg-void/70 border border-ivory/15 font-mono text-[11px] text-ivory/80" data-tag="escala">Node.js &amp; Edge</span>
+                  <span class="skill-pill px-3 py-1.5 rounded-lg bg-void/70 border border-ivory/15 font-mono text-[11px] text-ivory/80" data-tag="escala">GraphQL / REST</span>
+                  <span class="skill-pill px-3 py-1.5 rounded-lg bg-void/70 border border-ivory/15 font-mono text-[11px] text-ivory/80" data-tag="escala">WebSockets</span>
+                  <span class="skill-pill px-3 py-1.5 rounded-lg bg-void/70 border border-ivory/15 font-mono text-[11px] text-ivory/80" data-tag="escala">CI/CD &amp; Pruebas</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="max-w-7xl mx-auto px-6"><div class="gold-hairline"></div></div>
+
+    <!-- ======================================================================
+         SEÇÃO 5: CONTATO — 4.200m — O FUNDO DA TOCA
+         ====================================================================== -->
+    <section id="fundo" data-depth="4200" class="py-24 sm:py-32 px-5 sm:px-8 lg:px-14">
+      <div class="max-w-7xl mx-auto">
+        <div class="reveal glass-panel rounded-[2rem] p-7 sm:p-12 lg:p-16 relative overflow-hidden border-brass/30">
+          <!-- Silhueta de Fechadura Monumental no Fundo -->
+          <svg class="absolute right-6 top-6 w-40 h-56 text-brass/10 pointer-events-none hidden md:block" viewBox="0 0 120 180" fill="none">
+            <circle cx="60" cy="54" r="34" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M44 84L26 168H94L76 84" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10">
+            <!-- Coluna de Chamada e Links Sociais -->
+            <div class="lg:col-span-5 flex flex-col justify-between space-y-8">
+              <div class="space-y-4">
+                <span class="font-mono text-xs tracking-[0.25em] uppercase text-crimson flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-crimson animate-ping"></span>
+                  4.200m &mdash; El Fondo de la Madriguera
+                </span>
+                <h2 class="font-serif text-4xl sm:text-5xl font-medium text-ivory leading-tight">
+                  ¿Construimos algo <span class="italic text-brass">imposible?</span>
+                </h2>
+                <p class="text-sm sm:text-base text-ivory/75 leading-relaxed">
+                  Si tienes un producto ambicioso, una idea fuera de lo común o necesitas dirección técnica y estética para tu próxima interfaz, envía una señal a través de la madriguera.
+                </p>
+              </div>
+
+              <!-- Contato Direto + Redes Sociais -->
+              <div class="space-y-5">
+                <div>
+                  <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-ivory/45 block mb-2">Canal Directo</span>
+                  <button
+                    id="copy-email-btn"
+                    type="button"
+                    class="interactive-el group inline-flex items-center gap-3 px-4 py-2.5 rounded-xl bg-void/70 border border-brass/25 hover:border-brass text-sm font-mono text-ivory transition-all"
+                  >
+                    <span>helena@tocadocoelho.dev</span>
+                    <span class="text-[10px] uppercase tracking-wider text-brass group-hover:underline">Copiar</span>
+                  </button>
+                </div>
+
+                <div>
+                  <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-ivory/45 block mb-2.5">Portales Sociales</span>
+                  <div class="flex flex-wrap gap-2.5">
+                    <a href="#fundo" data-social="GitHub" class="social-link interactive-el px-4 py-2 rounded-xl bg-void/60 border border-ivory/15 hover:border-brass text-xs font-mono text-ivory/80 hover:text-brass transition-all">GitHub</a>
+                    <a href="#fundo" data-social="LinkedIn" class="social-link interactive-el px-4 py-2 rounded-xl bg-void/60 border border-ivory/15 hover:border-brass text-xs font-mono text-ivory/80 hover:text-brass transition-all">LinkedIn</a>
+                    <a href="#fundo" data-social="Dribbble" class="social-link interactive-el px-4 py-2 rounded-xl bg-void/60 border border-ivory/15 hover:border-brass text-xs font-mono text-ivory/80 hover:text-brass transition-all">Dribbble</a>
+                    <a href="#fundo" data-social="CodePen" class="social-link interactive-el px-4 py-2 rounded-xl bg-void/60 border border-ivory/15 hover:border-brass text-xs font-mono text-ivory/80 hover:text-brass transition-all">CodePen</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Coluna do Formulário Minimalista -->
+            <div class="lg:col-span-7">
+              <form id="contact-form" novalidate class="space-y-5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label for="input-nome" class="block font-mono text-[11px] uppercase tracking-widest text-ivory/65 mb-2">Nombre</label>
+                    <input
+                      id="input-nome"
+                      name="nome"
+                      type="text"
+                      required
+                      placeholder="¿Cómo debo llamarte?"
+                      class="w-full px-4 py-3.5 rounded-xl bg-void/75 border border-brass/25 focus:border-brass focus:outline-none text-sm text-ivory placeholder:text-ivory/30 transition-colors"
+                    />
+                    <p id="err-nome" class="hidden mt-1.5 font-mono text-[11px] text-crimson">Por favor, indica tu nombre.</p>
+                  </div>
+
+                  <div>
+                    <label for="input-email" class="block font-mono text-[11px] uppercase tracking-widest text-ivory/65 mb-2">Correo electrónico</label>
+                    <input
+                      id="input-email"
+                      name="email"
+                      type="email"
+                      required
+                      placeholder="tu@dominio.com"
+                      class="w-full px-4 py-3.5 rounded-xl bg-void/75 border border-brass/25 focus:border-brass focus:outline-none text-sm text-ivory placeholder:text-ivory/30 transition-colors"
+                    />
+                    <p id="err-email" class="hidden mt-1.5 font-mono text-[11px] text-crimson">Ingresa una dirección de correo válida.</p>
+                  </div>
+                </div>
+
+                <div>
+                  <label for="input-mensagem" class="block font-mono text-[11px] uppercase tracking-widest text-ivory/65 mb-2">Mensaje</label>
+                  <textarea
+                    id="input-mensagem"
+                    name="mensagem"
+                    rows="5"
+                    required
+                    placeholder="Cuéntame sobre tu proyecto, idea o desafío..."
+                    class="w-full px-4 py-3.5 rounded-xl bg-void/75 border border-brass/25 focus:border-brass focus:outline-none text-sm text-ivory placeholder:text-ivory/30 transition-colors resize-none"
+                  ></textarea>
+                  <p id="err-mensagem" class="hidden mt-1.5 font-mono text-[11px] text-crimson">Escribe al menos 10 caracteres en tu mensaje.</p>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-between gap-4 pt-2">
+                  <span class="font-mono text-[11px] text-ivory/45">Tiempo medio de respuesta: &lt; 24h</span>
+                  <button
+                    type="submit"
+                    class="interactive-el inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-brass text-void font-semibold text-sm tracking-wide hover:bg-ivory transition-all duration-300 shadow-brass active:scale-95"
+                  >
+                    <span>Enviar por la Madriguera</span>
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </form>
+
+              <!-- Estado de Confirmação Animado -->
+              <div id="contact-success" class="hidden py-10 px-6 rounded-2xl bg-void/75 border border-brass/40 text-center space-y-5">
+                <div class="w-16 h-16 mx-auto rounded-full bg-brass/15 border border-brass flex items-center justify-center shadow-brass">
+                  <svg class="w-8 h-8 text-brass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div class="space-y-2">
+                  <h3 class="font-serif text-3xl text-ivory">Mensaje enviado a través de la madriguera</h3>
+                  <p class="text-sm text-ivory/70 max-w-md mx-auto">
+                    Tu señal atravesó los 4.200 metros con éxito. Volveré pronto con un café y buenas ideas.
+                  </p>
+                </div>
+                <button
+                  id="contact-reset-btn"
+                  type="button"
+                  class="interactive-el px-5 py-2.5 rounded-xl border border-brass/35 text-xs font-mono uppercase tracking-wider text-brass hover:bg-brass/15 transition-colors"
+                >
+                  Enviar otro mensaje
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rodapé + Botão Retornar à Superfície (Reverse Warp) -->
+        <footer class="mt-14 pt-8 border-t border-brass/15 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div class="text-center sm:text-left">
+            <p class="font-mono text-xs text-ivory/55">
+              &copy; 2026 TOCA // PORTAFOLIO &mdash; Diseñado y programado a medida.
+            </p>
+            <p class="font-mono text-[10px] text-ivory/35 mt-1">
+              Ningún conejo blanco se retrasó en la creación de esta página.
+            </p>
+          </div>
+
+          <button
+            id="return-surface-btn"
+            type="button"
+            class="interactive-el group inline-flex items-center gap-3 px-6 py-3.5 rounded-2xl glass-panel border-brass/35 hover:border-brass text-xs font-mono uppercase tracking-[0.18em] text-ivory hover:text-brass transition-all active:scale-95"
+          >
+            <svg class="w-4 h-4 text-brass transition-transform duration-300 group-hover:-translate-y-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 19V5M5 12l7-7 7 7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Volver a la Superficie (0m)</span>
+          </button>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       MODAL INTERATIVO DE PROJETO
+       ======================================================================== -->
+  <div
+    id="project-modal"
+    class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-void/85 backdrop-blur-md opacity-0"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title"
+  >
+    <div id="project-modal-card" class="modal-card w-full max-w-3xl max-h-[90vh] overflow-y-auto glass-panel rounded-3xl border-brass/40 p-6 sm:p-9 relative scale-95 opacity-0">
+      <!-- Botão Fechar -->
+      <button
+        id="modal-close-btn"
+        type="button"
+        class="interactive-el absolute top-5 right-5 w-10 h-10 rounded-xl bg-void/75 border border-brass/30 hover:border-brass text-ivory flex items-center justify-center transition-colors"
+        aria-label="Cerrar detalles del proyecto"
+      >
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/>
+        </svg>
+      </button>
+
+      <!-- Cabeçalho do Modal -->
+      <div class="pr-12 space-y-2 mb-6">
+        <div class="flex flex-wrap items-center gap-3 font-mono text-[11px] uppercase tracking-widest">
+          <span id="modal-depth" class="text-brass">2.240m</span>
+          <span class="text-ivory/30">&bull;</span>
+          <span id="modal-category" class="text-crimson">Web &amp; Apps</span>
+        </div>
+        <h3 id="modal-title" class="font-serif text-3xl sm:text-4xl text-ivory">Título del Proyecto</h3>
+      </div>
+
+      <!-- Visual SVG Procedural do Projeto -->
+      <div id="modal-visual" class="w-full h-52 sm:h-64 rounded-2xl overflow-hidden border border-brass/25 bg-void mb-7 flex items-center justify-center"></div>
+
+      <!-- Visão Geral -->
+      <p id="modal-overview" class="text-sm sm:text-base text-ivory/80 leading-relaxed mb-7"></p>
+
+      <!-- Desafio e Solução -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-7">
+        <div class="p-5 rounded-2xl bg-void/65 border border-ivory/10">
+          <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-crimson block mb-2">El Desafío</span>
+          <p id="modal-challenge" class="text-xs sm:text-sm text-ivory/75 leading-relaxed"></p>
+        </div>
+        <div class="p-5 rounded-2xl bg-void/65 border border-brass/20">
+          <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-brass block mb-2">La Solución</span>
+          <p id="modal-solution" class="text-xs sm:text-sm text-ivory/75 leading-relaxed"></p>
+        </div>
+      </div>
+
+      <!-- Stack Tecnológica -->
+      <div class="mb-8">
+        <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-ivory/50 block mb-3">Arquitectura &amp; Stack</span>
+        <div id="modal-stack" class="flex flex-wrap gap-2"></div>
+      </div>
+
+      <!-- Botões de Ação Simulados -->
+      <div class="flex flex-wrap items-center justify-end gap-3 pt-5 border-t border-brass/15">
+        <button id="modal-repo-btn" type="button" class="interactive-el px-5 py-3 rounded-xl bg-void/80 border border-brass/30 hover:border-brass font-mono text-xs uppercase tracking-wider text-ivory transition-colors">
+          Ver Repositorio
+        </button>
+        <button id="modal-live-btn" type="button" class="interactive-el px-6 py-3 rounded-xl bg-brass hover:bg-ivory text-void font-mono text-xs uppercase tracking-wider font-semibold transition-colors">
+          Abrir Demostración
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       NOTIFICAÇÃO TOAST CUSTOMIZADA (SUBSTITUI QUALQUER ALERT)
+       ======================================================================== -->
+  <div
+    id="toast-container"
+    class="fixed bottom-5 left-1/2 -translate-x-1/2 z-[80] pointer-events-none transition-all duration-300 opacity-0 translate-y-4"
+    role="status"
+    aria-live="polite"
+  >
+    <div class="glass-panel border-brass/45 rounded-2xl px-5 py-3 flex items-center gap-3 shadow-glass">
+      <span class="w-2 h-2 rounded-full bg-brass"></span>
+      <span id="toast-message" class="font-mono text-xs text-ivory tracking-wide"></span>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       SCRIPT PRINCIPAL: TÚNEL 3D CANVAS + INTERAÇÕES DO PORTFÓLIO
+       ======================================================================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ======================================================================
+         1. UTILITÁRIOS DE UI (TOAST E CÓPIA SEGURA)
+         ====================================================================== */
+      let toastTimer = null;
+      function showToast(message) {
+        const container = document.getElementById('toast-container');
+        const textEl = document.getElementById('toast-message');
+        if (!container || !textEl) return;
+
+        textEl.textContent = message;
+        container.classList.remove('opacity-0', 'translate-y-4');
+        container.classList.add('opacity-100', 'translate-y-0');
+
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+          container.classList.add('opacity-0', 'translate-y-4');
+          container.classList.remove('opacity-100', 'translate-y-0');
+        }, 3200);
+      }
+
+      function copyToClipboard(text) {
+        try {
+          const textarea = document.createElement('textarea');
+          textarea.value = text;
+          textarea.setAttribute('readonly', '');
+          textarea.style.position = 'fixed';
+          textarea.style.opacity = '0';
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textarea);
+          showToast('Correo copiado: ' + text);
+        } catch (err) {
+          showToast('Correo: ' + text);
+        }
+      }
+
+      /* ======================================================================
+         2. DADOS DOS 6 PROJETOS ("AS PORTAS") + SVGs PROCEDURAIS ÚNICOS
+         ====================================================================== */
+      const PROJECTS = [
+        {
+          id: 'oraculo-cronos',
+          title: 'Oráculo Cronos',
+          category: 'web',
+          categoryLabel: 'Web & Apps',
+          depth: '2.240m',
+          shortDesc: 'Plataforma analítica temporal para visualización de flujos financieros en tiempo real con 120 mil nodos simultáneos.',
+          overview: 'Oráculo Cronos reimagina los paneles de telemetría financiera como un instrumento astronómico de precisión. Construido para equipos de riesgo, combina gráficos vectoriales acelerados por GPU con navegación por línea temporal continua.',
+          challenge: 'Renderizar miles de series temporales con latencia inferior a 16ms sin sacrificar la claridad editorial ni sobrecargar navegadores móviles.',
+          solution: 'Arquitectura híbrida que combina Web Workers para agregación binaria, renderizado en Canvas 2D optimizado y microcomponentes React memorizados.',
+          stack: ['TypeScript', 'React 19', 'Canvas API', 'WebSockets', 'Tailwind CSS'],
+          accent: '#d4af37',
+          svgArt: `
+            <svg viewBox="0 0 400 260" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="g1" cx="50%" cy="50%" r="60%">
+                  <stop offset="0%" stop-color="#d4af37" stop-opacity="0.28"/>
+                  <stop offset="100%" stop-color="#060609" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <rect width="400" height="260" fill="#08080e"/>
+              <circle cx="200" cy="130" r="120" fill="url(#g1)"/>
+              <circle cx="200" cy="130" r="86" fill="none" stroke="#d4af37" stroke-width="1" stroke-dasharray="4 6" opacity="0.7"/>
+              <circle cx="200" cy="130" r="58" fill="none" stroke="#f4f0e6" stroke-width="0.9" opacity="0.5"/>
+              <circle cx="200" cy="130" r="28" fill="none" stroke="#c81e3a" stroke-width="1.2" opacity="0.8"/>
+              <path d="M50 185 Q 130 95, 200 130 T 350 75" fill="none" stroke="#d4af37" stroke-width="1.8"/>
+              <path d="M50 205 Q 145 145, 210 155 T 350 110" fill="none" stroke="#f4f0e6" stroke-width="0.8" stroke-dasharray="3 4" opacity="0.6"/>
+              <line x1="200" y1="22" x2="200" y2="238" stroke="#d4af37" stroke-width="0.6" opacity="0.4"/>
+              <line x1="92" y1="130" x2="308" y2="130" stroke="#d4af37" stroke-width="0.6" opacity="0.4"/>
+              <circle cx="200" cy="130" r="4" fill="#f4f0e6"/>
+            </svg>`
+        },
+        {
+          id: 'labirinto-editorial',
+          title: 'Laberinto Editorial',
+          category: 'design',
+          categoryLabel: 'Diseño UI',
+          depth: '2.410m',
+          shortDesc: 'Sistema de diseño modular y revista interactiva creada para una bienal de arquitectura contemporánea.',
+          overview: 'Un ecosistema tipográfico líquido donde artículos extensos, planos arquitectónicos y ensayos fotográficos se reorganizan dinámicamente según el ritmo de lectura del visitante.',
+          challenge: 'Mantener rigor tipográfico clásico en pantallas que varían desde smartphones compactos hasta monitores ultrawide 4K.',
+          solution: 'Creación de 42 tokens tipográficos fluidos (clamp), retícula asimétrica inspirada en libros raros y componentes accesibles con contraste AAA.',
+          stack: ['Design System', 'Figma Tokens', 'CSS Grid', 'Tipografía Fluida', 'A11y'],
+          accent: '#f4f0e6',
+          svgArt: `
+            <svg viewBox="0 0 400 260" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+              <rect width="400" height="260" fill="#090910"/>
+              <rect x="64" y="34" width="272" height="192" rx="12" fill="none" stroke="#d4af37" stroke-width="0.9" opacity="0.45"/>
+              <path d="M200 34V226M64 130H336" stroke="#f4f0e6" stroke-width="0.6" opacity="0.22"/>
+              <path d="M132 190V98C132 68 156 50 200 50C244 50 268 68 268 98V190" fill="none" stroke="#f4f0e6" stroke-width="1.4" opacity="0.8"/>
+              <path d="M158 190V112C158 90 174 76 200 76C226 76 242 90 242 112V190" fill="none" stroke="#d4af37" stroke-width="1.2"/>
+              <circle cx="200" cy="118" r="14" fill="none" stroke="#c81e3a" stroke-width="1.4"/>
+              <line x1="110" y1="190" x2="290" y2="190" stroke="#d4af37" stroke-width="1"/>
+            </svg>`
+        },
+        {
+          id: 'espelho-acustico',
+          title: 'Espejo Acústico',
+          category: 'experimentos',
+          categoryLabel: 'Experimentos',
+          depth: '2.580m',
+          shortDesc: 'Sintetizador visual generativo que transforma frecuencias sonoras en geometría surrealista a 60fps.',
+          overview: 'Experimento audiovisual interactivo inspirado en la física de figuras de Chladni y espejos líquidos. El usuario manipula armónicos mediante tacto o ratón y observa portales geométricos reaccionar al instante.',
+          challenge: 'Sincronizar el análisis espectral de audio con partículas vectoriales fluidas sin generar caídas de cuadros en dispositivos móviles.',
+          solution: 'Pipeline ligero con búferes preasignados, interpolación armónica sinusoidal y adaptación automática de densidad de partículas por FPS.',
+          stack: ['Web Audio API', 'HTML5 Canvas', 'GLSL Shaders', 'Matemática Generativa'],
+          accent: '#c81e3a',
+          svgArt: `
+            <svg viewBox="0 0 400 260" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+              <rect width="400" height="260" fill="#07070c"/>
+              <polygon points="200,26 296,80 296,180 200,234 104,180 104,80" fill="none" stroke="#d4af37" stroke-width="1" opacity="0.5"/>
+              <polygon points="200,48 276,91 276,169 200,212 124,169 124,91" fill="none" stroke="#c81e3a" stroke-width="1.3" opacity="0.85"/>
+              <polygon points="200,72 254,102 254,158 200,188 146,158 146,102" fill="none" stroke="#f4f0e6" stroke-width="1" opacity="0.7"/>
+              <path d="M40 130 C 95 70, 145 190, 200 130 C 255 70, 305 190, 360 130" fill="none" stroke="#d4af37" stroke-width="1.6"/>
+              <circle cx="200" cy="130" r="6" fill="#c81e3a"/>
+            </svg>`
+        },
+        {
+          id: 'atlas-nocturno',
+          title: 'Atlas Nocturno',
+          category: 'web',
+          categoryLabel: 'Web & Apps',
+          depth: '2.740m',
+          shortDesc: 'Aplicación colaborativa de mapeo cultural y rutas urbanas nocturnas con modo offline completo.',
+          overview: 'Atlas Nocturno conecta curadores independientes, galerías y espacios culturales en un mapa vectorial oscuro con capas sonoras, recorridos personalizados y sincronización instantánea.',
+          challenge: 'Permitir navegación fluida con gestos multitáctiles y persistencia de recorridos en áreas sin conectividad.',
+          solution: 'PWA resiliente con Service Workers, caché indexada local y motor de renderizado de capas vectoriales optimizado.',
+          stack: ['Next.js', 'PWA / IndexedDB', 'Mapbox Vector', 'Node.js', 'Edge API'],
+          accent: '#d4af37',
+          svgArt: `
+            <svg viewBox="0 0 400 260" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+              <rect width="400" height="260" fill="#07080f"/>
+              <g stroke="#d4af37" stroke-width="0.6" opacity="0.25">
+                <line x1="0" y1="65" x2="400" y2="65"/><line x1="0" y1="130" x2="400" y2="130"/><line x1="0" y1="195" x2="400" y2="195"/>
+                <line x1="100" y1="0" x2="100" y2="260"/><line x1="200" y1="0" x2="200" y2="260"/><line x1="300" y1="0" x2="300" y2="260"/>
+              </g>
+              <path d="M75 195 L 155 112 L 235 148 L 320 68" fill="none" stroke="#d4af37" stroke-width="1.8" stroke-dasharray="5 4"/>
+              <circle cx="75" cy="195" r="5" fill="#f4f0e6"/>
+              <circle cx="155" cy="112" r="7" fill="none" stroke="#d4af37" stroke-width="1.5"/>
+              <circle cx="155" cy="112" r="3" fill="#d4af37"/>
+              <circle cx="235" cy="148" r="5" fill="#f4f0e6"/>
+              <circle cx="320" cy="68" r="9" fill="none" stroke="#c81e3a" stroke-width="1.5"/>
+              <circle cx="320" cy="68" r="3.5" fill="#c81e3a"/>
+            </svg>`
+        },
+        {
+          id: 'camara-das-chaves',
+          title: 'Cámara de las Llaves',
+          category: 'design',
+          categoryLabel: 'Diseño UI',
+          depth: '2.910m',
+          shortDesc: 'Experiencia de autenticación biométrica y bóveda criptográfica con lenguaje visual táctil y minimalista.',
+          overview: 'Rediseño completo del recorrido de seguridad y gestión de llaves digitales para una billetera de custodia institucional, transformando flujos densos en rituales claros y confiables.',
+          challenge: 'Reducir la ansiedad cognitiva en operaciones irreversibles manteniendo transparencia absoluta sobre firmas criptográficas.',
+          solution: 'Retroalimentación visual progresiva con metáfora de cerradura mecánica, confirmación en dos pasos y jerarquía tipográfica monoespaciada para hashes.',
+          stack: ['UX Architecture', 'Prototipado Interactivo', 'Microinteracciones', 'WebAuthn'],
+          accent: '#f4f0e6',
+          svgArt: `
+            <svg viewBox="0 0 400 260" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+              <rect width="400" height="260" fill="#08080d"/>
+              <circle cx="200" cy="106" r="34" fill="none" stroke="#d4af37" stroke-width="2"/>
+              <circle cx="200" cy="106" r="22" fill="none" stroke="#f4f0e6" stroke-width="0.9" stroke-dasharray="3 3"/>
+              <path d="M182 135 L 168 214 H 232 L 218 135" fill="none" stroke="#d4af37" stroke-width="2" stroke-linejoin="round"/>
+              <circle cx="200" cy="106" r="6" fill="#c81e3a"/>
+              <path d="M90 130 H 148 M 252 130 H 310" stroke="#f4f0e6" stroke-width="0.8" opacity="0.4"/>
+            </svg>`
+        },
+        {
+          id: 'jardim-inverso',
+          title: 'Jardín Inverso',
+          category: 'experimentos',
+          categoryLabel: 'Experimentos',
+          depth: '3.090m',
+          shortDesc: 'Experiencia narrativa en scroll 3D sobre botánica especulativa y gravedad invertida.',
+          overview: 'Un ensayo interactivo premiado donde especies botánicas procedurales florecen al revés a medida que el visitante desciende por la página, mezclando texto poético y física de resortes.',
+          challenge: 'Orquestar narrativa editorial, partículas orgánicas y transición de cámara 3D manteniendo la carga inicial por debajo de 1,2s.',
+          solution: 'Generación procedural de flora íntegramente en código vectorial sin texturas externas pesadas, controlada por curva de desplazamiento amortiguada.',
+          stack: ['Three.js', 'Procedural Art', 'Scroll Choreography', 'JavaScript ES2024'],
+          accent: '#c81e3a',
+          svgArt: `
+            <svg viewBox="0 0 400 260" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+              <rect width="400" height="260" fill="#07070c"/>
+              <path d="M200 24 V 230" stroke="#d4af37" stroke-width="1.4" opacity="0.7"/>
+              <path d="M200 68 C 155 58, 130 92, 118 122 C 154 114, 182 96, 200 68Z" fill="none" stroke="#f4f0e6" stroke-width="1.2"/>
+              <path d="M200 94 C 245 84, 270 118, 282 148 C 246 140, 218 122, 200 94Z" fill="none" stroke="#d4af37" stroke-width="1.2"/>
+              <path d="M200 132 C 162 130, 140 162, 135 190 C 168 182, 188 160, 200 132Z" fill="none" stroke="#c81e3a" stroke-width="1.3"/>
+              <circle cx="200" cy="24" r="5" fill="#d4af37"/>
+              <circle cx="200" cy="230" r="3" fill="#f4f0e6"/>
+            </svg>`
+        }
+      ];
+
+      /* ======================================================================
+         3. RENDERIZAÇÃO DOS CARTÕES-PORTAL E MODAL DE PROJETO
+         ====================================================================== */
+      const projectsGrid = document.getElementById('projects-grid');
+
+      function renderProjects(filter = 'todos') {
+        if (!projectsGrid) return;
+        const filtered = filter === 'todos' ? PROJECTS : PROJECTS.filter((p) => p.category === filter);
+
+        projectsGrid.innerHTML = filtered
+          .map(
+            (project, index) => `
+          <article
+            tabindex="0"
+            role="button"
+            data-project-id="${project.id}"
+            class="project-card interactive-el glass-panel glass-panel-hover tilt-card rounded-3xl p-4 sm:p-5 flex flex-col justify-between cursor-pointer group focus:outline-none focus:ring-2 focus:ring-brass"
+            aria-label="Abrir detalles del proyecto ${project.title}"
+          >
+            <div>
+              <!-- Marco en Arco/Portal con Arte SVG Procedural -->
+              <div class="portal-arch relative h-48 sm:h-52 overflow-hidden border border-brass/25 bg-void mb-5">
+                <div class="w-full h-full transition-transform duration-700 group-hover:scale-105">
+                  ${project.svgArt}
+                </div>
+                <!-- Sello de Profundidad -->
+                <div class="absolute top-3 left-3 px-2.5 py-1 rounded-full bg-void/85 border border-brass/30 font-mono text-[10px] tracking-widest text-brass">
+                  ${project.depth}
+                </div>
+                <!-- Número de la Puerta -->
+                <div class="absolute top-3 right-3 w-7 h-7 rounded-full bg-void/85 border border-ivory/20 flex items-center justify-center font-mono text-[10px] text-ivory/75">
+                  0${index + 1}
+                </div>
+                <!-- Brillo de cerradura al pasar el cursor -->
+                <div class="absolute inset-0 bg-gradient-to-t from-void/85 via-transparent to-transparent opacity-70 group-hover:opacity-45 transition-opacity"></div>
+              </div>
+
+              <!-- Metadatos y Título -->
+              <div class="px-1.5 space-y-2.5">
+                <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-crimson block">
+                  ${project.categoryLabel}
+                </span>
+                <h3 class="font-serif text-2xl sm:text-[1.7rem] text-ivory group-hover:text-brass transition-colors leading-tight">
+                  ${project.title}
+                </h3>
+                <p class="text-xs sm:text-sm text-ivory/70 leading-relaxed">
+                  ${project.shortDesc}
+                </p>
+              </div>
+            </div>
+
+            <!-- Etiquetas y Acción -->
+            <div class="px-1.5 pt-5 mt-5 border-t border-brass/15 flex items-center justify-between gap-2">
+              <div class="flex flex-wrap gap-1.5">
+                ${project.stack
+                  .slice(0, 2)
+                  .map(
+                    (tech) =>
+                      `<span class="px-2 py-0.5 rounded-md bg-void/70 border border-ivory/10 font-mono text-[10px] text-ivory/65">${tech}</span>`
+                  )
+                  .join('')}
+              </div>
+              <span class="font-mono text-[11px] uppercase tracking-wider text-brass inline-flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
+                Abrir
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </div>
+          </article>
+        `
+          )
+          .join('');
+
+        // Reanexa eventos nos cards recém-renderizados
+        projectsGrid.querySelectorAll('.project-card').forEach((card) => {
+          const open = () => openProjectModal(card.dataset.projectId);
+          card.addEventListener('click', open);
+          card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              open();
+            }
+          });
+          attachTiltEffect(card);
+        });
+      }
+
+      // Filtros de Categoria
+      document.querySelectorAll('.filter-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-btn').forEach((b) => {
+            b.classList.remove('bg-brass', 'text-void', 'font-semibold');
+            b.classList.add('glass-panel', 'text-ivory/75');
+          });
+          btn.classList.add('bg-brass', 'text-void', 'font-semibold');
+          btn.classList.remove('glass-panel', 'text-ivory/75');
+          renderProjects(btn.dataset.filter);
+        });
+      });
+
+      // Modal de Projeto
+      const modalEl = document.getElementById('project-modal');
+      const modalCardEl = document.getElementById('project-modal-card');
+      let currentModalProject = null;
+
+      function openProjectModal(projectId) {
+        const project = PROJECTS.find((p) => p.id === projectId);
+        if (!project || !modalEl || !modalCardEl) return;
+
+        currentModalProject = project;
+        document.getElementById('modal-depth').textContent = project.depth + ' — Coordenada';
+        document.getElementById('modal-category').textContent = project.categoryLabel;
+        document.getElementById('modal-title').textContent = project.title;
+        document.getElementById('modal-visual').innerHTML = project.svgArt;
+        document.getElementById('modal-overview').textContent = project.overview;
+        document.getElementById('modal-challenge').textContent = project.challenge;
+        document.getElementById('modal-solution').textContent = project.solution;
+        document.getElementById('modal-stack').innerHTML = project.stack
+          .map(
+            (tech) =>
+              `<span class="px-3 py-1.5 rounded-lg bg-brass/10 border border-brass/30 font-mono text-xs text-ivory">${tech}</span>`
+          )
+          .join('');
+
+        modalEl.classList.remove('hidden');
+        modalEl.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+
+        requestAnimationFrame(() => {
+          modalEl.classList.remove('opacity-0');
+          modalCardEl.classList.remove('scale-95', 'opacity-0');
+          modalCardEl.classList.add('scale-100', 'opacity-100');
+        });
+      }
+
+      function closeProjectModal() {
+        if (!modalEl || !modalCardEl) return;
+        modalEl.classList.add('opacity-0');
+        modalCardEl.classList.add('scale-95', 'opacity-0');
+        modalCardEl.classList.remove('scale-100', 'opacity-100');
+        document.body.style.overflow = '';
+
+        setTimeout(() => {
+          modalEl.classList.add('hidden');
+          modalEl.classList.remove('flex');
+        }, 280);
+      }
+
+      document.getElementById('modal-close-btn')?.addEventListener('click', closeProjectModal);
+      modalEl?.addEventListener('click', (e) => {
+        if (e.target === modalEl) closeProjectModal();
+      });
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modalEl && !modalEl.classList.contains('hidden')) {
+          closeProjectModal();
+        }
+      });
+
+      document.getElementById('modal-live-btn')?.addEventListener('click', () => {
+        if (currentModalProject) {
+          showToast(`Abriendo entorno interactivo de "${currentModalProject.title}" (modo demostración).`);
+        }
+      });
+
+      document.getElementById('modal-repo-btn')?.addEventListener('click', () => {
+        if (currentModalProject) {
+          showToast(`Repositorio de "${currentModalProject.title}" disponible bajo consulta técnica.`);
+        }
+      });
+
+      /* ======================================================================
+         4. RELÓGIO DE BOLSO FUNCIONAL EM TEMPO REAL (SVG)
+         ====================================================================== */
+      function initPocketWatch() {
+        const ticksGroup = document.getElementById('watch-ticks');
+        if (ticksGroup) {
+          let ticksMarkup = '';
+          for (let i = 0; i < 60; i++) {
+            const angle = (i * 6 * Math.PI) / 180;
+            const isHour = i % 5 === 0;
+            const r1 = isHour ? 96 : 99;
+            const r2 = 104;
+            const x1 = 120 + Math.cos(angle) * r1;
+            const y1 = 120 + Math.sin(angle) * r1;
+            const x2 = 120 + Math.cos(angle) * r2;
+            const y2 = 120 + Math.sin(angle) * r2;
+            ticksMarkup += `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" stroke="${
+              isHour ? '#d4af37' : 'rgba(244,240,230,0.28)'
+            }" stroke-width="${isHour ? '1.6' : '0.8'}"/>`;
+          }
+          ticksGroup.innerHTML = ticksMarkup;
+        }
+
+        const hourHand = document.getElementById('watch-hour-hand');
+        const minuteHand = document.getElementById('watch-minute-hand');
+        const secondHand = document.getElementById('watch-second-hand');
+        const digitalEl = document.getElementById('watch-digital-readout');
+
+        function updateClock() {
+          const now = new Date();
+          const hours = now.getHours();
+          const minutes = now.getMinutes();
+          const seconds = now.getSeconds();
+          const ms = now.getMilliseconds();
+
+          const secAngle = (seconds + ms / 1000) * 6;
+          const minAngle = (minutes + seconds / 60) * 6;
+          const hrAngle = ((hours % 12) + minutes / 60) * 30;
+
+          if (hourHand) hourHand.setAttribute('transform', `rotate(${hrAngle.toFixed(2)} 120 120)`);
+          if (minuteHand) minuteHand.setAttribute('transform', `rotate(${minAngle.toFixed(2)} 120 120)`);
+          if (secondHand) secondHand.setAttribute('transform', `rotate(${secAngle.toFixed(2)} 120 120)`);
+          if (digitalEl) {
+            const pad = (n) => String(n).padStart(2, '0');
+            digitalEl.textContent = `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+          }
+          requestAnimationFrame(updateClock);
+        }
+
+        updateClock();
+      }
+
+      /* ======================================================================
+         5. EFEITO TILT 3D NOS CARTÕES GLASSMÓRFICOS
+         ====================================================================== */
+      function attachTiltEffect(el) {
+        if (!el || window.matchMedia('(hover: none)').matches) return;
+
+        el.addEventListener('mousemove', (e) => {
+          const rect = el.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width - 0.5;
+          const y = (e.clientY - rect.top) / rect.height - 0.5;
+          el.style.transform = `perspective(900px) rotateX(${(-y * 7).toFixed(2)}deg) rotateY(${(x * 7).toFixed(2)}deg) translateY(-3px)`;
+        });
+
+        el.addEventListener('mouseleave', () => {
+          el.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+        });
+      }
+
+      /* ======================================================================
+         6. CLUSTERS INTERATIVOS DE HABILIDADES
+         ====================================================================== */
+      function initSkillClusters() {
+        const clusters = document.querySelectorAll('.skill-cluster');
+        const pills = document.querySelectorAll('.skill-pill');
+        const label = document.getElementById('skill-resonance-label');
+        const resetBtn = document.getElementById('skill-reset-btn');
+
+        const clusterDescriptions = {
+          arquitetura: 'Arquitectura Front-End + conexiones con Motion y Diseño',
+          motion: 'Motion & WebGL + conexiones con Ingeniería y Forma',
+          design: 'Diseño de Sistemas + conexiones con Front-End y Cinética',
+          escala: 'Back-End & Datos + conexión directa con Ingeniería Front-End',
+        };
+
+        let lockedCluster = null;
+
+        function highlightCluster(clusterKey, relatedStr) {
+          const related = (relatedStr || '').split(',').filter(Boolean);
+          pills.forEach((pill) => {
+            const tag = pill.dataset.tag;
+            if (tag === clusterKey) {
+              pill.classList.add('is-highlighted');
+              pill.classList.remove('is-dimmed');
+            } else if (related.includes(tag)) {
+              pill.classList.remove('is-dimmed', 'is-highlighted');
+            } else {
+              pill.classList.add('is-dimmed');
+              pill.classList.remove('is-highlighted');
+            }
+          });
+          if (label && clusterDescriptions[clusterKey]) {
+            label.textContent = clusterDescriptions[clusterKey];
+          }
+        }
+
+        function resetHighlight() {
+          pills.forEach((pill) => pill.classList.remove('is-dimmed', 'is-highlighted'));
+          if (label) label.textContent = 'Todos los engranajes sincronizados';
+          if (resetBtn) resetBtn.classList.add('hidden');
+          lockedCluster = null;
+        }
+
+        clusters.forEach((cluster) => {
+          cluster.addEventListener('mouseenter', () => {
+            if (!lockedCluster) {
+              highlightCluster(cluster.dataset.cluster, cluster.dataset.related);
+            }
+          });
+          cluster.addEventListener('mouseleave', () => {
+            if (!lockedCluster) resetHighlight();
+          });
+          cluster.addEventListener('click', () => {
+            if (lockedCluster === cluster.dataset.cluster) {
+              resetHighlight();
+            } else {
+              lockedCluster = cluster.dataset.cluster;
+              highlightCluster(cluster.dataset.cluster, cluster.dataset.related);
+              if (resetBtn) resetBtn.classList.remove('hidden');
+            }
+          });
+        });
+
+        resetBtn?.addEventListener('click', resetHighlight);
+      }
+
+      /* ======================================================================
+         7. FORMULÁRIO DE CONTATO COM VALIDAÇÃO E ANIMAÇÃO DE ENVIO
+         ====================================================================== */
+      function initContactForm() {
+        const form = document.getElementById('contact-form');
+        const successBox = document.getElementById('contact-success');
+        const resetBtn = document.getElementById('contact-reset-btn');
+        if (!form || !successBox) return;
+
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const nome = document.getElementById('input-nome');
+          const email = document.getElementById('input-email');
+          const msg = document.getElementById('input-mensagem');
+
+          const errNome = document.getElementById('err-nome');
+          const errEmail = document.getElementById('err-email');
+          const errMsg = document.getElementById('err-mensagem');
+
+          let valid = true;
+
+          if (!nome.value.trim() || nome.value.trim().length < 2) {
+            errNome.classList.remove('hidden');
+            valid = false;
+          } else {
+            errNome.classList.add('hidden');
+          }
+
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email.value.trim())) {
+            errEmail.classList.remove('hidden');
+            valid = false;
+          } else {
+            errEmail.classList.add('hidden');
+          }
+
+          if (!msg.value.trim() || msg.value.trim().length < 10) {
+            errMsg.classList.remove('hidden');
+            valid = false;
+          } else {
+            errMsg.classList.add('hidden');
+          }
+
+          if (!valid) {
+            showToast('Verifica los campos resaltados antes de enviar.');
+            return;
+          }
+
+          // Pulso sutil no túnel + exibição do estado de confirmação
+          triggerWarpPulse(1.4, 700);
+          form.classList.add('hidden');
+          successBox.classList.remove('hidden');
+          showToast('Mensaje enviado a través de la madriguera.');
+        });
+
+        resetBtn?.addEventListener('click', () => {
+          form.reset();
+          successBox.classList.add('hidden');
+          form.classList.remove('hidden');
+        });
+
+        document.getElementById('copy-email-btn')?.addEventListener('click', () => {
+          copyToClipboard('helena@tocadocoelho.dev');
+        });
+
+        document.querySelectorAll('.social-link').forEach((link) => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            showToast(`Perfil de ${link.dataset.social} — enlace de demostración del portafolio.`);
+          });
+        });
+      }
+
+      /* ======================================================================
+         8. MENU MOBILE, REVELAÇÃO NA ROLAGEM E MEDIDOR DE PROFUNDIDADE
+         ====================================================================== */
+      function initNavigationAndScrollUI() {
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const iconOpen = document.getElementById('menu-icon-open');
+        const iconClose = document.getElementById('menu-icon-close');
+
+        function toggleMobileMenu(forceClose = false) {
+          if (!mobileMenu || !mobileBtn) return;
+          const isOpen = !mobileMenu.classList.contains('hidden');
+          const nextOpen = forceClose ? false : !isOpen;
+          mobileMenu.classList.toggle('hidden', !nextOpen);
+          iconOpen?.classList.toggle('hidden', nextOpen);
+          iconClose?.classList.toggle('hidden', !nextOpen);
+          mobileBtn.setAttribute('aria-expanded', String(nextOpen));
+        }
+
+        mobileBtn?.addEventListener('click', () => toggleMobileMenu());
+        document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+          link.addEventListener('click', () => toggleMobileMenu(true));
+        });
+
+        // Botões da régua de profundidade lateral
+        document.querySelectorAll('.depth-dot').forEach((dot) => {
+          dot.addEventListener('click', () => {
+            const target = document.querySelector(dot.dataset.jump);
+            if (target) {
+              triggerWarpPulse(1.6, 550);
+              target.scrollIntoView({ behavior: 'smooth' });
+            }
+          });
+        });
+
+        // CTA "Seguir o Coelho Branco" — Dispara burst de warp + desce para A Queda
+        document.getElementById('follow-rabbit-btn')?.addEventListener('click', () => {
+          triggerWarpPulse(3.8, 900);
+          setTimeout(() => {
+            document.getElementById('a-queda')?.scrollIntoView({ behavior: 'smooth' });
+          }, 140);
+        });
+
+        // Botão "Retornar à Superfície (0m)" — Dispara warp reverso subindo para o topo
+        document.getElementById('return-surface-btn')?.addEventListener('click', () => {
+          triggerWarpPulse(-4.2, 1100);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+          showToast('Invirtiendo gravedad — regresando a la superficie (0m).');
+        });
+
+        // IntersectionObserver para animações de entrada (.reveal)
+        const revealObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+              }
+            });
+          },
+          { threshold: 0.12 }
+        );
+        document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+      }
+
+      /* ======================================================================
+         9. CURSOR CUSTOMIZADO (AURA DESKTOP)
+         ====================================================================== */
+      function initCustomCursor() {
+        if (window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
+        const aura = document.getElementById('cursor-aura');
+        const dot = document.getElementById('cursor-dot');
+        if (!aura || !dot) return;
+
+        let cx = -100, cy = -100;
+        let tx = -100, ty = -100;
+        let visible = false;
+
+        window.addEventListener('mousemove', (e) => {
+          tx = e.clientX;
+          ty = e.clientY;
+          if (!visible) {
+            visible = true;
+            aura.style.opacity = '1';
+            dot.style.opacity = '1';
+          }
+          dot.style.transform = `translate3d(${tx - 2.5}px, ${ty - 2.5}px, 0)`;
+
+          const interactive = e.target.closest('a, button, input, textarea, [role="button"], .skill-cluster');
+          aura.classList.toggle('is-hovering', Boolean(interactive));
+        });
+
+        document.addEventListener('mouseleave', () => {
+          visible = false;
+          aura.style.opacity = '0';
+          dot.style.opacity = '0';
+        });
+
+        function renderCursor() {
+          cx += (tx - cx) * 0.16;
+          cy += (ty - cy) * 0.16;
+          const half = aura.offsetWidth / 2;
+          aura.style.transform = `translate3d(${(cx - half).toFixed(1)}px, ${(cy - half).toFixed(1)}px, 0)`;
+          requestAnimationFrame(renderCursor);
+        }
+        renderCursor();
+      }
+
+      /* ======================================================================
+         10. MOTOR 3D DO TÚNEL "TOCA DO COELHO BRANCO" (HTML5 CANVAS 60FPS)
+         ====================================================================== */
+      const tunnelState = {
+        timeModes: [
+          { name: 'Normal', speed: 1.0 },
+          { name: 'Cámara Lenta', speed: 0.28 },
+          { name: 'Hipercaída', speed: 2.65 },
+        ],
+        modeIndex: 0,
+        scrollProgress: 0, // 0 a 1
+        scrollVelocity: 0,
+        lastScrollY: 0,
+        pointerX: 0, // -1 a 1
+        pointerY: 0, // -1 a 1
+        vanishX: 0,
+        vanishY: 0,
+        isHoldingWarp: false,
+        pulseBoost: 0,
+        pulseDirection: 1,
+      };
+
+      let pulseTimeout = null;
+      function triggerWarpPulse(strength = 3.2, durationMs = 800) {
+        tunnelState.pulseDirection = strength >= 0 ? 1 : -1;
+        tunnelState.pulseBoost = Math.abs(strength);
+        clearTimeout(pulseTimeout);
+        pulseTimeout = setTimeout(() => {
+          tunnelState.pulseBoost = 0;
+          tunnelState.pulseDirection = 1;
+        }, durationMs);
+      }
+
+      // Botão HUD de Distorção Temporal
+      const timeWarpBtn = document.getElementById('time-warp-btn');
+      const timeWarpLabel = document.getElementById('time-warp-label');
+      timeWarpBtn?.addEventListener('click', () => {
+        tunnelState.modeIndex = (tunnelState.modeIndex + 1) % tunnelState.timeModes.length;
+        const current = tunnelState.timeModes[tunnelState.modeIndex];
+        if (timeWarpLabel) timeWarpLabel.textContent = current.name;
+        showToast(`Distorsión Temporal: ${current.name}`);
+      });
+
+      function initRabbitHoleCanvas() {
+        try {
+          const canvas = document.getElementById('rabbit-hole-canvas');
+          if (!canvas) return;
+          const ctx = canvas.getContext('2d');
+          if (!ctx) return;
+
+          let width = 0;
+          let height = 0;
+          let dpr = 1;
+
+          function resizeCanvas() {
+            dpr = Math.min(window.devicePixelRatio || 1, 2);
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = Math.floor(width * dpr);
+            canvas.height = Math.floor(height * dpr);
+            canvas.style.width = width + 'px';
+            canvas.style.height = height + 'px';
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          }
+
+          resizeCanvas();
+          window.addEventListener('resize', resizeCanvas);
+
+          // Estruturas do Túnel 3D
+          const RING_COUNT = 26;
+          const MAX_Z = 2400;
+          const FOV = 460;
+
+          const rings = [];
+          for (let i = 0; i < RING_COUNT; i++) {
+            rings.push({
+              z: (i / RING_COUNT) * MAX_Z,
+              rot: i * 0.22,
+              rotSpeed: (i % 2 === 0 ? 1 : -1) * (0.002 + (i % 4) * 0.0008),
+              type: i % 3, // 0: octógono, 1: círculo relógio, 2: anel quebrado
+              sides: i % 4 === 0 ? 8 : 6,
+            });
+          }
+
+          // Poeira Estelar 3D
+          const STAR_COUNT = 135;
+          const stars = [];
+          for (let i = 0; i < STAR_COUNT; i++) {
+            const angle = Math.random() * Math.PI * 2;
+            const radius = 140 + Math.random() * 520;
+            stars.push({
+              x: Math.cos(angle) * radius,
+              y: Math.sin(angle) * radius,
+              z: Math.random() * MAX_Z,
+              size: 0.7 + Math.random() * 1.9,
+              isGold: Math.random() > 0.42,
+            });
+          }
+
+          // Silhuetas Surrealistas Flutuantes (naipes, romanos, chaves/fragmentos)
+          const surrealGlyphs = ['♠', '♥', '♦', '♣', 'XII', 'III', 'VI', 'IX', '🗝', '✦'];
+          const floaters = [];
+          for (let i = 0; i < 20; i++) {
+            const angle = (i / 20) * Math.PI * 2 + Math.random() * 0.5;
+            const radius = 210 + Math.random() * 340;
+            floaters.push({
+              x: Math.cos(angle) * radius,
+              y: Math.sin(angle) * radius,
+              z: Math.random() * MAX_Z,
+              rot: Math.random() * Math.PI * 2,
+              rotSpeed: (Math.random() - 0.5) * 0.015,
+              glyph: surrealGlyphs[i % surrealGlyphs.length],
+              isCrimson: surrealGlyphs[i % surrealGlyphs.length] === '♥' || surrealGlyphs[i % surrealGlyphs.length] === '♦',
+            });
+          }
+
+          // Trilhas de partículas luminosas geradas pelo ponteiro
+          const trailParticles = [];
+          function spawnTrail(x, y, count = 2) {
+            for (let i = 0; i < count; i++) {
+              if (trailParticles.length > 75) trailParticles.shift();
+              trailParticles.push({
+                x: x + (Math.random() - 0.5) * 8,
+                y: y + (Math.random() - 0.5) * 8,
+                vx: (Math.random() - 0.5) * 0.9,
+                vy: (Math.random() - 0.5) * 0.9 - 0.2,
+                life: 1,
+                decay: 0.02 + Math.random() * 0.02,
+                size: 1.2 + Math.random() * 2.2,
+                gold: Math.random() > 0.35,
+              });
+            }
+          }
+
+          // Eventos de Ponteiro (Mouse e Toque)
+          window.addEventListener('mousemove', (e) => {
+            tunnelState.pointerX = (e.clientX / width - 0.5) * 2;
+            tunnelState.pointerY = (e.clientY / height - 0.5) * 2;
+            if (Math.random() > 0.35) spawnTrail(e.clientX, e.clientY, 1);
+          });
+
+          window.addEventListener(
+            'touchmove',
+            (e) => {
+              if (e.touches && e.touches[0]) {
+                const t = e.touches[0];
+                tunnelState.pointerX = (t.clientX / width - 0.5) * 2;
+                tunnelState.pointerY = (t.clientY / height - 0.5) * 2;
+                spawnTrail(t.clientX, t.clientY, 1);
+              }
+            },
+            { passive: true }
+          );
+
+          // Segurar clique no espaço vazio cria pulso de distorção temporal
+          const cursorAura = document.getElementById('cursor-aura');
+          function isInteractiveTarget(target) {
+            return Boolean(
+              target &&
+                target.closest('a, button, input, textarea, select, [role="button"], .glass-panel, header, aside, #project-modal')
+            );
+          }
+
+          window.addEventListener('mousedown', (e) => {
+            if (!isInteractiveTarget(e.target)) {
+              tunnelState.isHoldingWarp = true;
+              cursorAura?.classList.add('is-warping');
+              spawnTrail(e.clientX, e.clientY, 6);
+            }
+          });
+          window.addEventListener('mouseup', () => {
+            tunnelState.isHoldingWarp = false;
+            cursorAura?.classList.remove('is-warping');
+          });
+          window.addEventListener(
+            'touchstart',
+            (e) => {
+              if (!isInteractiveTarget(e.target) && e.touches[0]) {
+                tunnelState.isHoldingWarp = true;
+                spawnTrail(e.touches[0].clientX, e.touches[0].clientY, 5);
+              }
+            },
+            { passive: true }
+          );
+          window.addEventListener('touchend', () => {
+            tunnelState.isHoldingWarp = false;
+          });
+
+          // Atualização de Scroll -> Profundidade + Velocidade do Túnel
+          const hudDepthEl = document.getElementById('hud-depth-value');
+          const mobileDepthEl = document.getElementById('mobile-depth-value');
+          const depthRailFill = document.getElementById('depth-rail-fill');
+          const sections = ['superficie', 'a-queda', 'portas', 'relogio', 'fundo'];
+          const depthDots = document.querySelectorAll('.depth-dot');
+          const navLinks = document.querySelectorAll('.nav-link');
+
+          function updateDepthHUD() {
+            const scrollY = window.scrollY || window.pageYOffset;
+            const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+            const progress = Math.min(1, Math.max(0, scrollY / maxScroll));
+
+            const delta = scrollY - tunnelState.lastScrollY;
+            tunnelState.lastScrollY = scrollY;
+            tunnelState.scrollVelocity = Math.max(-45, Math.min(45, tunnelState.scrollVelocity + delta * 0.25));
+            tunnelState.scrollProgress = progress;
+
+            // Profundidade formatada de 0m até 4.200m
+            const meters = Math.round(progress * 4200);
+            const formatted = meters.toLocaleString('es-ES') + 'm';
+            if (hudDepthEl) hudDepthEl.textContent = formatted;
+            if (mobileDepthEl) mobileDepthEl.textContent = formatted;
+            if (depthRailFill) depthRailFill.style.height = `${(progress * 100).toFixed(1)}%`;
+
+            // Destaca seção ativa na régua lateral e no menu superior
+            let activeId = 'superficie';
+            const viewportMid = window.innerHeight * 0.38;
+            for (const id of sections) {
+              const sec = document.getElementById(id);
+              if (sec) {
+                const rect = sec.getBoundingClientRect();
+                if (rect.top <= viewportMid) activeId = id;
+              }
+            }
+
+            depthDots.forEach((dot) => {
+              const core = dot.querySelector('.dot-core');
+              if (!core) return;
+              const isActive = dot.dataset.section === activeId;
+              core.classList.toggle('bg-brass', isActive);
+              core.classList.toggle('scale-125', isActive);
+              core.classList.toggle('shadow-[0_0_12px_rgba(212,175,55,0.9)]', isActive);
+              core.classList.toggle('bg-ivory/35', !isActive);
+            });
+
+            navLinks.forEach((link) => {
+              const isActive = link.dataset.nav === activeId;
+              link.classList.toggle('text-brass', isActive);
+              link.classList.toggle('bg-brass/10', isActive);
+              link.classList.toggle('text-ivory/75', !isActive);
+            });
+          }
+
+          window.addEventListener('scroll', updateDepthHUD, { passive: true });
+          updateDepthHUD();
+
+          // Funções de desenho de anéis geométricos
+          function drawPolygonRing(cx, cy, radius, sides, rotation, alpha, strokeStyle, lineWidth) {
+            ctx.save();
+            ctx.translate(cx, cy);
+            ctx.rotate(rotation);
+            ctx.beginPath();
+            for (let i = 0; i <= sides; i++) {
+              const a = (i / sides) * Math.PI * 2;
+              const px = Math.cos(a) * radius;
+              const py = Math.sin(a) * radius;
+              if (i === 0) ctx.moveTo(px, py);
+              else ctx.lineTo(px, py);
+            }
+            ctx.closePath();
+            ctx.strokeStyle = strokeStyle;
+            ctx.globalAlpha = alpha;
+            ctx.lineWidth = lineWidth;
+            ctx.stroke();
+
+            // Vértices brilhantes
+            ctx.fillStyle = '#f4f0e6';
+            for (let i = 0; i < sides; i++) {
+              const a = (i / sides) * Math.PI * 2;
+              ctx.beginPath();
+              ctx.arc(Math.cos(a) * radius, Math.sin(a) * radius, Math.max(1, lineWidth * 1.1), 0, Math.PI * 2);
+              ctx.fill();
+            }
+            ctx.restore();
+          }
+
+          function drawClockworkRing(cx, cy, radius, rotation, alpha, strokeStyle, lineWidth) {
+            ctx.save();
+            ctx.translate(cx, cy);
+            ctx.rotate(rotation);
+            ctx.globalAlpha = alpha;
+            ctx.strokeStyle = strokeStyle;
+            ctx.lineWidth = lineWidth;
+
+            // Arco principal e arco secundário
+            ctx.beginPath();
+            ctx.arc(0, 0, radius, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // Marcações de mostrador (12 pontos)
+            const tickLen = Math.min(18, radius * 0.08);
+            for (let i = 0; i < 12; i++) {
+              const a = (i / 12) * Math.PI * 2;
+              ctx.beginPath();
+              ctx.moveTo(Math.cos(a) * (radius - tickLen), Math.sin(a) * (radius - tickLen));
+              ctx.lineTo(Math.cos(a) * radius, Math.sin(a) * radius);
+              ctx.stroke();
+            }
+            ctx.restore();
+          }
+
+          function drawArcRing(cx, cy, radius, rotation, alpha, strokeStyle, lineWidth) {
+            ctx.save();
+            ctx.translate(cx, cy);
+            ctx.rotate(rotation);
+            ctx.globalAlpha = alpha;
+            ctx.strokeStyle = strokeStyle;
+            ctx.lineWidth = lineWidth;
+
+            for (let i = 0; i < 4; i++) {
+              const start = (i * Math.PI) / 2 + 0.16;
+              const end = start + Math.PI / 2 - 0.34;
+              ctx.beginPath();
+              ctx.arc(0, 0, radius, start, end);
+              ctx.stroke();
+            }
+            ctx.restore();
+          }
+
+          // Loop Principal de Animação (60fps)
+          let holdBoost = 0;
+
+          function animateTunnel() {
+            // Amortecimento de scroll e ponto de fuga (parallax suave)
+            tunnelState.scrollVelocity *= 0.9;
+            const targetHold = tunnelState.isHoldingWarp ? 1 : 0;
+            holdBoost += (targetHold - holdBoost) * 0.08;
+
+            const maxOffsetX = Math.min(140, width * 0.13);
+            const maxOffsetY = Math.min(110, height * 0.12);
+            const targetVanishX = width * 0.5 + tunnelState.pointerX * maxOffsetX;
+            const targetVanishY = height * 0.5 + tunnelState.pointerY * maxOffsetY;
+
+            if (tunnelState.vanishX === 0 && tunnelState.vanishY === 0) {
+              tunnelState.vanishX = width * 0.5;
+              tunnelState.vanishY = height * 0.5;
+            }
+            tunnelState.vanishX += (targetVanishX - tunnelState.vanishX) * 0.055;
+            tunnelState.vanishY += (targetVanishY - tunnelState.vanishY) * 0.055;
+
+            // Cálculo de velocidade combinada (modo temporal + rolagem + warp)
+            const modeSpeed = tunnelState.timeModes[tunnelState.modeIndex].speed;
+            const pulseComponent = tunnelState.pulseBoost * tunnelState.pulseDirection * 14;
+            const speed =
+              (4.2 * modeSpeed) +
+              tunnelState.scrollVelocity * 0.72 +
+              holdBoost * 24 +
+              pulseComponent;
+
+            // Deslocamento sutil de matiz conforme profundidade (dourado -> carmesim profundo)
+            const depthRatio = tunnelState.scrollProgress;
+            const ringGoldR = Math.round(212 - depthRatio * 12);
+            const ringGoldG = Math.round(175 - depthRatio * 105);
+            const ringGoldB = Math.round(55 + depthRatio * 18);
+            const primaryHue = `rgb(${ringGoldR}, ${ringGoldG}, ${ringGoldB})`;
+
+            // Fundo abissal com leve rastro durante aceleração
+            const trailClear = holdBoost > 0.25 || Math.abs(speed) > 18 ? 0.24 : 0.42;
+            ctx.fillStyle = `rgba(6, 6, 9, ${trailClear})`;
+            ctx.fillRect(0, 0, width, height);
+
+            // Brilho central do portal (Fundo da Toca)
+            const portalGlow = ctx.createRadialGradient(
+              tunnelState.vanishX,
+              tunnelState.vanishY,
+              4,
+              tunnelState.vanishX,
+              tunnelState.vanishY,
+              Math.max(width, height) * 0.45
+            );
+            portalGlow.addColorStop(0, `rgba(${ringGoldR}, ${ringGoldG}, ${ringGoldB}, ${0.12 + holdBoost * 0.14})`);
+            portalGlow.addColorStop(0.4, `rgba(200, 30, 58, ${0.03 + depthRatio * 0.05})`);
+            portalGlow.addColorStop(1, 'rgba(6, 6, 9, 0)');
+            ctx.fillStyle = portalGlow;
+            ctx.fillRect(0, 0, width, height);
+
+            // 1) Poeira Estelar e Linhas Radiais de Velocidade
+            const speedIntensity = Math.min(1, Math.abs(speed) / 24);
+            for (let i = 0; i < stars.length; i++) {
+              const s = stars[i];
+              const prevZ = s.z;
+              s.z -= speed * 1.45;
+              if (s.z < 12) {
+                s.z += MAX_Z;
+              } else if (s.z > MAX_Z) {
+                s.z -= MAX_Z;
+              }
+
+              const scale = FOV / s.z;
+              const sx = tunnelState.vanishX + s.x * scale;
+              const sy = tunnelState.vanishY + s.y * scale;
+
+              if (sx < -40 || sx > width + 40 || sy < -40 || sy > height + 40) continue;
+
+              const alpha = Math.min(0.85, (1 - s.z / MAX_Z) * 1.15);
+              ctx.strokeStyle = s.isGold ? primaryHue : '#f4f0e6';
+              ctx.fillStyle = s.isGold ? primaryHue : '#f4f0e6';
+              ctx.globalAlpha = alpha;
+
+              if (speedIntensity > 0.35 && Math.abs(prevZ - s.z) < 350) {
+                const prevScale = FOV / Math.max(12, prevZ);
+                const px = tunnelState.vanishX + s.x * prevScale;
+                const py = tunnelState.vanishY + s.y * prevScale;
+                ctx.lineWidth = Math.max(0.6, s.size * scale * 0.7);
+                ctx.beginPath();
+                ctx.moveTo(px, py);
+                ctx.lineTo(sx, sy);
+                ctx.stroke();
+              } else {
+                ctx.beginPath();
+                ctx.arc(sx, sy, Math.max(0.5, s.size * scale * 0.9), 0, Math.PI * 2);
+                ctx.fill();
+              }
+            }
+            ctx.globalAlpha = 1;
+
+            // 2) Anéis Geométricos em Perspectiva (ordenados do fundo para frente)
+            for (let i = 0; i < rings.length; i++) {
+              const r = rings[i];
+              r.z -= speed;
+              r.rot += r.rotSpeed * modeSpeed + tunnelState.scrollVelocity * 0.00045;
+
+              if (r.z < 20) r.z += MAX_Z;
+              else if (r.z > MAX_Z) r.z -= MAX_Z;
+            }
+
+            rings.sort((a, b) => b.z - a.z);
+
+            for (let i = 0; i < rings.length; i++) {
+              const r = rings[i];
+              const scale = FOV / r.z;
+              const radius = 340 * scale;
+              if (radius < 6 || radius > Math.max(width, height) * 1.65) continue;
+
+              const depthFade = 1 - r.z / MAX_Z;
+              const nearFade = Math.min(1, r.z / 180);
+              const alpha = Math.max(0, Math.min(0.48, depthFade * nearFade * 0.55));
+              const lineWidth = Math.max(0.5, scale * 1.45);
+              const strokeColor = r.type === 1 ? '#f4f0e6' : primaryHue;
+
+              // Leve deslocamento de câmera por camada para paralaxe orgânica
+              const layerShift = (1 - depthFade) * 0.45;
+              const cx = tunnelState.vanishX + (width * 0.5 - tunnelState.vanishX) * layerShift;
+              const cy = tunnelState.vanishY + (height * 0.5 - tunnelState.vanishY) * layerShift;
+
+              if (r.type === 0) {
+                drawPolygonRing(cx, cy, radius, r.sides, r.rot, alpha, strokeColor, lineWidth);
+              } else if (r.type === 1) {
+                drawClockworkRing(cx, cy, radius, r.rot, alpha * 0.8, strokeColor, lineWidth * 0.9);
+              } else {
+                drawArcRing(cx, cy, radius, -r.rot * 1.2, alpha * 0.9, strokeColor, lineWidth * 1.15);
+              }
+            }
+
+            // 3) Silhuetas Surrealistas Flutuantes (naipes, algarismos romanos, chaves)
+            for (let i = 0; i < floaters.length; i++) {
+              const f = floaters[i];
+              f.z -= speed * 0.95;
+              f.rot += f.rotSpeed;
+              if (f.z < 40) f.z += MAX_Z;
+              else if (f.z > MAX_Z) f.z -= MAX_Z;
+
+              const scale = FOV / f.z;
+              const fx = tunnelState.vanishX + f.x * scale;
+              const fy = tunnelState.vanishY + f.y * scale;
+              if (fx < -60 || fx > width + 60 || fy < -60 || fy > height + 60) continue;
+
+              const alpha = Math.min(0.32, (1 - f.z / MAX_Z) * Math.min(1, f.z / 240) * 0.42);
+              const fontSize = Math.max(9, Math.min(34, 24 * scale));
+
+              ctx.save();
+              ctx.translate(fx, fy);
+              ctx.rotate(f.rot);
+              ctx.globalAlpha = alpha;
+              ctx.font = `500 ${fontSize.toFixed(0)}px "Cormorant Garamond", serif`;
+              ctx.textAlign = 'center';
+              ctx.textBaseline = 'middle';
+              ctx.fillStyle = f.isCrimson ? '#c81e3a' : '#f4f0e6';
+              ctx.fillText(f.glyph, 0, 0);
+              ctx.restore();
+            }
+
+            // 4) Trilha Luminosa do Ponteiro (Marfim & Ouro)
+            for (let i = trailParticles.length - 1; i >= 0; i--) {
+              const p = trailParticles[i];
+              p.x += p.vx;
+              p.y += p.vy;
+              p.life -= p.decay;
+              if (p.life <= 0) {
+                trailParticles.splice(i, 1);
+                continue;
+              }
+              ctx.save();
+              ctx.globalAlpha = p.life * 0.75;
+              ctx.fillStyle = p.gold ? '#d4af37' : '#f4f0e6';
+              ctx.shadowBlur = 10;
+              ctx.shadowColor = p.gold ? '#d4af37' : '#f4f0e6';
+              ctx.beginPath();
+              ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2);
+              ctx.fill();
+              ctx.restore();
+            }
+
+            requestAnimationFrame(animateTunnel);
+          }
+
+          animateTunnel();
+        } catch (err) {
+          console.error('Error al iniciar el túnel 3D en Canvas:', err);
+        }
+      }
+
+      /* ======================================================================
+         11. INICIALIZAÇÃO SEGURA NO WINDOW.ONLOAD
+         ====================================================================== */
+      window.onload = function () {
+        renderProjects('todos');
+        initPocketWatch();
+        initSkillClusters();
+        initContactForm();
+        initNavigationAndScrollUI();
+        initCustomCursor();
+        initRabbitHoleCanvas();
+
+        // Aplica efeito 3D nos cartões estáticos da seção "A Queda"
+        document.querySelectorAll('.tilt-card').forEach(attachTiltEffect);
+      };
+    })();
+  </script>
+  <script defer src="/assets/js/demo-i18n-bar.js"></script>
+</body>
+</html>
