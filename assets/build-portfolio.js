@@ -1274,9 +1274,9 @@ const newScriptsBlock = `// ====================================================
           const siteType = l[curLang] || l.pt;
           const openUrl = localizeDemoUrl(l.demoUrl || ('/assets/images/logos-ia/' + l.file), curLang);
           return \`
-          <a href="\${openUrl}" target="_blank" rel="noopener noreferrer" class="clean-proj-card spotlight-card rounded-2xl overflow-hidden block relative aspect-[16/10] bg-slate-950 border b-subtle group cursor-pointer shadow-md">
-            <img src="/assets/images/logos-ia/\${l.file}" alt="\${l.name}" class="w-full h-full object-cover object-center transition duration-500 group-hover:scale-105" loading="lazy" onerror="this.onerror=null; this.src='/assets/images/brand-rabbit.png';" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent transition-opacity duration-300"></div>
+          <a href="\${openUrl}" target="_blank" rel="noopener noreferrer" class="clean-proj-card spotlight-card rounded-2xl overflow-hidden block relative aspect-[16/10] bg-slate-900 border b-subtle group cursor-pointer shadow-md">
+            <img src="/assets/images/logos-ia/\${l.file}" alt="\${l.name}" class="w-full h-full object-cover object-center transition duration-500 group-hover:scale-105" loading="eager" decoding="async" onerror="this.onerror=null; this.src='/assets/images/brand-rabbit.png';" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/15 to-transparent transition-opacity duration-300 pointer-events-none"></div>
             <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none">
               <span class="badge-gold px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] tracking-wide truncate max-w-[85%]">
                 \${l.name} • \${siteType}
@@ -1310,9 +1310,9 @@ const newScriptsBlock = `// ====================================================
         const siteType = (siteTypeInfo && siteTypeInfo[curLang]) ? siteTypeInfo[curLang] : (p.title.split('—')[0].trim());
 
         return \`
-        <a href="\${openUrl}" target="_blank" rel="noopener noreferrer" class="clean-proj-card spotlight-card rounded-2xl overflow-hidden block relative aspect-[16/10] bg-slate-950 border b-subtle group cursor-pointer shadow-md">
-          <img src="\${p.image}" alt="\${siteType}" class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105" loading="lazy" onerror="this.onerror=null; this.src='/assets/images/radar-ia-real.png';" />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent transition-opacity duration-300"></div>
+        <a href="\${openUrl}" target="_blank" rel="noopener noreferrer" class="clean-proj-card spotlight-card rounded-2xl overflow-hidden block relative aspect-[16/10] bg-slate-900 border b-subtle group cursor-pointer shadow-md">
+          <img src="\${p.image}" alt="\${siteType}" class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105" loading="eager" decoding="async" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src=this.src.replace(/\\.webp$/i,'.png');}else{this.onerror=null;this.src='/assets/images/radar-ia-real.png';}" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent transition-opacity duration-300 pointer-events-none"></div>
           <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none">
             <span class="badge-gold px-3.5 py-1.5 rounded-xl text-xs sm:text-[13px] tracking-wide truncate max-w-[85%]">
               \${siteType}

@@ -254,9 +254,9 @@ const PROJECTS_DATA = [
     badge: "Carrinho Real • Store",
     shortDescription: "Loja virtual minimalista inspirada em SSENSE e Rimowa, com filtro instantâneo por categoria e sacola de compras lateral (slide-over) funcional.",
     fullDescription: "Experiência completa de e-commerce front-end. Permite filtrar produtos entre Áudio, Techwear e Hardware, adicionar itens à sacola, remover produtos e calcular automaticamente o subtotal do pedido.",
-    image: "/assets/images/layout-ecommerce.png",
+    image: "/assets/images/layout-ecommerce.webp",
     gallery: [
-      "/assets/images/layout-ecommerce.png"
+      "/assets/images/layout-ecommerce.webp"
     ],
     tags: ["E-commerce", "Shopping Cart JS", "Minimalist UI", "Tailwind CSS"],
     links: {
@@ -276,9 +276,9 @@ const PROJECTS_DATA = [
     badge: "Gastronomia • Drawer Interativo",
     shortDescription: "Site de alta gastronomia japonesa com menu degustação em 16 tempos, estética minimalista escura e drawer lateral de reservas.",
     fullDescription: "Experiência digital premium para restaurantes conceituais e hospitalidade. Apresenta tipografia Cinzel e Noto Serif JP, detalhamento poético dos pratos sazonais e sistema interativo de reserva com seleção de turnos.",
-    image: "/assets/images/layout-omakase.png",
+    image: "/assets/images/layout-omakase.webp",
     gallery: [
-      "/assets/images/layout-omakase.png"
+      "/assets/images/layout-omakase.webp"
     ],
     tags: ["Luxury Hospitality", "Interactive Drawer", "Minimalism", "Tailwind CSS"],
     links: {
@@ -298,9 +298,9 @@ const PROJECTS_DATA = [
     badge: "Slider Antes / Depois",
     shortDescription: "Clínica odontológica de alta tecnologia com simulador visual interativo de Antes e Depois (slider split-screen) e avaliação 3D.",
     fullDescription: "Plataforma digital para clínicas de odontologia estética e reabilitação oral. Destaque para o componente interativo de arrasto (Before/After) que demonstra a transformação de sorriso com facetas cerâmicas e lentes de contato.",
-    image: "/assets/images/layout-odontologia.png",
+    image: "/assets/images/layout-odontologia.webp",
     gallery: [
-      "/assets/images/layout-odontologia.png"
+      "/assets/images/layout-odontologia.webp"
     ],
     tags: ["Dental UI", "Before-After Slider", "Split-Screen", "Interactive Healthcare"],
     links: {
@@ -320,9 +320,9 @@ const PROJECTS_DATA = [
     badge: "Filtro Especialidades",
     shortDescription: "Portal para centros médicos, hospital-dia e clínicas com filtro por especialidades clínicas e agendamento de consultas.",
     fullDescription: "Interface limpa e confiável em tons verde-petróleo e branco hospitalar. Possui catálogo de especialistas médicos (Cardiologia, Neurologia, Ortopedia) e agendamento instantâneo com canais de pronto atendimento.",
-    image: "/assets/images/layout-clinica-medica.png",
+    image: "/assets/images/layout-clinica-medica.webp",
     gallery: [
-      "/assets/images/layout-clinica-medica.png"
+      "/assets/images/layout-clinica-medica.webp"
     ],
     tags: ["Healthcare UI", "Medical Portal", "Doctor Filter", "Clean Design"],
     links: {
@@ -342,9 +342,9 @@ const PROJECTS_DATA = [
     badge: "Multi-Moeda • Imobiliária",
     shortDescription: "Portal de imóveis de altíssimo padrão (Coberturas e Villas) com conversão instantânea de preços entre R$ BRL e US$ USD e filtro por tipologia.",
     fullDescription: "Plataforma elegante para imobiliárias boutique e private brokers. Exibe metragem, suítes, heliponto/vagas e permite ao comprador internacional alternar todos os valores para dólar americano com 1 clique.",
-    image: "/assets/images/layout-real-estate.png",
+    image: "/assets/images/layout-real-estate.webp",
     gallery: [
-      "/assets/images/layout-real-estate.png"
+      "/assets/images/layout-real-estate.webp"
     ],
     tags: ["Real Estate UI", "Multi-Currency JS", "Property Filter", "Luxury Portal"],
     links: {
@@ -364,9 +364,9 @@ const PROJECTS_DATA = [
     badge: "Direito Societário • M&A",
     shortDescription: "Website institucional para escritórios de advocacia societária, Private Equity e consultoria executiva com abas de prática e agendamento sob NDA.",
     fullDescription: "Layout corporativo de alto padrão com estética suíça/editorial em tons marinho profundo e ouro fosco. Inclui painel de indicadores auditados, alternador interativo de áreas de atuação e modal de reunião confidencial.",
-    image: "/assets/images/layout-corporate.png",
+    image: "/assets/images/layout-corporate.webp",
     gallery: [
-      "/assets/images/layout-corporate.png"
+      "/assets/images/layout-corporate.webp"
     ],
     tags: ["Corporate UI", "Tailwind CSS", "Executive Design", "Interactive Tabs"],
     links: {
@@ -386,9 +386,9 @@ const PROJECTS_DATA = [
     badge: "Ritual & Agendamento",
     shortDescription: "Experiência digital premium para barbearias tradicionais e visagismo masculino com seletor de serviços e cálculo dinâmico de tempo e valor.",
     fullDescription: "Layout vintage e sofisticado com tipografia Cinzel e paleta âmbar/whisky. Permite ao cliente montar seu ritual de atendimento escolhendo corte, barba e visagismo, calculando o tempo de cadeira e gerando agendamento direto.",
-    image: "/assets/images/layout-barbearia.png",
+    image: "/assets/images/layout-barbearia.webp",
     gallery: [
-      "/assets/images/layout-barbearia.png"
+      "/assets/images/layout-barbearia.webp"
     ],
     tags: ["Barbershop UI", "Interactive Booking", "Price Calculator", "Luxury Design"],
     links: {
@@ -408,9 +408,9 @@ const PROJECTS_DATA = [
     badge: "Calculadora IMC • Studio",
     shortDescription: "Plataforma de alta performance para academias e centros de treinamento funcional com diagnóstico físico e calculadora de IMC integrada.",
     fullDescription: "Website dinâmico em estética dark/neon lime voltado para academias e estúdios de Crossfit/HIIT. Inclui calculadora interativa de índice de massa corporal (IMC) com diagnóstico em tempo real e formulário de passe livre.",
-    image: "/assets/images/layout-academia.png",
+    image: "/assets/images/layout-academia.webp",
     gallery: [
-      "/assets/images/layout-academia.png"
+      "/assets/images/layout-academia.webp"
     ],
     tags: ["Fitness UI", "IMC Calculator", "Tailwind CSS", "High Performance"],
     links: {
@@ -430,9 +430,9 @@ const PROJECTS_DATA = [
     badge: "Simulador Financiamento",
     shortDescription: "Showroom automotivo para superesportivos e blindados com catálogo de pronta-entrega e simulador financeiro de parcelas com slider.",
     fullDescription: "Conceito de alta voltagem para lojas de veículos premium. Inclui acervo com ficha técnica de 0-100 km/h e potência, além de um simulador de financiamento interativo com ajuste de percentual de entrada e prazos.",
-    image: "/assets/images/layout-concessionaria.png",
+    image: "/assets/images/layout-concessionaria.webp",
     gallery: [
-      "/assets/images/layout-concessionaria.png"
+      "/assets/images/layout-concessionaria.webp"
     ],
     tags: ["Automotive UI", "Loan Calculator", "Luxury Showroom", "Supercars"],
     links: {
@@ -452,9 +452,9 @@ const PROJECTS_DATA = [
     badge: "Protocolos Clínicos",
     shortDescription: "Website sofisticado em estética 'Quiet Beauty' com alternador interativo de protocolos a laser, indicação clínica e durabilidade.",
     fullDescription: "Projetado para clínicas de dermatologia e estética regenerativa. Permite ao paciente explorar protocolos avançados (Ultraformer MPT, Laser Lavieen, Sculptra) conhecendo o tempo de recuperação (downtime), duração e investimento.",
-    image: "/assets/images/layout-estetica.png",
+    image: "/assets/images/layout-estetica.webp",
     gallery: [
-      "/assets/images/layout-estetica.png"
+      "/assets/images/layout-estetica.webp"
     ],
     tags: ["Aesthetics UI", "Quiet Beauty", "Laser Protocols", "Interactive Treatments"],
     links: {
@@ -474,9 +474,9 @@ const PROJECTS_DATA = [
     badge: "Reserva de Suítes • Eco",
     shortDescription: "Eco-resort de luxo integrado à natureza com motor de reservas de chalés, passeios ecológicos e gastronomia farm-to-table.",
     fullDescription: "Site institucional de hotelaria de alto luxo. Permite selecionar datas, escolher categorias de bangalôs privativos com piscina infinita e reservar experiências exclusivas.",
-    image: "/assets/images/layout-hotel-resort.png",
+    image: "/assets/images/layout-hotel-resort.webp",
     gallery: [
-      "/assets/images/layout-hotel-resort.png"
+      "/assets/images/layout-hotel-resort.webp"
     ],
     tags: ["Hospitality UI", "Eco Resort", "Suite Booking", "Luxury Experience"],
     links: {
@@ -496,9 +496,9 @@ const PROJECTS_DATA = [
     badge: "Roteiros VIP • Luxury",
     shortDescription: "Agência de turismo boutique especializada em viagens de luxo e expedições remotas com construtor interativo de itinerários.",
     fullDescription: "Plataforma imersiva para viajantes exigentes. Conta com galeria de destinos exóticos (Islândia, Patagônia, Safari Serengeti) e planejador de roteiros personalizados com concierge privativo.",
-    image: "/assets/images/layout-agencia-viagens.png",
+    image: "/assets/images/layout-agencia-viagens.webp",
     gallery: [
-      "/assets/images/layout-agencia-viagens.png"
+      "/assets/images/layout-agencia-viagens.webp"
     ],
     tags: ["Luxury Travel", "Tour Planner", "Editorial Destinations", "Concierge"],
     links: {
@@ -518,9 +518,9 @@ const PROJECTS_DATA = [
     badge: "Minimalista • Luxury UI",
     shortDescription: "Layout editorial em tons de pedra e tipografia serifada Cormorant Garamond, com galeria em acordeão horizontal expansível.",
     fullDescription: "Template voltado para escritórios de arquitetura, design de interiores e marcas de luxo. Substitui carrosséis tradicionais por um acordeão fluido em CSS cubic-bezier que expande as obras arquitetônicas ao toque do cursor.",
-    image: "/assets/images/layout-arquitetura.png",
+    image: "/assets/images/layout-arquitetura.webp",
     gallery: [
-      "/assets/images/layout-arquitetura.png"
+      "/assets/images/layout-arquitetura.webp"
     ],
     tags: ["Editorial Design", "Cormorant Garamond", "CSS Flex Accordion", "Luxury"],
     links: {
@@ -540,9 +540,9 @@ const PROJECTS_DATA = [
     badge: "Incorporação • Obras",
     shortDescription: "Construtora e incorporadora de empreendimentos verticais de alto padrão com acompanhamento de obras e tour virtual.",
     fullDescription: "Portal institucional para grandes incorporadoras. Apresenta estágio percentual de obras em tempo real, memorial descritivo dos edifícios e plantas baixas interativas.",
-    image: "/assets/images/layout-construtora.png",
+    image: "/assets/images/layout-construtora.webp",
     gallery: [
-      "/assets/images/layout-construtora.png"
+      "/assets/images/layout-construtora.webp"
     ],
     tags: ["Construction UI", "Real Estate Dev", "Project Status", "Architecture"],
     links: {
@@ -562,9 +562,9 @@ const PROJECTS_DATA = [
     badge: "Agendamento Pet • Spa",
     shortDescription: "Centro de estética pet e boutique de rações super premium com agendamento online de banho, tosa na tesoura e táxi dog.",
     fullDescription: "Ambiente acolhedor e dinâmico para pet shops modernos. Permite ao tutor escolher o porte do pet, selecionar tratamentos de hidratação e agendar data e horário.",
-    image: "/assets/images/layout-petshop.png",
+    image: "/assets/images/layout-petshop.webp",
     gallery: [
-      "/assets/images/layout-petshop.png"
+      "/assets/images/layout-petshop.webp"
     ],
     tags: ["Pet Shop UI", "Grooming Booking", "Pet Care", "Friendly Design"],
     links: {
@@ -584,9 +584,9 @@ const PROJECTS_DATA = [
     badge: "Specialty Coffee • Torra",
     shortDescription: "Cafeteria e torrefação artesanal com perfil sensorial de grãos especiais (85+ pontos SCA) e guia de métodos de extração.",
     fullDescription: "Experiência sensorial completa para apreciadores de café. Detalha notas sensoriais, altitude e origem dos microlotes da Serra da Mantiqueira, além de clube de assinatura mensal de grãos.",
-    image: "/assets/images/layout-cafeteria.png",
+    image: "/assets/images/layout-cafeteria.webp",
     gallery: [
-      "/assets/images/layout-cafeteria.png"
+      "/assets/images/layout-cafeteria.webp"
     ],
     tags: ["Specialty Coffee", "Sensory Profile", "Artisanal Food", "Subscription"],
     links: {
@@ -606,9 +606,9 @@ const PROJECTS_DATA = [
     badge: "Formação Tech • EAD",
     shortDescription: "Escola de tecnologia com trilhas práticas em IA, Engenharia de Software e Cloud com mentoria ao vivo e grade curricular dinâmica.",
     fullDescription: "Template de educação imersiva estilo bootcamps internacionais. Apresenta grade horária, projetos de portfólio práticos, depoimentos de ex-alunos e seletor de bolsas.",
-    image: "/assets/images/layout-escola-cursos.png",
+    image: "/assets/images/layout-escola-cursos.webp",
     gallery: [
-      "/assets/images/layout-escola-cursos.png"
+      "/assets/images/layout-escola-cursos.webp"
     ],
     tags: ["EdTech UI", "Online Courses", "Software Bootcamp", "Curriculum Grid"],
     links: {
@@ -628,9 +628,9 @@ const PROJECTS_DATA = [
     badge: "Template B2B • Bento Grid",
     shortDescription: "Landing page de alta conversão estilo Linear/Vercel para startups de IA, com Bento Grid iluminado por spotlight e tabela de preços dinâmica.",
     fullDescription: "Modelo de página comercial para produtos SaaS e ferramentas de desenvolvedor. Conta com preview de código em sintaxe colorida, cards com iluminação radial que reage à posição do mouse e alternador de planos Mensal/Anual.",
-    image: "/assets/images/layout-saas-ai.png",
+    image: "/assets/images/layout-saas-ai.webp",
     gallery: [
-      "/assets/images/layout-saas-ai.png"
+      "/assets/images/layout-saas-ai.webp"
     ],
     tags: ["Tailwind CSS", "Bento Grid", "Mouse Spotlight", "SaaS Conversion"],
     links: {
@@ -650,9 +650,9 @@ const PROJECTS_DATA = [
     badge: "Creative Growth • B2B",
     shortDescription: "Agência de branding e growth com estética editorial suíça, portfólio de campanhas e simulador de ROI de marketing.",
     fullDescription: "Conceito de presença digital para agências de publicidade e estúdios de design estratégico. Apresenta cases com métricas de crescimento, grid de projetos autorais e cálculo de retorno de investimento.",
-    image: "/assets/images/layout-agencia-publicidade.png",
+    image: "/assets/images/layout-agencia-publicidade.webp",
     gallery: [
-      "/assets/images/layout-agencia-publicidade.png"
+      "/assets/images/layout-agencia-publicidade.webp"
     ],
     tags: ["Advertising UI", "Creative Agency", "Branding B2B", "ROI Simulator"],
     links: {
@@ -672,9 +672,9 @@ const PROJECTS_DATA = [
     badge: "Planejamento Tributário",
     shortDescription: "Escritório contábil moderno e BPO financeiro especializado em redução legal de carga tributária e migração de regime fiscal.",
     fullDescription: "Interface clean e transparente voltada para serviços de contabilidade consultiva. Possui simulador de economia fiscal (Simples x Lucro Presumido x Lucro Real) e onboarding digital.",
-    image: "/assets/images/layout-contabilidade.png",
+    image: "/assets/images/layout-contabilidade.webp",
     gallery: [
-      "/assets/images/layout-contabilidade.png"
+      "/assets/images/layout-contabilidade.webp"
     ],
     tags: ["Accounting UI", "Tax Advisory", "BPO Finance", "Corporate Taxes"],
     links: {
@@ -694,9 +694,9 @@ const PROJECTS_DATA = [
     badge: "Rastreamento • Cargas",
     shortDescription: "Operador logístico e transporte rodoviário expresso com rastreador de encomendas e cotação de frete fracionado ou lotação.",
     fullDescription: "Portal dinâmico para transportadoras e supply chain. Inclui rastreamento de cargas por código em tempo real, malha de centros de distribuição e solicitação de cotação corporativa.",
-    image: "/assets/images/layout-logistica.png",
+    image: "/assets/images/layout-logistica.webp",
     gallery: [
-      "/assets/images/layout-logistica.png"
+      "/assets/images/layout-logistica.webp"
     ],
     tags: ["Logistics UI", "Package Tracking", "Freight Quote", "Supply Chain"],
     links: {
@@ -716,9 +716,9 @@ const PROJECTS_DATA = [
     badge: "Calculadora Solar • Payback",
     shortDescription: "Instalação de painéis solares para residências, indústrias e agronegócio com calculadora instantânea de economia e payback.",
     fullDescription: "Landing page comercial para integradores e usinas solares. O visitante informa o valor da conta de luz e o simulador calcula a potência dos painéis, economia anual e tempo de amortização.",
-    image: "/assets/images/layout-energia-solar.png",
+    image: "/assets/images/layout-energia-solar.webp",
     gallery: [
-      "/assets/images/layout-energia-solar.png"
+      "/assets/images/layout-energia-solar.webp"
     ],
     tags: ["Solar Energy", "Solar Calculator", "Sustainability", "Engineering"],
     links: {
@@ -738,9 +738,9 @@ const PROJECTS_DATA = [
     badge: "Dark Masonry • Ensaios",
     shortDescription: "Portfólio fotográfico minimalista em tema dark com galeria de alta resolução para moda, arquitetura e fine art.",
     fullDescription: "Experiência contemplativa para fotógrafos autorais. Grid de fotos em masonry fluido com lightbox em tela cheia e agendamento de ensaios sob direção artística.",
-    image: "/assets/images/layout-fotografo.png",
+    image: "/assets/images/layout-fotografo.webp",
     gallery: [
-      "/assets/images/layout-fotografo.png"
+      "/assets/images/layout-fotografo.webp"
     ],
     tags: ["Photography Portfolio", "Fine Art", "Dark Gallery", "Visual Artist"],
     links: {
@@ -760,9 +760,9 @@ const PROJECTS_DATA = [
     badge: "Eficiência EBITDA • M&A",
     shortDescription: "Consultoria executiva focada em reestruturação operacional, expansão de margem EBITDA e governança para médias e grandes empresas.",
     fullDescription: "Design corporativo austero para firmas de consultoria e turnaround. Inclui matriz de alavancas de valor, cases com retorno auditado e solicitação de diagnóstico confidencial.",
-    image: "/assets/images/layout-consultoria.png",
+    image: "/assets/images/layout-consultoria.webp",
     gallery: [
-      "/assets/images/layout-consultoria.png"
+      "/assets/images/layout-consultoria.webp"
     ],
     tags: ["Management Consulting", "EBITDA Growth", "Turnaround", "Corporate Advisory"],
     links: {
@@ -782,9 +782,9 @@ const PROJECTS_DATA = [
     badge: "Drops Limitados • Fashion",
     shortDescription: "Marca de vestuário independente inspirada na alfaiataria militar e techwear com catálogo de drops numerados.",
     fullDescription: "Conceito de e-commerce e lookbook para marcas de moda autoral. Focado em fotografia editorial, tabela de medidas interativa e contagem regressiva para lançamentos.",
-    image: "/assets/images/layout-marca-roupas.png",
+    image: "/assets/images/layout-marca-roupas.webp",
     gallery: [
-      "/assets/images/layout-marca-roupas.png"
+      "/assets/images/layout-marca-roupas.webp"
     ],
     tags: ["Streetwear Store", "Lookbook UI", "Limited Drops", "Fashion Editorial"],
     links: {
@@ -804,9 +804,9 @@ const PROJECTS_DATA = [
     badge: "Hospital 24h • UTI Pet",
     shortDescription: "Centro hospitalar veterinário com emergência 24h, diagnóstico por imagem avançado e planos de saúde preventivos para pets.",
     fullDescription: "Layout humanizado para hospitais veterinários. Exibe estrutura de internação, corpo cirúrgico e simulador de planos de cobertura médica com botão de emergência rápida.",
-    image: "/assets/images/layout-clinica-veterinaria.png",
+    image: "/assets/images/layout-clinica-veterinaria.webp",
     gallery: [
-      "/assets/images/layout-clinica-veterinaria.png"
+      "/assets/images/layout-clinica-veterinaria.webp"
     ],
     tags: ["Veterinary UI", "Emergency 24h", "Pet Healthcare", "Interactive Hospital"],
     links: {
@@ -826,9 +826,9 @@ const PROJECTS_DATA = [
     badge: "Day Spa • Rituais",
     shortDescription: "Oásis de bem-estar e relaxamento com rituais de massoterapia ayurvédica, drenagem linfática, ofurô e aromaterapia.",
     fullDescription: "Design orgânico e sereno em tons terra e texturas naturais. Permite montar pacotes de Day Spa para casais ou individuais, detalhando benefícios e óleos essenciais utilizados.",
-    image: "/assets/images/layout-spa-massagem.png",
+    image: "/assets/images/layout-spa-massagem.webp",
     gallery: [
-      "/assets/images/layout-spa-massagem.png"
+      "/assets/images/layout-spa-massagem.webp"
     ],
     tags: ["Spa & Wellness", "Massage Therapy", "Relaxation UI", "Aromatherapy"],
     links: {
@@ -848,9 +848,9 @@ const PROJECTS_DATA = [
     badge: "Reserva Privativa • 24h",
     shortDescription: "Motel boutique premium com suítes temáticas, piscina aquecida, teto solar retrátil e reserva com check-in anônimo.",
     fullDescription: "Experiência digital discreta e elegante para hotelaria erótica e casais. Mostra fotos em alta definição de cada suíte, tabela de períodos e reserva antecipada com total sigilo.",
-    image: "/assets/images/layout-motel.png",
+    image: "/assets/images/layout-motel.webp",
     gallery: [
-      "/assets/images/layout-motel.png"
+      "/assets/images/layout-motel.webp"
     ],
     tags: ["Motel Boutique", "Private Suites", "Anonymous Booking", "Luxury Hospitality"],
     links: {
@@ -870,9 +870,9 @@ const PROJECTS_DATA = [
     badge: "Cenografia & Palco • Live",
     shortDescription: "Produtora executiva de festivais, convenções corporativas e shows com portfólio de palcos, iluminação e riders técnicos.",
     fullDescription: "Interface vibrante e enérgica para produtoras de eventos e audiovisual. Apresenta vídeos de cases, dimensões de palcos e formulário de orçamento técnico para megaeventos.",
-    image: "/assets/images/layout-produtora-eventos.png",
+    image: "/assets/images/layout-produtora-eventos.webp",
     gallery: [
-      "/assets/images/layout-produtora-eventos.png"
+      "/assets/images/layout-produtora-eventos.webp"
     ],
     tags: ["Live Events UI", "Stage Design", "Audiovisual", "Festival Production"],
     links: {
@@ -892,9 +892,9 @@ const PROJECTS_DATA = [
     badge: "Projetos BIM • Galpões",
     shortDescription: "Escritório de cálculo estrutural e engenharia civil com modelagem BIM compatibilizada para galpões logísticos e estruturas industriais.",
     fullDescription: "Plataforma técnica para engenharia civil. Apresenta projetos em concreto armado, estruturas metálicas e fundações com controle de qualidade e redução de perdas na obra.",
-    image: "/assets/images/layout-engenharia.png",
+    image: "/assets/images/layout-engenharia.webp",
     gallery: [
-      "/assets/images/layout-engenharia.png"
+      "/assets/images/layout-engenharia.webp"
     ],
     tags: ["Civil Engineering", "BIM Modeling", "Structural Analysis", "Industrial Buildings"],
     links: {
@@ -914,9 +914,9 @@ const PROJECTS_DATA = [
     badge: "Marcenaria Fina • Madeira Maciça",
     shortDescription: "Showroom digital de móveis autorais e peças de design em madeira nobre certificada, unindo estética nórdica minimalista e marcenaria artesanal.",
     fullDescription: "Experiência de alta classe com tipografia editorial, fotografia de catálogo em alta definição, especificações de madeira de reflorestamento e consultoria personalizada para projetos de interiores.",
-    image: "/assets/images/layout-moveis-decoracao.png",
+    image: "/assets/images/layout-moveis-decoracao.webp",
     gallery: [
-      "/assets/images/layout-moveis-decoracao.png"
+      "/assets/images/layout-moveis-decoracao.webp"
     ],
     tags: ["Design Autoral", "Mobiliário Nórdico", "Madeira Maciça", "Minimalismo", "Interiores"],
     links: {
@@ -936,9 +936,9 @@ const PROJECTS_DATA = [
     badge: "Cinema • Commercial & Reels",
     shortDescription: "Portfólio cinematográfico para produtora de filmes publicitários, clipes musicais, séries documentais e pós-produção em escala de cinema.",
     fullDescription: "Visual widescreen impactante em tons pretos e acentos escarlate, com showreel dinâmico em tela cheia, ficha técnica por projeto (direção, fotografia, montagem) e premiações em festivais internacionais.",
-    image: "/assets/images/layout-produtora-audiovisual.png",
+    image: "/assets/images/layout-produtora-audiovisual.webp",
     gallery: [
-      "/assets/images/layout-produtora-audiovisual.png"
+      "/assets/images/layout-produtora-audiovisual.webp"
     ],
     tags: ["Cinema", "Audiovisual", "Showreel", "Publicidade", "Direção de Arte", "Pós-Produção"],
     links: {
@@ -958,9 +958,9 @@ const PROJECTS_DATA = [
     badge: "Pós-Obra • Corporativo",
     shortDescription: "Soluções completas de facilities para empresas e condomínios, incluindo limpeza técnica pós-obra, sanitização hospitalar e zeladoria predial.",
     fullDescription: "Design claro, profissional e confiável com calculador interativo de metragem quadrada, equipe treinada NR-35/NR-10, produtos ecológicos com laudo ANVISA e contratação recorrente.",
-    image: "/assets/images/layout-limpeza-manutencao.png",
+    image: "/assets/images/layout-limpeza-manutencao.webp",
     gallery: [
-      "/assets/images/layout-limpeza-manutencao.png"
+      "/assets/images/layout-limpeza-manutencao.webp"
     ],
     tags: ["Facilities", "Limpeza Corporativa", "Pós-Obra", "Manutenção Predial", "Orçamento Online"],
     links: {
@@ -980,9 +980,9 @@ const PROJECTS_DATA = [
     badge: "Terapia Cognitiva • Presencial & Online",
     shortDescription: "Consultório de psicoterapia humanizada baseada em evidências, com foco em Terapia Cognitivo-Comportamental (TCC) para ansiedade, estresse e desenvolvimento pessoal.",
     fullDescription: "Ambiente digital acolhedor e seguro com tons naturais e tipografia serena. Apresenta abordagens terapêuticas, funcionamento de sessões online com criptografia ponta a ponta e agendamento via WhatsApp.",
-    image: "/assets/images/layout-psicologia.png",
+    image: "/assets/images/layout-psicologia.webp",
     gallery: [
-      "/assets/images/layout-psicologia.png"
+      "/assets/images/layout-psicologia.webp"
     ],
     tags: ["Psicologia Clínica", "Saúde Mental", "Terapia TCC", "Atendimento Online", "Bem-Estar"],
     links: {
@@ -1002,9 +1002,9 @@ const PROJECTS_DATA = [
     badge: "Synthwave • Music Player",
     shortDescription: "Landing page e hub digital para banda independente de synthwave e selo musical com player de faixas integrado, discografia e datas de turnê.",
     fullDescription: "Estética retrofuturista neon com visualizador de faixas, loja de vinis exclusivos, agenda mundial de shows com compra de ingressos e formulário para imprensa e bookings.",
-    image: "/assets/images/layout-banda-gravadora.png",
+    image: "/assets/images/layout-banda-gravadora.webp",
     gallery: [
-      "/assets/images/layout-banda-gravadora.png"
+      "/assets/images/layout-banda-gravadora.webp"
     ],
     tags: ["Music Streaming", "Synthwave UI", "Tour Dates", "Record Label", "Dark Neon"],
     links: {
@@ -1024,9 +1024,9 @@ const PROJECTS_DATA = [
     badge: "CNC 5 Eixos • Caldeiraria",
     shortDescription: "Portal técnico para indústria de ferramentaria pesada, fabricação de moldes plásticos, usinagem CNC de precisão e estruturas metálicas.",
     fullDescription: "Layout corporativo robusto com detalhamento de parque de máquinas de 5 eixos, certificações ISO 9001, galeria de peças com tolerância micrométrica e formulário de cotação com upload de projetos em CAD/STEP.",
-    image: "/assets/images/layout-ferramentaria-caldeiraria.png",
+    image: "/assets/images/layout-ferramentaria-caldeiraria.webp",
     gallery: [
-      "/assets/images/layout-ferramentaria-caldeiraria.png"
+      "/assets/images/layout-ferramentaria-caldeiraria.webp"
     ],
     tags: ["Indústria Pesada", "Usinagem CNC", "Caldeiraria", "B2B Industrial", "Engenharia Mecânica"],
     links: {
@@ -1046,9 +1046,9 @@ const PROJECTS_DATA = [
     badge: "Simplex 3D • Fintech",
     shortDescription: "Landing page em tema obsidian com simulação física de onda líquida em Canvas 2D (Simplex 3D + Gerstner) e simulador cambial interativo.",
     fullDescription: "Layout de alta performance desenvolvido para fintechs e infraestruturas de pagamentos globais. Combina um fundo de partículas reativas ao cursor em 60fps com um simulador cambial glassmorphic funcional.",
-    image: "/assets/images/layout-meridian-wave.png",
+    image: "/assets/images/layout-meridian-wave.webp",
     gallery: [
-      "/assets/images/layout-meridian-wave.png"
+      "/assets/images/layout-meridian-wave.webp"
     ],
     tags: ["HTML5 Canvas", "Simplex 3D Noise", "Glassmorphism", "Fintech UI"],
     links: {
@@ -1068,9 +1068,9 @@ const PROJECTS_DATA = [
     badge: "Awwwards Style • CSS Mask",
     shortDescription: "Hero section experimental para portfólios de fotografia e direção de arte com revelação de escultura dourada guiada pelo cursor.",
     fullDescription: "Estudo de interface editorial inspirado em estúdios de fotografia europeus. Utiliza uma pilha de 4 camadas com CSS radial-gradient mask-image e interpolação física (Lerp) para revelar uma textura de estátua barroca dourada sob a pele humana.",
-    image: "/assets/images/layout-site-face.png",
+    image: "/assets/images/layout-site-face.webp",
     gallery: [
-      "/assets/images/layout-site-face.png",
+      "/assets/images/layout-site-face.webp",
       "/layouts para sites/site face/image.png"
     ],
     tags: ["CSS Mask-Image", "Lerp Physics", "Editorial Typography", "Interactive Hero"],
@@ -1091,9 +1091,9 @@ const PROJECTS_DATA = [
     badge: "Interactive • Dual Layer",
     shortDescription: "Conceito interativo para estúdios de tatuagem e moda que revela a arte corporal oculta sob a roupa ao passar o cursor.",
     fullDescription: "Layout interativo de alto impacto visual pensado para artistas de tatuagem e campanhas de moda. O visitante vê o retrato formal com roupa e, ao explorar a imagem com o mouse, revela a camada subjacente com o fechamento completo de tatuagens.",
-    image: "/assets/images/layout-site-tattoo.png",
+    image: "/assets/images/layout-site-tattoo.webp",
     gallery: [
-      "/assets/images/layout-site-tattoo.png",
+      "/assets/images/layout-site-tattoo.webp",
       "/layouts para sites/site tattoo/tatuado.jpg",
       "/layouts para sites/site tattoo/com-roupa.jpg"
     ],
@@ -1115,9 +1115,9 @@ const PROJECTS_DATA = [
     badge: "3D Canvas • Surrealismo",
     shortDescription: "Portfólio surrealista interativo com túnel 3D em Canvas 60fps, medidor vertical de profundidade (0 a 4.200m), relógio de bolso SVG funcional e distorção temporal.",
     fullDescription: "Experiência web imersiva de alto impacto visual inspirada no universo de Alice e o Coelho Branco. Conta com túnel de perspectiva 3D procedural acelerado em Canvas 2D/3D a 60fps com controle de distorção temporal (Warp), mostrador analógico de precisão em tempo real, cartões com efeito 3D tilt e catálogo de projetos com modais detalhados.",
-    image: "/assets/images/layout-toca-white-rabbit.png",
+    image: "/assets/images/layout-toca-white-rabbit.webp",
     gallery: [
-      "/assets/images/layout-toca-white-rabbit.png"
+      "/assets/images/layout-toca-white-rabbit.webp"
     ],
     tags: ["HTML5 Canvas 3D", "Tailwind CSS", "Surrealismo Digital", "SVG Procedural", "Web Audio"],
     links: {

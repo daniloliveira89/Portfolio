@@ -1638,12 +1638,12 @@
         const siteType = (siteTypeInfo && siteTypeInfo[curLang]) ? siteTypeInfo[curLang] : (p.title.split('—')[0].trim());
 
         return `
-        <a href="${openUrl}" target="_blank" rel="noopener noreferrer" class="clean-proj-card spotlight-card rounded-2xl overflow-hidden block relative aspect-[16/10] bg-slate-950 border b-subtle group cursor-pointer shadow-md">
+        <a href="${openUrl}" target="_blank" rel="noopener noreferrer" class="clean-proj-card spotlight-card rounded-2xl overflow-hidden block relative aspect-[16/10] bg-slate-900 border b-subtle group cursor-pointer shadow-md">
           <!-- Miniatura em Tela Cheia do Card -->
-          <img src="${p.image}" alt="${siteType}" class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105" loading="lazy" onerror="this.onerror=null; this.src='/assets/images/radar-ia-real.png';" />
+          <img src="${p.image}" alt="${siteType}" class="w-full h-full object-cover object-top transition duration-500 group-hover:scale-105" loading="eager" decoding="async" onerror="if(!this.dataset.retry){this.dataset.retry='1';this.src=this.src.replace(/\.webp$/i,'.png');}else{this.onerror=null;this.src='/assets/images/radar-ia-real.png';}" />
           
           <!-- Overlay Suave com Gradiente -->
-          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent transition-opacity duration-300"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent transition-opacity duration-300 pointer-events-none"></div>
 
           <!-- Estilo do Site por Cima da Miniatura em Dourado -->
           <div class="absolute bottom-3 left-3 right-3 flex items-center justify-between pointer-events-none">
