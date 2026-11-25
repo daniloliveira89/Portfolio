@@ -141,7 +141,7 @@
             if (isBottomBar) {
               bar.style.bottom = 'auto';
               bar.style.left = 'auto';
-              bar.style.top = '16px';
+              bar.style.top = '72px';
               bar.style.right = '16px';
             } else {
               bar.style.bottom = Math.round(window.innerHeight - r.top + 14) + 'px';
