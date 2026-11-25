@@ -374,7 +374,8 @@ html = html
   .replace('<span>Raio</span>', '<span data-i18n="wave_radius">Raio</span>')
   .replace('✦ Ajustar Onda Líquida', '<span data-i18n="wave_adjust">✦ Ajustar Onda Líquida</span>')
   .replace('<p class="text-[11px] t-body mb-3 leading-relaxed">Envie uma mensagem rápida sobre seu projeto ou orçamento:</p>', '<p class="text-[11px] t-body mb-3 leading-relaxed" data-i18n="wa_prompt">Envie uma mensagem rápida sobre seu projeto ou orçamento:</p>')
-  .replace('<span>Iniciar no WhatsApp</span>', '<span data-i18n="wa_send">Iniciar no WhatsApp</span>');
+  .replace('<span>Iniciar no WhatsApp</span>', '<span data-i18n="wa_send">Iniciar no WhatsApp</span>')
+  .replace('title="Falar no WhatsApp"', 'data-i18n-title="wa_btn_title" title="Falar no WhatsApp"');
 
 // Full I18N + ROLES + SERVICES + DIFFERENTIALS replacement
 const oldDataBlockRegex = /const I18N = \{[\s\S]*?const SKILLS = \[/;
@@ -427,7 +428,7 @@ const newDataBlock = `const I18N = {
         wave_adjust: '✦ Ajustar Onda Líquida',
         wa_prompt: 'Envie uma mensagem rápida sobre seu projeto ou orçamento:',
         wa_default_msg: 'Olá Danilo! Vi seu portfólio e gostaria de conversar sobre um projeto.',
-        wa_send: 'Iniciar no WhatsApp', wa_toast: 'Abrindo conversa no WhatsApp...',
+        wa_send: 'Iniciar no WhatsApp', wa_btn_title: 'Falar no WhatsApp', wa_toast: 'Abrindo conversa no WhatsApp...',
         toast_filter: 'Filtrando projetos com', toast_wave_on: 'Onda líquida ativada', toast_wave_off: 'Onda líquida pausada',
         toast_light: 'Modo Claro ativado', toast_dark: 'Modo Escuro ativado',
         toast_gh: 'GitHub copiado!', toast_email: 'E-mail copiado!', toast_ig: 'Instagram @daniloliveira89 copiado!'
@@ -480,7 +481,7 @@ const newDataBlock = `const I18N = {
         wave_adjust: '✦ Ajustar Onda Líquida',
         wa_prompt: 'Envía un mensaje rápido sobre tu proyecto o presupuesto:',
         wa_default_msg: '¡Hola Danilo! Vi tu portafolio y me gustaría conversar sobre un proyecto.',
-        wa_send: 'Abrir en WhatsApp', wa_toast: 'Abriendo chat de WhatsApp...',
+        wa_send: 'Abrir en WhatsApp', wa_btn_title: 'Chatear por WhatsApp', wa_toast: 'Abriendo chat de WhatsApp...',
         toast_filter: 'Filtrando proyectos con', toast_wave_on: 'Onda líquida activada', toast_wave_off: 'Onda líquida pausada',
         toast_light: 'Modo Claro activado', toast_dark: 'Modo Oscuro activado',
         toast_gh: '¡GitHub copiado!', toast_email: '¡Correo copiado!', toast_ig: '¡Instagram @daniloliveira89 copiado!'
@@ -533,7 +534,7 @@ const newDataBlock = `const I18N = {
         wave_adjust: '✦ Adjust Liquid Wave',
         wa_prompt: 'Send a quick message about your project or quote:',
         wa_default_msg: 'Hi Danilo! I saw your portfolio and would like to discuss a project.',
-        wa_send: 'Chat on WhatsApp', wa_toast: 'Opening WhatsApp chat...',
+        wa_send: 'Chat on WhatsApp', wa_btn_title: 'Chat on WhatsApp', wa_toast: 'Opening WhatsApp chat...',
         toast_filter: 'Filtering projects with', toast_wave_on: 'Liquid wave enabled', toast_wave_off: 'Liquid wave paused',
         toast_light: 'Light mode enabled', toast_dark: 'Dark mode enabled',
         toast_gh: 'GitHub copied!', toast_email: 'Email copied!', toast_ig: 'Instagram @daniloliveira89 copied!'

@@ -122,20 +122,23 @@
 
     document.body.appendChild(bar);
 
-    // Prevent overlap with any existing bottom-left fixed badges
+    // Prevent overlap with any existing bottom-left fixed badges or viewport-bottom bars
     setTimeout(function () {
       var barRect = bar.getBoundingClientRect();
-      var all = document.querySelectorAll('body > *');
-      for (var i = 0; i < all.length; i++) {
-        var el = all[i];
+      var candidates = document.querySelectorAll('body > *, footer, .bottom-bar, .footer-links');
+      var isSingleScreen = document.documentElement.scrollHeight <= window.innerHeight + 24;
+      for (var i = 0; i < candidates.length; i++) {
+        var el = candidates[i];
         if (el === bar || el.id === 'demo-i18n-bar-style') continue;
         var st = getComputedStyle(el);
-        if (st.position === 'fixed' && st.display !== 'none' && st.visibility !== 'hidden') {
+        if (st.display === 'none' || st.visibility === 'hidden') continue;
+        var isBottomBar = isSingleScreen && (el.tagName === 'FOOTER' || el.classList.contains('bottom-bar') || el.classList.contains('footer-links'));
+        if (st.position === 'fixed' || st.position === 'sticky' || isBottomBar) {
           var r = el.getBoundingClientRect();
           var overlapsX = r.left < barRect.right + 12 && r.right > barRect.left - 8;
           var overlapsY = r.bottom > window.innerHeight - 70 && r.top < window.innerHeight && r.height < 140;
           if (overlapsX && overlapsY) {
-            bar.style.bottom = Math.round(window.innerHeight - r.top + 12) + 'px';
+            bar.style.bottom = Math.round(window.innerHeight - r.top + 14) + 'px';
             break;
           }
         }
