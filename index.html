@@ -552,7 +552,10 @@
 
           <div class="flex flex-wrap items-center gap-3 text-xs font-mono-code t-muted">
             <span class="uppercase tracking-widest text-[11px]" data-i18n="find_me">Encontre-me em</span>
-            <button type="button" id="btn-copy-gh" class="px-3 py-1.5 rounded-lg border b-subtle bg-chip-var hover:border-cyan-400/50 t-heading transition">github/daniloliveira89</button>
+            <a href="https://wa.me/5511978883774" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border b-subtle bg-chip-var hover:border-emerald-400/60 t-heading transition">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              <span>WhatsApp</span>
+            </a>
             <a href="https://instagram.com/daniloliveira89" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border b-subtle bg-chip-var hover:border-fuchsia-400/60 t-heading transition">
               <svg class="w-3.5 h-3.5 t-orchid" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
               <span>@daniloliveira89</span>
@@ -750,18 +753,10 @@
               <div class="space-y-4 text-xs">
                 <div class="flex items-center justify-between gap-2 pb-3 border-b b-subtle">
                   <div>
-                    <p class="t-muted uppercase tracking-wider text-[10px] font-mono-code">E-mail</p>
-                    <p class="t-heading font-mono-code mt-0.5">danilo.bls89@gmail.com</p>
+                    <p class="t-muted uppercase tracking-wider text-[10px] font-mono-code">WhatsApp</p>
+                    <a href="https://wa.me/5511978883774" target="_blank" rel="noopener noreferrer" class="t-heading font-mono-code mt-0.5 hover:text-emerald-400 transition inline-block">+55 (11) 97888-3774</a>
                   </div>
-                  <button type="button" id="btn-copy-email" class="px-2.5 py-1 rounded-lg border b-subtle bg-chip-var text-[10px] font-mono-code t-cyan hover:border-cyan-400 transition" data-i18n="btn_copy">Copiar</button>
-                </div>
-
-                <div class="flex items-center justify-between gap-2 pb-3 border-b b-subtle">
-                  <div>
-                    <p class="t-muted uppercase tracking-wider text-[10px] font-mono-code">GitHub</p>
-                    <p class="t-heading font-mono-code mt-0.5">github.com/daniloliveira89</p>
-                  </div>
-                  <button type="button" id="btn-copy-gh-contact" class="px-2.5 py-1 rounded-lg border b-subtle bg-chip-var text-[10px] font-mono-code t-orchid hover:border-fuchsia-400 transition" data-i18n="btn_copy">Copiar</button>
+                  <button type="button" id="btn-copy-wa-contact" class="px-2.5 py-1 rounded-lg border b-subtle bg-chip-var text-[10px] font-mono-code t-cyan hover:border-cyan-400 transition" data-i18n="btn_copy">Copiar</button>
                 </div>
 
                 <div class="flex items-center justify-between gap-2 pb-3 border-b b-subtle">
@@ -799,22 +794,26 @@
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label for="c-name" class="block text-[11px] font-mono-code uppercase t-muted mb-1.5" data-i18n="form_name">Seu Nome</label>
-                  <input id="c-name" type="text" required data-i18n-placeholder="form_name_ph" placeholder="Ex: Carlos Silva" class="w-full px-4 py-2.5 rounded-xl bg-input-var border b-subtle t-heading text-xs focus:outline-none focus:border-cyan-400" />
+                  <input id="c-name" name="name" type="text" required data-i18n-placeholder="form_name_ph" placeholder="Ex: Carlos Silva" class="w-full px-4 py-2.5 rounded-xl bg-input-var border b-subtle t-heading text-xs focus:outline-none focus:border-cyan-400" />
                 </div>
                 <div>
                   <label for="c-email" class="block text-[11px] font-mono-code uppercase t-muted mb-1.5" data-i18n="form_email">Seu E-mail</label>
-                  <input id="c-email" type="email" required data-i18n-placeholder="form_email_ph" placeholder="Ex: contato@empresa.com" class="w-full px-4 py-2.5 rounded-xl bg-input-var border b-subtle t-heading text-xs focus:outline-none focus:border-cyan-400" />
+                  <input id="c-email" name="email" type="email" required data-i18n-placeholder="form_email_ph" placeholder="Ex: contato@empresa.com" class="w-full px-4 py-2.5 rounded-xl bg-input-var border b-subtle t-heading text-xs focus:outline-none focus:border-cyan-400" />
                 </div>
               </div>
               <div>
                 <label for="c-subject" class="block text-[11px] font-mono-code uppercase t-muted mb-1.5" data-i18n="form_subject">Assunto</label>
-                <input id="c-subject" type="text" required data-i18n-placeholder="form_subject_ph" placeholder="Ex: Novo Site Comercial / Landing Page" class="w-full px-4 py-2.5 rounded-xl bg-input-var border b-subtle t-heading text-xs focus:outline-none focus:border-cyan-400" />
+                <input id="c-subject" name="subject" type="text" required data-i18n-placeholder="form_subject_ph" placeholder="Ex: Novo Site Comercial / Landing Page" class="w-full px-4 py-2.5 rounded-xl bg-input-var border b-subtle t-heading text-xs focus:outline-none focus:border-cyan-400" />
               </div>
               <div>
                 <label for="c-msg" class="block text-[11px] font-mono-code uppercase t-muted mb-1.5" data-i18n="form_msg">Mensagem</label>
-                <textarea id="c-msg" rows="4" required data-i18n-placeholder="form_msg_ph" placeholder="Conte mais sobre o projeto, escopo ou objetivo..." class="w-full px-4 py-2.5 rounded-xl bg-input-var border b-subtle t-heading text-xs focus:outline-none focus:border-cyan-400 resize-none"></textarea>
+                <textarea id="c-msg" name="message" rows="4" required data-i18n-placeholder="form_msg_ph" placeholder="Conte mais sobre o projeto, escopo ou objetivo..." class="w-full px-4 py-2.5 rounded-xl bg-input-var border b-subtle t-heading text-xs focus:outline-none focus:border-cyan-400 resize-none"></textarea>
               </div>
-              <button type="submit" class="w-full sm:w-auto px-8 py-3 rounded-xl text-xs btn-cyan" data-i18n="form_submit">Enviar Mensagem</button>
+              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+              <div class="flex flex-col sm:flex-row sm:items-center gap-3">
+                <button type="submit" id="contact-submit-btn" class="w-full sm:w-auto px-8 py-3 rounded-xl text-xs btn-cyan" data-i18n="form_submit">Enviar Mensagem</button>
+                <p id="contact-feedback" class="hidden text-xs font-mono-code"></p>
+              </div>
             </form>
           </div>
         </div>
@@ -987,7 +986,9 @@
         form_email: 'Seu E-mail', form_email_ph: 'Ex: contato@empresa.com',
         form_subject: 'Assunto', form_subject_ph: 'Ex: Novo Site Comercial / Landing Page',
         form_msg: 'Mensagem', form_msg_ph: 'Conte mais sobre o projeto, escopo ou objetivo...',
-        form_submit: 'Enviar Mensagem', form_sent: 'Mensagem enviada com sucesso! Retorno em até 24h.',
+        form_submit: 'Enviar Mensagem', form_sending: 'Enviando...', form_sent: 'Mensagem enviada com sucesso! Retorno em até 24h.',
+        form_err: 'Não foi possível enviar por e-mail. Tente novamente ou chame no WhatsApp.',
+        form_wa_fallback: 'Envio direto por e-mail ainda não configurado no servidor — redirecionando para o WhatsApp...',
         footer_rights: 'Todos os direitos reservados.', footer_top: 'Topo ↑',
         cmdk_ph: 'Ir para seção, alternar tema ou copiar contato...',
         cmdk_empty: 'Nenhum comando encontrado.',
@@ -998,7 +999,7 @@
         wa_send: 'Iniciar no WhatsApp', wa_btn_title: 'Falar no WhatsApp', wa_toast: 'Abrindo conversa no WhatsApp...',
         toast_filter: 'Filtrando projetos com', toast_wave_on: 'Onda líquida ativada', toast_wave_off: 'Onda líquida pausada',
         toast_light: 'Modo Claro ativado', toast_dark: 'Modo Escuro ativado',
-        toast_gh: 'GitHub copiado!', toast_email: 'E-mail copiado!', toast_ig: 'Instagram @daniloliveira89 copiado!'
+        toast_wa: 'WhatsApp +55 (11) 97888-3774 copiado!', toast_ig: 'Instagram @daniloliveira89 copiado!'
       },
       es: {
         page_title: 'Danilo Oliveira — Diseñador Web y Especialista en Sitios Comerciales',
@@ -1040,7 +1041,9 @@
         form_email: 'Tu Correo', form_email_ph: 'Ej: contacto@empresa.com',
         form_subject: 'Asunto', form_subject_ph: 'Ej: Nuevo Sitio Web / Landing Page',
         form_msg: 'Mensaje', form_msg_ph: 'Cuéntanos sobre el proyecto, alcance u objetivo...',
-        form_submit: 'Enviar Mensaje', form_sent: '¡Mensaje enviado con éxito! Respuesta en hasta 24h.',
+        form_submit: 'Enviar Mensaje', form_sending: 'Enviando...', form_sent: '¡Mensaje enviado con éxito! Respuesta en hasta 24h.',
+        form_err: 'No se pudo enviar por correo. Inténtalo de nuevo o escríbenos por WhatsApp.',
+        form_wa_fallback: 'Envío directo por correo aún no configurado — redirigiendo a WhatsApp...',
         footer_rights: 'Todos los derechos reservados.', footer_top: 'Subir ↑',
         cmdk_ph: 'Ir a sección, cambiar tema o copiar contacto...',
         cmdk_empty: 'Ningún comando encontrado.',
@@ -1051,7 +1054,7 @@
         wa_send: 'Abrir en WhatsApp', wa_btn_title: 'Chatear por WhatsApp', wa_toast: 'Abriendo chat de WhatsApp...',
         toast_filter: 'Filtrando proyectos con', toast_wave_on: 'Onda líquida activada', toast_wave_off: 'Onda líquida pausada',
         toast_light: 'Modo Claro activado', toast_dark: 'Modo Oscuro activado',
-        toast_gh: '¡GitHub copiado!', toast_email: '¡Correo copiado!', toast_ig: '¡Instagram @daniloliveira89 copiado!'
+        toast_wa: '¡WhatsApp +55 (11) 97888-3774 copiado!', toast_ig: '¡Instagram @daniloliveira89 copiado!'
       },
       en: {
         page_title: 'Danilo Oliveira — Web Designer & Commercial Website Specialist',
@@ -1093,7 +1096,9 @@
         form_email: 'Your Email', form_email_ph: 'e.g. contact@company.com',
         form_subject: 'Subject', form_subject_ph: 'e.g. Commercial Website / Landing Page',
         form_msg: 'Message', form_msg_ph: 'Tell me about your project, scope, or goals...',
-        form_submit: 'Send Message', form_sent: 'Message sent successfully! Reply within 24 hours.',
+        form_submit: 'Send Message', form_sending: 'Sending...', form_sent: 'Message sent successfully! Reply within 24 hours.',
+        form_err: 'Could not send email right now. Try again or message via WhatsApp.',
+        form_wa_fallback: 'Direct email delivery is not configured yet — opening WhatsApp instead...',
         footer_rights: 'All rights reserved.', footer_top: 'Top ↑',
         cmdk_ph: 'Go to section, switch theme, or copy contact...',
         cmdk_empty: 'No matching commands found.',
@@ -1104,7 +1109,7 @@
         wa_send: 'Chat on WhatsApp', wa_btn_title: 'Chat on WhatsApp', wa_toast: 'Opening WhatsApp chat...',
         toast_filter: 'Filtering projects with', toast_wave_on: 'Liquid wave enabled', toast_wave_off: 'Liquid wave paused',
         toast_light: 'Light mode enabled', toast_dark: 'Dark mode enabled',
-        toast_gh: 'GitHub copied!', toast_email: 'Email copied!', toast_ig: 'Instagram @daniloliveira89 copied!'
+        toast_wa: 'WhatsApp +55 (11) 97888-3774 copied!', toast_ig: 'Instagram @daniloliveira89 copied!'
       }
     };
 
@@ -1479,13 +1484,13 @@
       { id: 'logo-37', name: 'Aurea Atelier', file: '37-aurea-atelier.png', pt: 'Portfólio de Arte Editorial', es: 'Portafolio de Arte Editorial', en: 'Fine Art Editorial', demoUrl: '/layouts para sites/site face/index.html' },
       { id: 'logo-38', name: 'Hyperion Academy', file: '38-hyperion.png', pt: 'Cursos & Tecnologia', es: 'Cursos & Escuela de Tecnología', en: 'Tech Academy & Courses', demoUrl: '/layouts para sites/site-escola-cursos/index.html' },
       { id: 'logo-39', name: 'FlowGate AI', file: '39-flowgate-ai.png', pt: 'SaaS & Startup de I.A.', es: 'SaaS & Startup de I.A.', en: 'AI Gateway & SaaS', demoUrl: '/layouts para sites/site-saas-ai/index.html' },
-      { id: 'logo-40', name: 'Radar IA', file: '40-radar-ia.png', pt: 'Observatório Global de I.A.', es: 'Observatorio Global de I.A.', en: 'Global AI Observatory', demoUrl: 'https://daniloliveira89.github.io/site---Radar-IA/' },
+      { id: 'logo-40', name: 'Radar IA', file: '40-radar-ia.png', pt: 'Observatório Global de I.A.', es: 'Observatorio Global de I.A.', en: 'Global AI Observatory', demoUrl: '/assets/images/logos-ia/40-radar-ia.png' },
       { id: 'logo-41', name: 'Prompt Studio', file: '41-prompt-studio.png', pt: 'Estúdio de Prompts I.A.', es: 'Estudio de Prompts I.A.', en: 'AI Prompt Engineering Studio', demoUrl: 'https://app-studio-ai.vercel.app' },
-      { id: 'logo-42', name: 'IVFR Global', file: '42-ivfr-global.png', pt: 'Índice Econômico Global', es: 'Índice Económico Global', en: 'Global Economic Index', demoUrl: 'https://daniloliveira89.github.io/indice-custo-vida/' },
+      { id: 'logo-42', name: 'IVFR Global', file: '42-ivfr-global.png', pt: 'Índice Econômico Global', es: 'Índice Económico Global', en: 'Global Economic Index', demoUrl: '/assets/images/logos-ia/42-ivfr-global.png' },
       { id: 'logo-43', name: 'Music Atlas', file: '43-music-atlas.png', pt: 'Streaming & Música PWA', es: 'Streaming & Música PWA', en: 'Music Streaming PWA', demoUrl: 'https://music-atlas.vercel.app' },
       { id: 'logo-44', name: 'Game Atlas', file: '44-game-atlas.png', pt: 'Diário Gamer & Backlog', es: 'Diario Gamer & Backlog', en: 'Gamer Journal & Backlog', demoUrl: 'https://game-atlas.vercel.app' },
-      { id: 'logo-45', name: 'Cinematheque Atlas', file: '45-cinematheque-atlas.png', pt: 'Catálogo & Acervo de Cinema', es: 'Catálogo & Archivo de Cine', en: 'Film Archive & Journal', demoUrl: 'https://github.com/daniloliveira89/cinematheque-atlas' },
-      { id: 'logo-46', name: 'Bookshelf Atlas', file: '46-bookshelf-atlas.png', pt: 'Biblioteca & Diário Literário', es: 'Biblioteca & Diario Literario', en: 'Literary Journal & Library', demoUrl: 'https://github.com/daniloliveira89/bookshelf-atlas' },
+      { id: 'logo-45', name: 'Cinematheque Atlas', file: '45-cinematheque-atlas.png', pt: 'Catálogo & Acervo de Cinema', es: 'Catálogo & Archivo de Cine', en: 'Film Archive & Journal', demoUrl: '/assets/images/logos-ia/45-cinematheque-atlas.png' },
+      { id: 'logo-46', name: 'Bookshelf Atlas', file: '46-bookshelf-atlas.png', pt: 'Biblioteca & Diário Literário', es: 'Biblioteca & Diario Literario', en: 'Literary Journal & Library', demoUrl: '/assets/images/logos-ia/46-bookshelf-atlas.png' },
       { id: 'logo-47', name: 'Neon Synapse', file: '47-neon-synapse.png', pt: 'Jogo Tático Cyberpunk', es: 'Juego Táctico Cyberpunk', en: 'Cyberpunk Card Game', demoUrl: 'https://neon-synapse.vercel.app' },
       { id: 'logo-48', name: 'Prancheta Tática', file: '48-prancheta-tatica.png', pt: 'Simulador Tático de Futebol', es: 'Pizarra Táctica de Fútbol', en: 'Tactical Soccer Board', demoUrl: 'https://prancheta-tatica.vercel.app' }
     ];
@@ -1907,7 +1912,7 @@
           whoami: 'Danilo Oliveira — Web Designer & Especialista em Websites Comerciais.',
           stack: 'UI/UX Design • Landing Pages • Tailwind CSS • React/Next.js • Identidade Visual • SEO & Performance.',
           projetos: '40 Websites Comerciais em produção (Restaurantes, Clínicas, Hotelaria, E-commerce, Advocacia, Portfólios 3D) e 48 Logos.',
-          contato: 'E-mail: danilo.bls89@gmail.com | Instagram: @daniloliveira89 | GitHub: github.com/daniloliveira89',
+          contato: 'WhatsApp: +55 (11) 97888-3774 | Instagram: @daniloliveira89',
           notFound: 'Comando não encontrado. Use: help'
         },
         es: {
@@ -1916,8 +1921,8 @@
           stack: 'Diseño UI/UX • Landing Pages • Tailwind CSS • React/Next.js • Identidad Visual • SEO & Velocidad.',
           projetos: '40 Sitios Web Comerciales en producción (Restaurantes, Clínicas, Hoteles, E-commerce, Abogados, Portafolios 3D) y 48 Logos.',
           proyectos: '40 Sitios Web Comerciales en producción (Restaurantes, Clínicas, Hoteles, E-commerce, Abogados, Portafolios 3D) y 48 Logos.',
-          contato: 'Correo: danilo.bls89@gmail.com | Instagram: @daniloliveira89 | GitHub: github.com/daniloliveira89',
-          contacto: 'Correo: danilo.bls89@gmail.com | Instagram: @daniloliveira89 | GitHub: github.com/daniloliveira89',
+          contato: 'WhatsApp: +55 (11) 97888-3774 | Instagram: @daniloliveira89',
+          contacto: 'WhatsApp: +55 (11) 97888-3774 | Instagram: @daniloliveira89',
           notFound: 'Comando no encontrado. Usa: help'
         },
         en: {
@@ -1926,8 +1931,8 @@
           stack: 'UI/UX Design • Landing Pages • Tailwind CSS • React/Next.js • Brand Identity • SEO & Speed.',
           projetos: '40 Live Commercial Websites (Restaurants, Clinics, Hospitality, E-commerce, Law Firms, 3D Portfolios) & 48 Logos.',
           projects: '40 Live Commercial Websites (Restaurants, Clinics, Hospitality, E-commerce, Law Firms, 3D Portfolios) & 48 Logos.',
-          contato: 'Email: danilo.bls89@gmail.com | Instagram: @daniloliveira89 | GitHub: github.com/daniloliveira89',
-          contact: 'Email: danilo.bls89@gmail.com | Instagram: @daniloliveira89 | GitHub: github.com/daniloliveira89',
+          contato: 'WhatsApp: +55 (11) 97888-3774 | Instagram: @daniloliveira89',
+          contact: 'WhatsApp: +55 (11) 97888-3774 | Instagram: @daniloliveira89',
           notFound: 'Command not found. Type: help'
         }
       };
@@ -2122,8 +2127,8 @@
         { label: 'Ir para Diferenciais', hint: '#differentials', action: () => location.hash = '#differentials' },
         { label: 'Ir para Contato', hint: '#contact', action: () => location.hash = '#contact' },
         { label: 'Abrir Terminal no Hero', hint: 'CLI', action: () => { window.scrollTo({ top: 0, behavior: 'smooth' }); switchHeroTab('terminal'); } },
-        { label: 'Copiar E-mail (danilo.bls89@gmail.com)', hint: 'Copy', action: () => copyText('danilo.bls89@gmail.com', I18N.pt.toast_email) },
-        { label: 'Copiar GitHub (@daniloliveira89)', hint: 'Copy', action: () => copyText('https://github.com/daniloliveira89', I18N.pt.toast_gh) },
+        { label: 'Copiar WhatsApp (+55 11 97888-3774)', hint: 'Copy', action: () => copyText('+55 11 97888-3774', I18N.pt.toast_wa) },
+        { label: 'Iniciar WhatsApp', hint: 'Chat', action: () => window.open('https://wa.me/5511978883774?text=' + encodeURIComponent(I18N.pt.wa_default_msg), '_blank', 'noopener,noreferrer') },
         { label: 'Copiar Instagram (@daniloliveira89)', hint: 'Copy', action: () => copyText('https://instagram.com/daniloliveira89', I18N.pt.toast_ig) }
       ],
       es: [
@@ -2132,8 +2137,8 @@
         { label: 'Ir a Diferenciales', hint: '#differentials', action: () => location.hash = '#differentials' },
         { label: 'Ir a Contacto', hint: '#contact', action: () => location.hash = '#contact' },
         { label: 'Abrir Terminal en el Hero', hint: 'CLI', action: () => { window.scrollTo({ top: 0, behavior: 'smooth' }); switchHeroTab('terminal'); } },
-        { label: 'Copiar Correo (danilo.bls89@gmail.com)', hint: 'Copy', action: () => copyText('danilo.bls89@gmail.com', I18N.es.toast_email) },
-        { label: 'Copiar GitHub (@daniloliveira89)', hint: 'Copy', action: () => copyText('https://github.com/daniloliveira89', I18N.es.toast_gh) },
+        { label: 'Copiar WhatsApp (+55 11 97888-3774)', hint: 'Copy', action: () => copyText('+55 11 97888-3774', I18N.es.toast_wa) },
+        { label: 'Abrir WhatsApp', hint: 'Chat', action: () => window.open('https://wa.me/5511978883774?text=' + encodeURIComponent(I18N.es.wa_default_msg), '_blank', 'noopener,noreferrer') },
         { label: 'Copiar Instagram (@daniloliveira89)', hint: 'Copy', action: () => copyText('https://instagram.com/daniloliveira89', I18N.es.toast_ig) }
       ],
       en: [
@@ -2142,8 +2147,8 @@
         { label: 'Go to Standards', hint: '#differentials', action: () => location.hash = '#differentials' },
         { label: 'Go to Contact', hint: '#contact', action: () => location.hash = '#contact' },
         { label: 'Open Hero Terminal', hint: 'CLI', action: () => { window.scrollTo({ top: 0, behavior: 'smooth' }); switchHeroTab('terminal'); } },
-        { label: 'Copy Email (danilo.bls89@gmail.com)', hint: 'Copy', action: () => copyText('danilo.bls89@gmail.com', I18N.en.toast_email) },
-        { label: 'Copy GitHub (@daniloliveira89)', hint: 'Copy', action: () => copyText('https://github.com/daniloliveira89', I18N.en.toast_gh) },
+        { label: 'Copy WhatsApp (+55 11 97888-3774)', hint: 'Copy', action: () => copyText('+55 11 97888-3774', I18N.en.toast_wa) },
+        { label: 'Chat on WhatsApp', hint: 'Chat', action: () => window.open('https://wa.me/5511978883774?text=' + encodeURIComponent(I18N.en.wa_default_msg), '_blank', 'noopener,noreferrer') },
         { label: 'Copy Instagram (@daniloliveira89)', hint: 'Copy', action: () => copyText('https://instagram.com/daniloliveira89', I18N.en.toast_ig) }
       ]
     };
@@ -2264,9 +2269,7 @@
       e.target.textContent = state.fxEnabled ? t.wave_on : t.wave_off;
       showToast(state.fxEnabled ? t.toast_wave_on : t.toast_wave_off);
     });
-    document.getElementById('btn-copy-gh').addEventListener('click', () => copyText('https://github.com/daniloliveira89', (I18N[state.lang] || I18N.pt).toast_gh));
-    document.getElementById('btn-copy-gh-contact').addEventListener('click', () => copyText('https://github.com/daniloliveira89', (I18N[state.lang] || I18N.pt).toast_gh));
-    document.getElementById('btn-copy-email').addEventListener('click', () => copyText('danilo.bls89@gmail.com', (I18N[state.lang] || I18N.pt).toast_email));
+    document.getElementById('btn-copy-wa-contact').addEventListener('click', () => copyText('+55 11 97888-3774', (I18N[state.lang] || I18N.pt).toast_wa));
     document.getElementById('btn-copy-ig-contact').addEventListener('click', () => copyText('https://instagram.com/daniloliveira89', (I18N[state.lang] || I18N.pt).toast_ig));
     document.getElementById('btn-wa-float').addEventListener('click', () => {
       document.getElementById('wa-popover').classList.toggle('hidden');
@@ -2277,7 +2280,7 @@
     document.getElementById('btn-send-wa').addEventListener('click', () => {
       const t = I18N[state.lang] || I18N.pt;
       const msg = encodeURIComponent(document.getElementById('wa-msg-input').value.trim() || t.wa_default_msg);
-      window.open(`https://wa.me/?text=${msg}`, '_blank', 'noopener,noreferrer');
+      window.open(`https://wa.me/5511978883774?text=${msg}`, '_blank', 'noopener,noreferrer');
       document.getElementById('wa-popover').classList.add('hidden');
       showToast(t.wa_toast);
     });
@@ -2295,9 +2298,63 @@
     document.getElementById('close-project-modal').addEventListener('click', closeProjectModal);
     document.getElementById('pm-close-btn').addEventListener('click', closeProjectModal);
 
-    document.getElementById('contact-form').addEventListener('submit', (e) => {
-      e.preventDefault(); e.target.reset();
-      showToast((I18N[state.lang] || I18N.pt).form_sent);
+    document.getElementById('contact-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const t = I18N[state.lang] || I18N.pt;
+      const btn = document.getElementById('contact-submit-btn');
+      const fb = document.getElementById('contact-feedback');
+      const payload = {
+        name: document.getElementById('c-name').value.trim(),
+        email: document.getElementById('c-email').value.trim(),
+        subject: document.getElementById('c-subject').value.trim(),
+        message: document.getElementById('c-msg').value.trim(),
+        _gotcha: form.querySelector('input[name="_gotcha"]')?.value || '',
+        lang: state.lang || 'pt'
+      };
+      const origLabel = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = t.form_sending;
+      if (fb) { fb.classList.add('hidden'); }
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data.ok) {
+          form.reset();
+          if (fb) {
+            fb.className = 'text-xs font-mono-code text-emerald-400';
+            fb.textContent = t.form_sent;
+          }
+          showToast(t.form_sent);
+        } else if (data && data.configured === false) {
+          if (fb) {
+            fb.className = 'text-xs font-mono-code text-amber-400';
+            fb.textContent = t.form_wa_fallback;
+          }
+          showToast(t.form_wa_fallback);
+          const waText = encodeURIComponent(`Olá Danilo!\nNome: ${payload.name}\nE-mail: ${payload.email}\nAssunto: ${payload.subject}\n\n${payload.message}`);
+          window.open(`https://wa.me/5511978883774?text=${waText}`, '_blank', 'noopener,noreferrer');
+        } else {
+          if (fb) {
+            fb.className = 'text-xs font-mono-code text-rose-400';
+            fb.textContent = t.form_err;
+          }
+          showToast(t.form_err);
+        }
+      } catch (err) {
+        if (fb) {
+          fb.className = 'text-xs font-mono-code text-rose-400';
+          fb.textContent = t.form_err;
+        }
+        showToast(t.form_err);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = t.form_submit || origLabel;
+      }
     });
 
     applyTranslations();

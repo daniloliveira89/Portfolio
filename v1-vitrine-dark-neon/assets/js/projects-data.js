@@ -17,8 +17,7 @@ const PROJECTS_DATA = [
     ],
     tags: ["TypeScript", "Next.js", "Tailwind CSS", "GitHub Actions", "LLMs"],
     links: {
-      github: "https://github.com/daniloliveira89/site---Radar-IA",
-      demo: "https://daniloliveira89.github.io/site---Radar-IA/"
+      demo: null
     },
     features: [
       "Monitoramento automatizado de lançamentos (Modelos, Imagem, Vídeo, Áudio e Agentes)",
@@ -43,7 +42,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["JavaScript", "GenAI", "Flux / Midjourney", "UI/UX", "i18n"],
     links: {
-      github: "https://github.com/daniloliveira89/app-StudioAI",
       demo: "https://app-studio-ai.vercel.app"
     },
     features: [
@@ -66,8 +64,7 @@ const PROJECTS_DATA = [
     ],
     tags: ["React", "TypeScript", "Data Visualization", "Economia", "Multi-Moeda"],
     links: {
-      github: "https://github.com/daniloliveira89/indice-custo-vida",
-      demo: "https://daniloliveira89.github.io/indice-custo-vida/"
+      demo: null
     },
     features: [
       "Base com 103 cidades globais (EUA, Suíça, Luxemburgo, Brasil e mais)",
@@ -90,8 +87,7 @@ const PROJECTS_DATA = [
     ],
     tags: ["JavaScript", "Plotly.js", "Matemática Financeira", "Tailwind CSS"],
     links: {
-      github: "https://github.com/daniloliveira89/Juros-Compostos",
-      demo: "https://daniloliveira89.github.io/Juros-Compostos/"
+      demo: null
     },
     features: [
       "Exibição transparente da equação de Valor Futuro (FV) em tempo real",
@@ -121,7 +117,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["TypeScript", "PixiJS", "WebGL", "Game AI", "Cyberpunk UI"],
     links: {
-      github: "https://github.com/daniloliveira89/GAME---Gwent-Cyberpunk",
       demo: "https://neon-synapse.vercel.app"
     },
     features: [
@@ -144,7 +139,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["JavaScript", "HTML5 Drag & Drop", "Análise Tática", "UI Responsiva"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "https://prancheta-tatica.vercel.app"
     },
     features: [
@@ -173,7 +167,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["PWA", "Cloudflare Workers", "Web Audio API", "Notion API", "Google Drive"],
     links: {
-      github: "https://github.com/daniloliveira89/Music-Atlas",
       demo: "https://music-atlas.vercel.app"
     },
     features: [
@@ -197,7 +190,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["JavaScript", "Notion API", "Google Sheets", "Editorial UI"],
     links: {
-      github: "https://github.com/daniloliveira89/bookshelf-atlas",
       demo: null
     },
     features: [
@@ -221,7 +213,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["TypeScript", "Notion Sync", "Data Analytics", "Cinema UI"],
     links: {
-      github: "https://github.com/daniloliveira89/Cinematheque-Atlas",
       demo: null
     },
     features: [
@@ -245,7 +236,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["JavaScript", "Notion API", "Gaming UI", "Dashboard"],
     links: {
-      github: "https://github.com/daniloliveira89/Game-Atlas",
       demo: "https://game-atlas.vercel.app"
     },
     features: [
@@ -270,7 +260,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["E-commerce", "Shopping Cart JS", "Minimalist UI", "Tailwind CSS"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-ecommerce/index.html"
     },
     features: [
@@ -293,7 +282,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Luxury Hospitality", "Interactive Drawer", "Minimalism", "Tailwind CSS"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-gastronomia-reserva/index.html"
     },
     features: [
@@ -316,7 +304,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Dental UI", "Before-After Slider", "Split-Screen", "Interactive Healthcare"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-odontologia/index.html"
     },
     features: [
@@ -339,7 +326,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Healthcare UI", "Medical Portal", "Doctor Filter", "Clean Design"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-clinica-medica/index.html"
     },
     features: [
@@ -362,7 +348,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Real Estate UI", "Multi-Currency JS", "Property Filter", "Luxury Portal"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-real-estate/index.html"
     },
     features: [
@@ -385,7 +370,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Corporate UI", "Tailwind CSS", "Executive Design", "Interactive Tabs"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-corporate/index.html"
     },
     features: [
@@ -408,7 +392,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Barbershop UI", "Interactive Booking", "Price Calculator", "Luxury Design"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-barbearia/index.html"
     },
     features: [
@@ -431,7 +414,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Fitness UI", "IMC Calculator", "Tailwind CSS", "High Performance"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-academia/index.html"
     },
     features: [
@@ -454,7 +436,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Automotive UI", "Loan Calculator", "Luxury Showroom", "Supercars"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-concessionaria/index.html"
     },
     features: [
@@ -477,7 +458,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Aesthetics UI", "Quiet Beauty", "Laser Protocols", "Interactive Treatments"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-estetica/index.html"
     },
     features: [
@@ -500,7 +480,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Hospitality UI", "Eco Resort", "Suite Booking", "Luxury Experience"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-hotel-resort/index.html"
     },
     features: [
@@ -523,7 +502,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Luxury Travel", "Tour Planner", "Editorial Destinations", "Concierge"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-agencia-viagens/index.html"
     },
     features: [
@@ -546,7 +524,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Editorial Design", "Cormorant Garamond", "CSS Flex Accordion", "Luxury"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-arquitetura-editorial/index.html"
     },
     features: [
@@ -569,7 +546,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Construction UI", "Real Estate Dev", "Project Status", "Architecture"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-construtora/index.html"
     },
     features: [
@@ -592,7 +568,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Pet Shop UI", "Grooming Booking", "Pet Care", "Friendly Design"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-petshop/index.html"
     },
     features: [
@@ -615,7 +590,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Specialty Coffee", "Sensory Profile", "Artisanal Food", "Subscription"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-cafeteria/index.html"
     },
     features: [
@@ -638,7 +612,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["EdTech UI", "Online Courses", "Software Bootcamp", "Curriculum Grid"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-escola-cursos/index.html"
     },
     features: [
@@ -661,7 +634,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Tailwind CSS", "Bento Grid", "Mouse Spotlight", "SaaS Conversion"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-saas-ai/index.html"
     },
     features: [
@@ -684,7 +656,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Advertising UI", "Creative Agency", "Branding B2B", "ROI Simulator"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-agencia-publicidade/index.html"
     },
     features: [
@@ -707,7 +678,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Accounting UI", "Tax Advisory", "BPO Finance", "Corporate Taxes"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-contabilidade/index.html"
     },
     features: [
@@ -730,7 +700,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Logistics UI", "Package Tracking", "Freight Quote", "Supply Chain"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-logistica/index.html"
     },
     features: [
@@ -753,7 +722,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Solar Energy", "Solar Calculator", "Sustainability", "Engineering"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-energia-solar/index.html"
     },
     features: [
@@ -776,7 +744,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Photography Portfolio", "Fine Art", "Dark Gallery", "Visual Artist"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-fotografo/index.html"
     },
     features: [
@@ -799,7 +766,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Management Consulting", "EBITDA Growth", "Turnaround", "Corporate Advisory"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-consultoria/index.html"
     },
     features: [
@@ -822,7 +788,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Streetwear Store", "Lookbook UI", "Limited Drops", "Fashion Editorial"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-marca-roupas/index.html"
     },
     features: [
@@ -845,7 +810,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Veterinary UI", "Emergency 24h", "Pet Healthcare", "Interactive Hospital"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-clinica-veterinaria/index.html"
     },
     features: [
@@ -868,7 +832,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Spa & Wellness", "Massage Therapy", "Relaxation UI", "Aromatherapy"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-spa-massagem/index.html"
     },
     features: [
@@ -891,7 +854,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Motel Boutique", "Private Suites", "Anonymous Booking", "Luxury Hospitality"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-motel/index.html"
     },
     features: [
@@ -914,7 +876,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Live Events UI", "Stage Design", "Audiovisual", "Festival Production"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-produtora-eventos/index.html"
     },
     features: [
@@ -937,7 +898,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Civil Engineering", "BIM Modeling", "Structural Analysis", "Industrial Buildings"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-engenharia/index.html"
     },
     features: [
@@ -960,7 +920,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Design Autoral", "Mobiliário Nórdico", "Madeira Maciça", "Minimalismo", "Interiores"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-moveis-decoracao/index.html"
     },
     features: [
@@ -983,7 +942,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Cinema", "Audiovisual", "Showreel", "Publicidade", "Direção de Arte", "Pós-Produção"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-produtora-audiovisual/index.html"
     },
     features: [
@@ -1006,7 +964,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Facilities", "Limpeza Corporativa", "Pós-Obra", "Manutenção Predial", "Orçamento Online"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-limpeza-manutencao/index.html"
     },
     features: [
@@ -1029,7 +986,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Psicologia Clínica", "Saúde Mental", "Terapia TCC", "Atendimento Online", "Bem-Estar"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-psicologia/index.html"
     },
     features: [
@@ -1052,7 +1008,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Music Streaming", "Synthwave UI", "Tour Dates", "Record Label", "Dark Neon"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-banda-gravadora/index.html"
     },
     features: [
@@ -1075,7 +1030,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Indústria Pesada", "Usinagem CNC", "Caldeiraria", "B2B Industrial", "Engenharia Mecânica"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-ferramentaria-caldeiraria/index.html"
     },
     features: [
@@ -1098,7 +1052,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["HTML5 Canvas", "Simplex 3D Noise", "Glassmorphism", "Fintech UI"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site-meridian-wave/index.html"
     },
     features: [
@@ -1122,7 +1075,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["CSS Mask-Image", "Lerp Physics", "Editorial Typography", "Interactive Hero"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site face/index.html"
     },
     features: [
@@ -1147,7 +1099,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["UI/UX Concept", "FileReader API", "CSS Masking", "Creative Coding"],
     links: {
-      github: "https://github.com/daniloliveira89",
       demo: "/layouts para sites/site tattoo/index.html"
     },
     features: [
@@ -1175,7 +1126,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Chrome MV3", "Downloads API", "JavaScript", "Audio FLAC/MP3"],
     links: {
-      github: "https://github.com/daniloliveira89/extension---Universal-Downloader",
       demo: null
     },
     features: [
@@ -1202,7 +1152,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Chrome MV3", "Web Audio API", "YouTube DOM", "Produtividade"],
     links: {
-      github: "https://github.com/daniloliveira89/extension---Copy-Transcription",
       demo: null
     },
     features: [
@@ -1227,7 +1176,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Chrome MV3", "Notion API", "OAuth / Token", "Automação"],
     links: {
-      github: "https://github.com/daniloliveira89/extension---Sync-to-Notion",
       demo: null
     },
     features: [
@@ -1254,7 +1202,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["C#", ".NET", "Rclone", "Cloud Storage", "Windows Desktop"],
     links: {
-      github: "https://github.com/daniloliveira89/app---RClone-manager",
       demo: null
     },
     features: [
@@ -1277,7 +1224,6 @@ const PROJECTS_DATA = [
     ],
     tags: ["Python 3", "Regex", "Automação de Arquivos", "Plex / Jellyfin"],
     links: {
-      github: "https://github.com/daniloliveira89/app---Torrrent-Rename",
       demo: null
     },
     features: [
@@ -1293,5 +1239,5 @@ const PORTFOLIO_STATS = {
   totalProjects: PROJECTS_DATA.length,
   totalCategories: 6,
   liveDemos: PROJECTS_DATA.filter(p => p.links && p.links.demo).length,
-  openSource: PROJECTS_DATA.filter(p => p.links && p.links.github).length
+  openSource: 0
 };

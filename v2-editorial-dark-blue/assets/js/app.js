@@ -300,7 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ghLink = document.getElementById('modal-github-link');
     const demoLink = document.getElementById('modal-demo-link');
 
-    if (ghLink) ghLink.href = project.links.github || 'https://github.com/daniloliveira89';
+    if (ghLink) { ghLink.classList.add('hidden'); ghLink.href = '#'; }
     if (demoLink) {
       if (project.links.demo) {
         demoLink.href = getDemoUrl(project.links.demo);

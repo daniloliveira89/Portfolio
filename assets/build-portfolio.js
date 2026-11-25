@@ -344,8 +344,6 @@ html = html
   .replace('<p class="text-xs font-semibold tracking-[0.3em] uppercase t-cyan mb-3 font-mono-code">Conectar & Colaborar</p>', '<p class="text-xs font-semibold tracking-[0.3em] uppercase t-cyan mb-3 font-mono-code" data-i18n="sec_contact_kicker">Conectar &amp; Colaborar</p>')
   .replace('<h2 class="font-display text-3xl md:text-4xl font-bold t-heading">\n            Vamos <span class="brand-gradient-text">Trabalhar Juntos</span>\n          </h2>', '<h2 class="font-display text-3xl md:text-4xl font-bold t-heading" data-i18n-html="sec_contact_title">\n            Vamos <span class="brand-gradient-text">Trabalhar Juntos</span>\n          </h2>')
   .replace('<h3 class="font-display text-lg font-bold t-heading mb-5">Canais Diretos</h3>', '<h3 class="font-display text-lg font-bold t-heading mb-5" data-i18n="contact_direct">Canais Diretos</h3>')
-  .replace('<button type="button" id="btn-copy-email" class="px-2.5 py-1 rounded-lg border b-subtle bg-chip-var text-[10px] font-mono-code t-cyan hover:border-cyan-400 transition">Copiar</button>', '<button type="button" id="btn-copy-email" class="px-2.5 py-1 rounded-lg border b-subtle bg-chip-var text-[10px] font-mono-code t-cyan hover:border-cyan-400 transition" data-i18n="btn_copy">Copiar</button>')
-  .replace('<button type="button" id="btn-copy-gh-contact" class="px-2.5 py-1 rounded-lg border b-subtle bg-chip-var text-[10px] font-mono-code t-orchid hover:border-fuchsia-400 transition">Copiar</button>', '<button type="button" id="btn-copy-gh-contact" class="px-2.5 py-1 rounded-lg border b-subtle bg-chip-var text-[10px] font-mono-code t-orchid hover:border-fuchsia-400 transition" data-i18n="btn_copy">Copiar</button>')
   .replace('<button type="button" id="btn-copy-ig-contact" class="px-2.5 py-1 rounded-lg border b-subtle bg-chip-var text-[10px] font-mono-code t-orchid hover:border-fuchsia-400 transition">Copiar</button>', '<button type="button" id="btn-copy-ig-contact" class="px-2.5 py-1 rounded-lg border b-subtle bg-chip-var text-[10px] font-mono-code t-orchid hover:border-fuchsia-400 transition" data-i18n="btn_copy">Copiar</button>')
   .replace('<p class="t-muted uppercase tracking-wider text-[10px] font-mono-code">Localização</p>\n                  <p class="t-heading mt-0.5">Brasil • Atuação Remota Global</p>', '<p class="t-muted uppercase tracking-wider text-[10px] font-mono-code" data-i18n="contact_loc_label">Localização</p>\n                  <p class="t-heading mt-0.5" data-i18n="contact_loc_val">Brasil • Atuação Remota Global</p>')
   .replace('<p class="t-muted uppercase tracking-wider text-[10px] font-mono-code">Tempo de Resposta</p>\n                  <p class="t-heading mt-0.5">Em até 24 horas</p>', '<p class="t-muted uppercase tracking-wider text-[10px] font-mono-code" data-i18n="contact_resp_label">Tempo de Resposta</p>\n                  <p class="t-heading mt-0.5" data-i18n="contact_resp_val">Em até 24 horas</p>')
@@ -359,7 +357,7 @@ html = html
   .replace('placeholder="Ex: Projeto Web App / Consultoria"', 'data-i18n-placeholder="form_subject_ph" placeholder="Ex: Novo Site Comercial / Landing Page"')
   .replace('<label for="c-msg" class="block text-[11px] font-mono-code uppercase t-muted mb-1.5">Mensagem</label>', '<label for="c-msg" class="block text-[11px] font-mono-code uppercase t-muted mb-1.5" data-i18n="form_msg">Mensagem</label>')
   .replace('placeholder="Conte mais sobre o projeto, escopo ou objetivo..."', 'data-i18n-placeholder="form_msg_ph" placeholder="Conte mais sobre o projeto, escopo ou objetivo..."')
-  .replace('<button type="submit" class="w-full sm:w-auto px-8 py-3 rounded-xl text-xs btn-cyan">Enviar Mensagem</button>', '<button type="submit" class="w-full sm:w-auto px-8 py-3 rounded-xl text-xs btn-cyan" data-i18n="form_submit">Enviar Mensagem</button>')
+  .replace('<button type="submit" id="contact-submit-btn" class="w-full sm:w-auto px-8 py-3 rounded-xl text-xs btn-cyan">Enviar Mensagem</button>', '<button type="submit" id="contact-submit-btn" class="w-full sm:w-auto px-8 py-3 rounded-xl text-xs btn-cyan" data-i18n="form_submit">Enviar Mensagem</button>')
   .replace('<p class="text-xs t-muted">&copy; 2026 <strong class="t-heading">Danilo Oliveira</strong>. Todos os direitos reservados.</p>', '<p class="text-xs t-muted">&copy; 2026 <strong class="t-heading">Danilo Oliveira</strong>. <span data-i18n="footer_rights">Todos os direitos reservados.</span></p>')
   .replace('<a href="#services" class="hover:t-cyan transition">Serviços</a>', '<a href="#services" class="hover:t-cyan transition" data-i18n="nav_services">Serviços</a>')
   .replace('<a href="#skills" class="hover:t-cyan transition">Tecnologias</a>', '<a href="#skills" class="hover:t-cyan transition" data-i18n="nav_skills">Tecnologias</a>')
@@ -420,7 +418,9 @@ const newDataBlock = `const I18N = {
         form_email: 'Seu E-mail', form_email_ph: 'Ex: contato@empresa.com',
         form_subject: 'Assunto', form_subject_ph: 'Ex: Novo Site Comercial / Landing Page',
         form_msg: 'Mensagem', form_msg_ph: 'Conte mais sobre o projeto, escopo ou objetivo...',
-        form_submit: 'Enviar Mensagem', form_sent: 'Mensagem enviada com sucesso! Retorno em até 24h.',
+        form_submit: 'Enviar Mensagem', form_sending: 'Enviando...', form_sent: 'Mensagem enviada com sucesso! Retorno em até 24h.',
+        form_err: 'Não foi possível enviar por e-mail. Tente novamente ou chame no WhatsApp.',
+        form_wa_fallback: 'Envio direto por e-mail ainda não configurado no servidor — redirecionando para o WhatsApp...',
         footer_rights: 'Todos os direitos reservados.', footer_top: 'Topo ↑',
         cmdk_ph: 'Ir para seção, alternar tema ou copiar contato...',
         cmdk_empty: 'Nenhum comando encontrado.',
@@ -431,7 +431,7 @@ const newDataBlock = `const I18N = {
         wa_send: 'Iniciar no WhatsApp', wa_btn_title: 'Falar no WhatsApp', wa_toast: 'Abrindo conversa no WhatsApp...',
         toast_filter: 'Filtrando projetos com', toast_wave_on: 'Onda líquida ativada', toast_wave_off: 'Onda líquida pausada',
         toast_light: 'Modo Claro ativado', toast_dark: 'Modo Escuro ativado',
-        toast_gh: 'GitHub copiado!', toast_email: 'E-mail copiado!', toast_ig: 'Instagram @daniloliveira89 copiado!'
+        toast_wa: 'WhatsApp +55 (11) 97888-3774 copiado!', toast_ig: 'Instagram @daniloliveira89 copiado!'
       },
       es: {
         page_title: 'Danilo Oliveira — Diseñador Web y Especialista en Sitios Comerciales',
@@ -473,7 +473,9 @@ const newDataBlock = `const I18N = {
         form_email: 'Tu Correo', form_email_ph: 'Ej: contacto@empresa.com',
         form_subject: 'Asunto', form_subject_ph: 'Ej: Nuevo Sitio Web / Landing Page',
         form_msg: 'Mensaje', form_msg_ph: 'Cuéntanos sobre el proyecto, alcance u objetivo...',
-        form_submit: 'Enviar Mensaje', form_sent: '¡Mensaje enviado con éxito! Respuesta en hasta 24h.',
+        form_submit: 'Enviar Mensaje', form_sending: 'Enviando...', form_sent: '¡Mensaje enviado con éxito! Respuesta en hasta 24h.',
+        form_err: 'No se pudo enviar por correo. Inténtalo de nuevo o escríbenos por WhatsApp.',
+        form_wa_fallback: 'Envío directo por correo aún no configurado — redirigiendo a WhatsApp...',
         footer_rights: 'Todos los derechos reservados.', footer_top: 'Subir ↑',
         cmdk_ph: 'Ir a sección, cambiar tema o copiar contacto...',
         cmdk_empty: 'Ningún comando encontrado.',
@@ -484,7 +486,7 @@ const newDataBlock = `const I18N = {
         wa_send: 'Abrir en WhatsApp', wa_btn_title: 'Chatear por WhatsApp', wa_toast: 'Abriendo chat de WhatsApp...',
         toast_filter: 'Filtrando proyectos con', toast_wave_on: 'Onda líquida activada', toast_wave_off: 'Onda líquida pausada',
         toast_light: 'Modo Claro activado', toast_dark: 'Modo Oscuro activado',
-        toast_gh: '¡GitHub copiado!', toast_email: '¡Correo copiado!', toast_ig: '¡Instagram @daniloliveira89 copiado!'
+        toast_wa: '¡WhatsApp +55 (11) 97888-3774 copiado!', toast_ig: '¡Instagram @daniloliveira89 copiado!'
       },
       en: {
         page_title: 'Danilo Oliveira — Web Designer & Commercial Website Specialist',
@@ -526,7 +528,9 @@ const newDataBlock = `const I18N = {
         form_email: 'Your Email', form_email_ph: 'e.g. contact@company.com',
         form_subject: 'Subject', form_subject_ph: 'e.g. Commercial Website / Landing Page',
         form_msg: 'Message', form_msg_ph: 'Tell me about your project, scope, or goals...',
-        form_submit: 'Send Message', form_sent: 'Message sent successfully! Reply within 24 hours.',
+        form_submit: 'Send Message', form_sending: 'Sending...', form_sent: 'Message sent successfully! Reply within 24 hours.',
+        form_err: 'Could not send email right now. Try again or message via WhatsApp.',
+        form_wa_fallback: 'Direct email delivery is not configured yet — opening WhatsApp instead...',
         footer_rights: 'All rights reserved.', footer_top: 'Top ↑',
         cmdk_ph: 'Go to section, switch theme, or copy contact...',
         cmdk_empty: 'No matching commands found.',
@@ -537,7 +541,7 @@ const newDataBlock = `const I18N = {
         wa_send: 'Chat on WhatsApp', wa_btn_title: 'Chat on WhatsApp', wa_toast: 'Opening WhatsApp chat...',
         toast_filter: 'Filtering projects with', toast_wave_on: 'Liquid wave enabled', toast_wave_off: 'Liquid wave paused',
         toast_light: 'Light mode enabled', toast_dark: 'Dark mode enabled',
-        toast_gh: 'GitHub copied!', toast_email: 'Email copied!', toast_ig: 'Instagram @daniloliveira89 copied!'
+        toast_wa: 'WhatsApp +55 (11) 97888-3774 copied!', toast_ig: 'Instagram @daniloliveira89 copied!'
       }
     };
 
@@ -905,13 +909,13 @@ const siteTypeDictCode = `
       { id: 'logo-37', name: 'Aurea Atelier', file: '37-aurea-atelier.png', pt: 'Portfólio de Arte Editorial', es: 'Portafolio de Arte Editorial', en: 'Fine Art Editorial', demoUrl: '/layouts para sites/site face/index.html' },
       { id: 'logo-38', name: 'Hyperion Academy', file: '38-hyperion.png', pt: 'Cursos & Tecnologia', es: 'Cursos & Escuela de Tecnología', en: 'Tech Academy & Courses', demoUrl: '/layouts para sites/site-escola-cursos/index.html' },
       { id: 'logo-39', name: 'FlowGate AI', file: '39-flowgate-ai.png', pt: 'SaaS & Startup de I.A.', es: 'SaaS & Startup de I.A.', en: 'AI Gateway & SaaS', demoUrl: '/layouts para sites/site-saas-ai/index.html' },
-      { id: 'logo-40', name: 'Radar IA', file: '40-radar-ia.png', pt: 'Observatório Global de I.A.', es: 'Observatorio Global de I.A.', en: 'Global AI Observatory', demoUrl: 'https://daniloliveira89.github.io/site---Radar-IA/' },
+      { id: 'logo-40', name: 'Radar IA', file: '40-radar-ia.png', pt: 'Observatório Global de I.A.', es: 'Observatorio Global de I.A.', en: 'Global AI Observatory', demoUrl: '/assets/images/logos-ia/40-radar-ia.png' },
       { id: 'logo-41', name: 'Prompt Studio', file: '41-prompt-studio.png', pt: 'Estúdio de Prompts I.A.', es: 'Estudio de Prompts I.A.', en: 'AI Prompt Engineering Studio', demoUrl: 'https://app-studio-ai.vercel.app' },
-      { id: 'logo-42', name: 'IVFR Global', file: '42-ivfr-global.png', pt: 'Índice Econômico Global', es: 'Índice Económico Global', en: 'Global Economic Index', demoUrl: 'https://daniloliveira89.github.io/indice-custo-vida/' },
+      { id: 'logo-42', name: 'IVFR Global', file: '42-ivfr-global.png', pt: 'Índice Econômico Global', es: 'Índice Económico Global', en: 'Global Economic Index', demoUrl: '/assets/images/logos-ia/42-ivfr-global.png' },
       { id: 'logo-43', name: 'Music Atlas', file: '43-music-atlas.png', pt: 'Streaming & Música PWA', es: 'Streaming & Música PWA', en: 'Music Streaming PWA', demoUrl: 'https://music-atlas.vercel.app' },
       { id: 'logo-44', name: 'Game Atlas', file: '44-game-atlas.png', pt: 'Diário Gamer & Backlog', es: 'Diario Gamer & Backlog', en: 'Gamer Journal & Backlog', demoUrl: 'https://game-atlas.vercel.app' },
-      { id: 'logo-45', name: 'Cinematheque Atlas', file: '45-cinematheque-atlas.png', pt: 'Catálogo & Acervo de Cinema', es: 'Catálogo & Archivo de Cine', en: 'Film Archive & Journal', demoUrl: 'https://github.com/daniloliveira89/cinematheque-atlas' },
-      { id: 'logo-46', name: 'Bookshelf Atlas', file: '46-bookshelf-atlas.png', pt: 'Biblioteca & Diário Literário', es: 'Biblioteca & Diario Literario', en: 'Literary Journal & Library', demoUrl: 'https://github.com/daniloliveira89/bookshelf-atlas' },
+      { id: 'logo-45', name: 'Cinematheque Atlas', file: '45-cinematheque-atlas.png', pt: 'Catálogo & Acervo de Cinema', es: 'Catálogo & Archivo de Cine', en: 'Film Archive & Journal', demoUrl: '/assets/images/logos-ia/45-cinematheque-atlas.png' },
+      { id: 'logo-46', name: 'Bookshelf Atlas', file: '46-bookshelf-atlas.png', pt: 'Biblioteca & Diário Literário', es: 'Biblioteca & Diario Literario', en: 'Literary Journal & Library', demoUrl: '/assets/images/logos-ia/46-bookshelf-atlas.png' },
       { id: 'logo-47', name: 'Neon Synapse', file: '47-neon-synapse.png', pt: 'Jogo Tático Cyberpunk', es: 'Juego Táctico Cyberpunk', en: 'Cyberpunk Card Game', demoUrl: 'https://neon-synapse.vercel.app' },
       { id: 'logo-48', name: 'Prancheta Tática', file: '48-prancheta-tatica.png', pt: 'Simulador Tático de Futebol', es: 'Pizarra Táctica de Fútbol', en: 'Tactical Soccer Board', demoUrl: 'https://prancheta-tatica.vercel.app' }
     ];
@@ -1116,7 +1120,7 @@ const newScriptsBlock = `// ====================================================
           whoami: 'Danilo Oliveira — Web Designer & Especialista em Websites Comerciais.',
           stack: 'UI/UX Design • Landing Pages • Tailwind CSS • React/Next.js • Identidade Visual • SEO & Performance.',
           projetos: '40 Websites Comerciais em produção (Restaurantes, Clínicas, Hotelaria, E-commerce, Advocacia, Portfólios 3D) e 48 Logos.',
-          contato: 'E-mail: danilo.bls89@gmail.com | Instagram: @daniloliveira89 | GitHub: github.com/daniloliveira89',
+          contato: 'WhatsApp: +55 (11) 97888-3774 | Instagram: @daniloliveira89',
           notFound: 'Comando não encontrado. Use: help'
         },
         es: {
@@ -1125,8 +1129,8 @@ const newScriptsBlock = `// ====================================================
           stack: 'Diseño UI/UX • Landing Pages • Tailwind CSS • React/Next.js • Identidad Visual • SEO & Velocidad.',
           projetos: '40 Sitios Web Comerciales en producción (Restaurantes, Clínicas, Hoteles, E-commerce, Abogados, Portafolios 3D) y 48 Logos.',
           proyectos: '40 Sitios Web Comerciales en producción (Restaurantes, Clínicas, Hoteles, E-commerce, Abogados, Portafolios 3D) y 48 Logos.',
-          contato: 'Correo: danilo.bls89@gmail.com | Instagram: @daniloliveira89 | GitHub: github.com/daniloliveira89',
-          contacto: 'Correo: danilo.bls89@gmail.com | Instagram: @daniloliveira89 | GitHub: github.com/daniloliveira89',
+          contato: 'WhatsApp: +55 (11) 97888-3774 | Instagram: @daniloliveira89',
+          contacto: 'WhatsApp: +55 (11) 97888-3774 | Instagram: @daniloliveira89',
           notFound: 'Comando no encontrado. Usa: help'
         },
         en: {
@@ -1135,8 +1139,8 @@ const newScriptsBlock = `// ====================================================
           stack: 'UI/UX Design • Landing Pages • Tailwind CSS • React/Next.js • Brand Identity • SEO & Speed.',
           projetos: '40 Live Commercial Websites (Restaurants, Clinics, Hospitality, E-commerce, Law Firms, 3D Portfolios) & 48 Logos.',
           projects: '40 Live Commercial Websites (Restaurants, Clinics, Hospitality, E-commerce, Law Firms, 3D Portfolios) & 48 Logos.',
-          contato: 'Email: danilo.bls89@gmail.com | Instagram: @daniloliveira89 | GitHub: github.com/daniloliveira89',
-          contact: 'Email: danilo.bls89@gmail.com | Instagram: @daniloliveira89 | GitHub: github.com/daniloliveira89',
+          contato: 'WhatsApp: +55 (11) 97888-3774 | Instagram: @daniloliveira89',
+          contact: 'WhatsApp: +55 (11) 97888-3774 | Instagram: @daniloliveira89',
           notFound: 'Command not found. Type: help'
         }
       };
@@ -1339,8 +1343,8 @@ const newTailScript = `const CMD_ITEMS_I18N = {
         { label: 'Ir para Diferenciais', hint: '#differentials', action: () => location.hash = '#differentials' },
         { label: 'Ir para Contato', hint: '#contact', action: () => location.hash = '#contact' },
         { label: 'Abrir Terminal no Hero', hint: 'CLI', action: () => { window.scrollTo({ top: 0, behavior: 'smooth' }); switchHeroTab('terminal'); } },
-        { label: 'Copiar E-mail (danilo.bls89@gmail.com)', hint: 'Copy', action: () => copyText('danilo.bls89@gmail.com', I18N.pt.toast_email) },
-        { label: 'Copiar GitHub (@daniloliveira89)', hint: 'Copy', action: () => copyText('https://github.com/daniloliveira89', I18N.pt.toast_gh) },
+        { label: 'Copiar WhatsApp (+55 11 97888-3774)', hint: 'Copy', action: () => copyText('+55 11 97888-3774', I18N.pt.toast_wa) },
+        { label: 'Iniciar WhatsApp', hint: 'Chat', action: () => window.open('https://wa.me/5511978883774?text=' + encodeURIComponent(I18N.pt.wa_default_msg), '_blank', 'noopener,noreferrer') },
         { label: 'Copiar Instagram (@daniloliveira89)', hint: 'Copy', action: () => copyText('https://instagram.com/daniloliveira89', I18N.pt.toast_ig) }
       ],
       es: [
@@ -1349,8 +1353,8 @@ const newTailScript = `const CMD_ITEMS_I18N = {
         { label: 'Ir a Diferenciales', hint: '#differentials', action: () => location.hash = '#differentials' },
         { label: 'Ir a Contacto', hint: '#contact', action: () => location.hash = '#contact' },
         { label: 'Abrir Terminal en el Hero', hint: 'CLI', action: () => { window.scrollTo({ top: 0, behavior: 'smooth' }); switchHeroTab('terminal'); } },
-        { label: 'Copiar Correo (danilo.bls89@gmail.com)', hint: 'Copy', action: () => copyText('danilo.bls89@gmail.com', I18N.es.toast_email) },
-        { label: 'Copiar GitHub (@daniloliveira89)', hint: 'Copy', action: () => copyText('https://github.com/daniloliveira89', I18N.es.toast_gh) },
+        { label: 'Copiar WhatsApp (+55 11 97888-3774)', hint: 'Copy', action: () => copyText('+55 11 97888-3774', I18N.es.toast_wa) },
+        { label: 'Abrir WhatsApp', hint: 'Chat', action: () => window.open('https://wa.me/5511978883774?text=' + encodeURIComponent(I18N.es.wa_default_msg), '_blank', 'noopener,noreferrer') },
         { label: 'Copiar Instagram (@daniloliveira89)', hint: 'Copy', action: () => copyText('https://instagram.com/daniloliveira89', I18N.es.toast_ig) }
       ],
       en: [
@@ -1359,8 +1363,8 @@ const newTailScript = `const CMD_ITEMS_I18N = {
         { label: 'Go to Standards', hint: '#differentials', action: () => location.hash = '#differentials' },
         { label: 'Go to Contact', hint: '#contact', action: () => location.hash = '#contact' },
         { label: 'Open Hero Terminal', hint: 'CLI', action: () => { window.scrollTo({ top: 0, behavior: 'smooth' }); switchHeroTab('terminal'); } },
-        { label: 'Copy Email (danilo.bls89@gmail.com)', hint: 'Copy', action: () => copyText('danilo.bls89@gmail.com', I18N.en.toast_email) },
-        { label: 'Copy GitHub (@daniloliveira89)', hint: 'Copy', action: () => copyText('https://github.com/daniloliveira89', I18N.en.toast_gh) },
+        { label: 'Copy WhatsApp (+55 11 97888-3774)', hint: 'Copy', action: () => copyText('+55 11 97888-3774', I18N.en.toast_wa) },
+        { label: 'Chat on WhatsApp', hint: 'Chat', action: () => window.open('https://wa.me/5511978883774?text=' + encodeURIComponent(I18N.en.wa_default_msg), '_blank', 'noopener,noreferrer') },
         { label: 'Copy Instagram (@daniloliveira89)', hint: 'Copy', action: () => copyText('https://instagram.com/daniloliveira89', I18N.en.toast_ig) }
       ]
     };
@@ -1481,9 +1485,7 @@ const newTailScript = `const CMD_ITEMS_I18N = {
       e.target.textContent = state.fxEnabled ? t.wave_on : t.wave_off;
       showToast(state.fxEnabled ? t.toast_wave_on : t.toast_wave_off);
     });
-    document.getElementById('btn-copy-gh').addEventListener('click', () => copyText('https://github.com/daniloliveira89', (I18N[state.lang] || I18N.pt).toast_gh));
-    document.getElementById('btn-copy-gh-contact').addEventListener('click', () => copyText('https://github.com/daniloliveira89', (I18N[state.lang] || I18N.pt).toast_gh));
-    document.getElementById('btn-copy-email').addEventListener('click', () => copyText('danilo.bls89@gmail.com', (I18N[state.lang] || I18N.pt).toast_email));
+    document.getElementById('btn-copy-wa-contact').addEventListener('click', () => copyText('+55 11 97888-3774', (I18N[state.lang] || I18N.pt).toast_wa));
     document.getElementById('btn-copy-ig-contact').addEventListener('click', () => copyText('https://instagram.com/daniloliveira89', (I18N[state.lang] || I18N.pt).toast_ig));
     document.getElementById('btn-wa-float').addEventListener('click', () => {
       document.getElementById('wa-popover').classList.toggle('hidden');
@@ -1494,7 +1496,7 @@ const newTailScript = `const CMD_ITEMS_I18N = {
     document.getElementById('btn-send-wa').addEventListener('click', () => {
       const t = I18N[state.lang] || I18N.pt;
       const msg = encodeURIComponent(document.getElementById('wa-msg-input').value.trim() || t.wa_default_msg);
-      window.open(\`https://wa.me/?text=\${msg}\`, '_blank', 'noopener,noreferrer');
+      window.open(\`https://wa.me/5511978883774?text=\${msg}\`, '_blank', 'noopener,noreferrer');
       document.getElementById('wa-popover').classList.add('hidden');
       showToast(t.wa_toast);
     });
@@ -1512,9 +1514,63 @@ const newTailScript = `const CMD_ITEMS_I18N = {
     document.getElementById('close-project-modal').addEventListener('click', closeProjectModal);
     document.getElementById('pm-close-btn').addEventListener('click', closeProjectModal);
 
-    document.getElementById('contact-form').addEventListener('submit', (e) => {
-      e.preventDefault(); e.target.reset();
-      showToast((I18N[state.lang] || I18N.pt).form_sent);
+    document.getElementById('contact-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const t = I18N[state.lang] || I18N.pt;
+      const btn = document.getElementById('contact-submit-btn');
+      const fb = document.getElementById('contact-feedback');
+      const payload = {
+        name: document.getElementById('c-name').value.trim(),
+        email: document.getElementById('c-email').value.trim(),
+        subject: document.getElementById('c-subject').value.trim(),
+        message: document.getElementById('c-msg').value.trim(),
+        _gotcha: form.querySelector('input[name="_gotcha"]')?.value || '',
+        lang: state.lang || 'pt'
+      };
+      const origLabel = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = t.form_sending;
+      if (fb) { fb.classList.add('hidden'); }
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data.ok) {
+          form.reset();
+          if (fb) {
+            fb.className = 'text-xs font-mono-code text-emerald-400';
+            fb.textContent = t.form_sent;
+          }
+          showToast(t.form_sent);
+        } else if (data && data.configured === false) {
+          if (fb) {
+            fb.className = 'text-xs font-mono-code text-amber-400';
+            fb.textContent = t.form_wa_fallback;
+          }
+          showToast(t.form_wa_fallback);
+          const waText = encodeURIComponent(\`Olá Danilo!\\nNome: \${payload.name}\\nE-mail: \${payload.email}\\nAssunto: \${payload.subject}\\n\\n\${payload.message}\`);
+          window.open(\`https://wa.me/5511978883774?text=\${waText}\`, '_blank', 'noopener,noreferrer');
+        } else {
+          if (fb) {
+            fb.className = 'text-xs font-mono-code text-rose-400';
+            fb.textContent = t.form_err;
+          }
+          showToast(t.form_err);
+        }
+      } catch (err) {
+        if (fb) {
+          fb.className = 'text-xs font-mono-code text-rose-400';
+          fb.textContent = t.form_err;
+        }
+        showToast(t.form_err);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = t.form_submit || origLabel;
+      }
     });
 
     applyTranslations();
