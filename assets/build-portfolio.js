@@ -306,10 +306,6 @@ html = html
     'Desenvolvo aplicações modernas de alta performance — desde observatórios inteligentes e pipelines de I.A. Generativa até jogos táticos em WebGL e extensões ultrarrápidas de navegador.',
     'Desenvolvo websites comerciais modernos, landing pages de alta conversão e identidades visuais exclusivas com performance impecável e foco total em vendas.'
   )
-  .replace(
-    '<span class="mt-3 text-[10px] font-mono-code t-muted">Mova o mouse para efeito 3D</span>',
-    '<span class="mt-3 text-[10px] font-mono-code t-muted" data-i18n="card_hover_hint">Mova o mouse para efeito 3D</span>'
-  )
   .replace('Software Engineer & AI Architect', '<span data-i18n="card_role">Web Designer &amp; Frontend Specialist</span>')
   .replace('<p class="font-display font-bold text-xl t-heading">54+</p>', '<p class="font-display font-bold text-xl t-heading">40+</p>')
   .replace('<p class="text-[10px] t-muted uppercase font-mono-code mt-0.5">Projetos</p>', '<p class="text-[10px] t-muted uppercase font-mono-code mt-0.5" data-i18n="stat_sites">Sites</p>')
@@ -369,7 +365,6 @@ const newDataBlock = `const I18N = {
         avail: 'Disponível para projetos & contratos', hero_hi: 'Olá, eu sou',
         hero_bio: 'Desenvolvo websites comerciais modernos, landing pages de alta conversão e identidades visuais exclusivas com performance impecável e foco total em vendas.',
         cta_projects: 'Explorar Projetos', cta_contact: 'Entrar em Contato', find_me: 'Encontre-me em',
-        card_hover_hint: 'Mova o mouse para efeito 3D',
         card_role: 'Web Designer & Frontend Specialist', stat_sites: 'Sites', stat_resp: 'Responsivo', stat_logos: 'Logos',
         card_loc: 'Brasil • Remoto',
         sec_services_kicker: 'Especialidades & Domínios', sec_services_title: 'Serviços que Ofereço',
@@ -418,7 +413,6 @@ const newDataBlock = `const I18N = {
         avail: 'Disponible para proyectos y contratos', hero_hi: 'Hola, soy',
         hero_bio: 'Desarrollo sitios web comerciales modernos, landing pages de alta conversión e identidades visuales exclusivas con alto rendimiento y enfoque total en ventas.',
         cta_projects: 'Explorar Proyectos', cta_contact: 'Contactar', find_me: 'Encuéntrame en',
-        card_hover_hint: 'Mueve el ratón para efecto 3D',
         card_role: 'Diseñador Web y Especialista Frontend', stat_sites: 'Sitios', stat_resp: 'Responsivo', stat_logos: 'Logos',
         card_loc: 'Brasil • Remoto Global',
         sec_services_kicker: 'Especialidades & Dominios', sec_services_title: 'Servicios que Ofrezco',
@@ -467,7 +461,6 @@ const newDataBlock = `const I18N = {
         avail: 'Available for projects & contracts', hero_hi: "Hi, I'm",
         hero_bio: 'I design and build modern commercial websites, high-conversion landing pages, and distinctive visual identities with peak performance and business results.',
         cta_projects: 'Explore Projects', cta_contact: 'Get in Touch', find_me: 'Find me on',
-        card_hover_hint: 'Move mouse for 3D effect',
         card_role: 'Web Designer & Frontend Specialist', stat_sites: 'Sites', stat_resp: 'Responsive', stat_logos: 'Logos',
         card_loc: 'Brazil • Worldwide Remote',
         sec_services_kicker: 'Specialties & Domains', sec_services_title: 'Services I Offer',
