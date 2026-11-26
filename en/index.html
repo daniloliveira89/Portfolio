@@ -520,8 +520,8 @@
         <div class="lg:col-span-7">
           <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border b-subtle bg-chip-var mb-7">
             <span class="relative flex h-2.5 w-2.5">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-cyan-500"></span>
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
             </span>
             <span class="text-[11px] font-mono-code tracking-wider uppercase t-heading" data-i18n="avail">Disponível para projetos & contratos</span>
           </div>
@@ -556,7 +556,6 @@
               <svg class="w-3.5 h-3.5 t-orchid" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
               <span>@daniloliveira89</span>
             </a>
-            <button type="button" id="btn-open-terminal-shortcut" class="px-3 py-1.5 rounded-lg border border-fuchsia-500/35 bg-fuchsia-500/10 hover:bg-fuchsia-500/20 t-orchid transition" data-i18n="hero_test_terminal">⚡ Testar Terminal</button>
           </div>
         </div>
 
@@ -564,20 +563,11 @@
         <div class="lg:col-span-5 flex justify-center lg:justify-end tilt-stage">
           <div id="hero-tilt-card" class="tilt-card relative w-full max-w-[380px] rounded-3xl p-5 sm:p-6">
 
-            <button type="button" data-card-tab="profile" class="hidden sm:inline-flex items-center gap-1.5 absolute -top-3.5 -left-5 px-3 py-1.5 rounded-xl bg-surface-solid border b-subtle text-[11px] font-mono-code t-heading shadow-xl hover:border-cyan-400/60 transition">
-              <span class="t-cyan">&lt;/&gt;</span> Clean Code
-            </button>
-            <button type="button" data-card-tab="playground" class="hidden sm:inline-flex items-center gap-1.5 absolute top-1/2 -right-5 px-3 py-1.5 rounded-xl bg-surface-solid border b-subtle text-[11px] font-mono-code t-heading shadow-xl hover:border-fuchsia-400/60 transition">
-              <span class="t-orchid">⚡</span> WebGL & I.A.
-            </button>
-
-            <div class="grid grid-cols-3 gap-1.5 p-1 rounded-2xl bg-panel-var border b-subtle mb-5 text-[11px] font-mono-code">
-              <button type="button" data-card-tab="profile" class="card-tab-btn py-1.5 rounded-xl border border-transparent tab-pill-active transition font-semibold" data-i18n="card_tab_profile">Perfil</button>
-              <button type="button" data-card-tab="terminal" class="card-tab-btn py-1.5 rounded-xl border border-transparent t-muted hover:t-heading transition">Terminal</button>
-              <button type="button" data-card-tab="playground" class="card-tab-btn py-1.5 rounded-xl border border-transparent t-muted hover:t-heading transition">Canvas Lab</button>
+            <div class="hidden sm:inline-flex items-center gap-1.5 absolute -top-3.5 -left-5 px-3 py-1.5 rounded-xl bg-surface-solid border b-subtle text-[11px] font-mono-code t-heading shadow-xl">
+              <span class="t-cyan">&lt;/&gt;</span> UI/UX &amp; Design
             </div>
 
-            <!-- TAB 1: PROFILE -->
+            <!-- PROFILE -->
             <div id="tab-profile" class="space-y-5">
               <div class="h-44 rounded-2xl border b-subtle bg-gradient-to-br from-cyan-500/10 via-transparent to-fuchsia-500/10 flex flex-col items-center justify-center relative overflow-hidden">
                 <div class="brand-ring rounded-full w-28 h-28 shadow-2xl">
@@ -610,41 +600,9 @@
 
               <div class="flex items-center justify-between pt-2">
                 <span class="text-[11px] font-mono-code t-muted" data-i18n="card_loc">Brasil • Remoto</span>
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-[11px] font-semibold t-cyan">
-                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-500"></span> Open to Work
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-[11px] font-semibold text-emerald-500">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Open to Work
                 </span>
-              </div>
-            </div>
-
-            <!-- TAB 2: INTERACTIVE TERMINAL -->
-            <div id="tab-terminal" class="hidden space-y-3 font-mono-code text-xs">
-              <div id="term-output" class="h-56 overflow-y-auto rounded-2xl bg-[#090B11] border border-white/10 p-3.5 space-y-2 text-[11px] leading-relaxed text-slate-200">
-                <p class="text-slate-400" data-i18n="term_intro"># Terminal interativo — clique ou digite um comando:</p>
-                <p><span class="text-cyan-400">➜</span> <span class="text-fuchsia-300">whoami</span></p>
-                <p class="text-slate-200 pl-3" data-i18n="term_whoami_init">Danilo Oliveira — Web Designer &amp; Especialista em Websites Comerciais.</p>
-              </div>
-              <div class="flex flex-wrap gap-1.5">
-                <button type="button" data-cmd="stack" class="px-2.5 py-1 rounded-lg bg-chip-var hover:bg-cyan-500/15 border b-subtle text-[10px] t-cyan transition">stack</button>
-                <button type="button" data-cmd="projetos" class="px-2.5 py-1 rounded-lg bg-chip-var hover:bg-fuchsia-500/15 border b-subtle text-[10px] t-orchid transition" data-i18n="term_btn_proj">projetos</button>
-                <button type="button" data-cmd="contato" class="px-2.5 py-1 rounded-lg bg-chip-var border b-subtle text-[10px] t-heading transition" data-i18n="term_btn_contact">contato</button>
-                <button type="button" data-cmd="clear" class="px-2.5 py-1 rounded-lg bg-chip-var border b-subtle text-[10px] t-muted transition">clear</button>
-              </div>
-              <form id="term-form" class="flex gap-2">
-                <input id="term-input" type="text" data-i18n-placeholder="term_input_ph" placeholder="Digite 'help', 'stack', 'projetos'..." class="flex-1 px-3 py-2 rounded-xl bg-input-var border b-subtle t-heading text-[11px] focus:outline-none focus:border-cyan-400" />
-                <button type="submit" class="px-3.5 py-2 rounded-xl text-[11px] btn-cyan">Run</button>
-              </form>
-            </div>
-
-            <!-- TAB 3: MINI CANVAS PLAYGROUND -->
-            <div id="tab-playground" class="hidden space-y-3">
-              <div class="relative rounded-2xl overflow-hidden border b-subtle bg-[#07080E] h-60">
-                <canvas id="mini-lab-canvas" class="w-full h-full block cursor-crosshair"></canvas>
-                <span class="absolute top-2.5 left-3 text-[10px] font-mono-code text-cyan-300 pointer-events-none" data-i18n="lab_hint">Clique ou arraste para gerar ondas</span>
-                <span id="lab-count" class="absolute bottom-2.5 right-3 text-[10px] font-mono-code text-fuchsia-300 pointer-events-none">0 partículas</span>
-              </div>
-              <div class="flex items-center justify-between gap-2">
-                <button type="button" id="btn-lab-burst" class="flex-1 py-2 rounded-xl text-xs font-semibold btn-cyan" data-i18n="lab_burst">⚡ Pulso de Energia</button>
-                <button type="button" id="btn-lab-clear" class="px-4 py-2 rounded-xl text-xs btn-ghost" data-i18n="lab_clear">Limpar</button>
               </div>
             </div>
 
@@ -943,15 +901,9 @@
         avail: 'Disponível para projetos & contratos', hero_hi: 'Olá, eu sou',
         hero_bio: 'Desenvolvo websites comerciais modernos, landing pages de alta conversão e identidades visuais exclusivas com performance impecável e foco total em vendas.',
         cta_projects: 'Explorar Projetos', cta_contact: 'Entrar em Contato', find_me: 'Encontre-me em',
-        hero_test_terminal: '⚡ Testar Terminal',
-        card_tab_profile: 'Perfil', card_hover_hint: 'Mova o mouse para efeito 3D',
+        card_hover_hint: 'Mova o mouse para efeito 3D',
         card_role: 'Web Designer & Frontend Specialist', stat_sites: 'Sites', stat_resp: 'Responsivo', stat_logos: 'Logos',
         card_loc: 'Brasil • Remoto',
-        term_intro: '# Terminal interativo — clique ou digite um comando:',
-        term_whoami_init: 'Danilo Oliveira — Web Designer & Especialista em Websites Comerciais.',
-        term_btn_proj: 'projetos', term_btn_contact: 'contato',
-        term_input_ph: "Digite 'help', 'stack', 'projetos'...",
-        lab_hint: 'Clique ou arraste para gerar ondas', lab_burst: '⚡ Pulso de Energia', lab_clear: 'Limpar', lab_particles: 'partículas',
         sec_services_kicker: 'Especialidades & Domínios', sec_services_title: 'Serviços que Ofereço',
         srv_less: '− Menos', srv_more: '+ Detalhes',
         sec_skills_kicker: 'Tecnologias & Ferramentas', sec_skills_title: 'Stack & Proficiência',
@@ -998,15 +950,9 @@
         avail: 'Disponible para proyectos y contratos', hero_hi: 'Hola, soy',
         hero_bio: 'Desarrollo sitios web comerciales modernos, landing pages de alta conversión e identidades visuales exclusivas con alto rendimiento y enfoque total en ventas.',
         cta_projects: 'Explorar Proyectos', cta_contact: 'Contactar', find_me: 'Encuéntrame en',
-        hero_test_terminal: '⚡ Probar Terminal',
-        card_tab_profile: 'Perfil', card_hover_hint: 'Mueve el ratón para efecto 3D',
+        card_hover_hint: 'Mueve el ratón para efecto 3D',
         card_role: 'Diseñador Web y Especialista Frontend', stat_sites: 'Sitios', stat_resp: 'Responsivo', stat_logos: 'Logos',
         card_loc: 'Brasil • Remoto Global',
-        term_intro: '# Terminal interactivo — haz clic o escribe un comando:',
-        term_whoami_init: 'Danilo Oliveira — Diseñador Web y Especialista en Sitios Comerciales.',
-        term_btn_proj: 'proyectos', term_btn_contact: 'contacto',
-        term_input_ph: "Escribe 'help', 'stack', 'proyectos'...",
-        lab_hint: 'Haz clic o arrastra para generar ondas', lab_burst: '⚡ Pulso de Energía', lab_clear: 'Limpiar', lab_particles: 'partículas',
         sec_services_kicker: 'Especialidades & Dominios', sec_services_title: 'Servicios que Ofrezco',
         srv_less: '− Menos', srv_more: '+ Detalles',
         sec_skills_kicker: 'Tecnologías & Herramientas', sec_skills_title: 'Stack & Dominio',
@@ -1053,15 +999,9 @@
         avail: 'Available for projects & contracts', hero_hi: "Hi, I'm",
         hero_bio: 'I design and build modern commercial websites, high-conversion landing pages, and distinctive visual identities with peak performance and business results.',
         cta_projects: 'Explore Projects', cta_contact: 'Get in Touch', find_me: 'Find me on',
-        hero_test_terminal: '⚡ Test Terminal',
-        card_tab_profile: 'Profile', card_hover_hint: 'Move mouse for 3D effect',
+        card_hover_hint: 'Move mouse for 3D effect',
         card_role: 'Web Designer & Frontend Specialist', stat_sites: 'Sites', stat_resp: 'Responsive', stat_logos: 'Logos',
         card_loc: 'Brazil • Worldwide Remote',
-        term_intro: '# Interactive terminal — click or type a command:',
-        term_whoami_init: 'Danilo Oliveira — Web Designer & Commercial Website Specialist.',
-        term_btn_proj: 'projects', term_btn_contact: 'contact',
-        term_input_ph: "Type 'help', 'stack', 'projects'...",
-        lab_hint: 'Click or drag to generate waves', lab_burst: '⚡ Energy Pulse', lab_clear: 'Clear', lab_particles: 'particles',
         sec_services_kicker: 'Specialties & Domains', sec_services_title: 'Services I Offer',
         srv_less: '− Less', srv_more: '+ Details',
         sec_skills_kicker: 'Technologies & Tools', sec_skills_title: 'Stack & Proficiency',
@@ -1835,105 +1775,6 @@
     });
 
     // =========================================================================
-    // 4. MINI CANVAS LAB & TERMINAL
-    // =========================================================================
-    const labCanvas = document.getElementById('mini-lab-canvas'), labCtx = labCanvas.getContext('2d');
-    let labOrbs = [], labDrawing = false;
-    function initLabCanvas() {
-      const rect = labCanvas.parentElement.getBoundingClientRect();
-      labCanvas.width = Math.max(260, rect.width); labCanvas.height = Math.max(200, rect.height);
-    }
-    function spawnLabOrbs(x, y, count = 8) {
-      for (let i = 0; i < count; i++) {
-        const a = Math.random() * Math.PI * 2, sp = Math.random() * 2.6 + 0.8;
-        labOrbs.push({ x, y, vx: Math.cos(a)*sp, vy: Math.sin(a)*sp, r: Math.random()*3.5+1.5, life: 1, color: Math.random()>0.5?'#22D3EE':'#E879F9' });
-      }
-      if (labOrbs.length > 140) labOrbs = labOrbs.slice(-140);
-    }
-    function animateLab() {
-      if (!document.getElementById('tab-playground').classList.contains('hidden')) {
-        labCtx.fillStyle = 'rgba(6, 7, 11, 0.22)';
-        labCtx.fillRect(0, 0, labCanvas.width, labCanvas.height);
-        labOrbs.forEach(o => {
-          o.x += o.vx; o.y += o.vy; o.vx *= 0.985; o.vy *= 0.985; o.life -= 0.012;
-          if (o.x < 0 || o.x > labCanvas.width) o.vx *= -1;
-          if (o.y < 0 || o.y > labCanvas.height) o.vy *= -1;
-          labCtx.beginPath(); labCtx.arc(o.x, o.y, o.r, 0, Math.PI*2);
-          labCtx.fillStyle = o.color; labCtx.globalAlpha = Math.max(0, o.life); labCtx.fill();
-        });
-        labCtx.globalAlpha = 1;
-        labOrbs = labOrbs.filter(o => o.life > 0);
-        const t = I18N[state.lang] || I18N.pt;
-        document.getElementById('lab-count').textContent = `${labOrbs.length} ${t.lab_particles}`;
-      }
-      requestAnimationFrame(animateLab);
-    }
-    animateLab();
-    labCanvas.addEventListener('pointerdown', (e) => { labDrawing = true; const r = labCanvas.getBoundingClientRect(); spawnLabOrbs(e.clientX - r.left, e.clientY - r.top, 14); });
-    labCanvas.addEventListener('pointermove', (e) => { if (!labDrawing) return; const r = labCanvas.getBoundingClientRect(); spawnLabOrbs(e.clientX - r.left, e.clientY - r.top, 4); });
-    window.addEventListener('pointerup', () => { labDrawing = false; });
-    document.getElementById('btn-lab-burst').addEventListener('click', () => { initLabCanvas(); spawnLabOrbs(labCanvas.width/2, labCanvas.height/2, 32); });
-    document.getElementById('btn-lab-clear').addEventListener('click', () => { labOrbs = []; labCtx.clearRect(0,0,labCanvas.width,labCanvas.height); });
-
-    function switchHeroTab(tab) {
-      ['profile', 'terminal', 'playground'].forEach(t => document.getElementById(`tab-${t}`).classList.toggle('hidden', t !== tab));
-      document.querySelectorAll('.card-tab-btn').forEach(btn => {
-        const active = btn.getAttribute('data-card-tab') === tab;
-        btn.classList.toggle('tab-pill-active', active);
-        btn.classList.toggle('t-muted', !active);
-      });
-      if (tab === 'playground') setTimeout(() => { initLabCanvas(); spawnLabOrbs(labCanvas.width/2, labCanvas.height/2, 20); }, 30);
-    }
-
-    function runTerminalCmd(raw) {
-      const cmd = raw.trim().toLowerCase(), out = document.getElementById('term-output');
-      const curLang = state.lang || 'pt';
-      const clearMsgs = {
-        pt: '# Terminal limpo. Digite "help".',
-        es: '# Terminal limpio. Escribe "help".',
-        en: '# Terminal cleared. Type "help".'
-      };
-      if (cmd === 'clear') { out.innerHTML = `<p class="text-slate-400">${clearMsgs[curLang] || clearMsgs.pt}</p>`; return; }
-      const maps = {
-        pt: {
-          help: 'Comandos: whoami, stack, projetos, contato, clear',
-          whoami: 'Danilo Oliveira — Web Designer & Especialista em Websites Comerciais.',
-          stack: 'UI/UX Design • Landing Pages • Tailwind CSS • React/Next.js • Identidade Visual • SEO & Performance.',
-          projetos: '40 Websites Comerciais em produção (Restaurantes, Clínicas, Hotelaria, E-commerce, Advocacia, Portfólios 3D) e 48 Logos.',
-          contato: 'Instagram: @daniloliveira89 | Formulário abaixo',
-          notFound: 'Comando não encontrado. Use: help'
-        },
-        es: {
-          help: 'Comandos: whoami, stack, proyectos, contacto, clear',
-          whoami: 'Danilo Oliveira — Diseñador Web y Especialista en Sitios Comerciales.',
-          stack: 'Diseño UI/UX • Landing Pages • Tailwind CSS • React/Next.js • Identidad Visual • SEO & Velocidad.',
-          projetos: '40 Sitios Web Comerciales en producción (Restaurantes, Clínicas, Hoteles, E-commerce, Abogados, Portafolios 3D) y 48 Logos.',
-          proyectos: '40 Sitios Web Comerciales en producción (Restaurantes, Clínicas, Hoteles, E-commerce, Abogados, Portafolios 3D) y 48 Logos.',
-          contato: 'Instagram: @daniloliveira89 | Formulario abajo',
-          contacto: 'Instagram: @daniloliveira89 | Formulario abajo',
-          notFound: 'Comando no encontrado. Usa: help'
-        },
-        en: {
-          help: 'Commands: whoami, stack, projects, contact, clear',
-          whoami: 'Danilo Oliveira — Web Designer & Commercial Website Specialist.',
-          stack: 'UI/UX Design • Landing Pages • Tailwind CSS • React/Next.js • Brand Identity • SEO & Speed.',
-          projetos: '40 Live Commercial Websites (Restaurants, Clinics, Hospitality, E-commerce, Law Firms, 3D Portfolios) & 48 Logos.',
-          projects: '40 Live Commercial Websites (Restaurants, Clinics, Hospitality, E-commerce, Law Firms, 3D Portfolios) & 48 Logos.',
-          contato: 'Instagram: @daniloliveira89 | Contact form below',
-          contact: 'Instagram: @daniloliveira89 | Contact form below',
-          notFound: 'Command not found. Type: help'
-        }
-      };
-      const m = maps[curLang] || maps.pt;
-      out.innerHTML += `<p><span class="text-cyan-400">➜</span> <span class="text-fuchsia-300">${raw}</span></p><p class="text-slate-200 pl-3">${m[cmd] || m.notFound}</p>`;
-      out.scrollTop = out.scrollHeight;
-    }
-    document.getElementById('term-form').addEventListener('submit', (e) => {
-      e.preventDefault(); const inp = document.getElementById('term-input');
-      if (inp.value.trim()) { runTerminalCmd(inp.value); inp.value = ''; }
-    });
-
-    // =========================================================================
     // 5. RENDERERS (SERVIÇOS, DIFERENCIAIS, PROJETOS & LOGOS)
     // =========================================================================
     function renderServices() {
@@ -2114,7 +1955,6 @@
         { label: 'Ir para Serviços', hint: '#services', action: () => location.hash = '#services' },
         { label: 'Ir para Diferenciais', hint: '#differentials', action: () => location.hash = '#differentials' },
         { label: 'Ir para Contato', hint: '#contact', action: () => location.hash = '#contact' },
-        { label: 'Abrir Terminal no Hero', hint: 'CLI', action: () => { window.scrollTo({ top: 0, behavior: 'smooth' }); switchHeroTab('terminal'); } },
         { label: 'Copiar Instagram (@daniloliveira89)', hint: 'Copy', action: () => copyText('https://instagram.com/daniloliveira89', I18N.pt.toast_ig) }
       ],
       es: [
@@ -2122,7 +1962,6 @@
         { label: 'Ir a Servicios', hint: '#services', action: () => location.hash = '#services' },
         { label: 'Ir a Diferenciales', hint: '#differentials', action: () => location.hash = '#differentials' },
         { label: 'Ir a Contacto', hint: '#contact', action: () => location.hash = '#contact' },
-        { label: 'Abrir Terminal en el Hero', hint: 'CLI', action: () => { window.scrollTo({ top: 0, behavior: 'smooth' }); switchHeroTab('terminal'); } },
         { label: 'Copiar Instagram (@daniloliveira89)', hint: 'Copy', action: () => copyText('https://instagram.com/daniloliveira89', I18N.es.toast_ig) }
       ],
       en: [
@@ -2130,7 +1969,6 @@
         { label: 'Go to Services', hint: '#services', action: () => location.hash = '#services' },
         { label: 'Go to Standards', hint: '#differentials', action: () => location.hash = '#differentials' },
         { label: 'Go to Contact', hint: '#contact', action: () => location.hash = '#contact' },
-        { label: 'Open Hero Terminal', hint: 'CLI', action: () => { window.scrollTo({ top: 0, behavior: 'smooth' }); switchHeroTab('terminal'); } },
         { label: 'Copy Instagram (@daniloliveira89)', hint: 'Copy', action: () => copyText('https://instagram.com/daniloliveira89', I18N.en.toast_ig) }
       ]
     };
@@ -2212,8 +2050,6 @@
     });
 
     document.addEventListener('click', (e) => {
-      const tabBtn = e.target.closest('[data-card-tab]'); if (tabBtn) { switchHeroTab(tabBtn.getAttribute('data-card-tab')); return; }
-      const termBtn = e.target.closest('[data-cmd]'); if (termBtn) { runTerminalCmd(termBtn.getAttribute('data-cmd')); return; }
       const langBtn = e.target.closest('[data-lang]'); if (langBtn) {
         state.lang = langBtn.getAttribute('data-lang');
         try { localStorage.setItem('portfolio_lang', state.lang); localStorage.setItem('portfolio_lang_manual', '1'); } catch(err) {}
@@ -2265,7 +2101,6 @@
       document.getElementById('wa-popover').classList.add('hidden');
       showToast(t.wa_toast);
     });
-    document.getElementById('btn-open-terminal-shortcut').addEventListener('click', () => switchHeroTab('terminal'));
     document.getElementById('btn-cmdk').addEventListener('click', openCmdk);
     document.getElementById('close-cmdk').addEventListener('click', closeCmdk);
     document.getElementById('cmdk-input').addEventListener('input', (e) => renderCmdk(e.target.value));

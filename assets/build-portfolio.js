@@ -307,14 +307,6 @@ html = html
     'Desenvolvo websites comerciais modernos, landing pages de alta conversão e identidades visuais exclusivas com performance impecável e foco total em vendas.'
   )
   .replace(
-    '<button type="button" id="btn-open-terminal-shortcut" class="px-3 py-1.5 rounded-lg border border-fuchsia-500/35 bg-fuchsia-500/10 hover:bg-fuchsia-500/20 t-orchid transition">⚡ Testar Terminal</button>',
-    '<button type="button" id="btn-open-terminal-shortcut" class="px-3 py-1.5 rounded-lg border border-fuchsia-500/35 bg-fuchsia-500/10 hover:bg-fuchsia-500/20 t-orchid transition" data-i18n="hero_test_terminal">⚡ Testar Terminal</button>'
-  )
-  .replace(
-    '<button type="button" data-card-tab="profile" class="card-tab-btn py-1.5 rounded-xl border border-transparent tab-pill-active transition font-semibold">Perfil</button>',
-    '<button type="button" data-card-tab="profile" class="card-tab-btn py-1.5 rounded-xl border border-transparent tab-pill-active transition font-semibold" data-i18n="card_tab_profile">Perfil</button>'
-  )
-  .replace(
     '<span class="mt-3 text-[10px] font-mono-code t-muted">Mova o mouse para efeito 3D</span>',
     '<span class="mt-3 text-[10px] font-mono-code t-muted" data-i18n="card_hover_hint">Mova o mouse para efeito 3D</span>'
   )
@@ -326,16 +318,6 @@ html = html
   .replace('<p class="font-display font-bold text-xl t-orchid">10+</p>', '<p class="font-display font-bold text-xl t-orchid">48+</p>')
   .replace('<p class="text-[10px] t-muted uppercase font-mono-code mt-0.5">Extensões</p>', '<p class="text-[10px] t-muted uppercase font-mono-code mt-0.5" data-i18n="stat_logos">Logos</p>')
   .replace('<span class="text-[11px] font-mono-code t-muted">Brasil • Remoto</span>', '<span class="text-[11px] font-mono-code t-muted" data-i18n="card_loc">Brasil • Remoto</span>')
-  .replace(
-    '<p class="text-slate-400"># Terminal interativo — clique ou digite um comando:</p>\n                <p><span class="text-cyan-400">➜</span> <span class="text-fuchsia-300">whoami</span></p>\n                <p class="text-slate-200 pl-3">Danilo Oliveira — Engenheiro de Software, I.A. & WebGL.</p>',
-    '<p class="text-slate-400" data-i18n="term_intro"># Terminal interativo — clique ou digite um comando:</p>\n                <p><span class="text-cyan-400">➜</span> <span class="text-fuchsia-300">whoami</span></p>\n                <p class="text-slate-200 pl-3" data-i18n="term_whoami_init">Danilo Oliveira — Web Designer &amp; Especialista em Websites Comerciais.</p>'
-  )
-  .replace('<button type="button" data-cmd="projetos" class="px-2.5 py-1 rounded-lg bg-chip-var hover:bg-fuchsia-500/15 border b-subtle text-[10px] t-orchid transition">projetos</button>', '<button type="button" data-cmd="projetos" class="px-2.5 py-1 rounded-lg bg-chip-var hover:bg-fuchsia-500/15 border b-subtle text-[10px] t-orchid transition" data-i18n="term_btn_proj">projetos</button>')
-  .replace('<button type="button" data-cmd="contato" class="px-2.5 py-1 rounded-lg bg-chip-var border b-subtle text-[10px] t-heading transition">contato</button>', '<button type="button" data-cmd="contato" class="px-2.5 py-1 rounded-lg bg-chip-var border b-subtle text-[10px] t-heading transition" data-i18n="term_btn_contact">contato</button>')
-  .replace('placeholder="Digite \'help\', \'stack\', \'projetos\'..."', 'data-i18n-placeholder="term_input_ph" placeholder="Digite \'help\', \'stack\', \'projetos\'..."')
-  .replace('<span class="absolute top-2.5 left-3 text-[10px] font-mono-code text-cyan-300 pointer-events-none">Clique ou arraste para gerar ondas</span>', '<span class="absolute top-2.5 left-3 text-[10px] font-mono-code text-cyan-300 pointer-events-none" data-i18n="lab_hint">Clique ou arraste para gerar ondas</span>')
-  .replace('<button type="button" id="btn-lab-burst" class="flex-1 py-2 rounded-xl text-xs font-semibold btn-cyan">⚡ Pulso de Energia</button>', '<button type="button" id="btn-lab-burst" class="flex-1 py-2 rounded-xl text-xs font-semibold btn-cyan" data-i18n="lab_burst">⚡ Pulso de Energia</button>')
-  .replace('<button type="button" id="btn-lab-clear" class="px-4 py-2 rounded-xl text-xs btn-ghost">Limpar</button>', '<button type="button" id="btn-lab-clear" class="px-4 py-2 rounded-xl text-xs btn-ghost" data-i18n="lab_clear">Limpar</button>')
   .replace('<p class="mt-2.5 text-xs t-muted font-mono-code">Clique em uma tecnologia para filtrar os projetos correspondentes</p>', '<p class="mt-2.5 text-xs t-muted font-mono-code" data-i18n="sec_skills_hint">Clique em uma tecnologia para filtrar os projetos correspondentes</p>')
   .replace('<h2 class="font-display text-3xl md:text-4xl font-bold t-heading">\n            Projetos em <span class="brand-gradient-text">Destaque</span>\n          </h2>', '<h2 class="font-display text-3xl md:text-4xl font-bold t-heading" data-i18n-html="sec_portfolio_title">\n            Projetos em <span class="brand-gradient-text">Destaque</span>\n          </h2>')
   .replace('<p class="text-xs font-semibold tracking-[0.3em] uppercase t-orchid mb-3 font-mono-code">Engenharia & Confiabilidade</p>', '<p class="text-xs font-semibold tracking-[0.3em] uppercase t-orchid mb-3 font-mono-code" data-i18n="sec_diff_kicker">Engenharia &amp; Confiabilidade</p>')
@@ -387,15 +369,9 @@ const newDataBlock = `const I18N = {
         avail: 'Disponível para projetos & contratos', hero_hi: 'Olá, eu sou',
         hero_bio: 'Desenvolvo websites comerciais modernos, landing pages de alta conversão e identidades visuais exclusivas com performance impecável e foco total em vendas.',
         cta_projects: 'Explorar Projetos', cta_contact: 'Entrar em Contato', find_me: 'Encontre-me em',
-        hero_test_terminal: '⚡ Testar Terminal',
-        card_tab_profile: 'Perfil', card_hover_hint: 'Mova o mouse para efeito 3D',
+        card_hover_hint: 'Mova o mouse para efeito 3D',
         card_role: 'Web Designer & Frontend Specialist', stat_sites: 'Sites', stat_resp: 'Responsivo', stat_logos: 'Logos',
         card_loc: 'Brasil • Remoto',
-        term_intro: '# Terminal interativo — clique ou digite um comando:',
-        term_whoami_init: 'Danilo Oliveira — Web Designer & Especialista em Websites Comerciais.',
-        term_btn_proj: 'projetos', term_btn_contact: 'contato',
-        term_input_ph: "Digite 'help', 'stack', 'projetos'...",
-        lab_hint: 'Clique ou arraste para gerar ondas', lab_burst: '⚡ Pulso de Energia', lab_clear: 'Limpar', lab_particles: 'partículas',
         sec_services_kicker: 'Especialidades & Domínios', sec_services_title: 'Serviços que Ofereço',
         srv_less: '− Menos', srv_more: '+ Detalhes',
         sec_skills_kicker: 'Tecnologias & Ferramentas', sec_skills_title: 'Stack & Proficiência',
@@ -442,15 +418,9 @@ const newDataBlock = `const I18N = {
         avail: 'Disponible para proyectos y contratos', hero_hi: 'Hola, soy',
         hero_bio: 'Desarrollo sitios web comerciales modernos, landing pages de alta conversión e identidades visuales exclusivas con alto rendimiento y enfoque total en ventas.',
         cta_projects: 'Explorar Proyectos', cta_contact: 'Contactar', find_me: 'Encuéntrame en',
-        hero_test_terminal: '⚡ Probar Terminal',
-        card_tab_profile: 'Perfil', card_hover_hint: 'Mueve el ratón para efecto 3D',
+        card_hover_hint: 'Mueve el ratón para efecto 3D',
         card_role: 'Diseñador Web y Especialista Frontend', stat_sites: 'Sitios', stat_resp: 'Responsivo', stat_logos: 'Logos',
         card_loc: 'Brasil • Remoto Global',
-        term_intro: '# Terminal interactivo — haz clic o escribe un comando:',
-        term_whoami_init: 'Danilo Oliveira — Diseñador Web y Especialista en Sitios Comerciales.',
-        term_btn_proj: 'proyectos', term_btn_contact: 'contacto',
-        term_input_ph: "Escribe 'help', 'stack', 'proyectos'...",
-        lab_hint: 'Haz clic o arrastra para generar ondas', lab_burst: '⚡ Pulso de Energía', lab_clear: 'Limpiar', lab_particles: 'partículas',
         sec_services_kicker: 'Especialidades & Dominios', sec_services_title: 'Servicios que Ofrezco',
         srv_less: '− Menos', srv_more: '+ Detalles',
         sec_skills_kicker: 'Tecnologías & Herramientas', sec_skills_title: 'Stack & Dominio',
@@ -497,15 +467,9 @@ const newDataBlock = `const I18N = {
         avail: 'Available for projects & contracts', hero_hi: "Hi, I'm",
         hero_bio: 'I design and build modern commercial websites, high-conversion landing pages, and distinctive visual identities with peak performance and business results.',
         cta_projects: 'Explore Projects', cta_contact: 'Get in Touch', find_me: 'Find me on',
-        hero_test_terminal: '⚡ Test Terminal',
-        card_tab_profile: 'Profile', card_hover_hint: 'Move mouse for 3D effect',
+        card_hover_hint: 'Move mouse for 3D effect',
         card_role: 'Web Designer & Frontend Specialist', stat_sites: 'Sites', stat_resp: 'Responsive', stat_logos: 'Logos',
         card_loc: 'Brazil • Worldwide Remote',
-        term_intro: '# Interactive terminal — click or type a command:',
-        term_whoami_init: 'Danilo Oliveira — Web Designer & Commercial Website Specialist.',
-        term_btn_proj: 'projects', term_btn_contact: 'contact',
-        term_input_ph: "Type 'help', 'stack', 'projects'...",
-        lab_hint: 'Click or drag to generate waves', lab_burst: '⚡ Energy Pulse', lab_clear: 'Clear', lab_particles: 'particles',
         sec_services_kicker: 'Specialties & Domains', sec_services_title: 'Services I Offer',
         srv_less: '− Less', srv_more: '+ Details',
         sec_skills_kicker: 'Technologies & Tools', sec_skills_title: 'Stack & Proficiency',
@@ -1055,105 +1019,6 @@ const newScriptsBlock = `// ====================================================
     });
 
     // =========================================================================
-    // 4. MINI CANVAS LAB & TERMINAL
-    // =========================================================================
-    const labCanvas = document.getElementById('mini-lab-canvas'), labCtx = labCanvas.getContext('2d');
-    let labOrbs = [], labDrawing = false;
-    function initLabCanvas() {
-      const rect = labCanvas.parentElement.getBoundingClientRect();
-      labCanvas.width = Math.max(260, rect.width); labCanvas.height = Math.max(200, rect.height);
-    }
-    function spawnLabOrbs(x, y, count = 8) {
-      for (let i = 0; i < count; i++) {
-        const a = Math.random() * Math.PI * 2, sp = Math.random() * 2.6 + 0.8;
-        labOrbs.push({ x, y, vx: Math.cos(a)*sp, vy: Math.sin(a)*sp, r: Math.random()*3.5+1.5, life: 1, color: Math.random()>0.5?'#22D3EE':'#E879F9' });
-      }
-      if (labOrbs.length > 140) labOrbs = labOrbs.slice(-140);
-    }
-    function animateLab() {
-      if (!document.getElementById('tab-playground').classList.contains('hidden')) {
-        labCtx.fillStyle = 'rgba(6, 7, 11, 0.22)';
-        labCtx.fillRect(0, 0, labCanvas.width, labCanvas.height);
-        labOrbs.forEach(o => {
-          o.x += o.vx; o.y += o.vy; o.vx *= 0.985; o.vy *= 0.985; o.life -= 0.012;
-          if (o.x < 0 || o.x > labCanvas.width) o.vx *= -1;
-          if (o.y < 0 || o.y > labCanvas.height) o.vy *= -1;
-          labCtx.beginPath(); labCtx.arc(o.x, o.y, o.r, 0, Math.PI*2);
-          labCtx.fillStyle = o.color; labCtx.globalAlpha = Math.max(0, o.life); labCtx.fill();
-        });
-        labCtx.globalAlpha = 1;
-        labOrbs = labOrbs.filter(o => o.life > 0);
-        const t = I18N[state.lang] || I18N.pt;
-        document.getElementById('lab-count').textContent = \`\${labOrbs.length} \${t.lab_particles}\`;
-      }
-      requestAnimationFrame(animateLab);
-    }
-    animateLab();
-    labCanvas.addEventListener('pointerdown', (e) => { labDrawing = true; const r = labCanvas.getBoundingClientRect(); spawnLabOrbs(e.clientX - r.left, e.clientY - r.top, 14); });
-    labCanvas.addEventListener('pointermove', (e) => { if (!labDrawing) return; const r = labCanvas.getBoundingClientRect(); spawnLabOrbs(e.clientX - r.left, e.clientY - r.top, 4); });
-    window.addEventListener('pointerup', () => { labDrawing = false; });
-    document.getElementById('btn-lab-burst').addEventListener('click', () => { initLabCanvas(); spawnLabOrbs(labCanvas.width/2, labCanvas.height/2, 32); });
-    document.getElementById('btn-lab-clear').addEventListener('click', () => { labOrbs = []; labCtx.clearRect(0,0,labCanvas.width,labCanvas.height); });
-
-    function switchHeroTab(tab) {
-      ['profile', 'terminal', 'playground'].forEach(t => document.getElementById(\`tab-\${t}\`).classList.toggle('hidden', t !== tab));
-      document.querySelectorAll('.card-tab-btn').forEach(btn => {
-        const active = btn.getAttribute('data-card-tab') === tab;
-        btn.classList.toggle('tab-pill-active', active);
-        btn.classList.toggle('t-muted', !active);
-      });
-      if (tab === 'playground') setTimeout(() => { initLabCanvas(); spawnLabOrbs(labCanvas.width/2, labCanvas.height/2, 20); }, 30);
-    }
-
-    function runTerminalCmd(raw) {
-      const cmd = raw.trim().toLowerCase(), out = document.getElementById('term-output');
-      const curLang = state.lang || 'pt';
-      const clearMsgs = {
-        pt: '# Terminal limpo. Digite "help".',
-        es: '# Terminal limpio. Escribe "help".',
-        en: '# Terminal cleared. Type "help".'
-      };
-      if (cmd === 'clear') { out.innerHTML = \`<p class="text-slate-400">\${clearMsgs[curLang] || clearMsgs.pt}</p>\`; return; }
-      const maps = {
-        pt: {
-          help: 'Comandos: whoami, stack, projetos, contato, clear',
-          whoami: 'Danilo Oliveira — Web Designer & Especialista em Websites Comerciais.',
-          stack: 'UI/UX Design • Landing Pages • Tailwind CSS • React/Next.js • Identidade Visual • SEO & Performance.',
-          projetos: '40 Websites Comerciais em produção (Restaurantes, Clínicas, Hotelaria, E-commerce, Advocacia, Portfólios 3D) e 48 Logos.',
-          contato: 'Instagram: @daniloliveira89 | Formulário abaixo',
-          notFound: 'Comando não encontrado. Use: help'
-        },
-        es: {
-          help: 'Comandos: whoami, stack, proyectos, contacto, clear',
-          whoami: 'Danilo Oliveira — Diseñador Web y Especialista en Sitios Comerciales.',
-          stack: 'Diseño UI/UX • Landing Pages • Tailwind CSS • React/Next.js • Identidad Visual • SEO & Velocidad.',
-          projetos: '40 Sitios Web Comerciales en producción (Restaurantes, Clínicas, Hoteles, E-commerce, Abogados, Portafolios 3D) y 48 Logos.',
-          proyectos: '40 Sitios Web Comerciales en producción (Restaurantes, Clínicas, Hoteles, E-commerce, Abogados, Portafolios 3D) y 48 Logos.',
-          contato: 'Instagram: @daniloliveira89 | Formulario abajo',
-          contacto: 'Instagram: @daniloliveira89 | Formulario abajo',
-          notFound: 'Comando no encontrado. Usa: help'
-        },
-        en: {
-          help: 'Commands: whoami, stack, projects, contact, clear',
-          whoami: 'Danilo Oliveira — Web Designer & Commercial Website Specialist.',
-          stack: 'UI/UX Design • Landing Pages • Tailwind CSS • React/Next.js • Brand Identity • SEO & Speed.',
-          projetos: '40 Live Commercial Websites (Restaurants, Clinics, Hospitality, E-commerce, Law Firms, 3D Portfolios) & 48 Logos.',
-          projects: '40 Live Commercial Websites (Restaurants, Clinics, Hospitality, E-commerce, Law Firms, 3D Portfolios) & 48 Logos.',
-          contato: 'Instagram: @daniloliveira89 | Contact form below',
-          contact: 'Instagram: @daniloliveira89 | Contact form below',
-          notFound: 'Command not found. Type: help'
-        }
-      };
-      const m = maps[curLang] || maps.pt;
-      out.innerHTML += \`<p><span class="text-cyan-400">➜</span> <span class="text-fuchsia-300">\${raw}</span></p><p class="text-slate-200 pl-3">\${m[cmd] || m.notFound}</p>\`;
-      out.scrollTop = out.scrollHeight;
-    }
-    document.getElementById('term-form').addEventListener('submit', (e) => {
-      e.preventDefault(); const inp = document.getElementById('term-input');
-      if (inp.value.trim()) { runTerminalCmd(inp.value); inp.value = ''; }
-    });
-
-    // =========================================================================
     // 5. RENDERERS (SERVIÇOS, DIFERENCIAIS, PROJETOS & LOGOS)
     // =========================================================================
     function renderServices() {
@@ -1342,7 +1207,6 @@ const newTailScript = `const CMD_ITEMS_I18N = {
         { label: 'Ir para Serviços', hint: '#services', action: () => location.hash = '#services' },
         { label: 'Ir para Diferenciais', hint: '#differentials', action: () => location.hash = '#differentials' },
         { label: 'Ir para Contato', hint: '#contact', action: () => location.hash = '#contact' },
-        { label: 'Abrir Terminal no Hero', hint: 'CLI', action: () => { window.scrollTo({ top: 0, behavior: 'smooth' }); switchHeroTab('terminal'); } },
         { label: 'Copiar Instagram (@daniloliveira89)', hint: 'Copy', action: () => copyText('https://instagram.com/daniloliveira89', I18N.pt.toast_ig) }
       ],
       es: [
@@ -1350,7 +1214,6 @@ const newTailScript = `const CMD_ITEMS_I18N = {
         { label: 'Ir a Servicios', hint: '#services', action: () => location.hash = '#services' },
         { label: 'Ir a Diferenciales', hint: '#differentials', action: () => location.hash = '#differentials' },
         { label: 'Ir a Contacto', hint: '#contact', action: () => location.hash = '#contact' },
-        { label: 'Abrir Terminal en el Hero', hint: 'CLI', action: () => { window.scrollTo({ top: 0, behavior: 'smooth' }); switchHeroTab('terminal'); } },
         { label: 'Copiar Instagram (@daniloliveira89)', hint: 'Copy', action: () => copyText('https://instagram.com/daniloliveira89', I18N.es.toast_ig) }
       ],
       en: [
@@ -1358,7 +1221,6 @@ const newTailScript = `const CMD_ITEMS_I18N = {
         { label: 'Go to Services', hint: '#services', action: () => location.hash = '#services' },
         { label: 'Go to Standards', hint: '#differentials', action: () => location.hash = '#differentials' },
         { label: 'Go to Contact', hint: '#contact', action: () => location.hash = '#contact' },
-        { label: 'Open Hero Terminal', hint: 'CLI', action: () => { window.scrollTo({ top: 0, behavior: 'smooth' }); switchHeroTab('terminal'); } },
         { label: 'Copy Instagram (@daniloliveira89)', hint: 'Copy', action: () => copyText('https://instagram.com/daniloliveira89', I18N.en.toast_ig) }
       ]
     };
@@ -1440,8 +1302,6 @@ const newTailScript = `const CMD_ITEMS_I18N = {
     });
 
     document.addEventListener('click', (e) => {
-      const tabBtn = e.target.closest('[data-card-tab]'); if (tabBtn) { switchHeroTab(tabBtn.getAttribute('data-card-tab')); return; }
-      const termBtn = e.target.closest('[data-cmd]'); if (termBtn) { runTerminalCmd(termBtn.getAttribute('data-cmd')); return; }
       const langBtn = e.target.closest('[data-lang]'); if (langBtn) {
         state.lang = langBtn.getAttribute('data-lang');
         try { localStorage.setItem('portfolio_lang', state.lang); localStorage.setItem('portfolio_lang_manual', '1'); } catch(err) {}
@@ -1493,7 +1353,6 @@ const newTailScript = `const CMD_ITEMS_I18N = {
       document.getElementById('wa-popover').classList.add('hidden');
       showToast(t.wa_toast);
     });
-    document.getElementById('btn-open-terminal-shortcut').addEventListener('click', () => switchHeroTab('terminal'));
     document.getElementById('btn-cmdk').addEventListener('click', openCmdk);
     document.getElementById('close-cmdk').addEventListener('click', closeCmdk);
     document.getElementById('cmdk-input').addEventListener('input', (e) => renderCmdk(e.target.value));
